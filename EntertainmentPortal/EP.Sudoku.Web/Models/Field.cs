@@ -7,6 +7,6 @@ namespace EP.Sudoku.Web.Models
 {
     public class Field
     {
-        public List<Square> Squares { get; set; }
+        public Square[,] Squares = new Square[9, 9];
     }
 }
