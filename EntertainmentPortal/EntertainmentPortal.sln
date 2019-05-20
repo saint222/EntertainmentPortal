@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Gateway", "EP.Gateway\EP
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WordsMaker", "WordsMaker", "{0BE0F625-BD0F-47AE-A803-20BB41ADA51A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.WordsMaker.Web", "EP.WordsMaker.Web\EP.WordsMaker.Web.csproj", "{913311B5-1DF3-4444-85E0-9BC74C4D8F05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.WordsMaker.Web", "EP.WordsMaker.Web\EP.WordsMaker.Web.csproj", "{913311B5-1DF3-4444-85E0-9BC74C4D8F05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
