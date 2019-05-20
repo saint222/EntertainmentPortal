@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace EP.Sudoku.Web.Models
 {
-    public class Field
+    public class GameBoard
     {
-        public Square[,] Squares = new Square[9, 9];
+        public Cell[,] Cells = new Cell[9, 9];
     }
 }

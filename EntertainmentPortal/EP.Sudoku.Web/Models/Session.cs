@@ -9,7 +9,7 @@ namespace EP.Sudoku.Web.Models
     {
         public int Id { get; set; }
         public Player Player { get; set; } // is it necessary?
-        public Enum.DifficultyLevel Level { get; set; } 
+        public Enums.DifficultyLevel Level { get; set; } 
         public bool IsOver { get; set; }
         public double Duration { get; set; }
     }

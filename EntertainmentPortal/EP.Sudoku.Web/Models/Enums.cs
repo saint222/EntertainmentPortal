@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EP.Sudoku.Web.Models
 {
-    public class Enum
+    public class Enums
     {
         public enum DifficultyLevel
         {
@@ -14,7 +14,7 @@ namespace EP.Sudoku.Web.Models
             Hard
         }
 
-        public enum SquareColor
+        public enum CellColor
         {
             White,            
             Grey
