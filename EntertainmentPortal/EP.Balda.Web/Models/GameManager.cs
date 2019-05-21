@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BaldaGame.Models
+namespace EP.Balda.Models
 {
     public class GameManager
     {
