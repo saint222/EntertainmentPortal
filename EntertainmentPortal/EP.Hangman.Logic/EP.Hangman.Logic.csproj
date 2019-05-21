@@ -9,8 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Handlers\" />
-    <Folder Include="Queries\" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
