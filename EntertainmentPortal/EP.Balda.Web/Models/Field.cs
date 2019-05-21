@@ -9,9 +9,7 @@ namespace EP.Balda.Models
     {
         public Cell[,] Cells { get; set; }
         public int Size { get => _size; }
-        public List<Cell> UsedCells { get; set; }
-        public List<Cell> AvailableCells { get; set; } //cells available to use at present (near filled cells)
-
+        
         private readonly int _size;
 
         public Field()

@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace EP.Balda.Models
 {
-    public class GameManager
+    public class Game
     {
         public Player[] Players { get; set; }
         public Field Field { get; set; }
-        public Word InitialWord { get; set; } // start word in the middle of the field
+        public string InitialWord { get; set; } // start word in the middle of the field
 
-        public GameManager(Player player1, Player player2, Word initialWord)
+        public Game(Player player1, Player player2, char[] initialWord)
         {
             Players = new Player[2];
             Players[0] = player1;
@@ -22,7 +22,7 @@ namespace EP.Balda.Models
 
             for (int i = 0; i < Field.Size; i++) //to add word to start
             {
-                Field.Cells[center, i].Letter = initialWord.Letters[i];
+                Field.Cells[center, i].Letter = initialWord[i];
             }
         }
     }

@@ -7,6 +7,6 @@ namespace EP.Balda.Models
 {
     public class Word
     {
-        public List<char> Letters { get; set; }
+        public List<Cell> Cells { get; set; } //cells that form words
     }
 }
