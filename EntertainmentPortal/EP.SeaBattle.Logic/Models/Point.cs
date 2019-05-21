@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EP.SeaBattle.Web.Models
-{
+namespace EP.SeaBattle.Logic.Models
+{ 
     public class Point
     {
         private int _x;
