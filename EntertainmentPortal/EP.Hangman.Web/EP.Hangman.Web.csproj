@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EP.Hangman.Logic\EP.Hangman.Logic.csproj" />
+  </ItemGroup>
+
 </Project>
