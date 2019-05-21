@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EP.Hagman.Logic.Models
+namespace EP.Hagman.Logic.Interfaces
 {
     public interface IRepository<T> where T : class
     {

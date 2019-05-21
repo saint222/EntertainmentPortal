@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using EP.Hangman.Web.Models;
+using EP.Hangman.Web;
 
 namespace EP.Hangman.Web.Controllers
 {
@@ -12,7 +12,7 @@ namespace EP.Hangman.Web.Controllers
     [ApiController]
     public class PlayHangmanController : ControllerBase
     {
-        private PlayHangman _game = new PlayHangman(); 
+        //private PlayHangman _game = new PlayHangman(); 
 
         // GET: api/PlayHangman
         [HttpGet]
@@ -22,13 +22,13 @@ namespace EP.Hangman.Web.Controllers
         }
 
         // GET: api/PlayHangman/5
-        [HttpGet("{id}", Name = "Get")]
-        public ActionResult<string> Get(string id)
-        {
+        //[HttpGet("{id}", Name = "Get")]
+        //public ActionResult<string> Get(string id)
+        //{
 
 
-            return Ok($"Status: {_game.PlayGame(id)}. Gueesed word: {_game.CorrectLetters}. Incorect letters: {_game.WrongLetters}. Attemts left: {_game.UserAttempts}.");
-        }
+        //    return Ok($"Status: {_game.PlayGame(id)}. Gueesed word: {_game.CorrectLetters}. Incorect letters: {_game.WrongLetters}. Attemts left: {_game.UserAttempts}.");
+        //}
 
         // POST: api/PlayHangman
         [HttpPost]
