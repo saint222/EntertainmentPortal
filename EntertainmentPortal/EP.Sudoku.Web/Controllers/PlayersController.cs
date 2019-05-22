@@ -2,20 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EP.Sudoku.Logic.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Sudoku.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class PlayersController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly IMediator _mediator;
+
+        public PlayersController(IMediator mediator)
         {
-            return new string[] { "value1", "value2" };
+            _mediator = mediator;
         }
+        // GET api/values
+        //[HttpGet("api/players")]
+        //public async Task<IActionResult> GetAllBooksAsync()
+        //{
+        //    var result = await _mediator.Send(new GetAllPlayers());
+        //    return result.Any() ? (IActionResult)Ok(result) : NotFound();
+        //}
+
+
+
+
+
+
 
         // GET api/values/5
         [HttpGet("{id}")]
