@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Mvc.ViewComponents;
 
 namespace EP._15Puzzle.Web.Controllers
 {
+    /// <summary>
+    /// now userID not used in GET and PUT methods, used id=1 injected into controller's methods. will be changed after understood how to hide in body
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class DeckController : ControllerBase

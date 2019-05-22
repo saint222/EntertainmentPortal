@@ -4,6 +4,9 @@ using System.Text;
 
 namespace EP._15Puzzle.Data.Models
 {
+    /// <summary>
+    /// Maybe useless
+    /// </summary>
     public class User
     {
         public int Id { get; set; }

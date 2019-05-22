@@ -12,8 +12,8 @@ namespace EP._15Puzzle.Logic.Services
         /// <summary>
         /// starts new deck
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">user Id</param>
+        /// <returns>current state of deck</returns>
         public static Deck NewGame(int id)
         {
             var deck = DeckRepository.Create(id);
@@ -23,14 +23,20 @@ namespace EP._15Puzzle.Logic.Services
         /// <summary>
         /// gets current state of deck
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">user Id</param>
+        /// <returns>current state of deck</returns>
         public static Deck GetDeck(int id)
         {
             var deck = DeckRepository.Get(id);
             return Parse(deck);
         }
 
+        /// <summary>
+        /// moves tile if it possible
+        /// </summary>
+        /// <param name="id">user Id</param>
+        /// <param name="tileToMove">number of tile to move</param>
+        /// <returns>current state of deck</returns>
         public static Deck Move(int id, int tileToMove)
         {
             var deck = DeckRepository.Get(id);
@@ -50,16 +56,19 @@ namespace EP._15Puzzle.Logic.Services
         /// <summary>
         /// converts DeckDB into Deck
         /// </summary>
-        /// <param name="deck"></param>
-        /// <returns></returns>
+        /// <param name="deck">DeckDB from Repository to parse into Deck</param>
+        /// <returns>represented DeckDB into Deck</returns>
         private static Deck Parse(DeckDB deck)
         {
             return new Deck(){Score = deck.Score,Tiles = deck.Tiles,Victory = deck.Victory};
         }
-        private static DeckDB Parse(Deck deck,int id,int score)
-        {
-            return new DeckDB() {Id = id,Score = score,Tiles = (List<int>)deck.Tiles,Victory = deck.Victory};
-        }
+        
+        /// <summary>
+        /// check if it possible to move selected tile to move into empty place (to swap with tile0)
+        /// </summary>
+        /// <param name="tile">position of selected tile</param>
+        /// <param name="tile0">position of empty place</param>
+        /// <returns>true - swap is possible, tiles are touching in one row or column</returns>
         private static bool ComparePositions(Tile tile, Tile tile0)
         {
             if (tile.PosX == tile0.PosX || tile.PosY == tile0.PosY)
