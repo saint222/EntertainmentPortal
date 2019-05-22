@@ -9,7 +9,7 @@ namespace EP.SeaBattle.Data.Storages
 {
     public static class PlayersStorage
     {
-        private static List<PlayerDb> _players = new List<PlayerDb>()
+        private static readonly List<PlayerDb> _players = new List<PlayerDb>()
         {
             new PlayerDb() { Id = Guid.NewGuid(), Login = "Ivan", Password = "123", IsBanned = false },
             new PlayerDb() { Id = Guid.NewGuid(), Login = "Petr", Password = "323", IsBanned = false },
