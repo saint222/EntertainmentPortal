@@ -3,24 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EP.Hangman.Web.Models
+namespace EP.Hangman.Logic.Models
 {
     public class PlayHangman
     {
         private const int ATTEMPTS = 6;
         private int _userAttempts = 0;
-        private string _pickedWord;
+        public string PickedWord { get; set; }
         private List<string> _correctLetters = new List<string>();
         private List<string> _wrongLetters = new List<string>();
 
         public PlayHangman()
         {
-            var word = new PickedWord();
-            _pickedWord = word.Content;
-            for (int i = 0; i < _pickedWord.Length; i++)
-            {
-                _correctLetters.Add("_");
-            }
+            
         }
 
         public string CorrectLetters
@@ -43,12 +38,12 @@ namespace EP.Hangman.Web.Models
 
         public string PlayGame(string letter)
         {
-           
+
             if (_userAttempts < ATTEMPTS)
             {
-                if (_pickedWord.Contains(letter))
+                if (PickedWord.Contains(letter))
                 {
-                    _correctLetters[_pickedWord.IndexOf(letter)] = letter;
+                    _correctLetters[PickedWord.IndexOf(letter)] = letter;
                     return "Correct letter";
                 }
                 else
