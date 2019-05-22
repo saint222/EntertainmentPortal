@@ -14,7 +14,7 @@ namespace EP.Hagman.Data
             {new WordData("wonderful")},
             {new WordData("environment")},
             {new WordData("zombie")},
-            {new WordData("neighbor")},
+            {new WordData("neighbour")},
             {new WordData("investigate")},
             {new WordData("mistake")},
             {new WordData("nature")},
@@ -22,11 +22,7 @@ namespace EP.Hagman.Data
 
         public static WordData GetWord
         {
-            get
-            {
-                var rnd = new Random();
-                return _wordsStorage[rnd.Next(0, _wordsStorage.Count)];
-            }
+            get { return _wordsStorage[new Random().Next(0, _wordsStorage.Count)]; }
         }
 
         public static List<WordData> AllWords => _wordsStorage;

@@ -12,7 +12,7 @@ using EP.Hagman.Data;
 
 namespace EP.Hangman.Logic.Handlers
 {
-    public class GetHangmanHendler : IRequestHandler<GetHangman, PlayHangman>
+    public class GetHangmanHandler : IRequestHandler<GetHangman, PlayHangman>
     {
         public Task<PlayHangman> Handle(GetHangman request, CancellationToken cancellationToken)
         {

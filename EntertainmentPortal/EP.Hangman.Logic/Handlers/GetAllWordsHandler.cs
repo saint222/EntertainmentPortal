@@ -11,7 +11,7 @@ using EP.Hagman.Data;
 
 namespace EP.Hangman.Logic.Handlers
 {
-    public class GetAllWordsHendler : IRequestHandler<GetAllWords, IEnumerable<Word>>
+    public class GetAllWordsHandler : IRequestHandler<GetAllWords, IEnumerable<Word>>
     {
         public Task<IEnumerable<Word>> Handle(GetAllWords request, CancellationToken cancellationToken)
         {

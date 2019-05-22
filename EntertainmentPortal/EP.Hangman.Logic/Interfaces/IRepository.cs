@@ -8,7 +8,7 @@ namespace EP.Hagman.Logic.Interfaces
     {
         IEnumerable<T> GetList();
         void Create(T item);
-        void Read(T item);
+        void Delete(T item);
         void Update(T item);
     }
 }

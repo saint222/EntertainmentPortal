@@ -13,14 +13,14 @@ namespace EP.Hangman.Logic.Models
         public List<string> CorrectLetters { get; set; }
         public List<string> Alphabet { get; set; }
 
-        public PlayHangman()    
+        public PlayHangman()
         {
             
         }
 
         public int UserAttempts
         {
-            get { return (ATTEMPTS - _userAttempts); }
+            get { return ATTEMPTS - _userAttempts; }
         }
 
         public string PlayGame(string letter)
@@ -28,16 +28,16 @@ namespace EP.Hangman.Logic.Models
 
             if (_userAttempts < ATTEMPTS)
             {
+                Alphabet.Remove(letter);
+
                 if (PickedWord.Contains(letter))
                 {
                     CorrectLetters[PickedWord.IndexOf(letter)] = letter;
-                    Alphabet.Remove(letter);
                     return "Correct letter";
                 }
                 else
                 {
                     _userAttempts++;
-                    Alphabet.Remove(letter);
                     return "Wrong letter";
                 }
             }

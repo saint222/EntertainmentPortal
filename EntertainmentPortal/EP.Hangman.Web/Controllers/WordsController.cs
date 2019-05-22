@@ -12,16 +12,16 @@ namespace EP.Hangman.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WordController : ControllerBase
+    public class WordsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public WordController(IMediator mediator)
+        public WordsController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        // GET: api/Word
+        // GET: api/Words
         [HttpGet]
         public async Task<ActionResult> GetAllWordsAsync()
         {
