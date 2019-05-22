@@ -17,7 +17,9 @@ namespace EP.Hangman.Logic.Handlers
         public Task<PlayHangman> Handle(GetHangman request, CancellationToken cancellationToken)
         {
             var item = new PlayHangman();
-            item.PickedWord = WordsData.Word.Name;
+            item.PickedWord = HangmanWordsData.GetWord.Name;
+            item.CorrectLetters = new HangmanTemporaryData().TempData;
+            item.Alphabet = new HangmanAlphabetData().EnglishAlphabet();
             return Task.FromResult(item);
         }
     }

@@ -10,25 +10,12 @@ namespace EP.Hangman.Logic.Models
         private const int ATTEMPTS = 6;
         private int _userAttempts = 0;
         public string PickedWord { get; set; }
-        private List<string> _correctLetters = new List<string>();
-        private List<string> _wrongLetters = new List<string>();
+        public List<string> CorrectLetters { get; set; }
+        public List<string> Alphabet { get; set; }
 
-        public PlayHangman()
+        public PlayHangman()    
         {
             
-        }
-
-        public string CorrectLetters
-        {
-            get { return ListToString(_correctLetters); }
-        }
-
-        public string WrongLetters
-        {
-            get
-            {
-                return ListToString(_wrongLetters);
-            }
         }
 
         public int UserAttempts
@@ -43,13 +30,14 @@ namespace EP.Hangman.Logic.Models
             {
                 if (PickedWord.Contains(letter))
                 {
-                    _correctLetters[PickedWord.IndexOf(letter)] = letter;
+                    CorrectLetters[PickedWord.IndexOf(letter)] = letter;
+                    Alphabet.Remove(letter);
                     return "Correct letter";
                 }
                 else
                 {
                     _userAttempts++;
-                    _wrongLetters.Add(letter);
+                    Alphabet.Remove(letter);
                     return "Wrong letter";
                 }
             }

@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
@@ -23,17 +23,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Web", "EP.SeaB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeaBattle", "SeaBattle", "{05A49ABF-62F3-404E-8FD0-512B6E53F28B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.Hangman.Logic", "EP.Hangman.Logic\EP.Hangman.Logic.csproj", "{F14E90B6-64E3-4654-BDCF-953E8D98E4D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hangman.Logic", "EP.Hangman.Logic\EP.Hangman.Logic.csproj", "{F14E90B6-64E3-4654-BDCF-953E8D98E4D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.Hagman.Data", "EP.Hagman.Data\EP.Hagman.Data.csproj", "{09DCCDD9-5E72-403F-9B24-DEB6B053F683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hagman.Data", "EP.Hagman.Data\EP.Hagman.Data.csproj", "{09DCCDD9-5E72-403F-9B24-DEB6B053F683}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sudoku", "Sudoku", "{78F85948-04A0-47C1-8997-441D8D080721}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Web", "EP.Sudoku.Web\EP.Sudoku.Web.csproj", "{BE2713EB-C4C1-4CD9-A573-9B7F23F842FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.Sudoku.Logic", "EP.Sudoku.Logic\EP.Sudoku.Logic.csproj", "{9F541C20-72D7-4ED3-87AF-B88B12E9340A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Logic", "EP.Sudoku.Logic\EP.Sudoku.Logic.csproj", "{9F541C20-72D7-4ED3-87AF-B88B12E9340A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.Sudoku.Data", "EP.Sudoku.Data\EP.Sudoku.Data.csproj", "{02ECA1E2-3A7F-4CCA-B8C3-EA0318448550}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Data", "EP.Sudoku.Data\EP.Sudoku.Data.csproj", "{02ECA1E2-3A7F-4CCA-B8C3-EA0318448550}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

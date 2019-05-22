@@ -15,7 +15,7 @@ namespace EP.Hangman.Logic.Handlers
     {
         public Task<IEnumerable<Word>> Handle(GetAllWords request, CancellationToken cancellationToken)
         {
-            var words = WordsData.AllWords.Select(a => new Word() {Name = a.Name}).ToArray();
+            var words = HangmanWordsData.AllWords.Select(a => new Word() {Name = a.Name}).ToArray();
             return Task.FromResult((IEnumerable<Word>) words);
         }
     }
