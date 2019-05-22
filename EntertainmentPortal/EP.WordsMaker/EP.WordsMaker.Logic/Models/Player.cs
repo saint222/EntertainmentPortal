@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EP.WordsMaker.Web.Models
+namespace EP.WordsMaker.Logic.Models
 {
     public class Player
     {
-        public int _id;
+        public int Id { get; set; }
 
-        public string _name;
+        public string Name { get; set; }
 
         public int Score { get; set; }
     }

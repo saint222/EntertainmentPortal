@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EP.WordsMaker.Web.Models
+namespace EP.WordsMaker.Logic.Models
 {
     public class WordDictionary
     {

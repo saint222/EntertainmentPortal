@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EP.WordsMaker.Web.Models
+namespace EP.WordsMaker.Logic.Models
 {
     public class Rules
     {
         public string _description;
 
-        public int _minWordLenght;
+        public int MinWordLenght { get; set; }
 
     }
 }
