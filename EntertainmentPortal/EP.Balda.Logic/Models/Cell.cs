@@ -1,4 +1,4 @@
-﻿namespace EP.Balda.Models
+﻿namespace EP.Balda.Logic.Models
 {
     public class Cell
     {

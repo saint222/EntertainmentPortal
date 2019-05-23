@@ -1,4 +1,4 @@
-﻿using EP.Balda.Models;
+﻿using EP.Balda.Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Balda.Web.Controllers
@@ -9,14 +9,14 @@ namespace EP.Balda.Web.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            Field field = new Field();
+            var field = new Field();
             return Ok(field);
         }
-        
+
         [HttpPut]
-        public IActionResult Put(char letter, [FromBody]int x, int y)
+        public IActionResult Put(char letter, [FromBody] int x, int y)
         {
-            Field field = new Field();
+            var field = new Field();
             field.Cells[x, y].Letter = letter;
             return Ok();
         }

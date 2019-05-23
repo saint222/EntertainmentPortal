@@ -1,4 +1,4 @@
-﻿namespace EP.Balda.Models
+﻿namespace EP.Balda.Logic.Models
 {
     public class Field
     {
@@ -8,7 +8,7 @@
         public Field()
         {
             Size = 5; //to make 5x5
-            Cells = new Cell[5, 5];
+            Cells = new Cell[Size, Size];
 
             for (var i = 0; i < Size; i++)
             {

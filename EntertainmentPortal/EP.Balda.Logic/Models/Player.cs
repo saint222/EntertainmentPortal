@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EP.Balda.Models
+namespace EP.Balda.Logic.Models
 {
     public class Player
     {

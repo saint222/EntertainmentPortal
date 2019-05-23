@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using EP.Balda.Models;
+using EP.Balda.Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Balda.Web.Controllers
@@ -10,13 +10,12 @@ namespace EP.Balda.Web.Controllers
         [HttpGet]
         public List<Cell> Get()
         {
-            Word word = new Word();
-            word.Cells = new List<Cell>();
+            var word = new Word {Cells = new List<Cell>()};
             return word.Cells;
         }
-        
+
         [HttpPost]
-        public IActionResult Post([FromBody]Word word)
+        public IActionResult Post([FromBody] Word word)
         {
             return Ok(word);
         }

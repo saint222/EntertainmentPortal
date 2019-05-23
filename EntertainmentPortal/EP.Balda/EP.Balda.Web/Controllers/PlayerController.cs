@@ -1,4 +1,4 @@
-﻿using EP.Balda.Models;
+﻿using EP.Balda.Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Balda.Web.Controllers
@@ -15,31 +15,27 @@ namespace EP.Balda.Web.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(long id)
         {
-            Player player = new Player();
-            player.Id = id;
+            var player = new Player {Id = id};
             return Ok(player);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Player player)
+        public IActionResult Post([FromBody] Player player)
         {
             return Ok(player);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody]string name)
+        public IActionResult Put(long id, [FromBody] string name)
         {
-            Player player = new Player();
-            player.Id = id;
-            player.Name = name;
+            var player = new Player {Id = id, Name = name};
             return Ok();
         }
-        
+
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            Player player = new Player();
-            player.Id = id;
+            var player = new Player {Id = id};
             return Ok();
         }
     }

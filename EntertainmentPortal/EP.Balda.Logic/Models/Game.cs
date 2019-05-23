@@ -1,4 +1,6 @@
-﻿namespace EP.Balda.Models
+﻿using System.Collections.Generic;
+
+namespace EP.Balda.Logic.Models
 {
     public class Game
     {
@@ -6,7 +8,7 @@
         public Field Field { get; set; }
         public string InitialWord { get; set; } // start word in the middle of the field
 
-        public Game(Player player1, Player player2, char[] initialWord)
+        public Game(Player player1, Player player2, IReadOnlyList<char> initialWord)
         {
             Players = new Player[2];
             Players[0] = player1;
