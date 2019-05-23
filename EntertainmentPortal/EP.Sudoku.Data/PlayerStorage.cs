@@ -15,6 +15,7 @@ namespace EP.Sudoku.Data
                                                        NickName = "First Static Player",
                                                        ExperiencePoint = 0,
                                                        Level = 0
+                                                       //AvatarIconDb = new AvatarIconDb { Id = 4, Uri = "http://icons.iconarchive.com/icons/chanut/role-playing/64/Villager-icon.png", IsBaseIcon = true}
                                                    },
                                                    new PlayerDb()
                                                    {
@@ -25,7 +26,7 @@ namespace EP.Sudoku.Data
                                                    },
                                                    new PlayerDb()
                                                    {
-                                                       Id = 2,
+                                                       Id = 3,
                                                        NickName = "Third Static Player",
                                                        ExperiencePoint = 0,
                                                        Level = 0

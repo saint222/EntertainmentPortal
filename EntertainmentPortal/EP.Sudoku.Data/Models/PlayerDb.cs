@@ -10,6 +10,6 @@ namespace EP.Sudoku.Data.Models
         public string NickName { get; set; }
         public int ExperiencePoint { get; set; }
         public int Level { get; set; }
-        public virtual AvatarIconDb AvatarIcon { get; set; }
+        public virtual AvatarIconDb AvatarIconDb { get; set; }
     }
 }

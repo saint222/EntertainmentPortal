@@ -13,7 +13,14 @@ namespace EP.Sudoku.Logic.Handlers
     {
         public Task<IEnumerable<Player>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
         {
-            var items = PlayerStorage.Players.Select(b => new Player() { Id = b.Id, NickName = b.NickName, ExperiencePoint = b.ExperiencePoint, Level = b.Level }).ToArray();
+            var items = PlayerStorage.Players.Select(b => new Player()
+            {
+                Id = b.Id,
+                NickName = b.NickName,
+                ExperiencePoint = b.ExperiencePoint,
+                Level = b.Level,
+                /*AvatarIcon = b.AvatarIcon*/ // cannot implicitly convert types:( automapper???
+            }).ToArray();
 
             return Task.FromResult((IEnumerable<Player>)items);
         }
