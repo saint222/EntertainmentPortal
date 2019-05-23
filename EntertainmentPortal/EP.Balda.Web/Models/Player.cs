@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace EP.Balda.Web.Models
+namespace EP.Balda.Models
 {
     public class Player
     {
+        public long Id { get; set; }
         public string Name { get; set; } //nickname
         public string Login { get; set; }
         public string Password { get; set; }

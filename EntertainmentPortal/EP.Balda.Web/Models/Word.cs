@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EP.Balda.Web.Models
+namespace EP.Balda.Models
 {
     public class Word
     {
