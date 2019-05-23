@@ -8,6 +8,12 @@ namespace EP.Hagman.Data
 {
     public class HangmanWordsData
     {
+        private readonly WordData _wordToGuess = null;
+
+        public HangmanWordsData()
+        {
+            _wordToGuess = GetNewWord();
+        }
 
         private static List<WordData> _wordsStorage = new List<WordData>
         {
@@ -24,7 +30,7 @@ namespace EP.Hagman.Data
 
         public WordData GetWord
         {
-            get { return _wordsStorage[new Random().Next(0, _wordsStorage.Count)]; }
+            get { return _wordToGuess; }
         }
 
         public List<WordData> AllWords => _wordsStorage;
@@ -32,6 +38,11 @@ namespace EP.Hagman.Data
         public void AddWord(string word)
         {
             _wordsStorage.Add(new WordData(word));
+        }
+
+        public WordData GetNewWord()
+        {
+            return _wordsStorage[new Random().Next(0, _wordsStorage.Count)];
         }
     }
 }

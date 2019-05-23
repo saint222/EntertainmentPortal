@@ -30,7 +30,10 @@ namespace EP.Hangman.Web
             services.AddMediatR(typeof(GetHangman).Assembly);
             services.AddMediatR(typeof(GetAllWords).Assembly);
             services.AddMediatR(typeof(SetWord).Assembly);
-            services.AddSingleton(typeof(HangmanWordsData)); 
+            services.AddMediatR(typeof(CheckLetter).Assembly);
+            services.AddSingleton(typeof(HangmanAlphabetData));
+            services.AddSingleton(typeof(HangmanTemporaryData));
+            services.AddSingleton(typeof(HangmanWordsData));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

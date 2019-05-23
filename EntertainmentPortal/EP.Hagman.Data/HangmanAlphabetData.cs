@@ -11,16 +11,21 @@ namespace EP.Hagman.Data
         {
             Alphabet = new AlphabetData().Alphabet;
 
-        }
-        public List<string> Alphabet { get; set; }
-
-        public List<string> EnglishAlphabet()
-        {
-            for (char letter = 'A'; letter <= 'Z'; letter++)
+            for (char letter = 'a'; letter <= 'z'; letter++)
             {
                 Alphabet.Add(letter.ToString());
             }
-            return Alphabet;
         }
+
+        public List<string> Alphabet { get; set; }
+
+        //public List<string> EnglishAlphabet()
+        //{
+        //    for (char letter = 'A'; letter <= 'Z'; letter++)
+        //    {
+        //        Alphabet.Add(letter.ToString());
+        //    }
+        //    return Alphabet;
+        //}
     }
 }   

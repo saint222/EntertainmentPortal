@@ -25,7 +25,7 @@ namespace EP.Hangman.Logic.Handlers
             var item = new PlayHangman();
             item.PickedWord = _item.GetWord.Name;
             item.CorrectLetters = new HangmanTemporaryData().TempData;
-            item.Alphabet = new HangmanAlphabetData().EnglishAlphabet();
+            item.Alphabet = new HangmanAlphabetData().Alphabet;
             return Task.FromResult(item);
         }
     }
