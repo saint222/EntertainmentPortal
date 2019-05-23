@@ -18,13 +18,13 @@ namespace EP.Sudoku.Web.Controllers
         {
             _mediator = mediator;
         }
-        // GET api/values
-        //[HttpGet("api/players")]
-        //public async Task<IActionResult> GetAllBooksAsync()
-        //{
-        //    var result = await _mediator.Send(new GetAllPlayers());
-        //    return result.Any() ? (IActionResult)Ok(result) : NotFound();
-        //}
+        //GET api/values
+        [HttpGet("api/books")]
+        public async Task<IActionResult> GetAllPlayerAsync()
+        {
+            var result = await _mediator.Send(new GetAllPlayers());
+            return result.Any() ? (IActionResult)Ok(result) : NotFound();
+        }
 
 
 
