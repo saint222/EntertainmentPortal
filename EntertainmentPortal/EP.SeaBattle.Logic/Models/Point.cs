@@ -7,10 +7,9 @@ namespace EP.SeaBattle.Logic.Models
 { 
     public class Point
     {
-        private int _x;
-        private int _y;
-
-        public int X { get => _x; set => _x = value; }
-        public int Y { get => _y; set => _y = value; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public bool IsShip { get; set; }
+        public bool IsForbidden { get; set; }
     }
 }
