@@ -1,4 +1,4 @@
-﻿namespace EP.Balda.Models
+﻿namespace EP.Balda.Web.Models
 {
     public class Game
     {
