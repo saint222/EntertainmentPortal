@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace EP.Balda.Models
 {
@@ -10,6 +7,8 @@ namespace EP.Balda.Models
         public string Name { get; set; } //nickname
         public string Login { get; set; }
         public string Password { get; set; }
-        public IEnumerable<Word> Words { get; set; } //words this player guessed per one game
+
+        public IEnumerable<Word>
+            Words { get; set; } //words this player guessed per one game
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace EP.Balda.Models
+﻿namespace EP.Balda.Models
 {
     public class Game
     {
@@ -18,12 +13,10 @@ namespace EP.Balda.Models
             Players[1] = player2;
 
             Field = new Field();
-            int center = Field.Size / 2;
+            var center = Field.Size / 2;
 
-            for (int i = 0; i < Field.Size; i++) //to add word to start
-            {
+            for (var i = 0; i < Field.Size; i++) //to add word to start
                 Field.Cells[center, i].Letter = initialWord[i];
-            }
         }
     }
 }
