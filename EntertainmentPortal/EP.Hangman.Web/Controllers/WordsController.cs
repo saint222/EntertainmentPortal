@@ -29,5 +29,13 @@ namespace EP.Hangman.Web.Controllers
 
             return Ok(result);
         }
+
+        //PUT: api/Words/"word"
+        [HttpPut("{word}")]
+        public async Task<IActionResult> SetWordAsync(string word)
+        {
+            var result = await _mediator.Send(new SetWord(word));
+            return result != null ? (IActionResult)Ok(result) : NotFound();
+        }
     }
 }

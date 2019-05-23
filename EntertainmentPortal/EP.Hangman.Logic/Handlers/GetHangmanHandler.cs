@@ -14,10 +14,16 @@ namespace EP.Hangman.Logic.Handlers
 {
     public class GetHangmanHandler : IRequestHandler<GetHangman, PlayHangman>
     {
+        private HangmanWordsData _item;
+        public GetHangmanHandler(HangmanWordsData item)
+        {
+            _item = item;
+        }
+
         public Task<PlayHangman> Handle(GetHangman request, CancellationToken cancellationToken)
         {
             var item = new PlayHangman();
-            item.PickedWord = HangmanWordsData.GetWord.Name;
+            item.PickedWord = _item.GetWord.Name;
             item.CorrectLetters = new HangmanTemporaryData().TempData;
             item.Alphabet = new HangmanAlphabetData().EnglishAlphabet();
             return Task.FromResult(item);
