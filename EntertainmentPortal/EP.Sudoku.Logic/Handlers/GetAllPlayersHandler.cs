@@ -1,4 +1,5 @@
 ﻿using EP.Sudoku.Data;
+using EP.Sudoku.Data.Models;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
@@ -19,7 +20,12 @@ namespace EP.Sudoku.Logic.Handlers
                 NickName = b.NickName,
                 ExperiencePoint = b.ExperiencePoint,
                 Level = b.Level,
-                /*AvatarIcon = b.AvatarIcon*/ // cannot implicitly convert types:( automapper???
+                AvatarIcon = new AvatarIcon()
+                {
+                    Id = b.AvatarIconDb.Id,
+                    Uri = b.AvatarIconDb.Uri,
+                    IsBaseIcon = b.AvatarIconDb.IsBaseIcon
+                }                
             }).ToArray();
 
             return Task.FromResult((IEnumerable<Player>)items);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EP.Sudoku.Data
 {
-    class AvatarIconStorage
+    public static class AvatarIconStorage
     {
         static List<AvatarIconDb> _storage = new List<AvatarIconDb>()
                                                {
