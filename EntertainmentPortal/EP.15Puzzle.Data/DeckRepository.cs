@@ -9,9 +9,9 @@ namespace EP._15Puzzle.Data
     public static class DeckRepository
     {
         private static Dictionary<int, DeckDB> _decks = new Dictionary<int, DeckDB>()
-                                                                                        {
-                                                                                            {1,new DeckDB() }
-                                                                                        };
+        {
+            {1,new DeckDB() }
+        };
         public static DeckDB Get(int id)
         {
             if (_decks.ContainsKey(id))

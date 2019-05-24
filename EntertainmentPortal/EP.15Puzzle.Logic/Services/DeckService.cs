@@ -81,32 +81,5 @@ namespace EP._15Puzzle.Logic.Services
             return false;
         }
     }
-
-
     
-    /*
-    
-
-
-
-
-    
-
-        public static bool CheckWin()
-        {
-            if (_deck[_deck.Count - 1].Num == 0)
-            {
-                for (int i = 1; i < _deck.Count; i++)
-                {
-                    if (_deck[i].Num != i)
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-            return false;
-        }
-     */
 }

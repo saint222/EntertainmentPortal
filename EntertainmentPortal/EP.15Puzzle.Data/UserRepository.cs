@@ -7,7 +7,7 @@ namespace EP._15Puzzle.Data
 {
     public static class UserRepository
     {
-        static List<User> _users = new List<User>(){new User(1,"1","Belarus")};
+        static List<User> _users = new List<User>(){new User(){Id=1,Name = "1",Country = "Belarus"}};
 
         public static User Get(int id)
         {
