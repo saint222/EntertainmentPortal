@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EP.DotsBoxes.Data;
+using EP.DotsBoxes.Data.Models;
 using EP.DotsBoxes.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +31,9 @@ namespace EP.DotsBoxes.Web
         {
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
+            services.AddMediatR(typeof(GetGameBoard).Assembly);
+            services.AddSingleton(typeof(GameBoardData));
+            services.AddSingleton(typeof(GameBoardDb));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
