@@ -26,15 +26,23 @@ namespace EP.Hangman.Web.Controllers
         public async Task<IActionResult> GetHangmanAsync()
         {
             var result = await _mediator.Send(new GetHangman());
-            return Ok(result);
+            return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
-        //PUT: api/CheckLetter/{letter}
+        //POST: api/PlayHangman
+        [HttpPost]
+        public async Task<IActionResult> PostHangmanAsync()
+        {
+            var result = await _mediator.Send(new PostHangman());
+            return result != null ? (IActionResult)Ok(result) : NotFound();
+        }
+
+        //PUT: api/PlayHangman/{letter}
         [HttpPut("{letter}")]
         public async Task<IActionResult> CheckLetterAsync(string letter)
         {
-            var result = await _mediator.Send(new CheckLetter(letter));
-            return Ok(result);
+            var result = await _mediator.Send(new PutHangman(letter));
+            return result != null ? (IActionResult)Ok(result) : NotFound();
         }
     }
 }

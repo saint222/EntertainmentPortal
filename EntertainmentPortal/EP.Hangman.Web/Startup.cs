@@ -28,10 +28,10 @@ namespace EP.Hangman.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(GetHangman).Assembly);
+            services.AddMediatR(typeof(PutHangman).Assembly);
+            services.AddMediatR(typeof(PostHangman).Assembly);
             services.AddMediatR(typeof(GetAllWords).Assembly);
             services.AddMediatR(typeof(SetWord).Assembly);
-            services.AddMediatR(typeof(CheckLetter).Assembly);
-            services.AddSingleton(typeof(HangmanAlphabetData));
             services.AddSingleton(typeof(HangmanTemporaryData));
             services.AddSingleton(typeof(HangmanWordsData));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

@@ -6,9 +6,9 @@ namespace EP.Hagman.Logic.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetList();
-        void Create(T item);
-        void Delete(T item);
-        void Update(T item);
+        T Create(T item); //POST
+        T Select(T item); //GET
+        T Update(T item, string updatedLetter); //PUT
+        T Delete(T item); //DELETE
     }
 }

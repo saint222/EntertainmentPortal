@@ -2,61 +2,51 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EP.Hagman.Data;
+using EP.Hagman.Logic.Interfaces;
 
 namespace EP.Hangman.Logic.Models
 {
     public class PlayHangman
     {
+        private HangmanTemporaryData _data;
+        private string _enteredLetter;
         private const int ATTEMPTS = 6;
-        private int _userAttempts = 0;
-        public string PickedWord { get; set; }
-        public List<string> CorrectLetters { get; set; }
-        public List<string> Alphabet { get; set; }
 
-        public PlayHangman()
+        public PlayHangman(HangmanTemporaryData data, string enteredLetter)
         {
-            
+            _data = data;
+            _enteredLetter = enteredLetter;
         }
 
         public int UserAttempts
         {
-            get { return ATTEMPTS - _userAttempts; }
+            get { return ATTEMPTS - _data.temp.UserAttempts; }
         }
 
-        public string PlayGame(string letter)
+        public HangmanTemporaryData PlayGame()
         {
 
-            if (_userAttempts < ATTEMPTS)
+            if (_data.temp.UserAttempts < ATTEMPTS)
             {
-                Alphabet.Remove(letter);
+                _data.temp.AlphabetTempData.Remove(_enteredLetter);
 
-                if (PickedWord.Contains(letter))
+                if (_data.temp.PickedWord.Contains(_enteredLetter))
                 {
-                    CorrectLetters[PickedWord.IndexOf(letter)] = letter;
-                    return "Correct letter";
+                    _data.temp.CorrectLettersTempData[_data.temp.PickedWord.IndexOf(_enteredLetter)] = _enteredLetter;
+                    return _data;
                 }
                 else
                 {
-                    _userAttempts++;
-                    return "Wrong letter";
+                    _data.temp.UserAttempts++;
+                    return _data;
                 }
             }
             else
             {
-                return "Game over";
+                return null;
             }
 
-        }
-
-        private string ListToString(List<string> list)
-        {
-            string result = null;
-            foreach (var letter in list)
-            {
-                result += letter;
-            }
-
-            return result;
         }
     }
 }
