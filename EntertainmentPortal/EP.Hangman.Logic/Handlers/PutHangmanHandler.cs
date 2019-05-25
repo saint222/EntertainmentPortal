@@ -21,7 +21,7 @@ namespace EP.Hangman.Logic.Handlers
         public Task<HangmanTemporaryData> Handle(PutHangman request, CancellationToken cancellationToken)
         {
             var repository = new Repository();
-            return Task.FromResult(repository.Update(_item, request.LetterToCheck));
+            return Task.FromResult(repository.Update(_item, request.LetterToCheck.Substring(0, 1).ToUpper()));
 
         }
     }

@@ -33,7 +33,13 @@ namespace EP.Hangman.Logic.Models
 
                 if (_data.temp.PickedWord.Contains(_enteredLetter))
                 {
-                    _data.temp.CorrectLettersTempData[_data.temp.PickedWord.IndexOf(_enteredLetter)] = _enteredLetter;
+                    for (int i = 0; i < _data.temp.PickedWord.Length; i++)
+                    {
+                        if (_data.temp.PickedWord.ElementAt(i).ToString() == _enteredLetter)
+                        {
+                            _data.temp.CorrectLettersTempData[i] = _enteredLetter;
+                        }
+                    }
                     return _data;
                 }
                 else
