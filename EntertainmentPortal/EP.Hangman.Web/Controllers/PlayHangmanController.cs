@@ -28,5 +28,13 @@ namespace EP.Hangman.Web.Controllers
             var result = await _mediator.Send(new GetHangman());
             return Ok(result);
         }
+
+        //PUT: api/CheckLetter/{letter}
+        [HttpPut("{letter}")]
+        public async Task<IActionResult> CheckLetterAsync(string letter)
+        {
+            var result = await _mediator.Send(new CheckLetter(letter));
+            return Ok(result);
+        }
     }
 }
