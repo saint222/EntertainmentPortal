@@ -28,8 +28,8 @@ namespace EP.DotsBoxes.Logic.Handlers
                 Column = request.NewColumn
             };
 
-            var array = _boardData.Save(new int[gameBoard.Row,gameBoard.Column]);
-            return Task.FromResult(array);
+            _boardData.Save(new int[gameBoard.Row,gameBoard.Column]);
+            return Task.FromResult(_boardData.GetGameBoard);
         }
 
     }

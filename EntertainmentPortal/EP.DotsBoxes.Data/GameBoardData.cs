@@ -19,9 +19,9 @@ namespace EP.DotsBoxes.Data
 
         public int[,] GetGameBoard => _gameBoardArray;
 
-        public int[,] Save(int[,] gameBoard)
+        public void Save(int[,] gameBoard)
         {
-           return _gameBoardArray = gameBoard;
+           _gameBoardArray = gameBoard;
         }
 
     }
