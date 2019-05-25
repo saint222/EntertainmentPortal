@@ -4,9 +4,9 @@ using System.Text;
 
 namespace EP.Hagman.Data.Models
 {
-    public class WordDB
+    public class WordData
     {
-        public WordDB(string word)
+        public WordData(string word)
         {
             Name = word;
         }
