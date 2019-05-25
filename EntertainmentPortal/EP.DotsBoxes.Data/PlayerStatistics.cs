@@ -5,6 +5,9 @@ using EP.DotsBoxes.Data.Models;
 
 namespace EP.DotsBoxes.Data
 {
+    /// <summary>
+    /// The PlayerStatistics class creates and stores a list of players with all the data.
+    /// </summary>
     public static class PlayerStatistics
     {
         private static List<PlayerDb> _players = new List<PlayerDb>()

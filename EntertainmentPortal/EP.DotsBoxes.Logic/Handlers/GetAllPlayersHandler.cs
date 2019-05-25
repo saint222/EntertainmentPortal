@@ -9,7 +9,7 @@ using MediatR;
 
 namespace EP.DotsBoxes.Logic.Handlers
 {
-    public class GetAllBooksHandler : IRequestHandler<GetAllPlayers, IEnumerable<Player>>
+    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, IEnumerable<Player>>
     {
         public Task<IEnumerable<Player>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
         {

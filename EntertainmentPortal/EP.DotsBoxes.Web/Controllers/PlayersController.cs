@@ -18,6 +18,7 @@ namespace EP.DotsBoxes.Web.Controllers
             _mediator = mediator;
         }
 
+        // GET api/players
         [HttpGet("api/players")]
         public async Task<IActionResult> GetAllPlayersAsync()
         {

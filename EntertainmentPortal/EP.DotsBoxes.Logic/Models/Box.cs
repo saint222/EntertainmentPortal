@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace EP.DotsBoxes.Logic.Models
 {
+    /// <summary>
+    /// The Box enum is sides of the square of the playing field.
+    /// </summary>
     enum Box
     {
         None = 0,
