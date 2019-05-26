@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EP.Hagman.Data;
-using EP.Hangman.Logic.Queries;
+using EP._15Puzzle.Logic.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using MediatR;
 
-namespace EP.Hangman.Web
+namespace EP._15Puzzle.Web
 {
     public class Startup
     {
@@ -27,13 +26,8 @@ namespace EP.Hangman.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(GetHangman).Assembly);
-            services.AddMediatR(typeof(PutHangman).Assembly);
-            services.AddMediatR(typeof(PostHangman).Assembly);
-            services.AddMediatR(typeof(GetAllWords).Assembly);
-            services.AddMediatR(typeof(SetWord).Assembly);
-            services.AddSingleton(typeof(HangmanTemporaryData));
-            services.AddSingleton(typeof(HangmanWordsData));
+            services.AddMediatR(typeof(MoveTile).Assembly);
+            services.AddMediatR(typeof(GetDeck).Assembly);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
