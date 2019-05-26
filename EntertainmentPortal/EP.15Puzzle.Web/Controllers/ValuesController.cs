@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EP.Hangman.Web.Controllers
+namespace EP._15Puzzle.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

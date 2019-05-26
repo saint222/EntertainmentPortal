@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
@@ -46,8 +46,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Logic", "EP.15Puzzle.Logic\EP.15Puzzle.Logic.csproj", "{737A14A9-BCA5-42B7-8121-9FC0F6955889}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Data", "EP.15Puzzle.Data\EP.15Puzzle.Data.csproj", "{0495F8E2-3A60-4A02-829A-1070D95FFD86}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Data", "EP.Sudoku.Data\EP.Sudoku.Data.csproj", "{02ECA1E2-3A7F-4CCA-B8C3-EA0318448550}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
