@@ -2,57 +2,73 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EP.Hagman.Data;
-using EP.Hagman.Logic.Interfaces;
 
 namespace EP.Hangman.Logic.Models
 {
     public class PlayHangman
     {
-        private HangmanTemporaryData _data;
-        private string _enteredLetter;
         private const int ATTEMPTS = 6;
+        private int _userAttempts = 0;
+        public string PickedWord { get; set; }
+        private List<string> _correctLetters = new List<string>();
+        private List<string> _wrongLetters = new List<string>();
 
-        public PlayHangman(HangmanTemporaryData data, string enteredLetter)
+        public PlayHangman()
         {
-            _data = data;
-            _enteredLetter = enteredLetter;
+            
+        }
+
+        public string CorrectLetters
+        {
+            get { return ListToString(_correctLetters); }
+        }
+
+        public string WrongLetters
+        {
+            get
+            {
+                return ListToString(_wrongLetters);
+            }
         }
 
         public int UserAttempts
         {
-            get { return ATTEMPTS - _data.temp.UserAttempts; }
+            get { return (ATTEMPTS - _userAttempts); }
         }
 
-        public HangmanTemporaryData PlayGame()
+        public string PlayGame(string letter)
         {
 
-            if (_data.temp.UserAttempts < ATTEMPTS)
+            if (_userAttempts < ATTEMPTS)
             {
-                _data.temp.AlphabetTempData.Remove(_enteredLetter);
-
-                if (_data.temp.PickedWord.Contains(_enteredLetter))
+                if (PickedWord.Contains(letter))
                 {
-                    for (int i = 0; i < _data.temp.PickedWord.Length; i++)
-                    {
-                        if (_data.temp.PickedWord.ElementAt(i).ToString() == _enteredLetter)
-                        {
-                            _data.temp.CorrectLettersTempData[i] = _enteredLetter;
-                        }
-                    }
-                    return _data;
+                    _correctLetters[PickedWord.IndexOf(letter)] = letter;
+                    return "Correct letter";
                 }
                 else
                 {
-                    _data.temp.UserAttempts++;
-                    return _data;
+                    _userAttempts++;
+                    _wrongLetters.Add(letter);
+                    return "Wrong letter";
                 }
             }
             else
             {
-                return null;
+                return "Game over";
             }
 
+        }
+
+        private string ListToString(List<string> list)
+        {
+            string result = null;
+            foreach (var letter in list)
+            {
+                result += letter;
+            }
+
+            return result;
         }
     }
 }

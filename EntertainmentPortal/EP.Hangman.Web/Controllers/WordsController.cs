@@ -12,30 +12,22 @@ namespace EP.Hangman.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WordsController : ControllerBase
+    public class WordController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public WordsController(IMediator mediator)
+        public WordController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        // GET: api/Words
+        // GET: api/Word
         [HttpGet]
         public async Task<ActionResult> GetAllWordsAsync()
         {
             var result = await _mediator.Send(new GetAllWords());
 
             return Ok(result);
-        }
-
-        //PUT: api/Words/"word"
-        [HttpPut("{word}")]
-        public async Task<IActionResult> SetWordAsync(string word)
-        {
-            var result = await _mediator.Send(new SetWord(word));
-            return result != null ? (IActionResult)Ok(result) : NotFound();
         }
     }
 }

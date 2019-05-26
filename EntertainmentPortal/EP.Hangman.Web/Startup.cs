@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EP.Hagman.Data;
 using EP.Hangman.Logic.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,12 +27,7 @@ namespace EP.Hangman.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(GetHangman).Assembly);
-            services.AddMediatR(typeof(PutHangman).Assembly);
-            services.AddMediatR(typeof(PostHangman).Assembly);
             services.AddMediatR(typeof(GetAllWords).Assembly);
-            services.AddMediatR(typeof(SetWord).Assembly);
-            services.AddSingleton(typeof(HangmanTemporaryData));
-            services.AddSingleton(typeof(HangmanWordsData));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
