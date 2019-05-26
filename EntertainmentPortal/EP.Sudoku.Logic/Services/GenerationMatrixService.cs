@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EP.Sudoku.Logic.Services
 {
-    public class Services
+    public class GenerationMatrixService
     {
         private const int MATRIX_DIMENSION = 9;
         private readonly Random _random = new Random();

@@ -8,61 +8,61 @@ namespace EP.Sudoku.Logic.Tests
     [TestFixture]
     public class ServicesTests
     {
-        private readonly Services.Services _services = new Services.Services();
+        private readonly Services.GenerationMatrixService _service = new Services.GenerationMatrixService();
 
         [Test]
         public void Test_Transposition_Method()
         {
-            int[,] matrix = _services.GetBaseMatrix();
+            int[,] matrix = _service.GetBaseMatrix();
 
-            _services.Transposition(matrix);
-            _services.Transposition(matrix);
+            _service.Transposition(matrix);
+            _service.Transposition(matrix);
 
-            Assert.AreEqual(_services.GetBaseMatrix(), matrix);
+            Assert.AreEqual(_service.GetBaseMatrix(), matrix);
         }
 
         [Test]
         public void Test_SwapRowsSmall_Method()
         {
-            int[,] matrix = _services.GetBaseMatrix();
+            int[,] matrix = _service.GetBaseMatrix();
             OutputWrite(matrix);
-            _services.SwapRowsSmall(matrix);
+            _service.SwapRowsSmall(matrix);
             OutputWrite(matrix);
 
-            Assert.AreNotEqual(_services.GetBaseMatrix(), matrix);
+            Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
         }
 
         [Test]
         public void Test_SwapColumnsSmall_Method()
         {
-            int[,] matrix = _services.GetBaseMatrix();
+            int[,] matrix = _service.GetBaseMatrix();
             OutputWrite(matrix);
-            _services.SwapColumnsSmall(matrix);
+            _service.SwapColumnsSmall(matrix);
             OutputWrite(matrix);
 
-            Assert.AreNotEqual(_services.GetBaseMatrix(), matrix);
+            Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
         }
 
         [Test]
         public void Test_SwapRowsArea_Method()
         {
-            int[,] matrix = _services.GetBaseMatrix();
+            int[,] matrix = _service.GetBaseMatrix();
             OutputWrite(matrix);
-            _services.SwapRowsArea(matrix);
+            _service.SwapRowsArea(matrix);
             OutputWrite(matrix);
 
-            Assert.AreNotEqual(_services.GetBaseMatrix(), matrix);
+            Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
         }
 
         [Test]
         public void Test_SwapColumnsArea_Method()
         {
-            int[,] matrix = _services.GetBaseMatrix();
+            int[,] matrix = _service.GetBaseMatrix();
             OutputWrite(matrix);
-            _services.SwapColumnsArea(matrix);
+            _service.SwapColumnsArea(matrix);
             OutputWrite(matrix);
 
-            Assert.AreNotEqual(_services.GetBaseMatrix(), matrix);
+            Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
         }
 
         public void OutputWrite(int[,] matrix)
