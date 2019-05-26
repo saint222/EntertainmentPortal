@@ -31,6 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Web", "EP.Sudoku.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Logic", "EP.Sudoku.Logic\EP.Sudoku.Logic.csproj", "{9F541C20-72D7-4ED3-87AF-B88B12E9340A}"
 <<<<<<< EntertainmentPortal/EntertainmentPortal.sln
+<<<<<<< EntertainmentPortal/EntertainmentPortal.sln
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Data", "EP.Sudoku.Data\EP.Sudoku.Data.csproj", "{02ECA1E2-3A7F-4CCA-B8C3-EA0318448550}"
 EndProject
@@ -38,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.DotsBoxes.Data", "EP.Dot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.DotsBoxes.Logic", "EP.DotsBoxes.Logic\EP.DotsBoxes.Logic.csproj", "{279EC501-EA9E-454B-846C-4D88DAF879A0}"
 =======
+=======
+>>>>>>> EntertainmentPortal/EntertainmentPortal.sln
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Data", "EP.Sudoku.Data\EP.Sudoku.Data.csproj", "{02ECA1E2-3A7F-4CCA-B8C3-EA0318448550}"
 EndProject
@@ -52,6 +55,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Logic", "EP.15Puzzle.Logic\EP.15Puzzle.Logic.csproj", "{737A14A9-BCA5-42B7-8121-9FC0F6955889}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Data", "EP.15Puzzle.Data\EP.15Puzzle.Data.csproj", "{0495F8E2-3A60-4A02-829A-1070D95FFD86}"
+<<<<<<< EntertainmentPortal/EntertainmentPortal.sln
+=======
+=======
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Data", "EP.Sudoku.Data\EP.Sudoku.Data.csproj", "{02ECA1E2-3A7F-4CCA-B8C3-EA0318448550}"
+>>>>>>> EntertainmentPortal/EntertainmentPortal.sln
 >>>>>>> EntertainmentPortal/EntertainmentPortal.sln
 EndProject
 Global

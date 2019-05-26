@@ -11,11 +11,16 @@ using EP.Hagman.Data;
 
 namespace EP.Hangman.Logic.Handlers
 {
-    public class GetAllWordsHendler : IRequestHandler<GetAllWords, IEnumerable<Word>>
+    public class GetAllWordsHandler : IRequestHandler<GetAllWords, IEnumerable<Word>>
     {
+        private HangmanWordsData _item;
+        public GetAllWordsHandler(HangmanWordsData item)
+        {
+            _item = item;
+        }
         public Task<IEnumerable<Word>> Handle(GetAllWords request, CancellationToken cancellationToken)
         {
-            var words = WordsData.AllWords.Select(a => new Word() {Name = a.Name}).ToArray();
+            var words = _item.AllWords.Select(a => new Word() {Name = a.Name}).ToArray();
             return Task.FromResult((IEnumerable<Word>) words);
         }
     }
