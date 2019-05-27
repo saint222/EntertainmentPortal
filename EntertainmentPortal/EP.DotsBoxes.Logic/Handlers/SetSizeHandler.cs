@@ -12,24 +12,23 @@ namespace EP.DotsBoxes.Logic.Handlers
 {
     public class SetSizeHandler : IRequestHandler<SetSize, int[,]>
     {
-        private GameBoardData _boardData;
+        private GameBoardData _gameBoardData;
 
-        public SetSizeHandler(GameBoardData gameBoard)
+        public SetSizeHandler(GameBoardData gameGameBoard)
         {
-            _boardData = gameBoard;
+            _gameBoardData = gameGameBoard;
         }
 
         public Task<int[,]> Handle(SetSize request, CancellationToken cancellationToken)
         {
-
             var gameBoard = new GameBoard()
             {
-                Row = request.NewRow,
-                Column = request.NewColumn
+                Row = request.Rows,
+                Column = request.Columns
             };
 
-            _boardData.Save(new int[gameBoard.Row,gameBoard.Column]);
-            return Task.FromResult(_boardData.GetGameBoard);
+            _gameBoardData.Save(new int[gameBoard.Row,gameBoard.Column]);
+            return Task.FromResult(_gameBoardData.GetGameBoard);
         }
 
     }

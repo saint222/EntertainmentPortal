@@ -8,15 +8,14 @@ namespace EP.DotsBoxes.Logic.Queries
 {
     public class SetSize : IRequest<GameBoard>, IRequest<int[,]>
     {
-        public SetSize(string [] array)
+        public SetSize(int rows, int columns)
         {
-            NewRow = Convert.ToInt32(array[0]);
-            NewColumn = Convert.ToInt32(array[1]);
+            Rows = rows;
+            Columns = columns;
           
         }
 
-        public int NewRow { get; set; }
-        public int NewColumn { get; set; }
-
+        public int Rows { get; set; }
+        public int Columns { get; set; }
     }
 }

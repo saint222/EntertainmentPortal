@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EP.DotsBoxes.Web.Controllers
 {
-    //[Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class GameBoardController : ControllerBase
     {
@@ -20,20 +20,25 @@ namespace EP.DotsBoxes.Web.Controllers
         }
 
         // GET api/gameboard
-        [HttpGet("api/gameboard")]
+        [HttpGet]
         public async Task<IActionResult> GetGameBoardAsync()
         {
             var result = await _mediator.Send<int[,]>(new GetGameBoard());
             return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
-        //PUT: api/gameboard/10&10
-        [HttpPut("api/gameboard/{row}&{column}")]
-        public async Task<IActionResult> SetSizeAsync(string row, string column)
+        // POST api/gameboard
+        [HttpPost]
+        public async Task<IActionResult> SetSizeAsync()
         {
-            var result = await _mediator.Send <int[,]> (new SetSize(new string[] {  row, column }));
-            return result != null ? (IActionResult)Ok(result) : NotFound();
-        }
+            string rowString = Request.Form.FirstOrDefault(p => p.Key == "rows").Value;
+            int rows = Int32.Parse(rowString);
 
+            string columnString = Request.Form.FirstOrDefault(p => p.Key == "columns").Value;
+            int columns = Int32.Parse(columnString);
+
+            var result = await _mediator.Send<int[,]>(new SetSize(rows, columns));
+            return result != null ? (IActionResult)Ok(result) : NotFound();
+        }     
     }
 }
