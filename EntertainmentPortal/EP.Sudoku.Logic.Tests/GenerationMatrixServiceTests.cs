@@ -14,7 +14,6 @@ namespace EP.Sudoku.Logic.Tests
         public void Test_Transposition_Method()
         {
             int[,] matrix = _service.GetBaseMatrix();
-
             _service.Transposition(matrix);
             _service.Transposition(matrix);
 
@@ -25,9 +24,7 @@ namespace EP.Sudoku.Logic.Tests
         public void Test_SwapRowsSmall_Method()
         {
             int[,] matrix = _service.GetBaseMatrix();
-            OutputWrite(matrix);
             _service.SwapRowsSmall(matrix);
-            OutputWrite(matrix);
 
             Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
         }
@@ -36,9 +33,7 @@ namespace EP.Sudoku.Logic.Tests
         public void Test_SwapColumnsSmall_Method()
         {
             int[,] matrix = _service.GetBaseMatrix();
-            OutputWrite(matrix);
             _service.SwapColumnsSmall(matrix);
-            OutputWrite(matrix);
 
             Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
         }
@@ -47,9 +42,7 @@ namespace EP.Sudoku.Logic.Tests
         public void Test_SwapRowsArea_Method()
         {
             int[,] matrix = _service.GetBaseMatrix();
-            OutputWrite(matrix);
             _service.SwapRowsArea(matrix);
-            OutputWrite(matrix);
 
             Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
         }
@@ -58,24 +51,9 @@ namespace EP.Sudoku.Logic.Tests
         public void Test_SwapColumnsArea_Method()
         {
             int[,] matrix = _service.GetBaseMatrix();
-            OutputWrite(matrix);
             _service.SwapColumnsArea(matrix);
-            OutputWrite(matrix);
 
             Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
-        }
-
-        public void OutputWrite(int[,] matrix)
-        {
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    Debug.Write(matrix[i, j] + " ");
-                }
-                Debug.Write(Environment.NewLine);
-            }
-            Debug.Write(Environment.NewLine);
         }
     }
 }

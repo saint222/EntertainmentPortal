@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
@@ -8,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Sudoku.Web.Controllers
 {
-    //[Route("api/[controller]")]
     [ApiController]
     public class PlayersController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace EP.Sudoku.Web.Controllers
         {
             _mediator = mediator;
         }
-        //GET api/values
+
         [HttpGet("api/players")]
         public async Task<IActionResult> GetAllPlayerAsync()
         {
