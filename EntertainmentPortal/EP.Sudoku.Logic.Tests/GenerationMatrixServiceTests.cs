@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace EP.Sudoku.Logic.Tests
 {
     [TestFixture]
-    public class ServicesTests
+    public class GenerationMatrixServiceTests
     {
         private readonly Services.GenerationMatrixService _service = new Services.GenerationMatrixService();
 
