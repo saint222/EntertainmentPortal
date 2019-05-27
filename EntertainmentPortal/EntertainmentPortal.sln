@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Logic", "EP.Sudok
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Data", "EP.Sudoku.Data\EP.Sudoku.Data.csproj", "{02ECA1E2-3A7F-4CCA-B8C3-EA0318448550}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.Sudoku.Logic.Tests", "EP.Sudoku.Logic.Tests\EP.Sudoku.Logic.Tests.csproj", "{8F971CB3-99DF-49B5-94D7-9463138C11E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Sudoku.Logic.Tests", "EP.Sudoku.Logic.Tests\EP.Sudoku.Logic.Tests.csproj", "{8F971CB3-99DF-49B5-94D7-9463138C11E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Balda.Web", "EP.Balda\EP.Balda.Web\EP.Balda.Web.csproj", "{71E21276-E1A1-4D15-9B56-99D97E670F36}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -99,7 +99,6 @@ Global
 		{8F971CB3-99DF-49B5-94D7-9463138C11E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F971CB3-99DF-49B5-94D7-9463138C11E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F971CB3-99DF-49B5-94D7-9463138C11E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F971CB3-99DF-49B5-94D7-9463138C11E4}.Release|Any CPU.Build.0 = Release|Any CPU		
 		{71E21276-E1A1-4D15-9B56-99D97E670F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{71E21276-E1A1-4D15-9B56-99D97E670F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71E21276-E1A1-4D15-9B56-99D97E670F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
