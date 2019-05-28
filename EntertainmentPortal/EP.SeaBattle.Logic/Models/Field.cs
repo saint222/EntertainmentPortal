@@ -6,6 +6,9 @@ namespace EP.SeaBattle.Logic.Models
 {
     public class Field
     {
-        public List<Point> Points { get; set; }
+        /// <summary>
+        /// Points of battlefield
+        /// </summary>
+        public Point[][] Points { get; }
     }
 }
