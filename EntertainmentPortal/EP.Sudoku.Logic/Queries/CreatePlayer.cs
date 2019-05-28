@@ -7,8 +7,12 @@ using System.Text;
 
 namespace EP.Sudoku.Logic.Queries
 {
-    public class CreatePlayer : IRequest<PlayerDb>
+    public class CreatePlayer : IRequest<Player>
     {
-        
+        public Player player { get; set; }
+        public CreatePlayer(Player p)
+        {
+            player = p;
+        }
     }
 }

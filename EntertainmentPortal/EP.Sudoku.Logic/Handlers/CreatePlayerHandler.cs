@@ -11,19 +11,18 @@ using System.Threading.Tasks;
 
 namespace EP.Sudoku.Logic.Handlers
 {
-    public class CreatePlayerHandler : IRequestHandler<CreatePlayer, PlayerDb>
+    public class CreatePlayerHandler : IRequestHandler<CreatePlayer, Player>
     {
         private readonly IMapper _mapper;
         public CreatePlayerHandler(IMapper mapper)
         {
             _mapper = mapper;
         }
-        public Task<PlayerDb> Handle(CreatePlayer request, CancellationToken cancellationToken)
+        public Task<Player> Handle(CreatePlayer request, CancellationToken cancellationToken)
         {
-            //var playerDb = PlayerStorage.Players.Add(new PlayerDb((b => _mapper.Map<PlayerDb>(b));
-            //*PlayerDb.Where(b => _mapper.Map<PlayerDb>(b));*/
-            var playerDb = 
-            return Task.FromResult(playerDb);
+            var playerDb = _mapper.Map<PlayerDb>(request.player);
+            PlayerStorage.Players.Add(playerDb);
+            return Task.FromResult(request.player);
         }
     }
 }
