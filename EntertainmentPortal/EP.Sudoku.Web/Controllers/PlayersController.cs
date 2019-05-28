@@ -25,5 +25,12 @@ namespace EP.Sudoku.Web.Controllers
             var result = await _mediator.Send(new GetAllPlayers());
             return result.Any() ? (IActionResult)Ok(result) : NotFound();
         }
+
+        [HttpPost("api/players")]
+        public async Task<IActionResult> CreatePlayer()
+        {
+            var player = await _mediator.Send(new CreatePlayer());
+            return player.Any() ? (IActionResult)Ok(player) : NotFound();
+        }
     }
 }
