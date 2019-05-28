@@ -26,24 +26,26 @@ namespace EP._15Puzzle.Web.Controllers
             _mediator = mediator;
         }
         // GET: api/Deck
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
         {
-            var result = await _mediator.Send(new GetDeck(1));
+            var result = await _mediator.Send(new GetDeck(id));
             return result!=null ? (IActionResult)Ok(result) : NotFound();
         }
 
-        // POST: api/Deck
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // POST: api/Deck/id
+        [HttpPost("{id}")]
+        public async Task<IActionResult> Post(int id)
         {
+            var result = await _mediator.Send(new NewDeck(id));
+            return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
-        // PUT: api/Deck/5
-        [HttpPut("{tile}")]
-        public async Task<IActionResult> Put(int tile)
+        // PUT: api/Deck/id
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] int tile)
         {
-            var result = await _mediator.Send(new MoveTile(1,tile));
+            var result = await _mediator.Send(new MoveTile(id,15));
             return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
@@ -52,5 +54,10 @@ namespace EP._15Puzzle.Web.Controllers
         public void Delete(int id)
         {
         }
+    }
+
+    public class Tet
+    {
+        public int Tile { get; set; }
     }
 }
