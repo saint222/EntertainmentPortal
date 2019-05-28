@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace EP.Sudoku.Logic.Models
-{    
+{
+    /// <summary>    
+    /// Is used to represent a player of the game.
+    /// </summary>
     public class Player
     {
         public int Id { get; set; }

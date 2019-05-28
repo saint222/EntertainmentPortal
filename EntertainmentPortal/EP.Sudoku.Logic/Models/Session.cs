@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EP.Sudoku.Logic.Enums;
+﻿using EP.Sudoku.Logic.Enums;
 
 namespace EP.Sudoku.Logic.Models
 {
+    /// <summary>    
+    /// Is used to represent an instance of the game.
+    /// </summary>
     public class Session
     {
         public int Id { get; set; }
