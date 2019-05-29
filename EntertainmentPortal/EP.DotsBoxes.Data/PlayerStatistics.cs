@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Bogus;
 using EP.DotsBoxes.Data.Models;
 
 namespace EP.DotsBoxes.Data
@@ -10,37 +11,17 @@ namespace EP.DotsBoxes.Data
     /// </summary>
     public static class PlayerStatistics
     {
-        private static List<PlayerDb> _players = new List<PlayerDb>()
+        private static Faker<PlayerDb> _faker = new Faker<PlayerDb>();
+
+        static PlayerStatistics()
         {
-            new PlayerDb()
-            {
-                Id = 123,
-                Name = "Vasya",
-                Color = Color.Blue,
-                Created = DateTime.Now,
-                Score = 10
-            },
+            _faker.RuleFor(x => x.Id, f => f.IndexFaker)
+                .RuleFor(x => x.Name, f => f.Name.FirstName())
+                .RuleFor(x => x.Color, f => f.Commerce.Color())
+                .RuleFor(x => x.Score, f => f.Random.Int(0,30));
+        }
 
-            new PlayerDb()
-            {
-                Id = 121,
-                Name= "Petya",
-                Color = Color.Red,
-                Created = DateTime.Now,
-                Score = 15
-            },
-
-            new PlayerDb()
-            {
-                Id = 111,
-                Name = "Igor",
-                Color = Color.DarkViolet,
-                Created = DateTime.Now,
-                Score = 20
-            },
-        };
-
-        public static List<PlayerDb> Players => _players;
+        public static List<PlayerDb> Players => _faker.Generate(30);
     }
    
 }

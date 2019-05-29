@@ -16,7 +16,7 @@ namespace EP.DotsBoxes.Data.Models
         /// <value>Gets/sets player Name value.</value>
         public string Name { get; set; }
         /// <value>Gets/sets player Color value.</value>
-        public Color Color { get; set; }
+        public string Color { get; set; }
         /// <value>Gets/sets player Score value.</value>
         public int Score { get; set; }
         /// <value>Gets/sets the creation date of the player.</value>
