@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>EP._15Puzzle.Logic</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EP.15Puzzle.Data\EP.15Puzzle.Data.csproj" />
+  </ItemGroup>
+
+</Project>
