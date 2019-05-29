@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace EP.Sudoku.Logic.Models
-{
-    //if it is necessary...
+{    
     public class Player
     {
         public int Id { get; set; }

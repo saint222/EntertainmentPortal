@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace EP.SeaBattle.Web.Models
+namespace EP.SeaBattle.Data.Models
 {
     /// <summary>
-    /// Responsible for connection between players.
+    /// Class for saving game info
     /// </summary>
-    public class ConnectionManager
+    public class GameDb
     {
 
     }
