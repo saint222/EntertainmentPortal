@@ -5,9 +5,16 @@ using System.Threading.Tasks;
 
 namespace EP.WordsMaker.Logic.Models
 {
+    /// <summary>
+    /// Represents <c>Word</c> class.
+    /// </summary>
 	public class Word
 	{
-		public char[] Letters
+        /// <summary>
+        /// Letter from word property
+        /// </summary>
+        /// <value>Represents array latters grom word</value>
+        public char[] Letters
 		{
 			get { return _letters; }
 		}

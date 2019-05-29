@@ -1,38 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bogus;
 
 namespace EP.WordsMaker.Data
 {
     public class PlayerStorage
     {
-        private static List<PlayerDb> _storage = new List<PlayerDb>()
-                                                 {
-                                                    new PlayerDb()
-                                                    {
-                                                        Id = 1,
-                                                        Name = "123123",
-                                                        Score = 123,
-                                                        LastGame = DateTime.Now
-                                                    },
+        private static Faker<PlayerDb> _faker = new Faker<PlayerDb>();
 
-                                                    new PlayerDb()
-                                                    {
-                                                        Id = 2,
-                                                        Name = "jfksd",
-                                                        Score = 321,
-                                                        LastGame = DateTime.Now
-                                                    },
+        static PlayerStorage()
+        {
+            _faker.RuleFor(p => p.Id, f => f.IndexFaker).
+                RuleFor(p => p.Name, f => f.Random.Word()).
+                RuleFor(p => p.Score, f => f.Random.Int(100, 1000)).
+                RuleFor(p => p.LastGame, f => f.Date.Past(1));
+        }
 
-                                                    new PlayerDb()
-                                                    {
-                                                        Id = 3,
-                                                        Name = "swqe",
-                                                        Score = 1023,
-                                                        LastGame = DateTime.Now
-                                                    }
-                                                 };
-
-        public static List<PlayerDb> Players => _storage;
+        public static List<PlayerDb> Players => _faker.Generate(10);
     }
 }
