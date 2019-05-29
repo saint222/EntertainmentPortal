@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.1.0" />
     <PackageReference Include="MediatR" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EP.Sudoku.Data\EP.Sudoku.Data.csproj" />
+    <ProjectReference Include="..\EP.SeaBattle.Data\EP.SeaBattle.Data.csproj" />
   </ItemGroup>
 
 </Project>
