@@ -19,15 +19,15 @@ namespace EP.Hagman.Data
         /// </summary>
         public List<string> CorrectLettersTempData { get; set; }
         /// <summary>
-        /// That property stores word which user will guess
+        /// Property stores word which user will guess
         /// </summary>
         public string PickedWord { get; set; }
         /// <summary>
-        /// That property stores number of user's attemptes
+        /// Property stores number of user's attemptes
         /// </summary>
         public int UserAttempts { get; set; }
         /// <summary>
-        /// That property stores alphabet for game session.
+        /// Property stores alphabet for game session.
         /// </summary>
         public List<string> AlphabetTempData { get; set; }
     }

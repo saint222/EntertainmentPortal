@@ -31,8 +31,9 @@ namespace EP.Hangman.Logic.Models
             _enteredLetter = enteredLetter;
         }
         /// <summary>
-        /// Method returns number of user's attempts that he can use yet. 
+        /// Property stores number of user's attempts that he can use yet. 
         /// </summary>
+        
         public int UserAttempts
         {
             get { return ATTEMPTS - _data.temp.UserAttempts; }
