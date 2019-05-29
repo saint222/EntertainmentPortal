@@ -7,7 +7,6 @@ namespace EP.WordsMaker.Logic.Models
 {
 	public class Word
 	{
-		public int MyProperty { get; set; }
 		public char[] Letters
 		{
 			get { return _letters; }
@@ -24,17 +23,17 @@ namespace EP.WordsMaker.Logic.Models
 			_wordDict = new Dictionary<char, int>();
 			foreach(char letter in _letters)
 			{
-				char _char = letter;
-				if(_wordDict.ContainsKey(_char))
+				if(_wordDict.ContainsKey(letter))
 				{
-					_wordDict[_char]++;
+					_wordDict[letter]++;
 				}
 				else
 				{
-					_wordDict.Add(_char,1);
+					_wordDict.Add(letter, 1);
 				}
 			}
 		}
+
 		public int GetCharCount(char Char)
 		{
 			return 0;
