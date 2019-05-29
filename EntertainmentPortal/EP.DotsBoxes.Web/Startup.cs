@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using EP.DotsBoxes.Data;
 using EP.DotsBoxes.Data.Models;
+using EP.DotsBoxes.Logic.Profiles;
 using EP.DotsBoxes.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -11,8 +9,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using NJsonSchema;
 
 namespace EP.DotsBoxes.Web
@@ -34,6 +30,10 @@ namespace EP.DotsBoxes.Web
             services.AddMediatR(typeof(GetGameBoard).Assembly);
             services.AddSingleton(typeof(GameBoardData));
             services.AddSingleton(typeof(GameBoardDb));
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.AddProfile(new PlayerProfile());
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
