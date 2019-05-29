@@ -5,6 +5,9 @@ using EP.Hagman.Data.Models;
 
 namespace EP.Hagman.Data
 {
+    /// <summary>
+    /// It gives alphabet's data for game
+    /// </summary>
     public class HangmanAlphabets
     {
         public HangmanAlphabets()

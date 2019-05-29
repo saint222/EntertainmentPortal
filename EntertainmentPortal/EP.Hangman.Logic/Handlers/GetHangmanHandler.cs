@@ -22,7 +22,7 @@ namespace EP.Hangman.Logic.Handlers
             _item = item;
         }
 
-        public Task< HangmanTemporaryData> Handle(GetHangman request, CancellationToken cancellationToken)
+        public Task<HangmanTemporaryData> Handle(GetHangman request, CancellationToken cancellationToken)
         {
             return Task.FromResult(_item);
         }
