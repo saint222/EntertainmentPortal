@@ -5,15 +5,30 @@ using EP.Hagman.Data.Models;
 
 namespace EP.Hagman.Data
 {
+    /// <summary>
+    /// Model stores data of session
+    /// </summary>
     public class TemporaryData
     {
         public TemporaryData()
         {
             CorrectLettersTempData = new List<string>();
         }
+        /// <summary>
+        /// Generic collection stores correct letters
+        /// </summary>
         public List<string> CorrectLettersTempData { get; set; }
+        /// <summary>
+        /// That property stores word which user will guess
+        /// </summary>
         public string PickedWord { get; set; }
+        /// <summary>
+        /// That property stores number of user's attemptes
+        /// </summary>
         public int UserAttempts { get; set; }
+        /// <summary>
+        /// That property stores alphabet for game session.
+        /// </summary>
         public List<string> AlphabetTempData { get; set; }
     }
 }
