@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
 
 namespace EP.DotsBoxes.Web.Controllers
 {
@@ -21,6 +24,8 @@ namespace EP.DotsBoxes.Web.Controllers
 
         // GET api/gameboard
         [HttpGet]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(int[,]), Description = "Array received")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Array is null")]
         public async Task<IActionResult> GetGameBoardAsync()
         {
             var result = await _mediator.Send<int[,]>(new GetGameBoard());
@@ -29,15 +34,11 @@ namespace EP.DotsBoxes.Web.Controllers
 
         // POST api/gameboard
         [HttpPost]
-        public async Task<IActionResult> SetSizeAsync()
+        [SwaggerResponse(HttpStatusCode.OK, typeof(int[,]), Description = "Array created")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> PostNewGameBoardAsync([FromBody]GameBoard gameBoard)
         {
-            string rowString = Request.Form.FirstOrDefault(p => p.Key == "rows").Value;
-            int rows = Int32.Parse(rowString);
-
-            string columnString = Request.Form.FirstOrDefault(p => p.Key == "columns").Value;
-            int columns = Int32.Parse(columnString);
-
-            var result = await _mediator.Send<int[,]>(new SetSize(rows, columns));
+            var result = await _mediator.Send<int[,]>(new PostNewGameBoard(gameBoard));
             return result != null ? (IActionResult)Ok(result) : NotFound();
         }     
     }

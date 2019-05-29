@@ -9,7 +9,7 @@ namespace EP.DotsBoxes.Data
     public class GameBoardData
     {
         private readonly GameBoardDb _gameBoard;
-        private int[,] _gameBoardArray;
+        private int[,] _gameBoardArray = null;
 
 
         public GameBoardData(GameBoardDb gameBoard)

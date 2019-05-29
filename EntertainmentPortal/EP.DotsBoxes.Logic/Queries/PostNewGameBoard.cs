@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Text;
 using EP.DotsBoxes.Logic.Models;
 using MediatR;
 
 namespace EP.DotsBoxes.Logic.Queries
 {
-    public class SetSize : IRequest<GameBoard>, IRequest<int[,]>
+    public class PostNewGameBoard : IRequest<GameBoard>, IRequest<int[,]>
     {
-        public SetSize(int rows, int columns)
+        public PostNewGameBoard(GameBoard gameBoard)
         {
-            Rows = rows;
-            Columns = columns;
-          
+            Rows = gameBoard.Row;
+            Columns = gameBoard.Column;
+
         }
 
         public int Rows { get; set; }

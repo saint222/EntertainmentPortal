@@ -10,16 +10,16 @@ using MediatR;
 
 namespace EP.DotsBoxes.Logic.Handlers
 {
-    public class SetSizeHandler : IRequestHandler<SetSize, int[,]>
+    public class PostNewGameBoardHandler : IRequestHandler<PostNewGameBoard, int[,]>
     {
         private GameBoardData _gameBoardData;
 
-        public SetSizeHandler(GameBoardData gameGameBoard)
+        public PostNewGameBoardHandler(GameBoardData gameGameBoard)
         {
             _gameBoardData = gameGameBoard;
         }
 
-        public Task<int[,]> Handle(SetSize request, CancellationToken cancellationToken)
+        public Task<int[,]> Handle(PostNewGameBoard request, CancellationToken cancellationToken)
         {
             var gameBoard = new GameBoard()
             {
