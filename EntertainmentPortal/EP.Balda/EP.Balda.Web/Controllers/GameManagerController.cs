@@ -3,7 +3,7 @@
 namespace EP.Balda.Web.Controllers
 {
     //[Route("api/[controller]")]
-    //public class PlayerController : Controller
+    //public class GameManagerController : Controller
     //{
     //    // GET: api/<controller>
     //    [HttpGet]

@@ -1,8 +1,10 @@
-﻿namespace EP.Balda.Logic.Models
+﻿namespace EP.Balda.Data.Entity
 {
-    public class Player
+    public class PlayerDb
     {
         public string NickName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public int Result { get; set; }

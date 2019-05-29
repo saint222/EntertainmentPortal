@@ -1,15 +1,19 @@
 ﻿namespace EP.Balda.Logic.Models
 {
+    /// <summary>
+    ///     Cell with a value that can contain a letter
+    /// </summary>
     public class Cell
     {
-        public char? Letter { get; set; }
-        public int X { get; }
-        public int Y { get; }
+        public readonly int _x;
+        public readonly int _y;
+        public char _letter;
 
-        public Cell(int x, int y)
+        public Cell(int x, int y, char letter)
         {
-            X = x;
-            Y = y;
+            _x      = x;
+            _y      = y;
+            _letter = letter;
         }
     }
 }
