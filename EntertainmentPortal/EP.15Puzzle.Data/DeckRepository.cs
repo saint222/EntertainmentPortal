@@ -41,6 +41,7 @@ namespace EP._15Puzzle.Data
         {
             _decks.Remove(deck);
         }
+        
     }
 
 }
