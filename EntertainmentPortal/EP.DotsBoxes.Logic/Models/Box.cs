@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿// Filename: Box.cs
 namespace EP.DotsBoxes.Logic.Models
 {
     /// <summary>
-    /// The Box enum is sides of the square of the playing field.
+    /// The model <c>Box</c> enum.
+    /// Represents sides of the square of the playing field.
     /// </summary>
+    /// <remarks>
+    /// Assigned values ​​32-bit signed integer.
+    /// </remarks>
     enum Box
     {
         None = 0,

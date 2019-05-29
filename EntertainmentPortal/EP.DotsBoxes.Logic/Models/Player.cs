@@ -1,24 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿// Filename: Player.cs
 namespace EP.DotsBoxes.Logic.Models
 {
     /// <summary>
-    /// The PlayerDb class represents the player and contains his data.
+    /// The model <c>Player</c> class.
+    /// Represents a Player.
     /// </summary>
     public class Player
     {
-        /// <value>Gets/sets player Id value.</value>
+        /// <summary>
+        /// Id property.
+        /// </summary>
+        /// <value>
+        /// A value represents unique player's Id.
+        /// </value>
         public int Id { get; set; }
-        /// <value>Gets/sets player Name value.</value>
+
+        /// <summary>
+        /// Name property.
+        /// </summary>
+        /// <value>
+        /// A value represents player's nickname.
+        /// </value>
         public string Name { get; set; }
-        /// <value>Gets/sets player Color value.</value>
+
+        /// <summary>
+        /// Color property.
+        /// </summary>
+        /// <value>
+        /// A value represents player's сolor.
+        /// </value>
         public string Color { get; set; }
-        /// <value>Gets/sets player Score value.</value>
+
+        /// <summary>
+        /// Score property.
+        /// </summary>
+        /// <value>
+        /// A value represents player's score.
+        /// </value>
         public int Score { get; set; }
     }
-    
 }

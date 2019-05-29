@@ -1,20 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿// Filename: GameBoardDb.cs
 namespace EP.DotsBoxes.Data.Models
 {
     /// <summary>
-    /// The GameBoardDb class represents the playing field.
-    /// The playing field consists of a two-dimensional array of rows and columns 
-    /// representing the squares this field.
+    /// The model <c>GameBoardDb</c> class.
+    /// Represents a playing field (game board).
     /// </summary>
     public class GameBoardDb
     {
-        /// <value>Gets/sets the value of Row.</value>
+        /// <summary>
+        /// Row property.
+        /// </summary>
+        /// <value>
+        /// The value represents the row of the playing field.
+        /// </value>
         public int Row { get; set; }
-        /// <value>Gets/sets the value of Column.</value>
+
+        /// <summary>
+        /// Column property.
+        /// </summary>
+        /// <value>
+        /// The value represents the column of the playing field.
+        /// </value>
         public int Column { get; set; }
     }
 }
