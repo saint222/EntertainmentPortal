@@ -64,6 +64,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeaBattle", "SeaBattle", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Web", "EP.SeaBattle.Web\EP.SeaBattle.Web.csproj", "{8445ACFD-7E93-4946-858F-C7274F0D5F24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.Balda.Tests", "EP.Balda.Tests\EP.Balda.Tests.csproj", "{B6331D8F-1FC4-4F7D-AE4A-915AB86BDAFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +159,10 @@ Global
 		{8445ACFD-7E93-4946-858F-C7274F0D5F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8445ACFD-7E93-4946-858F-C7274F0D5F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8445ACFD-7E93-4946-858F-C7274F0D5F24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6331D8F-1FC4-4F7D-AE4A-915AB86BDAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6331D8F-1FC4-4F7D-AE4A-915AB86BDAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6331D8F-1FC4-4F7D-AE4A-915AB86BDAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6331D8F-1FC4-4F7D-AE4A-915AB86BDAFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -183,6 +189,7 @@ Global
 		{737A14A9-BCA5-42B7-8121-9FC0F6955889} = {CF70DE2D-E045-4606-A0F6-50368013D188}
 		{0495F8E2-3A60-4A02-829A-1070D95FFD86} = {CF70DE2D-E045-4606-A0F6-50368013D188}
 		{8445ACFD-7E93-4946-858F-C7274F0D5F24} = {A513A8FF-5554-409E-A816-76649A467B2F}
+		{B6331D8F-1FC4-4F7D-AE4A-915AB86BDAFC} = {15AF2D50-A02F-486A-94A8-135E2E3810FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0F67030-0B27-4A47-884D-0155BC42C38C}
