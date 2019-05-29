@@ -17,7 +17,7 @@ namespace EP.Hangman.Logic.Models
         /// </summary>
         private HangmanTemporaryData _data;
         /// <summary>
-        /// The field strores letter which entered by user
+        /// The field stores letter which entered by user
         /// </summary>
         private string _enteredLetter;
         /// <summary>
