@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using EP.Hagman.Data.Models;
@@ -9,7 +10,8 @@ namespace EP.Hagman.Data
 {
     public class HangmanWordsData
     {
-        private static Faker<WordData> _faker = new Faker<WordData>();
+        private Faker<WordData> _faker = new Faker<WordData>();
+        
 
         public HangmanWordsData()
         {
@@ -28,7 +30,7 @@ namespace EP.Hagman.Data
         //    {new WordData("nature")},
         //};
 
-        public List<WordData> AllWords => _faker.Generate(10);
+        public List<WordData> AllWords => _faker.Generate(15);
 
         //public void AddWord(string word)
         //{
