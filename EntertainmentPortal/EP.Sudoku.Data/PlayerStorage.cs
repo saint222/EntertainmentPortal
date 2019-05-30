@@ -48,6 +48,6 @@ namespace EP.Sudoku.Data
                                                        }
                                                    },
                                                };
-        public static List<PlayerDb> Players => _storage;
+        public static List<PlayerDb> Players => _storage; 
     }
 }
