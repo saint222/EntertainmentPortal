@@ -7,7 +7,7 @@ namespace EP.Sudoku.Data
 {
     public static class PlayerStorage
     {
-        static List<PlayerDb> _storage = new List<PlayerDb>()
+        public static List<PlayerDb> _storage = new List<PlayerDb>()
                                                {
                                                    new PlayerDb()
                                                    {

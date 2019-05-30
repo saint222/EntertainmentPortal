@@ -13,8 +13,8 @@ namespace EP.Sudoku.Logic.Profiles
         {
             CreateMap<PlayerDb, Player>()
                 .ForMember(dest => dest.Icon, e => e.MapFrom(src => src.IconDb))
-                .ReverseMap();
-            // (x => x.IsBaseIcon, x => x.Ignore())
+                //.ForMember(x => x.IsBaseIcon, x => x.Ignore())
+                .ReverseMap();            
         }
     }
 }

@@ -28,10 +28,14 @@ namespace EP.Sudoku.Web.Controllers
         }
 
         [HttpPost("api/players")]
-        public async Task<IActionResult> CreatePlayer(Player model)
+        public async Task<IActionResult> CreatePlayer([FromBody]Player model)
         {
+            if (model == null)
+            {
+                return BadRequest();
+            }            
             var player = await _mediator.Send(new CreatePlayer(model));
-            return (IActionResult)Ok(true);
+            return (IActionResult)Ok(player);
         }
     }
 }
