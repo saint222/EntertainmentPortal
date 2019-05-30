@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EP._15Puzzle.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using EP._15Puzzle.Logic.Profiles;
 
 namespace EP._15Puzzle.Web
 {
@@ -26,8 +29,11 @@ namespace EP._15Puzzle.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMediatR(typeof(NewDeck).Assembly);
             services.AddMediatR(typeof(MoveTile).Assembly);
             services.AddMediatR(typeof(GetDeck).Assembly);
+            services.AddSwaggerDocument();
+            services.AddAutoMapper(cfg => cfg.AddProfile(new DeckProfile()));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -39,6 +45,7 @@ namespace EP._15Puzzle.Web
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();
         }
     }

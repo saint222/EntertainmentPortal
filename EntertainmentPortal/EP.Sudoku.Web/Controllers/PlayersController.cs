@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,13 @@ namespace EP.Sudoku.Web.Controllers
         {
             var result = await _mediator.Send(new GetAllPlayers());
             return result.Any() ? (IActionResult)Ok(result) : NotFound();
+        }
+
+        [HttpPost("api/players")]
+        public async Task<IActionResult> CreatePlayer(Player model)
+        {
+            var player = await _mediator.Send(new CreatePlayer(model));
+            return (IActionResult)Ok(true);
         }
     }
 }
