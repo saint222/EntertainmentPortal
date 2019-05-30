@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MediatR;
 using EP.WordsMaker.Logic.Queries;
+using AutoMapper;
+using EP.WordsMaker.Logic.Profiles;
 
 namespace EP.WordsMaker.Web
 {
@@ -28,7 +30,8 @@ namespace EP.WordsMaker.Web
 		{
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-		}
+            services.AddAutoMapper(cfg => cfg.AddProfile(new PlayerProfile()));   
+        }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
