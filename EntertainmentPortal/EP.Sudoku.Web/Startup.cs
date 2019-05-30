@@ -31,6 +31,7 @@ namespace EP.Sudoku.Web
         {            
             services.AddMediatR(typeof(GetAllPlayers).Assembly);            
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
+            services.AddSwaggerDocument();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -42,6 +43,7 @@ namespace EP.Sudoku.Web
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();
         }
     }

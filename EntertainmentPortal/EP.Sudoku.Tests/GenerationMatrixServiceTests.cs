@@ -1,12 +1,14 @@
 using System.Diagnostics;
 using NUnit.Framework;
+using EP.Sudoku.Logic;
+using EP.Sudoku.Logic.Services;
 
-namespace EP.Sudoku.Logic.Tests
+namespace EP.Sudoku.Tests
 {
     [TestFixture]
     public class GenerationMatrixServiceTests
     {
-        private readonly Services.GenerationMatrixService _generationMatrix = new Services.GenerationMatrixService();
+        private readonly GenerationMatrixService _generationMatrix = new GenerationMatrixService();
 
         [Test]
         public void Test_Transposition_Method()
