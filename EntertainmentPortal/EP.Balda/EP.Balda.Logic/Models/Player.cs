@@ -1,5 +1,4 @@
-﻿// Filename: Player.cs
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Models
 {
@@ -10,45 +9,33 @@ namespace EP.Balda.Logic.Models
     public class Player
     {
         /// <summary>
-        /// Id property.
+        /// Id property. Represents unique player's Id
         /// </summary>
-        /// <value>
-        /// A value represents unique player's Id.
-        /// </value>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
-        /// Name property.
+        /// NickName property. Represents player's nickname.
         /// </summary>
-        /// <value>
-        /// A value represents player's nickname.
-        /// </value>
-        public string Name { get; set; }
+        public string NickName { get; set; }
 
         /// <summary>
-        /// Login property.
+        /// Login property. Represents player's login.
         /// </summary>
-        /// <value>
-        /// A value represents player's login.
-        /// </value>
         public string Login { get; set; }
 
         /// <summary>
-        /// Password property.
+        /// Password property. Represents player's password.
         /// </summary>
-        /// <value>
-        /// A value represents player's password.
-        /// </value>
         public string Password { get; set; }
 
+        //TODO: Consider if it's necessary
+        public int Result { get; set; } 
+
         /// <summary>
-        /// Words property.
+        /// Words property. Represents the list of words that player already entered in one match
         /// </summary>
-        /// <value>
-        /// A value represents the list of words that player already entered in the match.
-        /// </value>
-        /// <seealso cref="Word">
-        public IEnumerable<Word>
-            Words { get; set; } //words this player guessed per one game
+        public List<string>
+            Words
+        { get; set; } //words this player guessed per one game
     }
 }

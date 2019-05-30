@@ -1,5 +1,7 @@
-﻿// Filename: Word.cs
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using EP.Balda.Logic.Models;
 
 namespace EP.Balda.Logic.Models
 {
@@ -10,12 +12,8 @@ namespace EP.Balda.Logic.Models
     public class Word
     {
         /// <summary>
-        /// Cells property.
+        /// Cells property. Represents the list of cells that contains letters of choosen word.
         /// </summary>
-        /// <value>
-        /// A value represents the list of cells that contains letters of choosen word.
-        /// </value>
-        /// <seealso cref="Cell"/>
-        public List<Cell> Cells { get; set; } //cells that form words
+        public List<Cell> Cells { get; set; }
     }
 }

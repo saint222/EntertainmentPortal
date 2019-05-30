@@ -10,7 +10,7 @@ namespace EP.Balda.Web.Controllers
         [HttpGet]
         public List<Cell> Get()
         {
-            var word = new Word {Cells = new List<Cell>()};
+            var word = new Word { Cells = new List<Cell>() };
             return word.Cells;
         }
 
