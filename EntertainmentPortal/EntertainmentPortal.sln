@@ -64,11 +64,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeaBattle", "SeaBattle", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Web", "EP.SeaBattle.Web\EP.SeaBattle.Web.csproj", "{8445ACFD-7E93-4946-858F-C7274F0D5F24}"
 EndProject
-<<<<<<< EntertainmentPortal/EntertainmentPortal.sln
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ep.Hangman.Tests", "Ep.Hangman.Tests\Ep.Hangman.Tests.csproj", "{B3FAC44A-3669-48FB-9FF6-D260AA66B287}"
-=======
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Tests", "EP.15Puzzle.Tests\EP.15Puzzle.Tests.csproj", "{905D5442-7D0F-4BB1-843E-39831A75C5EC}"
->>>>>>> EntertainmentPortal/EntertainmentPortal.sln
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hangman.Logic.Tests", "Ep.Hangman.Tests\EP.Hangman.Logic.Tests.csproj", "{A03685DA-122E-4919-9424-705F415F6B80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,17 +161,14 @@ Global
 		{8445ACFD-7E93-4946-858F-C7274F0D5F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8445ACFD-7E93-4946-858F-C7274F0D5F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8445ACFD-7E93-4946-858F-C7274F0D5F24}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< EntertainmentPortal/EntertainmentPortal.sln
-		{B3FAC44A-3669-48FB-9FF6-D260AA66B287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3FAC44A-3669-48FB-9FF6-D260AA66B287}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3FAC44A-3669-48FB-9FF6-D260AA66B287}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3FAC44A-3669-48FB-9FF6-D260AA66B287}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{905D5442-7D0F-4BB1-843E-39831A75C5EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{905D5442-7D0F-4BB1-843E-39831A75C5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{905D5442-7D0F-4BB1-843E-39831A75C5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{905D5442-7D0F-4BB1-843E-39831A75C5EC}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> EntertainmentPortal/EntertainmentPortal.sln
+		{A03685DA-122E-4919-9424-705F415F6B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03685DA-122E-4919-9424-705F415F6B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03685DA-122E-4919-9424-705F415F6B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03685DA-122E-4919-9424-705F415F6B80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,11 +195,8 @@ Global
 		{737A14A9-BCA5-42B7-8121-9FC0F6955889} = {CF70DE2D-E045-4606-A0F6-50368013D188}
 		{0495F8E2-3A60-4A02-829A-1070D95FFD86} = {CF70DE2D-E045-4606-A0F6-50368013D188}
 		{8445ACFD-7E93-4946-858F-C7274F0D5F24} = {A513A8FF-5554-409E-A816-76649A467B2F}
-<<<<<<< EntertainmentPortal/EntertainmentPortal.sln
-		{B3FAC44A-3669-48FB-9FF6-D260AA66B287} = {0C78D074-14D2-40FC-9CC7-AE75065C4DF0}
-=======
 		{905D5442-7D0F-4BB1-843E-39831A75C5EC} = {CF70DE2D-E045-4606-A0F6-50368013D188}
->>>>>>> EntertainmentPortal/EntertainmentPortal.sln
+		{A03685DA-122E-4919-9424-705F415F6B80} = {0C78D074-14D2-40FC-9CC7-AE75065C4DF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0F67030-0B27-4A47-884D-0155BC42C38C}
