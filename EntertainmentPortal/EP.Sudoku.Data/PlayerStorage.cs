@@ -15,7 +15,7 @@ namespace EP.Sudoku.Data
                                                        NickName = "First Static Player",
                                                        ExperiencePoint = 0,
                                                        Level = 0,
-                                                       AvatarIconDb = new AvatarIconDb ()
+                                                       IconDb = new AvatarIconDb ()
                                                        {
                                                            Id = 1,
                                                            Uri = "http://icons.iconarchive.com/icons/chanut/role-playing/64/Villager-icon.png",
@@ -27,7 +27,7 @@ namespace EP.Sudoku.Data
                                                        NickName = "Second Static Player",
                                                        ExperiencePoint = 0,
                                                        Level = 0,
-                                                       AvatarIconDb = new AvatarIconDb ()
+                                                       IconDb = new AvatarIconDb ()
                                                        {
                                                            Id = 2,
                                                            Uri = "http://icons.iconarchive.com/icons/chanut/role-playing/64/Elf-icon.png",
@@ -40,7 +40,7 @@ namespace EP.Sudoku.Data
                                                        NickName = "Third Static Player",
                                                        ExperiencePoint = 0,
                                                        Level = 0,
-                                                       AvatarIconDb = new AvatarIconDb()
+                                                       IconDb = new AvatarIconDb()
                                                        {
                                                            Id = 3,
                                                            Uri = "http://icons.iconarchive.com/icons/chanut/role-playing/64/Sorceress-Witch-icon.png",
