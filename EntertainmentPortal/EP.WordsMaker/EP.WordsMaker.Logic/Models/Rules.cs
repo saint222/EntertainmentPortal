@@ -21,6 +21,16 @@ namespace EP.WordsMaker.Logic.Models
         /// </summary>
         /// <value>Words lenght restriction</value>
         public int MinWordLenght { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="word"></param>
+		/// <returns></returns>
+		public int ComputeScoring(string word)
+		{
+			return (word.Length);
+		}
 
-    }
+
+	}
 }

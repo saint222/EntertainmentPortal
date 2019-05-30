@@ -10,6 +10,17 @@ namespace EP.WordsMaker.Logic.Models
     /// </summary>
     public class Player
     {
+		/// <summary>
+		/// ctor
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="identifier"></param>
+		public Player(string name, int identifier)
+		{
+			Name = name;
+			Id = identifier;
+			Score = 0;
+		}
         /// <summary>
         /// ID property
         /// </summary>
