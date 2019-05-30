@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MediatR;
 using NJsonSchema;
+using AutoMapper;
+using EP.Hangman.Logic.Profiles;
 
 namespace EP.Hangman.Web
 {
@@ -29,10 +31,10 @@ namespace EP.Hangman.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
-            services.AddMediatR(typeof(GetHangman).Assembly);
-            services.AddMediatR(typeof(PutHangman).Assembly);
-            services.AddMediatR(typeof(PostHangman).Assembly);
-            services.AddMediatR(typeof(SetWord).Assembly);
+            services.AddMediatR(typeof(GetHangman));
+            services.AddMediatR(typeof(PutHangman));
+            services.AddMediatR(typeof(PostHangman));
+            services.AddAutoMapper(typeof(HangmanDataResponseProfile));
             services.AddSingleton(typeof(HangmanTemporaryData));
             services.AddSingleton(typeof(HangmanWordsData));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

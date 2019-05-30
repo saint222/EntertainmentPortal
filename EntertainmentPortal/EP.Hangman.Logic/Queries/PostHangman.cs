@@ -7,7 +7,7 @@ using EP.Hangman.Logic.Models;
 
 namespace EP.Hangman.Logic.Queries
 {
-    public class PostHangman : IRequest<HangmanTemporaryData>
+    public class PostHangman : IRequest<HangmanDataResponse>
     {
     }
 }
