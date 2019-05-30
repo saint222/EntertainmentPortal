@@ -34,8 +34,7 @@ namespace EP.Hangman.Web
             services.AddMediatR(typeof(GetHangman).Assembly);
             services.AddMediatR(typeof(PutHangman).Assembly);
             services.AddMediatR(typeof(PostHangman).Assembly);
-            services.AddMediatR(typeof(SetWord).Assembly);
-            services.AddAutoMapper(typeof(HangmanDataResponseProfile).Assembly);
+            services.AddAutoMapper(typeof(HangmanDataResponseProfile));
             services.AddSingleton(typeof(HangmanTemporaryData));
             services.AddSingleton(typeof(HangmanWordsData));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using EP.Hagman.Data;
 using EP.Hangman.Logic.Models;
 
-namespace Tests
+namespace EP.Hangman.Logic.Tests
 {
     [TestFixture]
     public class AlphabetTests

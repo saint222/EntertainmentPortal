@@ -15,7 +15,7 @@ using EP.Hagman.Logic.Interfaces;
 
 namespace EP.Hangman.Logic.Handlers
 {
-    public class GetHangmanHandler : IRequestHandler<GetHangman, HangmanTemporaryData>
+    public class GetHangmanHandler : IRequestHandler<GetHangman, HangmanDataResponse>
     {
         private  HangmanTemporaryData _item;
         private IMapper _mapper;
@@ -25,9 +25,11 @@ namespace EP.Hangman.Logic.Handlers
             _mapper = mapper;
         }
 
-        public Task<HangmanTemporaryData> Handle(GetHangman request, CancellationToken cancellationToken)
+        public Task<HangmanDataResponse> Handle(GetHangman request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_item);
+            var repository = new Repository();
+
+            return Task.FromResult(_mapper.Map<HangmanTemporaryData, HangmanDataResponse>(repository.Select(_item)));
         }
     }
 }
