@@ -21,15 +21,6 @@ namespace EP.Hangman.Web.Controllers
             _mediator = mediator;
         }
 
-        // GET: api/Words
-        [HttpGet]
-        public async Task<ActionResult> GetAllWordsAsync()
-        {
-            var result = await _mediator.Send(new GetAllWords());
-
-            return Ok(result);
-        }
-
         //PUT: api/Words/"word"
         [HttpPut("{word}")]
         public async Task<IActionResult> SetWordAsync(string word)

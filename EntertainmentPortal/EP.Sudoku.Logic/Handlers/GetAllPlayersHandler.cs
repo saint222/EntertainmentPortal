@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using EP.Sudoku.Data;
-using EP.Sudoku.Data.Models;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
@@ -20,8 +19,8 @@ namespace EP.Sudoku.Logic.Handlers
         }
         public Task<IEnumerable<Player>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
         {
-            var items = PlayerStorage.Players.Select(b => _mapper.Map<Player>(b)).ToArray();            
-            return Task.FromResult((IEnumerable<Player>)items);
+            var players = PlayerStorage.Players.Select(b => _mapper.Map<Player>(b)).ToArray();            
+            return Task.FromResult((IEnumerable<Player>)players);
         }
     }
 }
