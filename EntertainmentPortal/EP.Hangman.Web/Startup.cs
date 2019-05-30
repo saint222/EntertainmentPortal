@@ -31,9 +31,9 @@ namespace EP.Hangman.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
-            services.AddMediatR(typeof(GetHangman).Assembly);
-            services.AddMediatR(typeof(PutHangman).Assembly);
-            services.AddMediatR(typeof(PostHangman).Assembly);
+            services.AddMediatR(typeof(GetHangman));
+            services.AddMediatR(typeof(PutHangman));
+            services.AddMediatR(typeof(PostHangman));
             services.AddAutoMapper(typeof(HangmanDataResponseProfile));
             services.AddSingleton(typeof(HangmanTemporaryData));
             services.AddSingleton(typeof(HangmanWordsData));
