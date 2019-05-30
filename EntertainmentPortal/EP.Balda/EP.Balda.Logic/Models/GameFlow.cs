@@ -34,7 +34,7 @@ namespace EP.Balda.Logic.Models
         /// <returns>returns true if empty</returns>
         public bool IsEmptyCell(int x, int y, GameMap map)
         {
-            return (this as IGameFlow).GetCell(x, y, map)._letter == ' ';
+            return (this as IGameFlow).GetCell(x, y, map).Letter == null;
         }
 
         /// <summary>
@@ -59,27 +59,27 @@ namespace EP.Balda.Logic.Models
             if (chkRight >= mapCapacity && chkLeft < 0) return false;
 
             if (chkUp >= 0)
-                if (map.Fields[chkUp]._letter != ' ')
+                if (map.Fields[chkUp].Letter != null)
                     return true;
 
             if (chkDown < mapCapacity)
-                if (map.Fields[chkDown]._letter != ' ')
+                if (map.Fields[chkDown].Letter != null)
                     return true;
 
             if (idx != mapCapacity)
-                if (map.Fields[chkRight]._letter != ' ')
+                if (map.Fields[chkRight].Letter != null)
                     return true;
 
-            if (map.Fields[chkLeft]._letter != ' ')
+            if (map.Fields[chkLeft].Letter != null)
                 return true;
 
             return false;
         }
 
         /// <summary>
-        ///     Check that all received letters in the form of a tuple
-        ///     list of coordinates of their location on the map, comply
-        ///     with the rules of the game on making words
+        /// Check that all received letters in the form of a tuple
+        /// list of coordinates of their location on the map, comply
+        /// with the rules of the game on making words
         /// </summary>
         /// <param name="wordTuples">Tuple list of coordinates</param>
         /// <param name="map">GameMap</param>
@@ -129,7 +129,7 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
-        ///     Returns the word from the game map according to the transmitted list of coordinates
+        /// Returns the word from the game map according to the transmitted list of coordinates
         /// </summary>
         /// <param name="wordTuples"></param>
         /// <param name="map"></param>
@@ -137,7 +137,7 @@ namespace EP.Balda.Logic.Models
         public string GetSelectedWord(IEnumerable<(int x, int y)> wordTuples, GameMap map)
         {
             var word                                = "";
-            foreach (var (x, y) in wordTuples) word += GetCell(x, y, map)._letter;
+            foreach (var (x, y) in wordTuples) word += GetCell(x, y, map).Letter;
             return word;
         }
 

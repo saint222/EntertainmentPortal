@@ -17,7 +17,7 @@ namespace EP.Balda.Web.Controllers
         public IActionResult Put(char letter, [FromBody] int x, int y)
         {
             var field = new GameMap(5);
-            field.Fields[x, y].Letter = letter;
+            //field.Fields[x, y].Letter = letter;
             return Ok();
         }
     }

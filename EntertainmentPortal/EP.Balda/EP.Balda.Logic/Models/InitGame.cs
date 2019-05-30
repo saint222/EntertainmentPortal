@@ -54,7 +54,8 @@ namespace EP.Balda.Logic.Models
             for (var i = 0; i < size; i++)     // lines
                 for (var j = 0; j < size; j++) // column letters
                 {
-                    var cell = new Cell(i, j, ' ');
+                    var cell = new Cell(i, j);
+                    cell.Letter = null;
                     fields.Add(cell);
                 }
 
@@ -74,7 +75,7 @@ namespace EP.Balda.Logic.Models
 
             word = word.Trim();
             foreach (var letter in word)
-                gameFlow.GetCell(center, charDestination++, map)._letter =
+                gameFlow.GetCell(center, charDestination++, map).Letter =
                     letter;
         }
 
