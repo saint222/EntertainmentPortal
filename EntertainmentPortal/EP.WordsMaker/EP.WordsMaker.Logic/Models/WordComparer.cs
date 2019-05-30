@@ -5,6 +5,11 @@ using System.Threading.Tasks;
 
 namespace EP.WordsMaker.Logic.Models
 {
+	/// <summary>
+	/// Compares two words. 
+	/// Checks if a player’s word 
+	/// can be composed of the letters of a keyword.
+	/// </summary>
 	public class WordComparer
 	{
 		public bool CompareWord(string keyWord, string playerWord)
@@ -16,7 +21,6 @@ namespace EP.WordsMaker.Logic.Models
 			{
 				if(_keyWord.LettersCount >= _playerWord.LettersCount)
 				{
-					bool result = true;
 					foreach (char letter in _playerWord.Letters)
 					{
 						if(_keyWord.Contains(letter) && (_keyWord.CharCount(letter) >= _playerWord.CharCount(letter)))
@@ -25,17 +29,13 @@ namespace EP.WordsMaker.Logic.Models
 						}
 						else
 						{
-							result = false;
+							return false;
 						}
 					}
-					return result;
+					return true;
 				}
-				return false;
 			}
-			else
-			{
-				return false;
-			}					
+			return false;				
 		}
 	}
 }

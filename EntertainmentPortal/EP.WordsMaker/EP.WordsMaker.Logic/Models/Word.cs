@@ -10,25 +10,20 @@ namespace EP.WordsMaker.Logic.Models
     /// </summary>
 	public class Word
 	{
-        /// <summary>
-        /// Letter from word property
-        /// </summary>
-        public char[] Letters
-        /// <value>Represents array latters grom word</value>
         private string _word;
 		private char[] _letters;
 		private Dictionary<char, int> _lettersDict;
-		public string String
 
+		public string String
 		{
-			{
 			get
+			{
 				return _word;
 			}
 		}
 
 		/// <summary>
-		/// Длина слова
+		/// Word length
 		/// </summary>
 		public int Length
 		{
@@ -37,8 +32,8 @@ namespace EP.WordsMaker.Logic.Models
 				return _word.Length;
 			}
 		}
-		/// Список букв, присутствующих в слове
 		/// <summary>
+		///letters that are in the word, excluding duplicate.
 		/// </summary>
 		public char[] Letters
 		{

@@ -14,13 +14,24 @@ namespace Tests
 		[Test]
 		public void Test1()
 		{
-			Word keyWord = new Word("cоковыжималка");
-			//Word userWord = new Word("киоск");
-			Word userWord = new Word("киоск");
-
 			WordComparer wordComparer = new WordComparer();
+			Word keyWord = new Word("соковыжималка");
+
+			Word userWord = new Word("Киоск");
 			bool result = wordComparer.CompareWord(keyWord.String, userWord.String);
-			Assert.IsTrue(result);			
+			Assert.IsTrue(result);
+
+			userWord = new Word("волосы");
+			result = wordComparer.CompareWord(keyWord.String, userWord.String);
+			Assert.IsTrue(result);
+
+			userWord = new Word("Велосипед");
+			result = wordComparer.CompareWord(keyWord.String, userWord.String);
+			Assert.IsFalse(result);
+
+			userWord = new Word("Костыль");
+			result = wordComparer.CompareWord(keyWord.String, userWord.String);
+			Assert.IsFalse(result);
 		}
 	}
 }
