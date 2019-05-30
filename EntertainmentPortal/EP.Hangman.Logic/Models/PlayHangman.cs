@@ -25,6 +25,11 @@ namespace EP.Hangman.Logic.Models
         /// </summary>
         private const int ATTEMPTS = 6;
 
+        public PlayHangman(HangmanTemporaryData data)
+        {
+            _data = data;
+        }
+
         public PlayHangman(HangmanTemporaryData data, string enteredLetter)
         {
             _data = data;
