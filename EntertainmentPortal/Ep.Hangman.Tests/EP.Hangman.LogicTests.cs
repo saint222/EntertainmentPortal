@@ -34,17 +34,22 @@ namespace EP.Hangman.Logic.Tests
     [TestFixture]
     public class PlayHangmanTests
     {
-        HangmanTemporaryData newData;
+        TemporaryData newData;
+        HangmanTemporaryData newHangmanData;
 
         [SetUp]
         public void Setup()
         {
+            newData = new TemporaryData();
+            newHangmanData = new HangmanTemporaryData();
+
         }
 
         [TearDown]
         public void AfterTests()
         {
             newData = null;
+            newHangmanData = null;
         }
 
         [Test]
@@ -54,8 +59,9 @@ namespace EP.Hangman.Logic.Tests
         public int TestCorrectCalculatingOfUserAttempts(int x)
         {
             // todo: make ctor without letter
-            newData.temp.UserAttempts = x;
-            return new PlayHangman(newData, "a").UserAttempts;
+            newData.UserAttempts = x;
+            newHangmanData.temp = newData;
+            return new PlayHangman(newHangmanData).UserAttempts;
         }
 
         [Test]
@@ -63,32 +69,34 @@ namespace EP.Hangman.Logic.Tests
         [TestCase(2, ExpectedResult = 3)]
         public int TextCorrectIncrementOfAttemptsOnWrongLetter(int x)
         {
-            newData.temp.UserAttempts = x;
-            newData.temp.PickedWord = "OMG";
-            newData.temp.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
-            newData.temp.CorrectLettersTempData = new List<string> {"_", "_", "_"};
+            newData.UserAttempts = x;
+            newData.PickedWord = "OMG";
+            newData.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
+            newData.CorrectLettersTempData = new List<string> {"_", "_", "_"};
+            newHangmanData.temp = newData;
 
-            return new PlayHangman(newData, "A").UserAttempts;
+            return new PlayHangman(newHangmanData, "A").PlayGame().temp.UserAttempts;
         }
 
         [Test]
-        [TestCase()]
         [TestCase("O", 0)]
         [TestCase("G", 2)]
         public void TextCorrectReplaceOnCorrectLetter(string letter, int position)
         {
-            newData.temp.UserAttempts = 0;
-            newData.temp.PickedWord = "OMG";
-            newData.temp.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
-            newData.temp.CorrectLettersTempData = new List<string> { "_", "_", "_" };
-            Assert.AreEqual(letter, new PlayHangman(newData, letter).PlayGame().temp.CorrectLettersTempData[position]);
+            newData.UserAttempts = 0;
+            newData.PickedWord = "OMG";
+            newData.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
+            newData.CorrectLettersTempData = new List<string> { "_", "_", "_" };
+            newHangmanData.temp = newData;
+            Assert.AreEqual(letter, new PlayHangman(newHangmanData, letter).PlayGame().temp.CorrectLettersTempData[position]);
         }
 
         [Test]
         public void TestNoMoreAttempts()
         {
-            newData.temp.UserAttempts = 6;
-            Assert.IsNull(new PlayHangman(newData, "A").PlayGame());
+            newData.UserAttempts = 6;
+            newHangmanData.temp = newData;
+            Assert.IsNull(new PlayHangman(newHangmanData).PlayGame());
         }
 
         [Test]
@@ -96,11 +104,12 @@ namespace EP.Hangman.Logic.Tests
         [TestCase("C")]
         public void TestDeleteLetterFromAlphabet(string letter)
         {
-            newData.temp.UserAttempts = 0;
-            newData.temp.PickedWord = "YES";
-            newData.temp.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
-            newData.temp.CorrectLettersTempData = new List<string> { "_", "_", "_" };
-            Assert.False(new PlayHangman(newData, letter).PlayGame().temp.AlphabetTempData.Contains(letter));
+            newData.UserAttempts = 0;
+            newData.PickedWord = "YES";
+            newData.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
+            newData.CorrectLettersTempData = new List<string> { "_", "_", "_" };
+            newHangmanData.temp = newData;
+            Assert.False(new PlayHangman(newHangmanData, letter).PlayGame().temp.AlphabetTempData.Contains(letter));
         }
     }
 }
