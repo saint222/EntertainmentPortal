@@ -1,6 +1,4 @@
-using System;
 using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
 using NUnit.Framework;
 
 namespace EP.Sudoku.Logic.Tests
@@ -8,52 +6,62 @@ namespace EP.Sudoku.Logic.Tests
     [TestFixture]
     public class GenerationMatrixServiceTests
     {
-        private readonly Services.GenerationMatrixService _service = new Services.GenerationMatrixService();
+        private readonly Services.GenerationMatrixService _generationMatrix = new Services.GenerationMatrixService();
 
         [Test]
         public void Test_Transposition_Method()
         {
-            int[,] matrix = _service.GetBaseMatrix();
-            _service.Transposition(matrix);
-            _service.Transposition(matrix);
+            int[,] matrix = _generationMatrix.GetBaseMatrix();
+            _generationMatrix.Transposition(matrix);
+            _generationMatrix.Transposition(matrix);
 
-            Assert.AreEqual(_service.GetBaseMatrix(), matrix);
+            Assert.AreEqual(_generationMatrix.GetBaseMatrix(), matrix);
         }
 
         [Test]
         public void Test_SwapRowsSmall_Method()
         {
-            int[,] matrix = _service.GetBaseMatrix();
-            _service.SwapRowsSmall(matrix);
+            int[,] matrix = _generationMatrix.GetBaseMatrix();
+            _generationMatrix.SwapRowsSmall(matrix);
 
-            Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
+            Assert.AreNotEqual(_generationMatrix.GetBaseMatrix(), matrix);
         }
 
         [Test]
         public void Test_SwapColumnsSmall_Method()
         {
-            int[,] matrix = _service.GetBaseMatrix();
-            _service.SwapColumnsSmall(matrix);
+            int[,] matrix = _generationMatrix.GetBaseMatrix();
+            _generationMatrix.SwapColumnsSmall(matrix);
 
-            Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
+            Assert.AreNotEqual(_generationMatrix.GetBaseMatrix(), matrix);
         }
 
         [Test]
         public void Test_SwapRowsArea_Method()
         {
-            int[,] matrix = _service.GetBaseMatrix();
-            _service.SwapRowsArea(matrix);
+            int[,] matrix = _generationMatrix.GetBaseMatrix();
+            _generationMatrix.SwapRowsArea(matrix);
 
-            Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
+            Assert.AreNotEqual(_generationMatrix.GetBaseMatrix(), matrix);
         }
 
         [Test]
         public void Test_SwapColumnsArea_Method()
         {
-            int[,] matrix = _service.GetBaseMatrix();
-            _service.SwapColumnsArea(matrix);
+            int[,] matrix = _generationMatrix.GetBaseMatrix();
+            _generationMatrix.SwapColumnsArea(matrix);
 
-            Assert.AreNotEqual(_service.GetBaseMatrix(), matrix);
+            Assert.AreNotEqual(_generationMatrix.GetBaseMatrix(), matrix);
         }
+
+        [Test]
+        public void Test_RemoveCells_Method()
+        {
+            int[,] initMatrix = _generationMatrix.GetBaseMatrix();
+            int[,] matrix = _generationMatrix.RemoveCells(initMatrix, 50);
+
+            Assert.AreNotEqual(initMatrix, matrix);
+        }
+        
     }
 }
