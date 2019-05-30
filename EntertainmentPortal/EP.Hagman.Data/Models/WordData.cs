@@ -6,6 +6,10 @@ namespace EP.Hagman.Data.Models
 {
     public class WordData
     {
+        public WordData()
+        {
+                
+        }
         public WordData(string word)
         {
             Name = word;

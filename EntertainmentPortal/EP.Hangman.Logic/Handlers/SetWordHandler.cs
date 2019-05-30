@@ -25,7 +25,7 @@ namespace EP.Hangman.Logic.Handlers
             {
                 Name = request.SavedWord
             };
-            _item.AddWord(word.Name);
+            //_item.AddWord(word.Name);
             return Task.FromResult(word);
         }
     }

@@ -8,42 +8,40 @@ namespace EP._15Puzzle.Data
 {
     public static class DeckRepository
     {
-        private static Dictionary<int, DeckDB> _decks = new Dictionary<int, DeckDB>()
+        private static List<DeckDB> _decks = new List<DeckDB>()
         {
-            {1,new DeckDB() }
+            new DeckDB()
+            {
+                Score = 0,
+                Tiles = new List<int>() {16, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
+                UserId = 0,
+                Victory = false
+            }
         };
         public static DeckDB Get(int id)
         {
-            if (_decks.ContainsKey(id))
-            {
-                return _decks[id];
-            }
-            return null;
+            return _decks.First(d => d.UserId == id);
         }
 
-        public static DeckDB Create(int id)
+        public static DeckDB Create(DeckDB deck)
         {
-            _decks.Add(id,new DeckDB());
-            return Get(id);
+            _decks.Add(deck);
+            return deck;
         }
 
-        public static DeckDB Update(int id, IEnumerable<int> tiles, int score, bool victory)
+        public static DeckDB Update(DeckDB deck)
         {
-            if (_decks.ContainsKey(id))
-            {
-                _decks[id].Tiles=(List<int>)tiles;
-            }
-            return Get(id);
+            var gameDeck = _decks.First(d => d.UserId == deck.UserId);
+            gameDeck.Tiles = deck.Tiles;
+            gameDeck.Score = deck.Score;
+            gameDeck.Victory = deck.Victory;
+            return deck;
         }
-        public static bool Delete(int id)
+        public static void Delete(DeckDB deck)
         {
-            if (_decks.ContainsKey(id))
-            {
-                _decks.Remove(id);
-                return true;
-            }
-            return false;
+            _decks.Remove(deck);
         }
+        
     }
 
 }
