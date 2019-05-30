@@ -153,5 +153,28 @@ namespace EP.Sudoku.Logic.Services
             return matrix;
         }
 
+        public int[,] RemoveCells(int[,] initMatrix, int count)
+        {
+            Random rand = new Random();
+            int[,] matrix = new int[MATRIX_DIMENSION, MATRIX_DIMENSION];
+            Array.Copy(initMatrix, matrix, MATRIX_DIMENSION * MATRIX_DIMENSION);
+            int i;
+            int j;
+            int ind = 0;
+
+            for (int index = 0; index < count; index++)
+            {
+                do
+                {
+                    ind++;
+                    i = rand.Next(0, 9);
+                    j = rand.Next(0, 9);
+                } while (matrix[i, j] == 0);
+
+                matrix[i, j] = 0;
+            }
+
+            return matrix;
+        }
     }
 }
