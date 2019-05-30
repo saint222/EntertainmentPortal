@@ -7,15 +7,15 @@ namespace EP.Balda.Logic.Models
     ///     Game map with the value (size) of the measurement of the playing
     ///     space transferred to the constructor
     /// </summary>
-    public class GameMap
+    public class Map
     {
-        private static readonly IInitGame InitGame = new InitGame(new GameFlow());
+        private static readonly IInitially InitGame = new Initially(new Step());
 
         public int Size { get; }
 
         public List<Cell> Fields { get; }
 
-        public GameMap(int size)
+        public Map(int size)
         {
             Size   = size;
             Fields = InitGame.InitMap(size);

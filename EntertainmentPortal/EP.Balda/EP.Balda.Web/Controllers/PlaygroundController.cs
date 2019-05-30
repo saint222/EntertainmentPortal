@@ -9,14 +9,14 @@ namespace EP.Balda.Web.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var field = new GameMap(5);
+            var field = new Map(5);
             return Ok(field);
         }
 
         [HttpPut]
         public IActionResult Put(char letter, [FromBody] int x, int y)
         {
-            var field = new GameMap(5);
+            var field = new Map(5);
             //field.Fields[x, y].Letter = letter;
             return Ok();
         }

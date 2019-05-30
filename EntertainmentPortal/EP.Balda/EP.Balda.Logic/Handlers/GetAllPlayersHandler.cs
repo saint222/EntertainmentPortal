@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using EP.Balda.Data.EntityFramework;
@@ -14,17 +15,14 @@ namespace EP.Balda.Logic.Handlers
         public Task<IEnumerable<Player>> Handle(GetAllPlayers request,
                                                 CancellationToken cancellationToken)
         {
-            var list = new List<Player>();
-            foreach (var p in PlayerRepository.Players)
-                list.Add(new Player
-                {
-                    NickName = p.NickName,
-                    Login    = p.Login,
-                    Password = p.Password,
-                    Result   = p.Result
-                });
-
-            var items = list.ToArray();
+            var items = PlayerRepository.Players.Select(p => new Player
+            {
+                Id       = p.Id,
+                NickName = p.NickName,
+                Login    = p.Login,
+                Password = p.Password,
+                Result   = p.Result
+            }).ToArray();
 
             return Task.FromResult((IEnumerable<Player>) items);
         }

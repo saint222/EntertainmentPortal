@@ -4,9 +4,9 @@ using EP.Balda.Logic.Interfaces;
 
 namespace EP.Balda.Logic.Models
 {
-    public class GameFlow : IGameFlow
+    public class Step : IStep
     {
-        private static int GetIndexCell(int x, int y, GameMap map)
+        private static int GetIndexCell(int x, int y, Map map)
         {
             return y + map.Size * x;
         }
@@ -20,7 +20,7 @@ namespace EP.Balda.Logic.Models
         /// <param name="y">matrix element Y</param>
         /// <param name="map">GameMap</param>
         /// <returns>returns cell</returns>
-        public Cell GetCell(int x, int y, GameMap map)
+        public Cell GetCell(int x, int y, Map map)
         {
             return map.Fields[GetIndexCell(x, y, map)];
         }
@@ -32,9 +32,9 @@ namespace EP.Balda.Logic.Models
         /// <param name="y">matrix element Y</param>
         /// <param name="map">GameMap</param>
         /// <returns>returns true if empty</returns>
-        public bool IsEmptyCell(int x, int y, GameMap map)
+        public bool IsEmptyCell(int x, int y, Map map)
         {
-            return (this as IGameFlow).GetCell(x, y, map).Letter == null;
+            return (this as IStep).GetCell(x, y, map).Letter == null;
         }
 
         /// <summary>
@@ -44,9 +44,9 @@ namespace EP.Balda.Logic.Models
         /// <param name="y">matrix element Y</param>
         /// <param name="map">GameMap</param>
         /// <returns>returns true if allowed</returns>
-        public bool IsAllowedCell(int x, int y, GameMap map)
+        public bool IsAllowedCell(int x, int y, Map map)
         {
-            if (map != null && !(this as IGameFlow).IsEmptyCell(x, y, map)) return false;
+            if (map != null && !(this as IStep).IsEmptyCell(x, y, map)) return false;
             var idx         = GetIndexCell(x, y, map);
             var mapCapacity = map.Size * map.Size - 1;
 
@@ -84,7 +84,7 @@ namespace EP.Balda.Logic.Models
         /// <param name="wordTuples">Tuple list of coordinates</param>
         /// <param name="map">GameMap</param>
         /// <returns>returns true if this is the correct word</returns>
-        public bool IsItCorrectWord(List<(int x, int y)> wordTuples, GameMap map)
+        public bool IsItCorrectWord(List<(int x, int y)> wordTuples, Map map)
         {
             var isAllLetterTrue = false;
             for (var let = 0; let < wordTuples.Count; let++)
@@ -134,7 +134,7 @@ namespace EP.Balda.Logic.Models
         /// <param name="wordTuples"></param>
         /// <param name="map"></param>
         /// <returns>The word from the game map</returns>
-        public string GetSelectedWord(IEnumerable<(int x, int y)> wordTuples, GameMap map)
+        public string GetSelectedWord(IEnumerable<(int x, int y)> wordTuples, Map map)
         {
             var word                                = "";
             foreach (var (x, y) in wordTuples) word += GetCell(x, y, map).Letter;

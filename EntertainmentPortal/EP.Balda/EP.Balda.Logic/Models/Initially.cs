@@ -9,26 +9,26 @@ namespace EP.Balda.Logic.Models
     /// <summary>
     ///     Playground initializer
     /// </summary>
-    public class InitGame : IInitGame
+    public class Initially : IInitially
     {
         private static readonly IWordRepository<string> DataRepository =
             new WordRepository<string>(new BaldaDictionaryDbContext("russian_nouns.txt"));
 
-        public IGameFlow _gameFlow;
+        public IStep _gameFlow;
 
-        public InitGame(IGameFlow gameFlow, GameMap map)
+        public Initially(IStep gameFlow, Map map)
         {
             _gameFlow = gameFlow;
             var initWord = GetStartingWord(map);
             PutStartingWordToMap(initWord, map);
         }
 
-        public InitGame(IGameFlow gameFlow)
+        public Initially(IStep gameFlow)
         {
             _gameFlow = gameFlow;
         }
 
-        private static string GetStartingWord(GameMap map)
+        private static string GetStartingWord(Map map)
         {
             var word     = "";
             var mapSize  = map.Size;
@@ -67,11 +67,11 @@ namespace EP.Balda.Logic.Models
         /// </summary>
         /// <param name="word">Starting word</param>
         /// <param name="map">Game map</param>
-        private static void PutStartingWordToMap(string word, GameMap map)
+        private static void PutStartingWordToMap(string word, Map map)
         {
             var       center          = map.Size / 2;
             var       charDestination = 0;
-            IGameFlow gameFlow        = new GameFlow();
+            IStep gameFlow        = new Step();
 
             word = word.Trim();
             foreach (var letter in word)
