@@ -1,40 +1,42 @@
-﻿// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using EP.Balda.Logic.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Balda.Web.Controllers
 {
-    //[Route("api/[controller]")]
-    //public class PlayerController : Controller
-    //{
-    //    // GET: api/<controller>
-    //    [HttpGet]
-    //    public IEnumerable<string> Get()
-    //    {
-    //        return new[] {"value1", "value2"};
-    //    }
+    [Route("api/[controller]")]
+    public class PlayerController : Controller
+    {
+        [HttpGet]
+        public IActionResult Get(Player player)
+        {
+            return Ok(player);
+        }
 
-    //    // GET api/<controller>/5
-    //    [HttpGet("{id}")]
-    //    public string Get(int id)
-    //    {
-    //        return "value";
-    //    }
+        [HttpGet("{id}")]
+        public IActionResult Get(long id)
+        {
+            var player = new Player { Id = id };
+            return Ok(player);
+        }
 
-    //    // POST api/<controller>
-    //    [HttpPost]
-    //    public void Post([FromBody] string value)
-    //    {
-    //    }
+        [HttpPost]
+        public IActionResult Post([FromBody] Player player)
+        {
+            return Ok(player);
+        }
 
-    //    // PUT api/<controller>/5
-    //    [HttpPut("{id}")]
-    //    public void Put(int id, [FromBody] string value)
-    //    {
-    //    }
+        [HttpPut("{id}")]
+        public IActionResult Put(long id, [FromBody] string nickName)
+        {
+            var player = new Player { Id = id, NickName = nickName };
+            return Ok();
+        }
 
-    //    // DELETE api/<controller>/5
-    //    [HttpDelete("{id}")]
-    //    public void Delete(int id)
-    //    {
-    //    }
-    //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var player = new Player { Id = id };
+            return Ok();
+        }
+    }
 }

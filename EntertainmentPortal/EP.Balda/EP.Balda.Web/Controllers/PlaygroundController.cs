@@ -1,36 +1,24 @@
-﻿//using BaldaGame.Models.Enums;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using EP.Balda.Logic.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Balda.Web.Controllers
 {
-    //[Route("api/[controller]")]
-    //public class FieldController : Controller
-    //{
-    //    private readonly Field _field = new Field();
+    [Route("api/[controller]")]
+    public class PlaygroundController : Controller
+    {
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var field = new GameMap(5);
+            return Ok(field);
+        }
 
-    //    // GET: api/<controller>
-    //    [HttpGet]
-    //    public Cell[,] GetFieldCells()
-    //    {
-    //        return _field.Cells;
-    //    }
-
-    //    // GET api/<controller>/5
-    //    [HttpGet("i, j")]
-    //    public Cell GetFieldCell(int i, int j)
-    //    {
-    //        return _field.Cells[i, j];
-    //    }
-
-    //    //// POST api/<controller>
-    //    //[HttpPost]
-    //    //public void PostFieldCell(int i, int j,[FromBody]RussianLetters value)
-    //    //{
-    //    //    if(field.Cells[i, j].IsFilled)
-    //    //    {
-    //    //        field.Cells[i, j].Letter = value;
-    //    //    }
-    //    //}
-    //}
+        [HttpPut]
+        public IActionResult Put(char letter, [FromBody] int x, int y)
+        {
+            var field = new GameMap(5);
+            field.Fields[x, y].Letter = letter;
+            return Ok();
+        }
+    }
 }

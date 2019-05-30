@@ -1,19 +1,42 @@
 ﻿namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    ///     Cell with a value that can contain a letter
+    /// The model <c>Cell</c> class.
+    /// Represents a cell of playground area.
     /// </summary>
     public class Cell
     {
-        public readonly int _x;
-        public readonly int _y;
-        public char _letter;
+        /// <summary>
+        /// X property. Represents X coordinate of the cell in playground.
+        /// </summary>
+        public int X { get; private set; }
 
-        public Cell(int x, int y, char letter)
+        /// <summary>
+        /// Y property. Represents Y coordinate of the cell in playground.
+        /// </summary>
+        public int Y { get; private set; }
+
+        /// <summary>
+        /// Letter property. Represents letter to store in the cell.
+        /// </summary>
+        /// <remarks>
+        /// Nullable char is used to store empty symbol if there is no letter in the cell yet.
+        /// </remarks>
+        public char? Letter { get; set; }
+
+        /// <summary>
+        /// Cell constructor with X and Y coordinates.
+        /// </summary>
+        /// <param name="x">
+        /// Parameter x requires an integer argument.
+        /// </param>
+        /// <param name="y">
+        /// Parameter y requires an integer argument.
+        /// </param>
+        public Cell(int x, int y)
         {
-            _x      = x;
-            _y      = y;
-            _letter = letter;
+            X = x;
+            Y = y;
         }
     }
 }

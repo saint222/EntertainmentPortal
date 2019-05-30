@@ -1,18 +1,23 @@
-﻿// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using EP.Balda.Logic.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Balda.Web.Controllers
 {
-    //[Route("api/[controller]")]
-    //public class CellController : Controller
-    //{
-    //    // GET: api/<controller>
+    [Route("api/[controller]")]
+    public class CellController : Controller
+    {
+        [HttpGet]
+        public IActionResult Get(int x, int y)
+        {
+            var cell = new Cell(x, y);
+            return Ok(cell.Letter);
+        }
 
-
-    //    // POST api/<controller>
-    //    [HttpPost]
-    //    public IActionResult PostCell(Cell cell)
-    //    {
-    //        return Ok();
-    //    }
-    //}
+        [HttpPost]
+        public IActionResult Post([FromBody] int x, int y, char letter)
+        {
+            var cell = new Cell(x, y) { Letter = letter };
+            return Ok(cell);
+        }
+    }
 }

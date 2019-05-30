@@ -1,40 +1,23 @@
-﻿// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using System.Collections.Generic;
+using EP.Balda.Logic.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Balda.Web.Controllers
 {
-    //[Route("api/[controller]")]
-    //public class WordController : Controller
-    //{
-    //    // GET: api/<controller>
-    //    [HttpGet]
-    //    public IEnumerable<string> Get()
-    //    {
-    //        return new[] {"value1", "value2"};
-    //    }
+    [Route("api/[controller]")]
+    public class WordController : Controller
+    {
+        [HttpGet]
+        public List<Cell> Get()
+        {
+            var word = new Word { Cells = new List<Cell>() };
+            return word.Cells;
+        }
 
-    //    // GET api/<controller>/5
-    //    [HttpGet("{id}")]
-    //    public string Get(int id)
-    //    {
-    //        return "value";
-    //    }
-
-    //    // POST api/<controller>
-    //    [HttpPost]
-    //    public void Post([FromBody] string value)
-    //    {
-    //    }
-
-    //    // PUT api/<controller>/5
-    //    [HttpPut("{id}")]
-    //    public void Put(int id, [FromBody] string value)
-    //    {
-    //    }
-
-    //    // DELETE api/<controller>/5
-    //    [HttpDelete("{id}")]
-    //    public void Delete(int id)
-    //    {
-    //    }
-    //}
+        [HttpPost]
+        public IActionResult Post([FromBody] Word word)
+        {
+            return Ok(word);
+        }
+    }
 }
