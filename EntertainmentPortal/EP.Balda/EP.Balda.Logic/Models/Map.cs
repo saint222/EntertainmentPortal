@@ -17,7 +17,7 @@ namespace EP.Balda.Logic.Models
 
         public Map(int size)
         {
-            Size   = size;
+            Size = size;
             Fields = InitGame.InitMap(size);
         }
     }

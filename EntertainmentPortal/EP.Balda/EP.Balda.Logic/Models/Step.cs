@@ -11,7 +11,7 @@ namespace EP.Balda.Logic.Models
             return y + map.Size * x;
         }
 
-        #region Implementation of IGameFlow
+        #region Implementation of IStep
 
         /// <summary>
         ///     Returns the cell by the given coordinates X and Y
@@ -47,14 +47,14 @@ namespace EP.Balda.Logic.Models
         public bool IsAllowedCell(int x, int y, Map map)
         {
             if (map != null && !(this as IStep).IsEmptyCell(x, y, map)) return false;
-            var idx         = GetIndexCell(x, y, map);
+            var idx = GetIndexCell(x, y, map);
             var mapCapacity = map.Size * map.Size - 1;
 
             // variables for busy cell checks
-            var chkUp    = idx - map.Size; // cell on top
-            var chkDown  = idx + map.Size; // bottom cell
-            var chkRight = idx + 1;        // right cell
-            var chkLeft  = idx - 1;        // left cell
+            var chkUp = idx - map.Size;   // cell on top
+            var chkDown = idx + map.Size; // bottom cell
+            var chkRight = idx + 1;       // right cell
+            var chkLeft = idx - 1;        // left cell
 
             if (chkRight >= mapCapacity && chkLeft < 0) return false;
 
@@ -77,9 +77,9 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
-        /// Check that all received letters in the form of a tuple
-        /// list of coordinates of their location on the map, comply
-        /// with the rules of the game on making words
+        ///     Check that all received letters in the form of a tuple
+        ///     list of coordinates of their location on the map, comply
+        ///     with the rules of the game on making words
         /// </summary>
         /// <param name="wordTuples">Tuple list of coordinates</param>
         /// <param name="map">GameMap</param>
@@ -129,14 +129,14 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
-        /// Returns the word from the game map according to the transmitted list of coordinates
+        ///     Returns the word from the game map according to the transmitted list of coordinates
         /// </summary>
         /// <param name="wordTuples"></param>
         /// <param name="map"></param>
         /// <returns>The word from the game map</returns>
         public string GetSelectedWord(IEnumerable<(int x, int y)> wordTuples, Map map)
         {
-            var word                                = "";
+            var word = "";
             foreach (var (x, y) in wordTuples) word += GetCell(x, y, map).Letter;
             return word;
         }

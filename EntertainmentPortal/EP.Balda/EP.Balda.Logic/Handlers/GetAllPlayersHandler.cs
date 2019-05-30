@@ -17,11 +17,11 @@ namespace EP.Balda.Logic.Handlers
         {
             var items = PlayerRepository.Players.Select(p => new Player
             {
-                Id       = p.Id,
+                Id = p.Id,
                 NickName = p.NickName,
-                Login    = p.Login,
+                Login = p.Login,
                 Password = p.Password,
-                Result   = p.Result
+                Result = p.Result
             }).ToArray();
 
             return Task.FromResult((IEnumerable<Player>) items);
