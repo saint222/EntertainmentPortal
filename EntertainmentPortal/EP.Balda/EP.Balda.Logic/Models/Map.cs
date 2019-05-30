@@ -9,7 +9,7 @@ namespace EP.Balda.Logic.Models
     /// </summary>
     public class Map
     {
-        private static readonly IInitially InitGame = new Initially(new Step());
+        private static readonly IInitially InitGame = new Initially();
 
         public int Size { get; }
 
