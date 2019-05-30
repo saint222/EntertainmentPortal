@@ -20,6 +20,8 @@ namespace EP.Hagman.Data
         //It's need if we'll use more than one language
         public List<string> EnglishAlphabet()
         {
+            Alphabet.Clear();
+
             for (char letter = 'A'; letter <= 'Z'; letter++)
             {
                 Alphabet.Add(letter.ToString());
