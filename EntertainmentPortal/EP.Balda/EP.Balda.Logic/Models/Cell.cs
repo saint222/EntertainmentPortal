@@ -9,18 +9,18 @@
         /// <summary>
         ///     X property. Represents X coordinate of the cell in playground.
         /// </summary>
-        public int X { get; private set; }
+        public int X { get; }
 
         /// <summary>
         ///     Y property. Represents Y coordinate of the cell in playground.
         /// </summary>
-        public int Y { get; private set; }
+        public int Y { get; }
 
         /// <summary>
         ///     Letter property. Represents letter to store in the cell.
         /// </summary>
         /// <remarks>
-        /// Nullable char is used to store empty symbol if there is no letter in the cell yet.
+        ///     Nullable char is used to store empty symbol if there is no letter in the cell yet.
         /// </remarks>
         public char? Letter { get; set; }
 
@@ -28,10 +28,10 @@
         ///     Cell constructor with X and Y coordinates.
         /// </summary>
         /// <param name="x">
-        /// Parameter x requires an integer argument.
+        ///     Parameter x requires an integer argument.
         /// </param>
         /// <param name="y">
-        /// Parameter y requires an integer argument.
+        ///     Parameter y requires an integer argument.
         /// </param>
         public Cell(int x, int y)
         {

@@ -6,7 +6,7 @@ namespace EP.Balda.Logic.Interfaces
     /// <summary>
     ///     Game flow interface
     /// </summary>
-    public interface IGameFlow
+    public interface IStep
     {
         /// <summary>
         ///     Returns the cell by the given coordinates X and Y
@@ -15,7 +15,7 @@ namespace EP.Balda.Logic.Interfaces
         /// <param name="y">matrix element Y</param>
         /// <param name="map">GameMap</param>
         /// <returns>returns cell</returns>
-        Cell GetCell(int x, int y, GameMap map);
+        Cell GetCell(int x, int y, Map map);
 
         /// <summary>
         ///     The empty cell value is checked
@@ -24,7 +24,7 @@ namespace EP.Balda.Logic.Interfaces
         /// <param name="y">matrix element Y</param>
         /// <param name="map">GameMap</param>
         /// <returns>returns true if empty</returns>
-        bool IsEmptyCell(int x, int y, GameMap map);
+        bool IsEmptyCell(int x, int y, Map map);
 
         /// <summary>
         ///     Check if the cell is allowed to insert a new letter.
@@ -33,7 +33,7 @@ namespace EP.Balda.Logic.Interfaces
         /// <param name="y">matrix element Y</param>
         /// <param name="map">GameMap</param>
         /// <returns>returns true if allowed</returns>
-        bool IsAllowedCell(int x, int y, GameMap map);
+        bool IsAllowedCell(int x, int y, Map map);
 
         /// <summary>
         ///     Check that all received letters in the form of a tuple
@@ -43,7 +43,7 @@ namespace EP.Balda.Logic.Interfaces
         /// <param name="wordTuples">Tuple list of coordinates</param>
         /// <param name="map">GameMap</param>
         /// <returns>returns true if this is the correct word</returns>
-        bool IsItCorrectWord(List<(int x, int y)> wordTuples, GameMap map);
+        bool IsItCorrectWord(List<(int x, int y)> wordTuples, Map map);
 
         /// <summary>
         ///     Returns the word from the game map according to the transmitted list of coordinates
@@ -51,6 +51,6 @@ namespace EP.Balda.Logic.Interfaces
         /// <param name="wordTuples"></param>
         /// <param name="map"></param>
         /// <returns>The word from the game map</returns>
-        string GetSelectedWord(IEnumerable<(int x, int y)> wordTuples, GameMap map);
+        string GetSelectedWord(IEnumerable<(int x, int y)> wordTuples, Map map);
     }
 }
