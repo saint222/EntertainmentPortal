@@ -40,7 +40,7 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest();
             }            
             var player = await _mediator.Send(new CreatePlayer(model));
-            return (IActionResult)Ok(player); // is it neccessary to return something?
+            return (IActionResult)Ok(player); // is it necessary to return something?
         }
     }
 }
