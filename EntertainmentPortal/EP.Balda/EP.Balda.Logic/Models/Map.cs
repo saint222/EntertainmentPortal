@@ -5,8 +5,8 @@ using EP.Balda.Logic.Interfaces;
 namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    /// Game map with the value (size) of the measurement of the playing
-    /// space transferred to the constructor
+    /// <c>Map</c> model class.
+    /// Represents the game map.
     /// </summary>
     public class Map : IMap, IGame
     {
@@ -32,6 +32,12 @@ namespace EP.Balda.Logic.Models
             Fields = InitMap(size);
         }
 
+        /// <summary>
+        /// The method initializes array of cells that represents the game map.
+        /// </summary>
+        /// <param name="size">
+        /// Parameter size requires an integer argument.
+        /// </param>
         public Cell[,] InitMap(int size)
         {
             Cell[,] fields = new Cell[size, size];
@@ -46,43 +52,32 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
-        /// GetIndexCell method.
+        /// The method returns the cell from game map by the given coordinates.
         /// </summary>
-        /// <param name="x">Matrix element X</param>
-        /// <param name="y">Matrix element Y</param>
-        /// <returns>The method returns cell</returns>
-        private int GetIndexCell(int x, int y)
-        {
-            return y + Size * x;
-        }
-        
-        /// <summary>
-        /// Returns the cell by the given coordinates X and Y
-        /// </summary>
-        /// <param name="x">matrix element X</param>
-        /// <param name="y">matrix element Y</param>
-        /// <returns>returns cell</returns>
+        /// <param name="x">Parameter x requires an integer argument.</param>
+        /// <param name="y">Parameter y requires an integer argument.</param>
+        /// <returns>The method returns cell.</returns>
         public Cell GetCell(int x, int y)
         {
             return Fields[x, y];
         }
 
         /// <summary>
-        /// The empty cell value is checked.
+        /// The method checks if the cell is empty.
         /// </summary>
-        /// <param name="x">matrix element X</param>
-        /// <param name="y">matrix element Y</param>
-        /// <returns>returns true if empty</returns>
+        /// <param name="x">Parameter x requires an integer argument.</param>
+        /// <param name="y">Parameter y requires an integer argument.</param>
+        /// <returns>The method returns true if the cell is empty</returns>
         public bool IsEmptyCell(int x, int y)
         {
             return GetCell(x, y).IsEmpty();
         }
 
         /// <summary>
-        /// Check if the cell is allowed to insert a new letter.
+        /// The method checks if the cell is allowed to insert a new letter.
         /// </summary>
-        /// <param name="x">matrix element X</param>
-        /// <param name="y">matrix element Y</param>
+        /// <param name="x">Parameter x requires an integer argument.</param>
+        /// <param name="y">Parameter y requires an integer argument.</param>
         /// <returns>returns true if allowed</returns>
         public bool IsAllowedCell(int x, int y)
         {
@@ -116,11 +111,10 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
-        /// Check that all received letters in the form of a tuple
-        /// list of coordinates of their location on the map, comply
-        /// with the rules of the game on making words
+        /// The method checks that all letters
+        /// comply with the rules of the game on making words.
         /// </summary>
-        /// <param name="word">Tuple list of coordinates</param>
+        /// <param name="word">Parameter requires List of Cell argument.</param>
         /// <returns>returns true if this is the correct word</returns>
         public bool IsItCorrectWord(List<Cell> word)
         {
@@ -167,11 +161,10 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
-        /// Returns the word from the game map according to the transmitted list of coordinates
+        /// The method returns the word from the game map according to the entered cells.
         /// </summary>
-        /// <param name="words"></param>
-        /// <param name="map"></param>
-        /// <returns>The word from the game map</returns>
+        /// <param name="words">Parameter requires IEnumerable of Cell argument.</param>
+        /// <returns>The method returns word from the game map.</returns>
         public string GetSelectedWord(IEnumerable<Cell> words)
         {
             var word = "";

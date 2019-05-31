@@ -1,18 +1,18 @@
 ﻿namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    /// The model <c>Cell</c> class.
+    /// <c>Cell</c> model class.
     /// Represents a cell of playground area.
     /// </summary>
     public class Cell
     {
         /// <summary>
-        /// X property. Represents X coordinate of the cell in playground.
+        /// X property. Represents X coordinate of the cell in game map.
         /// </summary>
         public int X { get; }
 
         /// <summary>
-        /// Y property. Represents Y coordinate of the cell in playground.
+        /// Y property. Represents Y coordinate of the cell in game map.
         /// </summary>
         public int Y { get; }
 
@@ -39,6 +39,10 @@
             Y = y;
         }
 
+        /// <summary>
+        /// The method checks if the cell is empty.
+        /// </summary>
+        /// <returns>The method retyrns true if the cell is empty.</returns>
         public bool IsEmpty()
         {
             return Letter == null;
