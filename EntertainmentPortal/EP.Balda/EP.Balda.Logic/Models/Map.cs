@@ -81,17 +81,16 @@ namespace EP.Balda.Logic.Models
         /// <returns>returns true if allowed</returns>
         public bool IsAllowedCell(int x, int y)
         {
-            if (!IsEmptyCell(x, y)) return false;
+            if (!IsEmptyCell(x, y))
+                return false;
 
             // variables for busy cell checks
-            var checkUp = y + 1;   // cell on top
-            var checkDown = y - 1; // bottom cell
-            var checkRight = x + 1;   // right cell
-            var checkLeft = x - 1;    // left cell
+            int checkUp = y + 1;   // cell on top
+            int checkDown = y - 1; // bottom cell
+            int checkRight = x + 1;   // right cell
+            int checkLeft = x - 1;    // left cell
 
-            if (checkRight >= Size && checkLeft < 0) return false;
-
-            if (checkUp <= Size)
+            if (checkUp < Size)
                 if (Fields[x, checkUp].Letter != null)
                     return true;
 
@@ -99,12 +98,12 @@ namespace EP.Balda.Logic.Models
                 if (Fields[x, checkDown].Letter != null)
                     return true;
 
-            if(checkLeft >= 0)
+            if (checkLeft >= 0)
                 if (Fields[checkLeft, y].Letter != null)
                     return true;
 
-            if (checkRight <= Size)
-                if (Fields[checkLeft, y].Letter != null)
+            if (checkRight < Size)
+                if (Fields[checkRight, y].Letter != null)
                     return true;
 
             return false;
