@@ -11,7 +11,7 @@ namespace EP.WordsMaker.Logic.Models
 	public class Word
 	{
         private string _word;
-		private char[] _letters;
+	    //private char[] _letters;
 		private Dictionary<char, int> _lettersDict;
 
 		public string String
@@ -58,10 +58,10 @@ namespace EP.WordsMaker.Logic.Models
 		/// <param name="word"></param>
 		public Word(string word)
 		{
-			this._word = word.ToLower();
-			this._letters = word.ToArray();
+			_word = word.ToLower();
 			_lettersDict = new Dictionary<char, int>();
-			foreach(char letter in _letters)
+
+			foreach(var letter in _word)
 			{
 				if(_lettersDict.ContainsKey(letter))
 				{
