@@ -7,26 +7,42 @@ using EP.Balda.Logic.Interfaces;
 namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    /// Game initializer
+    /// <c>Game</c> model class.
+    /// Represents the game process.
     /// </summary>
     public class Game
     {
+        /// <summary>
+        /// Internal repository to store words from DB. 
+        /// </summary>
         private static readonly IWordRepository<string> _dataRepository =
             new WordRepository<string>(new BaldaDictionaryDbContext("russian_nouns.txt"));
 
-        private readonly IMap _map;
+        /// <summary>
+        /// The field stores an object of the map in the game. 
+        /// </summary>
+        public IMap Map { get; private set; }
 
-        public Game(Map map)
+        /// <summary>
+        /// The Game constructor. 
+        /// </summary>
+        /// <param name="map">
+        /// Parameter map requires IMap argument.
+        /// </param>
+        public Game(IMap map)
         {
-            _map = map;
+            Map = map;
             var initWord = GetStartingWord();
-            PutStartingWordToMap(initWord, map);
+            PutStartingWordToMap(initWord);
         }
-        
+
+        /// <summary>
+        /// The method gets the initial word. 
+        /// </summary>
         private string GetStartingWord()
         {
             var word = "";
-            var mapSize = _map.Size;
+            var mapSize = Map.Size;
             var sizeRepo = _dataRepository.GetAll().Count;
             while (word.Length != mapSize)
                 word = _dataRepository.Get(RandomWord(sizeRepo));
@@ -34,6 +50,9 @@ namespace EP.Balda.Logic.Models
             return word;
         }
 
+        /// <summary>
+        /// The method choose random initial word. 
+        /// </summary>
         private static int RandomWord(int size)
         {
             var rnd = new Random();
@@ -45,16 +64,15 @@ namespace EP.Balda.Logic.Models
         /// <summary>
         /// The metod puts the starting word on the map.
         /// </summary>
-        /// <param name="word">Starting word</param>
-        /// <param name="map">Game map</param>
-        public void PutStartingWordToMap(string word, Map map)
+        /// <param name="word">Parameter word requires string argument.</param>
+        public void PutStartingWordToMap(string word)
         {
-            var center = map.Size / 2;
+            var center = Map.Size / 2;
             var charDestination = 0;
             
             word = word.Trim();
             foreach (var letter in word)
-                _map.GetCell(center, charDestination++).Letter =
+                Map.GetCell(center, charDestination++).Letter =
                     letter;
         }
     }

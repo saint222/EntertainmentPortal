@@ -3,7 +3,7 @@
 namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    /// The model <c>Player</c> class.
+    /// <c>Player</c> model class.
     /// Represents a Player.
     /// </summary>
     public class Player
