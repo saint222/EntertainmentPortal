@@ -23,7 +23,7 @@ namespace EP.Hagman.Data
         /// </summary>
         public string PickedWord { get; set; }
         /// <summary>
-        /// Property stores number of user's attemptes
+        /// Property stores number of user's attempts
         /// </summary>
         public int UserAttempts { get; set; }
         /// <summary>
