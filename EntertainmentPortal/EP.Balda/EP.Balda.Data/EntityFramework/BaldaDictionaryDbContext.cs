@@ -9,20 +9,19 @@ namespace EP.Balda.Data.EntityFramework
     public class BaldaDictionaryDbContext
     {
         private static string _fileName;
-        private static Task<List<string>> _stringData;
+        private static List<string> _stringData;
 
         public BaldaDictionaryDbContext(string fileName)
         {
             _fileName = fileName;
-            var path       = GetPath(_fileName);
+            var path = GetPath(_fileName);
             var stringData = GetTextFromFile(path);
-
-            _stringData = stringData;
+            _stringData = stringData.Result;
         }
 
         public static List<string> Set<T>() where T : class
         {
-            return _stringData.Result;
+            return _stringData;
         }
 
         private static string GetPath(string fileName)
@@ -40,7 +39,7 @@ namespace EP.Balda.Data.EntityFramework
 
         public static async Task SaveChangesAsync()
         {
-            await WriteTextToFile(GetPath(_fileName), _stringData.Result);
+            await WriteTextToFile(GetPath(_fileName), _stringData);
         }
 
         private static async Task<List<string>> GetTextFromFile(string file)
@@ -49,6 +48,7 @@ namespace EP.Balda.Data.EntityFramework
             {
                 var fileText = await reader.ReadToEndAsync();
                 return fileText
+                    .ToUpper()
                     .Split(new[] {Environment.NewLine}, StringSplitOptions.None).ToList();
             }
         }

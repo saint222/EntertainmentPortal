@@ -3,7 +3,7 @@
 namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    /// The model <c>Player</c> class.
+    /// <c>Player</c> model class.
     /// Represents a Player.
     /// </summary>
     public class Player
@@ -29,13 +29,12 @@ namespace EP.Balda.Logic.Models
         public string Password { get; set; }
 
         //TODO: Consider if it's necessary
-        public int Result { get; set; } 
+        public int Result { get; set; }
 
         /// <summary>
         /// Words property. Represents the list of words that player already entered in one match
         /// </summary>
         public List<string>
-            Words
-        { get; set; } //words this player guessed per one game
+            Words { get; set; } //words this player guessed per one game
     }
 }
