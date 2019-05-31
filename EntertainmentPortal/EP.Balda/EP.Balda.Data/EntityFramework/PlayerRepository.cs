@@ -8,11 +8,12 @@ namespace EP.Balda.Data.EntityFramework
     {
         private static readonly Faker<PlayerDb> _faker = new Faker<PlayerDb>();
 
-        public static List<PlayerDb> Players => _faker.Generate(5);
+        public static IEnumerable<PlayerDb> Players => _faker.Generate(5);
 
         static PlayerRepository()
         {
-            _faker.RuleFor(x => x.NickName, f => f.Person.UserName)
+            _faker.RuleFor(x => x.Id, f => f.UniqueIndex)
+                .RuleFor(x => x.NickName, f => f.Person.UserName)
                 .RuleFor(x => x.FirstName, f => f.Name.FirstName())
                 .RuleFor(x => x.LastName, f => f.Name.LastName())
                 .RuleFor(x => x.FirstName, f => f.Name.FirstName())
