@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EP.Balda.Web.Controllers
 {
     [Route("api/[controller]")]
-    public class PlaygroundController : Controller
+    public class MapController : Controller
     {
         [HttpGet]
         public IActionResult Get()
@@ -17,7 +17,6 @@ namespace EP.Balda.Web.Controllers
         public IActionResult Put(char letter, [FromBody] int x, int y)
         {
             var field = new Map(5);
-            //field.Fields[x, y].Letter = letter;
             return Ok();
         }
     }
