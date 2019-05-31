@@ -19,7 +19,6 @@ namespace EP.SeaBattle.Logic.Handlers
             {
                 Id = s.Id,
                 Login = s.Login,
-                Password = s.Password,
                 IsBanned = s.IsBanned,
                 BanExpire = s.BanExpire
             }).ToArray();
