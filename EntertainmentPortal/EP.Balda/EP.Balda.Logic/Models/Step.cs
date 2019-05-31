@@ -34,7 +34,7 @@ namespace EP.Balda.Logic.Models
         /// <returns>returns true if empty</returns>
         public bool IsEmptyCell(int x, int y, Map map)
         {
-            return (this as IStep).GetCell(x, y, map).Letter == null;
+            return ((IStep) this).GetCell(x, y, map).Letter == null;
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace EP.Balda.Logic.Models
         /// <returns>returns true if allowed</returns>
         public bool IsAllowedCell(int x, int y, Map map)
         {
-            if (map != null && !(this as IStep).IsEmptyCell(x, y, map)) return false;
+            if (map != null && !((IStep) this).IsEmptyCell(x, y, map)) return false;
             var idx = GetIndexCell(x, y, map);
             var mapCapacity = map.Size * map.Size - 1;
 

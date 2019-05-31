@@ -16,16 +16,16 @@ namespace EP.Balda.Logic.Models
 
         public IStep GameFlow { get; set; }
 
-        public Initially(IStep gameFlow, Map map)
+        public Initially(Map map)
         {
-            GameFlow = gameFlow;
+            GameFlow = new Step();
             var initWord = GetStartingWord(map);
             PutStartingWordToMap(initWord, map);
         }
 
-        public Initially(IStep gameFlow)
+        internal Initially()
         {
-            GameFlow = gameFlow;
+            GameFlow = new Step();
         }
 
         #region Implementation of interfaces
@@ -69,7 +69,7 @@ namespace EP.Balda.Logic.Models
         /// </summary>
         /// <param name="word">Starting word</param>
         /// <param name="map">Game map</param>
-        private static void PutStartingWordToMap(string word, Map map)
+        public static void PutStartingWordToMap(string word, Map map)
         {
             var center = map.Size / 2;
             var charDestination = 0;
