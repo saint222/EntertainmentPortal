@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Bogus;
+using EP.WordsMaker.Data.Models;
 
 namespace EP.WordsMaker.Data
 {

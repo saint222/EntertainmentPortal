@@ -4,6 +4,7 @@ using System.Text;
 using EP.WordsMaker.Data;
 using EP.WordsMaker.Logic.Models;
 using AutoMapper;
+using EP.WordsMaker.Data.Models;
 
 namespace EP.WordsMaker.Logic.Profiles
 {
