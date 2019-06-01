@@ -11,7 +11,7 @@ namespace EP.DotsBoxes.Logic.Profiles
     {
         public GameBoardProfile()
         {
-            CreateMap<GameBoard, GameBoardDb>();
+            CreateMap<GameBoardDb, GameBoard>();
         }
     }
 }

@@ -28,11 +28,12 @@ namespace EP.DotsBoxes.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Players collection is empty")]
         public async Task<IActionResult> GetAllPlayersAsync()
         {
-            var result = await _mediator.Send(new GetAllPlayers());
+            var result = await _mediator.Send(new GetAllPlayers()).ConfigureAwait(false);
             return result.Any() ? (IActionResult)Ok(result) : NotFound();
 
         }
 
+        // POST api/players
         [HttpPost("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Added new player")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]

@@ -4,28 +4,33 @@ using System.Text;
 using System.Threading;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EP.DotsBoxes.Data;
+using EP.DotsBoxes.Data.Context;
 using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.DotsBoxes.Logic.Handlers
 {
-    public class GetGameBoardHandler : IRequestHandler<GetGameBoard, int[,]>
+    public class GetGameBoardHandler : IRequestHandler<GetGameBoard, IEnumerable<GameBoard>>
     {
-        private GameBoardData _item;
+        private readonly IMapper _mapper;
+        private readonly GameBoardDbContext _context;
 
-        public GetGameBoardHandler(GameBoardData gameBoard)
+        public GetGameBoardHandler(IMapper mapper, GameBoardDbContext context)
         {
-            _item = gameBoard;
+            _mapper = mapper;
+            _context = context;
         }
 
-        public Task<int[,]> Handle(GetGameBoard request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GameBoard>> Handle(GetGameBoard request, CancellationToken cancellationToken)
         {
-            var result = _item.Get;
-              
-            return Task.FromResult(result);
+            return await _context.GameBoard
+                 .Select(b => _mapper.Map<GameBoard>(b))
+                 .ToArrayAsync(cancellationToken)
+                 .ConfigureAwait(false);
         }
-
     }
 }

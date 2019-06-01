@@ -10,6 +10,13 @@ namespace EP.DotsBoxes.Data
         {
             services.AddDbContext<PlayerDbContext>(
                 opt => opt.UseSqlite("Data Source=player.db"));
+           return services;
+        }
+
+        public static IServiceCollection CreateGameBoardData(this IServiceCollection services)
+        {
+           services.AddDbContext<GameBoardDbContext>(
+                opt => opt.UseSqlite("Data Source=gameboard.db"));
             return services;
         }
     }

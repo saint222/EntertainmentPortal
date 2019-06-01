@@ -6,7 +6,7 @@ using MediatR;
 
 namespace EP.DotsBoxes.Logic.Queries
 {
-    public class GetGameBoard : IRequest<int[,]>
+    public class GetGameBoard : IRequest<IEnumerable<GameBoard>>
     {
     }
 }

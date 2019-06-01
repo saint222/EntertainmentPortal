@@ -34,6 +34,7 @@ namespace EP.DotsBoxes.Web
                 cfg.AddProfile(new GameBoardProfile());
             });
             services.AddPlayerServices();
+            services.CreateGameBoardServices();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

@@ -7,19 +7,26 @@
     public class GameBoardDb
     {
         /// <summary>
-        /// Row property.
+        /// Id property.
+        /// </summary>
+        /// <value>
+        /// A value represents unique game board's Id.
+        /// </value>
+        public int Id { get; set; }
+        /// <summary>
+        /// Rows property.
         /// </summary>
         /// <value>
         /// The value represents the row of the playing field.
         /// </value>
-        public int Row { get; set; }
+        public int Rows { get; set; }
 
         /// <summary>
-        /// Column property.
+        /// Columns property.
         /// </summary>
         /// <value>
         /// The value represents the column of the playing field.
         /// </value>
-        public int Column { get; set; }
+        public int Columns { get; set; }
     }
 }

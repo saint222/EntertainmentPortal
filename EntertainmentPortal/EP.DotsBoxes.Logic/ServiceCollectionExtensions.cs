@@ -12,7 +12,12 @@ namespace EP.DotsBoxes.Logic
         {
             services.AddPlayerData();
             return services;
+        }
 
+        public static IServiceCollection CreateGameBoardServices(this IServiceCollection services)
+        {
+            services.CreateGameBoardData();
+            return services;
         }
     }
 }
