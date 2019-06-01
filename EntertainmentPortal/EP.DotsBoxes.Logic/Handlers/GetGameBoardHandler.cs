@@ -13,19 +13,18 @@ namespace EP.DotsBoxes.Logic.Handlers
 {
     public class GetGameBoardHandler : IRequestHandler<GetGameBoard, int[,]>
     {
-        private GameBoardData _boardData;
+        private GameBoardData _item;
 
         public GetGameBoardHandler(GameBoardData gameBoard)
         {
-            _boardData = gameBoard;
+            _item = gameBoard;
         }
 
         public Task<int[,]> Handle(GetGameBoard request, CancellationToken cancellationToken)
         {
-            var gameBoardArray = _boardData.GetGameBoard;
-               
-
-            return Task.FromResult((int[,])gameBoardArray);
+            var result = _item.Get;
+              
+            return Task.FromResult(result);
         }
 
     }

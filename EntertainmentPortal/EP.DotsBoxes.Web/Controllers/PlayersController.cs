@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using EP.DotsBoxes.Logic.Commands;
 using EP.DotsBoxes.Logic.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,21 @@ namespace EP.DotsBoxes.Web.Controllers
             var result = await _mediator.Send(new GetAllPlayers());
             return result.Any() ? (IActionResult)Ok(result) : NotFound();
 
+        }
+
+        [HttpPost("api/players")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Added new player")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> AddPlayerAsync([FromBody]Player model)
+        {
+            var result = await _mediator.Send(new AddNewPlayerCommand
+            {
+                Name = model.Name,
+                Color = model.Color,
+                Score = model.Score
+            });
+
+            return Ok(result);
         }
     }
 }

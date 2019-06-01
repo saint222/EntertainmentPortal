@@ -1,9 +1,9 @@
-﻿// Filename: Player.cs
+﻿// Filename: Players.cs
 namespace EP.DotsBoxes.Logic.Models
 {
     /// <summary>
-    /// The model <c>Player</c> class.
-    /// Represents a Player.
+    /// The model <c>Players</c> class.
+    /// Represents a Players.
     /// </summary>
     public class Player
     {

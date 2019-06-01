@@ -8,7 +8,7 @@ namespace EP.DotsBoxes.Logic.Models
     /// <remarks>
     /// Assigned values ​​32-bit signed integer.
     /// </remarks>
-    enum Box
+    public enum Box
     {
         None = 0,
         Top = 1,

@@ -4,7 +4,7 @@ namespace EP.DotsBoxes.Data.Models
 {
     /// <summary>
     /// The model <c>PlayerDb</c> class.
-    /// Represents a Player.
+    /// Represents a Players.
     /// </summary>
     public class PlayerDb
     {

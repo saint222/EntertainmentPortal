@@ -7,13 +7,13 @@ using EP.DotsBoxes.Data.Models;
 namespace EP.DotsBoxes.Data
 {
     /// <summary>
-    /// The PlayerStatistics class creates and stores a list of players with all the data.
+    /// The PlayerStatistic class creates and stores a list of players with all the data.
     /// </summary>
-    public static class PlayerStatistics
+    public static class PlayerStatistic
     {
         private static Faker<PlayerDb> _faker = new Faker<PlayerDb>();
 
-        static PlayerStatistics()
+        static PlayerStatistic()
         {
             _faker.RuleFor(x => x.Id, f => f.IndexFaker)
                 .RuleFor(x => x.Name, f => f.Name.FirstName())
@@ -21,7 +21,7 @@ namespace EP.DotsBoxes.Data
                 .RuleFor(x => x.Score, f => f.Random.Int(0,30));
         }
 
-        public static List<PlayerDb> Players => _faker.Generate(30);
+        public static List<PlayerDb> Players => _faker.Generate(10);
     }
    
 }

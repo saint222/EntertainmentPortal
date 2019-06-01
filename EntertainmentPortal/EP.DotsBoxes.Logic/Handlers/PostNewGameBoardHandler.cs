@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using EP.DotsBoxes.Data;
+using EP.DotsBoxes.Data.Models;
 using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using MediatR;
@@ -12,11 +11,17 @@ namespace EP.DotsBoxes.Logic.Handlers
 {
     public class PostNewGameBoardHandler : IRequestHandler<PostNewGameBoard, int[,]>
     {
-        private GameBoardData _gameBoardData;
+        private GameBoardData _item;
+        private readonly IMapper _mapper;
 
-        public PostNewGameBoardHandler(GameBoardData gameGameBoard)
+        public PostNewGameBoardHandler(IMapper mapper)
         {
-            _gameBoardData = gameGameBoard;
+            _mapper = mapper;
+        }
+
+        public PostNewGameBoardHandler(GameBoardData gameBoard)
+        {
+            _item = gameBoard;
         }
 
         public Task<int[,]> Handle(PostNewGameBoard request, CancellationToken cancellationToken)
@@ -27,9 +32,9 @@ namespace EP.DotsBoxes.Logic.Handlers
                 Column = request.Columns
             };
 
-            _gameBoardData.Save(new int[gameBoard.Row,gameBoard.Column]);
-            return Task.FromResult(_gameBoardData.GetGameBoard);
+            var gameBoardDb = _mapper.Map<GameBoardDb>(gameBoard);
+           
+            return Task.FromResult(_item.Create(gameBoardDb));
         }
-
     }
 }

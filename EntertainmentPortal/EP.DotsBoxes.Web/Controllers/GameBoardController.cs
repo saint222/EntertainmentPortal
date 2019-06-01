@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
 using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
@@ -28,7 +25,7 @@ namespace EP.DotsBoxes.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Array is null")]
         public async Task<IActionResult> GetGameBoardAsync()
         {
-            var result = await _mediator.Send<int[,]>(new GetGameBoard());
+            var result = await _mediator.Send(new GetGameBoard());
             return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
@@ -38,8 +35,8 @@ namespace EP.DotsBoxes.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> PostNewGameBoardAsync([FromBody]GameBoard gameBoard)
         {
-            var result = await _mediator.Send<int[,]>(new PostNewGameBoard(gameBoard));
-            return result != null ? (IActionResult)Ok(result) : NotFound();
+            var result = await _mediator.Send(new PostNewGameBoard(gameBoard));
+            return Ok(result);
         }     
     }
 }
