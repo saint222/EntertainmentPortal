@@ -1,5 +1,4 @@
 ﻿using System;
-// Filename: PlayerDb.cs
 namespace EP.DotsBoxes.Data.Models
 {
     /// <summary>

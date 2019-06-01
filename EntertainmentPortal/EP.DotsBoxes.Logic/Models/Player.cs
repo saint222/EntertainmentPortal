@@ -1,5 +1,4 @@
-﻿// Filename: Players.cs
-namespace EP.DotsBoxes.Logic.Models
+﻿namespace EP.DotsBoxes.Logic.Models
 {
     /// <summary>
     /// The model <c>Players</c> class.

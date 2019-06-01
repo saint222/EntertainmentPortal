@@ -1,5 +1,4 @@
-﻿// Filename: GameBoardDb.cs
-namespace EP.DotsBoxes.Data.Models
+﻿namespace EP.DotsBoxes.Data.Models
 {
     /// <summary>
     /// The model <c>GameBoardDb</c> class.

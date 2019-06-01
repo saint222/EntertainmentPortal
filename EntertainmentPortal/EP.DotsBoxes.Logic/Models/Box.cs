@@ -1,5 +1,4 @@
-﻿// Filename: Box.cs
-namespace EP.DotsBoxes.Logic.Models
+﻿namespace EP.DotsBoxes.Logic.Models
 {
     /// <summary>
     /// The model <c>Box</c> enum.
