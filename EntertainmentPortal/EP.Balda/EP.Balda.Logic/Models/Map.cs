@@ -31,26 +31,7 @@ namespace EP.Balda.Logic.Models
             Size = size;
             Fields = InitMap(size);
         }
-
-        /// <summary>
-        /// The method initializes array of cells that represents the game map.
-        /// </summary>
-        /// <param name="size">
-        /// Parameter size requires an integer argument.
-        /// </param>
-        public Cell[,] InitMap(int size)
-        {
-            Cell[,] fields = new Cell[size, size];
-            for (var i = 0; i < size; i++)     // lines
-                for (var j = 0; j < size; j++) // column letters
-                {
-                    var cell = new Cell(i, j) { Letter = null };
-                    fields[i, j] = cell;
-                }
-
-            return fields;
-        }
-
+        
         /// <summary>
         /// The method returns the cell from game map by the given coordinates.
         /// </summary>
@@ -164,11 +145,30 @@ namespace EP.Balda.Logic.Models
         /// </summary>
         /// <param name="words">Parameter requires IEnumerable of Cell argument.</param>
         /// <returns>The method returns word from the game map.</returns>
-        public string GetSelectedWord(IEnumerable<Cell> words)
+        public string GetSelectedWord(List<Cell> words)
         {
             var word = "";
             foreach (var cell in words) word += cell.Letter;
             return word;
+        }
+
+        /// <summary>
+        /// The method initializes array of cells that represents the game map.
+        /// </summary>
+        /// <param name="size">
+        /// Parameter size requires an integer argument.
+        /// </param>
+        private Cell[,] InitMap(int size)
+        {
+            Cell[,] fields = new Cell[size, size];
+            for (var i = 0; i < size; i++)     // lines
+                for (var j = 0; j < size; j++) // column letters
+                {
+                    var cell = new Cell(i, j) { Letter = null };
+                    fields[i, j] = cell;
+                }
+
+            return fields;
         }
     }
 }
