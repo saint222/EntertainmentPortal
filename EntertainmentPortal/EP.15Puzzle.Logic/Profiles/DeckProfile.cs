@@ -10,7 +10,7 @@ namespace EP._15Puzzle.Logic.Profiles
     {
         public DeckProfile()
         {
-            CreateMap<DeckDB, Deck>().ReverseMap();
+            CreateMap<DeckDb, Deck>().ReverseMap();
         }
     }
 }

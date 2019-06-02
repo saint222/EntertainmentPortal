@@ -8,9 +8,9 @@ namespace EP._15Puzzle.Data
 {
     public static class DeckRepository
     {
-        private static List<DeckDB> _decks = new List<DeckDB>()
+        private static List<DeckDb> _decks = new List<DeckDb>()
         {
-            new DeckDB()
+            new DeckDb()
             {
                 Score = 0,
                 Tiles = new List<int>() {16, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
@@ -18,18 +18,18 @@ namespace EP._15Puzzle.Data
                 Victory = false
             }
         };
-        public static DeckDB Get(int id)
+        public static DeckDb Get(int id)
         {
             return _decks.First(d => d.UserId == id);
         }
 
-        public static DeckDB Create(DeckDB deck)
+        public static DeckDb Create(DeckDb deck)
         {
             _decks.Add(deck);
             return deck;
         }
 
-        public static DeckDB Update(DeckDB deck)
+        public static DeckDb Update(DeckDb deck)
         {
             var gameDeck = _decks.First(d => d.UserId == deck.UserId);
             gameDeck.Tiles = deck.Tiles;
@@ -37,7 +37,7 @@ namespace EP._15Puzzle.Data
             gameDeck.Victory = deck.Victory;
             return deck;
         }
-        public static void Delete(DeckDB deck)
+        public static void Delete(DeckDb deck)
         {
             _decks.Remove(deck);
         }

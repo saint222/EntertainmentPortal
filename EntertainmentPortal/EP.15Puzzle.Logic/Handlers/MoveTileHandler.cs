@@ -60,7 +60,7 @@ namespace EP._15Puzzle.Logic.Handlers
             return false;
         }
 
-        private bool CheckWin(DeckDB deck)
+        private bool CheckWin(DeckDb deck)
         {
             for (int i = 1; i < deck.Tiles.Count; i++)
             {

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+
 using EP._15Puzzle.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -14,6 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using EP._15Puzzle.Logic.Profiles;
+using EP._15Puzzle.Logic;
+using EP._15Puzzle.Logic.Commands;
 
 namespace EP._15Puzzle.Web
 {
@@ -34,17 +37,18 @@ namespace EP._15Puzzle.Web
             services.AddMediatR(typeof(GetDeck).Assembly);
             services.AddSwaggerDocument();
             services.AddAutoMapper(cfg => cfg.AddProfile(new DeckProfile()));
+            services.AddDeckServices();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();
         }

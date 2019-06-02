@@ -19,7 +19,7 @@ namespace Tests
         public void Test_Get_Deck_With_Id_0()
         {
             var actual = DeckRepository.Get(0);
-            var expected = new DeckDB()
+            var expected = new DeckDb()
             {
                 UserId = 0,
                 Score = 0,
@@ -33,14 +33,14 @@ namespace Tests
         [Test]
         public void Test_Create_Deck_With_Id_1()
         {
-            var expected = new DeckDB()
+            var expected = new DeckDb()
             {
                 UserId = 1,
                 Score = 5,
                 Victory = false,
                 Tiles = new List<int>() { 15, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16 }
             };
-            var newDeck = new DeckDB()
+            var newDeck = new DeckDb()
             {
                 UserId = 1,
                 Score = 5,
@@ -53,14 +53,14 @@ namespace Tests
         [Test]
         public void Test_Update_Deck_With_Id_0()
         {
-            var expected = new DeckDB()
+            var expected = new DeckDb()
             {
                 UserId = 0,
                 Score = 5,
                 Victory = false,
                 Tiles = new List<int>() { 15, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16 }
             };
-            var updateDeck = new DeckDB()
+            var updateDeck = new DeckDb()
             {
                 UserId = 0,
                 Score = 5,
@@ -73,7 +73,7 @@ namespace Tests
 
         [Test] public void Test_Delete_Deck_With_Id_5()
         {
-            var newDeck = new DeckDB()
+            var newDeck = new DeckDb()
             {
                 UserId = 5,
                 Score = 5,
@@ -85,7 +85,7 @@ namespace Tests
             Assert.Throws<InvalidOperationException>(()=>DeckRepository.Get(newDeck.UserId));
         }
 
-        private bool Equals(DeckDB  expected, DeckDB actual)
+        private bool Equals(DeckDb expected, DeckDb actual)
         {
             return (expected.UserId == actual.UserId &&
                     expected.Score == actual.Score &&

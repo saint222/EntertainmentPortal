@@ -4,8 +4,10 @@ using System.Text;
 
 namespace EP._15Puzzle.Data.Models
 {
-    public class DeckDB
+    public class DeckDb
     {
+        public int Id { get; set; }
+
         /// <summary>
         /// UserId property
         /// </summary>
