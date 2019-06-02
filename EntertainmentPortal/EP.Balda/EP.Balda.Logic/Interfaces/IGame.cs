@@ -9,11 +9,6 @@ namespace EP.Balda.Logic.Interfaces
     public interface IGame
     {
         /// <summary>
-        /// The method initializes array of cells that represents the game map.
-        /// </summary>
-        Cell[,] InitMap(int size);
-
-        /// <summary>
         /// The method checks that all received letters in the form of a cells, 
         /// comply with the rules of the game on making words.
         /// </summary>
@@ -22,6 +17,6 @@ namespace EP.Balda.Logic.Interfaces
         /// <summary>
         /// The method returns the word from the game map according to the transmitted list of cells.
         /// </summary>
-        string GetSelectedWord(IEnumerable<Cell> cells);
+        string GetSelectedWord(List<Cell> cells);
     }
 }

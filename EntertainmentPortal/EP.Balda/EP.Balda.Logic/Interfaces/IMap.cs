@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using EP.Balda.Logic.Models;
+﻿using EP.Balda.Logic.Models;
 
 namespace EP.Balda.Logic.Interfaces
 {
@@ -12,7 +11,7 @@ namespace EP.Balda.Logic.Interfaces
         /// Size property. Stores the size of playing field.
         /// </summary>
         int Size { get; }
-
+        
         /// <summary>
         /// Returns the cell by the given coordinates X and Y.
         /// </summary>
