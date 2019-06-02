@@ -24,10 +24,10 @@ namespace EP.Hangman.Logic.Handlers
         }
         public async Task<UserGameData> Handle(CheckLetterCommand request, CancellationToken cancellationToken)
         {
-            var session = await _context.Games.FindAsync(request.Id, cancellationToken);
+            var session = await _context.Games.FindAsync(request.Id);
             var result = new HangmanGame(session).Play(request.Letter);
             _context.Games.Update(result);
-            await _context.SaveChangesAsync(cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
             return _mapper.Map<GameDb, UserGameData>(result);
         }
     }

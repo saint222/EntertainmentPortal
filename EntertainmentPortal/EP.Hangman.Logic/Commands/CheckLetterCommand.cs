@@ -11,7 +11,7 @@ namespace EP.Hangman.Logic.Commands
         public CheckLetterCommand(string ID, string letter)
         {
             Id = Convert.ToInt64(ID);
-            Letter = letter;
+            Letter = letter.ToUpper();
         }
 
         public Int64 Id { get; set; }

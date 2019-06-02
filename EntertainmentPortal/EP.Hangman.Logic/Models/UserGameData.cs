@@ -12,7 +12,7 @@ namespace EP.Hangman.Logic.Models
         /// <summary>
         /// Property stores User's ID
         /// </summary>
-        public int Id { get; set; }
+        public Int64 Id { get; set; }
 
         /// <summary>
         /// Property stores guessed letters

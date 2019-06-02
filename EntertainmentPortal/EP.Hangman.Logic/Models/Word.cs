@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Bogus;
+using Bogus.DataSets;
 using EP.Hangman.Data;
 
 
@@ -13,22 +14,17 @@ namespace EP.Hangman.Logic.Models
     public class Word
     {
         /// <summary>
-        /// Faker's property
+        /// Property stores random words 
         /// </summary>
-        private Faker<string> _faker = new Faker<string>();
+        private string[] AllWords;
 
         /// <summary>
         /// Faker's settings
         /// </summary>
         public Word()
         {
-            _faker.RuleFor(prop => prop, set => set.Lorem.Word());
+            AllWords = new Lorem().Words(15);
         }
-
-        /// <summary>
-        /// Property stores random words 
-        /// </summary>
-        private List<string> AllWords => _faker.Generate(15);
 
         /// <summary>
         /// Method select one word from List of words (Use random)
@@ -36,7 +32,7 @@ namespace EP.Hangman.Logic.Models
         /// <returns>One word</returns>
         public string GetNewWord()
         {
-            return AllWords[new Random().Next(0, AllWords.Count)];
+            return AllWords[new Random().Next(0, AllWords.Length)].ToUpper();
         }
     }
 }

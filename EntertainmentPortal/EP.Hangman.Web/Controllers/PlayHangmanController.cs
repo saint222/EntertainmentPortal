@@ -46,24 +46,14 @@ namespace EP.Hangman.Web.Controllers
             return result != null ? (IActionResult)Ok(result) : BadRequest();
         }
 
-        //PUT: api/PlayHangman/{letter}
-        [HttpPut("{ID}, {letter}")]
+        //PUT: api/PlayHangman/{Id}
+        [HttpPut("{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(UserGameData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Data didn't update")]
-        public async Task<IActionResult> CheckLetterAsync(string id, string letter) 
+        public async Task<IActionResult> CheckLetterAsync(string id, [FromBody]string letter) 
         {
             var result = await _mediator.Send(new CheckLetterCommand(id, letter));
             return result != null ? (IActionResult)Ok(result) : BadRequest();
         }
-
-        //PUT: api/PlayHangman
-        //[HttpPut]
-        //[SwaggerResponse(HttpStatusCode.OK, typeof(UserGameData), Description = "Cool")]
-        //[SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Data didn't update")]
-        //public async Task<IActionResult> CheckLetterFromBodyAsync([FromBody]string id, string letter)
-        //{
-        //    var result = await _mediator.Send(new CheckLetterCommand(id, letter));
-        //    return result != null ? (IActionResult)Ok(result) : BadRequest();
-        //}
     }
 }

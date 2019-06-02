@@ -27,7 +27,7 @@ namespace EP.Hangman.Logic.Handlers
 
         public async Task<UserGameData> Handle(GetUserSession request, CancellationToken cancellationToken)
         {
-            return _mapper.Map<GameDb, UserGameData>(await _context.Games.FindAsync(request.Id, cancellationToken).ConfigureAwait(false));
+            return _mapper.Map<GameDb, UserGameData>(await _context.Games.FindAsync(request.Id));
         }
     }
 }
