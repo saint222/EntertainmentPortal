@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
@@ -21,7 +22,7 @@ namespace EP.Sudoku.Web.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("api/players")]
+        [HttpGet("api/players")] // not fifed, temp list is used
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Players collection is empty")]
         public async Task<IActionResult> GetAllPlayerAsync()
@@ -31,7 +32,7 @@ namespace EP.Sudoku.Web.Controllers
         }
 
         [HttpPost("api/players")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(/*Player*/void), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> CreatePlayer([FromBody]Player model)
         {
@@ -39,12 +40,12 @@ namespace EP.Sudoku.Web.Controllers
             {
                 return BadRequest();
             }            
-            var player = await _mediator.Send(new CreatePlayer(model));
-            return (IActionResult)Ok(/*player*/); // is it necessary to return something?
+            var player = await _mediator.Send(new CreatePlayerCommand(model));
+            return true ? (IActionResult)Ok() : NotFound();
         }
 
-        [HttpDelete("api/players")]        
-        public async Task<IActionResult> DeletePlayer([FromBody]int id)
+        [HttpDelete("api/players")]     // not fixed   
+        public async Task<IActionResult> DeletePlayer(int id)
         {
             if (id <= 0)
             {
