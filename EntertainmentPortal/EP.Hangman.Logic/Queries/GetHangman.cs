@@ -8,7 +8,7 @@ using EP.Hagman.Logic.Interfaces;
 
 namespace EP.Hangman.Logic.Queries
 {
-    public class GetHangman : IRequest<HangmanTemporaryData>
+    public class GetHangman : IRequest<HangmanDataResponse>
     {
     }
 }

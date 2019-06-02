@@ -7,19 +7,21 @@ namespace EP._15Puzzle.Logic.Models
     public class Tile
     {
         /// <summary>
-        /// PosX describes tile column on 4x4 deck
+        /// PosX property
         /// </summary>
+        /// <value>Represents a horizontal position on deck</value>
         public int PosX { get; set; }
 
         /// <summary>
-        /// PosY describes tile row on 4x4 deck
+        /// PosY property
         /// </summary>
+        /// <value>Represents a vertical position on deck</value>
         public int PosY { get; set; }
 
         /// <summary>
-        /// PosX and PosY describes tile position on 4x4 deck
+        /// Tile constructor
         /// </summary>
-        /// <param name="pos">current position [1...16]</param>
+        /// <param name="pos">Number of current position on deck</param>
         public Tile(int pos)
         {
             

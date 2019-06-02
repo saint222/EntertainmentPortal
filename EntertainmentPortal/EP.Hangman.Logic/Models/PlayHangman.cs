@@ -7,23 +7,46 @@ using EP.Hagman.Logic.Interfaces;
 
 namespace EP.Hangman.Logic.Models
 {
+    /// <summary>
+    /// Basic Hangman's logic
+    /// </summary>
     public class PlayHangman
     {
+        /// <summary>
+        /// The field is temporary data storage.
+        /// </summary>
         private HangmanTemporaryData _data;
+        /// <summary>
+        /// The field stores letter which entered by user
+        /// </summary>
         private string _enteredLetter;
+        /// <summary>
+        /// The field stores quantity of user's attempts
+        /// </summary>
         private const int ATTEMPTS = 6;
+
+        public PlayHangman(HangmanTemporaryData data)
+        {
+            _data = data;
+        }
 
         public PlayHangman(HangmanTemporaryData data, string enteredLetter)
         {
             _data = data;
             _enteredLetter = enteredLetter;
         }
-
+        /// <summary>
+        /// Property stores number of user's attempts that he can use yet. 
+        /// </summary>
+        
         public int UserAttempts
         {
             get { return ATTEMPTS - _data.temp.UserAttempts; }
         }
-
+        /// <summary>
+        /// Game's basic logic
+        /// </summary>
+        /// <returns>Returned HangmanTemporaryData object or NULL</returns>
         public HangmanTemporaryData PlayGame()
         {
 

@@ -1,22 +1,23 @@
 ﻿using EP.Balda.Logic.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Balda.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiController]
     public class CellController : Controller
     {
         [HttpGet]
-        public IActionResult Get(int x, int y)
+        public IActionResult GetCell(int x, int y)
         {
             var cell = new Cell(x, y);
             return Ok(cell.Letter);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] int x, int y, char letter)
+        public IActionResult PostCell([FromBody] int x, int y, char letter)
         {
-            var cell = new Cell(x, y) {Letter = letter};
+            var cell = new Cell(x, y) { Letter = letter };
             return Ok(cell);
         }
     }

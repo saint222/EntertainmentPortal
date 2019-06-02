@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using EP.Hagman.Data.Models;
 using MediatR;
 using EP.Hangman.Logic.Models;
@@ -14,17 +15,21 @@ using EP.Hagman.Logic.Interfaces;
 
 namespace EP.Hangman.Logic.Handlers
 {
-    public class GetHangmanHandler : IRequestHandler<GetHangman, HangmanTemporaryData>
+    public class GetHangmanHandler : IRequestHandler<GetHangman, HangmanDataResponse>
     {
         private  HangmanTemporaryData _item;
-        public GetHangmanHandler( HangmanTemporaryData item)
+        private IMapper _mapper;
+        public GetHangmanHandler(HangmanTemporaryData item, IMapper mapper)
         {
             _item = item;
+            _mapper = mapper;
         }
 
-        public Task< HangmanTemporaryData> Handle(GetHangman request, CancellationToken cancellationToken)
+        public Task<HangmanDataResponse> Handle(GetHangman request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_item);
+            var repository = new Repository();
+
+            return Task.FromResult(_mapper.Map<HangmanTemporaryData, HangmanDataResponse>(repository.Select(_item)));
         }
     }
 }

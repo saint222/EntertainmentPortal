@@ -12,6 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MediatR;
+using NJsonSchema;
+using AutoMapper;
+using EP.Hangman.Logic.Profiles;
 
 namespace EP.Hangman.Web
 {
@@ -27,11 +30,11 @@ namespace EP.Hangman.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(GetHangman).Assembly);
-            services.AddMediatR(typeof(PutHangman).Assembly);
-            services.AddMediatR(typeof(PostHangman).Assembly);
-            services.AddMediatR(typeof(GetAllWords).Assembly);
-            services.AddMediatR(typeof(SetWord).Assembly);
+            services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
+            services.AddMediatR(typeof(GetHangman));
+            services.AddMediatR(typeof(PutHangman));
+            services.AddMediatR(typeof(PostHangman));
+            services.AddAutoMapper(typeof(HangmanDataResponseProfile));
             services.AddSingleton(typeof(HangmanTemporaryData));
             services.AddSingleton(typeof(HangmanWordsData));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -45,6 +48,7 @@ namespace EP.Hangman.Web
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();
         }
     }

@@ -9,8 +9,7 @@ namespace EP.Balda.Web.Controllers
         [HttpGet]
         public IActionResult Get([FromBody] Player player1, Player player2, char[] word)
         {
-            var game = new Game(player1, player2, word);
-            return Ok(game);
+            return Ok();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace EP.Balda.Web.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(long id)
         {
-            var player = new Player {Id = id};
+            var player = new Player { Id = id };
             return Ok(player);
         }
 
@@ -26,16 +26,16 @@ namespace EP.Balda.Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody] string name)
+        public IActionResult Put(long id, [FromBody] string nickName)
         {
-            var player = new Player {Id = id, Name = name};
+            var player = new Player { Id = id, NickName = nickName };
             return Ok();
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            var player = new Player {Id = id};
+            var player = new Player { Id = id };
             return Ok();
         }
     }
