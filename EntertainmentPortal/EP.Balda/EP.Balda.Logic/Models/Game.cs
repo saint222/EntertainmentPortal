@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using EP.Balda.Data.Contracts;
 using EP.Balda.Data.EntityFramework;
 using EP.Balda.Logic.Interfaces;
@@ -37,6 +36,21 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
+        /// The metod puts the starting word on the map.
+        /// </summary>
+        /// <param name="word">Parameter word requires string argument.</param>
+        public void PutStartingWordToMap(string word)
+        {
+            var center = Map.Size / 2;
+            var charDestination = 0;
+
+            word = word.Trim();
+            foreach (var letter in word)
+                Map.GetCell(center, charDestination++).Letter =
+                    letter;
+        }
+
+        /// <summary>
         /// The method gets the initial word. 
         /// </summary>
         private string GetStartingWord()
@@ -58,22 +72,6 @@ namespace EP.Balda.Logic.Models
             var rnd = new Random();
             var next = rnd.Next(0, size - 1);
             return next;
-        }
-
-
-        /// <summary>
-        /// The metod puts the starting word on the map.
-        /// </summary>
-        /// <param name="word">Parameter word requires string argument.</param>
-        public void PutStartingWordToMap(string word)
-        {
-            var center = Map.Size / 2;
-            var charDestination = 0;
-            
-            word = word.Trim();
-            foreach (var letter in word)
-                Map.GetCell(center, charDestination++).Letter =
-                    letter;
         }
     }
 }
