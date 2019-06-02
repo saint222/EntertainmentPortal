@@ -29,11 +29,11 @@ namespace EP.Hangman.Logic.Handlers
         {
             var item = new GameDb();
             item.PickedWord = new Word().GetNewWord().ToUpper();
-            item.AlphabetTempData = new Alphabets().EnglishAlphabet();
-            item.CorrectLettersTempData = new List<string>();
+            item.Alphabet = new Alphabets().EnglishAlphabet();
+            item.CorrectLetters = new List<string>();
             for (int i = 0; i < item.PickedWord.Length; i++)
             {
-                item.CorrectLettersTempData.Add("_");
+                item.CorrectLetters.Add("_");
             }
             item.UserErrors = 0;
 

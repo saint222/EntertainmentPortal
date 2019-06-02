@@ -33,12 +33,11 @@ namespace EP.Hangman.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
-            services.AddMediatR(typeof(GetHangman));
-            services.AddMediatR(typeof(PutHangman));
+            services.AddMediatR(typeof(GetUserSession));
+            services.AddMediatR(typeof(CheckLetterCommand));
             services.AddMediatR(typeof(CreateNewGameCommand));
             services.AddAutoMapper(typeof(UserGameDataProfile));
             services.AddGameServices();
-            //services.AddSingleton(typeof(HangmanWordsData));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

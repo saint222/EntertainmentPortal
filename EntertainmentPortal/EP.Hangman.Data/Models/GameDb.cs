@@ -17,35 +17,45 @@ namespace EP.Hangman.Data.Models
         /// Property stores user's ID
         /// </summary>
         public Int64 Id { get; set; }
+
         /// <summary>
         /// Property stores word which user will guess
         /// </summary>
         public string PickedWord { get; set; }
+
         /// <summary>
         /// Property stores number of user's attempts
         /// </summary>
         public int UserErrors { get; set; }
+
         /// <summary>
         /// Generic collection stores correct letters
         /// </summary>
         [NotMapped]
-        public List<string> CorrectLettersTempData { get; set; }
+        public List<string> CorrectLetters { get; set; }
+
         /// <summary>
         /// Property stores alphabet for game session.
         /// </summary>
         [NotMapped]
-        public List<string> AlphabetTempData { get; set; }
+        public List<string> Alphabet { get; set; }
 
-        public string CorrectLettersTempDataAsString
+        /// <summary>
+        /// Property saves data from CorrectLetters to Database
+        /// </summary>
+        public string CorrectLettersAsString
         {
-            get { return String.Join(',', CorrectLettersTempData); }
-            set { CorrectLettersTempData = value.Split(',').ToList(); }
+            get => String.Join(',', CorrectLetters);
+            set => CorrectLetters = value.Split(',').ToList();
         }
 
-        public string AlphabetTempDataTempDataAsString
+        /// <summary>
+        /// Property saves data from Alphabet to Database
+        /// </summary>
+        public string AlphabetAsString
         {
-            get { return String.Join(',', AlphabetTempData); }
-            set { AlphabetTempData = value.Split(',').ToList(); }
+            get => String.Join(',', Alphabet);
+            set => Alphabet = value.Split(',').ToList();
         }
     }
 }

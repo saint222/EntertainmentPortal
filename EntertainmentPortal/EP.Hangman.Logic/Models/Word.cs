@@ -16,10 +16,7 @@ namespace EP.Hangman.Logic.Models
         /// Faker's property
         /// </summary>
         private Faker<string> _faker = new Faker<string>();
-        /// <summary>
-        /// Property stores random words 
-        /// </summary>
-        private List<string> AllWords => _faker.Generate(15);
+
         /// <summary>
         /// Faker's settings
         /// </summary>
@@ -27,6 +24,12 @@ namespace EP.Hangman.Logic.Models
         {
             _faker.RuleFor(prop => prop, set => set.Lorem.Word());
         }
+
+        /// <summary>
+        /// Property stores random words 
+        /// </summary>
+        private List<string> AllWords => _faker.Generate(15);
+
         /// <summary>
         /// Method select one word from List of words (Use random)
         /// </summary>

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EP.Hangman.Data.Models;
+﻿using System.Collections.Generic;
 
-namespace EP.Hangman.Data
+namespace EP.Hangman.Logic.Models
 {
     /// <summary>
     /// It gives alphabet's data for game
@@ -15,9 +12,15 @@ namespace EP.Hangman.Data
             Alphabet = new List<string>();
         }
 
+        /// <summary>
+        /// Property stores alphabet
+        /// </summary>
         private List<string> Alphabet { get; set; }
 
-        //It's need if we'll use more than one language
+        /// <summary>
+        /// Method needs if we'll use more than one language
+        /// </summary>
+        /// <returns>English alphabet</returns>
         public List<string> EnglishAlphabet()
         {
             Alphabet.Clear();

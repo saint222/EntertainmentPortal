@@ -5,15 +5,16 @@ using EP.Hangman.Data;
 using MediatR;
 using EP.Hangman.Logic.Models;
 
+
 namespace EP.Hangman.Logic.Queries
 {
-    public class PutHangman : IRequest<UserGameData>
+    public class GetUserSession : IRequest<UserGameData>
     {
-        public PutHangman(string letter)
+        public GetUserSession(string ID)
         {
-            LetterToCheck = letter;
+            Id = Convert.ToInt64(ID);
         }
 
-        public string LetterToCheck { get; set; }
+        public Int64  Id { get; set; }
     }
 }

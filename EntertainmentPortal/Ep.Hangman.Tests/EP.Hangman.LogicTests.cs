@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using EP.Hangman.Data;
+using EP.Hangman.Data.Models;
 using EP.Hangman.Logic.Models;
 
 namespace EP.Hangman.Logic.Tests
@@ -35,33 +36,17 @@ namespace EP.Hangman.Logic.Tests
     public class PlayHangmanTests
     {
         GameDb newData;
-        HangmanTemporaryData newHangmanData;
 
         [SetUp]
         public void Setup()
         {
             newData = new GameDb();
-            newHangmanData = new HangmanTemporaryData();
-
         }
 
         [TearDown]
         public void AfterTests()
         {
             newData = null;
-            newHangmanData = null;
-        }
-
-        [Test]
-        [TestCase(0, ExpectedResult = 6)]
-        [TestCase(6, ExpectedResult = 0)]
-        [TestCase(2, ExpectedResult = 4)]
-        public int TestCorrectCalculatingOfUserAttempts(int x)
-        {
-            // todo: make ctor without letter
-            newData.UserAttempts = x;
-            newHangmanData.temp = newData;
-            return new PlayHangman(newHangmanData).UserAttempts;
         }
 
         [Test]
@@ -69,13 +54,12 @@ namespace EP.Hangman.Logic.Tests
         [TestCase(2, ExpectedResult = 3)]
         public int TextCorrectIncrementOfAttemptsOnWrongLetter(int x)
         {
-            newData.UserAttempts = x;
+            newData.UserErrors = x;
             newData.PickedWord = "OMG";
-            newData.AlphabetTempData = new Alphabets().EnglishAlphabet();
-            newData.CorrectLettersTempData = new List<string> {"_", "_", "_"};
-            newHangmanData.temp = newData;
+            newData.Alphabet = new Alphabets().EnglishAlphabet();
+            newData.CorrectLetters = new List<string> {"_", "_", "_"};
 
-            return new PlayHangman(newHangmanData, "A").PlayGame().temp.UserAttempts;
+            return new HangmanGame(newData).Play("A").UserErrors;
         }
 
         [Test]
@@ -83,20 +67,19 @@ namespace EP.Hangman.Logic.Tests
         [TestCase("G", 2)]
         public void TextCorrectReplaceOnCorrectLetter(string letter, int position)
         {
-            newData.UserAttempts = 0;
+            newData.UserErrors = 0;
             newData.PickedWord = "OMG";
-            newData.AlphabetTempData = new Alphabets().EnglishAlphabet();
-            newData.CorrectLettersTempData = new List<string> { "_", "_", "_" };
-            newHangmanData.temp = newData;
-            Assert.AreEqual(letter, new PlayHangman(newHangmanData, letter).PlayGame().temp.CorrectLettersTempData[position]);
+            newData.Alphabet = new Alphabets().EnglishAlphabet();
+            newData.CorrectLetters = new List<string> { "_", "_", "_" };
+
+            Assert.AreEqual(letter, new HangmanGame(newData).Play(letter).CorrectLetters[position]);
         }
 
         [Test]
         public void TestNoMoreAttempts()
         {
-            newData.UserAttempts = 6;
-            newHangmanData.temp = newData;
-            Assert.IsNull(new PlayHangman(newHangmanData).PlayGame());
+            newData.UserErrors = 6;
+            Assert.IsNull(new Models.HangmanGame(newData).Play("A"));
         }
 
         [Test]
@@ -104,12 +87,12 @@ namespace EP.Hangman.Logic.Tests
         [TestCase("C")]
         public void TestDeleteLetterFromAlphabet(string letter)
         {
-            newData.UserAttempts = 0;
+            newData.UserErrors = 0;
             newData.PickedWord = "YES";
-            newData.AlphabetTempData = new Alphabets().EnglishAlphabet();
-            newData.CorrectLettersTempData = new List<string> { "_", "_", "_" };
-            newHangmanData.temp = newData;
-            Assert.False(new PlayHangman(newHangmanData, letter).PlayGame().temp.AlphabetTempData.Contains(letter));
+            newData.Alphabet = new Alphabets().EnglishAlphabet();
+            newData.CorrectLetters = new List<string> { "_", "_", "_" };
+
+            Assert.False(new HangmanGame(newData).Play(letter).Alphabet.Contains(letter));
         }
     }
 }

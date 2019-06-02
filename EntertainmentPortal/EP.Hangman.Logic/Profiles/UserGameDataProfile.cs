@@ -11,9 +11,9 @@ namespace EP.Hangman.Logic.Profiles
         {
             CreateMap<GameDb, UserGameData>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.CorrectLettersTempData, opt => opt.MapFrom(src => (IEnumerable<string>) src.CorrectLettersTempData))
+                .ForMember(dest => dest.CorrectLettersTempData, opt => opt.MapFrom(src => (IEnumerable<string>) src.CorrectLetters))
                 .ForMember(dest=> dest.UserErrors, opt => opt.MapFrom(src => src.UserErrors))
-                .ForMember(dest=> dest.AlphabetTempData, opt => opt.MapFrom(src => (IEnumerable<string>) src.AlphabetTempData));
+                .ForMember(dest=> dest.AlphabetTempData, opt => opt.MapFrom(src => (IEnumerable<string>) src.Alphabet));
         }
     }
 }
