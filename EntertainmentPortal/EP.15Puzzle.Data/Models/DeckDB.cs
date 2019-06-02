@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Text;
 
 namespace EP._15Puzzle.Data.Models
@@ -26,14 +28,21 @@ namespace EP._15Puzzle.Data.Models
         /// <value>Flag represents winning state of deck</value>
         public bool Victory { get; set; }
 
+        private string _tiles { get; set; }
+
         /// <summary>
         /// Tiles property
         /// </summary>
         /// <remarks>
         ///Tiles[0] represents empty tile
         /// </remarks>
-        /// <value>Represents a list with positions as tile numbers and values as their relevant positions on deck</value>
-        public List<int> Tiles { get; set; }
+        /// <value>Represents a string with positions as tile numbers and values as their relevant positions on deck</value>
+        [NotMapped]
+        public List<int> Tiles
+        {
+            get { return _tiles.Split('|').Select(s => int.Parse(s)).ToList(); }
+            set { _tiles = string.Join('|', value); }
+        }
         
     }
 }

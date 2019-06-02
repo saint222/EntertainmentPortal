@@ -25,8 +25,8 @@ namespace EP._15Puzzle.Logic.Handlers
         {
             var deck  = DeckRepository.Get(request.Id);
             var tiles = deck.Tiles;
-            var tile = new Tile(tiles[request.Tile]);
-            var tile0 = new Tile(tiles[0]);
+            var tile = new Models.Tile(tiles[request.Tile]);
+            var tile0 = new Models.Tile(tiles[0]);
             if (ComparePositions(tile, tile0))
             {
                 var temp = deck.Tiles[0];
@@ -48,7 +48,7 @@ namespace EP._15Puzzle.Logic.Handlers
         /// <param name="tile">position of selected tile</param>
         /// <param name="tile0">position of empty place</param>
         /// <returns>true - swap is possible, tiles are touching in one row or column</returns>
-        private bool ComparePositions(Tile tile, Tile tile0)
+        private bool ComparePositions(Models.Tile tile, Models.Tile tile0)
         {
             if (tile.PosX == tile0.PosX || tile.PosY == tile0.PosY)
             {
