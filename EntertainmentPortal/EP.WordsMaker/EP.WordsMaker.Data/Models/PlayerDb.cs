@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EP.WordsMaker.Data
+namespace EP.WordsMaker.Data.Models
 {
     /// <summary>
     /// Represents <c>PlayerDb</c> class.

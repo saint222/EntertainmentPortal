@@ -13,6 +13,12 @@ namespace EP.WordsMaker.Logic.Models
 	/// </remarks>
 	public class Game
     {
+        /// <summary>
+        /// ID property
+        /// </summary>
+        /// <value>Represents unique id of game</value>
+        public int GemeId { get; set; }
+
 		private const int PLAYER_COUNT = 2;
 		private Rules _rules;
 		private Dictionary<Player, List<Word>> _words;
