@@ -7,8 +7,9 @@ namespace EP.Hangman.Logic.Models
     /// <summary>
     /// Response data model that user will see
     /// </summary>
-    public class HangmanDataResponse
+    public class UserGameData
     {
+        public int Id { get; set; }
         /// <summary>
         /// Property stores guessed letters
         /// </summary>
@@ -16,7 +17,7 @@ namespace EP.Hangman.Logic.Models
         /// <summary>
         /// Property stores user's attempts
         /// </summary>
-        public int UserAttempts { get; set; }
+        public int UserErrors { get; set; }
         /// <summary>
         /// Property stores alphabet letters 
         /// </summary>

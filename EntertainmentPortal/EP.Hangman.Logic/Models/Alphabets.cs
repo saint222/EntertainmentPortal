@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using EP.Hagman.Data.Models;
+using EP.Hangman.Data.Models;
 
-namespace EP.Hagman.Data
+namespace EP.Hangman.Data
 {
     /// <summary>
     /// It gives alphabet's data for game
     /// </summary>
-    public class HangmanAlphabets
+    public class Alphabets
     {
-        public HangmanAlphabets()
+        public Alphabets()
         {
-            Alphabet = new AlphabetData().Alphabet;
+            Alphabet = new List<string>();
         }
 
-        public List<string> Alphabet { get; private set; }
+        private List<string> Alphabet { get; set; }
 
         //It's need if we'll use more than one language
         public List<string> EnglishAlphabet()

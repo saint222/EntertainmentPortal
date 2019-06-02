@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using EP.Hagman.Data;
-using EP.Hagman.Logic.Interfaces;
+using EP.Hangman.Data;
 
 namespace EP.Hangman.Logic.Models
 {
     /// <summary>
     /// CRUD
     /// </summary>
-    public class Repository : IRepository<HangmanTemporaryData>
+    public class Repository
     {
         /// <summary>
         /// The method creates new object of data for game. It needs for start game's session. 
@@ -18,9 +17,10 @@ namespace EP.Hangman.Logic.Models
         /// <returns> It return new game's data object. It needs for HTTP Post request</returns>
         public HangmanTemporaryData Create(HangmanTemporaryData data)
         {
-            var item = new TemporaryData();
+            var item = new GameDb();
             item.PickedWord = new Word().GetNewWord().ToUpper();
-            item.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
+            item.AlphabetTempData = new Alphabets().EnglishAlphabet();
+            item.CorrectLettersTempData = new List<string>();
             for (int i = 0; i < item.PickedWord.Length; i++)
             {
                 item.CorrectLettersTempData.Add("_");

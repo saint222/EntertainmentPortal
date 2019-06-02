@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
-using EP.Hagman.Data;
+using EP.Hangman.Data;
 using EP.Hangman.Logic.Models;
 
 namespace EP.Hangman.Logic.Tests
@@ -13,7 +13,7 @@ namespace EP.Hangman.Logic.Tests
         [SetUp]
         public void Setup()
         {
-            alphabet = new HangmanAlphabets().EnglishAlphabet();
+            alphabet = new Alphabets().EnglishAlphabet();
         }
 
         [TearDown]
@@ -34,13 +34,13 @@ namespace EP.Hangman.Logic.Tests
     [TestFixture]
     public class PlayHangmanTests
     {
-        TemporaryData newData;
+        GameDb newData;
         HangmanTemporaryData newHangmanData;
 
         [SetUp]
         public void Setup()
         {
-            newData = new TemporaryData();
+            newData = new GameDb();
             newHangmanData = new HangmanTemporaryData();
 
         }
@@ -71,7 +71,7 @@ namespace EP.Hangman.Logic.Tests
         {
             newData.UserAttempts = x;
             newData.PickedWord = "OMG";
-            newData.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
+            newData.AlphabetTempData = new Alphabets().EnglishAlphabet();
             newData.CorrectLettersTempData = new List<string> {"_", "_", "_"};
             newHangmanData.temp = newData;
 
@@ -85,7 +85,7 @@ namespace EP.Hangman.Logic.Tests
         {
             newData.UserAttempts = 0;
             newData.PickedWord = "OMG";
-            newData.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
+            newData.AlphabetTempData = new Alphabets().EnglishAlphabet();
             newData.CorrectLettersTempData = new List<string> { "_", "_", "_" };
             newHangmanData.temp = newData;
             Assert.AreEqual(letter, new PlayHangman(newHangmanData, letter).PlayGame().temp.CorrectLettersTempData[position]);
@@ -106,7 +106,7 @@ namespace EP.Hangman.Logic.Tests
         {
             newData.UserAttempts = 0;
             newData.PickedWord = "YES";
-            newData.AlphabetTempData = new HangmanAlphabets().EnglishAlphabet();
+            newData.AlphabetTempData = new Alphabets().EnglishAlphabet();
             newData.CorrectLettersTempData = new List<string> { "_", "_", "_" };
             newHangmanData.temp = newData;
             Assert.False(new PlayHangman(newHangmanData, letter).PlayGame().temp.AlphabetTempData.Contains(letter));

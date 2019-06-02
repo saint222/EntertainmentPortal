@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EP.Hagman.Data;
-using EP.Hagman.Logic.Interfaces;
+using EP.Hangman.Data;
+
 
 namespace EP.Hangman.Logic.Models
 {

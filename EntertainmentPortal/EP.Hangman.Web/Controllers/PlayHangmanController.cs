@@ -27,7 +27,7 @@ namespace EP.Hangman.Web.Controllers
 
         //GET: api/PlayHangman
         [HttpGet]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(HangmanDataResponse), Description = "Cool")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(UserGameData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Database is empty")]
         public async Task<IActionResult> GetHangmanAsync()
         {
@@ -37,7 +37,7 @@ namespace EP.Hangman.Web.Controllers
 
         //POST: api/PlayHangman
         [HttpPost]
-        [SwaggerResponse(HttpStatusCode.Created, typeof(HangmanDataResponse), Description = "Cool")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(UserGameData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Object didn't create")]
         public async Task<IActionResult> PostHangmanAsync()
         {
@@ -47,7 +47,7 @@ namespace EP.Hangman.Web.Controllers
 
         //PUT: api/PlayHangman/{letter}
         [HttpPut("{letter}")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(HangmanDataResponse), Description = "Cool")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(UserGameData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Data didn't update")]
         public async Task<IActionResult> CheckLetterAsync(string letter)
         {
@@ -57,7 +57,7 @@ namespace EP.Hangman.Web.Controllers
 
         //PUT: api/PlayHangman
         [HttpPut]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(HangmanDataResponse), Description = "Cool")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(UserGameData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Data didn't update")]
         public async Task<IActionResult> CheckLetterFromBodyAsync([FromBody]string letter)
         {

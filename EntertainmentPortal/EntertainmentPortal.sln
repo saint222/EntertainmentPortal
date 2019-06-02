@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Logic", "EP.Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Tests", "EP.SeaBattle.Tests\EP.SeaBattle.Tests.csproj", "{D49FBF6A-BD56-4A5E-B580-18BF8001AF6E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hagman.Data", "EP.Hagman.Data\EP.Hagman.Data.csproj", "{09DCCDD9-5E72-403F-9B24-DEB6B053F683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hangman.Data", "EP.Hangman.Data\EP.Hangman.Data.csproj", "{09DCCDD9-5E72-403F-9B24-DEB6B053F683}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sudoku", "Sudoku", "{78F85948-04A0-47C1-8997-441D8D080721}"
 EndProject
