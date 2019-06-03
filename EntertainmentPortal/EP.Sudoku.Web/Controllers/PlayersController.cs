@@ -22,9 +22,9 @@ namespace EP.Sudoku.Web.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("api/players")] // not fifed, temp list is used
+        [HttpGet("api/players")] 
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Players collection is empty")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "There are no players in the Db...")]
         public async Task<IActionResult> GetAllPlayerAsync()
         {
             var result = await _mediator.Send(new GetAllPlayers());
