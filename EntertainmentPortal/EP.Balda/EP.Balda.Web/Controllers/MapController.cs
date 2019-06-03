@@ -18,7 +18,7 @@ namespace EP.Balda.Web.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("api/map/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Map not found")]
         public async Task<IActionResult> GetMapAsync(long id)

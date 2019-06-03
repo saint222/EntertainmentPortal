@@ -19,7 +19,7 @@ namespace EP.Balda.Web.Controllers
             _mediator = mediator;
         }
         
-        [HttpGet("{id}")]
+        [HttpGet("api/game/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game not found")]
         public async Task<IActionResult> GetGameAsync(long id)
@@ -28,7 +28,7 @@ namespace EP.Balda.Web.Controllers
             return result != null ? (IActionResult)Ok(result) : NotFound();
         }
         
-        [HttpPost]
+        [HttpPost("api/game")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Game can't be created")]
         public async Task<IActionResult> CreateNewGameAsync()
