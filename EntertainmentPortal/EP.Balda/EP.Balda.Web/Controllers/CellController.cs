@@ -40,7 +40,7 @@ namespace EP.Balda.Web.Controllers
                 Letter = cell.Letter
             });
 
-            return Ok(result);
+            return result != null ? (IActionResult)Ok (result) : BadRequest();
         }
     }
 }
