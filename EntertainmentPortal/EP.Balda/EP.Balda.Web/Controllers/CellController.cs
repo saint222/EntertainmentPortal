@@ -1,24 +1,46 @@
-﻿using EP.Balda.Logic.Models;
+﻿using EP.Balda.Logic.Commands;
+using EP.Balda.Logic.Models;
+using EP.Balda.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Web.Controllers
 {
     [ApiController]
-    public class CellController : Controller
+    public class CellController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetCell(int x, int y)
+        private readonly IMediator _mediator;
+
+        public CellController(IMediator mediator)
         {
-            var cell = new Cell(x, y);
-            return Ok(cell.Letter);
+            _mediator = mediator;
         }
 
-        [HttpPost]
-        public IActionResult PostCell([FromBody] int x, int y, char letter)
+        [HttpGet("api/cell")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Cell not found")]
+        public async Task<IActionResult> GetCellAsync(int x, int y)
         {
-            var cell = new Cell(x, y) { Letter = letter };
-            return Ok(cell);
+            var result = await _mediator.Send(new GetCell()).ConfigureAwait(false);
+            return result != null ? (IActionResult)Ok(result) : BadRequest();
+        }
+
+        [HttpPost("api/cell")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(Cell), Description ="Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> PostCell([FromBody] Cell cell)
+        {
+            var result = await _mediator.Send(new AddLetterCommand
+            {
+                X = cell.X,
+                Y = cell.Y,
+                Letter = cell.Letter
+            });
+
+            return result != null ? (IActionResult)Ok (result) : BadRequest();
         }
     }
 }
