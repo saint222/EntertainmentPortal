@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EP.Hangman.Data.Models;
+﻿using EP.Hangman.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP.Hangman.Data.Context

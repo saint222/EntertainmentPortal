@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EP.Hangman.Data;
+﻿using EP.Hangman.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EP.Hangman.Logic

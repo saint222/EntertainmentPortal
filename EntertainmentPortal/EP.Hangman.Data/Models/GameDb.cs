@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
 
 
 namespace EP.Hangman.Data.Models
@@ -16,7 +14,7 @@ namespace EP.Hangman.Data.Models
         /// <summary>
         /// Property stores user's ID
         /// </summary>
-        public Int64 Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Property stores word which user will guess

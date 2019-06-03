@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
 using EP.Hangman.Logic.Commands;
 using EP.Hangman.Logic.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using EP.Hangman.Web;
 using MediatR;
 using EP.Hangman.Logic.Queries;
-using NSwag;
 using NSwag.Annotations;
 
 namespace EP.Hangman.Web.Controllers
@@ -26,13 +20,13 @@ namespace EP.Hangman.Web.Controllers
             _mediator = mediator;
         }
 
-        //GET: api/PlayHangman
-        [HttpGet("{ID}")]
+        //GET: api/PlayHangman/{id}
+        [HttpGet("{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(UserGameData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Session no found")]
-        public async Task<IActionResult> GetUserSessionAsync(string ID)
+        public async Task<IActionResult> GetUserSessionAsync(string id)
         {
-            var result = await _mediator.Send(new GetUserSession(ID));
+            var result = await _mediator.Send(new GetUserSession(id));
             return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
@@ -46,7 +40,7 @@ namespace EP.Hangman.Web.Controllers
             return result != null ? (IActionResult)Ok(result) : BadRequest();
         }
 
-        //PUT: api/PlayHangman/{Id}
+        //PUT: api/PlayHangman/{id}
         [HttpPut("{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(UserGameData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Data didn't update")]

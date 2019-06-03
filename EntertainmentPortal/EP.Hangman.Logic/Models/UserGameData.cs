@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace EP.Hangman.Logic.Models
 {
@@ -12,7 +10,7 @@ namespace EP.Hangman.Logic.Models
         /// <summary>
         /// Property stores User's ID
         /// </summary>
-        public Int64 Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Property stores guessed letters

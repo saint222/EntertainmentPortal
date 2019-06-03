@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
+﻿using MediatR;
 using EP.Hangman.Data.Models;
 using EP.Hangman.Logic.Models;
 using System.Threading;
@@ -15,13 +12,16 @@ namespace EP.Hangman.Logic.Handlers
 {
     public class CheckLetterHandler : IRequestHandler<CheckLetterCommand, UserGameData>
     {
-        private GameDbContext _context;
-        private IMapper _mapper;
+        private readonly GameDbContext _context;
+
+        private readonly IMapper _mapper;
+
         public CheckLetterHandler(GameDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
+
         public async Task<UserGameData> Handle(CheckLetterCommand request, CancellationToken cancellationToken)
         {
             var session = await _context.Games.FindAsync(request.Id);
