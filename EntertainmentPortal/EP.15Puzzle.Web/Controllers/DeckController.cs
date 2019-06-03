@@ -52,7 +52,7 @@ namespace EP._15Puzzle.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> Put(int id, [FromBody] int tile)
         {
-            var result = await _mediator.Send(new MoveTile(id,15));
+            var result = await _mediator.Send(new MoveTile(id,tile));
             return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 

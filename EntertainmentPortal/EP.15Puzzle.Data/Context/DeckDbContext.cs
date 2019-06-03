@@ -13,6 +13,6 @@ namespace EP._15Puzzle.Data.Context
         { }
 
         public DbSet<DeckDb> Decks { get; set; }
-        
+
     }
 }

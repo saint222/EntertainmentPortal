@@ -20,7 +20,7 @@ namespace EP._15Puzzle.Data
         };
         public static DeckDb Get(int id)
         {
-            return _decks.First(d => d.UserId == id);
+            return _decks.Find(d => d.UserId == id);
         }
 
         public static DeckDb Create(DeckDb deck)
@@ -31,7 +31,7 @@ namespace EP._15Puzzle.Data
 
         public static DeckDb Update(DeckDb deck)
         {
-            var gameDeck = _decks.First(d => d.UserId == deck.UserId);
+            var gameDeck = _decks.Find(d => d.UserId == deck.UserId);
             gameDeck.Tiles = deck.Tiles;
             gameDeck.Score = deck.Score;
             gameDeck.Victory = deck.Victory;

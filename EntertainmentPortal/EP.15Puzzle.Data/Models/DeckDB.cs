@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
+using Bogus;
 
 namespace EP._15Puzzle.Data.Models
 {
@@ -28,7 +31,8 @@ namespace EP._15Puzzle.Data.Models
         /// <value>Flag represents winning state of deck</value>
         public bool Victory { get; set; }
 
-        private string _tiles { get; set; }
+        [MaxLength(40)]
+        public string _tiles { get; set; }
 
         /// <summary>
         /// Tiles property

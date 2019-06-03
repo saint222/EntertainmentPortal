@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using EP._15Puzzle.Data;
+using EP._15Puzzle.Data.Context;
 using EP._15Puzzle.Data.Models;
 using EP._15Puzzle.Logic.Queries;
 using MediatR;
@@ -15,12 +16,14 @@ namespace EP._15Puzzle.Logic.Handlers
     public class NewDeckHandler : IRequestHandler<NewDeck, Deck>
     {
         private readonly IMapper _mapper;
+        private readonly DeckDbContext _context;
 
-        public NewDeckHandler(IMapper mapper)
+        public NewDeckHandler(DeckDbContext context, IMapper mapper)
         {
             _mapper = mapper;
+            _context = context;
         }
-        public Task<Deck> Handle(NewDeck request, CancellationToken cancellationToken)
+        public async Task<Deck> Handle(NewDeck request, CancellationToken cancellationToken)
         {
             var deck = new DeckDb()
             {
@@ -35,29 +38,38 @@ namespace EP._15Puzzle.Logic.Handlers
                 deck = Unsort(deck);
             } while (!CheckWin(deck));
 
-            if (DeckRepository.Get(deck.UserId)==null)
+            
+            if (_context.Decks.Any(d => d.UserId == request.Id))
             {
-                deck = DeckRepository.Create(deck);
+                var deckRef = _context.Decks.First(d => d.UserId == request.Id);
+                deckRef.Tiles = deck.Tiles;
+                deckRef.Victory = false;
+                deckRef.Score = 0;
             }
             else
             {
-                deck = DeckRepository.Update(deck);
+                _context.Decks.Add(deck);
+                
             }
-            return Task.FromResult(_mapper.Map<Deck>(deck));
-            
+            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            return _mapper.Map<Deck>(deck);
+
         }
 
         private DeckDb Unsort(DeckDb deck)
         {
+            List<int> tiles = deck.Tiles;
             Random random = new Random();
             for (int i = 15; i >= 2; i--)
             {
                 int j = random.Next(i) + 1;
 
-                var temp = deck.Tiles[i];
-                deck.Tiles[i] = deck.Tiles[j];
-                deck.Tiles[j] = temp;
+                var temp = tiles[i];
+                tiles[i] = tiles[j];
+                tiles[j] = temp;
             }
+
+            deck.Tiles = tiles;
             return deck;
         }
 
