@@ -31,6 +31,19 @@ namespace EP.Sudoku.Web.Controllers
             return result.Any() ? (IActionResult)Ok(result) : NotFound();
         }
 
+        [HttpGet("api/players/{id}")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "There are no players in the Db...")]
+        public async Task<IActionResult> GetPlayerByIdAsync(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+            var result = await _mediator.Send(new GetPlayerById(id));
+            return Ok(result);
+        }
+
         [HttpPost("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
@@ -44,14 +57,16 @@ namespace EP.Sudoku.Web.Controllers
             return true ? (IActionResult)Ok() : NotFound();
         }
 
-        [HttpDelete("api/players")]     // not fixed   
+        [HttpDelete("api/players")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> DeletePlayer(int id)
         {
             if (id <= 0)
             {
-                return BadRequest("Incorrect Id, try again!");
+                return BadRequest();
             }
-            var result = await _mediator.Send(new DeletePlayer(id));
+            var result = await _mediator.Send(new DeletePlayerCommand(id));
             
             return true ? (IActionResult)Ok() : NotFound();
         }

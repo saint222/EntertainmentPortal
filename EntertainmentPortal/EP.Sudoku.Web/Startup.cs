@@ -31,8 +31,10 @@ namespace EP.Sudoku.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(GetAllPlayers).Assembly); // not fixed, temp list is used
-            services.AddMediatR(typeof(CreatePlayerCommand).Assembly);            
+            services.AddMediatR(typeof(GetAllPlayers).Assembly);
+            services.AddMediatR(typeof(GetPlayerById).Assembly);
+            services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
+            services.AddMediatR(typeof(DeletePlayerCommand).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddSwaggerDocument();
             services.AddPlayerServices();

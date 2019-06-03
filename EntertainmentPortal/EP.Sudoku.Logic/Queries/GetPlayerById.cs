@@ -6,11 +6,11 @@ using System.Text;
 
 namespace EP.Sudoku.Logic.Queries
 {
-    public class DeletePlayer : IRequest<bool>
+    public class GetPlayerById : IRequest<Player>
     {
         public int Id { get; set; }
-        
-        public DeletePlayer(int id)
+
+        public GetPlayerById(int id)
         {
             Id = id;
         }
