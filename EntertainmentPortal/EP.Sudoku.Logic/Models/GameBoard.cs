@@ -11,8 +11,13 @@ namespace EP.Sudoku.Logic.Models
     public class GameBoard
     {
         /// <summary>    
+        /// Is used to denote an identification value of a gameboard.
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>    
         /// Is used to denote the multidimensional array (9 rows and 9 columns) of cells which the gameboard consists of.
         /// </summary>
-        public Cell[,] Cells = new Cell[9, 9];
+        public Cell[,] Cells { get; set; } = new Cell[9, 9];
     }
 }

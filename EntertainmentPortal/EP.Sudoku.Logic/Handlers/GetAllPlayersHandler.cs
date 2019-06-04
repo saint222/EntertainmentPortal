@@ -17,11 +17,13 @@ namespace EP.Sudoku.Logic.Handlers
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
+
         public GetAllPlayersHandler(SudokuDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
+
         public async Task<IEnumerable<Player>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
         {
             var players = await _context.Players.Include(p => p.IconDb). 
