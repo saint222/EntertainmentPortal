@@ -8,9 +8,9 @@ namespace EP.Sudoku.Logic
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddPlayerServices(this IServiceCollection services)
+        public static IServiceCollection AddSudokuServices(this IServiceCollection services)
         {
-            services.AddPlayerData();
+            services.AddSudokuData();
             return services;
         }
     }

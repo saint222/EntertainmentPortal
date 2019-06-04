@@ -9,7 +9,7 @@ namespace EP.Sudoku.Data
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddPlayerData(this IServiceCollection services)
+        public static IServiceCollection AddSudokuData(this IServiceCollection services)
         {
             services.AddDbContext<SudokuDbContext>(
                 opt => opt.UseSqlite("Data Source=sudoku.db"));
