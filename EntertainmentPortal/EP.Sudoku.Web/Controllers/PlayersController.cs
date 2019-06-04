@@ -41,7 +41,7 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest();
             }
             var result = await _mediator.Send(new GetPlayerById(id));
-            return Ok(result);
+            return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
         [HttpPost("api/players")]
