@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace EP.Hangman.Logic.Models
 {
-    /// <summary>
-    /// Response data model that user will see
-    /// </summary>
-    public class UserGameData
+    public class ControllerData
     {
         /// <summary>
         /// Property stores User's ID
@@ -13,23 +12,23 @@ namespace EP.Hangman.Logic.Models
         public long Id { get; set; }
 
         /// <summary>
-        /// Property stores picked word
-        /// </summary>
-        public string PickedWord { get; set; }      
-
-        /// <summary>
         /// Property stores guessed letters
         /// </summary>
-        public List<string> CorrectLetters { get; set; }
+        public IEnumerable<string> CorrectLetters { get; set; }
         
         /// <summary>
         /// Property stores alphabet letters 
         /// </summary>
-        public List<string> Alphabet { get; set; }
+        public IEnumerable<string> Alphabet { get; set; }
 
         /// <summary>
         /// Property stores user's attempts
         /// </summary>
         public int UserErrors { get; set; }
+
+        /// <summary>
+        /// Property stores letter entered by user
+        /// </summary>
+        public string Letter { get; set; }
     }
 }

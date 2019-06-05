@@ -21,18 +21,18 @@ namespace EP.Hangman.Web.Controllers
         }
 
         //GET: api/PlayHangman/{id}
-        [HttpGet("{id}")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(UserGameData), Description = "Cool")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Session no found")]
+        [HttpGet("id")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Cool")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Session not found")]
         public async Task<IActionResult> GetUserSessionAsync(string id)
         {
-            var result = await _mediator.Send(new GetUserSession(id));
+            var result = await _mediator.Send(new GetUserSession(new ControllerData(), id));
             return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
         //POST: api/PlayHangman
         [HttpPost]
-        [SwaggerResponse(HttpStatusCode.Created, typeof(UserGameData), Description = "Cool")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(ControllerData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Object didn't create")]
         public async Task<IActionResult> CreateNewGameAsync()
         {
@@ -41,12 +41,12 @@ namespace EP.Hangman.Web.Controllers
         }
 
         //PUT: api/PlayHangman/{id}
-        [HttpPut("{id}")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(UserGameData), Description = "Cool")]
+        [HttpPut]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Data didn't update")]
-        public async Task<IActionResult> CheckLetterAsync(string id, [FromBody]string letter) 
+        public async Task<IActionResult> CheckLetterAsync([FromBody]ControllerData data) 
         {
-            var result = await _mediator.Send(new CheckLetterCommand(id, letter));
+            var result = await _mediator.Send(new CheckLetterCommand(data));
             return result != null ? (IActionResult)Ok(result) : BadRequest();
         }
     }

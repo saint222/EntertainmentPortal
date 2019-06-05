@@ -26,10 +26,8 @@ namespace EP.Hangman.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
-            services.AddMediatR(typeof(GetUserSession));
-            services.AddMediatR(typeof(CheckLetterCommand));
-            services.AddMediatR(typeof(CreateNewGameCommand));
-            services.AddAutoMapper(typeof(UserGameDataProfile));
+            services.AddMediatR(typeof(GetUserSession).Assembly);
+            services.AddAutoMapper(typeof(GameDbUserGameDataProfile), typeof(ControllerDataUserGameDataProfile));
             services.AddGameServices();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

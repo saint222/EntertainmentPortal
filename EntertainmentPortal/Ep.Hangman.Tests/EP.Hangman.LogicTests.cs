@@ -34,12 +34,12 @@ namespace EP.Hangman.Logic.Tests
     [TestFixture]
     public class PlayHangmanTests
     {
-        GameDb _newData;
+        UserGameData _newData;
 
         [SetUp]
         public void Setup()
         {
-            _newData = new GameDb();
+            _newData = new UserGameData();
         }
 
         [TearDown]

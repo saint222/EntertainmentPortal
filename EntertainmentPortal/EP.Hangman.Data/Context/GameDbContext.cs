@@ -11,6 +11,11 @@ namespace EP.Hangman.Data.Context
                 
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+        }
+
         public DbSet<GameDb> Games { get; set; }
     }
 }
