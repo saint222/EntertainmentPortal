@@ -35,6 +35,6 @@ namespace EP.Sudoku.Data.Models
         /// <remarks>
         /// The non-primitive type AvatarIcon is applied.
         /// </remarks>
-        public virtual AvatarIconDb IconDb { get; set; }
+        public AvatarIconDb IconDb { get; set; }
     }
 }
