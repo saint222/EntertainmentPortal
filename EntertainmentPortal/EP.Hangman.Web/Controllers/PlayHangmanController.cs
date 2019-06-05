@@ -40,7 +40,7 @@ namespace EP.Hangman.Web.Controllers
             return result != null ? (IActionResult)Ok(result) : BadRequest();
         }
 
-        //PUT: api/PlayHangman/{id}
+        //PUT: api/PlayHangman
         [HttpPut]
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Cool")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Data didn't update")]
@@ -48,6 +48,16 @@ namespace EP.Hangman.Web.Controllers
         {
             var result = await _mediator.Send(new CheckLetterCommand(data));
             return result != null ? (IActionResult)Ok(result) : BadRequest();
+        }
+
+        //DELETE: api/PlayHangman
+        [HttpDelete]
+        [SwaggerResponse(HttpStatusCode.NoContent, typeof(ControllerData), Description = "Cool")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Data didn't delete")]
+        public async Task<IActionResult> DeleteGameSessionAsync([FromBody] ControllerData data)
+        {
+            var result = await _mediator.Send(new DeleteGameSessionCommand(data));
+            return result == null ? (IActionResult)Ok((ControllerData) null) : BadRequest();
         }
     }
 }

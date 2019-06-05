@@ -34,7 +34,7 @@ namespace EP.Hangman.Logic.Handlers
 
             _context.Entry<GameDb>(mapped).State = EntityState.Modified;
 
-            await _context.SaveChangesAsync(cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
             
             return _mapper.Map<UserGameData, ControllerData>(result);
         }

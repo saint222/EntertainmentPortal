@@ -4,6 +4,9 @@ using System.Text;
 
 namespace EP.Hangman.Logic.Models
 {
+    /// <summary>
+    /// Request/response model
+    /// </summary>
     public class ControllerData
     {
         /// <summary>
