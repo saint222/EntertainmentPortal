@@ -26,15 +26,13 @@ namespace EP.Hangman.Data.Models
         public int UserErrors { get; set; }
 
         /// <summary>
-        /// Generic collection stores correct letters
+        /// Property stores correct letters
         /// </summary>
-
         public string CorrectLetters { get; set; }
 
         /// <summary>
         /// Property stores alphabet for game session.
         /// </summary>
-
         public string Alphabet { get; set; }
     }
 }

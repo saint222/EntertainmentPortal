@@ -3,7 +3,7 @@
 namespace EP.Hangman.Logic.Models
 {
     /// <summary>
-    /// Response data model that user will see
+    /// Data model for work into logic layer
     /// </summary>
     public class UserGameData
     {
