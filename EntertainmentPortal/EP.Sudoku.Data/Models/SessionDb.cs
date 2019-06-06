@@ -1,11 +1,10 @@
-﻿using EP.Sudoku.Logic.Enums;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace EP.Sudoku.Logic.Models
+namespace EP.Sudoku.Data.Models
 {
-    /// <summary>    
-    /// Is used to represent an instance of the game.
-    /// </summary>
-    public class Session
+    public class SessionDb
     {
         /// <summary>    
         /// Is used to denote an identification value of a game session.
@@ -18,15 +17,17 @@ namespace EP.Sudoku.Logic.Models
         /// <remarks>
         /// Non-primitive type Player is used.
         /// </remarks> 
-        public Player Participant { get; set; }
+        public PlayerDb ParticipantDb { get; set; }
 
         /// <summary>    
         /// Is used to denote the level of a game session difficulty (is expected to be chosen by a player).
         /// </summary>
         /// <remarks>
         /// Non-primitive type DifficultyLevel (enum) is used.
-        /// </remarks> 
-        public DifficultyLevel Level { get; set; }
+        /// </remarks>
+        ///
+        /// 
+        public int Level { get; set; } // как быть с enum?
 
         /// <summary>    
         /// Is used to denote the number of tips.
@@ -43,9 +44,9 @@ namespace EP.Sudoku.Logic.Models
         /// </summary>        
         public double Duration { get; set; }
 
-        /// <summary>
-        /// Is used to connection with the gameboard. 
-        /// </summary> 
-        public GameBoard Game { get; set; }
+        //
+        //
+        //
+        //public GameBoardDb GameDb { get; set; } тут тоже как быть? не хочется GameBoardDb создавать
     }
 }

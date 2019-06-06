@@ -37,5 +37,7 @@ namespace EP.Sudoku.Logic.Models
         /// The non-primitive type AvatarIcon is applied.
         /// </remarks> 
         public AvatarIcon Icon { get; set; }
+
+
     }
 }

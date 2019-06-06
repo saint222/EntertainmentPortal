@@ -16,11 +16,13 @@ namespace EP.Sudoku.Logic.Handlers
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
+
         public UpdatePlayerHandler(SudokuDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
+
         public async Task<bool> Handle(UpdatePlayerCommand request, CancellationToken cancellationToken)
         {
             var playerDb = _mapper.Map<PlayerDb>(request.player);
