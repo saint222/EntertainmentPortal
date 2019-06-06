@@ -5,10 +5,12 @@ using MediatR;
 
 namespace EP._15Puzzle.Logic.Queries
 {
-    public class NewDeck : IRequest<Deck>
+    public class ResetDeck : IRequest<Deck>
     {
-        public NewDeck()
+        public int Id { get; }
+        public ResetDeck(int id)
         {
+            Id = id;
         }
     }
 }

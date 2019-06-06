@@ -11,29 +11,33 @@ using EP._15Puzzle.Data.Models;
 using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Handlers
 {
-    public class NewDeckHandler : IRequestHandler<NewDeck, Deck>
+    public class ResetDeckHandler : IRequestHandler<ResetDeck, Deck>
     {
         private readonly IMapper _mapper;
         private readonly DeckDbContext _context;
 
-        public NewDeckHandler(DeckDbContext context, IMapper mapper)
+        public ResetDeckHandler(DeckDbContext context, IMapper mapper)
         {
             _mapper = mapper;
             _context = context;
         }
-        public async Task<Deck> Handle(NewDeck request, CancellationToken cancellationToken)
+        public async Task<Deck> Handle(ResetDeck request, CancellationToken cancellationToken)
         {
-            var deck = new DeckDb(4);
+            var deck = _context.DeckDbs
+                .Include(d => d.Tiles)
+                .Include(d => d.EmptyTile)
+                .First(d => d.UserId == request.Id);
 
             do
             {
                 deck = Unsort(deck);
             } while (!CheckWinIsPossible(deck));
-            
-            _context.Add(deck);
+
+            _context.Update(deck);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
             return _mapper.Map<Deck>(deck);
 
@@ -59,9 +63,10 @@ namespace EP._15Puzzle.Logic.Handlers
         private bool CheckWinIsPossible(DeckDb deck)
         {
             int[] tilesOnDeck = new int[16];
-            for (int i = 1; i <= 15; i++)
+            
+            foreach (var tile in deck.Tiles)
             {
-                tilesOnDeck[i] = deck.Tiles.First(p => p.Pos==i).Num;
+                tilesOnDeck[tile.Pos-1] = tile.Num;
             }
 
             tilesOnDeck[0] = deck.EmptyTile.Num;
