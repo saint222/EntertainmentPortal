@@ -4,15 +4,13 @@ using MediatR;
 
 namespace EP.Hangman.Logic.Commands
 {
-    public class CheckLetterCommand : IRequest<UserGameData>
+    public class CheckLetterCommand : IRequest<ControllerData>
     {
-        public CheckLetterCommand(string id, string letter)
-        {
-            Id = Convert.ToInt64(id);
-            Letter = letter.ToUpper();
-        }
+        public ControllerData _data { get; set; }
 
-        public long Id { get; set; }
-        public string Letter { get; set; }
+        public CheckLetterCommand(ControllerData data)
+        {
+            _data = data;
+        }
     }
 }

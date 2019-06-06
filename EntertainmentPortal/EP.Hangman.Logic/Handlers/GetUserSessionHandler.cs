@@ -9,7 +9,7 @@ using EP.Hangman.Data.Context;
 
 namespace EP.Hangman.Logic.Handlers
 {
-    public class GetUserSessionHandler : IRequestHandler<GetUserSession, UserGameData>
+    public class GetUserSessionHandler : IRequestHandler<GetUserSession, ControllerData>
     {
         private readonly GameDbContext _context;
 
@@ -21,9 +21,9 @@ namespace EP.Hangman.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<UserGameData> Handle(GetUserSession request, CancellationToken cancellationToken)
+        public async Task<ControllerData> Handle(GetUserSession request, CancellationToken cancellationToken)
         {
-            return _mapper.Map<GameDb, UserGameData>(await _context.Games.FindAsync(request.Id));
+            return _mapper.Map<UserGameData, ControllerData>(_mapper.Map<GameDb, UserGameData>(await _context.Games.FindAsync(request._data.Id)));
         }
     }
 }

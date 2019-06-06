@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 
@@ -27,33 +26,13 @@ namespace EP.Hangman.Data.Models
         public int UserErrors { get; set; }
 
         /// <summary>
-        /// Generic collection stores correct letters
+        /// Property stores correct letters
         /// </summary>
-        [NotMapped]
-        public List<string> CorrectLetters { get; set; }
+        public string CorrectLetters { get; set; }
 
         /// <summary>
         /// Property stores alphabet for game session.
         /// </summary>
-        [NotMapped]
-        public List<string> Alphabet { get; set; }
-
-        /// <summary>
-        /// Property saves data from CorrectLetters to Database
-        /// </summary>
-        public string CorrectLettersAsString
-        {
-            get => String.Join(',', CorrectLetters);
-            set => CorrectLetters = value.Split(',').ToList();
-        }
-
-        /// <summary>
-        /// Property saves data from Alphabet to Database
-        /// </summary>
-        public string AlphabetAsString
-        {
-            get => String.Join(',', Alphabet);
-            set => Alphabet = value.Split(',').ToList();
-        }
+        public string Alphabet { get; set; }
     }
 }
