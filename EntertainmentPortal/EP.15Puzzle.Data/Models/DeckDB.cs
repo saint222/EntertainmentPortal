@@ -13,40 +13,34 @@ namespace EP._15Puzzle.Data.Models
     {
         public int Id { get; set; }
 
-        /// <summary>
-        /// UserId property
-        /// </summary>
-        /// <value>Represents ID of user the deck belongs</value>
+        public UserDb User { get; set; }
         public int UserId { get; set; }
 
-        /// <summary>
-        /// Score property
-        /// </summary>
-        /// <value>Represents count of turns user already did</value>
-        public int Score { get; set; }
+        public int Score { get; set; } = 0;
+        public bool Victory { get; set; } = false;
 
-        /// <summary>
-        /// Victory property
-        /// </summary>
-        /// <value>Flag represents winning state of deck</value>
-        public bool Victory { get; set; }
+        public ICollection<TileDb> Tiles { get; set; }
+        public TileDb EmptyTile { get; set; }
 
-        [MaxLength(40)]
-        public string _tiles { get; set; }
-
-        /// <summary>
-        /// Tiles property
-        /// </summary>
-        /// <remarks>
-        ///Tiles[0] represents empty tile
-        /// </remarks>
-        /// <value>Represents a string with positions as tile numbers and values as their relevant positions on deck</value>
-        [NotMapped]
-        public List<int> Tiles
+        public DeckDb(int size)
         {
-            get { return _tiles.Split('|').Select(s => int.Parse(s)).ToList(); }
-            set { _tiles = string.Join('|', value); }
+            //now size = 4
+            User = new UserDb(){};
+            List<TileDb> tiles = new List<TileDb>();
+            for (int i = 1; i <= 15; i++)
+            {
+                tiles.Add(new TileDb(i));
+            }
+            Tiles = tiles;
+            Score = 0;
+            Victory = false;
+
+            EmptyTile = new TileDb(16);
         }
-        
+
+        public DeckDb()
+        {
+
+        }
     }
 }

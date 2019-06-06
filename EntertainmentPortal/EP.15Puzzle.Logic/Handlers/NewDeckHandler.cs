@@ -8,6 +8,7 @@ using AutoMapper;
 using EP._15Puzzle.Data;
 using EP._15Puzzle.Data.Context;
 using EP._15Puzzle.Data.Models;
+using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
 using MediatR;
 
@@ -25,61 +26,45 @@ namespace EP._15Puzzle.Logic.Handlers
         }
         public async Task<Deck> Handle(NewDeck request, CancellationToken cancellationToken)
         {
-            var deck = new DeckDb()
-            {
-                Score = 0,
-                Tiles = new List<int>() {16, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
-                UserId = request.Id,
-                Victory = false
-            };
+            var deck = new DeckDb(request.Id);
 
             do
             {
                 deck = Unsort(deck);
-            } while (!CheckWin(deck));
+            } while (!CheckWinIsPossible(deck));
 
-            
-            if (_context.Decks.Any(d => d.UserId == request.Id))
-            {
-                var deckRef = _context.Decks.First(d => d.UserId == request.Id);
-                deckRef.Tiles = deck.Tiles;
-                deckRef.Victory = false;
-                deckRef.Score = 0;
-            }
-            else
-            {
-                _context.Decks.Add(deck);
-                
-            }
+            _context.Add(deck);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
             return _mapper.Map<Deck>(deck);
 
         }
 
-        private DeckDb Unsort(DeckDb deck)
+        private DeckDb Unsort(DeckDb deck) //need tiles???
         {
-            List<int> tiles = deck.Tiles;
+            List<TileDb> tiles = deck.Tiles.ToList();
             Random random = new Random();
-            for (int i = 15; i >= 2; i--)
+            for (int i = 14; i >= 0; i--)
             {
                 int j = random.Next(i) + 1;
 
-                var temp = tiles[i];
-                tiles[i] = tiles[j];
-                tiles[j] = temp;
+                var temp = tiles[i].Pos;
+                tiles[i].Pos = tiles[j].Pos;
+                tiles[j].Pos = temp;
             }
 
             deck.Tiles = tiles;
             return deck;
         }
 
-        private bool CheckWin(DeckDb deck)
+        private bool CheckWinIsPossible(DeckDb deck)
         {
             int[] tilesOnDeck = new int[16];
-            for (int i = 0; i <= 15; i++)
+            for (int i = 1; i <= 15; i++)
             {
-                tilesOnDeck[i] = deck.Tiles.FindIndex(p => p == i);
+                tilesOnDeck[i] = deck.Tiles.First(p => p.Pos==i).Num;
             }
+
+            tilesOnDeck[0] = deck.EmptyTile.Num;
 
             int rowOfEmpty = 0;
             for (int i = 0; i < 16; i++)

@@ -9,6 +9,7 @@ using EP._15Puzzle.Data;
 using EP._15Puzzle.Data.Context;
 using EP._15Puzzle.Logic.Queries;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Handlers
 {
@@ -25,9 +26,14 @@ namespace EP._15Puzzle.Logic.Handlers
         public async Task<Deck> Handle(GetDeck request, CancellationToken cancellationToken)
         {
 
-            if (_context.Decks.Any(d => d.UserId == request.Id))
+            if (_context.UserDbs.Any(d => d.Id == request.Id))
             {
-                return await Task.FromResult(_mapper.Map<Deck>(_context.Decks.First(d => d.UserId == request.Id)));
+                var deck = _context.UserDbs
+                    .Include(d => d.Deck.Tiles)
+                    .Include(d=>d.Deck.EmptyTile)
+                    .First(u => u.Id == request.Id).Deck;
+
+                return await Task.FromResult(_mapper.Map<Deck>(deck));
             }
             return null;
             

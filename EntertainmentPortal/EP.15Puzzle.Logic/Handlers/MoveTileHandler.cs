@@ -11,6 +11,7 @@ using EP._15Puzzle.Data.Models;
 using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Handlers
 {
@@ -26,16 +27,18 @@ namespace EP._15Puzzle.Logic.Handlers
         }
         public async Task<Deck> Handle(MoveTile request, CancellationToken cancellationToken)
         {
-            var deck = _context.Decks.First(d => d.UserId == request.Id);
-            var tiles = deck.Tiles;
-            var tile = new Models.Tile(tiles[request.Tile]);
-            var tile0 = new Models.Tile(tiles[0]);
+            var deck = _context.DeckDbs
+                .Include(d=>d.Tiles)
+                .Include(d=>d.EmptyTile)
+                .First(d => d.UserId == request.Id);
+            var tile = deck.Tiles.First(t => t.Num == request.Tile);
+            var tile0 = deck.EmptyTile;
             if (ComparePositions(tile, tile0))
             {
-                var temp = tiles[0];
-                tiles[0] = tiles[request.Tile];
-                tiles[request.Tile] = temp;
-                deck.Tiles = tiles;
+                var temp = tile0.Pos;
+                deck.EmptyTile.Pos = tile.Pos;
+                tile.Pos = temp;
+                
                 deck.Score += 1;
                 if (CheckWin(deck))
                 {
@@ -47,29 +50,22 @@ namespace EP._15Puzzle.Logic.Handlers
             return _mapper.Map<Deck>(deck);
         }
 
-        /// <summary>
-        /// check if it possible to move selected tile to move into empty place (to swap with tile0)
-        /// </summary>
-        /// <param name="tile">position of selected tile</param>
-        /// <param name="tile0">position of empty place</param>
-        /// <returns>true - swap is possible, tiles are touching in one row or column</returns>
-        private bool ComparePositions(Models.Tile tile, Models.Tile tile0)
+
+        private bool ComparePositions(TileDb tile, TileDb tile0)
         {
-            if (tile.PosX == tile0.PosX || tile.PosY == tile0.PosY)
+            var dif = Math.Abs(tile.Pos - tile0.Pos);
+            if (dif == 1 || dif == 4)
             {
-                if (Math.Abs(tile.PosX - tile0.PosX) == 1 || Math.Abs(tile.PosY - tile0.PosY) == 1)
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }
 
         private bool CheckWin(DeckDb deck)
         {
-            for (int i = 1; i < deck.Tiles.Count; i++)
+            foreach (var tile in deck.Tiles)
             {
-                if (deck.Tiles[i]!=i)
+                if (tile.Num!=tile.Pos)
                 {
                     return false;
                 }
