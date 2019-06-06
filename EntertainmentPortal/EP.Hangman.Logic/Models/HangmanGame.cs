@@ -12,7 +12,7 @@ namespace EP.Hangman.Logic.Models
         /// <summary>
         /// The field is temporary data storage.
         /// </summary>
-        private GameDb _data;
+        private UserGameData _data;
 
         /// <summary>
         /// The field stores quantity of user's attempts
@@ -23,7 +23,7 @@ namespace EP.Hangman.Logic.Models
         /// Constructor needs for Unit tests
         /// </summary>
         /// <param name="data"></param>
-        public HangmanGame(GameDb data)
+        public HangmanGame(UserGameData data)
         {
             _data = data;
         }
@@ -32,7 +32,7 @@ namespace EP.Hangman.Logic.Models
         /// Game's basic logic
         /// </summary>
         /// <returns>Returned GameDb object or NULL</returns>
-        public GameDb Play(string letter)
+        public UserGameData Play(string letter)
         {
             if (_data.UserErrors < MAX_ERRORS)
             {

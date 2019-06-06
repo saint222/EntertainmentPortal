@@ -3,7 +3,7 @@ using MediatR;
 
 namespace EP.Hangman.Logic.Commands
 {
-    public class CreateNewGameCommand : IRequest<UserGameData>
+    public class CreateNewGameCommand : IRequest<ControllerData>
     {
 
     }

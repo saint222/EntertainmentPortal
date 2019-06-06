@@ -5,13 +5,14 @@ using EP.Hangman.Logic.Models;
 
 namespace EP.Hangman.Logic.Queries
 {
-    public class GetUserSession : IRequest<UserGameData>
+    public class GetUserSession : IRequest<ControllerData>
     {
-        public GetUserSession(string id)
-        {
-            Id = Convert.ToInt64(id);
-        }
+        public ControllerData _data;
 
-        public long  Id { get; set; }
+        public GetUserSession(ControllerData data, string id)
+        {
+            _data = data;
+            _data.Id = Convert.ToInt64(id);
+        }
     }
 }

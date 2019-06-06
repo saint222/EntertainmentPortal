@@ -10,7 +10,7 @@ using EP.Hangman.Logic.Commands;
 
 namespace EP.Hangman.Logic.Handlers
 {
-    public class CreateNewGameHandler : IRequestHandler<CreateNewGameCommand, UserGameData>
+    public class CreateNewGameHandler : IRequestHandler<CreateNewGameCommand, ControllerData>
     {
         private readonly GameDbContext _context;
 
@@ -22,9 +22,9 @@ namespace EP.Hangman.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<UserGameData> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
+        public async Task<ControllerData> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
         {
-            var item = new GameDb
+            var item = new UserGameData()
             {
                 PickedWord = new Word().GetNewWord().ToUpper(),
                 Alphabet = new Alphabets().EnglishAlphabet(),
@@ -36,10 +36,11 @@ namespace EP.Hangman.Logic.Handlers
             }
             item.UserErrors = 0;
 
-            _context.Games.Add(item);
+            var result = _mapper.Map<UserGameData, GameDb>(item);
+            _context.Games.Add(result);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-            return _mapper.Map<GameDb, UserGameData>(item);
+            return _mapper.Map<UserGameData, ControllerData>(_mapper.Map<GameDb, UserGameData>(result));
         }
     }
 }
