@@ -42,7 +42,7 @@ namespace EP.Balda.Tests
         [Test]
         public void TestIsAllowedCellTrue()
         {
-            var result = _map.IsAllowedCell(2, 1);
+            var result = _map.IsAllowedCell(2, 2);
             Assert.IsTrue(result);
         }
 

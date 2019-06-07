@@ -2,29 +2,36 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using EP.Balda.Data.EntityFramework;
-using EP.Balda.Logic.Models;
+using AutoMapper;
+using CSharpFunctionalExtensions;
+using EP.Balda.Data.Context;
+using EP.Balda.Data.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class
-        GetAllPlayersHandler : IRequestHandler<GetAllPlayers, IEnumerable<Player>>
+    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<PlayerDb>>>
     {
-        public Task<IEnumerable<Player>> Handle(GetAllPlayers request,
-                                                CancellationToken cancellationToken)
-        {
-            var items = PlayerRepository.Players.Select(p => new Player
-            {
-                Id = p.Id,
-                NickName = p.NickName,
-                Login = p.Login,
-                Password = p.Password,
-                Result = p.Result
-            }).ToArray();
+        private readonly IMapper _mapper;
+        private readonly PlayerDbContext _context;
 
-            return Task.FromResult((IEnumerable<Player>) items);
+        public GetAllPlayersHandler(IMapper mapper, PlayerDbContext context)
+        {
+            _mapper = mapper;
+            _context = context;
+        }
+
+        public async Task<Maybe<IEnumerable<PlayerDb>>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
+        {
+            var result = await _context.Players
+                .ToArrayAsync(cancellationToken)
+                .ConfigureAwait(false);
+
+            return result.Any() ?
+                Maybe<IEnumerable<PlayerDb>>.None :
+                Maybe<IEnumerable<PlayerDb>>.From(result);
         }
     }
 }

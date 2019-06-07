@@ -1,7 +1,7 @@
 ﻿using System;
-using EP.Balda.Data.Contracts;
-using EP.Balda.Data.EntityFramework;
+using EP.Balda.Data.Context;
 using EP.Balda.Logic.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Models
 {
@@ -12,10 +12,9 @@ namespace EP.Balda.Logic.Models
     public class Game
     {
         /// <summary>
-        /// Internal repository to store words from DB. 
+        /// Context to WordsDB. 
         /// </summary>
-        private static readonly IWordRepository<string> _dataRepository =
-            new WordRepository<string>(new BaldaDictionaryDbContext("russian_nouns.txt"));
+        private readonly WordDbContext _context;
 
         /// <summary>
         /// The field stores an object of the map in the game. 
@@ -28,9 +27,10 @@ namespace EP.Balda.Logic.Models
         /// <param name="map">
         /// Parameter map requires IMap argument.
         /// </param>
-        public Game(IMap map)
+        public Game(IMap map, WordDbContext context)
         {
             Map = map;
+            _context = context;
             var initWord = GetStartingWord();
             PutStartingWordToMap(initWord);
         }
@@ -57,9 +57,10 @@ namespace EP.Balda.Logic.Models
         {
             var word = "";
             var mapSize = Map.Size;
-            var sizeRepo = _dataRepository.GetAll().Count;
+            var sizeRepo = _context.Words.CountAsync();
+            var id = RandomWord(sizeRepo.Result);
             while (word.Length != mapSize)
-                word = _dataRepository.Get(RandomWord(sizeRepo));
+                word = _context.Words.FindAsync(id).Result.Word;
 
             return word;
         }
@@ -67,7 +68,7 @@ namespace EP.Balda.Logic.Models
         /// <summary>
         /// The method choose random initial word. 
         /// </summary>
-        private static int RandomWord(int size)
+        private int RandomWord(int size)
         {
             var rnd = new Random();
             var next = rnd.Next(0, size - 1);

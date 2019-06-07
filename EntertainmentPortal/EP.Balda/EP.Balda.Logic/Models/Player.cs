@@ -28,8 +28,10 @@ namespace EP.Balda.Logic.Models
         /// </summary>
         public string Password { get; set; }
 
-        //TODO: Consider if it's necessary
-        public int Result { get; set; }
+        /// <summary>
+        /// Score property. Represents player's score.
+        /// </summary>
+        public int Score { get; set; }
 
         /// <summary>
         /// Words property. Represents the list of words that player already entered in one match
