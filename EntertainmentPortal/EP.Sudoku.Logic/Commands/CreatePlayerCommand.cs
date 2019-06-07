@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EP.Sudoku.Logic.Commands
 {
-    public class CreatePlayerCommand : IRequest<bool>
+    public class CreatePlayerCommand : IRequest<Player>
     {
         public Player player { get; set; }
         public CreatePlayerCommand(Player p)

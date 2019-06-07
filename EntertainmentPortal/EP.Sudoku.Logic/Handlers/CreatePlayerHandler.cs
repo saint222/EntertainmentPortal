@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace EP.Sudoku.Logic.Handlers
 {
-    public class CreatePlayerHandler : IRequestHandler<CreatePlayerCommand, bool>
+    public class CreatePlayerHandler : IRequestHandler<CreatePlayerCommand, Player>
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
@@ -22,13 +22,13 @@ namespace EP.Sudoku.Logic.Handlers
             _context = context;
             _mapper = mapper;
         }
-        public async Task<bool> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
+        public async Task<Player> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
         {            
             var playerDb = _mapper.Map<PlayerDb>(request.player);
             playerDb.IconDb = _context.Find<AvatarIconDb>(request.player.Icon.Id);
             _context.Add(playerDb);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-            return await Task.FromResult(true);
+            return await Task.FromResult(request.player);
         }
     }
 }
