@@ -46,6 +46,6 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>
         /// Is used to connection with the gameboard. 
         /// </summary> 
-        public GameBoard Game { get; set; }
+        public Cell Square { get; set; }
     }
 }

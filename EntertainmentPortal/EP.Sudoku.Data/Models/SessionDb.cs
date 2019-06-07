@@ -47,6 +47,6 @@ namespace EP.Sudoku.Data.Models
         //
         //
         //
-        //public GameBoardDb GameDb { get; set; } тут тоже как быть? не хочется GameBoardDb создавать
+        public CellDb SquareDb { get; set; }
     }
 }

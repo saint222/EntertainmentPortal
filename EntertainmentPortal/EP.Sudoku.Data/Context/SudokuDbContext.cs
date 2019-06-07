@@ -14,5 +14,7 @@ namespace EP.Sudoku.Data.Context
 
         public DbSet<PlayerDb> Players { get; set; }
         public DbSet<AvatarIconDb> Icons { get; set; }
+        public DbSet<CellDb> Cells { get; set; }
+        public DbSet<SessionDb> Sessions { get; set; }
     }
 }
