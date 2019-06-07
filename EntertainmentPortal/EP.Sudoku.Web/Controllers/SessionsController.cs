@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
-using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
@@ -12,25 +12,26 @@ using NSwag.Annotations;
 namespace EP.Sudoku.Web.Controllers
 {
     [ApiController]
-    public class CellsController : ControllerBase
+    public class SessionsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public CellsController(IMediator mediator)
+        public SessionsController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpPut("api/cell")]
+        [HttpPost("api/sessions")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> EditCell([FromBody]Cell model)
+        public async Task<IActionResult> CreateSession([FromBody] CreateSessionCommand model)
         {
             if (model == null)
             {
                 return BadRequest();
             }
-            var cell = await _mediator.Send(new UpdateCellCommand(model));
+            var session = await _mediator.Send(model);
+
             return true ? (IActionResult)Ok() : NotFound();
         }
     }

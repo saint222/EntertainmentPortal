@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP.Sudoku.Logic.Handlers
 {
-    public class UpdateCellHandler : IRequestHandler<UpdateCell, Cell>
+    public class UpdateCellHandler : IRequestHandler<UpdateCellCommand, Cell>
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace EP.Sudoku.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Cell> Handle(UpdateCell request, CancellationToken cancellationToken)
+        public async Task<Cell> Handle(UpdateCellCommand request, CancellationToken cancellationToken)
         {
             var cellDb = _mapper.Map<CellDb>(request.cell);
             _context.Entry(cellDb).State = EntityState.Modified;

@@ -4,13 +4,13 @@ using System.Text;
 using EP.Sudoku.Logic.Models;
 using MediatR;
 
-namespace EP.Sudoku.Logic.Queries
+namespace EP.Sudoku.Logic.Commands
 {
-    public class UpdateCell : IRequest<Cell>
+    public class UpdateCellCommand : IRequest<Cell>
     {
         public Cell cell { get; set; }
 
-        public UpdateCell(Cell c)
+        public UpdateCellCommand(Cell c)
         {
             cell = c;
         }
