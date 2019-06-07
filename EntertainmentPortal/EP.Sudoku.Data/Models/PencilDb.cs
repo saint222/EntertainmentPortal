@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EP.Sudoku.Data.Models
 {
@@ -53,5 +54,7 @@ namespace EP.Sudoku.Data.Models
         /// Is used to denote the possibility to enter the value (number) 9 in the CellId (DbInfo).
         /// </summary>
         public bool IsValue9 { get; set; }
+
+        public List<CellDb> Squares { get; set; }
     }
 }

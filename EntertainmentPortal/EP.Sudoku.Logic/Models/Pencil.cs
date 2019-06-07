@@ -55,5 +55,7 @@ namespace EP.Sudoku.Logic.Models
         /// Is used to denote the possibility to enter the value (number) 9 in the CellId.
         /// </summary>
         public bool IsValue9 { get; set; }
+
+        public List<Cell> Squares { get; set; }
     }
 }

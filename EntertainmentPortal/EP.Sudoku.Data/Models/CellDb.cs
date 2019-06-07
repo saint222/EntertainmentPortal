@@ -37,10 +37,8 @@ namespace EP.Sudoku.Data.Models
         /// </summary>
         public PencilDb CellPencilDb { get; set; }
 
-        /// <summary>
-        /// Is used to communication cell and gameboard
-        /// </summary>
-        public int GameBoarId { get; set; }
+
+        public SessionDb GameSession { get; set; }
 
     }
 }

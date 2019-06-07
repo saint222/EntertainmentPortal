@@ -42,12 +42,9 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>
         /// Is used to write all possible digits to the cell.
         /// </summary>
-        public Pencil CellPencil { get; set; }
+        public Pencil CellPencil { get; set; }        
 
-        /// <summary>
-        /// Is used to communication cell and gameboard
-        /// </summary>
-        public int GameBoarId { get; set; }
+        public Session GameSession { get; set; }
 
     }
 }

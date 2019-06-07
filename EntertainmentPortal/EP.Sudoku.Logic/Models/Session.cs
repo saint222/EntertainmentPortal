@@ -1,4 +1,5 @@
 ﻿using EP.Sudoku.Logic.Enums;
+using System.Collections.Generic;
 
 namespace EP.Sudoku.Logic.Models
 {
@@ -10,15 +11,7 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>    
         /// Is used to denote an identification value of a game session.
         /// </summary>
-        public int Id { get; set; }
-
-        /// <summary>    
-        /// Is used to denote the necessary data, which concernes a player of a game session.
-        /// </summary>
-        /// <remarks>
-        /// Non-primitive type Player is used.
-        /// </remarks> 
-        public Player Participant { get; set; }
+        public int Id { get; set; }        
 
         /// <summary>    
         /// Is used to denote the level of a game session difficulty (is expected to be chosen by a player).
@@ -41,11 +34,19 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>
         /// Is used to denote a period of time from the beginning of a game session till it's end for subsequent convertation to player's points of experience. 
         /// </summary>        
-        public double Duration { get; set; }
+        public double Duration { get; set; }        
+
+        /// <summary>    
+        /// Is used to denote the necessary data, which concernes a player of a game session.
+        /// </summary>
+        /// <remarks>
+        /// Non-primitive type Player is used.
+        /// </remarks> 
+        public Player Participant { get; set; }
 
         /// <summary>
         /// Is used to connection with the gameboard. 
         /// </summary> 
-        public Cell Square { get; set; }
+        public List<Cell> Squares { get; set; }
     }
 }

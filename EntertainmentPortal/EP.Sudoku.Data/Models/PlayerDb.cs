@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EP.Sudoku.Data.Models
 {
@@ -34,5 +35,7 @@ namespace EP.Sudoku.Data.Models
         /// The non-primitive type AvatarIcon is applied.
         /// </remarks>
         public AvatarIconDb IconDb { get; set; }
+
+        public List<SessionDb> GameSessions { get; set; }
     }
 }

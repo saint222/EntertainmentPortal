@@ -38,6 +38,8 @@ namespace EP.Sudoku.Logic.Models
         /// </remarks> 
         public AvatarIcon Icon { get; set; }
 
+        public List<Session> GameSessions { get; set; }
+
 
     }
 }

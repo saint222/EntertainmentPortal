@@ -9,15 +9,7 @@ namespace EP.Sudoku.Data.Models
         /// <summary>    
         /// Is used to denote an identification value of a game session.
         /// </summary>
-        public int Id { get; set; }
-
-        /// <summary>    
-        /// Is used to denote the necessary data, which concernes a player of a game session.
-        /// </summary>
-        /// <remarks>
-        /// Non-primitive type Player is used.
-        /// </remarks> 
-        public PlayerDb ParticipantDb { get; set; }
+        public int Id { get; set; }        
 
         /// <summary>    
         /// Is used to denote the level of a game session difficulty (is expected to be chosen by a player).
@@ -44,9 +36,17 @@ namespace EP.Sudoku.Data.Models
         /// </summary>        
         public double Duration { get; set; }
 
+        /// <summary>    
+        /// Is used to denote the necessary data, which concernes a player of a game session.
+        /// </summary>
+        /// <remarks>
+        /// Non-primitive type Player is used.
+        /// </remarks> 
+        public PlayerDb ParticipantDb { get; set; }
+
         //
         //
         //
-        public CellDb SquareDb { get; set; }
+        public List<CellDb> SquaresDb { get; set; }
     }
 }
