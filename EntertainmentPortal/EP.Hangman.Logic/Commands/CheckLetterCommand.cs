@@ -1,12 +1,13 @@
 ﻿using System;
+using CSharpFunctionalExtensions;
 using EP.Hangman.Logic.Models;
 using MediatR;
 
 namespace EP.Hangman.Logic.Commands
 {
-    public class CheckLetterCommand : IRequest<ControllerData>
+    public class CheckLetterCommand : IRequest<Result<ControllerData>>
     {
-        public ControllerData _data { get; set; }
+        public ControllerData _data;
 
         public CheckLetterCommand(ControllerData data)
         {

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CSharpFunctionalExtensions;
 using EP.Hangman.Data.Models;
 
 
@@ -32,7 +33,7 @@ namespace EP.Hangman.Logic.Models
         /// Game's basic logic
         /// </summary>
         /// <returns>Returned GameDb object or NULL</returns>
-        public UserGameData Play(string letter)
+        public Result<UserGameData> Play(string letter)
         {
             if (_data.UserErrors < MAX_ERRORS)
             {
@@ -47,17 +48,17 @@ namespace EP.Hangman.Logic.Models
                             _data.CorrectLetters[i] = letter;
                         }
                     }
-                    return _data;
+                    return Result.Ok<UserGameData>(_data);
                 }
                 else
                 {
                     _data.UserErrors++;
-                    return _data;
+                    return Result.Ok<UserGameData>(_data);
                 }
             }
             else
             {
-                return null;
+                return Result.Fail<UserGameData>("Game over");
             }
         }
     }

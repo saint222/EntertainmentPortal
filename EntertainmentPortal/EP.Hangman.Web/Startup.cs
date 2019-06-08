@@ -10,6 +10,8 @@ using AutoMapper;
 using EP.Hangman.Logic;
 using EP.Hangman.Logic.Commands;
 using EP.Hangman.Logic.Profiles;
+using EP.Hangman.Logic.Validators;
+using FluentValidation.AspNetCore;
 
 namespace EP.Hangman.Web
 {
@@ -27,9 +29,15 @@ namespace EP.Hangman.Web
         {
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetUserSession).Assembly);
-            services.AddAutoMapper(typeof(GameDbUserGameDataProfile), typeof(ControllerDataUserGameDataProfile));
+            services.AddMediatR(typeof(CheckLetterCommand).Assembly);
+            services.AddAutoMapper(typeof(MapperProfile).Assembly);
             services.AddGameServices();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(cfg =>
+                {
+                    cfg.RegisterValidatorsFromAssemblyContaining<DeleteGameValidator>();
+                    cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
