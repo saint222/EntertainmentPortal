@@ -42,7 +42,7 @@ namespace EP.Hangman.Logic.Handlers
 
             var result = new HangmanGame(_mapper.Map<GameDb, UserGameData>(session)).Play(request._data.Letter);
 
-            var mapped = _mapper.Map<UserGameData, GameDb>(result);
+            var mapped = _mapper.Map<Result<UserGameData>, GameDb>(result);
 
             _context.Entry<GameDb>(mapped).State = EntityState.Modified;
 
@@ -50,7 +50,7 @@ namespace EP.Hangman.Logic.Handlers
             {
                 await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-                return Result.Ok<ControllerData>(_mapper.Map<UserGameData, ControllerData>(result));
+                return Result.Ok<ControllerData>(_mapper.Map<Result<UserGameData>, ControllerData>(result));
             }
             catch (DbUpdateException exception)
             {

@@ -58,7 +58,7 @@ namespace EP.Hangman.Logic.Tests
             _newData.Alphabet = new Alphabets().EnglishAlphabet();
             _newData.CorrectLetters = new List<string> {"_", "_", "_"};
 
-            return new HangmanGame(_newData).Play("A").UserErrors;
+            return new HangmanGame(_newData).Play("A").Value.UserErrors;
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace EP.Hangman.Logic.Tests
             _newData.Alphabet = new Alphabets().EnglishAlphabet();
             _newData.CorrectLetters = new List<string> { "_", "_", "_" };
 
-            Assert.AreEqual(letter, new HangmanGame(_newData).Play(letter).CorrectLetters[position]);
+            Assert.AreEqual(letter, new HangmanGame(_newData).Play(letter).Value.CorrectLetters[position]);
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace EP.Hangman.Logic.Tests
             _newData.Alphabet = new Alphabets().EnglishAlphabet();
             _newData.CorrectLetters = new List<string> { "_", "_", "_" };
 
-            Assert.False(new HangmanGame(_newData).Play(letter).Alphabet.Contains(letter));
+            Assert.False(new HangmanGame(_newData).Play(letter).Value.Alphabet.Contains(letter));
         }
     }
 }
