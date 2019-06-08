@@ -5,49 +5,72 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using CSharpFunctionalExtensions;
 using EP._15Puzzle.Data;
 using EP._15Puzzle.Data.Context;
 using EP._15Puzzle.Data.Models;
+using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
+using EP._15Puzzle.Logic.Validators;
+using FluentValidation;
+using JetBrains.Annotations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Handlers
 {
-    public class MoveTileHandler : IRequestHandler<MoveTile, Deck>
+    public class MoveTileHandler : IRequestHandler<MoveTileCommand, Result<Deck>>
     {
         private readonly DeckDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IValidator<MoveTileCommand> _validator;
 
-        public MoveTileHandler(DeckDbContext context, IMapper mapper)
+        public MoveTileHandler(DeckDbContext context, IMapper mapper, IValidator<MoveTileCommand> validator)
         {
             _mapper = mapper;
             _context = context;
+            _validator = new MoveTileValidator(context); //foofoo
         }
-        public async Task<Deck> Handle(MoveTile request, CancellationToken cancellationToken)
+        public async Task<Result<Deck>> Handle([NotNull]MoveTileCommand request, CancellationToken cancellationToken)
         {
-            var deck = _context.DeckDbs
-                .Include(d=>d.Tiles)
-                .Include(d=>d.EmptyTile)
-                .First(d => d.UserId == request.Id);
-            var tile = deck.Tiles.First(t => t.Num == request.Tile);
-            var tile0 = deck.EmptyTile;
-            if (ComparePositions(tile, tile0))
+             
+            //validate
+            var result = _validator.Validate(request);
+            if (!_validator.Validate(request).IsValid)
             {
-                var temp = tile0.Pos;
-                deck.EmptyTile.Pos = tile.Pos;
-                tile.Pos = temp;
-                
-                deck.Score += 1;
-                if (CheckWin(deck))
+                return Result.Fail<Deck>(result.Errors.First().ErrorMessage);
+            }
+
+            try
+            {
+                var deck = _context.DeckDbs
+                    .Include(d => d.Tiles)
+                    .Include(d => d.EmptyTile)
+                    .First(d => d.UserId == request.Id);
+                var tile = deck.Tiles.First(t => t.Num == request.Tile);
+                var tile0 = deck.EmptyTile;
+                if (ComparePositions(tile, tile0))
                 {
-                    deck.Victory = true;
+                    var temp = tile0.Pos;
+                    deck.EmptyTile.Pos = tile.Pos;
+                    tile.Pos = temp;
+
+                    deck.Score += 1;
+                    if (CheckWin(deck))
+                    {
+                        deck.Victory = true;
+                    }
+
+                    await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
                 }
 
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                return Result.Ok<Deck>(_mapper.Map<Deck>(deck));
             }
-            return _mapper.Map<Deck>(deck);
+            catch (DbUpdateException ex)
+            {
+                return Result.Fail<Deck>(ex.Message);
+            }
         }
 
 

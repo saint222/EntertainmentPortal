@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Handlers
 {
-    public class ResetDeckHandler : IRequestHandler<ResetDeck, Deck>
+    public class ResetDeckHandler : IRequestHandler<ResetDeckCommand, Deck>
     {
         private readonly IMapper _mapper;
         private readonly DeckDbContext _context;
@@ -25,7 +25,7 @@ namespace EP._15Puzzle.Logic.Handlers
             _mapper = mapper;
             _context = context;
         }
-        public async Task<Deck> Handle(ResetDeck request, CancellationToken cancellationToken)
+        public async Task<Deck> Handle(ResetDeckCommand request, CancellationToken cancellationToken)
         {
             var deck = _context.DeckDbs
                 .Include(d => d.Tiles)
@@ -66,7 +66,7 @@ namespace EP._15Puzzle.Logic.Handlers
             
             foreach (var tile in deck.Tiles)
             {
-                tilesOnDeck[tile.Pos-1] = tile.Num;
+                tilesOnDeck[tile.Pos-18] = tile.Num;
             }
 
             tilesOnDeck[0] = deck.EmptyTile.Num;

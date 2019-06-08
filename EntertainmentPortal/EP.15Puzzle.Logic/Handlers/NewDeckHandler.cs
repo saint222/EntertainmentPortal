@@ -14,7 +14,7 @@ using MediatR;
 
 namespace EP._15Puzzle.Logic.Handlers
 {
-    public class NewDeckHandler : IRequestHandler<NewDeck, Deck>
+    public class NewDeckHandler : IRequestHandler<NewDeckCommand, Deck>
     {
         private readonly IMapper _mapper;
         private readonly DeckDbContext _context;
@@ -24,7 +24,7 @@ namespace EP._15Puzzle.Logic.Handlers
             _mapper = mapper;
             _context = context;
         }
-        public async Task<Deck> Handle(NewDeck request, CancellationToken cancellationToken)
+        public async Task<Deck> Handle(NewDeckCommand request, CancellationToken cancellationToken)
         {
             var deck = new DeckDb(4);
 

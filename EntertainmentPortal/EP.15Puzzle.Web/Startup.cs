@@ -17,6 +17,8 @@ using Microsoft.Extensions.Options;
 using EP._15Puzzle.Logic.Profiles;
 using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
+using EP._15Puzzle.Logic.Validators;
+using FluentValidation.AspNetCore;
 
 namespace EP._15Puzzle.Web
 {
@@ -32,13 +34,16 @@ namespace EP._15Puzzle.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(NewDeck).Assembly);
-            services.AddMediatR(typeof(MoveTile).Assembly);
+            services.AddMediatR(typeof(NewDeckCommand).Assembly);
             services.AddMediatR(typeof(GetDeck).Assembly);
             services.AddSwaggerDocument();
             services.AddAutoMapper(cfg => cfg.AddProfile(new DeckProfile()));
             services.AddDeckServices();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(cfg =>
+            {
+                cfg.RegisterValidatorsFromAssemblyContaining<MoveTileValidator>();
+                cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            }); ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

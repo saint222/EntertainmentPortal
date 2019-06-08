@@ -4,7 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using EP._15Puzzle.Logic;
+using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Queries;
+using JetBrains.Annotations;
 using MediatR;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Http;
@@ -41,7 +43,7 @@ namespace EP._15Puzzle.Web.Controllers
             return NotFound();
         }
 
-        // POST: api/Deck/id
+        // POST: api/Deck
         [HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Deck), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
@@ -50,12 +52,12 @@ namespace EP._15Puzzle.Web.Controllers
             if (HttpContext.Request.Cookies.ContainsKey("id"))
             {
                 int id = int.Parse(HttpContext.Request.Cookies["id"]);
-                var result = await _mediator.Send(new ResetDeck(id));
+                var result = await _mediator.Send(new ResetDeckCommand(id));
                 return result != null ? (IActionResult)Ok(result) : NotFound();
             }
             else
             {
-                var result = await _mediator.Send(new NewDeck());
+                var result = await _mediator.Send(new NewDeckCommand());
                 HttpContext.Response.Cookies.Append("id",result.UserId.ToString());
                 return result != null ? (IActionResult)Ok(result) : NotFound();
             }
@@ -63,17 +65,22 @@ namespace EP._15Puzzle.Web.Controllers
             //return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
-        // PUT: api/Deck/id
+        // PUT: api/Deck
         [HttpPut]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Deck), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> Put([FromBody] int tile)
+        public async Task<IActionResult> Put([FromBody][NotNull] int tile)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (HttpContext.Request.Cookies.ContainsKey("id"))
             {
-                int id = int.Parse(HttpContext.Request.Cookies["id"]);
-                var result = await _mediator.Send(new MoveTile(id, tile));
-                return result != null ? (IActionResult)Ok(result) : NotFound();
+                var id = int.Parse(HttpContext.Request.Cookies["id"]);
+                var result = await _mediator.Send(new MoveTileCommand(){Id = id, Tile = tile});
+                return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
             }
             return NotFound();
 
