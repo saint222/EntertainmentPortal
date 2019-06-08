@@ -8,10 +8,11 @@ using EP.Hangman.Logic.Converters;
 
 namespace EP.Hangman.Logic.Profiles
 {
-    public class GameDbUserGameDataProfile : Profile
+    public class MapperProfile : Profile
     {
-        public GameDbUserGameDataProfile()
+        public MapperProfile()
         {
+            CreateMap<UserGameData, ControllerData>();
             CreateMap<string, List<string>>().ConvertUsing(new ListStringTypeConverter());
             CreateMap<List<string>, string>().ConvertUsing(new StringTypeConverter());
             CreateMap<GameDb, UserGameData>()
