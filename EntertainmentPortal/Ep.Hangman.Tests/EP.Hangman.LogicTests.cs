@@ -78,7 +78,7 @@ namespace EP.Hangman.Logic.Tests
         public void TestNoMoreAttempts()
         {
             _newData.UserErrors = 6;
-            Assert.IsNull(new Models.HangmanGame(_newData).Play("A"));
+            Assert.AreEqual("Game over", new Models.HangmanGame(_newData).Play("A").Error);
         }
 
         [Test]
