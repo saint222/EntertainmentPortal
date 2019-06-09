@@ -8,8 +8,10 @@ namespace EP.Sudoku.Logic.Profiles
     {
         public SessionProfile()
         {
-            CreateMap<SessionDb, Session>().ForMember(dest => dest.Square, e => e.MapFrom(src => src.SquareDb))
-                .ReverseMap().ForMember(dest => dest.SquareDb, e => e.MapFrom(src => src.Square));
+            CreateMap<SessionDb, Session>().ForMember(dest => dest.Participant, e => e.MapFrom(src => src.ParticipantDb)).ReverseMap()
+                .ForMember(dest => dest.ParticipantDb, e => e.MapFrom(src => src.Participant)).ReverseMap().
+                ForMember(dest => dest.Squares, e => e.MapFrom(src => src.SquaresDb)).ReverseMap().
+                ForMember(dest => dest.SquaresDb, e => e.MapFrom(src => src.Squares)).ReverseMap();
         }
 
     }
