@@ -40,7 +40,11 @@ namespace EP.Hangman.Logic.Handlers
                 return Result.Fail<ControllerData>(validator.Errors.First().ErrorMessage);
             }
 
-            var result = new GameDb(){Id = request._data.Id};
+            var result = await _context.Games.FindAsync(request._data.Id);
+            if (result == null)
+            {
+                return Result.Fail<ControllerData>("Data wasn't found");
+            }
 
             _context.Entry<GameDb>(result).State = EntityState.Deleted;
 

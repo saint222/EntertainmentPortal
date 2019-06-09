@@ -12,7 +12,7 @@ namespace EP.Hangman.Logic.Handlers
 
         public CreateDatabaseHandler(GameDbContext context)
         {
-                _context = context;
+            _context = context;
         }
 
         protected override async Task Handle(CreateDatabaseCommand request, CancellationToken cancellationToken)
