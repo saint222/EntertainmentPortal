@@ -5,17 +5,20 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using CSharpFunctionalExtensions;
 using EP._15Puzzle.Data;
 using EP._15Puzzle.Data.Context;
 using EP._15Puzzle.Data.Models;
+using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
+using EP._15Puzzle.Logic.Validators;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Handlers
 {
-    public class ResetDeckHandler : IRequestHandler<ResetDeckCommand, Deck>
+    public class ResetDeckHandler : IRequestHandler<ResetDeckCommand, Result<Deck>>
     {
         private readonly IMapper _mapper;
         private readonly DeckDbContext _context;
@@ -25,25 +28,40 @@ namespace EP._15Puzzle.Logic.Handlers
             _mapper = mapper;
             _context = context;
         }
-        public async Task<Deck> Handle(ResetDeckCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Deck>> Handle(ResetDeckCommand request, CancellationToken cancellationToken)
         {
-            var deck = _context.DeckDbs
-                .Include(d => d.Tiles)
-                .Include(d => d.EmptyTile)
-                .First(d => d.UserId == request.Id);
+            var userExists = new ResetDeckValidator(_context).Validate(request);
 
-            do
+            if (!userExists.IsValid)
             {
-                deck = Unsort(deck);
-            } while (!CheckWinIsPossible(deck));
+                return Result.Fail<Deck>(userExists.Errors.First().ErrorMessage);
+            }
 
-            _context.Update(deck);
-            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-            return _mapper.Map<Deck>(deck);
+            try
+            {
+                var deck = _context.DeckDbs
+                    .Include(d => d.Tiles)
+                    .Include(d => d.EmptyTile)
+                    .First(d => d.UserId == request.Id);
+
+                do
+                {
+                    deck = Unsort(deck);
+                } while (!CheckWinIsPossible(deck));
+
+                _context.Update(deck);
+                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                return Result.Ok<Deck>(_mapper.Map<Deck>(deck));
+            }
+            catch (DbUpdateException ex)
+            {
+                return Result.Fail<Deck>(ex.Message);
+            }
+            
 
         }
 
-        private DeckDb Unsort(DeckDb deck) //need tiles???
+        private DeckDb Unsort(DeckDb deck) 
         {
             List<TileDb> tiles = deck.Tiles.ToList();
             Random random = new Random();
@@ -57,6 +75,9 @@ namespace EP._15Puzzle.Logic.Handlers
             }
 
             deck.Tiles = tiles;
+            deck.Victory = false;
+            deck.Score = 0;
+            
             return deck;
         }
 
@@ -66,7 +87,7 @@ namespace EP._15Puzzle.Logic.Handlers
             
             foreach (var tile in deck.Tiles)
             {
-                tilesOnDeck[tile.Pos-18] = tile.Num;
+                tilesOnDeck[tile.Pos-1] = tile.Num;
             }
 
             tilesOnDeck[0] = deck.EmptyTile.Num;

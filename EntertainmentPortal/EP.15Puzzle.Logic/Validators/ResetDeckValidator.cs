@@ -9,16 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Validators
 {
-    public class MoveTileValidator : AbstractValidator<MoveTileCommand>
+    public class ResetDeckValidator : AbstractValidator<ResetDeckCommand>
     {
-        public MoveTileValidator(DeckDbContext context)
+        public ResetDeckValidator(DeckDbContext context)
         {
-            RuleFor(x => x.Tile)
-                .NotEmpty()
-                .WithMessage("Tile cannot be null")
-                .InclusiveBetween(1, 16)
-                .WithMessage("Tile must be between 1..16");
-
+            
             RuleFor(x => x.Id)
                 .MustAsync(
                     async (o, s, token) =>

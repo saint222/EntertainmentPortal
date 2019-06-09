@@ -30,14 +30,14 @@ namespace EP._15Puzzle.Logic.Handlers
         {
             _mapper = mapper;
             _context = context;
-            _validator = new MoveTileValidator(context); //foofoo
+            _validator = new MoveTileValidator(context);
         }
         public async Task<Result<Deck>> Handle([NotNull]MoveTileCommand request, CancellationToken cancellationToken)
         {
              
-            //validate
+            //validate tile
             var result = _validator.Validate(request);
-            if (!_validator.Validate(request).IsValid)
+            if (!result.IsValid)
             {
                 return Result.Fail<Deck>(result.Errors.First().ErrorMessage);
             }

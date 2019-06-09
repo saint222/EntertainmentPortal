@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using CSharpFunctionalExtensions;
 using MediatR;
 
-namespace EP._15Puzzle.Logic.Queries
+namespace EP._15Puzzle.Logic.Commands
 {
-    public class NewDeckCommand : IRequest<Deck>
+    public class NewDeckCommand : IRequest <Tuple<Result<Deck>, string>>
     {
         public NewDeckCommand()
         {

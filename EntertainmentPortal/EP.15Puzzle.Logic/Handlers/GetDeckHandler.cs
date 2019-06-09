@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using CSharpFunctionalExtensions;
 using EP._15Puzzle.Data;
 using EP._15Puzzle.Data.Context;
 using EP._15Puzzle.Logic.Queries;
+using EP._15Puzzle.Logic.Validators;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Handlers
 {
-    public class GetDeckHandler : IRequestHandler<GetDeck, Deck>
+    public class GetDeckHandler : IRequestHandler<GetDeckQuery, Result<Deck>>
     {
         private readonly IMapper _mapper;
         private readonly DeckDbContext _context;
@@ -23,20 +26,26 @@ namespace EP._15Puzzle.Logic.Handlers
             _mapper = mapper;
             _context = context;
         }
-        public async Task<Deck> Handle(GetDeck request, CancellationToken cancellationToken)
+        public async Task<Result<Deck>> Handle(GetDeckQuery request, CancellationToken cancellationToken)
         {
+            var userExists = new GetDeckValidator(_context).Validate(request);
+            if (!userExists.IsValid)
+            {
+                return Result.Fail<Deck>(userExists.Errors.First().ErrorMessage);
+            }
 
-            if (_context.UserDbs.Any(d => d.Id == request.Id))
+            try
             {
                 var deck = _context.UserDbs
                     .Include(d => d.Deck.Tiles)
-                    .Include(d=>d.Deck.EmptyTile)
+                    .Include(d => d.Deck.EmptyTile)
                     .First(u => u.Id == request.Id).Deck;
-
-                return await Task.FromResult(_mapper.Map<Deck>(deck));
+                return await Task.FromResult(Result.Ok<Deck>(_mapper.Map<Deck>(deck)));
             }
-            return null;
-            
+            catch (DbException ex)
+            {
+                return Result.Fail<Deck>(ex.Message);
+            }
         }
     }
 }

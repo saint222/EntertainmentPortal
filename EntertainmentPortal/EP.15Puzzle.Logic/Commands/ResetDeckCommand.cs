@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CSharpFunctionalExtensions;
 using MediatR;
 
-namespace EP._15Puzzle.Logic.Queries
+namespace EP._15Puzzle.Logic.Commands
 {
-    public class ResetDeckCommand : IRequest<Deck>
+    public class ResetDeckCommand : IRequest<Result<Deck>>
     {
         public int Id { get; }
         public ResetDeckCommand(int id)

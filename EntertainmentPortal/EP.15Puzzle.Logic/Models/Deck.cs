@@ -8,8 +8,7 @@ namespace EP._15Puzzle.Logic
 {
     public class Deck
     {
-        public int UserId { get; set; }
-
+        
         public int Score { get; set; }
         public bool Victory { get; set; }
 

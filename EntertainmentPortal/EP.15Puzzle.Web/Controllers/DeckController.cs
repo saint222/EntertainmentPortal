@@ -31,14 +31,14 @@ namespace EP._15Puzzle.Web.Controllers
         // GET: api/Deck
         [HttpGet]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Deck), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> Get()
         {
             if (HttpContext.Request.Cookies.ContainsKey("id"))
             {
                 int id = int.Parse(HttpContext.Request.Cookies["id"]);
-                var result = await _mediator.Send(new GetDeck(id));
-                return result != null ? (IActionResult)Ok(result) : NotFound();
+                var result = await _mediator.Send(new GetDeckQuery(id));
+                return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
             }
             return NotFound();
         }
@@ -51,18 +51,24 @@ namespace EP._15Puzzle.Web.Controllers
         {
             if (HttpContext.Request.Cookies.ContainsKey("id"))
             {
-                int id = int.Parse(HttpContext.Request.Cookies["id"]);
+                var id = int.Parse(HttpContext.Request.Cookies["id"]);
                 var result = await _mediator.Send(new ResetDeckCommand(id));
-                return result != null ? (IActionResult)Ok(result) : NotFound();
+                return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
             }
             else
             {
                 var result = await _mediator.Send(new NewDeckCommand());
-                HttpContext.Response.Cookies.Append("id",result.UserId.ToString());
-                return result != null ? (IActionResult)Ok(result) : NotFound();
+                if (result.Item1.IsSuccess)
+                {
+                    HttpContext.Response.Cookies.Append("id", result.Item2);
+                    return (IActionResult) Ok(result.Item1.Value);
+                }
+
+                return NotFound(result.Item1.Error);
+
+
+                //return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
             }
-            //var result = await _mediator.Send(new NewDeck(id));
-            //return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
         // PUT: api/Deck
@@ -78,9 +84,10 @@ namespace EP._15Puzzle.Web.Controllers
 
             if (HttpContext.Request.Cookies.ContainsKey("id"))
             {
+
                 var id = int.Parse(HttpContext.Request.Cookies["id"]);
                 var result = await _mediator.Send(new MoveTileCommand(){Id = id, Tile = tile});
-                return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
+                return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
             }
             return NotFound();
 

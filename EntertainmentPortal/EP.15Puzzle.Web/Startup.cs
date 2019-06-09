@@ -35,7 +35,7 @@ namespace EP._15Puzzle.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(NewDeckCommand).Assembly);
-            services.AddMediatR(typeof(GetDeck).Assembly);
+            services.AddMediatR(typeof(GetDeckQuery).Assembly);
             services.AddSwaggerDocument();
             services.AddAutoMapper(cfg => cfg.AddProfile(new DeckProfile()));
             services.AddDeckServices();
