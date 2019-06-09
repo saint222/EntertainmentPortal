@@ -22,12 +22,11 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<Session> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
         {
-            var sessionDb = _mapper.Map<SessionDb>(request);
-
+            var sessionDb = _mapper.Map<SessionDb>(request.session);
+            sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);            
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-
-            return await Task.FromResult(_mapper.Map<Session>(request));
+            return await Task.FromResult(request.session);
         }
     }
 }
