@@ -13,12 +13,24 @@ namespace EP.Balda.Data.Services
                 {
                     opt.UseSqlite(
                         "Data Source=" +
-                        "/EP.Balda/EP.Balda.Data/DbStore/dictionaryDb.db; " +
-                        "Version=3; " +
-                        "UseUTF16Encoding=True;");
+                        @"DbStore\dictionaryDb.db");
                     opt.UseQueryTrackingBehavior(
                         QueryTrackingBehavior.NoTracking);
                 });
+            return services;
+        }
+
+        public static IServiceCollection PlayerData(this IServiceCollection services)
+        {
+            services.AddDbContext<PlayerDbContext>(
+                opt =>
+                {
+                    opt.UseSqlite(
+                        "Data Source=" +
+                        @"DbStore\plaerDb.db",x => x.MigrationsAssembly("EP.Balda.Data"));
+                    opt.UseQueryTrackingBehavior(
+                        QueryTrackingBehavior.NoTracking);
+        });
             return services;
         }
     }

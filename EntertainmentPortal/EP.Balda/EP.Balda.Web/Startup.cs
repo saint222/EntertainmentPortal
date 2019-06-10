@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EP.Balda.Logic.Services;
 using EP.Balda.Logic.Profiles;
 using EP.Balda.Logic.Queries;
 using MediatR;
@@ -27,6 +28,8 @@ namespace EP.Balda.Web
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddMediatR(typeof(GetAllWords).Assembly);
             services.AddAutoMapper(typeof(Startup).Assembly);
+            services.AddWordServices();
+            services.AddPlayerServices();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
