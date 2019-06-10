@@ -34,10 +34,13 @@ namespace EP.Sudoku.Logic.Models
         /// Is used to denote strict quantity of icons for choosing.
         /// </summary>
         /// <remarks>
-        /// The non-primitive type AvatarIcon is applied.
+        /// Navigation property.
         /// </remarks> 
         public AvatarIcon Icon { get; set; }
 
+        /// <summary>
+        /// Is used to provide a player with a possibility to have more than one unfinished game.
+        /// </summary> 
         public List<Session> GameSessions { get; set; }
 
 

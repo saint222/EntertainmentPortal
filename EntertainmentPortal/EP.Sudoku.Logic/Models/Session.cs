@@ -8,6 +8,7 @@ namespace EP.Sudoku.Logic.Models
     /// </summary>
     public class Session
     {
+
         /// <summary>    
         /// Is used to denote an identification value of a game session.
         /// </summary>
@@ -34,18 +35,18 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>
         /// Is used to denote a period of time from the beginning of a game session till it's end for subsequent convertation to player's points of experience. 
         /// </summary>        
-        public double Duration { get; set; }        
+        public double Duration { get; set; }
 
         /// <summary>    
         /// Is used to denote the necessary data, which concernes a player of a game session.
         /// </summary>
         /// <remarks>
-        /// Non-primitive type Player is used.
+        /// Navigation property.
         /// </remarks> 
         public Player Participant { get; set; }
 
         /// <summary>
-        /// Is used to connection with the gameboard. 
+        /// Is used for keeping a stric number (81) of the gameboard parts. 
         /// </summary> 
         public List<Cell> Squares { get; set; }
     }

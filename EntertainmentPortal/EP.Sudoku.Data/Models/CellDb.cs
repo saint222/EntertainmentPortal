@@ -4,6 +4,7 @@ namespace EP.Sudoku.Data.Models
 {
     public class CellDb
     {
+
         /// <summary>    
         /// Is used to denote an identification value of a cell (DbInfo).
         /// </summary>
@@ -34,10 +35,7 @@ namespace EP.Sudoku.Data.Models
 
         /// <summary>
         /// Is used to write all possible digits to the cell (DbInfo).
-        /// </summary>
-        //public PencilDb CellPencilDb { get; set; }
-
-
+        /// </summary>        
         public SessionDb GameSession { get; set; }
 
     }

@@ -32,10 +32,13 @@ namespace EP.Sudoku.Data.Models
         /// Is used to denote strict quantity of icons for choosing (DbInfo).
         /// </summary>
         /// <remarks>
-        /// The non-primitive type AvatarIcon is applied.
+        /// Navigation property.
         /// </remarks>
         public AvatarIconDb IconDb { get; set; }
 
+        /// <summary>
+        /// Is used to provide a player with a possibility to have more than one unfinished game (DbInfo).
+        /// </summary> 
         public List<SessionDb> GameSessions { get; set; }
     }
 }
