@@ -22,7 +22,7 @@ namespace EP.Sudoku.Logic.Models
         /// <remarks>
         /// Nullable int is used to store an empty piece of the gameboard if still there is  no value on the surface of the cell.
         /// </remarks>        
-        public int? Value { get; set; }
+        public int Value { get; set; }
 
         /// <summary>
         /// Is used to denote, wether the value of the cell is a random-generated, or is filled up by the player.
@@ -42,7 +42,7 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>
         /// Is used to write all possible digits to the cell.
         /// </summary>
-        public Pencil CellPencil { get; set; }        
+        //public Pencil CellPencil { get; set; }        
 
         public Session GameSession { get; set; }
 

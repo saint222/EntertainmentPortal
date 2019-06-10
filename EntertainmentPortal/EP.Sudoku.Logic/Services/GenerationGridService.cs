@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EP.Sudoku.Logic.Models;
 
 namespace EP.Sudoku.Logic.Services
 {
@@ -150,6 +151,48 @@ namespace EP.Sudoku.Logic.Services
             }
 
             return grid;
+        }
+
+        public List<Cell> GridToCells(int[,] grid)
+        {
+            List<Cell> cells = new List<Cell>();
+            for (int i = 0; i < GRID_DIMENSION; i++)
+            {
+                for (int j = 0; j < GRID_DIMENSION; j++)
+                {
+                    Cell cell = new Cell();
+                    cell.X = i;
+                    cell.Y = j;
+                    cell.Value = grid[i, j];
+                    cells.Add(cell);
+                }
+            }
+
+            return cells;
+        }
+
+        /// <summary>    
+        /// Shuffles cells and rows randomly to generate new grid
+        /// </summary>
+        public List<Cell> GetRandomCells()
+        {
+            int[,] grid = GetBaseGrid();
+            List<Func<int[,], int[,]>> methods = new List<Func<int[,], int[,]>>();
+            Random rand = new Random();
+            int iterations = rand.Next(50, 100);
+
+            methods.Add(Transposition);
+            methods.Add(SwapRowsSmall);
+            methods.Add(SwapColumnsSmall);
+            methods.Add(SwapRowsArea);
+            methods.Add(SwapColumnsArea);
+
+            for (int i = 0; i < iterations; i++)
+            {
+                grid = methods[rand.Next(0, 5)].Invoke(grid);
+            }
+
+            return GridToCells(grid);
         }
 
         /// <summary>    
