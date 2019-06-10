@@ -1,10 +1,13 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using EP.Sudoku.Data.Context;
 using EP.Sudoku.Data.Models;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Commands;
+using EP.Sudoku.Logic.Services;
 using MediatR;
 
 namespace EP.Sudoku.Logic.Handlers
@@ -23,7 +26,11 @@ namespace EP.Sudoku.Logic.Handlers
         public async Task<Session> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
         {
             var sessionDb = _mapper.Map<SessionDb>(request.session);
-            sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);            
+            sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
+
+            GenerationGridService gridService = new GenerationGridService();
+            sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(gridService.GetRandomCells());
+
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
             return await Task.FromResult(request.session);

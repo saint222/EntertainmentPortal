@@ -35,7 +35,7 @@ namespace EP.Sudoku.Data.Models
         /// <summary>
         /// Is used to write all possible digits to the cell (DbInfo).
         /// </summary>
-        public PencilDb CellPencilDb { get; set; }
+        //public PencilDb CellPencilDb { get; set; }
 
 
         public SessionDb GameSession { get; set; }
