@@ -31,7 +31,7 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest();
             }
             var cell = await _mediator.Send(new UpdateCellCommand(model));
-            return true ? (IActionResult)Ok() : NotFound();
+            return true ? (IActionResult)Ok() : BadRequest();
         }
     }
 }

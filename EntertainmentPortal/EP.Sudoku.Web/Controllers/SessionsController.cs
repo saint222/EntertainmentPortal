@@ -32,7 +32,7 @@ namespace EP.Sudoku.Web.Controllers
             }
             var session = await _mediator.Send(new CreateSessionCommand(model));
 
-            return session!=null ? (IActionResult)Ok(session) : NotFound();
+            return session!=null ? (IActionResult)Ok(session) : BadRequest();
         }
     }
 }

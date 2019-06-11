@@ -34,7 +34,8 @@ namespace EP.Sudoku.Web.Controllers
 
         [HttpGet("api/players/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> GetPlayerByIdAsync(int id)
         {
             if (id <= 0)
@@ -55,7 +56,7 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest();
             }            
             var player = await _mediator.Send(new CreatePlayerCommand(model));
-            return player!=null ? (IActionResult)Ok(player) : NotFound();
+            return player!=null ? (IActionResult)Ok(player) : BadRequest();
         }
 
         [HttpPut("api/players")]
@@ -68,7 +69,7 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest();
             }
             var player = await _mediator.Send(new UpdatePlayerCommand(model));
-            return player != null ? (IActionResult)Ok(player) : NotFound();
+            return player != null ? (IActionResult)Ok(player) : BadRequest();
         }
 
         [HttpDelete("api/players")]
@@ -82,7 +83,7 @@ namespace EP.Sudoku.Web.Controllers
             }
             var result = await _mediator.Send(new DeletePlayerCommand(id));
             
-            return true ? (IActionResult)Ok() : NotFound();
+            return true ? (IActionResult)Ok() : BadRequest();
         }
     }
 }
