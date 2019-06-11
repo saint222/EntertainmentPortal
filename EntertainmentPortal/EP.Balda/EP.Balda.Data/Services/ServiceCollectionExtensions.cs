@@ -7,12 +7,13 @@ namespace EP.Balda.Data.Services
 {
     public static class ServiceCollectionExtensions
     {
-        private const string STORE_PATH = @"..\EP.Balda.Data\DbStore\";
+        private const string STORE_PATH = @"Data Source=..\EP.Balda.Data\DbStore\";
 
         public static IServiceCollection AddWordData(this IServiceCollection services)
         {
             const string CONNECTION_TO_DICTIONARY_DB =
                 STORE_PATH + "dictionaryDb.db";
+
             services.AddDbContext<WordDbContext>(
                 opt =>
                 {
@@ -29,7 +30,7 @@ namespace EP.Balda.Data.Services
                 STORE_PATH + "playerDb.db";
 
             //string startupPath = Environment.CurrentDirectory;
-            //Console.WriteLine(startupPath);
+            Console.WriteLine(CONNECTION_TO_PLAYER_DB);
 
             services.AddDbContext<PlayerDbContext>(
                 opt =>
