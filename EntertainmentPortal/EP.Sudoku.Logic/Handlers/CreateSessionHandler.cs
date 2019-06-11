@@ -29,7 +29,8 @@ namespace EP.Sudoku.Logic.Handlers
             sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
 
             GenerationGridService gridService = new GenerationGridService();
-            sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(gridService.GetRandomCells());            
+            List<Cell> cells = gridService.GetRandomCells();
+            sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);            
 
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
