@@ -1,16 +1,15 @@
-﻿using EP.Sudoku.Data.Models;
-using EP.Sudoku.Logic.Models;
+﻿using EP.Sudoku.Logic.Models;
 using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EP.Sudoku.Logic.Queries
+namespace EP.Sudoku.Logic.Commands
 {
-    public class CreatePlayer : IRequest<Player>
+    public class UpdatePlayerCommand : IRequest<Player>
     {
         public Player player { get; set; }
-        public CreatePlayer(Player p)
+        public UpdatePlayerCommand(Player p)
         {
             player = p;
         }
