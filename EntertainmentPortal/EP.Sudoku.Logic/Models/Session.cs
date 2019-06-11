@@ -1,5 +1,5 @@
 ﻿using EP.Sudoku.Logic.Enums;
-using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace EP.Sudoku.Logic.Models
 {
@@ -8,17 +8,12 @@ namespace EP.Sudoku.Logic.Models
     /// </summary>
     public class Session
     {
+
         /// <summary>    
         /// Is used to denote an identification value of a game session.
         /// </summary>
-        public int Id { get; set; }
-        /// <summary>    
-        /// Is used to denote the necceaasry data, which concernes a player of a game session.
-        /// </summary>
-        /// <remarks>
-        /// Non-primitive type Player is used.
-        /// </remarks> 
-        public Player Participant { get; set; }
+        public int Id { get; set; }        
+
         /// <summary>    
         /// Is used to denote the level of a game session difficulty (is expected to be chosen by a player).
         /// </summary>
@@ -26,13 +21,33 @@ namespace EP.Sudoku.Logic.Models
         /// Non-primitive type DifficultyLevel (enum) is used.
         /// </remarks> 
         public DifficultyLevel Level { get; set; }
+
+        /// <summary>    
+        /// Is used to denote the number of tips.
+        /// </summary>
+        public int Hint { get; set; } = 3;
+
         /// <summary>    
         /// Is used as a flag for the business logic of the Session class.
         /// </summary>
         public bool IsOver { get; set; }
+
         /// <summary>
         /// Is used to denote a period of time from the beginning of a game session till it's end for subsequent convertation to player's points of experience. 
         /// </summary>        
-        public double Duration { get; set; }        
+        public double Duration { get; set; }
+
+        /// <summary>    
+        /// Is used to denote the necessary data, which concernes a player of a game session.
+        /// </summary>
+        /// <remarks>
+        /// Navigation property.
+        /// </remarks> 
+        public Player Participant { get; set; }
+
+        /// <summary>
+        /// Is used for keeping a stric number (81) of the gameboard parts. 
+        /// </summary> 
+        public List<Cell> Squares { get; set; }
     }
 }
