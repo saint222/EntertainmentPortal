@@ -11,7 +11,7 @@ namespace EP.Balda.Logic.Models
         /// <summary>
         /// Id property. Represents unique player's Id
         /// </summary>
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// NickName property. Represents player's nickname.

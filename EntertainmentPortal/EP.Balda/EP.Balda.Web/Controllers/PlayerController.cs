@@ -41,7 +41,7 @@ namespace EP.Balda.Web.Controllers
         [HttpPost("api/player/create")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Player can't be created")]
-        public async Task<IActionResult> CreateNewPlayerAsync(CreateNewPlayerCommand model)
+        public async Task<IActionResult> CreateNewPlayerAsync(AddNewPlayerCommand model)
         {
             var result = await _mediator.Send(model);
             return result.IsFailure ? (IActionResult)Ok(result.Value) : BadRequest();

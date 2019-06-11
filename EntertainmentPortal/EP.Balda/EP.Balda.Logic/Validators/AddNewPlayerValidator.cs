@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace EP.Balda.Logic.Validators
 {
-    public class CreateNewPlayerValidator : AbstractValidator<CreateNewPlayerCommand>
+    public class AddNewPlayerValidator : AbstractValidator<AddNewPlayerCommand>
     {
-        public CreateNewPlayerValidator()
+        public AddNewPlayerValidator()
         {
             RuleFor(x => x.Login)
                 .NotEmpty()

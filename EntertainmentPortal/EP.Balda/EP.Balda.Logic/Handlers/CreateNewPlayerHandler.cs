@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class CreateNewPlayerHandler : IRequestHandler<CreateNewPlayerCommand, Result<Player>>
+    public class CreateNewPlayerHandler : IRequestHandler<AddNewPlayerCommand, Result<Player>>
     {
         private readonly PlayerDbContext _context;
         private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace EP.Balda.Logic.Handlers
             _validator = validator;
         }
 
-        public async Task<Result<Player>> Handle(CreateNewPlayerCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Player>> Handle(AddNewPlayerCommand request, CancellationToken cancellationToken)
         {
             var result = _validator.Validate(request);
 

@@ -5,8 +5,8 @@ namespace EP.Balda.Data.Context
 {
     public class PlayerDbContext : DbContext
     {
-        public PlayerDbContext(DbContextOptions options)
-            : base(options)
+        public PlayerDbContext(DbContextOptions<PlayerDbContext> options)
+            : base(options: options)
         {
         }
 

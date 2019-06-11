@@ -7,12 +7,12 @@ namespace EP.Balda.Logic.Services
     {
         public static IServiceCollection AddWordServices(this IServiceCollection services)
         {
-            services.WordData();
+            services.AddWordData();
             return services;
         }
         public static IServiceCollection AddPlayerServices(this IServiceCollection services)
         {
-            services.PlayerData();
+            services.AddPlayerData();
             return services;
         }
     }

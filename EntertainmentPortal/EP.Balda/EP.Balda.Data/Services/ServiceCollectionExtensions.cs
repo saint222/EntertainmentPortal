@@ -6,32 +6,37 @@ namespace EP.Balda.Data.Services
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection WordData(this IServiceCollection services)
+        public static IServiceCollection AddWordData(this IServiceCollection services)
         {
+            const string DB_CONNECTION_STRING =
+                @"Data Source=EP.Balda.Data\DbStore\dictionaryDb.db";
             services.AddDbContext<WordDbContext>(
                 opt =>
                 {
-                    opt.UseSqlite(
-                        "Data Source=" +
-                        @"DbStore\dictionaryDb.db");
+                    opt.UseSqlite(DB_CONNECTION_STRING);
                     opt.UseQueryTrackingBehavior(
                         QueryTrackingBehavior.NoTracking);
                 });
             return services;
         }
 
-        public static IServiceCollection PlayerData(this IServiceCollection services)
+        public static IServiceCollection AddPlayerData(this IServiceCollection services)
         {
+            const string DB_CONNECTION_STRING =
+                @"Data Source=EP.Balda.Data\DbStore\playerDb.db";
+            var assemblyName = typeof(PlayerDbContext).Namespace;
+
             services.AddDbContext<PlayerDbContext>(
                 opt =>
                 {
-                    opt.UseSqlite(
-                        "Data Source=" +
-                        @"DbStore\plaerDb.db",x => x.MigrationsAssembly("EP.Balda.Data"));
+                    opt.UseSqlite(DB_CONNECTION_STRING);
                     opt.UseQueryTrackingBehavior(
                         QueryTrackingBehavior.NoTracking);
-        });
+                });
             return services;
         }
+
+        // Add-Migration InitialCreatePlayerDb -OutputDir Migrations\PlayerDbMigrations
+        // -Context PlayerDbContext  -Project EP.Balda.Data  -StartupProject EP.Balda.Web
     }
 }
