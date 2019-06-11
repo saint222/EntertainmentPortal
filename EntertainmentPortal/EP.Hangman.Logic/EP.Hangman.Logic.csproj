@@ -5,11 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EP.Hagman.Data\EP.Hagman.Data.csproj" />
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="AutoMapper.Collection" Version="5.0.0" />
+    <PackageReference Include="Bogus" Version="27.0.1" />
+    <PackageReference Include="CSharpFunctionalExtensions" Version="1.18.1" />
+    <PackageReference Include="FluentValidation" Version="8.4.0" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="7.0.0" />
+    <ProjectReference Include="..\EP.Hangman.Data\EP.Hangman.Data.csproj" />
   </ItemGroup>
 
 </Project>

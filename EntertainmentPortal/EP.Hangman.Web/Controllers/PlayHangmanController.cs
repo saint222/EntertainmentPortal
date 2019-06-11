@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
-using EP.Hagman.Data;
-using Microsoft.AspNetCore.Http;
+using EP.Hangman.Logic.Commands;
+using EP.Hangman.Logic.Models;
 using Microsoft.AspNetCore.Mvc;
-using EP.Hangman.Web;
 using MediatR;
 using EP.Hangman.Logic.Queries;
-using NSwag;
 using NSwag.Annotations;
 
 namespace EP.Hangman.Web.Controllers
@@ -25,34 +20,52 @@ namespace EP.Hangman.Web.Controllers
             _mediator = mediator;
         }
 
-        //GET: api/PlayHangman
-        [HttpGet]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(HangmanTemporaryData), Description = "Cool")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Database is empty")]
-        public async Task<IActionResult> GetHangmanAsync()
+        //GET: api/PlayHangman/{id}
+        [HttpGet("id")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Red")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(ControllerData), Description = "Session not found")]
+        public async Task<IActionResult> GetUserSessionAsync(string id)
         {
-            var result = await _mediator.Send(new GetHangman());
-            return result != null ? (IActionResult)Ok(result) : NotFound();
+            var result = await _mediator.Send(new GetUserSession(id));
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
         }
 
         //POST: api/PlayHangman
         [HttpPost]
-        [SwaggerResponse(HttpStatusCode.Created, typeof(HangmanTemporaryData), Description = "Cool")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Object didn't create")]
-        public async Task<IActionResult> PostHangmanAsync()
+        [SwaggerResponse(HttpStatusCode.Created, typeof(ControllerData), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Object didn't create")]
+        public async Task<IActionResult> CreateNewGameAsync()
         {
-            var result = await _mediator.Send(new PostHangman());
-            return result != null ? (IActionResult)Ok(result) : BadRequest();
+            var result = await _mediator.Send(new CreateNewGameCommand());
+            return result.IsFailure ? BadRequest(result.Error) : (IActionResult) Created("Success", result.Value); 
         }
 
-        //PUT: api/PlayHangman/{letter}
-        [HttpPut("{letter}")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(HangmanTemporaryData), Description = "Cool")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Data didn't update")]
-        public async Task<IActionResult> CheckLetterAsync(string letter)
+        //PUT: api/PlayHangman
+        [HttpPut]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Updated")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't update")]
+        public async Task<IActionResult> CheckLetterAsync([FromBody]ControllerData model) 
         {
-            var result = await _mediator.Send(new PutHangman(letter));
-            return result != null ? (IActionResult)Ok(result) : BadRequest();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await _mediator.Send(new CheckLetterCommand(model));
+            return result.IsSuccess ? (IActionResult)Ok(result) : BadRequest(result.Error);
+        }
+
+        //DELETE: api/PlayHangman
+        [HttpDelete]
+        [SwaggerResponse(HttpStatusCode.NoContent, typeof(ControllerData), Description = "Deleted")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't delete")]
+        public async Task<IActionResult> DeleteGameSessionAsync([FromBody]ControllerData model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await _mediator.Send(new DeleteGameSessionCommand(model));
+            return result.IsSuccess ? (IActionResult) Ok(result.Value) : BadRequest(result.Error);
         }
     }
 }

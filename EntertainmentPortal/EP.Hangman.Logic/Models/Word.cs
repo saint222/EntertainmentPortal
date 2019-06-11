@@ -1,30 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EP.Hagman.Data;
-using EP.Hagman.Data.Models;
-using EP.Hagman.Logic.Interfaces;
+using Bogus.DataSets;
+
 
 namespace EP.Hangman.Logic.Models
 {
+    /// <summary>
+    /// Need for generating word that will pick
+    /// </summary>
     public class Word
     {
-        public List<WordData> Words { get; set; }
-        public string Name { get; set; }
+        /// <summary>
+        /// Property stores random words 
+        /// </summary>
+        private string[] _allWords;
 
+        /// <summary>
+        /// Faker's settings
+        /// </summary>
         public Word()
         {
-            Words = new HangmanWordsData().AllWords;
+            _allWords = new Lorem().Words(15);
         }
 
-        public Word(HangmanWordsData data)
-        {
-            Words = data.AllWords;
-        }
-
+        /// <summary>
+        /// Method select one word from List of words (Use random)
+        /// </summary>
+        /// <returns>One word</returns>
         public string GetNewWord()
         {
-            return Words[new Random().Next(0, Words.Count)].Name;
+            return _allWords[new Random().Next(0, _allWords.Length)].ToUpper();
         }
     }
 }

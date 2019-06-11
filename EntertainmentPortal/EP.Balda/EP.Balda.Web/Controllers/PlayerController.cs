@@ -1,42 +1,51 @@
-﻿using EP.Balda.Logic.Models;
+﻿using EP.Balda.Logic.Commands;
+using EP.Balda.Logic.Models;
+using EP.Balda.Logic.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiController]
     public class PlayerController : Controller
     {
-        [HttpGet]
-        public IActionResult Get(Player player)
+        private readonly IMediator _mediator;
+
+        public PlayerController(IMediator mediator)
         {
-            return Ok(player);
+            _mediator = mediator;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(long id)
+        [HttpGet("api/player/{id}")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
+        public async Task<IActionResult> GetPlayerAsync(long id)
         {
-            var player = new Player {Id = id};
-            return Ok(player);
+            var result = await _mediator.Send(new GetPlayer { Id = id });
+            return result != null ? (IActionResult)Ok(result) : NotFound();
         }
 
-        [HttpPost]
-        public IActionResult Post([FromBody] Player player)
+        [HttpGet("api/players")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "List of players is empty")]
+        public async Task<IActionResult> GetPlayersAsync()
         {
-            return Ok(player);
+            var result = await _mediator.Send(new GetAllPlayers());
+            return result.Any() ? (IActionResult)Ok(result) : NotFound();
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody] string name)
+        [HttpPost("api/player/create")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Player can't be created")]
+        public async Task<IActionResult> CreateNewPlayerAsync()
         {
-            var player = new Player {Id = id, Name = name};
-            return Ok();
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
-        {
-            var player = new Player {Id = id};
-            return Ok();
+            var result = await _mediator.Send(new CreateNewPlayerCommand());
+            return result != null ? (IActionResult)Ok(result) : BadRequest();
         }
     }
 }

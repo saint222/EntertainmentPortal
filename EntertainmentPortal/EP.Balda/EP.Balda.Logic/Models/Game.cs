@@ -1,66 +1,77 @@
-﻿// Filename: Game.cs
-using System.Collections.Generic;
+﻿using System;
+using EP.Balda.Data.Contracts;
+using EP.Balda.Data.EntityFramework;
+using EP.Balda.Logic.Interfaces;
 
 namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    /// The model <c>Game</c> class.
-    /// Represents an instance of the game.
+    /// <c>Game</c> model class.
+    /// Represents the game process.
     /// </summary>
     public class Game
     {
         /// <summary>
-        /// Players property.
+        /// Internal repository to store words from DB. 
         /// </summary>
-        /// <value>
-        /// A value represents players (competitors) in the game.
-        /// </value>
-        /// <seealso cref="Player">
-        public Player[] Players { get; set; }
+        private static readonly IWordRepository<string> _dataRepository =
+            new WordRepository<string>(new BaldaDictionaryDbContext("russian_nouns.txt"));
 
         /// <summary>
-        /// Playground property.
+        /// The field stores an object of the map in the game. 
         /// </summary>
-        /// <value>
-        /// A value represents a playground with cells in the game.
-        /// </value>
-        /// <seealso cref="Models.Playground">
-        public Playground Playground { get; set; }
+        public IMap Map { get; private set; }
 
         /// <summary>
-        /// InitialWord property.
+        /// The Game constructor. 
         /// </summary>
-        /// <value>
-        /// A value representsa a word to start the game with.
-        /// </value>
-        /// <remarks>
-        /// The word will be located in the center of the playground.
-        /// </remarks>
-        public string InitialWord { get; set; }
-
-        /// <summary>
-        /// Game constructor with two players and initial word as parameters.
-        /// </summary>
-        /// <param name="player1">
-        /// Parameter player1 requires a <c>Player</c> argument.
+        /// <param name="map">
+        /// Parameter map requires IMap argument.
         /// </param>
-        /// <param name="player2">
-        /// Parameter player2 requires a <c>Player</c> argument.
-        /// </param>
-        /// <param name="initialWord">
-        /// Parameter initialWord requires a <c>IReadOnlyList<char></c> argument.
-        /// </param>
-        public Game(Player player1, Player player2, IReadOnlyList<char> initialWord)
+        public Game(IMap map)
         {
-            Players = new Player[2];
-            Players[0] = player1;
-            Players[1] = player2;
+            Map = map;
+            var initWord = GetStartingWord();
+            PutStartingWordToMap(initWord);
+        }
 
-            Playground = new Playground();
-            var center = Playground.Size / 2;
+        /// <summary>
+        /// The metod puts the starting word on the map.
+        /// </summary>
+        /// <param name="word">Parameter word requires string argument.</param>
+        public void PutStartingWordToMap(string word)
+        {
+            var center = Map.Size / 2;
+            var charDestination = 0;
 
-            for (var i = 0; i < Playground.Size; i++) //to add word to start
-                Playground.Cells[center, i].Letter = initialWord[i];
+            word = word.Trim();
+            foreach (var letter in word)
+                Map.GetCell(center, charDestination++).Letter =
+                    letter;
+        }
+
+        /// <summary>
+        /// The method gets the initial word. 
+        /// </summary>
+        private string GetStartingWord()
+        {
+            var word = "";
+            var mapSize = Map.Size;
+            var sizeRepo = _dataRepository.GetAll().Count;
+            while (word.Length != mapSize)
+                word = _dataRepository.Get(RandomWord(sizeRepo));
+
+            return word;
+        }
+
+        /// <summary>
+        /// The method choose random initial word. 
+        /// </summary>
+        private static int RandomWord(int size)
+        {
+            var rnd = new Random();
+            var next = rnd.Next(0, size - 1);
+            return next;
         }
     }
 }
