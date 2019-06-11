@@ -7,79 +7,76 @@ namespace EP.Balda.Data.Migrations.PlayerDbMigrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Players");
+                "Players");
 
             migrationBuilder.CreateTable(
-                name: "Players",
-                columns: table => new
+                "Players",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("Sqlite:Autoincrement", true),
                     NickName = table.Column<string>(nullable: true),
                     Login = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
-                    Score = table.Column<int>(nullable: false)
+                    Score = table.Column<int>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Players", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Players", x => x.Id); });
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 1, "Daisha.Upton", "Tonya.Bauch", "BILs4", 85 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {1, "Daisha.Upton", "Tonya.Bauch", "BILs4", 85});
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 3, "Troy71", "Taylor41", "7wlhc", 73 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {3, "Troy71", "Taylor41", "7wlhc", 73});
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 5, "Linda.Crona99", "Samantha_Tromp", "e7HW4", 99 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {5, "Linda.Crona99", "Samantha_Tromp", "e7HW4", 99});
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 7, "Alvera76", "Gilbert.Toy", "OvRL1", 44 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {7, "Alvera76", "Gilbert.Toy", "OvRL1", 44});
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 9, "Elian.Greenholt", "Woodrow21", "mwY2N", 53 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {9, "Elian.Greenholt", "Woodrow21", "mwY2N", 53});
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 11, "Ruthe87", "Margie_Weissnat15", "SiRgM", 20 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {11, "Ruthe87", "Margie_Weissnat15", "SiRgM", 20});
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 13, "Urban_Lind27", "Morris_Hettinger", "2VwoR", 23 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {13, "Urban_Lind27", "Morris_Hettinger", "2VwoR", 23});
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 15, "Dayna.MacGyver", "Erin.Goyette", "avwDB", 13 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {15, "Dayna.MacGyver", "Erin.Goyette", "avwDB", 13});
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 17, "Rowena_Walker", "Sonya.Block50", "SvYvV", 78 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {17, "Rowena_Walker", "Sonya.Block50", "SvYvV", 78});
 
             migrationBuilder.InsertData(
-                table: "Players",
-                columns: new[] { "Id", "Login", "NickName", "Password", "Score" },
-                values: new object[] { 19, "Stewart_Macejkovic60", "Viola73", "Qy9Xy", 59 });
+                "Players",
+                new[] {"Id", "Login", "NickName", "Password", "Score"},
+                new object[] {19, "Stewart_Macejkovic60", "Viola73", "Qy9Xy", 59});
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Players");
+                "Players");
         }
     }
 }

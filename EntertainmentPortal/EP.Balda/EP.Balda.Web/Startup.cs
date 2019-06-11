@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using EP.Balda.Logic.Commands;
-using EP.Balda.Logic.Services;
 using EP.Balda.Logic.Profiles;
 using EP.Balda.Logic.Queries;
+using EP.Balda.Logic.Services;
 using EP.Balda.Logic.Validators;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -43,7 +43,8 @@ namespace EP.Balda.Web
 
         // This method gets called by the runtime. Use this method to
         // configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
+                              IMediator mediator)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();

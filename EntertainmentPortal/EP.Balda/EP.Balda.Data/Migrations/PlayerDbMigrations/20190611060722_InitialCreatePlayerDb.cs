@@ -7,26 +7,23 @@ namespace EP.Balda.Data.Migrations.PlayerDbMigrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Players",
-                columns: table => new
+                "Players",
+                table => new
                 {
-                    Id = table.Column<long>(nullable: false)
+                    Id = table.Column<long>()
                         .Annotation("Sqlite:Autoincrement", true),
                     NickName = table.Column<string>(nullable: true),
                     Login = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
-                    Score = table.Column<int>(nullable: false)
+                    Score = table.Column<int>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Players", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Players", x => x.Id); });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Players");
+                "Players");
         }
     }
 }

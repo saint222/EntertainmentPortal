@@ -4,10 +4,11 @@ namespace EP.Balda.Data.Models.ModelBuilder
 {
     internal static class ModelBuilderExtensions
     {
-        private static readonly Faker<PlayerDb> _faker = new Faker<PlayerDb>();
         private const int CONT_INIT_PLAYERS = 10;
+        private static readonly Faker<PlayerDb> _faker = new Faker<PlayerDb>();
 
-        public static void Seed(this Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder)
+        public static void Seed(
+            this Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder)
         {
             var faker =
                 _faker.RuleFor(x => x.Id, f => ++f.IndexFaker)
@@ -18,11 +19,10 @@ namespace EP.Balda.Data.Models.ModelBuilder
 
             var playersGenerate = faker.Generate(CONT_INIT_PLAYERS);
             foreach (var player in playersGenerate)
-            {
                 //Console.WriteLine($"registered playerId = {player.Id}, {player.Login}");
 
                 modelBuilder.Entity<PlayerDb>().HasData(
-                    new PlayerDb()
+                    new PlayerDb
                     {
                         Id = player.Id,
                         Login = player.Login,
@@ -30,7 +30,6 @@ namespace EP.Balda.Data.Models.ModelBuilder
                         Password = player.Password,
                         Score = player.Score
                     });
-            }
         }
     }
 }

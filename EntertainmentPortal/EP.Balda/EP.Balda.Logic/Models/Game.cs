@@ -6,27 +6,28 @@ using Microsoft.EntityFrameworkCore;
 namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    /// <c>Game</c> model class.
-    /// Represents the game process.
+    ///     <c>Game</c> model class.
+    ///     Represents the game process.
     /// </summary>
     public class Game
     {
         /// <summary>
-        /// Context to WordsDB. 
+        ///     Context to WordsDB.
         /// </summary>
         private readonly WordDbContext _context;
 
         /// <summary>
-        /// The field stores an object of the map in the game. 
+        ///     The field stores an object of the map in the game.
         /// </summary>
-        public IMap Map { get; private set; }
+        public IMap Map { get; }
 
         /// <summary>
-        /// The Game constructor. 
+        ///     The Game constructor.
         /// </summary>
         /// <param name="map">
-        /// Parameter map requires IMap argument.
+        ///     Parameter map requires IMap argument.
         /// </param>
+        /// <param name="context">word database context</param>
         public Game(IMap map, WordDbContext context)
         {
             Map = map;
@@ -36,7 +37,7 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
-        /// The metod puts the starting word on the map.
+        ///     The method puts the starting word on the map.
         /// </summary>
         /// <param name="word">Parameter word requires string argument.</param>
         public void PutStartingWordToMap(string word)
@@ -51,7 +52,7 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
-        /// The method gets the initial word. 
+        ///     The method gets the initial word.
         /// </summary>
         private string GetStartingWord()
         {
@@ -66,7 +67,7 @@ namespace EP.Balda.Logic.Models
         }
 
         /// <summary>
-        /// The method choose random initial word. 
+        ///     The method choose random initial word.
         /// </summary>
         private int RandomWord(int size)
         {

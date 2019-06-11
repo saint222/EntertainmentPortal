@@ -12,7 +12,7 @@ namespace EP.Balda.Logic.Validators
                 .WithMessage("Login shouldn't be empty")
                 .Length(2, 20)
                 .WithMessage("Login should contain from 2 to 20 characters");
-                
+
             RuleFor(x => x.NickName)
                 .NotEmpty()
                 .WithMessage("NickName shouldn't be empty")

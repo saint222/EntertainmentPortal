@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace EP.Balda.Data.Services
 {
+    /// <summary>
+    ///     connection service of project database providers
+    /// </summary>
     public static class ServiceCollectionExtensions
     {
         private const string STORE_PATH = @"Data Source=..\EP.Balda.Data\DbStore\";
