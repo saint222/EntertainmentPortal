@@ -1,4 +1,5 @@
-﻿using EP.Balda.Data.Context;
+﻿using System;
+using EP.Balda.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,7 +10,7 @@ namespace EP.Balda.Data.Services
         public static IServiceCollection AddWordData(this IServiceCollection services)
         {
             const string DB_CONNECTION_STRING =
-                @"Data Source=EP.Balda.Data\DbStore\dictionaryDb.db";
+                @"Data Source=DbStore\dictionaryDb.db";
             services.AddDbContext<WordDbContext>(
                 opt =>
                 {
@@ -23,8 +24,10 @@ namespace EP.Balda.Data.Services
         public static IServiceCollection AddPlayerData(this IServiceCollection services)
         {
             const string DB_CONNECTION_STRING =
-                @"Data Source=EP.Balda.Data\DbStore\playerDb.db";
-            var assemblyName = typeof(PlayerDbContext).Namespace;
+                @"Data Source=..\EP.Balda.Data\DbStore\playerDb.db";
+
+            //string startupPath = Environment.CurrentDirectory;
+            //Console.WriteLine(startupPath);
 
             services.AddDbContext<PlayerDbContext>(
                 opt =>
@@ -37,6 +40,9 @@ namespace EP.Balda.Data.Services
         }
 
         // Add-Migration InitialCreatePlayerDb -OutputDir Migrations\PlayerDbMigrations
-        // -Context PlayerDbContext  -Project EP.Balda.Data  -StartupProject EP.Balda.Web
+        // -Context PlayerDbContext -Project EP.Balda.Data -StartupProject EP.Balda.Web
+
+        //Update-Database InitialCreatePlayerDb -Context PlayerDbContext
+        //-Project EP.Balda.Data -StartupProject EP.Balda.Web
     }
 }
