@@ -7,14 +7,16 @@ namespace EP.Balda.Data.Services
 {
     public static class ServiceCollectionExtensions
     {
+        private const string STORE_PATH = @"..\EP.Balda.Data\DbStore\";
+
         public static IServiceCollection AddWordData(this IServiceCollection services)
         {
-            const string DB_CONNECTION_STRING =
-                @"Data Source=DbStore\dictionaryDb.db";
+            const string CONNECTION_TO_DICTIONARY_DB =
+                STORE_PATH + "dictionaryDb.db";
             services.AddDbContext<WordDbContext>(
                 opt =>
                 {
-                    opt.UseSqlite(DB_CONNECTION_STRING);
+                    opt.UseSqlite(CONNECTION_TO_DICTIONARY_DB);
                     opt.UseQueryTrackingBehavior(
                         QueryTrackingBehavior.NoTracking);
                 });
@@ -23,8 +25,8 @@ namespace EP.Balda.Data.Services
 
         public static IServiceCollection AddPlayerData(this IServiceCollection services)
         {
-            const string DB_CONNECTION_STRING =
-                @"Data Source=..\EP.Balda.Data\DbStore\playerDb.db";
+            const string CONNECTION_TO_PLAYER_DB =
+                STORE_PATH + "playerDb.db";
 
             //string startupPath = Environment.CurrentDirectory;
             //Console.WriteLine(startupPath);
@@ -32,7 +34,7 @@ namespace EP.Balda.Data.Services
             services.AddDbContext<PlayerDbContext>(
                 opt =>
                 {
-                    opt.UseSqlite(DB_CONNECTION_STRING);
+                    opt.UseSqlite(CONNECTION_TO_PLAYER_DB);
                     opt.UseQueryTrackingBehavior(
                         QueryTrackingBehavior.NoTracking);
                 });
