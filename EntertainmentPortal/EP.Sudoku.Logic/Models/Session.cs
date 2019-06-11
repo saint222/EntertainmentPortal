@@ -42,12 +42,13 @@ namespace EP.Sudoku.Logic.Models
         /// </summary>
         /// <remarks>
         /// Navigation property.
-        /// </remarks> 
+        /// </remarks>        
         public Player Participant { get; set; }
 
         /// <summary>
-        /// Is used for keeping a stric number (81) of the gameboard parts. 
+        /// Is used for keeping a strict number (81) of the gameboard parts. 
         /// </summary> 
         public List<Cell> Squares { get; set; }
+
     }
 }

@@ -12,8 +12,8 @@ namespace EP.Sudoku.Logic.Profiles
         public PlayerProfile()
         {
             CreateMap<PlayerDb, Player>().ForMember(dest => dest.Icon, e => e.MapFrom(src => src.IconDb))
-                .ReverseMap().ForMember(dest => dest.IconDb, e => e.MapFrom(src => src.Icon)).ReverseMap().
-                ForMember(dest => dest.GameSessions, e => e.MapFrom(src => src.GameSessions)).ReverseMap();
+                .ReverseMap().ForMember(dest => dest.IconDb, e => e.MapFrom(src => src.Icon)).ReverseMap();
+                
         }
     }
 }

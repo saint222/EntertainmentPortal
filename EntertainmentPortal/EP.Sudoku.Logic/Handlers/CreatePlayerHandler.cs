@@ -25,7 +25,7 @@ namespace EP.Sudoku.Logic.Handlers
         public async Task<Player> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
         {            
             var playerDb = _mapper.Map<PlayerDb>(request.player);
-            playerDb.IconDb = _context.Find<AvatarIconDb>(request.player.Icon.Id);
+            playerDb.IconDb = _context.Find<AvatarIconDb>(request.player.Icon.Id);            
             _context.Add(playerDb);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
             return await Task.FromResult(request.player);
