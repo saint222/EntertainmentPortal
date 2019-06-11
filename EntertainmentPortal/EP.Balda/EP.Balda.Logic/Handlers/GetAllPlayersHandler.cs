@@ -12,10 +12,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<PlayerDb>>>
+    public class
+        GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<PlayerDb>>
+        >
     {
-        private readonly IMapper _mapper;
         private readonly PlayerDbContext _context;
+        private readonly IMapper _mapper;
 
         public GetAllPlayersHandler(IMapper mapper, PlayerDbContext context)
         {
@@ -23,15 +25,16 @@ namespace EP.Balda.Logic.Handlers
             _context = context;
         }
 
-        public async Task<Maybe<IEnumerable<PlayerDb>>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
+        public async Task<Maybe<IEnumerable<PlayerDb>>> Handle(
+            GetAllPlayers request, CancellationToken cancellationToken)
         {
             var result = await _context.Players
                 .ToArrayAsync(cancellationToken)
                 .ConfigureAwait(false);
 
-            return result.Any() ?
-                Maybe<IEnumerable<PlayerDb>>.None :
-                Maybe<IEnumerable<PlayerDb>>.From(result);
+            return result.Any()
+                ? Maybe<IEnumerable<PlayerDb>>.None
+                : Maybe<IEnumerable<PlayerDb>>.From(result);
         }
     }
 }

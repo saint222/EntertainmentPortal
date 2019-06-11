@@ -8,7 +8,8 @@ namespace EP.Balda.Logic.Profiles
     {
         public PlayerProfile()
         {
-            CreateMap<PlayerDb, Player>();
+            CreateMap<PlayerDb, Player>()
+                .ReverseMap();
         }
     }
 }

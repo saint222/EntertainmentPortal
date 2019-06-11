@@ -7,22 +7,22 @@ namespace EP.Balda.Tests
     public class CellTests
     {
         [Test]
-        public void TestIsEmptyTrue()
-        {
-            Cell cell = new Cell(2, 1);
-            bool result = cell.IsEmpty();
-            Assert.IsTrue(result);
-        }
-
-        [Test]
         public void TestIsEmptyFalse()
         {
-            Cell cell = new Cell(2, 1)
+            var cell = new Cell(2, 1)
             {
                 Letter = 'F'
             };
-            bool result = cell.IsEmpty();
+            var result = cell.IsEmpty();
             Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TestIsEmptyTrue()
+        {
+            var cell = new Cell(2, 1);
+            var result = cell.IsEmpty();
+            Assert.IsTrue(result);
         }
     }
 }

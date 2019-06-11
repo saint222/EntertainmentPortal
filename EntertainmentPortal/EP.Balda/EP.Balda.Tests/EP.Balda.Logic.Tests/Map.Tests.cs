@@ -1,14 +1,12 @@
-﻿using EP.Balda.Logic.Models;
+﻿using System.Collections.Generic;
+using EP.Balda.Logic.Models;
 using NUnit.Framework;
-using System.Collections.Generic;
 
 namespace EP.Balda.Tests
 {
     [TestFixture]
     public class MapTests
     {
-        private Map _map;
-
         [SetUp]
         public void Setup()
         {
@@ -18,6 +16,8 @@ namespace EP.Balda.Tests
             _map.Fields[3, 1].Letter = 't';
         }
 
+        private Map _map;
+
         [Test]
         public void TestGetCell()
         {
@@ -26,16 +26,23 @@ namespace EP.Balda.Tests
         }
 
         [Test]
-        public void TestIsEmptyCellTrue()
+        public void TestGetSelectedWord()
         {
-            var result = _map.IsEmptyCell(0, 1);
-            Assert.IsTrue(result);
+            var cells = new List<Cell>
+            {
+                _map.Fields[1, 1],
+                _map.Fields[2, 1],
+                _map.Fields[3, 1]
+            };
+
+            var result = _map.GetSelectedWord(cells);
+            Assert.AreEqual("cat", result);
         }
 
         [Test]
-        public void TestIsEmptyCellFalse()
+        public void TestIsAllowedCellFalse()
         {
-            var result = _map.IsEmptyCell(1, 1);
+            var result = _map.IsAllowedCell(4, 4);
             Assert.IsFalse(result);
         }
 
@@ -47,16 +54,36 @@ namespace EP.Balda.Tests
         }
 
         [Test]
-        public void TestIsAllowedCellFalse()
+        public void TestIsEmptyCellFalse()
         {
-            var result = _map.IsAllowedCell(4, 4);
+            var result = _map.IsEmptyCell(1, 1);
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TestIsEmptyCellTrue()
+        {
+            var result = _map.IsEmptyCell(0, 1);
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void TestIsItCorrectWordFalse()
+        {
+            var cells = new List<Cell>
+            {
+                _map.Fields[1, 1],
+                _map.Fields[3, 1]
+            };
+
+            var result = _map.IsItCorrectWord(cells);
             Assert.IsFalse(result);
         }
 
         [Test]
         public void TestIsItCorrectWordTrue()
         {
-            List<Cell> cells = new List<Cell>
+            var cells = new List<Cell>
             {
                 _map.Fields[1, 1],
                 _map.Fields[2, 1],
@@ -65,33 +92,6 @@ namespace EP.Balda.Tests
 
             var result = _map.IsItCorrectWord(cells);
             Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void TestIsItCorrectWordFalse()
-        {
-            List<Cell> cells = new List<Cell>
-            {
-                _map.Fields[1, 1],
-                _map.Fields[3, 1]
-            };
-
-            var result = _map.IsItCorrectWord(cells);
-            Assert.IsFalse(result);
-        }
-
-        [Test]
-        public void TestGetSelectedWord()
-        {
-            List<Cell> cells = new List<Cell>
-            {
-                _map.Fields[1, 1],
-                _map.Fields[2, 1],
-                _map.Fields[3, 1]
-            };
-
-            var result = _map.GetSelectedWord(cells);
-            Assert.AreEqual("cat", result);
         }
     }
 }

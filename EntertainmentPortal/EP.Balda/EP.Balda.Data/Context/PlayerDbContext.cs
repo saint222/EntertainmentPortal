@@ -1,15 +1,25 @@
 ﻿using EP.Balda.Data.Models;
+using EP.Balda.Data.Models.ModelBuilder;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Data.Context
 {
+    /// <summary>
+    ///     player database context
+    /// </summary>
     public class PlayerDbContext : DbContext
     {
-        public PlayerDbContext(DbContextOptions options)
+        public DbSet<PlayerDb> Players { get; set; }
+
+        public PlayerDbContext(DbContextOptions<PlayerDbContext> options)
             : base(options)
         {
         }
 
-        public DbSet<PlayerDb> Players { get; set; }
+        //call the test player generator when updating the player database
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+        }
     }
 }
