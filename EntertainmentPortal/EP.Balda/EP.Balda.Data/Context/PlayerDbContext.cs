@@ -1,5 +1,7 @@
 ﻿using EP.Balda.Data.Models;
+using EP.Balda.Data.Models.ModelBuilder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace EP.Balda.Data.Context
 {
@@ -11,5 +13,10 @@ namespace EP.Balda.Data.Context
         }
 
         public DbSet<PlayerDb> Players { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+        }
     }
 }

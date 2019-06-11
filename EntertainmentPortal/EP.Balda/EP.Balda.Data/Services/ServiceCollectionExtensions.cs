@@ -47,5 +47,14 @@ namespace EP.Balda.Data.Services
 
         //Update-Database InitialCreatePlayerDb -Context PlayerDbContext
         //-Project EP.Balda.Data -StartupProject EP.Balda.Web
+
+
+        //Add-Migration AddInitialPlayerDb -OutputDir Migrations\PlayerDbMigrations
+        //-Context PlayerDbContext -Project EP.Balda.Data -StartupProject EP.Balda.Web
+
+        //Update-Database AddInitialPlayerDb -Context PlayerDbContext
+        //-Project EP.Balda.Data -StartupProject EP.Balda.Web
+
+        //Remove-Migration -Context PlayerDbContext -Project EP.Balda.Data -StartupProject EP.Balda.Web
     }
 }

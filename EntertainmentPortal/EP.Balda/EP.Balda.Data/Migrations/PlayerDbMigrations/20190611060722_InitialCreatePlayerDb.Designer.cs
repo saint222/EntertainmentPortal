@@ -33,6 +33,7 @@ namespace EP.Balda.Data.Migrations.PlayerDbMigrations
                     b.HasKey("Id");
 
                     b.ToTable("Players");
+
                 });
 #pragma warning restore 612, 618
         }
