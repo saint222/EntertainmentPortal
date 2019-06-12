@@ -24,7 +24,7 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Player not found")]
-        public async Task<IActionResult> GetPlayerAsync(long id)
+        public async Task<IActionResult> GetPlayerAsync([FromRoute]long id)
         {
             var result = await _mediator.Send(new GetPlayer(id));
             return result.HasValue ? (IActionResult) Ok(result.Value) : NotFound();
@@ -45,7 +45,7 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Player can't be created")]
-        public async Task<IActionResult> CreateNewPlayerAsync(AddNewPlayerCommand model)
+        public async Task<IActionResult> CreateNewPlayerAsync(CreateNewPlayerCommand model)
         {
             var result = await _mediator.Send(model);
             return result.IsFailure ? (IActionResult) Ok(result.Value) : BadRequest();

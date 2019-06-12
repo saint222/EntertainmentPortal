@@ -29,7 +29,6 @@ namespace EP.Balda.Web
         {
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
-            services.AddMediatR(typeof(GetAllWords).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddWordServices();
             services.AddPlayerServices();
