@@ -37,11 +37,11 @@ namespace EP._15Puzzle.Web
             services.AddMediatR(typeof(NewDeckCommand).Assembly);
             services.AddMediatR(typeof(GetDeckQuery).Assembly);
             services.AddSwaggerDocument();
-            services.AddAutoMapper(cfg => cfg.AddProfile(new DeckProfile()));
+            services.AddAutoMapper(typeof(DeckProfile).Assembly);
             services.AddDeckServices();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(cfg =>
             {
-                cfg.RegisterValidatorsFromAssemblyContaining<MoveTileValidator>();
+                cfg.RegisterValidatorsFromAssemblyContaining<GetDeckValidator>();
                 cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
             }); ;
         }

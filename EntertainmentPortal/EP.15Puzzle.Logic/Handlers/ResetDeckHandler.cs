@@ -13,6 +13,7 @@ using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
 using EP._15Puzzle.Logic.Validators;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,20 +22,23 @@ namespace EP._15Puzzle.Logic.Handlers
     public class ResetDeckHandler : IRequestHandler<ResetDeckCommand, Result<Deck>>
     {
         private readonly IMapper _mapper;
+        private readonly IValidator<ResetDeckCommand> _validator;
         private readonly DeckDbContext _context;
 
-        public ResetDeckHandler(DeckDbContext context, IMapper mapper)
+        public ResetDeckHandler(DeckDbContext context, IMapper mapper, IValidator<ResetDeckCommand> validator)
         {
             _mapper = mapper;
+            _validator = validator;
             _context = context;
         }
         public async Task<Result<Deck>> Handle(ResetDeckCommand request, CancellationToken cancellationToken)
         {
-            var userExists = new ResetDeckValidator(_context).Validate(request);
+            var result = await _validator.ValidateAsync(request, ruleSet: "IdExistingSet", cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
 
-            if (!userExists.IsValid)
+            if (!result.IsValid)
             {
-                return Result.Fail<Deck>(userExists.Errors.First().ErrorMessage);
+                return Result.Fail<Deck>(result.Errors.First().ErrorMessage);
             }
 
             try
