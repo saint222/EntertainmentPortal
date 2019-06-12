@@ -43,7 +43,7 @@ namespace EP.Sudoku.Logic.Models
         /// <remarks>
         /// Navigation property.
         /// </remarks>        
-        public Player Participant { get; set; }
+        public int ParticipantId { get; set; }
 
         /// <summary>
         /// Is used for keeping a strict number (81) of the gameboard parts. 

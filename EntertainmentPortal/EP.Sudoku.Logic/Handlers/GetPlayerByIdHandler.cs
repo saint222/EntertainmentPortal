@@ -32,12 +32,6 @@ namespace EP.Sudoku.Logic.Handlers
                 .Where(x => x.Id == request.Id)
                 .Select(b => _mapper.Map<Player>(b)).FirstOrDefault();
 
-            var chosenPlayerDb = _context.Players
-                .Include(p => p.IconDb)
-                .Include(p => p.GameSessionsDb)
-                .Where(x => x.Id == request.Id)
-                .Select(b => b).FirstOrDefault();
-
             return await Task.FromResult(chosenPlayer);
         }
     }

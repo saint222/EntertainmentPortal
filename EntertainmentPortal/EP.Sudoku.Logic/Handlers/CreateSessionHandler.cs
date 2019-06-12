@@ -26,7 +26,7 @@ namespace EP.Sudoku.Logic.Handlers
         public async Task<Session> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
         {
             var sessionDb = _mapper.Map<SessionDb>(request.session);
-            sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
+            //sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
 
             GenerationGridService gridService = new GenerationGridService();
             //List<Cell> cells = gridService.GetRandomCells();

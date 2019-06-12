@@ -41,7 +41,7 @@ namespace EP.Sudoku.Data.Models
         /// <remarks>
         /// Navigation property.
         /// </remarks>  
-        public PlayerDb ParticipantDb { get; set; }
+        public int ParticipantDbId { get; set; }
 
         /// <summary>
         /// Is used for keeping a strict number (81) of the gameboard parts (DbInfo). 
