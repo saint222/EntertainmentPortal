@@ -26,9 +26,9 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<Player> Handle(GetPlayerById request, CancellationToken cancellationToken)
         {
-            var chosenPlayer = _context.Players
+            var chosenPlayer =  _context.Players
                 .Include(p => p.IconDb)
-                .Include(p => p.GameSessionsDb)                
+                .Include(p => p.GameSessionsDb)
                 .Where(x => x.Id == request.Id)
                 .Select(b => _mapper.Map<Player>(b)).FirstOrDefault();
 

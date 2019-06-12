@@ -34,13 +34,13 @@ namespace EP.Sudoku.Data.Models
         /// Is used to denote a period of time from the beginning of a game session till it's end for subsequent convertation to player's points of experience (DbInfo). 
         /// </summary>        
         public double Duration { get; set; }
-
+        
         /// <summary>    
         /// Is used to denote the necessary data, which concernes a player of a game session (DbInfo).
         /// </summary>
         /// <remarks>
         /// Navigation property.
-        /// </remarks>  
+        /// </remarks>
         public PlayerDb ParticipantDb { get; set; }
 
         /// <summary>

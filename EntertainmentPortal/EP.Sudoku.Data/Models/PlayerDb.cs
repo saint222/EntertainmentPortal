@@ -34,7 +34,7 @@ namespace EP.Sudoku.Data.Models
         /// <remarks>
         /// Navigation property.
         /// </remarks>
-        public AvatarIconDb IconDb { get; set; }        
+        public AvatarIconDb IconDb { get; set; }
 
         /// <summary>
         /// Is used to provide a player with a possibility to have more than one unfinished game (DbInfo).

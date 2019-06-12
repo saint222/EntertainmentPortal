@@ -28,7 +28,7 @@ namespace EP.Sudoku.Logic.Handlers
         {
             var chosenSession = _context.Sessions
                 .Include(b => b.ParticipantDb)
-                .ThenInclude(a => a.IconDb)            
+                .ThenInclude(a => a.IconDb)
                 .Include(c => c.SquaresDb)                
                 .Where(x => x.Id == request.Id)
                 .Select(d => _mapper.Map<Session>(d)).FirstOrDefault();
