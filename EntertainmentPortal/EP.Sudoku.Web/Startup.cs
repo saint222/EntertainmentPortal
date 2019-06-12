@@ -34,8 +34,11 @@ namespace EP.Sudoku.Web
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddMediatR(typeof(GetPlayerById).Assembly);
             services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
+            services.AddMediatR(typeof(CreateSessionCommand).Assembly);
             services.AddMediatR(typeof(DeletePlayerCommand).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
+            services.AddAutoMapper(typeof(SessionProfile).Assembly);
+            services.AddAutoMapper(typeof(CellProfile).Assembly);
             services.AddSwaggerDocument();
             services.AddSudokuServices();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

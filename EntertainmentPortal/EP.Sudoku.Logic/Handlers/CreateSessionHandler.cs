@@ -26,18 +26,17 @@ namespace EP.Sudoku.Logic.Handlers
         public async Task<Session> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
         {
             var sessionDb = _mapper.Map<SessionDb>(request.session);
-            //sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
-
+            sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
             GenerationGridService gridService = new GenerationGridService();
             //List<Cell> cells = gridService.GetRandomCells();
             List<Cell> cells = gridService.GridToCells(gridService.GetBaseGrid()); //для тестирования базовую судоку генерируем
             sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);
-            var session = _mapper.Map<Session>(sessionDb);
-            session.Squares = _mapper.Map<List<Cell>>(sessionDb.SquaresDb);
+            //var session = _mapper.Map<Session>(sessionDb);
+            //session.Squares = _mapper.Map<List<Cell>>(sessionDb.SquaresDb);
 
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-            return await Task.FromResult(session);
+            return await Task.FromResult(request.session);
         }
     }
 }
