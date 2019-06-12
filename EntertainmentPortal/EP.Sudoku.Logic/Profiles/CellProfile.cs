@@ -11,9 +11,10 @@ namespace EP.Sudoku.Logic.Profiles
     {
         public CellProfile()
         {
-            CreateMap<CellDb, Cell>();
-                //.ForMember(dest => dest.CellPencil, e => e.MapFrom(src => src.CellPencilDb))
-                //.ReverseMap().ForMember(dest => dest.CellPencilDb, e => e.MapFrom(src => src.CellPencil));
+            CreateMap<CellDb, Cell>()
+                .ForMember(dest => dest.GameSession, e => e.MapFrom(src => src.GameSession))
+                .ReverseMap()
+                .ForMember(dest => dest.GameSession, e => e.MapFrom(src => src.GameSession));
         }
     }
 }

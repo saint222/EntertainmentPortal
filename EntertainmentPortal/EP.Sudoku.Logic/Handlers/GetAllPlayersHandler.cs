@@ -26,8 +26,11 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<IEnumerable<Player>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
         {
-            var players = await _context.Players.Include(p => p.IconDb). 
-                Select(b => _mapper.Map<Player>(b)).ToListAsync().ConfigureAwait(false); 
+            var players = await _context.Players
+                .Include(p => p.IconDb)
+                .Include(p => p.GameSessionsDb)
+                .Select(b => _mapper.Map<Player>(b)).ToListAsync()
+                .ConfigureAwait(false); 
             
             return await Task.FromResult((IEnumerable<Player>)players);
         }

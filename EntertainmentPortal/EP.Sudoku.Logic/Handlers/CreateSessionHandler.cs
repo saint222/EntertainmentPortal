@@ -31,11 +31,13 @@ namespace EP.Sudoku.Logic.Handlers
             GenerationGridService gridService = new GenerationGridService();
             //List<Cell> cells = gridService.GetRandomCells();
             List<Cell> cells = gridService.GridToCells(gridService.GetBaseGrid()); //для тестирования базовую судоку генерируем
-            sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);            
+            sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);
+            var session = _mapper.Map<Session>(sessionDb);
+            session.Squares = _mapper.Map<List<Cell>>(sessionDb.SquaresDb);
 
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-            return await Task.FromResult(request.session);
+            return await Task.FromResult(session);
         }
     }
 }

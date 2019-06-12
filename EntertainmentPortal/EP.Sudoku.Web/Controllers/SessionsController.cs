@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
+using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
@@ -32,7 +33,21 @@ namespace EP.Sudoku.Web.Controllers
             }
             var session = await _mediator.Send(new CreateSessionCommand(model));
 
-            return session!=null ? (IActionResult)Ok(session) : BadRequest();
+            return session != null ? (IActionResult)Ok(session) : BadRequest();
+        }
+
+        [HttpGet("api/sessions/{id}")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Session not found")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> GetSessionByIdAsync(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+            var session = await _mediator.Send(new GetSessionById(id));
+            return session != null ? (IActionResult)Ok(session) : NotFound();
         }
     }
 }
