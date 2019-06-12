@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EP.SeaBattle.Logic.Models
+namespace EP.SeaBattle.Common.Enums
 {
-    public enum ShipRank
+    public enum ShipOrientation
     {
-        One,
-        Two,
-        Three,
-        Four
+        Horizontal,
+        Verctical
     }
 }

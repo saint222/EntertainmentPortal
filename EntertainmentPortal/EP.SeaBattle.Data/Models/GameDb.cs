@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EP.SeaBattle.Data.Models
 {
-    /// <summary>
-    /// Class for saving game info
-    /// </summary>
     public class GameDb
     {
+        public Guid Id { get; set; }
 
+        public PlayerDb Player1 { get; set; }
+
+        public PlayerDb Player2 { get; set; }
+
+        public bool Finish { get; set; }
     }
 }
