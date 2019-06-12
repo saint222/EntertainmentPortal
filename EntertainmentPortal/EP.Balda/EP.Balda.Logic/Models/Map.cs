@@ -11,6 +11,11 @@ namespace EP.Balda.Logic.Models
     public class Map : IMap, IGame
     {
         /// <summary>
+        ///     Id property. Represents playing field Id.
+        /// </summary>
+        public long Id { get; private set; }
+
+        /// <summary>
         ///     Fields property. Represents playing field as array of cells.
         /// </summary>
         public Cell[,] Fields { get; }

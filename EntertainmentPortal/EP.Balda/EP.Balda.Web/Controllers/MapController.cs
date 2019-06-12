@@ -22,10 +22,10 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Map not found")]
-        public async Task<IActionResult> GetMapAsync(long id)
+        public async Task<IActionResult> GetMapAsync([FromRoute]long id)
         {
-            var result = await _mediator.Send(new GetMap {Id = id});
-            return result != null ? (IActionResult) Ok(result) : NotFound();
+            var result = await _mediator.Send(new GetMap(id)).ConfigureAwait(false);
+            return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
     }
 }

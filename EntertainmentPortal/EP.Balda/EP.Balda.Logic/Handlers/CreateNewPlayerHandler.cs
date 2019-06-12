@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EP.Balda.Logic.Handlers
 {
     public class
-        CreateNewPlayerHandler : IRequestHandler<AddNewPlayerCommand, Result<Player>>
+        CreateNewPlayerHandler : IRequestHandler<CreateNewPlayerCommand, Result<Player>>
     {
         private readonly PlayerDbContext _context;
         private readonly IMapper _mapper;
@@ -28,7 +28,7 @@ namespace EP.Balda.Logic.Handlers
             _validator = validator;
         }
 
-        public async Task<Result<Player>> Handle(AddNewPlayerCommand request,
+        public async Task<Result<Player>> Handle(CreateNewPlayerCommand request,
                                                  CancellationToken cancellationToken)
         {
             var result = _validator.Validate(request);

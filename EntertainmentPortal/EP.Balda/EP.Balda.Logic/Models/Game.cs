@@ -17,6 +17,11 @@ namespace EP.Balda.Logic.Models
         private readonly WordDbContext _context;
 
         /// <summary>
+        ///     The field stores an Id of the map in the game.
+        /// </summary>
+        public long Id { get; set; }
+
+        /// <summary>
         ///     The field stores an object of the map in the game.
         /// </summary>
         public IMap Map { get; }
