@@ -1,10 +1,12 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using EP.Hangman.Logic.Commands;
 using EP.Hangman.Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using EP.Hangman.Logic.Queries;
+using EP.Hangman.Web.Filters;
 using NSwag.Annotations;
 
 namespace EP.Hangman.Web.Controllers
@@ -44,12 +46,13 @@ namespace EP.Hangman.Web.Controllers
         [HttpPut]
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Updated")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't update")]
+        [ValidationFilter]
         public async Task<IActionResult> CheckLetterAsync([FromBody]ControllerData model) 
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest(ModelState);
+//            }
             var result = await _mediator.Send(new CheckLetterCommand(model));
             return result.IsSuccess ? (IActionResult)Ok(result) : BadRequest(result.Error);
         }
@@ -58,12 +61,13 @@ namespace EP.Hangman.Web.Controllers
         [HttpDelete]
         [SwaggerResponse(HttpStatusCode.NoContent, typeof(ControllerData), Description = "Deleted")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't delete")]
+        [ValidationFilter]
         public async Task<IActionResult> DeleteGameSessionAsync([FromBody]ControllerData model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest(ModelState);
+//            }
             var result = await _mediator.Send(new DeleteGameSessionCommand(model));
             return result.IsSuccess ? (IActionResult) Ok(result.Value) : BadRequest(result.Error);
         }

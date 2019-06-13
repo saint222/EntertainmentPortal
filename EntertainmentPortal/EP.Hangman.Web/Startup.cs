@@ -11,6 +11,7 @@ using EP.Hangman.Logic;
 using EP.Hangman.Logic.Commands;
 using EP.Hangman.Logic.Profiles;
 using EP.Hangman.Logic.Validators;
+using EP.Hangman.Web.Filters;
 using FluentValidation.AspNetCore;
 
 namespace EP.Hangman.Web
@@ -32,7 +33,8 @@ namespace EP.Hangman.Web
             services.AddMediatR(typeof(CheckLetterCommand).Assembly);
             services.AddAutoMapper(typeof(MapperProfile).Assembly);
             services.AddGameServices();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddMvc(opt => opt.Filters.Add(typeof(GlobalExceptionFilter)))
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(cfg =>
                 {
                     cfg.RegisterValidatorsFromAssemblyContaining<DeleteGameValidator>();
