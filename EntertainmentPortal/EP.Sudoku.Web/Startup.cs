@@ -37,6 +37,7 @@ namespace EP.Sudoku.Web
             services.AddMediatR(typeof(CreateSessionCommand).Assembly);
             services.AddMediatR(typeof(DeletePlayerCommand).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
+            services.AddAutoMapper(typeof(Player2Profile).Assembly);
             services.AddAutoMapper(typeof(SessionProfile).Assembly);
             services.AddAutoMapper(typeof(CellProfile).Assembly);
             services.AddSwaggerDocument();

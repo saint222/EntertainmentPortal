@@ -42,7 +42,7 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>
         /// Is used to write all possible digits to the cell.
         /// </summary>   
-        public Session GameSession { get; set; }
+        public int GameSessionId { get; set; }
 
     }
 }

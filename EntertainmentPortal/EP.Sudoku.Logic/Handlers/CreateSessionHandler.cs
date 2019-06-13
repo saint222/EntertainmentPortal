@@ -29,7 +29,11 @@ namespace EP.Sudoku.Logic.Handlers
             sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
             GenerationGridService gridService = new GenerationGridService();
             //List<Cell> cells = gridService.GetRandomCells();
-            List<Cell> cells = gridService.GridToCells(gridService.GetBaseGrid()); //для тестирования базовую судоку генерируем
+            //if (request.session.Level == Enums.DifficultyLevel.Easy)
+            //{
+                
+            //}            
+            List<Cell> cells = gridService.GridToCells(gridService.GetBaseGrid()); 
             sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);
             //var session = _mapper.Map<Session>(sessionDb);
             //session.Squares = _mapper.Map<List<Cell>>(sessionDb.SquaresDb);

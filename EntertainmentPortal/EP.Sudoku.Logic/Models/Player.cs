@@ -4,7 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace EP.Sudoku.Logic.Models
-{
+{   
+    public class Player2
+    {        
+        public int Id { get; set; }        
+        public string NickName { get; set; }
+        
+        public int ExperiencePoint { get; set; }
+        
+        public int Level { get; set; }
+        
+        public AvatarIcon Icon { get; set; }
+    }
     /// <summary>    
     /// Is used to represent a player of the game.
     /// </summary>
