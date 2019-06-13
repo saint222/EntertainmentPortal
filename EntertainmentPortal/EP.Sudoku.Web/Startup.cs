@@ -7,6 +7,8 @@ using EP.Sudoku.Logic;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Profiles;
 using EP.Sudoku.Logic.Queries;
+using EP.Sudoku.Logic.Validators;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,7 +45,12 @@ namespace EP.Sudoku.Web
             services.AddAutoMapper(typeof(CellProfile).Assembly);
             services.AddSwaggerDocument();
             services.AddSudokuServices();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(cfg =>
+                {
+                    cfg.RegisterValidatorsFromAssemblyContaining<ChangeCellValueValidator>();
+                    cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                }); ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

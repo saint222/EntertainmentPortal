@@ -66,14 +66,16 @@ namespace EP.Sudoku.Web.Controllers
         [HttpPut("api/setCellValue")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> SetCellValue([FromBody]SetCellValueCommand model)
+        public async Task<IActionResult> SetCellValue([FromBody]ChangeCellValueCommand model)
         {
             if (model == null)
             {
                 return BadRequest();
             }
-            var session = await _mediator.Send(model);
-            return session != null ? (IActionResult)Ok(session) : BadRequest();
+            var result = await _mediator.Send(model);
+            return result.IsFailure ?
+                (IActionResult)BadRequest(result.Error) 
+                : Ok(result.Value);
         }
     }
 }
