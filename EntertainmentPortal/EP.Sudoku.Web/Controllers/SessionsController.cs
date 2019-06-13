@@ -53,13 +53,26 @@ namespace EP.Sudoku.Web.Controllers
         [HttpPut("api/sessions")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> EditSession([FromBody]Session model)
+        public async Task<IActionResult> EditSession([FromBody]UpdateSessionCommand model)
         {
             if (model == null)
             {
                 return BadRequest();
             }
-            var session = await _mediator.Send(new UpdateSessionCommand(model));
+            var session = await _mediator.Send(model);
+            return session != null ? (IActionResult)Ok(session) : BadRequest();
+        }
+
+        [HttpPut("api/setCellValue")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> SetCellValue([FromBody]SetCellValueCommand model)
+        {
+            if (model == null)
+            {
+                return BadRequest();
+            }
+            var session = await _mediator.Send(model);
             return session != null ? (IActionResult)Ok(session) : BadRequest();
         }
     }
