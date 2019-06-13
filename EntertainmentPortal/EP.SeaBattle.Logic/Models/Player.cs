@@ -6,6 +6,8 @@ namespace EP.SeaBattle.Logic.Models
 {
     public class Player
     {
+        //TODO CHange to Guid
+        public string Id { get; set; }
         /// <summary>
         /// Nickname
         /// </summary>

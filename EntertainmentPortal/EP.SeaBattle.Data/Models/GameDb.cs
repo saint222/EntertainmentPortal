@@ -6,7 +6,8 @@ namespace EP.SeaBattle.Data.Models
 {
     public class GameDb
     {
-        public Guid Id { get; set; }
+        //TODO Change to Guid
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         public PlayerDb Player1 { get; set; }
 
