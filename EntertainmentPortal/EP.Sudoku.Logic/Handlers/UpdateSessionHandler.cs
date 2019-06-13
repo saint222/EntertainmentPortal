@@ -27,8 +27,7 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<Session> Handle(UpdateSessionCommand request, CancellationToken cancellationToken)
         {
-            var sessionDb = _mapper.Map<SessionDb>(request.session);
-            sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(request.session.Squares);
+            var sessionDb = _mapper.Map<SessionDb>(request.session);            
             _context.Entry(sessionDb).State = EntityState.Modified;
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
             return await Task.FromResult(request.session);
