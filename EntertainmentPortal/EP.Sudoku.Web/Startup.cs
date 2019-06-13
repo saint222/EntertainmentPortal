@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,11 +32,13 @@ namespace EP.Sudoku.Web
         {
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddMediatR(typeof(GetPlayerById).Assembly);
-            services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
+            services.AddMediatR(typeof(GetSessionById).Assembly);
             services.AddMediatR(typeof(CreateSessionCommand).Assembly);
+            services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
+            services.AddMediatR(typeof(UpdatePlayerCommand).Assembly);
             services.AddMediatR(typeof(DeletePlayerCommand).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
-            services.AddAutoMapper(typeof(Player2Profile).Assembly);
+            services.AddAutoMapper(typeof(PlayerShortProfile).Assembly);
             services.AddAutoMapper(typeof(SessionProfile).Assembly);
             services.AddAutoMapper(typeof(CellProfile).Assembly);
             services.AddSwaggerDocument();
@@ -63,3 +64,4 @@ namespace EP.Sudoku.Web
         }
     }
 }
+

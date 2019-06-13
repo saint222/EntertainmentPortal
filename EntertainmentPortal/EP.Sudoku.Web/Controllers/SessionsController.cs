@@ -49,5 +49,18 @@ namespace EP.Sudoku.Web.Controllers
             var session = await _mediator.Send(new GetSessionById(id));
             return session != null ? (IActionResult)Ok(session) : NotFound();
         }
+
+        [HttpPut("api/sessions")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> EditSession([FromBody]Session model)
+        {
+            if (model == null)
+            {
+                return BadRequest();
+            }
+            var session = await _mediator.Send(new UpdateSessionCommand(model));
+            return session != null ? (IActionResult)Ok(session) : BadRequest();
+        }
     }
 }

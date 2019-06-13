@@ -39,10 +39,5 @@ namespace EP.Sudoku.Logic.Models
         /// </summary>
         public int Y { get; set; }
 
-        /// <summary>
-        /// Is used to write all possible digits to the cell.
-        /// </summary>   
-        public int GameSessionId { get; set; }
-
     }
 }
