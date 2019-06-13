@@ -50,7 +50,7 @@ namespace EP._15Puzzle.Logic.Handlers
 
         }
 
-        private DeckDb Unsort(DeckDb deck) //need tiles???
+        public DeckDb Unsort(DeckDb deck) //need tiles???
         {
             List<TileDb> tiles = deck.Tiles.ToList();
             Random random = new Random();
