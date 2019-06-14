@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using EP.Sudoku.Logic;
+using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Profiles;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
@@ -28,20 +30,31 @@ namespace EP.Sudoku.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
-            services.AddMediatR(typeof(GetAllPlayers).Assembly);            
+        {
+            services.AddMediatR(typeof(GetAllPlayers).Assembly);
+            services.AddMediatR(typeof(GetPlayerById).Assembly);
+            services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
+            services.AddMediatR(typeof(DeletePlayerCommand).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
+            services.AddSwaggerDocument();
+            services.AddSudokuServices();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            else
+            {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+            mediator.Send(new CreateDatabaseCommand()).Wait();
+            app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();
         }
     }

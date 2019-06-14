@@ -1,16 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using CSharpFunctionalExtensions;
 using EP.Hangman.Data.Models;
 using MediatR;
 using EP.Hangman.Logic.Models;
 using EP.Hangman.Data.Context;
 using EP.Hangman.Logic.Commands;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.Hangman.Logic.Handlers
 {
-    public class CreateNewGameHandler : IRequestHandler<CreateNewGameCommand, ControllerData>
+    public class CreateNewGameHandler : IRequestHandler<CreateNewGameCommand, Result<ControllerData>>
     {
         private readonly GameDbContext _context;
 
@@ -22,7 +25,7 @@ namespace EP.Hangman.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<ControllerData> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
+        public async Task<Result<ControllerData>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
         {
             var item = new UserGameData()
             {
@@ -30,17 +33,25 @@ namespace EP.Hangman.Logic.Handlers
                 Alphabet = new Alphabets().EnglishAlphabet(),
                 CorrectLetters = new List<string>()
             };
-            for (int i = 0; i < item.PickedWord.Length; i++)
+            for (var i = 0; i < item.PickedWord.Length; i++)
             {
                 item.CorrectLetters.Add("_");
             }
             item.UserErrors = 0;
 
             var result = _mapper.Map<UserGameData, GameDb>(item);
-            _context.Games.Add(result);
-            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-            return _mapper.Map<UserGameData, ControllerData>(_mapper.Map<GameDb, UserGameData>(result));
+            _context.Games.Add(result);
+            
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                return Result.Ok<ControllerData>(_mapper.Map<UserGameData, ControllerData>(_mapper.Map<GameDb, UserGameData>(result)));
+            }
+            catch (DbUpdateException exception)
+            {
+                return Result.Fail<ControllerData>(exception.Message);
+            }
         }
     }
 }
