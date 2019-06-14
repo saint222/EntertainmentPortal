@@ -11,7 +11,7 @@ namespace EP.SeaBattle.Logic.Commands
         public byte X { get; set; }
         public byte Y { get; set; }
         public ShipOrientation Orientation { get; set; }
-        public ShipRank ShipRank { get; set; }
+        public ShipRank Rank { get; set; }
 
         //TODO Change to Guid
         public string PlayerId { get; set; }

@@ -12,7 +12,5 @@ namespace EP.SeaBattle.Data.Models
 
         public string NickName { get; set; }
 
-        public bool CanShoot { get; set; }
-
     }
 }

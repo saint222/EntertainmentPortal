@@ -24,9 +24,25 @@ namespace EP.SeaBattle.Web.Controllers
         }
 
         [HttpPost]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Add new player")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> AddCellAsync([FromBody]AddNewPlayerCommand model)
+        public async Task<IActionResult> AddPlayerAsync([FromBody]AddNewPlayerCommand model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await _mediator.Send(model);
+            return result.IsFailure ?
+                (IActionResult)BadRequest(result.Error)
+                : Ok(result.Value);
+        }
+
+        [HttpPut]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Update player")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> UpdatePlayerAsync([FromBody]UpdatePlayerCommand model)
         {
             if (!ModelState.IsValid)
             {

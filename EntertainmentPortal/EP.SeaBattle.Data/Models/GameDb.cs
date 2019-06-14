@@ -14,5 +14,7 @@ namespace EP.SeaBattle.Data.Models
         public PlayerDb Player2 { get; set; }
 
         public bool Finish { get; set; }
+
+        public PlayerDb PlayerAllowedToMove { get; set; }
     }
 }

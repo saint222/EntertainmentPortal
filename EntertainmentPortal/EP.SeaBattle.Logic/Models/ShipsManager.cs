@@ -25,8 +25,8 @@ namespace EP.SeaBattle.Logic.Models
         public const byte MAX_SHIPS_COUNT = 10;
 
         List<Ship> _ships;
-        Game Game;
-        Player Player;
+        readonly Game Game;
+        readonly Player Player;
         /// <summary>
         /// .ctor
         /// </summary>
@@ -35,11 +35,13 @@ namespace EP.SeaBattle.Logic.Models
         {
             Game = game;
             Player = player;
-            _shipsCount = new Dictionary<ShipRank, byte>(4);
-            _shipsCount.Add(ShipRank.One, 0);
-            _shipsCount.Add(ShipRank.Two, 0);
-            _shipsCount.Add(ShipRank.Three, 0);
-            _shipsCount.Add(ShipRank.Four, 0);
+            _shipsCount = new Dictionary<ShipRank, byte>(4)
+            {
+                { ShipRank.One, 0 },
+                { ShipRank.Two, 0 },
+                { ShipRank.Three, 0 },
+                { ShipRank.Four, 0 }
+            };
 
             foreach (var ship in ships)
             {

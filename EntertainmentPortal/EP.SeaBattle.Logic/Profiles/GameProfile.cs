@@ -9,6 +9,8 @@ namespace EP.SeaBattle.Logic.Profiles
         public GameProfile()
         {
             CreateMap<GameDb, Game>().ReverseMap();
+            CreateMap<GameDb, GameProfile>().ReverseMap();
+            CreateMap<Game, GameProfile>().ReverseMap();
         }
     }
 }

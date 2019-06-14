@@ -7,7 +7,7 @@ using System.Text;
 
 namespace EP.SeaBattle.Logic.Commands
 {
-    public class AddNewPlayerCommand : IRequest<Result<Player>>
+    public class UpdatePlayerCommand : IRequest<Result<Player>>
     {
         public string Id { get; set; }
         public string NickName { get; set; }
