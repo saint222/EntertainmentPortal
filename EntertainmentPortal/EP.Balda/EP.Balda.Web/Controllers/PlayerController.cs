@@ -6,6 +6,7 @@ using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.Balda.Web.Controllers
@@ -14,10 +15,12 @@ namespace EP.Balda.Web.Controllers
     public class PlayerController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<PlayerController> _logger;
 
-        public PlayerController(IMediator mediator)
+        public PlayerController(IMediator mediator, ILogger<PlayerController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("api/player/{id}")]
@@ -26,6 +29,8 @@ namespace EP.Balda.Web.Controllers
             "Player not found")]
         public async Task<IActionResult> GetPlayerAsync([FromRoute]long id)
         {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
+
             var result = await _mediator.Send(new GetPlayer(id));
             return result.HasValue ? (IActionResult) Ok(result.Value) : NotFound();
         }
@@ -47,6 +52,9 @@ namespace EP.Balda.Web.Controllers
             "Player can't be created")]
         public async Task<IActionResult> CreateNewPlayerAsync(CreateNewPlayerCommand model)
         {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Player: " +
+                $"Login = {model.Login}, NickName = {model.NickName}, Password = {model.Password}");
+
             var result = await _mediator.Send(model);
             return result.IsFailure ? (IActionResult) Ok(result.Value) : BadRequest();
         }
