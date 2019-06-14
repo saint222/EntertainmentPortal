@@ -16,6 +16,9 @@ using EP.WordsMaker.Logic.Commands;
 using EP.WordsMaker.Logic.Extensions;
 using EP.WordsMaker.Logic.Profiles;
 using NJsonSchema;
+using CSharpFunctionalExtensions;
+using EP.WordsMaker.Logic.Validators;
+using FluentValidation.AspNetCore;
 
 namespace EP.WordsMaker.Web
 {
@@ -35,7 +38,12 @@ namespace EP.WordsMaker.Web
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddAutoMapper(cfg => cfg.AddProfile(new PlayerProfile()));
             services.AddPlayerServices();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(cfg =>
+                {
+                    cfg.RegisterValidatorsFromAssemblyContaining<AddNewPlayerValidator>();
+                    cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                });
         }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
