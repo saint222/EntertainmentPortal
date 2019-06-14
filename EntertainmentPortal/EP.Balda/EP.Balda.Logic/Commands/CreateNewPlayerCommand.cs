@@ -4,7 +4,7 @@ using MediatR;
 
 namespace EP.Balda.Logic.Commands
 {
-    public class AddNewPlayerCommand : IRequest<Result<Player>>
+    public class CreateNewPlayerCommand : IRequest<Result<Player>>
     {
         public string NickName { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using EP.Balda.Data.Context;
 using EP.Balda.Logic.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -17,9 +18,19 @@ namespace EP.Balda.Logic.Models
         private readonly WordDbContext _context;
 
         /// <summary>
+        ///     The field stores an Id of the map in the game.
+        /// </summary>
+        public long Id { get; set; }
+
+        /// <summary>
         ///     The field stores an object of the map in the game.
         /// </summary>
         public IMap Map { get; }
+
+        /// <summary>
+        ///     The field represents players in the game.
+        /// </summary>
+        public List<Player> Players { get; set; }
 
         /// <summary>
         ///     The Game constructor.
@@ -27,10 +38,16 @@ namespace EP.Balda.Logic.Models
         /// <param name="map">
         ///     Parameter map requires IMap argument.
         /// </param>
-        /// <param name="context">word database context</param>
-        public Game(IMap map, WordDbContext context)
+        /// <param name="context">
+        ///     Word database context.
+        /// </param>
+        /// <param name="players">
+        ///     Parameter players requires List&lt;Player&gt; argument.
+        /// </param>
+        public Game(IMap map, WordDbContext context, List<Player> players)
         {
             Map = map;
+            Players = players;
             _context = context;
             var initWord = GetStartingWord();
             PutStartingWordToMap(initWord);

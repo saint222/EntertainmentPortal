@@ -34,6 +34,11 @@ namespace EP.Balda.Logic.Models
         public int Score { get; set; }
 
         /// <summary>
+        ///     IsMoveAllowed property. Represents player's availability of making move in the game.
+        /// </summary>
+        public bool IsMoveAllowed { get; set; }
+        
+        /// <summary>
         ///     Words property. Represents the list of words that player already entered in one match
         /// </summary>
         public List<string>
