@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Bogus.Bson;
+using EP.Sudoku.Logic.Enums;
 using EP.Sudoku.Logic.Models;
 
 namespace EP.Sudoku.Logic.Services
@@ -225,7 +227,7 @@ namespace EP.Sudoku.Logic.Services
         public int[,] RemoveCells(int[,] initGrid, int count)
         {
             Random rand = new Random();
-            int[,] grid = new int[GRID_DIMENSION, GRID_DIMENSION];
+            int[,] grid = GetRandomGrid();
             Array.Copy(initGrid, grid, GRID_DIMENSION * GRID_DIMENSION);
             int i;
             int j;
@@ -242,6 +244,110 @@ namespace EP.Sudoku.Logic.Services
             }
 
             return grid;
+        }
+
+        /// <summary>    
+        /// Removes count of cells from the filled initGrid
+        /// </summary>
+        public List<Cell> GetSudoku(DifficultyLevel level)
+        {
+            Random rand = new Random();
+            int[,] grid = GetRandomGrid();
+            int i, j;
+            int count = 0;
+
+            switch (level)
+            {
+                case DifficultyLevel.Easy:
+                    count = rand.Next(41, 44); //count not empty cell 38-40
+                    break;
+
+                case DifficultyLevel.Normal:
+                    count = rand.Next(48, 51); //count not empty cell 31-33
+                    break;
+
+                case DifficultyLevel.Hard:
+                    count = rand.Next(55, 58); //count not empty cell 24-26
+                    break;
+            }
+
+            for (int index = 0; index < count; index++)
+            {
+                do
+                {
+                    i = rand.Next(0, 9);
+                    j = rand.Next(0, 9);
+                } while (!IsCanRemoveCell(grid, level, i, j));
+
+                grid[i, j] = 0;
+            }
+
+
+            return GridToCells(grid);
+        }
+
+        private bool IsCanRemoveCell(int[,] grid, DifficultyLevel level, int x, int y)
+        {
+            if (grid[x, y] == 0)
+            {
+                return false;
+            }
+
+            int countInLine = 0;
+            switch (level)
+            {
+                case DifficultyLevel.Easy:
+                    countInLine = 5;
+                    break;
+
+                case DifficultyLevel.Normal:
+                    countInLine = 4;
+                    break;
+
+                case DifficultyLevel.Hard:
+                    countInLine = 3;
+                    break;
+            }
+
+            if (CountEmptyInRow(grid, x) < countInLine)
+            {
+                return false;
+            }
+
+            if (CountEmptyInColumn(grid, y) < countInLine)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private int CountEmptyInRow(int[,] grid, int x)
+        {
+            int count = 0;
+            for (int i = 0; i < GRID_DIMENSION; i++)
+            {
+                if (grid[x, i] != 0)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        private int CountEmptyInColumn(int[,] grid, int y)
+        {
+            int count = 0;
+            for (int i = 0; i < GRID_DIMENSION; i++)
+            {
+                if (grid[i, y] != 0)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
     }
 }

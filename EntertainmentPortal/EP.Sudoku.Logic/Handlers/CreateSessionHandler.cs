@@ -7,6 +7,7 @@ using EP.Sudoku.Data.Context;
 using EP.Sudoku.Data.Models;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Commands;
+using EP.Sudoku.Logic.Enums;
 using EP.Sudoku.Logic.Services;
 using MediatR;
 
@@ -28,15 +29,9 @@ namespace EP.Sudoku.Logic.Handlers
             var sessionDb = _mapper.Map<SessionDb>(request.session);
             sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
             GenerationGridService gridService = new GenerationGridService();
-            //List<Cell> cells = gridService.GetRandomCells();
-            //if (request.session.Level == Enums.DifficultyLevel.Easy)
-            //{
-                
-            //}            
-            List<Cell> cells = gridService.GridToCells(gridService.GetBaseGrid()); 
+            List<Cell> cells = gridService.GetSudoku((DifficultyLevel)sessionDb.Level);        
+            //List<Cell> cells = gridService.GridToCells(gridService.GetBaseGrid()); 
             sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);
-            //var session = _mapper.Map<Session>(sessionDb);
-            //session.Squares = _mapper.Map<List<Cell>>(sessionDb.SquaresDb);
 
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
