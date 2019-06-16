@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Models
 {
@@ -43,5 +44,10 @@ namespace EP.Balda.Logic.Models
         /// </summary>
         public List<string>
             Words { get; set; } //words this player guessed per one game
+
+        /// <summary>
+        ///     Created property. Represents the data when player profile was created.
+        /// </summary>
+        public DateTime Created { get; set; } = DateTime.UtcNow;
     }
 }

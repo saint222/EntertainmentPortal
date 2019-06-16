@@ -19,8 +19,6 @@ namespace EP.Balda.Data.Models.ModelBuilder
 
             var playersGenerate = faker.Generate(CONT_INIT_PLAYERS);
             foreach (var player in playersGenerate)
-                //Console.WriteLine($"registered playerId = {player.Id}, {player.Login}");
-
                 modelBuilder.Entity<PlayerDb>().HasData(
                     new PlayerDb
                     {
