@@ -2,9 +2,11 @@
 
 namespace EP.Sudoku.Data.Models
 {
+    /// <summary>    
+    /// Is used to represent a piece of playground area (81 cells are expected) (DbInfo).
+    /// </summary>
     public class CellDb
     {
-
         /// <summary>    
         /// Is used to denote an identification value of a cell (DbInfo).
         /// </summary>
@@ -37,7 +39,6 @@ namespace EP.Sudoku.Data.Models
         /// Is used to write all possible digits to the cell (DbInfo).
         /// </summary>        
         public SessionDb GameSessionDb { get; set; }
-
     }
 }
 

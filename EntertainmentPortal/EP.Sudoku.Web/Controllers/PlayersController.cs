@@ -9,18 +9,21 @@ using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.Sudoku.Web.Controllers
 {
     [ApiController]
     public class PlayersController : ControllerBase
-    {
-        private readonly IMediator _mediator;
+    {        
+        private readonly IMediator _mediator;       
+        private readonly ILogger<PlayersController> _logger;
 
-        public PlayersController(IMediator mediator)
+        public PlayersController(IMediator mediator, ILogger<PlayersController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("api/players")] 
@@ -40,6 +43,7 @@ namespace EP.Sudoku.Web.Controllers
         {
             if (id <= 0)
             {
+                _logger.LogWarning($"Incorrect value for the player's Id was set. '{id}' - is <= 0...");
                 return BadRequest();
             }
             var player = await _mediator.Send(new GetPlayerById(id));
@@ -52,7 +56,7 @@ namespace EP.Sudoku.Web.Controllers
         public async Task<IActionResult> CreatePlayer([FromBody]Player model)
         {
             if (model == null)
-            {
+            {                
                 return BadRequest();
             }            
             var player = await _mediator.Send(new CreatePlayerCommand(model));
@@ -79,6 +83,7 @@ namespace EP.Sudoku.Web.Controllers
         {
             if (id <= 0)
             {
+                _logger.LogWarning($"Incorrect value for the player's Id was set. '{id}' - is <= 0...");
                 return BadRequest();
             }
             var result = await _mediator.Send(new DeletePlayerCommand(id));

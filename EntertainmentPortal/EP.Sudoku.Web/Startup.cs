@@ -17,6 +17,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Serilog;
+using Serilog.Events;
 
 namespace EP.Sudoku.Web
 {
@@ -50,12 +52,14 @@ namespace EP.Sudoku.Web
                 {
                     cfg.RegisterValidatorsFromAssemblyContaining<ChangeCellValueValidator>();
                     cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-                }); ;
+                });
+            services.AddLogging();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddSerilog();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -68,6 +72,13 @@ namespace EP.Sudoku.Web
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.Console()
+                .WriteTo.Debug()
+                .WriteTo.RollingFile("SudokuLogData/log-{Date}.txt", LogEventLevel.Information)
+                .WriteTo.SQLite(Environment.CurrentDirectory + @"\sudoku.db")
+                .CreateLogger();
         }
     }
 }

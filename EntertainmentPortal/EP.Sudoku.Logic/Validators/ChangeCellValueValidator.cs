@@ -32,7 +32,7 @@ namespace EP.Sudoku.Logic.Validators
 
                             return result ? true : false;
                         })
-                    .WithMessage("This value is not valid.");
+                    .WithMessage("Numbers with values from 1 to 9 can be used only!");
 
                 RuleFor(x => x)
                     .MustAsync(
@@ -45,7 +45,7 @@ namespace EP.Sudoku.Logic.Validators
 
                             return result ? true : false;
                         })
-                    .WithMessage("This value is wrong.");
+                    .WithMessage($"Incorrect value. Think it over again due to the game rules!");
             });
         }
 

@@ -30,12 +30,7 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>    
         /// Is used as a flag for the business logic of the Session class.
         /// </summary>
-        public bool IsOver { get; set; }
-
-        /// <summary>
-        /// Is used to denote a period of time from the beginning of a game session till it's end for subsequent convertation to player's points of experience. 
-        /// </summary>        
-        public double Duration { get; set; }
+        public bool IsOver { get; set; }        
         
         /// <summary>    
         /// Is used to denote the necessary data, which concernes a player of a game session.

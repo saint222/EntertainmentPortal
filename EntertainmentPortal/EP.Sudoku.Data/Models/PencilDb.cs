@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace EP.Sudoku.Data.Models
 {
+    /// <summary>    
+    ///Represents an auxiliary tool, that helps to solve sudoku (DbInfo).
+    /// </summary>
     public class PencilDb
     {
         /// <summary>    

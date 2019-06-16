@@ -1,0 +1,14 @@
+2019-06-16 18:59:06.880 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-16 18:59:11.630 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-16 18:59:11.698 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-16 18:59:22.122 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-16 18:59:22.719 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-16 18:59:22.725 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-16 18:59:30.287 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-16 18:59:30.290 +03:00 [Warning] Incorrect value for playerId was set. 0 - is <= 0...
+2019-06-16 18:59:30.294 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ProblemDetails"'.
+2019-06-16 18:59:30.306 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-16 19:02:51.544 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-16 19:02:51.923 +03:00 [Warning] Incorrect value for the playerId was set. '-1' - is <= 0...
+2019-06-16 19:02:51.956 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ProblemDetails"'.
+2019-06-16 19:02:51.994 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'

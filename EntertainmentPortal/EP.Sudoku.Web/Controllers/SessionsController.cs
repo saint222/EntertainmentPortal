@@ -8,6 +8,7 @@ using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.Sudoku.Web.Controllers
@@ -16,10 +17,12 @@ namespace EP.Sudoku.Web.Controllers
     public class SessionsController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<SessionsController> _logger;
 
-        public SessionsController(IMediator mediator)
+        public SessionsController(IMediator mediator, ILogger<SessionsController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpPost("api/sessions")]
@@ -44,6 +47,7 @@ namespace EP.Sudoku.Web.Controllers
         {
             if (id <= 0)
             {
+                _logger.LogWarning($"Incorrect value for the sessions's Id was set. '{id}' - is <= 0...");
                 return BadRequest();
             }
             var session = await _mediator.Send(new GetSessionById(id));
@@ -73,9 +77,7 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest();
             }
             var result = await _mediator.Send(model);
-            return result.IsFailure ?
-                (IActionResult)BadRequest(result.Error) 
-                : Ok(result.Value);
+            return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
         }
     }
 }

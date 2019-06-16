@@ -4,6 +4,9 @@ using System.Text;
 
 namespace EP.Sudoku.Logic.Models
 {
+    /// <summary>    
+    /// Represents an auxiliary tool, that helps to solve sudoku.
+    /// </summary>
     public class Pencil
     {
         /// <summary>    
