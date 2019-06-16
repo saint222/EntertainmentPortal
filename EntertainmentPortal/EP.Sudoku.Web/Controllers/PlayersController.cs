@@ -9,6 +9,7 @@ using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
@@ -18,12 +19,12 @@ namespace EP.Sudoku.Web.Controllers
     public class PlayersController : ControllerBase
     {        
         private readonly IMediator _mediator;       
-        private readonly ILogger<PlayersController> _logger;
+        private readonly ILogger<PlayersController> _logger;        
 
         public PlayersController(IMediator mediator, ILogger<PlayersController> logger)
         {
             _mediator = mediator;
-            _logger = logger;
+            _logger = logger;           
         }
 
         [HttpGet("api/players")] 

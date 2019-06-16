@@ -12,3 +12,18 @@
 2019-06-16 19:02:51.923 +03:00 [Warning] Incorrect value for the playerId was set. '-1' - is <= 0...
 2019-06-16 19:02:51.956 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ProblemDetails"'.
 2019-06-16 19:02:51.994 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-16 23:47:45.387 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-16 23:47:47.947 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-16 23:47:48.003 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-16 23:48:01.658 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-16 23:48:02.299 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-06-16 23:48:02.309 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-16 23:48:10.296 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-16 23:48:10.304 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-06-16 23:48:10.318 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-16 23:48:21.867 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-16 23:48:21.875 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-06-16 23:48:21.882 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-16 23:49:37.801 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-16 23:51:18.215 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-16 23:53:08.058 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
