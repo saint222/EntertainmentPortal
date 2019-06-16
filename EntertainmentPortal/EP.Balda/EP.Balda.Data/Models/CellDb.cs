@@ -9,7 +9,7 @@
 
         public MapDb Map { get; set; }
 
-        public long MapID { get; set; }
+        public long MapId { get; set; }
 
         public int X { get; }
 

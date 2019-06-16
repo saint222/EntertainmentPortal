@@ -26,23 +26,44 @@ namespace EP.Balda.Data.Context
             base.OnModelCreating(modelBuilder);
 
             var playerEntity = modelBuilder.Entity<PlayerDb>();
-            playerEntity.HasKey(p => p.Id);
             playerEntity.Property(p => p.Login).IsRequired().HasMaxLength(30);
             playerEntity.Property(p => p.NickName).IsRequired().HasMaxLength(30);
             playerEntity.Property(p => p.Password).IsRequired();
-            playerEntity.HasMany(p => p.Words).WithOne();
             
             var gameEntity = modelBuilder.Entity<GameDb>();
-            gameEntity.HasKey(g => g.Id);
-            gameEntity.HasMany(g => g.Players).WithOne();
+            gameEntity.HasOne(g => g.Map).WithOne();
+
+            var playerGameEntry = modelBuilder.Entity<PlayerGameDb>();
+            playerGameEntry
+            .HasKey(pg => new { pg.PlayerId, pg.GameId });
+            modelBuilder.Entity<PlayerGameDb>()
+                .HasOne(pg => pg.Player)
+                .WithMany(pg => pg.PlayerGames)
+                .HasForeignKey(pg => pg.PlayerId);
+            modelBuilder.Entity<PlayerGameDb>()
+                .HasOne(pg => pg.Game)
+                .WithMany(pg => pg.PlayerGames)
+                .HasForeignKey(pg => pg.GameId);
+
+            var playerWordEntry = modelBuilder.Entity<PlayerWordDb>();
+            playerWordEntry
+            .HasKey(pw => new { pw.PlayerId, pw.WordId });
+            modelBuilder.Entity<PlayerWordDb>()
+                .HasOne(pw => pw.Player)
+                .WithMany(pw => pw.PlayerWords)
+                .HasForeignKey(pw => pw.PlayerId);
+            modelBuilder.Entity<PlayerWordDb>()
+                .HasOne(pw => pw.Word)
+                .WithMany(pw => pw.PlayerWords)
+                .HasForeignKey(pw => pw.WordId);
 
             var mapEntity = modelBuilder.Entity<MapDb>();
             mapEntity.HasKey(m => m.Id);
-            mapEntity.HasMany(m => m.Cells).WithOne().HasForeignKey(m => m.MapID);
+            mapEntity.HasMany(m => m.Cells).WithOne();
 
             var cellEntity = modelBuilder.Entity<CellDb>();
             cellEntity.HasKey(c => c.Id);
-            cellEntity.HasOne(c => c.Map).WithMany().HasForeignKey(c => c.MapID);
+            cellEntity.HasOne(c => c.Map).WithMany(c => c.Cells).HasForeignKey(c => c.MapId);
 
             var wordEntity = modelBuilder.Entity<WordDb>();
             wordEntity.HasKey(w => w.Id);

@@ -8,7 +8,7 @@ namespace EP.Balda.Data.Models
     /// </summary>
     public class PlayerDb
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public string NickName { get; set; }
 
@@ -19,8 +19,14 @@ namespace EP.Balda.Data.Models
         public int Score { get; set; }
 
         public bool IsMoveAllowed { get; set; }
-        
-        public List<WordDb> Words { get; set; }
+
+        public long WordId { get; set; }
+
+        public long GameId { get; set; }
+
+        public ICollection<PlayerGameDb> PlayerGames { get; set; }
+
+        public ICollection<PlayerWordDb> PlayerWords { get; set; }
 
         public DateTime Created { get; set; } = DateTime.UtcNow;
     }

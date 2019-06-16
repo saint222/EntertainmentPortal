@@ -9,10 +9,10 @@ namespace EP.Balda.Data.Models
     {
         public long Id { get; set; }
         
-        public MapDb Map { get; }
+        public MapDb Map { get; set; }
 
         public long MapId { get; set; }
-        
-        public List<PlayerDb> Players { get; set; }
+
+        public ICollection<PlayerGameDb> PlayerGames { get; set; }
     }
 }
