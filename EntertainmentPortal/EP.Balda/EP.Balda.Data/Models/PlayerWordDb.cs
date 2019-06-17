@@ -23,6 +23,6 @@
         /// <summary>
         ///     Word property. Navigational property of Word.
         /// </summary>
-        public WordsSourceDb Word { get; set; }
+        public WordRuDb Word { get; set; }
     }
 }

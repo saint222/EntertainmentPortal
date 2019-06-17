@@ -75,10 +75,10 @@ namespace EP.Balda.Logic.Models
         {
             var word = "";
             var mapSize = Map.Size;
-            var sizeRepo = _context.Words.CountAsync();
+            var sizeRepo = _context.WordsRu.CountAsync();
             var id = RandomWord(sizeRepo.Result);
             while (word.Length != mapSize)
-                word = _context.Words.FindAsync(id).Result.Word;
+                word = _context.WordsRu.FindAsync(id).Result.Word;
 
             return word;
         }
