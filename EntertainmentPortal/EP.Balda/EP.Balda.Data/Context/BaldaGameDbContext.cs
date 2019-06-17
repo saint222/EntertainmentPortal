@@ -18,7 +18,7 @@ namespace EP.Balda.Data.Context
 
         public DbSet<CellDb> Cells { get; set; }
 
-        public DbSet<WordDb> Words { get; set; }
+        public DbSet<WordsSourceDb> Words { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -63,9 +63,11 @@ namespace EP.Balda.Data.Context
 
             var cellEntity = modelBuilder.Entity<CellDb>();
             cellEntity.HasKey(c => c.Id);
+            cellEntity.Property(c => c.X).IsRequired();
+            cellEntity.Property(c => c.Y).IsRequired();
             cellEntity.HasOne(c => c.Map).WithMany(c => c.Cells).HasForeignKey(c => c.MapId);
 
-            var wordEntity = modelBuilder.Entity<WordDb>();
+            var wordEntity = modelBuilder.Entity<WordsSourceDb>();
             wordEntity.HasKey(w => w.Id);
         }
     }

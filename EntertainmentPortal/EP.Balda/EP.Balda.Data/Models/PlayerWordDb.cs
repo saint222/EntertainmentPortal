@@ -1,20 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EP.Balda.Data.Models
+﻿namespace EP.Balda.Data.Models
 {
     /// <summary>
     ///     Table to form many-to-many relations.
     /// </summary>
     public class PlayerWordDb
     {
+        /// <summary>
+        ///     PlayerId property. Represents Id of Player.
+        /// </summary>
         public long PlayerId { get; set; }
 
+        /// <summary>
+        ///     Player property. Navigational property of Player.
+        /// </summary>
         public PlayerDb Player { get; set; }
 
+        /// <summary>
+        ///     WordId property. Represents Id of word.
+        /// </summary>
         public int WordId { get; set; }
 
-        public WordDb Word { get; set; }
+        /// <summary>
+        ///     Word property. Navigational property of Word.
+        /// </summary>
+        public WordsSourceDb Word { get; set; }
     }
 }
