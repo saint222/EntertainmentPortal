@@ -11,6 +11,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace EP.SeaBattle.Logic.Handlers
 {
@@ -18,25 +19,37 @@ namespace EP.SeaBattle.Logic.Handlers
     {
         private readonly SeaBattleDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogger<DeleteShipCommand> _logger;
 
-        public DeleteShipHandler(SeaBattleDbContext context, IMapper mapper)
+        public DeleteShipHandler(SeaBattleDbContext context, IMapper mapper, ILogger<DeleteShipCommand> logger)
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<Maybe<IEnumerable<Ship>>> Handle(DeleteShipCommand request, CancellationToken cancellationToken)
-        {
-            //TODO Validation for deleting ship
-            if (true)
+        {           
+            var ship = _context.Ships.Find(request.Id);
+            if (ship == null)
             {
-                var ship = _context.Ships.Find(request.Id);
-
-                _context.Ships.Remove(ship);
-                await _context.SaveChangesAsync(cancellationToken);
+                _logger.LogWarning($"Ship with Id {request.Id} not found");
                 return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
-                //TODO Logging
             }
+            else
+            {
+                _context.Ships.Remove(ship);
+                try
+                {
+                    await _context.SaveChangesAsync(cancellationToken);
+                    return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
+                }
+                catch (DbUpdateException ex)
+                {
+                    _logger.LogError(ex.Message);
+                    return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
+                }
+            }           
         }
     }
 }

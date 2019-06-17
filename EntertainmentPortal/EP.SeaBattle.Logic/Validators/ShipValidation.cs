@@ -10,7 +10,6 @@ namespace EP.SeaBattle.Logic.Validators
 {
     public class ShipAddValidation : AbstractValidator<AddNewShipCommand>
     {
-        //TODO проверить валидацию (не работает на уровне представления)
         public ShipAddValidation(SeaBattleDbContext context)
         {
 

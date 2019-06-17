@@ -11,6 +11,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace EP.SeaBattle.Logic.Handlers
 {
@@ -18,18 +19,18 @@ namespace EP.SeaBattle.Logic.Handlers
     {
         private readonly SeaBattleDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogger<GetShipsQuery> _logger;
 
-
-        public GetShipsHandler(SeaBattleDbContext context, IMapper mapper)
+        public GetShipsHandler(SeaBattleDbContext context, IMapper mapper, ILogger<GetShipsQuery> logger)
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<Maybe<IEnumerable<Ship>>> Handle(GetShipsQuery request, CancellationToken cancellationToken)
         {
-            //TODO Validation for geting all ship
-            if (true)
+            if (!string.IsNullOrEmpty(request.GameId) && !string.IsNullOrEmpty(request.PlayerId))
             {
 
                 var result = await _context.Ships.Where(w => w.Game.Id == request.GameId && w.Player.Id == request.PlayerId)
@@ -38,10 +39,11 @@ namespace EP.SeaBattle.Logic.Handlers
                     .Include(i => i.Player)
                     .ToArrayAsync(cancellationToken).ConfigureAwait(false);
 
+                _logger.LogInformation($"Send ship collection for game {request.GameId} player {request.PlayerId}");
                 return result.Any() ? Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(result))
                     : Maybe<IEnumerable<Ship>>.None;
-                //TODO Logging
             }
+            return Maybe<IEnumerable<Ship>>.None;
         }
     }
 }
