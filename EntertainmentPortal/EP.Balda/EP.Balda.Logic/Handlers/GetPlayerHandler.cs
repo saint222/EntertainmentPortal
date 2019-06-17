@@ -11,10 +11,10 @@ namespace EP.Balda.Logic.Handlers
 {
     public class GetPlayerHandler : IRequestHandler<GetPlayer, Maybe<PlayerDb>>
     {
-        private readonly PlayerDbContext _context;
+        private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetPlayerHandler(IMapper mapper, PlayerDbContext context)
+        public GetPlayerHandler(IMapper mapper, BaldaGameDbContext context)
         {
             _mapper = mapper;
             _context = context;
