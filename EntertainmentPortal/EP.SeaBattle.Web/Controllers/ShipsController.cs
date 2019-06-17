@@ -10,6 +10,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
+using FluentValidation;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -57,6 +58,11 @@ namespace EP.SeaBattle.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't delete ship")]
         public async Task<IActionResult> DeleteShipAsync([FromBody] DeleteShipCommand model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var result = await _mediator.Send(model);
             return result.HasValue ? Ok(result.Value)
                 : (IActionResult)Ok();

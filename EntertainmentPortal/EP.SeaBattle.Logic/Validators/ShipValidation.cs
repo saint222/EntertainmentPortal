@@ -11,36 +11,26 @@ namespace EP.SeaBattle.Logic.Validators
     public class ShipAddValidation : AbstractValidator<AddNewShipCommand>
     {
         //TODO проверить валидацию (не работает на уровне представления)
-        readonly SeaBattleDbContext _context;
         public ShipAddValidation(SeaBattleDbContext context)
         {
-            _context = context;
 
-            RuleSet("PL Ship Add Validation", () =>
-            {
-                RuleFor(ship => ship.X)
-                    .ExclusiveBetween((byte)0, (byte)9).WithMessage("X must be from 0 to 9");
+            RuleFor(ship => ship.X)
+                .InclusiveBetween((byte)0, (byte)9).WithMessage("X must be from 0 to 9");
 
-                RuleFor(ship => ship.Y)
-                    .ExclusiveBetween((byte)0, (byte)9).WithMessage("Y must be from 0 to 9");
+            RuleFor(ship => ship.Y)
+                .InclusiveBetween((byte)0, (byte)9).WithMessage("Y must be from 0 to 9");
 
-                RuleFor(ship => ship.Orientation)
-                    .IsInEnum().WithMessage("Orientation incorrect");
+            RuleFor(ship => ship.Orientation)
+                .IsInEnum().WithMessage("Orientation incorrect");
 
-                RuleFor(ship => ship.Rank)
-                    .IsInEnum().WithMessage("Rank incorrect");
+            RuleFor(ship => ship.Rank)
+                .IsInEnum().WithMessage("Rank incorrect");
 
-                RuleFor(ship => ship.Player)
-                    .NotNull().WithMessage("Player cannot be null");
+            RuleFor(ship => ship.Player)
+                .NotNull().WithMessage("Player cannot be null");
 
-                RuleFor(ship => ship.Game)
-                    .NotNull().WithMessage("Game cannot be null");
-            });
-
-            //RuleSet("BL Ship Add Validation", () =>
-            //{
-                //TODO определиться что валидировать в бизнес-логике добавления корабля что тут делать
-            //});
+            RuleFor(ship => ship.Game)
+                .NotNull().WithMessage("Game cannot be null");
         }
     }
 

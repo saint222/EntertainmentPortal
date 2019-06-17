@@ -33,12 +33,12 @@ namespace EP.SeaBattle.Web
         {
             services.AddLogging(cfg => cfg.AddConsole().AddDebug());
             services.AddSeaBattleServices();
-            services.AddMediatR(typeof(AddNewCellCommand).Assembly);
+            services.AddMediatR(typeof(AddNewPlayerCommand).Assembly);
             services.AddAutoMapper(typeof(CellProfile).Assembly);
             services.AddSwaggerDocument();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(cfg =>
             {
-                cfg.RegisterValidatorsFromAssemblyContaining<ShipValidation>();
+                cfg.RegisterValidatorsFromAssemblyContaining<ShipAddValidation>();
                 cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
             });
         }

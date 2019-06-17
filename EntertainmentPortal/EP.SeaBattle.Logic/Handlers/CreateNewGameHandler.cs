@@ -31,18 +31,26 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Result<Game>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
         {
-            //TODO validation for adding new game
-            _context.Games.Add(_mapper.Map<GameDb>(request));
-            try
+            var validationResult = _validator.Validate(request);
+            if (validationResult.IsValid)
             {
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                _logger.LogInformation($"Game created. Player1 {request.Player1.NickName}, Player2 {request.Player2.NickName}");
-                return Result.Ok<Game>(_mapper.Map<Game>(request));
+                _context.Games.Add(_mapper.Map<GameDb>(request));
+                try
+                {
+                    await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                    _logger.LogInformation($"Game created. Player1 {request.Player1.NickName}, Player2 {request.Player2.NickName}");
+                    return Result.Ok<Game>(_mapper.Map<Game>(request));
+                }
+                catch (DbUpdateException ex)
+                {
+                    _logger.LogError(ex.Message);
+                    return Result.Fail<Game>("Game not created");
+                }
             }
-            catch (DbUpdateException ex)
+            else
             {
-                _logger.LogError(ex.Message);
-                return Result.Fail<Game>("Game not created");
+                _logger.LogWarning("Request not valid. Game not created");
+                return Result.Fail<Game>(string.Join(", ", validationResult.Errors));
             }
         }
     }
