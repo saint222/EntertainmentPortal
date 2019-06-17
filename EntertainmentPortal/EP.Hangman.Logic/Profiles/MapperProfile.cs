@@ -30,7 +30,7 @@ namespace EP.Hangman.Logic.Profiles
                 .ForMember(dest => dest.UserErrors, opt => opt.MapFrom(src => src.UserErrors))
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.PickedWord, opt => opt.MapFrom(src => src.PickedWord));
-
+            CreateMap<GameDb, ControllerData>();
         }
     }
 }
