@@ -18,7 +18,7 @@ namespace EP.Balda.Logic.Models
         /// <summary>
         ///     Fields property. Represents playing field as array of cells.
         /// </summary>
-        public Cell[,] Fields { get; }
+        public Cell[,] Cells { get; }
 
         /// <summary>
         ///     Map constructor.
@@ -29,7 +29,7 @@ namespace EP.Balda.Logic.Models
         public Map(int size)
         {
             Size = size;
-            Fields = InitMap(size);
+            Cells = InitMap(size);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace EP.Balda.Logic.Models
         /// <returns>The method returns cell.</returns>
         public Cell GetCell(int x, int y)
         {
-            return Fields[x, y];
+            return Cells[x, y];
         }
 
         /// <summary>
@@ -142,19 +142,19 @@ namespace EP.Balda.Logic.Models
             var checkLeft = x - 1;  // left cell
 
             if (checkUp < Size)
-                if (Fields[x, checkUp].Letter != null)
+                if (Cells[x, checkUp].Letter != null)
                     return true;
 
             if (checkDown >= 0)
-                if (Fields[x, checkDown].Letter != null)
+                if (Cells[x, checkDown].Letter != null)
                     return true;
 
             if (checkLeft >= 0)
-                if (Fields[checkLeft, y].Letter != null)
+                if (Cells[checkLeft, y].Letter != null)
                     return true;
 
             if (checkRight < Size)
-                if (Fields[checkRight, y].Letter != null)
+                if (Cells[checkRight, y].Letter != null)
                     return true;
 
             return false;

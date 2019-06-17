@@ -15,7 +15,7 @@ namespace EP.Balda.Logic.Models
         /// <summary>
         ///     Context to WordsDB.
         /// </summary>
-        private readonly WordDbContext _context;
+        private readonly BaldaGameDbContext _context;
 
         /// <summary>
         ///     The field stores an Id of the map in the game.
@@ -44,7 +44,7 @@ namespace EP.Balda.Logic.Models
         /// <param name="players">
         ///     Parameter players requires List&lt;Player&gt; argument.
         /// </param>
-        public Game(IMap map, WordDbContext context, List<Player> players)
+        public Game(IMap map, BaldaGameDbContext context, List<Player> players)
         {
             Map = map;
             Players = players;

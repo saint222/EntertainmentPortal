@@ -16,11 +16,11 @@ namespace EP.Balda.Logic.Handlers
     public class
         CreateNewPlayerHandler : IRequestHandler<CreateNewPlayerCommand, Result<Player>>
     {
-        private readonly PlayerDbContext _context;
+        private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
         private readonly IValidator _validator;
 
-        public CreateNewPlayerHandler(PlayerDbContext context, IMapper mapper,
+        public CreateNewPlayerHandler(BaldaGameDbContext context, IMapper mapper,
                                       IValidator validator)
         {
             _context = context;
