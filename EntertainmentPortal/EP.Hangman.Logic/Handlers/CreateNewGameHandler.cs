@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -11,7 +10,6 @@ using EP.Hangman.Data.Context;
 using EP.Hangman.Logic.Commands;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using SQLitePCL;
 
 namespace EP.Hangman.Logic.Handlers
 {

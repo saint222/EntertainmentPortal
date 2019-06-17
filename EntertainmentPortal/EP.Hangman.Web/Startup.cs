@@ -52,7 +52,8 @@ namespace EP.Hangman.Web
             }
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
             app.UseMvc();
         }
     }
