@@ -16,13 +16,13 @@ namespace Tests
     [TestFixture]
     public class NewDeckHandlerTests
     {
-        private DeckDbContext _contex;
+        private DeckDbContext _context;
         private IMapper _mapper;
         [SetUp]
         public void MockInitialize()
         {
-            var mockContex = new Mock<DeckDbContext>(new DbContextOptions<DeckDbContext>());
-            _contex = mockContex.Object;
+            var mockContext = new Mock<DeckDbContext>(new DbContextOptions<DeckDbContext>());
+            _context = mockContext.Object;
             var mockMapper = new Mock<IMapper>();
             _mapper = mockMapper.Object;
         }
@@ -32,7 +32,7 @@ namespace Tests
         {
             var newDeck = new DeckDb(4);
 
-            var expectdDeck = new DeckDb()
+            var expectedDeck = new DeckDb()
             {
                 Score = 0,
                 Victory = false,
@@ -57,7 +57,7 @@ namespace Tests
                 EmptyTile = new TileDb(16)
             };
 
-            Assert.IsTrue(Equals(expectdDeck, newDeck));
+            Assert.IsTrue(Equals(expectedDeck, newDeck));
 
         }
 
@@ -65,7 +65,7 @@ namespace Tests
         public void Test_Unsort_Deck()
         {
             var newDeck = new DeckDb(4);
-            var handle = new NewDeckHandler(_contex,_mapper);
+            var handle = new NewDeckHandler(_context,_mapper);
             handle.Unsort(newDeck);
             var expectdDeck = new DeckDb()
             {
@@ -94,18 +94,7 @@ namespace Tests
 
             Assert.IsFalse(Equals(expectdDeck, newDeck));
         }
-
-        [Test]
-        public void Test_CheckWin()
-        {
-            var newDeck = new DeckDb( 4)
-            {
-                
-            };
-            
-            //Assert.Throws<InvalidOperationException>(()=>DeckRepository.Get(newDeck.UserId));
-        }
-
+        
         private bool Equals(DeckDb expected, DeckDb actual)
         {
             return (expected.Score == actual.Score &&

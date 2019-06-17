@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP._15Puzzle.Web.Controllers
@@ -34,13 +35,14 @@ namespace EP._15Puzzle.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> Get()
         {
+            
             if (HttpContext.Request.Cookies.ContainsKey("id"))
             {
                 int id = int.Parse(HttpContext.Request.Cookies["id"]);
                 var result = await _mediator.Send(new GetDeckQuery(id));
                 return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
             }
-            return NotFound();
+            return NotFound("StartPage");
         }
 
         // POST: api/Deck

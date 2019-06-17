@@ -18,6 +18,7 @@ using EP._15Puzzle.Logic.Profiles;
 using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Validators;
+using EP._15Puzzle.Web.Filters;
 using FluentValidation.AspNetCore;
 
 namespace EP._15Puzzle.Web
@@ -39,7 +40,12 @@ namespace EP._15Puzzle.Web
             services.AddSwaggerDocument();
             services.AddAutoMapper(typeof(DeckProfile).Assembly);
             services.AddDeckServices();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(cfg =>
+            services.AddMvc(opt =>
+                {
+                    opt.Filters.Clear();
+                    opt.Filters.Add(typeof(GlobalExceptionFilter));
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(cfg =>
             {
                 cfg.RegisterValidatorsFromAssemblyContaining<GetDeckValidator>();
                 cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
