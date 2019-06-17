@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
-using EP.Sudoku.Data;
 using EP.Sudoku.Data.Context;
 using EP.Sudoku.Data.Models;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
-using EP.Sudoku.Logic.Queries;
 using MediatR;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

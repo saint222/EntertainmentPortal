@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using EP.Sudoku.Data.Context;
 using EP.Sudoku.Data.Models;
@@ -24,8 +22,7 @@ namespace EP.Sudoku.Logic.Validators
             RuleSet("IsValidSudokuGameSet", () =>
             {
                 RuleFor(x => x)
-                    .MustAsync(
-                        async (o, token) =>
+                    .Must((o, token) =>
                         {
                             var session = GetSession(o);
                             var result = Solver.IsValidSudokuGame(CellsToGrid(session.Result.SquaresDb));
@@ -35,8 +32,7 @@ namespace EP.Sudoku.Logic.Validators
                     .WithMessage("Numbers with values from 1 to 9 can be used only!");
 
                 RuleFor(x => x)
-                    .MustAsync(
-                        async (o, token) =>
+                    .Must( (o, token) => 
                         {
                             var session = GetSession(o);
                             var result = false;
@@ -62,10 +58,11 @@ namespace EP.Sudoku.Logic.Validators
 
         private async Task<SessionDb> GetSession(ChangeCellValueCommand model)
         {
-            var session = _context.Sessions
+            var session = await _context.Sessions
                 .Include(d => d.SquaresDb)
-                .First(d => d.Id == model.Id);
-            session.SquaresDb.Where(x => x.X == model.X && x.Y == model.Y).FirstOrDefault().Value = model.Value;
+                .FirstAsync(d => d.Id == model.Id);
+
+            session.SquaresDb.First(x => x.X == model.X && x.Y == model.Y).Value = model.Value;
 
             return session;
         }

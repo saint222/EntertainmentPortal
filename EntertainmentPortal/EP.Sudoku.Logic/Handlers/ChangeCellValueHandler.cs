@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Sudoku.Data.Context;
-using EP.Sudoku.Data.Models;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
-using EP.Sudoku.Logic.Queries;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +37,7 @@ namespace EP.Sudoku.Logic.Handlers
             var session = _context.Sessions
                 .Include(d => d.SquaresDb)
                 .First(d => d.Id == request.Id);
-            session.SquaresDb.Where(x => x.X == request.X && x.Y == request.Y).FirstOrDefault().Value = request.Value;
+            session.SquaresDb.First(x => x.X == request.X && x.Y == request.Y).Value = request.Value;
 
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
             return Result.Ok<Session>(_mapper.Map<Session>(session));

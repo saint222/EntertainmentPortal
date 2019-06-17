@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using EP.Sudoku.Data;
 using EP.Sudoku.Data.Context;
-using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
@@ -37,7 +35,8 @@ namespace EP.Sudoku.Logic.Handlers
                 players = await _context.Players
                                 .Include(p => p.IconDb)
                                 .Include(p => p.GameSessionsDb)
-                                .Select(b => _mapper.Map<Player>(b)).ToListAsync()
+                                .Select(b => _mapper.Map<Player>(b))
+                                .ToListAsync()
                                 .ConfigureAwait(false);
                 _memoryCache.Set(KEY, players, new MemoryCacheEntryOptions()
                     .SetAbsoluteExpiration(TimeSpan.FromSeconds(30)));

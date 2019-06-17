@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using EP.Sudoku.Data;
-using EP.Sudoku.Data.Models;
-using EP.Sudoku.Logic.Models;
-using EP.Sudoku.Logic.Queries;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
@@ -24,7 +16,7 @@ namespace EP.Sudoku.Logic.Handlers
         }
         public async Task<bool> Handle(DeletePlayerCommand request, CancellationToken cancellationToken)
         {
-            var deletedPlayer = _context.Players.Where(x => x.Id == request.Id).FirstOrDefault();
+            var deletedPlayer = _context.Players.FirstOrDefault(x => x.Id == request.Id);
             if (deletedPlayer == null)
             {
                 return await Task.FromResult(false);

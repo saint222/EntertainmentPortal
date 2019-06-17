@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Bogus.Bson;
 using EP.Sudoku.Logic.Enums;
 using EP.Sudoku.Logic.Models;
 
 namespace EP.Sudoku.Logic.Services
 {
-    public class GenerationGridService
+    public class GenerationSudokuService
     {
         private const int GRID_DIMENSION = 9;
         private readonly Random _random = new Random();

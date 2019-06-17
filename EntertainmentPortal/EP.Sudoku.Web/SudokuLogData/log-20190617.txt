@@ -13,3 +13,18 @@
 2019-06-17 00:34:51.931 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
 2019-06-17 00:34:52.370 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
 2019-06-17 00:34:52.460 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-17 17:33:48.739 +03:00 [Information] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"'
+2019-06-17 17:33:48.801 +03:00 [Information] Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"'
+2019-06-17 17:33:48.772 +03:00 [Information] Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"'
+2019-06-17 17:35:08.612 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-17 17:35:09.546 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-17 17:35:09.559 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-17 17:38:32.412 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-17 17:38:32.701 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-17 17:38:32.706 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-17 17:39:46.017 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-17 17:39:46.471 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-17 17:39:46.476 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-17 17:39:57.112 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-17 17:39:57.129 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-17 17:39:57.131 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'

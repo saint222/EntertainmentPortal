@@ -6,9 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,8 +27,7 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<Player> Handle(GetPlayerById request, CancellationToken cancellationToken)
         {
-            Player chosenPlayer = null;
-            if (!_memoryCache.TryGetValue(request.Id, out chosenPlayer)) //caching "One"
+            if (!_memoryCache.TryGetValue(request.Id, out Player chosenPlayer)) //caching "One"
             {
                 chosenPlayer = _context.Players
                 .Include(p => p.IconDb)

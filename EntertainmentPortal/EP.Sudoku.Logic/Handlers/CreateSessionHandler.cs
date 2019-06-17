@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -28,8 +27,8 @@ namespace EP.Sudoku.Logic.Handlers
         {
             var sessionDb = _mapper.Map<SessionDb>(request.session);
             sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
-            GenerationGridService gridService = new GenerationGridService();
-            List<Cell> cells = gridService.GetSudoku((DifficultyLevel)sessionDb.Level);        
+            GenerationSudokuService sudokuService = new GenerationSudokuService();
+            List<Cell> cells = sudokuService.GetSudoku((DifficultyLevel)sessionDb.Level);        
             //List<Cell> cells = gridService.GridToCells(gridService.GetBaseGrid()); 
             sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);
 
