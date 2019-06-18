@@ -11,7 +11,7 @@ namespace EP.DotsBoxes.Logic.Profiles
     {
         public PlayerProfile()
         {
-            CreateMap<PlayerDb, Player>();
+            CreateMap<PlayerDb, Player>().ReverseMap();
         }
     }
 }
