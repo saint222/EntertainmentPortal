@@ -22,5 +22,15 @@ namespace EP.SeaBattle.Data.Context
         public DbSet<ShipDb> Ships { get; set; }
 
         public DbSet<CellDb> Cells { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ShipDb>()
+                .HasMany(i => i.Cells)
+                .WithOne(c => c.Ship)
+                .OnDelete(DeleteBehavior.Cascade);   
+        }
     }
 }

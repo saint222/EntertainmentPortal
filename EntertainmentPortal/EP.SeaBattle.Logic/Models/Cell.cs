@@ -35,6 +35,8 @@ namespace EP.SeaBattle.Logic.Models
         /// </summary>
         public CellStatus Status { get; set; }
 
+        public Ship Ship { get; }
+
         public override bool Equals(object obj)
         {
             Cell cell = obj as Cell;

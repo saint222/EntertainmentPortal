@@ -12,10 +12,6 @@ namespace EP.SeaBattle.Logic.Profiles
         {
             CreateMap<CellDb, Cell>()
                 .ReverseMap();
-            CreateMap<Cell, AddNewCellCommand>()
-                .ReverseMap();
-            CreateMap<CellDb, AddNewCellCommand>()
-                .ReverseMap();
         }
     }
 }

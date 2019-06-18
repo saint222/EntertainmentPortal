@@ -15,5 +15,9 @@ namespace EP.SeaBattle.Data.Models
         public byte Y { get; set; }
 
         public CellStatus Status { get; set; }
+
+        //TODO Change to Guid
+        public string ShipId { get; set; }
+        public ShipDb Ship { get; set; }
     }
 }
