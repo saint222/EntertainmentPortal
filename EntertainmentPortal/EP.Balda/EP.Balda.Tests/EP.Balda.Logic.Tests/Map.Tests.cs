@@ -11,9 +11,9 @@ namespace EP.Balda.Tests
         public void Setup()
         {
             _map = new Map(5);
-            _map.Fields[1, 1].Letter = 'c';
-            _map.Fields[2, 1].Letter = 'a';
-            _map.Fields[3, 1].Letter = 't';
+            _map.Cells[1, 1].Letter = 'c';
+            _map.Cells[2, 1].Letter = 'a';
+            _map.Cells[3, 1].Letter = 't';
         }
 
         private Map _map;
@@ -30,9 +30,9 @@ namespace EP.Balda.Tests
         {
             var cells = new List<Cell>
             {
-                _map.Fields[1, 1],
-                _map.Fields[2, 1],
-                _map.Fields[3, 1]
+                _map.Cells[1, 1],
+                _map.Cells[2, 1],
+                _map.Cells[3, 1]
             };
 
             var result = _map.GetSelectedWord(cells);
@@ -72,8 +72,8 @@ namespace EP.Balda.Tests
         {
             var cells = new List<Cell>
             {
-                _map.Fields[1, 1],
-                _map.Fields[3, 1]
+                _map.Cells[1, 1],
+                _map.Cells[3, 1]
             };
 
             var result = _map.IsItCorrectWord(cells);
@@ -85,9 +85,9 @@ namespace EP.Balda.Tests
         {
             var cells = new List<Cell>
             {
-                _map.Fields[1, 1],
-                _map.Fields[2, 1],
-                _map.Fields[3, 1]
+                _map.Cells[1, 1],
+                _map.Cells[2, 1],
+                _map.Cells[3, 1]
             };
 
             var result = _map.IsItCorrectWord(cells);

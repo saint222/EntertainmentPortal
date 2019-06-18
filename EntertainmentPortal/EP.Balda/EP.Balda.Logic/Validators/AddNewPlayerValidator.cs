@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace EP.Balda.Logic.Validators
 {
-    public class AddNewPlayerValidator : AbstractValidator<AddNewPlayerCommand>
+    public class AddNewPlayerValidator : AbstractValidator<CreateNewPlayerCommand>
     {
         public AddNewPlayerValidator()
         {
