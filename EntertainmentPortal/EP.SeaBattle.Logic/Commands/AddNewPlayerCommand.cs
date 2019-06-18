@@ -9,7 +9,6 @@ namespace EP.SeaBattle.Logic.Commands
 {
     public class AddNewPlayerCommand : IRequest<Result<Player>>
     {
-        public string Id { get; set; }
         public string NickName { get; set; }
     }
 }

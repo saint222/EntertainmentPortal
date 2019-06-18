@@ -31,14 +31,22 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Result<Game>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
         {
-            var validationResult = _validator.Validate(request);
+            var validationResult = await _validator.ValidateAsync(request, ruleSet: "GameValidation", cancellationToken: cancellationToken);
             if (validationResult.IsValid)
             {
+                //TODO спросить, не костыль ли так добавлять в БД запись
+                var game = new GameDb()
+                {
+                    Player1 = await _context.Players.FindAsync(request.Player1Id),
+                    Player2 = await _context.Players.FindAsync(request.Player2Id),
+                    PlayerAllowedToMove = await _context.Players.FindAsync(request.PlayerAllowedToMoveId),
+                    Finish = request.Finish
+                };
                 _context.Games.Add(_mapper.Map<GameDb>(request));
                 try
                 {
                     await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                    _logger.LogInformation($"Game created. Player1 {request.Player1.NickName}, Player2 {request.Player2.NickName}");
+                    _logger.LogInformation($"Game created. Player1Id {request.Player1Id}, Player2Id {request.Player2Id}");
                     return Result.Ok<Game>(_mapper.Map<Game>(request));
                 }
                 catch (DbUpdateException ex)

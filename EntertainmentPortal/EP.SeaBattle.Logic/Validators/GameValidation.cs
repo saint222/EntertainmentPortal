@@ -1,28 +1,54 @@
-﻿using EP.SeaBattle.Logic.Commands;
+﻿using EP.SeaBattle.Data.Context;
+using EP.SeaBattle.Logic.Commands;
 using FluentValidation;
+using System.Threading.Tasks;
 
 namespace EP.SeaBattle.Logic.Validators
 {
+    //TODO объявить названия валидаций как константы и использовать константы
     public class GameValidation : AbstractValidator<CreateNewGameCommand>
     {
-        public GameValidation()
+        SeaBattleDbContext _context;
+        public GameValidation(SeaBattleDbContext context)
         {
-            RuleSet("GameRule", () =>
+            _context = context;
+            RuleSet("GamePreValidation", () =>
             {
-                RuleFor(o => o.Player1)
-                    .NotNull().WithMessage("Player 1 cannot be null");
-                RuleFor(o => o.Player2)
-                    .NotNull().WithMessage("Player 2 cannot be null");
-                RuleFor(o => o.Player1)
-                    .NotEqual(p => p.Player2).WithMessage("Player 1 cannot be equal Player 2");
-                RuleFor(o => o.PlayerAllowedToMove)
-                    .NotNull().WithMessage("Player allow to move not set");
-
-                RuleFor(o => o.Player1.NickName)
-                    .NotEmpty().WithMessage("Cannot create game with player without nickname");
-                RuleFor(o => o.Player2.NickName)
-                    .NotEmpty().WithMessage("Cannot create game with player without nickname");
+                RuleFor(o => o.Player1Id)
+                    .NotEmpty().WithMessage("Player 1 cannot be null");
+                RuleFor(o => o.Player2Id)
+                    .NotEmpty().WithMessage("Player 2 cannot be null");
+                RuleFor(o => o.Player1Id)
+                    .NotEqual(p => p.Player2Id).WithMessage("Player 1 cannot be equal Player 2");
+                RuleFor(o => o.PlayerAllowedToMoveId)
+                    .NotEmpty().WithMessage("Player allow to move not set");
             });
+
+            RuleSet("GameValidation", () =>
+            {
+                RuleFor(x => x)
+                    .MustAsync((o, s, token) => CheckExistingPlayer(o.Player1Id))
+                        .WithMessage(player => $"Player1 with id {player.Player1Id} doesn't exists");
+
+                RuleFor(x => x)
+                    .MustAsync((o, s, token) => CheckExistingPlayer(o.Player1Id))
+                        .WithMessage(player => $"Player2 with id {player.Player2Id} doesn't exists");
+
+                RuleFor(x => x)
+                    .MustAsync((o, s, token) => CheckExistingPlayer(o.PlayerAllowedToMoveId))
+                        .WithMessage(player => $"Player1 with id {player.PlayerAllowedToMoveId} doesn't exists");
+
+                //TODO Id ходящего игрока должен быть равен id первого или второго игрока
+            });
+        }
+
+        private async Task<bool> CheckExistingPlayer(string id)
+        {
+            var result = await _context.Players.FindAsync(id)
+                .ConfigureAwait(false);
+            if (result == null)
+                return false;
+            return true;
         }
     }
 }

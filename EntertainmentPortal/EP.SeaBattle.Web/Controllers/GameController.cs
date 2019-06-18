@@ -5,9 +5,11 @@ using System.Net;
 using System.Threading.Tasks;
 using EP.SeaBattle.Logic.Commands;
 using EP.SeaBattle.Logic.Models;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NJsonSchema.Annotations;
 using NSwag.Annotations;
 
 namespace EP.SeaBattle.Web.Controllers
@@ -26,7 +28,7 @@ namespace EP.SeaBattle.Web.Controllers
         [HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Create new game")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't create a new game")]
-        public async Task<IActionResult> CreateGame([FromBody] CreateNewGameCommand model)
+        public async Task<IActionResult> CreateGame([FromBody, NotNull, CustomizeValidator(RuleSet = "GamePreValidation")] CreateNewGameCommand model)
         {
             if (!ModelState.IsValid)
             {

@@ -8,6 +8,7 @@ namespace EP.SeaBattle.Logic.Models
     {
         //TODO Change to Guid
         public string Id { get; set; }
+
         /// <summary>
         /// First player
         /// </summary>

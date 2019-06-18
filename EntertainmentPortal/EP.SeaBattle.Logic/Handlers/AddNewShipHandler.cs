@@ -31,15 +31,17 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Maybe<IEnumerable<Ship>>> Handle(AddNewShipCommand request, CancellationToken cancellationToken)
         {
-            var result = await _validator.ValidateAsync(request, ruleSet: "PL Ship Add Validation", cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
-            if (result.IsValid)
+            //TODO УЗнать как прокинуть ошибки валидации в таком случае
+            var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddShipValidation", cancellationToken: cancellationToken);
+            if (validationResult.IsValid)
             {
-                ShipsManager shipsManager = new ShipsManager(request.Game, request.Player, new List<Ship>());
+                var game = await _context.Games.FindAsync(request.GameId);
+                var player = await _context.Players.FindAsync(request.PlayerId);
+                ShipsManager shipsManager = new ShipsManager(_mapper.Map<Game>(game), _mapper.Map<Player>(player), new List<Ship>());
                 var wasAdded = shipsManager.AddShip(request.X, request.Y, request.Orientation, request.Rank);
                 if (wasAdded)
                 {
-                    _context.Ships.AddRange(_mapper.Map<IEnumerable<ShipDb>>( shipsManager.Ships));
+                    _context.Ships.AddRange(_mapper.Map<IEnumerable<ShipDb>>(shipsManager.Ships));
                     try
                     {
                         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
@@ -58,14 +60,12 @@ namespace EP.SeaBattle.Logic.Handlers
                         $"Game: {request.GameId}, Player {request.PlayerId}");
                     return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
                 }
-                
             }
             else
             {
-                _logger.LogInformation(string.Join(", ", result.Errors));
+                _logger.LogInformation(string.Join(", ", validationResult.Errors));
                 return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
             }
-            
         }
     }
 }

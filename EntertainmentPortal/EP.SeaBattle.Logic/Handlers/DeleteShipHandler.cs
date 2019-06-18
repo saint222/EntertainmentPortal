@@ -19,17 +19,20 @@ namespace EP.SeaBattle.Logic.Handlers
     {
         private readonly SeaBattleDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IValidator<DeleteShipCommand> _validator;
         private readonly ILogger<DeleteShipCommand> _logger;
 
-        public DeleteShipHandler(SeaBattleDbContext context, IMapper mapper, ILogger<DeleteShipCommand> logger)
+        public DeleteShipHandler(SeaBattleDbContext context, IMapper mapper, IValidator<DeleteShipCommand> validator, ILogger<DeleteShipCommand> logger)
         {
             _context = context;
             _mapper = mapper;
+            _validator = validator;
             _logger = logger;
         }
 
         public async Task<Maybe<IEnumerable<Ship>>> Handle(DeleteShipCommand request, CancellationToken cancellationToken)
-        {           
+        {
+            var validationResult = _validator.ValidateAsync(request, ruleSet: "DeleteShipValidation", cancellationToken: cancellationToken);
             var ship = _context.Ships.Find(request.Id);
             if (ship == null)
             {

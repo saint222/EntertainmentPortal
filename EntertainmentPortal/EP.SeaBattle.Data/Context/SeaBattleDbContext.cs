@@ -23,6 +23,7 @@ namespace EP.SeaBattle.Data.Context
 
         public DbSet<CellDb> Cells { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

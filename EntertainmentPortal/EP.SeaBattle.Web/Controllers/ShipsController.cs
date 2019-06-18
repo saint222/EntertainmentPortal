@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using FluentValidation;
+using NJsonSchema.Annotations;
+using FluentValidation.AspNetCore;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -39,7 +41,7 @@ namespace EP.SeaBattle.Web.Controllers
         [HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Ship>), Description = "Add ship to player collection")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't add ship")]
-        public async Task<IActionResult> AddShipAsync([FromBody] AddNewShipCommand model)
+        public async Task<IActionResult> AddShipAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "AddShipPreValidation")] AddNewShipCommand model)
         {
             if (!ModelState.IsValid)
             {
@@ -56,7 +58,7 @@ namespace EP.SeaBattle.Web.Controllers
         [HttpDelete]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Ship>), Description = "Delete ship from collection")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't delete ship")]
-        public async Task<IActionResult> DeleteShipAsync([FromBody] DeleteShipCommand model)
+        public async Task<IActionResult> DeleteShipAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "DeleteShipPreValidation")] DeleteShipCommand model)
         {
             if (!ModelState.IsValid)
             {

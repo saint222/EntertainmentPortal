@@ -31,7 +31,6 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Result<Player>> Handle(UpdatePlayerCommand request, CancellationToken cancellationToken)
         {
-            //TODO validation for player update
             var player = _context.Players.Find(request.Id);
             if (player == null)
             {
@@ -39,19 +38,29 @@ namespace EP.SeaBattle.Logic.Handlers
                 return Result.Fail<Player>("Player not found");
             }
 
-            player.NickName = request.NickName;
+            var validationResult = await _validator.ValidateAsync(request, ruleSet: "UpdatePlayerValidation", cancellationToken: cancellationToken);
+            if (validationResult.IsValid)
+            {
+                player.NickName = request.NickName;
 
-            try
-            {
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                _logger.LogInformation($"Player {player.NickName} changed");
-                return Result.Ok<Player>(_mapper.Map<Player>(player));
+                try
+                {
+                    await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                    _logger.LogInformation($"Player {player.NickName} changed");
+                    return Result.Ok<Player>(_mapper.Map<Player>(player));
+                }
+                catch (DbUpdateException ex)
+                {
+                    _logger.LogError(ex.Message);
+                    return Result.Fail<Player>("Cannot update player");
+                }
             }
-            catch (DbUpdateException ex)
+            else
             {
-                _logger.LogError(ex.Message);
-                return Result.Fail<Player>("Cannot update player");
+                _logger.LogInformation($"Player { player.NickName} not changed");
+                return Result.Fail<Player>("Cannot update player. Player with this nickname arleady exists");
             }
+            
         }
     }
 }

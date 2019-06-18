@@ -30,17 +30,26 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Result<Player>> Handle(AddNewPlayerCommand request, CancellationToken cancellationToken)
         {
-            _context.Players.Add(_mapper.Map<PlayerDb>(request));
-            try
+            var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddPlayerValidation", cancellationToken: cancellationToken);
+            if (validationResult.IsValid)
             {
-                await _context.SaveChangesAsync();
-                _logger.LogInformation($"Player with NickName {request.NickName} saved");
-                return Result.Ok(_mapper.Map<Player>(request));
+                _context.Players.Add(_mapper.Map<PlayerDb>(request));
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    _logger.LogInformation($"Player with NickName {request.NickName} saved");
+                    return Result.Ok(_mapper.Map<Player>(request));
+                }
+                catch (DbUpdateException ex)
+                {
+                    _logger.LogError(ex.Message);
+                    return Result.Fail<Player>("Cannot add player");
+                }
             }
-            catch (DbUpdateException ex)
+            else
             {
-                _logger.LogError(ex.Message);
-                return Result.Fail<Player>("Cannot add player");
+                _logger.LogWarning(string.Join(", ", validationResult.Errors));
+                return Result.Fail<Player>("Player not valid. Cannot create player");
             }
         }
     }
