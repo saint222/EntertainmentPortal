@@ -25,18 +25,23 @@ namespace EP.SeaBattle.Logic.Models
         public const byte MAX_SHIPS_COUNT = 10;
 
         List<Ship> _ships;
-
+        readonly Game Game;
+        readonly Player Player;
         /// <summary>
         /// .ctor
         /// </summary>
         /// <param name="ships">Collection of ships</param>
-        public ShipsManager(IEnumerable<Ship> ships)
+        public ShipsManager(Game game, Player player, IEnumerable<Ship> ships)
         {
-            _shipsCount = new Dictionary<ShipRank, byte>(4);
-            _shipsCount.Add(ShipRank.One, 0);
-            _shipsCount.Add(ShipRank.Two, 0);
-            _shipsCount.Add(ShipRank.Three, 0);
-            _shipsCount.Add(ShipRank.Four, 0);
+            Game = game;
+            Player = player;
+            _shipsCount = new Dictionary<ShipRank, byte>(4)
+            {
+                { ShipRank.One, 0 },
+                { ShipRank.Two, 0 },
+                { ShipRank.Three, 0 },
+                { ShipRank.Four, 0 }
+            };
 
             foreach (var ship in ships)
             {
@@ -95,7 +100,7 @@ namespace EP.SeaBattle.Logic.Models
             FieldManager fieldManager = new FieldManager(_ships);
             if (fieldManager.AddShip(x, y, shipOrientation, rank))
             {
-                var ship = new Ship(GenerateCell(x, y, shipOrientation, rank));
+                var ship = new Ship(Game, Player, GenerateCell(x, y, shipOrientation, rank));
                 return AddShip(ship);
             }
             return false;

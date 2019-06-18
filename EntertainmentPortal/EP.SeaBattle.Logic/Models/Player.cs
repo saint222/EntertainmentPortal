@@ -6,14 +6,13 @@ namespace EP.SeaBattle.Logic.Models
 {
     public class Player
     {
+        //TODO Change to Guid
+        public string Id { get; set; }
+
         /// <summary>
         /// Nickname
         /// </summary>
         public string NickName { get; set; }
 
-        /// <summary>
-        /// Informs whether a player can shoot
-        /// </summary>
-        public bool CanShoot { get; set; }
     }
 }

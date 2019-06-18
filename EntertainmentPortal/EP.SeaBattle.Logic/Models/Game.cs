@@ -6,7 +6,8 @@ namespace EP.SeaBattle.Logic.Models
 {
     public class Game
     {
-        public Guid Id { get; set; }
+        //TODO Change to Guid
+        public string Id { get; set; }
 
         /// <summary>
         /// First player
@@ -22,5 +23,10 @@ namespace EP.SeaBattle.Logic.Models
         /// Tells if the game is over
         /// </summary>
         public bool Finish { get; set; }
+
+        /// <summary>
+        /// The player who is allowed to move
+        /// </summary>
+        public Player PlayerAllowedToMove { get; set; }
     }
 }
