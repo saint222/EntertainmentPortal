@@ -18,8 +18,10 @@ namespace EP.WordsMaker.Logic.Models
         /// </summary>
         /// <value>Represents unique id of game</value>
         public int GemeId { get; set; }
+        public string KeyWord { get; set; }
 
-		private const int PLAYER_COUNT = 2;
+
+		private const int PLAYER_COUNT = 1;
 		private Rules _rules;
 		private Dictionary<Player, List<Word>> _words;
 		private List<Player> _players;
@@ -27,7 +29,7 @@ namespace EP.WordsMaker.Logic.Models
 		private List<Word> _allWords;
 		private WordComparer _comparer;
 
-		public string KeyWord { get; set; }
+		
 
 		public Rules Rules
 		{
