@@ -5,6 +5,7 @@ using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading;
@@ -17,12 +18,14 @@ namespace EP.Sudoku.Logic.Handlers
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
+        private readonly ILogger<GetPlayerByIdHandler> _logger;
 
-        public GetPlayerByIdHandler(SudokuDbContext context, IMapper mapper, IMemoryCache memoryCache)
+        public GetPlayerByIdHandler(SudokuDbContext context, IMapper mapper, IMemoryCache memoryCache, ILogger<GetPlayerByIdHandler> logger)
         {
             _context = context;
             _mapper = mapper;
             _memoryCache = memoryCache;
+            _logger = logger;
         }
 
         public async Task<Player> Handle(GetPlayerById request, CancellationToken cancellationToken)
@@ -30,17 +33,21 @@ namespace EP.Sudoku.Logic.Handlers
             if (!_memoryCache.TryGetValue(request.Id, out Player chosenPlayer)) //caching "One"
             {
                 chosenPlayer = _context.Players
-                .Include(p => p.IconDb)
-                .Include(p => p.GameSessionsDb)
-                .Where(x => x.Id == request.Id)
-                .Select(b => _mapper.Map<Player>(b)).FirstOrDefault();
+                    .Include(p => p.IconDb)
+                    .Include(p => p.GameSessionsDb)
+                    .Where(x => x.Id == request.Id)
+                    .Select(b => _mapper.Map<Player>(b)).FirstOrDefault();
 
                 if (chosenPlayer != null)
                 {
                     _memoryCache.Set(chosenPlayer.Id, chosenPlayer,
                         new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(60)));
                 }
-            }            
+                else
+                {
+                    _logger.LogError($"There is not a player with the Id '{request.Id}'...");
+                }
+            }
 
             return await Task.FromResult(chosenPlayer);
         }

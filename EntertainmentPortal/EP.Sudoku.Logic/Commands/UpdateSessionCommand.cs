@@ -9,9 +9,9 @@ namespace EP.Sudoku.Logic.Commands
     public class UpdateSessionCommand : IRequest<Session>
     {
         public Session session { get; set; }
-        public UpdateSessionCommand(Session s)
+        public UpdateSessionCommand(Session session)
         {
-            session = s;
+            this.session = session;
         }
     }    
 }

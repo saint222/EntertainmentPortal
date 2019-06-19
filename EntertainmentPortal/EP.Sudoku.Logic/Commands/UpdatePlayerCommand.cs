@@ -9,9 +9,9 @@ namespace EP.Sudoku.Logic.Commands
     public class UpdatePlayerCommand : IRequest<Player>
     {
         public Player player { get; set; }
-        public UpdatePlayerCommand(Player p)
+        public UpdatePlayerCommand(Player player)
         {
-            player = p;
+            this.player = player;
         }
     }
 }

@@ -10,6 +10,7 @@ using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EP.Sudoku.Logic.Handlers
 {
@@ -17,11 +18,13 @@ namespace EP.Sudoku.Logic.Handlers
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogger<GetSessionByIdHandler> _logger;
 
-        public GetSessionByIdHandler(SudokuDbContext context, IMapper mapper)
+        public GetSessionByIdHandler(SudokuDbContext context, IMapper mapper, ILogger<GetSessionByIdHandler> logger)
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<Session> Handle(GetSessionById request, CancellationToken cancellationToken)
@@ -33,6 +36,11 @@ namespace EP.Sudoku.Logic.Handlers
                 .Where(x => x.Id == request.Id)
                 .Select(d => _mapper.Map<Session>(d)).FirstOrDefault();
 
+            if (chosenSession == null)
+            {
+                _logger.LogError($"There is not a gamesession with the Id '{request.Id}'...");
+            }
+            
             return await Task.FromResult(chosenSession);
         }
     }

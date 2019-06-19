@@ -28,12 +28,11 @@ namespace EP.Sudoku.Logic.Handlers
             var sessionDb = _mapper.Map<SessionDb>(request.session);
             sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
             GenerationSudokuService sudokuService = new GenerationSudokuService();
-            List<Cell> cells = sudokuService.GetSudoku((DifficultyLevel)sessionDb.Level);        
-            //List<Cell> cells = gridService.GridToCells(gridService.GetBaseGrid()); 
+            List<Cell> cells = sudokuService.GetSudoku((DifficultyLevel)sessionDb.Level);         
             sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);
-
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+
             return await Task.FromResult(request.session);
         }
     }

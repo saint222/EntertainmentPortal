@@ -16,12 +16,7 @@ namespace EP.Sudoku.Data.Models
         /// Is used to denote a value (number) from 0 till 9 for each cell filling up (DbInfo).
         /// </summary>      
         public int Value { get; set; }
-
-        /// <summary>
-        /// Is used to denote, wether the value of the cell is a random-generated, or is filled up by the player (DbInfo).
-        /// </summary>               
-        public bool IsStartValue { get; set; }
-
+        
         /// <summary>
         /// Is used to denote cell's coordinates on the gameboard(X and Y values are expected to be used). 
         /// </summary>

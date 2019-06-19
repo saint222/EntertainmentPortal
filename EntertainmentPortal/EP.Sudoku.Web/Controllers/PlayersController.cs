@@ -41,13 +41,13 @@ namespace EP.Sudoku.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> GetPlayerByIdAsync(int id)
-        {
+        {            
             if (id <= 0)
             {
-                _logger.LogWarning($"Incorrect value for the player's Id was set. '{id}' - is <= 0...");
+                _logger.LogError($"Incorrect value for the player's Id was set. '{id}' - is <= 0...");
                 return BadRequest();
             }
-            var player = await _mediator.Send(new GetPlayerById(id));
+            var player = await _mediator.Send(new GetPlayerById(id));            
             return player != null ? (IActionResult)Ok(player) : NotFound();
         }
 
@@ -57,7 +57,7 @@ namespace EP.Sudoku.Web.Controllers
         public async Task<IActionResult> CreatePlayer([FromBody]Player model)
         {
             if (model == null)
-            {                
+            {               
                 return BadRequest();
             }            
             var player = await _mediator.Send(new CreatePlayerCommand(model));
@@ -70,7 +70,7 @@ namespace EP.Sudoku.Web.Controllers
         public async Task<IActionResult> EditPlayer([FromBody]Player model)
         {
             if (model == null)
-            {
+            {                
                 return BadRequest();
             }
             var player = await _mediator.Send(new UpdatePlayerCommand(model));
@@ -84,7 +84,7 @@ namespace EP.Sudoku.Web.Controllers
         {
             if (id <= 0)
             {
-                _logger.LogWarning($"Incorrect value for the player's Id was set. '{id}' - is <= 0...");
+                _logger.LogError($"Incorrect value for the player's Id was set. '{id}' - is <= 0...");
                 return BadRequest();
             }
             var result = await _mediator.Send(new DeletePlayerCommand(id));

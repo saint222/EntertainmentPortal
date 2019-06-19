@@ -38,8 +38,8 @@ namespace EP.Sudoku.Logic.Handlers
                 .Include(d => d.SquaresDb)
                 .First(d => d.Id == request.Id);
             session.SquaresDb.First(x => x.X == request.X && x.Y == request.Y).Value = request.Value;
-
             await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+
             return Result.Ok<Session>(_mapper.Map<Session>(session));
         }
 

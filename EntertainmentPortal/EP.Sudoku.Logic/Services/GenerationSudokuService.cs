@@ -244,10 +244,7 @@ namespace EP.Sudoku.Logic.Services
 
             return grid;
         }
-
-        /// <summary>    
-        /// Removes count of cells from the filled initGrid
-        /// </summary>
+       
         public List<Cell> GetSudoku(DifficultyLevel level)
         {
             Random rand = new Random();
@@ -258,15 +255,15 @@ namespace EP.Sudoku.Logic.Services
             switch (level)
             {
                 case DifficultyLevel.Easy:
-                    count = rand.Next(41, 44); //count not empty cell 38-40
+                    count = rand.Next(41, 44); //filled in cells (38-40)
                     break;
 
                 case DifficultyLevel.Normal:
-                    count = rand.Next(48, 51); //count not empty cell 31-33
+                    count = rand.Next(48, 51); //filled in cells (31-33)
                     break;
 
                 case DifficultyLevel.Hard:
-                    count = rand.Next(55, 58); //count not empty cell 24-26
+                    count = rand.Next(55, 58); //filled in cells (24-26)
                     break;
             }
 

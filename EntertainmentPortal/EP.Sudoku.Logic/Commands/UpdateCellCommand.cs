@@ -10,9 +10,9 @@ namespace EP.Sudoku.Logic.Commands
     {
         public Cell cell { get; set; }
 
-        public UpdateCellCommand(Cell c)
+        public UpdateCellCommand(Cell cell)
         {
-            cell = c;
+            this.cell = cell;
         }
     }
 }

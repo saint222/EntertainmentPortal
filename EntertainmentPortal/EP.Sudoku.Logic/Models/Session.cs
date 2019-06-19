@@ -8,7 +8,6 @@ namespace EP.Sudoku.Logic.Models
     /// </summary>
     public class Session
     {
-
         /// <summary>    
         /// Is used to denote an identification value of a game session.
         /// </summary>
