@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Handlers
 {
-    public class GetLeaderboardHandler : IRequestHandler<GetLeaderboardCommand, Result<Record>>
+    public class GetLeaderboardHandler : IRequestHandler<GetLeaderboardCommand, Result<IEnumerable<Record>>>
     {
         private readonly IMapper _mapper;
         private readonly DeckDbContext _context;
@@ -23,18 +24,21 @@ namespace EP._15Puzzle.Logic.Handlers
             _mapper = mapper;
             _context = context;
         }
-        public async Task<Result<Record>> Handle(GetLeaderboardCommand request, CancellationToken cancellationToken)
+        public async Task<Result<IEnumerable<Record>>> Handle(GetLeaderboardCommand request, CancellationToken cancellationToken)
         {
             
             try
             {
-                var decks = _context.RecordDbs
-                    .Include(d => d.User).OrderByDescending(r=>r.Score).Take(10);
-                return await Task.FromResult(Result.Ok<Record>(_mapper.Map<Record>(decks)));
+                var decks = await _context.RecordDbs
+                    .Include(d => d.User).OrderByDescending(r=>r.Score).Take(10).AsNoTracking()
+                    .ToArrayAsync(cancellationToken)
+                    .ConfigureAwait(false);
+                var deckRecords = decks.Select(d => _mapper.Map<Record>(d));
+                return await Task.FromResult(Result.Ok<IEnumerable<Record>>(deckRecords));
             }
             catch (DbException ex)
             {
-                return Result.Fail<Record>(ex.Message);
+                return Result.Fail<IEnumerable<Record>>(ex.Message);
             }
         }
     }
