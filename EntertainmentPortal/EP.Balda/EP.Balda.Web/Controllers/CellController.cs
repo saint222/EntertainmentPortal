@@ -26,31 +26,49 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Cell not found")]
-        public async Task<IActionResult> GetCellAsync(int x, int y)
+        public async Task<IActionResult> GetCellAsync([FromBody] GetCell model)
         {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: x = {x}, y = {y}");
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameters: Id = {model.Id}, mapId = {model.MapId}");
 
-            var result = await _mediator.Send(new GetCell(x, y)).ConfigureAwait(false);
-            return result.HasValue ? (IActionResult)Ok(result.Value) : BadRequest();
+            var result = await _mediator.Send(new GetCell
+            {
+                Id = model.Id,
+                MapId = model.MapId,
+            }).ConfigureAwait(false);
+            
+            if(result.HasNoValue)
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                    $"Id = {model.Id}, mapId = {model.MapId} - Cell not found");
+                return BadRequest();
+            }
+            return Ok(result.Value);
         }
 
-        [HttpPost("api/cell")]
+        [HttpPut("api/cell")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Invalid data")]
-        public async Task<IActionResult> PostCell([FromRoute]long mapId, [FromBody]Cell cell)
+        public async Task<IActionResult> PostCellAsync([FromBody] AddLetterToCellCommand model)
         {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: mapId = {mapId}, Cell: X = {cell.X}, Y = {cell.Y}, Letter = {cell.Letter}");
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameters: Id = {model.Id}, mapId = {model.MapId}, Letter = {model.Letter}");
 
-            var result = await _mediator.Send(new AddLetterCommand
+            var result = await _mediator.Send(new AddLetterToCellCommand
             {
-                MapId = mapId,
-                X = cell.X,
-                Y = cell.Y,
-                Letter = cell.Letter
-            });
+                MapId = model.MapId,
+                Letter = model.Letter
+            }).ConfigureAwait(false);
 
-            return result != null ? (IActionResult) Ok(result) : BadRequest();
+            
+            if(result.IsFailure)
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                    $"Id = {model.Id}, mapId = {model.MapId}, Letter = {model.Letter}) - Letter can't be written");
+                return BadRequest();
+            }
+            return Ok(result.Value);
         }
     }
 }

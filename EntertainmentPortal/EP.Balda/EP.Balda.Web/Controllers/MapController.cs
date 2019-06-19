@@ -29,7 +29,7 @@ namespace EP.Balda.Web.Controllers
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
 
-            var result = await _mediator.Send(new GetMap(id)).ConfigureAwait(false);
+            var result = await _mediator.Send(new GetMap() {Id = id }).ConfigureAwait(false);
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
     }

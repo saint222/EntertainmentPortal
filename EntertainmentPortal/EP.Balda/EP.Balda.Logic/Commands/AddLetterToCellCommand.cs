@@ -2,12 +2,14 @@
 using EP.Balda.Data.Models;
 using MediatR;
 
-namespace EP.Balda.Logic.Queries
+namespace EP.Balda.Logic.Commands
 {
-    public class GetCell : IRequest<Maybe<CellDb>>
+    public class AddLetterToCellCommand : IRequest<Result<CellDb>>
     {
         public long Id { get; set; }
 
         public long MapId { get; set; }
+
+        public char? Letter { get; set; }
     }
 }

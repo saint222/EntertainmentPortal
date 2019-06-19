@@ -4,7 +4,7 @@ using MediatR;
 
 namespace EP.Balda.Logic.Commands
 {
-    public class CreateNewGameCommand : IRequest<Maybe<Game>>
+    public class CreateNewGameCommand : IRequest<Result<Game>>
     {
     }
 }

@@ -1,16 +1,11 @@
 ﻿using CSharpFunctionalExtensions;
-using EP.Balda.Logic.Models;
+using EP.Balda.Data.Models;
 using MediatR;
 
 namespace EP.Balda.Logic.Queries
 {
-    public class GetMap : IRequest<Maybe<Map>>
+    public class GetMap : IRequest<Maybe<MapDb>>
     {
         public long Id { get; set; }
-
-        public GetMap(long id)
-        {
-            Id = id;
-        }
     }
 }

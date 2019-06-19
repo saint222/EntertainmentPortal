@@ -7,6 +7,16 @@
     public class Cell
     {
         /// <summary>
+        ///     Id property. Represents Id of Cell in game map.
+        /// </summary>
+        public long Id { get; set; }
+        
+        /// <summary>
+        ///     MapId property. Represents Id of Map.
+        /// </summary>
+        public long MapId { get; set; }
+
+        /// <summary>
         ///     X property. Represents X coordinate of the cell in game map.
         /// </summary>
         public int X { get; }

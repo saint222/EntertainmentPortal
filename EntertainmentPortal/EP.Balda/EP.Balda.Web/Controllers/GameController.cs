@@ -26,12 +26,18 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Game not found")]
-        public async Task<IActionResult> GetGameAsync([FromRoute]long id)
+        public async Task<IActionResult> GetGameAsync([FromBody]long id)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
 
-            var result = await _mediator.Send(new GetGame(id));
-            return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
+            var result = await _mediator.Send(new GetGame() { Id = id });
+
+            if (result.HasNoValue)
+            {
+                _logger.LogWarning($"Action: { ControllerContext.ActionDescriptor.ActionName} : Id = {id}, - game not not found");
+                return BadRequest();
+            }
+            return Ok(result.Value);
         }
 
         [HttpPost("api/game")]
@@ -41,7 +47,8 @@ namespace EP.Balda.Web.Controllers
         public async Task<IActionResult> CreateNewGameAsync()
         {
             var result = await _mediator.Send(new CreateNewGameCommand());
-            return result.HasValue ? (IActionResult)Ok(result.Value) : BadRequest();
+            //return result.HasValue ? (IActionResult)Ok(result.Value) : BadRequest();
+            return Ok();
         }
     }
 }

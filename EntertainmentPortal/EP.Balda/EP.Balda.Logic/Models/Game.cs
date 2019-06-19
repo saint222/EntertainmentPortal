@@ -28,6 +28,11 @@ namespace EP.Balda.Logic.Models
         public IMap Map { get; }
 
         /// <summary>
+        ///     MapId property. Represents Id of Map.
+        /// </summary>
+        public long MapId { get; set; }
+
+        /// <summary>
         ///     The field represents players in the game.
         /// </summary>
         public List<Player> Players { get; set; }

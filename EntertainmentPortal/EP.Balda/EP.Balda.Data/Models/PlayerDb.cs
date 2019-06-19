@@ -39,7 +39,7 @@ namespace EP.Balda.Data.Models
         public bool IsMoveAllowed { get; set; }
 
         /// <summary>
-        ///     WordId property. Represents Id of word player chhose per game.
+        ///     WordId property. Represents Id of word player choose per game.
         /// </summary>
         public long WordId { get; set; }
 
@@ -51,12 +51,12 @@ namespace EP.Balda.Data.Models
         /// <summary>
         ///     PlayerGames property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerGameDb> PlayerGames { get; set; }
+        public ICollection<PlayerGame> PlayerGames { get; set; }
 
         /// <summary>
         ///     PlayerWords property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerWordDb> PlayerWords { get; set; }
+        public ICollection<PlayerWord> PlayerWords { get; set; }
 
         /// <summary>
         ///     Created property. Represents the data when player profile was created.

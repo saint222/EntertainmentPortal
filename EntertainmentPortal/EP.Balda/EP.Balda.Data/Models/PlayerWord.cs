@@ -3,7 +3,7 @@
     /// <summary>
     ///     Table to form many-to-many relations.
     /// </summary>
-    public class PlayerWordDb
+    public class PlayerWord
     {
         /// <summary>
         ///     PlayerId property. Represents Id of Player.
