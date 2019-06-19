@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CSharpFunctionalExtensions;
 using EP.DotsBoxes.Logic.Models;
 using MediatR;
 
 namespace EP.DotsBoxes.Logic.Commands
 {
-    public class CreateNewGameBoardCommand : IRequest<GameBoard>
+    public class NewGameBoardCommand : IRequest<Result<GameBoard>>
     {
         public int Rows { get; set; }
 
