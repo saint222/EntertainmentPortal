@@ -4,22 +4,45 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace EP.Sudoku.Logic.Models
-{    
+{
+    /// <summary>    
+    /// Is used to represent a player of the game.
+    /// </summary>
     public class Player
     {
+        /// <summary>    
+        /// Is used to denote an identification value of a player.
+        /// </summary>
         public int Id { get; set; }
+
+        /// <summary>    
+        /// Is used to denote the nickname of a player.
+        /// </summary>
         public string NickName { get; set; }
+
         /// <summary>
-        /// convertation of game-sessions duration
+        /// Is used to denote convertation of gamesessions duration.
         /// </summary>
         public int ExperiencePoint { get; set; }
+
         /// <summary>
-        /// player-progression feature due to his/her the sum of experience points
+        /// Is used to denote player's progression feature due to his/her sum of experience points.
         /// </summary>
         public int Level { get; set; }
+
         /// <summary>
-        /// strict quantity icons of icons for choosing is meant
+        /// Is used to denote strict quantity of icons for choosing.
         /// </summary>
-        public AvatarIcon AvatarIcon { get; set; }
+        /// <remarks>
+        /// Navigation property.
+        /// </remarks> 
+        public AvatarIcon Icon { get; set; }
+
+        /// <summary>
+        /// Is used to provide a player with a possibility to have more than one unfinished game.
+        /// </summary> 
+        public List<Session> GameSessions { get; set; }
+
+
     }
 }

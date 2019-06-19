@@ -1,42 +1,62 @@
-﻿using EP.Balda.Logic.Models;
+﻿using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
+using EP.Balda.Logic.Commands;
+using EP.Balda.Logic.Models;
+using EP.Balda.Logic.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using NSwag.Annotations;
 
 namespace EP.Balda.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiController]
     public class PlayerController : Controller
     {
-        [HttpGet]
-        public IActionResult Get(Player player)
+        private readonly IMediator _mediator;
+        private readonly ILogger<PlayerController> _logger;
+
+        public PlayerController(IMediator mediator, ILogger<PlayerController> logger)
         {
-            return Ok(player);
+            _mediator = mediator;
+            _logger = logger;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(long id)
+        [HttpGet("api/player/{id}")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
+            "Player not found")]
+        public async Task<IActionResult> GetPlayerAsync([FromRoute]long id)
         {
-            var player = new Player {Id = id};
-            return Ok(player);
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
+
+            var result = await _mediator.Send(new GetPlayer(id));
+            return result.HasValue ? (IActionResult) Ok(result.Value) : NotFound();
         }
 
-        [HttpPost]
-        public IActionResult Post([FromBody] Player player)
+        [HttpGet("api/players")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description =
+            "Success")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description =
+            "List of players is empty")]
+        public async Task<IActionResult> GetAllPlayersAsync()
         {
-            return Ok(player);
+            var result = await _mediator.Send(new GetAllPlayers()).ConfigureAwait(false);
+            return result.HasValue ? (IActionResult) Ok(result.Value) : NotFound();
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody] string name)
+        [HttpPost("api/player/create")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+            "Player can't be created")]
+        public async Task<IActionResult> CreateNewPlayerAsync(CreateNewPlayerCommand model)
         {
-            var player = new Player {Id = id, Name = name};
-            return Ok();
-        }
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Player: " +
+                $"Login = {model.Login}, NickName = {model.NickName}, Password = {model.Password}");
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
-        {
-            var player = new Player {Id = id};
-            return Ok();
+            var result = await _mediator.Send(model);
+            return result.IsFailure ? (IActionResult) Ok(result.Value) : BadRequest();
         }
     }
 }

@@ -8,5 +8,6 @@ namespace EP.Sudoku.Logic.Queries
 {
     public class GetAllPlayers : IRequest<IEnumerable<Player>>
     {
+        
     }
 }

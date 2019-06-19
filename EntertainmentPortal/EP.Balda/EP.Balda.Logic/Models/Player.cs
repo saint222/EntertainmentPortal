@@ -1,54 +1,53 @@
-﻿// Filename: Player.cs
+﻿using System;
 using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    /// The model <c>Player</c> class.
-    /// Represents a Player.
+    ///     <c>Player</c> model class.
+    ///     Represents a Player.
     /// </summary>
     public class Player
     {
         /// <summary>
-        /// Id property.
+        ///     Id property. Represents unique player's Id
         /// </summary>
-        /// <value>
-        /// A value represents unique player's Id.
-        /// </value>
         public int Id { get; set; }
 
         /// <summary>
-        /// Name property.
+        ///     NickName property. Represents player's nickname.
         /// </summary>
-        /// <value>
-        /// A value represents player's nickname.
-        /// </value>
-        public string Name { get; set; }
+        public string NickName { get; set; }
 
         /// <summary>
-        /// Login property.
+        ///     Login property. Represents player's login.
         /// </summary>
-        /// <value>
-        /// A value represents player's login.
-        /// </value>
         public string Login { get; set; }
 
         /// <summary>
-        /// Password property.
+        ///     Password property. Represents player's password.
         /// </summary>
-        /// <value>
-        /// A value represents player's password.
-        /// </value>
         public string Password { get; set; }
 
         /// <summary>
-        /// Words property.
+        ///     Score property. Represents player's score.
         /// </summary>
-        /// <value>
-        /// A value represents the list of words that player already entered in the match.
-        /// </value>
-        /// <seealso cref="Word">
-        public IEnumerable<Word>
+        public int Score { get; set; }
+
+        /// <summary>
+        ///     IsMoveAllowed property. Represents player's availability of making move in the game.
+        /// </summary>
+        public bool IsMoveAllowed { get; set; }
+        
+        /// <summary>
+        ///     Words property. Represents the list of words that player already entered in one match
+        /// </summary>
+        public List<string>
             Words { get; set; } //words this player guessed per one game
+
+        /// <summary>
+        ///     Created property. Represents the data when player profile was created.
+        /// </summary>
+        public DateTime Created { get; set; } = DateTime.UtcNow;
     }
 }

@@ -1,66 +1,96 @@
-﻿// Filename: Game.cs
+﻿using System;
 using System.Collections.Generic;
+using EP.Balda.Data.Context;
+using EP.Balda.Logic.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    /// The model <c>Game</c> class.
-    /// Represents an instance of the game.
+    ///     <c>Game</c> model class.
+    ///     Represents the game process.
     /// </summary>
     public class Game
     {
         /// <summary>
-        /// Players property.
+        ///     Context to WordsDB.
         /// </summary>
-        /// <value>
-        /// A value represents players (competitors) in the game.
-        /// </value>
-        /// <seealso cref="Player">
-        public Player[] Players { get; set; }
+        private readonly BaldaGameDbContext _context;
 
         /// <summary>
-        /// Playground property.
+        ///     The field stores an Id of the map in the game.
         /// </summary>
-        /// <value>
-        /// A value represents a playground with cells in the game.
-        /// </value>
-        /// <seealso cref="Models.Playground">
-        public Playground Playground { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
-        /// InitialWord property.
+        ///     The field stores an object of the map in the game.
         /// </summary>
-        /// <value>
-        /// A value representsa a word to start the game with.
-        /// </value>
-        /// <remarks>
-        /// The word will be located in the center of the playground.
-        /// </remarks>
-        public string InitialWord { get; set; }
+        public IMap Map { get; }
 
         /// <summary>
-        /// Game constructor with two players and initial word as parameters.
+        ///     The field represents players in the game.
         /// </summary>
-        /// <param name="player1">
-        /// Parameter player1 requires a <c>Player</c> argument.
+        public List<Player> Players { get; set; }
+
+        /// <summary>
+        ///     The Game constructor.
+        /// </summary>
+        /// <param name="map">
+        ///     Parameter map requires IMap argument.
         /// </param>
-        /// <param name="player2">
-        /// Parameter player2 requires a <c>Player</c> argument.
+        /// <param name="context">
+        ///     Word database context.
         /// </param>
-        /// <param name="initialWord">
-        /// Parameter initialWord requires a <c>IReadOnlyList<char></c> argument.
+        /// <param name="players">
+        ///     Parameter players requires List&lt;Player&gt; argument.
         /// </param>
-        public Game(Player player1, Player player2, IReadOnlyList<char> initialWord)
+        public Game(IMap map, BaldaGameDbContext context, List<Player> players)
         {
-            Players = new Player[2];
-            Players[0] = player1;
-            Players[1] = player2;
+            Map = map;
+            Players = players;
+            _context = context;
+            var initWord = GetStartingWord();
+            PutStartingWordToMap(initWord);
+        }
 
-            Playground = new Playground();
-            var center = Playground.Size / 2;
+        /// <summary>
+        ///     The method puts the starting word on the map.
+        /// </summary>
+        /// <param name="word">Parameter word requires string argument.</param>
+        public void PutStartingWordToMap(string word)
+        {
+            var center = Map.Size / 2;
+            var charDestination = 0;
 
-            for (var i = 0; i < Playground.Size; i++) //to add word to start
-                Playground.Cells[center, i].Letter = initialWord[i];
+            word = word.Trim();
+            foreach (var letter in word)
+                Map.GetCell(center, charDestination++).Letter =
+                    letter;
+        }
+
+        /// <summary>
+        ///     The method gets the initial word.
+        /// </summary>
+        private string GetStartingWord()
+        {
+            var word = "";
+            var mapSize = Map.Size;
+            var sizeRepo = _context.Words.CountAsync();
+            var id = RandomWord(sizeRepo.Result);
+            while (word.Length != mapSize)
+                word = _context.Words.FindAsync(id).Result.Word;
+
+            return word;
+        }
+
+        /// <summary>
+        ///     The method choose random initial word.
+        /// </summary>
+        private int RandomWord(int size)
+        {
+            var rnd = new Random();
+            var next = rnd.Next(0, size - 1);
+            return next;
         }
     }
 }
