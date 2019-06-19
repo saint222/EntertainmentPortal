@@ -14,7 +14,7 @@ namespace EP.WordsMaker.Data
         {
             _faker.RuleFor(p => p.Id, f => f.IndexFaker).
                 RuleFor(p => p.Name, f => f.Random.Word()).
-                RuleFor(p => p.Score, f => f.Random.Int(100, 1000)).
+                RuleFor(p => p.BestScore, f => f.Random.Int(100, 1000)).
                 RuleFor(p => p.LastGame, f => f.Date.Past(1));
         }
 

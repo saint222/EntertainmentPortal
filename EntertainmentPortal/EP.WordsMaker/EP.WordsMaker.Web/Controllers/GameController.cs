@@ -11,37 +11,37 @@ namespace EP.WordsMaker.Web.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        // GET: api/Game
-        [HttpGet]
-        public IEnumerable<string> Get()
+		// GET: api/Game
+		[HttpGet]// Name = "GetGame")]
+		public IEnumerable<string> GetAllGames()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET: api/Game/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]//, Name = "GetGame")]
+        public string GetGame(int id)
         {
             return "value";
         }
 
         // POST: api/Game
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //[HttpPost(Name = "PostGame")]
+        //public void PostGame([FromBody] string value)
+        //{
+        //}
 
-        // PUT: api/Game/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+        //// PUT: api/Game/5
+        //[HttpPut("{id}", Name = "PutName")]
+        //public void PutGame(int id, [FromBody] string value)
+        //{
 
-        }
+        //}
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpDelete("{id}")]
+        //public void DeleteGame(int id)
+        //{
+        //}
     }
 }

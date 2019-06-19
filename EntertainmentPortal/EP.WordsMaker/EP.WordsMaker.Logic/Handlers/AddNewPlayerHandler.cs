@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -30,14 +31,15 @@ namespace EP.WordsMaker.Logic.Handlers
         {
             var result = _validator.Validate(request);
 
-            if (result != null)
+            if (!result.IsValid)
             {
                 return Result.Fail<Player>(result.Errors.First().ErrorMessage);
             }
 
             var model = new PlayerDb
             {
-                Name = request.Name
+                Name = request.Name,
+				BestScore = 0
             };
 
             _context.Players.Add(model);

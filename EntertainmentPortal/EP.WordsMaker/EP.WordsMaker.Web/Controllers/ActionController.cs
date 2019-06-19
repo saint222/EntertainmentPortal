@@ -13,33 +13,33 @@ namespace EP.WordsMaker.Web.Controllers
     {
         // GET: api/Action
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<string> GetAllActions()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET: api/Action/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public string GetAction(int id)
         {
             return "value";
         }
 
         // POST: api/Action
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Action([FromBody] string value)
         {
         }
 
         // PUT: api/Action/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Action(int id, [FromBody] string value)
         {
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteAction(int id)
         {
         }
     }

@@ -25,10 +25,14 @@ namespace EP.WordsMaker.Data.Models
         /// <value>Represents score of player</value>
         public int Score { get; set; }
 
-        /// <summary>
-        /// LastGame property
-        /// </summary>
-        /// <value>Represents last game player</value>
-        public DateTime LastGame { get; set; }
+        public int BestScore { get; set; }
+
+		public int BestScoreId { get; set; }
+
+		/// <summary>
+		/// LastGame property
+		/// </summary>
+		/// <value>Represents last game player</value>
+		public DateTime LastGame { get; set; }
     }
 }

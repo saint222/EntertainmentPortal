@@ -12,6 +12,7 @@ using NSwag.Annotations;
 
 namespace EP.WordsMaker.Web.Controllers
 {
+	[Route("api/[controller]")]
 	[ApiController]
 	public class PlayerController : ControllerBase
 	{
@@ -22,16 +23,16 @@ namespace EP.WordsMaker.Web.Controllers
             _mediator = mediator;
         }
   
-		[HttpGet("api/players")]
+		[HttpGet]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Books collection is empty")]
         public async Task<IActionResult> GetAllPlayersAsync()
         {
             var result = await _mediator.Send(new GetAllPlayers());
-            return result.HasValue ? (IActionResult)Ok(result) : NotFound();
+            return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
 
-        [HttpPost("api/players")]
+        [HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> AddNewPlayerASync([FromBody] AddNewPlayerCommand model)

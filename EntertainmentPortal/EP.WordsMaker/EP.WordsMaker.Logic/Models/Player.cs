@@ -10,17 +10,6 @@ namespace EP.WordsMaker.Logic.Models
     /// </summary>
     public class Player
     {
-		/// <summary>
-		/// ctor
-		/// </summary>
-		/// <param name="name"></param>
-		/// <param name="identifier"></param>
-		public Player(string name, int identifier)
-		{
-			Name = name;
-			Id = identifier;
-			Score = 0;
-		}
         /// <summary>
         /// ID property
         /// </summary>
@@ -38,5 +27,7 @@ namespace EP.WordsMaker.Logic.Models
         /// </summary>
         /// <value>Represents score of player</value>
         public int Score { get; set; }
+		public int BestScore { get; set; }
+		
     }
 }

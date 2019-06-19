@@ -29,14 +29,13 @@ namespace EP.WordsMaker.Logic.Handlers
         public async Task<Maybe<IEnumerable<PlayerDb>>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
         {
             var result = await _context.Players
-                .Include(x => x.Name)
                 .AsNoTracking()
                 .ToArrayAsync(cancellationToken)
                 .ConfigureAwait(false);
 
             return  result.Any() ?
-                Maybe<IEnumerable<PlayerDb>>.None :
-                Maybe<IEnumerable<PlayerDb>>.From(result);
+	            Maybe<IEnumerable<PlayerDb>>.From(result):
+				Maybe<IEnumerable<PlayerDb>>.None;
         }
     }
 }
