@@ -13,6 +13,10 @@ namespace EP._15Puzzle.Logic.Profiles
         {
             CreateMap<DeckDb, Deck>().ReverseMap();
             CreateMap<TileDb, Tile>().ReverseMap();
+            CreateMap<RecordDb, Record>()
+                .ForMember(r=>r.Name,opt=>opt.MapFrom(c=>c.User.Name))
+                .ForMember(r=>r.Country, opt => opt.MapFrom(c => c.User.Country))
+                .ForMember(r=>r.Score, opt => opt.MapFrom(c => c.Score));
         }
     }
 }

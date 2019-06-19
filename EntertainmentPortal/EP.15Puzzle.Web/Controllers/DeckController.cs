@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
+using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
 using JetBrains.Annotations;
 using MediatR;
@@ -99,6 +100,18 @@ namespace EP._15Puzzle.Web.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        // GET: api/Deck/leaderboard
+        [HttpGet("leaderboard")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Record), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> GetLeaderboard()
+        {
+
+            var result = await _mediator.Send(new GetLeaderboardCommand());
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
+
         }
     }
 

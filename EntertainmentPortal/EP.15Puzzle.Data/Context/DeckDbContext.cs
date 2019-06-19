@@ -14,6 +14,7 @@ namespace EP._15Puzzle.Data.Context
 
         public DbSet<DeckDb> DeckDbs { get; set; }
         public DbSet<UserDb> UserDbs { get; set; }
+        public DbSet<RecordDb> RecordDbs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,9 @@ namespace EP._15Puzzle.Data.Context
             var tileEntity = modelBuilder.Entity<TileDb>();
             tileEntity.Property(f => f.Num).IsRequired();
             tileEntity.Property(f => f.Pos).IsRequired();
+
+            var recordEntity = modelBuilder.Entity<RecordDb>();
+            recordEntity.HasOne(r => r.User);
         }
     }
 }
