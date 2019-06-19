@@ -1,24 +1,56 @@
-﻿using EP.Balda.Logic.Models;
+﻿using System.Net;
+using System.Threading.Tasks;
+using EP.Balda.Logic.Commands;
+using EP.Balda.Logic.Models;
+using EP.Balda.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using NSwag.Annotations;
 
 namespace EP.Balda.Web.Controllers
 {
     [ApiController]
-    public class CellController : Controller
+    public class CellController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetCell(int x, int y)
+        private readonly IMediator _mediator;
+        private readonly ILogger<CellController> _logger;
+
+        public CellController(IMediator mediator, ILogger<CellController> logger)
         {
-            var cell = new Cell(x, y);
-            return Ok(cell.Letter);
+            _mediator = mediator;
+            _logger = logger;
         }
 
-        [HttpPost]
-        public IActionResult PostCell([FromBody] int x, int y, char letter)
+        [HttpGet("api/cell")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+            "Cell not found")]
+        public async Task<IActionResult> GetCellAsync(int x, int y)
         {
-            var cell = new Cell(x, y) { Letter = letter };
-            return Ok(cell);
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: x = {x}, y = {y}");
+
+            var result = await _mediator.Send(new GetCell(x, y)).ConfigureAwait(false);
+            return result.HasValue ? (IActionResult)Ok(result.Value) : BadRequest();
+        }
+
+        [HttpPost("api/cell")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(Cell), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+            "Invalid data")]
+        public async Task<IActionResult> PostCell([FromRoute]long mapId, [FromBody]Cell cell)
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: mapId = {mapId}, Cell: X = {cell.X}, Y = {cell.Y}, Letter = {cell.Letter}");
+
+            var result = await _mediator.Send(new AddLetterCommand
+            {
+                MapId = mapId,
+                X = cell.X,
+                Y = cell.Y,
+                Letter = cell.Letter
+            });
+
+            return result != null ? (IActionResult) Ok(result) : BadRequest();
         }
     }
 }
