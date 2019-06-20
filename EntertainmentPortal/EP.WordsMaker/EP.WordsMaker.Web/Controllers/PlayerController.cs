@@ -25,14 +25,25 @@ namespace EP.WordsMaker.Web.Controllers
   
 		[HttpGet]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Books collection is empty")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player collection is empty")]
         public async Task<IActionResult> GetAllPlayersAsync()
         {
             var result = await _mediator.Send(new GetAllPlayers());
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
 
-        [HttpPost]
+		[HttpGet("{id}")]
+
+		[SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
+		[SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
+		public async Task<IActionResult> GetPlayer(int id)
+		{
+			var result = await _mediator.Send(new GetPlayerCommand(){Id = id});
+			return result.IsSuccess ? Ok(result.Value): (IActionResult)NotFound(result.Error);
+
+		}
+
+		[HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> AddNewPlayerASync([FromBody] AddNewPlayerCommand model)
