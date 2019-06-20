@@ -3,7 +3,7 @@
     /// <summary>
     ///     Table to form many-to-many relations.
     /// </summary>
-    public class PlayerWordDb
+    public class PlayerGameDb
     {
         /// <summary>
         ///     PlayerId property. Represents Id of Player.
@@ -16,13 +16,13 @@
         public PlayerDb Player { get; set; }
 
         /// <summary>
-        ///     WordId property. Represents Id of word.
+        ///     GameId property. Represents Id of Game.
         /// </summary>
-        public int WordId { get; set; }
+        public long GameId { get; set; }
 
         /// <summary>
-        ///     Word property. Navigation property of Word.
+        ///     Game property. Navigation property of Game.
         /// </summary>
-        public WordRuDb Word { get; set; }
+        public GameDb Game { get; set; }
     }
 }

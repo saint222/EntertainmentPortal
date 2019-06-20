@@ -33,26 +33,26 @@ namespace EP.Balda.Data.Context
             var gameEntity = modelBuilder.Entity<GameDb>();
             gameEntity.HasOne(g => g.Map).WithOne();
 
-            var playerGameEntry = modelBuilder.Entity<PlayerGame>();
+            var playerGameEntry = modelBuilder.Entity<PlayerGameDb>();
             playerGameEntry
             .HasKey(pg => new { pg.PlayerId, pg.GameId });
-            modelBuilder.Entity<PlayerGame>()
+            modelBuilder.Entity<PlayerGameDb>()
                 .HasOne(pg => pg.Player)
                 .WithMany(pg => pg.PlayerGames)
                 .HasForeignKey(pg => pg.PlayerId);
-            modelBuilder.Entity<PlayerGame>()
+            modelBuilder.Entity<PlayerGameDb>()
                 .HasOne(pg => pg.Game)
                 .WithMany(pg => pg.PlayerGames)
                 .HasForeignKey(pg => pg.GameId);
 
-            var playerWordEntry = modelBuilder.Entity<PlayerWord>();
+            var playerWordEntry = modelBuilder.Entity<PlayerWordDb>();
             playerWordEntry
             .HasKey(pw => new { pw.PlayerId, pw.WordId });
-            modelBuilder.Entity<PlayerWord>()
+            modelBuilder.Entity<PlayerWordDb>()
                 .HasOne(pw => pw.Player)
                 .WithMany(pw => pw.PlayerWords)
                 .HasForeignKey(pw => pw.PlayerId);
-            modelBuilder.Entity<PlayerWord>()
+            modelBuilder.Entity<PlayerWordDb>()
                 .HasOne(pw => pw.Word)
                 .WithMany(pw => pw.PlayerWords)
                 .HasForeignKey(pw => pw.WordId);

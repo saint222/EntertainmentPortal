@@ -28,7 +28,7 @@ namespace EP.Balda.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
-            services.AddMediatR(typeof(GetAllPlayers).Assembly);
+            services.AddMediatR(typeof(CreateNewPlayerCommand).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddBaldaGameServices();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)

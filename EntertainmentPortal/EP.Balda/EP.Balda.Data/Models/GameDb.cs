@@ -13,7 +13,7 @@ namespace EP.Balda.Data.Models
         public long Id { get; set; }
 
         /// <summary>
-        ///     Map property. Navigational property of Map.
+        ///     Map property. Navigation property of Map.
         /// </summary>
         public MapDb Map { get; set; }
 
@@ -25,6 +25,6 @@ namespace EP.Balda.Data.Models
         /// <summary>
         ///     PlayerGames property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerGame> PlayerGames { get; set; }
+        public ICollection<PlayerGameDb> PlayerGames { get; set; }
     }
 }

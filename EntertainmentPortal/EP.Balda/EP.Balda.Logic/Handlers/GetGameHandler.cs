@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
-using EP.Balda.Data.Models;
+using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
 using System.Threading;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class GetGameHandler : IRequestHandler<GetGame, Maybe<GameDb>>
+    public class GetGameHandler : IRequestHandler<GetGame, Maybe<Game>>
     {
         private readonly IMapper _mapper;
         private readonly BaldaGameDbContext _context;
@@ -20,15 +20,15 @@ namespace EP.Balda.Logic.Handlers
             _context = context;
         }
 
-        public async Task<Maybe<GameDb>> Handle(GetGame request, CancellationToken cancellationToken)
+        public async Task<Maybe<Game>> Handle(GetGame request, CancellationToken cancellationToken)
         {
             var result = await _context.Games
                 .FindAsync(request.Id)
                 .ConfigureAwait(false);
 
             return result == null?
-                Maybe<GameDb>.None :
-                Maybe<GameDb>.From(result);
+                Maybe<Game>.None :
+                Maybe<Game>.From(_mapper.Map<Game>(result));
         }
     }
 }

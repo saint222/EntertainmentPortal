@@ -51,12 +51,12 @@ namespace EP.Balda.Data.Models
         /// <summary>
         ///     PlayerGames property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerGame> PlayerGames { get; set; }
+        public ICollection<PlayerGameDb> PlayerGames { get; set; }
 
         /// <summary>
         ///     PlayerWords property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerWord> PlayerWords { get; set; }
+        public ICollection<PlayerWordDb> PlayerWords { get; set; }
 
         /// <summary>
         ///     Created property. Represents the data when player profile was created.

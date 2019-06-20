@@ -11,7 +11,7 @@
         public long Id { get; set; }
 
         /// <summary>
-        ///     Map property. Navigational property of Map.
+        ///     Map property. Navigation property of Map.
         /// </summary>
         public MapDb Map { get; set; }
 

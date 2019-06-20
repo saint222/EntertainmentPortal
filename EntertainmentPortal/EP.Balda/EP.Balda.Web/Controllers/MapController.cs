@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
+using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
@@ -31,6 +32,16 @@ namespace EP.Balda.Web.Controllers
 
             var result = await _mediator.Send(new GetMap() {Id = id }).ConfigureAwait(false);
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
+        }
+
+        [HttpPost("api/map/create")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(Map), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+            "Player can't be created")]
+        public async Task<IActionResult> CreateNewPlayerAsync(CreateNewMapCommand model)
+        {
+            var result = await _mediator.Send(model);
+            return result.IsFailure ? (IActionResult)Ok(result.Value) : BadRequest();
         }
     }
 }

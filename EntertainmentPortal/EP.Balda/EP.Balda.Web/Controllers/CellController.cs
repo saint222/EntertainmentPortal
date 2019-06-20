@@ -22,25 +22,24 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/cell")]
+        [HttpGet("api/cell/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Cell not found")]
-        public async Task<IActionResult> GetCellAsync([FromBody] GetCell model)
+        public async Task<IActionResult> GetCellAsync([FromRoute] GetCell model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameters: Id = {model.Id}, mapId = {model.MapId}");
+                $"Parameter: Id = {model.Id}");
 
             var result = await _mediator.Send(new GetCell
             {
                 Id = model.Id,
-                MapId = model.MapId,
             }).ConfigureAwait(false);
             
             if(result.HasNoValue)
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"Id = {model.Id}, mapId = {model.MapId} - Cell not found");
+                    $"Id = {model.Id} - Cell not found");
                 return BadRequest();
             }
             return Ok(result.Value);
@@ -53,11 +52,11 @@ namespace EP.Balda.Web.Controllers
         public async Task<IActionResult> PostCellAsync([FromBody] AddLetterToCellCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameters: Id = {model.Id}, mapId = {model.MapId}, Letter = {model.Letter}");
+                $"Parameters: Id = {model.Id}, Letter = {model.Letter}");
 
             var result = await _mediator.Send(new AddLetterToCellCommand
             {
-                MapId = model.MapId,
+                Id = model.Id,
                 Letter = model.Letter
             }).ConfigureAwait(false);
 
@@ -65,7 +64,7 @@ namespace EP.Balda.Web.Controllers
             if(result.IsFailure)
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"Id = {model.Id}, mapId = {model.MapId}, Letter = {model.Letter}) - Letter can't be written");
+                    $"Id = {model.Id}, Letter = {model.Letter}) - Letter can't be written");
                 return BadRequest();
             }
             return Ok(result.Value);

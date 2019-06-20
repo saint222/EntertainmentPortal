@@ -1,9 +1,9 @@
-﻿namespace EP.Balda.Data.Models
+﻿namespace EP.Balda.Logic.Models
 {
     /// <summary>
     ///     Table to form many-to-many relations.
     /// </summary>
-    public class PlayerWordDb
+    public class PlayerWord
     {
         /// <summary>
         ///     PlayerId property. Represents Id of Player.
@@ -13,7 +13,7 @@
         /// <summary>
         ///     Player property. Navigation property of Player.
         /// </summary>
-        public PlayerDb Player { get; set; }
+        public Player Player { get; set; }
 
         /// <summary>
         ///     WordId property. Represents Id of word.
@@ -23,6 +23,6 @@
         /// <summary>
         ///     Word property. Navigation property of Word.
         /// </summary>
-        public WordRuDb Word { get; set; }
+        public WordRu Word { get; set; }
     }
 }

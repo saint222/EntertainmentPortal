@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
+using EP.Balda.Data.Models;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using MediatR;
@@ -21,9 +22,31 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public Task<Result<Game>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Game>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            //TODO: add players
+            
+            Map map = new Map(5);
+            MapDb mapDb = _mapper.Map<MapDb>(map);
+            await _context.Maps.AddAsync(mapDb);
+
+            var gameDb = new GameDb()
+            {
+                Map = mapDb,
+                MapId = mapDb.Id
+            };
+
+            await _context.Games.AddAsync(gameDb);
+
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                return Result.Ok(_mapper.Map<Game>(gameDb));
+            }
+            catch (DbUpdateException ex)
+            {
+                return Result.Fail<Game>(ex.Message);
+            }
         }
     }
 }

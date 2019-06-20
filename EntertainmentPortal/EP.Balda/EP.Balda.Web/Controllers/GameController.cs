@@ -47,8 +47,13 @@ namespace EP.Balda.Web.Controllers
         public async Task<IActionResult> CreateNewGameAsync()
         {
             var result = await _mediator.Send(new CreateNewGameCommand());
-            //return result.HasValue ? (IActionResult)Ok(result.Value) : BadRequest();
-            return Ok();
+
+            if (result.IsFailure)
+            {
+                _logger.LogWarning($"Action: { ControllerContext.ActionDescriptor.ActionName} : - game can't be created not not found");
+                return BadRequest();
+            }
+            return Ok(result.Value);
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace EP.Balda.Data.Models
+namespace EP.Balda.Logic.Models
 {
     /// <summary>
     ///     Entity of WordsSource.
     /// </summary>
-    public class WordRuDb
+    public class WordRu
     {
         /// <summary>
         ///     Id property. Represents Id of Word.
@@ -20,6 +20,6 @@ namespace EP.Balda.Data.Models
         /// <summary>
         ///     PlayerWords property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerWordDb> PlayerWords { get; set; }
+        public ICollection<PlayerWord> PlayerWords { get; set; }
     }
 }
