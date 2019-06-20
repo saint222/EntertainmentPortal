@@ -69,5 +69,15 @@ namespace EP.Balda.Web.Controllers
             }
             return Ok(result.Value);
         }
+
+        [HttpPost("api/cell/create")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(Cell), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+        "Cell can't be created")]
+        public async Task<IActionResult> CreateNewCellAsync(CreateCellCommand model)
+        {
+            var result = await _mediator.Send(model);
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest();
+        }
     }
 }

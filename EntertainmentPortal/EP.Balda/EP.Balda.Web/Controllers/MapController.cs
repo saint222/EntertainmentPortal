@@ -41,7 +41,7 @@ namespace EP.Balda.Web.Controllers
         public async Task<IActionResult> CreateNewPlayerAsync(CreateNewMapCommand model)
         {
             var result = await _mediator.Send(model);
-            return result.IsFailure ? (IActionResult)Ok(result.Value) : BadRequest();
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest();
         }
     }
 }

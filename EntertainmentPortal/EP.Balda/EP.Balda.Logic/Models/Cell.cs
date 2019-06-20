@@ -17,6 +17,11 @@
         public long MapId { get; set; }
 
         /// <summary>
+        ///     Map property. Navigation property of Map.
+        /// </summary>
+        public Map Map { get; set; }
+
+        /// <summary>
         ///     X property. Represents X coordinate of the cell in game map.
         /// </summary>
         public int X { get; }

@@ -26,7 +26,7 @@ namespace EP.Balda.Logic.Handlers
         {
             //TODO: add players
             
-            Map map = new Map(5);
+            Map map = new Map();
             MapDb mapDb = _mapper.Map<MapDb>(map);
             await _context.Maps.AddAsync(mapDb);
 

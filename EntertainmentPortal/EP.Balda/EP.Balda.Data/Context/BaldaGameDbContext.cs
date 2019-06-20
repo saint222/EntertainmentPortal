@@ -20,6 +20,9 @@ namespace EP.Balda.Data.Context
 
         public DbSet<WordRuDb> WordsRu { get; set; }
 
+        public DbSet<PlayerGameDb> PlayerGames { get; set; }
+
+        public DbSet<PlayerWordDb> PlayerWords { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

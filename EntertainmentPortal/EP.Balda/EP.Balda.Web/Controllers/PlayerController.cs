@@ -56,7 +56,7 @@ namespace EP.Balda.Web.Controllers
                 $"Login = {model.Login}, NickName = {model.NickName}, Password = {model.Password}");
 
             var result = await _mediator.Send(model);
-            return result.IsFailure ? (IActionResult) Ok(result.Value) : BadRequest();
+            return result.IsSuccess ? (IActionResult) Ok(result.Value) : BadRequest();
         }
     }
 }

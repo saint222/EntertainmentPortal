@@ -10,7 +10,7 @@ namespace EP.Balda.Data.Models
         /// <summary>
         ///     Id property. Represents Id of Game.
         /// </summary>
-        public long Id { get; private set; }
+        public long Id { get; set; }
 
         /// <summary>
         ///     Cells property. Represents Cells of map.

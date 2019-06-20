@@ -37,6 +37,10 @@ namespace EP.Balda.Logic.Models
         /// </summary>
         public List<Player> Players { get; set; }
 
+        public Game()
+        {
+        }
+
         /// <summary>
         ///     The Game constructor.
         /// </summary>
