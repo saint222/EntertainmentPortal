@@ -45,28 +45,28 @@ namespace EP._15Puzzle.Logic.Handlers
 
             try
             {
-                var deck = _context.DeckDbs
+                var deckDb = _context.DeckDbs
+                    .AsNoTracking()
                     .Include(d => d.Tiles)
-                    .Include(d => d.EmptyTile)
                     .First(d => d.UserId == request.Id);
-                var tile = deck.Tiles.First(t => t.Num == request.Tile);
-                var tile0 = deck.EmptyTile;
-                if (ComparePositions(tile, tile0))
+                var logicDeck = _mapper.Map<LogicDeck>(deckDb);
+                logicDeck.SetNearbyTiles();
+                if (logicDeck.TileCanMove(request.Tile))
                 {
-                    var temp = tile0.Pos;
-                    deck.EmptyTile.Pos = tile.Pos;
-                    tile.Pos = temp;
+                    logicDeck.Move(request.Tile);
 
-                    deck.Score += 1;
-                    if (CheckWin(deck))
+                    logicDeck.Score += 1;
+                    if (logicDeck.CheckWin())
                     {
-                        deck.Victory = true;
+                        logicDeck.Victory = true;
                     }
-
+                    _context.Update(_mapper.Map<DeckDb>(logicDeck));
                     await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                    return Result.Ok<Deck>(_mapper.Map<Deck>(logicDeck));
                 }
-
-                return Result.Ok<Deck>(_mapper.Map<Deck>(deck));
+                
+                var strTiles = string.Join(',', logicDeck.Tiles.First(t => t.Num == 0).NearbyTiles.Select(t => t.Num));
+                return Result.Fail<Deck>("Selected tile can not be moved. Possible: "+ strTiles);
             }
             catch (DbUpdateException ex)
             {
@@ -75,27 +75,6 @@ namespace EP._15Puzzle.Logic.Handlers
         }
 
 
-        private bool ComparePositions(TileDb tile, TileDb tile0)
-        {
-            var dif = Math.Abs(tile.Pos - tile0.Pos);
-            if (dif == 1 || dif == 4)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private bool CheckWin(DeckDb deck)
-        {
-            foreach (var tile in deck.Tiles)
-            {
-                if (tile.Num!=tile.Pos)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
+        
     }
 }

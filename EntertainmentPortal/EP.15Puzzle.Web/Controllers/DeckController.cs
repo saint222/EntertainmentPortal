@@ -114,9 +114,5 @@ namespace EP._15Puzzle.Web.Controllers
 
         }
     }
-
-    public class Tet
-    {
-        public int Tile { get; set; }
-    }
+    
 }

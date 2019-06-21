@@ -38,7 +38,7 @@ namespace EP._15Puzzle.Web
             services.AddMediatR(typeof(NewDeckCommand).Assembly);
             services.AddMediatR(typeof(GetDeckQuery).Assembly);
             services.AddSwaggerDocument();
-            services.AddAutoMapper(typeof(DeckProfile).Assembly);
+            services.AddAutoMapper(cfg=>cfg.AllowNullCollections=true,typeof(DeckProfile).Assembly);
             services.AddDeckServices();
             services.AddMvc(opt =>
                 {

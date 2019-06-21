@@ -9,6 +9,7 @@ using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP._15Puzzle.Data;
 using EP._15Puzzle.Data.Context;
+using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
 using EP._15Puzzle.Logic.Validators;
 using FluentValidation;
@@ -44,11 +45,10 @@ namespace EP._15Puzzle.Logic.Handlers
 
             try
             {
-                var deck = _context.UserDbs
+                var deckDb = _context.UserDbs
                     .Include(d => d.Deck.Tiles)
-                    .Include(d => d.Deck.EmptyTile)
                     .First(u => u.Id == request.Id).Deck;
-                return await Task.FromResult(Result.Ok<Deck>(_mapper.Map<Deck>(deck)));
+                return await Task.FromResult(Result.Ok<Deck>(_mapper.Map<Deck>(deckDb)));
             }
             catch (DbException ex)
             {

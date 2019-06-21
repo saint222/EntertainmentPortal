@@ -37,6 +37,8 @@ namespace EP._15Puzzle.Data.Context
 
             var recordEntity = modelBuilder.Entity<RecordDb>();
             recordEntity.HasOne(r => r.User);
+            
+
         }
     }
 }

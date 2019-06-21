@@ -33,7 +33,8 @@ namespace EP._15Puzzle.Logic.Handlers
         }
         public async Task<Result<Deck>> Handle(ResetDeckCommand request, CancellationToken cancellationToken)
         {
-            var result = await _validator.ValidateAsync(request, ruleSet: "IdExistingSet", cancellationToken: cancellationToken)
+            var result = await _validator
+                .ValidateAsync(request, ruleSet: "IdExistingSet", cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
             if (!result.IsValid)
@@ -43,19 +44,18 @@ namespace EP._15Puzzle.Logic.Handlers
 
             try
             {
-                var deck = _context.DeckDbs
+                var deckDb = _context.DeckDbs.AsNoTracking()
                     .Include(d => d.Tiles)
-                    .Include(d => d.EmptyTile)
                     .First(d => d.UserId == request.Id);
-
+                var logicDeck = _mapper.Map<LogicDeck>(deckDb);
                 do
                 {
-                    deck = Unsort(deck);
-                } while (!CheckWinIsPossible(deck));
-
-                _context.Update(deck);
+                    logicDeck.Unsort();
+                } while (!logicDeck.CheckWinIsPossible());
+                
+                _context.Update(_mapper.Map<DeckDb>(logicDeck));
                 await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                return Result.Ok<Deck>(_mapper.Map<Deck>(deck));
+                return Result.Ok<Deck>(_mapper.Map<Deck>(logicDeck));
             }
             catch (DbUpdateException ex)
             {
@@ -63,73 +63,6 @@ namespace EP._15Puzzle.Logic.Handlers
             }
             
 
-        }
-
-        private DeckDb Unsort(DeckDb deck) 
-        {
-            List<TileDb> tiles = deck.Tiles.ToList();
-            Random random = new Random();
-            for (int i = 14; i >= 0; i--)
-            {
-                int j = random.Next(i) + 1;
-
-                var temp = tiles[i].Pos;
-                tiles[i].Pos = tiles[j].Pos;
-                tiles[j].Pos = temp;
-            }
-
-            deck.Tiles = tiles;
-            deck.Victory = false;
-            deck.Score = 0;
-            
-            return deck;
-        }
-
-        private bool CheckWinIsPossible(DeckDb deck)
-        {
-            int[] tilesOnDeck = new int[16];
-            
-            foreach (var tile in deck.Tiles)
-            {
-                tilesOnDeck[tile.Pos-1] = tile.Num;
-            }
-
-            tilesOnDeck[0] = deck.EmptyTile.Num;
-
-            int rowOfEmpty = 0;
-            for (int i = 0; i < 16; i++)
-            {
-                if (tilesOnDeck[i]==0)
-                {
-                    rowOfEmpty = i/4+1;
-                    break;
-                }
-            }
-            int chetnost = 0;
-            for (int i = 0; i < 16; i++)
-            {
-                if (tilesOnDeck[i]!=0)
-                {
-                    int c = 0;
-                    for (int j = i + 1; j < 16; j++)
-                    {
-                        if (tilesOnDeck[i] > tilesOnDeck[j])
-                        {
-                            c += 1;
-                        }
-                    }
-
-                    chetnost += c;
-                }
-                
-            }
-
-            chetnost += rowOfEmpty;
-            if (chetnost%2==0)
-            {
-                return true;
-            }
-            return false;
         }
     }
 }

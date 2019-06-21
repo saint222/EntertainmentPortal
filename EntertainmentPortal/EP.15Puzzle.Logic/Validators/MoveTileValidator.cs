@@ -25,7 +25,7 @@ namespace EP._15Puzzle.Logic.Validators
                     .NotEmpty()
                     .WithMessage("Tile cannot be null")
                     .InclusiveBetween(1, 16)
-                    .WithMessage("Tile must be between 1..16");
+                    .WithMessage("Tile must be between 1..size*size");
 
                 RuleFor(x => x.Id)
                     .MustAsync((o, s, token) => CheckId(o))
