@@ -23,21 +23,20 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/player/{id}")]
+        [HttpGet("api/player")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Player not found")]
-        public async Task<IActionResult> GetPlayerAsync([FromRoute]long id)
+        public async Task<IActionResult> GetPlayerAsync([FromQuery]GetPlayer model)
         {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
 
-            var result = await _mediator.Send(new GetPlayer(id));
+            var result = await _mediator.Send(model);
             return result.HasValue ? (IActionResult) Ok(result.Value) : NotFound();
         }
 
         [HttpGet("api/players")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description =
-            "Success")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description =
             "List of players is empty")]
         public async Task<IActionResult> GetAllPlayersAsync()
@@ -56,7 +55,39 @@ namespace EP.Balda.Web.Controllers
                 $"Login = {model.Login}, NickName = {model.NickName}, Password = {model.Password}");
 
             var result = await _mediator.Send(model);
-            return result.IsSuccess ? (IActionResult) Ok(result.Value) : BadRequest();
+            return result.IsSuccess ? (IActionResult) Created("api/players", result.Value) : BadRequest();
+        }
+
+        [HttpPut("api/player/word")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+            "Invalid data")]
+        public async Task<IActionResult> AddWordAsync([FromBody] AddWordToPlayerCommand model)
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameters: Id = {model.Id}, Word = {model.Word}");
+
+            var result = await _mediator.Send(model);
+
+            if (result.IsFailure)
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                    $"Id = {model.Id}, Word = {model.Word}) - Word can't be written");
+                return BadRequest();
+            }
+            return Ok(result.Value);
+        }
+
+        [HttpDelete("api/player/delete")]
+        [SwaggerResponse(HttpStatusCode.NoContent, typeof(Player), Description = "Player deleted")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description = "Player can't be deleted")]
+        public async Task<IActionResult> DeletePlayerAsync([FromBody]DeletePlayerCommand model)
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameters: Id = {model.Id}");
+
+            var result = await _mediator.Send(model);
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
         }
     }
 }

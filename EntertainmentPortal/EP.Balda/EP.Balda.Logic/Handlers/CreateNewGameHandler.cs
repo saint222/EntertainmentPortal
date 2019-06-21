@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
@@ -24,11 +26,18 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Result<Game>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
         {
-            //TODO: add players
-            
-            Map map = new Map();
-            MapDb mapDb = _mapper.Map<MapDb>(map);
-            await _context.Maps.AddAsync(mapDb);
+            //TODO: add cells initializator
+            var player = await (_context.Players
+                .Where(p => p.Id == request.PlayerId)
+                .FirstOrDefaultAsync<PlayerDb>())
+                .ConfigureAwait(false);
+
+            if (player == null)
+                return Result.Fail<Game>($"There is no player's id {request.PlayerId} in database");
+
+            var map = new Map();
+            var mapDb = _mapper.Map<MapDb>(map);
+            _context.Maps.Add(mapDb);
 
             var gameDb = new GameDb()
             {
@@ -36,11 +45,23 @@ namespace EP.Balda.Logic.Handlers
                 MapId = mapDb.Id
             };
 
-            await _context.Games.AddAsync(gameDb);
+            _context.Games.Add(gameDb);
+
+            gameDb.PlayerGames = new List<PlayerGame>();
+
+            var playerGame = new PlayerGame
+            {
+                GameId = gameDb.Id,
+                PlayerId = request.PlayerId
+            };
+
+            gameDb.PlayerGames.Add(playerGame);
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                await _context.SaveChangesAsync(cancellationToken)
+                    .ConfigureAwait(false);
+
                 return Result.Ok(_mapper.Map<Game>(gameDb));
             }
             catch (DbUpdateException ex)

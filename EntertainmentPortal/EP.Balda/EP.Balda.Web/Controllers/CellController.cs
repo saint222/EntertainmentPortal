@@ -22,62 +22,44 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/cell/{id}")]
+        [HttpGet("api/cell")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Cell not found")]
-        public async Task<IActionResult> GetCellAsync([FromRoute] GetCell model)
+        public async Task<IActionResult> GetCellAsync([FromQuery] GetCell model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameter: Id = {model.Id}");
 
-            var result = await _mediator.Send(new GetCell
-            {
-                Id = model.Id,
-            }).ConfigureAwait(false);
+            var result = await _mediator.Send(model);
             
             if(result.HasNoValue)
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
                     $"Id = {model.Id} - Cell not found");
-                return BadRequest();
+                return NotFound();
             }
             return Ok(result.Value);
         }
 
         [HttpPut("api/cell")]
-        [SwaggerResponse(HttpStatusCode.Created, typeof(Cell), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Invalid data")]
-        public async Task<IActionResult> PostCellAsync([FromBody] AddLetterToCellCommand model)
+        public async Task<IActionResult> AddLetterToCellAsync([FromBody] AddLetterToCellCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameters: Id = {model.Id}, Letter = {model.Letter}");
 
-            var result = await _mediator.Send(new AddLetterToCellCommand
-            {
-                Id = model.Id,
-                Letter = model.Letter
-            }).ConfigureAwait(false);
-
+            var result = await _mediator.Send(model);
             
             if(result.IsFailure)
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
                     $"Id = {model.Id}, Letter = {model.Letter}) - Letter can't be written");
-                return BadRequest();
+                return BadRequest(result.Error);
             }
             return Ok(result.Value);
-        }
-
-        [HttpPost("api/cell/create")]
-        [SwaggerResponse(HttpStatusCode.Created, typeof(Cell), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
-        "Cell can't be created")]
-        public async Task<IActionResult> CreateNewCellAsync(CreateCellCommand model)
-        {
-            var result = await _mediator.Send(model);
-            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest();
         }
     }
 }

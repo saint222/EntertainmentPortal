@@ -6,6 +6,9 @@ using EP.Balda.Logic.Queries;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using EP.Balda.Data.Models;
 
 namespace EP.Balda.Logic.Handlers
 {
@@ -22,12 +25,12 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Maybe<Game>> Handle(GetGame request, CancellationToken cancellationToken)
         {
-            var result = await _context.Games
-                .FindAsync(request.Id)
-                .ConfigureAwait(false);
+            var result = await (_context.Games.
+                Where(g => g.Id == request.Id).
+                FirstOrDefaultAsync<GameDb>());
 
-            return result == null?
-                Maybe<Game>.None :
+            return result == null? 
+                Maybe<Game>.None : 
                 Maybe<Game>.From(_mapper.Map<Game>(result));
         }
     }

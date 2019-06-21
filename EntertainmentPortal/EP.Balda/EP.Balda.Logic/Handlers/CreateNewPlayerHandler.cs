@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
@@ -23,21 +24,23 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Result<Player>> Handle(CreateNewPlayerCommand request,
-                                                 CancellationToken cancellationToken)
+        public async Task<Result<Player>> Handle(CreateNewPlayerCommand request, CancellationToken cancellationToken)
         {
             var model = new PlayerDb
             {
                 NickName = request.NickName,
                 Login = request.Login,
-                Password = request.Password
+                Password = request.Password,
+                Created = DateTime.UtcNow
             };
 
             _context.Players.Add(model);
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                await _context.SaveChangesAsync(cancellationToken)
+                    .ConfigureAwait(false);
+
                 return Result.Ok(_mapper.Map<Player>(model));
             }
             catch (DbUpdateException ex)

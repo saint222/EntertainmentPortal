@@ -29,10 +29,10 @@ namespace EP.Balda.Logic.Handlers
             var result = await _context.Players
                 .ToArrayAsync(cancellationToken)
                 .ConfigureAwait(false);
-            
+
             return result.Any()
-                ? Maybe<IEnumerable<Player>>.None
-                : Maybe<IEnumerable<Player>>.From(_mapper.Map<IEnumerable<Player>>(result));
+                ? Maybe<IEnumerable<Player>>.From(_mapper.Map<IEnumerable<Player>>(result))
+                : Maybe<IEnumerable<Player>>.None;
         }
     }
 }

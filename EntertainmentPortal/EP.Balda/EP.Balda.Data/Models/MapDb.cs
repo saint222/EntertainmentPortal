@@ -15,6 +15,6 @@ namespace EP.Balda.Data.Models
         /// <summary>
         ///     Cells property. Represents Cells of map.
         /// </summary>
-        public List<CellDb> Cells { get; set; }
+        public IList<CellDb> Cells { get; set; }
     }
 }

@@ -38,17 +38,7 @@ namespace EP.Balda.Logic.Models
         ///     IsMoveAllowed property. Represents player's availability of making move in the game.
         /// </summary>
         public bool IsMoveAllowed { get; set; }
-
-        /// <summary>
-        ///     WordId property. Represents Id of word player choose per game.
-        /// </summary>
-        public long WordId { get; set; }
-
-        /// <summary>
-        ///     GameId property. Represents Id of Game player plays.
-        /// </summary>
-        public long GameId { get; set; }
-
+        
         /// <summary>
         ///     Words property. Represents the list of words that player already entered in one match
         /// </summary>
@@ -58,6 +48,6 @@ namespace EP.Balda.Logic.Models
         /// <summary>
         ///     Created property. Represents the data when player profile was created.
         /// </summary>
-        public DateTime Created { get; set; } = DateTime.UtcNow;
+        public DateTime Created { get; set; }
     }
 }
