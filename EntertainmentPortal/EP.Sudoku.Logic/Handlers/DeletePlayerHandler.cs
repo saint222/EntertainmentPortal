@@ -22,7 +22,7 @@ namespace EP.Sudoku.Logic.Handlers
                 return await Task.FromResult(false);
             }
             _context.Remove(deletedPlayer);
-            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            await _context.SaveChangesAsync(cancellationToken);
             return await Task.FromResult(true);
         }
     }

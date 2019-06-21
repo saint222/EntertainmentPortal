@@ -30,7 +30,7 @@ namespace EP.Sudoku.Logic.Handlers
             var sessionDb = _mapper.Map<SessionDb>(request.session);
             sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(request.session.Squares);
             _context.Entry(sessionDb).State = EntityState.Modified;
-            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            await _context.SaveChangesAsync(cancellationToken);
             return await Task.FromResult(request.session);
         }
     }

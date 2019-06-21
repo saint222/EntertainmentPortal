@@ -24,7 +24,7 @@ namespace EP.Sudoku.Logic.Handlers
             playerDb.IconDb = _context.Find<AvatarIconDb>(request.player.Icon.Id);
             playerDb.GameSessionsDb = null;
             _context.Add(playerDb);
-            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            await _context.SaveChangesAsync(cancellationToken);
             return await Task.FromResult(request.player);
         }
     }

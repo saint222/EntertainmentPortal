@@ -1,0 +1,175 @@
+2019-06-22 00:18:32.925 +03:00 [Information] Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"'
+2019-06-22 00:18:32.928 +03:00 [Information] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"'
+2019-06-22 00:18:32.965 +03:00 [Information] Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"'
+2019-06-22 00:18:36.712 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+2019-06-22 00:23:04.161 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-22 00:23:07.044 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-06-22 00:23:07.123 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-22 00:24:13.293 +03:00 [Information] CORS policy execution successful.
+2019-06-22 00:24:13.306 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-22 00:24:14.484 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-22 00:24:14.521 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-22 00:24:31.273 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-22 00:24:31.750 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-22 00:24:31.766 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-22 00:25:06.376 +03:00 [Information] CORS policy execution successful.
+2019-06-22 00:25:06.385 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:25:08.119 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:25:08.134 +03:00 [Error] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> Microsoft.Data.Sqlite.SqliteException: SQLite Error 19: 'NOT NULL constraint failed: Cells.IsStartValue'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteAsync(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(DbContext _, ValueTuple`2 parameters, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IReadOnlyList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at EP.Sudoku.Logic.Handlers.CreateSessionHandler.Handle(CreateSessionCommand request, CancellationToken cancellationToken) in C:\Users\Admin\source\repos\entertainment-portal\EntertainmentPortal\EP.Sudoku.Logic\Handlers\CreateSessionHandler.cs:line 34
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at EP.Sudoku.Web.Controllers.SessionsController.CreateSession(Session model) in C:\Users\Admin\source\repos\entertainment-portal\EntertainmentPortal\EP.Sudoku.Web\Controllers\SessionsController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at NSwag.AspNetCore.Middlewares.SwaggerUiIndexMiddleware`1.Invoke(HttpContext context)
+   at NSwag.AspNetCore.Middlewares.RedirectToIndexMiddleware.Invoke(HttpContext context)
+   at NSwag.AspNetCore.Middlewares.SwaggerDocumentMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-06-22 00:26:10.300 +03:00 [Information] CORS policy execution successful.
+2019-06-22 00:26:10.323 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:26:11.069 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:26:11.081 +03:00 [Error] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> Microsoft.Data.Sqlite.SqliteException: SQLite Error 19: 'NOT NULL constraint failed: Cells.IsStartValue'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteAsync(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(DbContext _, ValueTuple`2 parameters, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IReadOnlyList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at EP.Sudoku.Logic.Handlers.CreateSessionHandler.Handle(CreateSessionCommand request, CancellationToken cancellationToken) in C:\Users\Admin\source\repos\entertainment-portal\EntertainmentPortal\EP.Sudoku.Logic\Handlers\CreateSessionHandler.cs:line 34
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at EP.Sudoku.Web.Controllers.SessionsController.CreateSession(Session model) in C:\Users\Admin\source\repos\entertainment-portal\EntertainmentPortal\EP.Sudoku.Web\Controllers\SessionsController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at NSwag.AspNetCore.Middlewares.SwaggerUiIndexMiddleware`1.Invoke(HttpContext context)
+   at NSwag.AspNetCore.Middlewares.RedirectToIndexMiddleware.Invoke(HttpContext context)
+   at NSwag.AspNetCore.Middlewares.SwaggerDocumentMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-06-22 00:27:24.052 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-22 00:27:24.092 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-06-22 00:27:24.101 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-22 00:28:01.502 +03:00 [Information] CORS policy execution successful.
+2019-06-22 00:28:01.510 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:28:02.353 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:28:02.375 +03:00 [Error] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> Microsoft.Data.Sqlite.SqliteException: SQLite Error 19: 'NOT NULL constraint failed: Cells.IsStartValue'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteAsync(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(DbContext _, ValueTuple`2 parameters, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IReadOnlyList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at EP.Sudoku.Logic.Handlers.CreateSessionHandler.Handle(CreateSessionCommand request, CancellationToken cancellationToken) in C:\Users\Admin\source\repos\entertainment-portal\EntertainmentPortal\EP.Sudoku.Logic\Handlers\CreateSessionHandler.cs:line 34
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at EP.Sudoku.Web.Controllers.SessionsController.CreateSession(Session model)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at NSwag.AspNetCore.Middlewares.SwaggerUiIndexMiddleware`1.Invoke(HttpContext context)
+   at NSwag.AspNetCore.Middlewares.RedirectToIndexMiddleware.Invoke(HttpContext context)
+   at NSwag.AspNetCore.Middlewares.SwaggerDocumentMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-06-22 00:31:46.471 +03:00 [Information] CORS policy execution successful.
+2019-06-22 00:31:46.653 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-22 00:31:49.327 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-22 00:31:49.361 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-22 00:33:18.025 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-22 00:33:18.619 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-06-22 00:33:18.632 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-22 00:33:45.525 +03:00 [Information] CORS policy execution successful.
+2019-06-22 00:33:45.533 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.EditPlayer (EP.Sudoku.Web)"'
+2019-06-22 00:33:45.902 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-22 00:33:46.184 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.EditPlayer (EP.Sudoku.Web)"'
+2019-06-22 00:33:59.551 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-22 00:33:59.732 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-22 00:33:59.740 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-22 00:34:16.471 +03:00 [Information] CORS policy execution successful.
+2019-06-22 00:34:16.483 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:34:17.186 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-22 00:34:17.201 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:34:32.645 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-22 00:34:32.973 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-22 00:34:32.984 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-22 00:35:43.094 +03:00 [Information] CORS policy execution successful.
+2019-06-22 00:35:43.114 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:35:43.577 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-22 00:35:43.875 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:38:24.479 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-22 00:38:24.576 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-22 00:38:24.584 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-22 00:40:19.053 +03:00 [Information] CORS policy execution successful.
+2019-06-22 00:40:19.072 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:40:19.512 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-22 00:40:19.548 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-22 00:40:35.556 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-22 00:40:35.575 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-22 00:40:35.582 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'

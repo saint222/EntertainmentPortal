@@ -161,10 +161,12 @@ namespace EP.Sudoku.Logic.Services
             {
                 for (int j = 0; j < GRID_DIMENSION; j++)
                 {
-                    Cell cell = new Cell();
-                    cell.X = i + 1;
-                    cell.Y = j + 1;
-                    cell.Value = grid[i, j];
+                    Cell cell = new Cell
+                    {
+                        X = i + 1,
+                        Y = j + 1,
+                        Value = grid[i, j]
+                    };
                     cells.Add(cell);
                 }
             }

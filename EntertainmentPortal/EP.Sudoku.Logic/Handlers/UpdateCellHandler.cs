@@ -29,7 +29,7 @@ namespace EP.Sudoku.Logic.Handlers
         {
             var cellDb = _mapper.Map<CellDb>(request.cell);
             _context.Entry(cellDb).State = EntityState.Modified;
-            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            await _context.SaveChangesAsync(cancellationToken);
 
             return await Task.FromResult(_mapper.Map<Cell>(cellDb));
         }

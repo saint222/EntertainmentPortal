@@ -31,7 +31,7 @@ namespace EP.Sudoku.Logic.Handlers
             List<Cell> cells = sudokuService.GetSudoku((DifficultyLevel)sessionDb.Level);         
             sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);
             _context.Add(sessionDb);
-            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            await _context.SaveChangesAsync(cancellationToken);
 
             return await Task.FromResult(request.session);
         }

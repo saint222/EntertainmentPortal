@@ -29,7 +29,7 @@ namespace EP.Sudoku.Logic.Handlers
             var playerDb = _mapper.Map<PlayerDb>(request.player);
             playerDb.IconDb = _context.Find<AvatarIconDb>(request.player.Icon.Id);
             _context.Entry(playerDb).State = EntityState.Modified;            
-            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            await _context.SaveChangesAsync(cancellationToken);
             return await Task.FromResult(request.player);
         }
     }

@@ -20,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using NJsonSchema;
 using Serilog;
 using Serilog.Events;
 
@@ -37,19 +38,11 @@ namespace EP.Sudoku.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(GetAllPlayers).Assembly);
-            services.AddMediatR(typeof(GetPlayerById).Assembly);
-            services.AddMediatR(typeof(GetSessionById).Assembly);
-            services.AddMediatR(typeof(CreateSessionCommand).Assembly);
-            services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
-            services.AddMediatR(typeof(UpdatePlayerCommand).Assembly);
-            services.AddMediatR(typeof(DeletePlayerCommand).Assembly);
-            services.AddAutoMapper(typeof(PlayerProfile).Assembly);
-            services.AddAutoMapper(typeof(PlayerShortProfile).Assembly);
-            services.AddAutoMapper(typeof(SessionProfile).Assembly);
-            services.AddAutoMapper(typeof(CellProfile).Assembly);
+            services.AddMediatR(typeof(GetAllPlayers).Assembly);            
+            services.AddAutoMapper(typeof(PlayerProfile).Assembly);            
             services.AddSwaggerDocument();
             services.AddSudokuServices();
+            services.AddCors(); // to enable CrossOriginResourceSharing
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(cfg =>
                 {
@@ -71,10 +64,15 @@ namespace EP.Sudoku.Web
             {                
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }           
+            }
+            app.UseCors(opt => opt.AllowAnyHeader() // CORS configuration.
+                .AllowAnyMethod()
+                .AllowAnyOrigin());
+
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseSwagger().UseSwaggerUi3();            
             app.UseMvc();
+
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .WriteTo.Console()
