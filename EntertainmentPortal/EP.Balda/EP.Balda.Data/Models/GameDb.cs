@@ -26,5 +26,10 @@ namespace EP.Balda.Data.Models
         ///     PlayerGames property. Used for many-to-many relationships.
         /// </summary>
         public IList<PlayerGame> PlayerGames { get; set; }
+
+        /// <summary>
+        ///     PlayerWords property. Used for many-to-many relationships.
+        /// </summary>
+        public IList<PlayerWord> PlayerWords { get; set; }
     }
 }

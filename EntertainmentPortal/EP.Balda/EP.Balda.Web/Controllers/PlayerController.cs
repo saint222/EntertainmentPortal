@@ -65,7 +65,7 @@ namespace EP.Balda.Web.Controllers
         public async Task<IActionResult> AddWordAsync([FromBody] AddWordToPlayerCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameters: Id = {model.Id}, Word = {model.Word}");
+                $"Parameters: Id = {model.Id}, GameId = {model.GameId} Word = {model.Word}");
 
             var result = await _mediator.Send(model);
 

@@ -59,6 +59,10 @@ namespace EP.Balda.Data.Context
                 .HasOne(pw => pw.Word)
                 .WithMany(pw => pw.PlayerWords)
                 .HasForeignKey(pw => pw.WordId);
+            modelBuilder.Entity<PlayerWord>()
+                .HasOne(pw => pw.Game)
+                .WithMany(pw => pw.PlayerWords)
+                .HasForeignKey(pw => pw.GameId);
 
             var mapEntity = modelBuilder.Entity<MapDb>();
             mapEntity.HasKey(m => m.Id);

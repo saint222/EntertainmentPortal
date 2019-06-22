@@ -47,12 +47,13 @@ namespace EP.Balda.Logic.Handlers
             var playerWordDb = new PlayerWord()
             {
                 PlayerId = request.Id,
-                WordId = wordRu.Id
+                WordId = wordRu.Id,
+                GameId = request.GameId
             };
 
             //TODO Add when create player
             player.PlayerWords = new List<PlayerWord>();
-            player.PlayerWords.Add(playerWordDb);    
+            player.PlayerWords.Add(playerWordDb);
 
             try
             {

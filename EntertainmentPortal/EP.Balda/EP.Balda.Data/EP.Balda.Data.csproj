@@ -11,12 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Migrations\GameDbMigrations\20190617111650_InitialCreateBaldaGameDb.cs" />
-    <Compile Include="Migrations\GameDbMigrations\20190617111650_InitialCreateBaldaGameDb.Designer.cs" />
-    <Compile Include="Migrations\GameDbMigrations\BaldaGameDbContextModelSnapshot.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Bogus" Version="27.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.4" />
@@ -36,6 +30,7 @@
 
   <ItemGroup>
     <Folder Include="DbStore\" />
+    <Folder Include="Migrations\GameDbMigrations\" />
   </ItemGroup>
 
 </Project>
