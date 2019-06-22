@@ -10,6 +10,6 @@ export class GameService {
   constructor(private http: HttpClient) { }
 
   createGame() {
-    return this.http.post<GameData>('http://localhost:5000/api/PlayHangman', null);
+    return this.http.post<GameData>('http://localhost:33224/api/PlayHangman', null);
   }
 }

@@ -14,7 +14,9 @@ export class GameFieldComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.gameService.createGame().subscribe(b => {this.gameData = b; console.log(b)},
+    this.gameService.createGame().subscribe(b => {
+      this.gameData = b;
+    },
       (err: HttpResponseBase) => console.log(err.statusText));
   }
 

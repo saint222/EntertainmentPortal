@@ -1,7 +1,7 @@
 export class GameData {
   id: number;
   userErrors: number;
-  Letter: string;
-  Alphabet: string[];
-  CorrectLetters: string[];
+  letter: string;
+  alphabet: string[];
+  correctLetters: string[];
 }
