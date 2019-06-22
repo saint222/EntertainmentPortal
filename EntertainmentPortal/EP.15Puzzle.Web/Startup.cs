@@ -59,6 +59,10 @@ namespace EP._15Puzzle.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(opt =>
+                opt.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin());
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();

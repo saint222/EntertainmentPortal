@@ -1,0 +1,25 @@
+<button class="btn btn-primary" (click)="newDeck()">Reset deck</button>
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Score: {{deck.score}}</h5>
+            <h5>Victory: {{deck.victory}}</h5>
+          </div>
+      <div class="col-md-8">
+        <div class="row" style="border-radius: 1ch; border: 1px solid darkolivegreen; width: 43ch; padding: 0.5ch;">
+            <div class="col-md-3" id="tile{{tile.num}}" *ngFor="let tile of deck.tiles" style="padding: 0.5ch;">
+                <button class="btn btn-outline-secondary btn-lg" style="width: 7.5ch; height: 7.5ch; padding: 0px">
+                    <h4>{{tile.num}}</h4>
+                </button>
+            </div>
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+</div>
+
