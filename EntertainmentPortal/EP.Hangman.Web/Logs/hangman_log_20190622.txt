@@ -1,0 +1,175 @@
+2019-06-22 20:22:23.362 +03:00 [Information] CORS policy execution successful.
+2019-06-22 20:22:23.363 +03:00 [Information] CORS policy execution successful.
+2019-06-22 20:22:23.988 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 20:22:23.988 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 20:22:24.590 +03:00 [Information] Received POST request
+2019-06-22 20:22:24.589 +03:00 [Information] Received POST request
+2019-06-22 20:22:27.128 +03:00 [Information] Creating new game session
+2019-06-22 20:22:27.128 +03:00 [Information] Creating new game session
+2019-06-22 20:22:28.627 +03:00 [Information] Updating database with new game session
+2019-06-22 20:22:28.633 +03:00 [Information] Updating database with new game session
+2019-06-22 20:22:30.007 +03:00 [Information] Database was updated
+2019-06-22 20:22:30.129 +03:00 [Information] POST request executed
+2019-06-22 20:22:30.154 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 20:22:30.510 +03:00 [Information] Database was updated
+2019-06-22 20:22:30.511 +03:00 [Information] POST request executed
+2019-06-22 20:22:30.514 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 20:22:31.079 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 20:22:31.079 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 20:35:09.530 +03:00 [Information] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"'
+2019-06-22 20:35:09.532 +03:00 [Information] Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"'
+2019-06-22 20:35:09.769 +03:00 [Information] Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"'
+2019-06-22 20:35:12.010 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+2019-06-22 20:40:32.434 +03:00 [Information] CORS policy execution successful.
+2019-06-22 20:40:32.781 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 20:40:32.892 +03:00 [Information] Received POST request
+2019-06-22 20:40:32.977 +03:00 [Information] Creating new game session
+2019-06-22 20:40:33.098 +03:00 [Information] Updating database with new game session
+2019-06-22 20:40:33.823 +03:00 [Information] Database was updated
+2019-06-22 20:40:33.823 +03:00 [Information] POST request executed
+2019-06-22 20:40:33.824 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 20:40:33.908 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 20:40:49.169 +03:00 [Information] CORS policy execution successful.
+2019-06-22 20:40:49.169 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 20:40:49.170 +03:00 [Information] Received POST request
+2019-06-22 20:40:49.171 +03:00 [Information] Creating new game session
+2019-06-22 20:40:49.173 +03:00 [Information] Updating database with new game session
+2019-06-22 20:40:49.663 +03:00 [Information] Database was updated
+2019-06-22 20:40:49.663 +03:00 [Information] POST request executed
+2019-06-22 20:40:49.663 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 20:40:49.664 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 20:59:08.540 +03:00 [Information] CORS policy execution successful.
+2019-06-22 20:59:08.610 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 20:59:08.632 +03:00 [Information] Received POST request
+2019-06-22 20:59:08.703 +03:00 [Information] Creating new game session
+2019-06-22 20:59:08.773 +03:00 [Information] Updating database with new game session
+2019-06-22 20:59:09.112 +03:00 [Information] Database was updated
+2019-06-22 20:59:09.112 +03:00 [Information] POST request executed
+2019-06-22 20:59:09.112 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 20:59:09.137 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:00:53.437 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:00:53.438 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:00:53.438 +03:00 [Information] Received POST request
+2019-06-22 21:00:53.615 +03:00 [Information] Creating new game session
+2019-06-22 21:00:53.623 +03:00 [Information] Updating database with new game session
+2019-06-22 21:00:53.980 +03:00 [Information] Database was updated
+2019-06-22 21:00:53.982 +03:00 [Information] POST request executed
+2019-06-22 21:00:53.982 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:00:54.019 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:02:25.610 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:02:25.806 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:02:25.807 +03:00 [Information] Received POST request
+2019-06-22 21:02:25.808 +03:00 [Information] Creating new game session
+2019-06-22 21:02:25.809 +03:00 [Information] Updating database with new game session
+2019-06-22 21:02:26.799 +03:00 [Information] Database was updated
+2019-06-22 21:02:26.799 +03:00 [Information] POST request executed
+2019-06-22 21:02:26.800 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:02:26.812 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:02:29.625 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:02:29.626 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:02:29.626 +03:00 [Information] Received POST request
+2019-06-22 21:02:29.626 +03:00 [Information] Creating new game session
+2019-06-22 21:02:29.627 +03:00 [Information] Updating database with new game session
+2019-06-22 21:02:30.367 +03:00 [Information] Database was updated
+2019-06-22 21:02:30.367 +03:00 [Information] POST request executed
+2019-06-22 21:02:30.368 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:02:30.368 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:07:30.500 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:07:30.500 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:07:30.501 +03:00 [Information] Received POST request
+2019-06-22 21:07:30.501 +03:00 [Information] Creating new game session
+2019-06-22 21:07:30.502 +03:00 [Information] Updating database with new game session
+2019-06-22 21:07:31.000 +03:00 [Information] Database was updated
+2019-06-22 21:07:31.000 +03:00 [Information] POST request executed
+2019-06-22 21:07:31.000 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:07:31.001 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:07:36.082 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:07:36.082 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:07:36.083 +03:00 [Information] Received POST request
+2019-06-22 21:07:36.083 +03:00 [Information] Creating new game session
+2019-06-22 21:07:36.083 +03:00 [Information] Updating database with new game session
+2019-06-22 21:07:36.261 +03:00 [Information] Database was updated
+2019-06-22 21:07:36.261 +03:00 [Information] POST request executed
+2019-06-22 21:07:36.261 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:07:36.262 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:10:37.562 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:10:37.562 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:10:37.563 +03:00 [Information] Received POST request
+2019-06-22 21:10:37.564 +03:00 [Information] Creating new game session
+2019-06-22 21:10:37.565 +03:00 [Information] Updating database with new game session
+2019-06-22 21:10:38.041 +03:00 [Information] Database was updated
+2019-06-22 21:10:38.042 +03:00 [Information] POST request executed
+2019-06-22 21:10:38.042 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:10:38.042 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:10:39.780 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:10:39.780 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:10:39.781 +03:00 [Information] Received POST request
+2019-06-22 21:10:39.781 +03:00 [Information] Creating new game session
+2019-06-22 21:10:39.782 +03:00 [Information] Updating database with new game session
+2019-06-22 21:10:40.167 +03:00 [Information] Database was updated
+2019-06-22 21:10:40.168 +03:00 [Information] POST request executed
+2019-06-22 21:10:40.168 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:10:40.171 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:10:47.174 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:10:47.174 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:10:47.174 +03:00 [Information] Received POST request
+2019-06-22 21:10:47.176 +03:00 [Information] Creating new game session
+2019-06-22 21:10:47.177 +03:00 [Information] Updating database with new game session
+2019-06-22 21:10:47.847 +03:00 [Information] Database was updated
+2019-06-22 21:10:47.847 +03:00 [Information] POST request executed
+2019-06-22 21:10:47.847 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:10:47.848 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:16:44.216 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:16:44.217 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:16:44.217 +03:00 [Information] Received POST request
+2019-06-22 21:16:44.217 +03:00 [Information] Creating new game session
+2019-06-22 21:16:44.218 +03:00 [Information] Updating database with new game session
+2019-06-22 21:16:44.422 +03:00 [Information] Database was updated
+2019-06-22 21:16:44.422 +03:00 [Information] POST request executed
+2019-06-22 21:16:44.422 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:16:44.423 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:16:45.974 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:16:45.974 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:16:45.974 +03:00 [Information] Received POST request
+2019-06-22 21:16:45.974 +03:00 [Information] Creating new game session
+2019-06-22 21:16:45.975 +03:00 [Information] Updating database with new game session
+2019-06-22 21:16:46.601 +03:00 [Information] Database was updated
+2019-06-22 21:16:46.601 +03:00 [Information] POST request executed
+2019-06-22 21:16:46.601 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:16:46.601 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:19:27.225 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:19:27.225 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:19:27.225 +03:00 [Information] Received POST request
+2019-06-22 21:19:27.225 +03:00 [Information] Creating new game session
+2019-06-22 21:19:27.228 +03:00 [Information] Updating database with new game session
+2019-06-22 21:19:28.259 +03:00 [Information] Database was updated
+2019-06-22 21:19:28.259 +03:00 [Information] POST request executed
+2019-06-22 21:19:28.259 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:19:28.260 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:19:29.319 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:19:29.319 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:19:29.320 +03:00 [Information] Received POST request
+2019-06-22 21:19:29.320 +03:00 [Information] Creating new game session
+2019-06-22 21:19:29.320 +03:00 [Information] Updating database with new game session
+2019-06-22 21:19:30.533 +03:00 [Information] Database was updated
+2019-06-22 21:19:30.533 +03:00 [Information] POST request executed
+2019-06-22 21:19:30.534 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:19:30.557 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:23:04.708 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:23:04.708 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:23:04.708 +03:00 [Information] Received POST request
+2019-06-22 21:23:04.709 +03:00 [Information] Creating new game session
+2019-06-22 21:23:04.724 +03:00 [Information] Updating database with new game session
+2019-06-22 21:23:05.563 +03:00 [Information] Database was updated
+2019-06-22 21:23:05.563 +03:00 [Information] POST request executed
+2019-06-22 21:23:05.563 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:23:05.569 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:23:06.720 +03:00 [Information] CORS policy execution successful.
+2019-06-22 21:23:06.721 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-22 21:23:06.721 +03:00 [Information] Received POST request
+2019-06-22 21:23:06.721 +03:00 [Information] Creating new game session
+2019-06-22 21:23:06.722 +03:00 [Information] Updating database with new game session
+2019-06-22 21:23:08.899 +03:00 [Information] Database was updated
+2019-06-22 21:23:08.899 +03:00 [Information] POST request executed
+2019-06-22 21:23:08.899 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-22 21:23:08.900 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'

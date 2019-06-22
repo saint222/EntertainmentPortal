@@ -1,3 +1,4 @@
+import { HangmanGameModule } from './hangman-game/hangman-game.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HangmanGameModule
   ],
   providers: [],
   bootstrap: [AppComponent]

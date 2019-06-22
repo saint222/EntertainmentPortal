@@ -1,3 +1,7 @@
-<p>
-  game-field works!
-</p>
+<div>{{gameData}}</div>
+<div>Errors: {{gameData.userErrors}}</div>
+<div>Id: {{gameData.id}} </div>
+<div *ngFor="let letter of gameData.CorrectLetters" >CorrectLetters: {{gameData.CorrectLetters[]}
+
+</div>
+<div>Alphabet: {{gameData.Alphabet}}</div>
