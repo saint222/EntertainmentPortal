@@ -5,6 +5,7 @@ using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.Balda.Web.Controllers
@@ -13,37 +14,52 @@ namespace EP.Balda.Web.Controllers
     public class CellController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<CellController> _logger;
 
-        public CellController(IMediator mediator)
+        public CellController(IMediator mediator, ILogger<CellController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("api/cell")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Cell not found")]
-        public async Task<IActionResult> GetCellAsync(int x, int y)
+        public async Task<IActionResult> GetCellAsync([FromQuery] GetCell model)
         {
-            var result = await _mediator.Send(new GetCell(x, y)).ConfigureAwait(false);
-            return result.HasValue ? (IActionResult)Ok(result.Value) : BadRequest();
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameter: Id = {model.Id}");
+
+            var result = await _mediator.Send(model);
+            
+            if(result.HasNoValue)
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                    $"Id = {model.Id} - Cell not found");
+                return NotFound();
+            }
+            return Ok(result.Value);
         }
 
-        [HttpPost("api/cell")]
-        [SwaggerResponse(HttpStatusCode.Created, typeof(Cell), Description = "Success")]
+        [HttpPut("api/cell")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Invalid data")]
-        public async Task<IActionResult> PostCell([FromBody]long mapId, Cell cell)
+        public async Task<IActionResult> AddLetterToCellAsync([FromBody] AddLetterToCellCommand model)
         {
-            var result = await _mediator.Send(new AddLetterCommand
-            {
-                MapId = mapId,
-                X = cell.X,
-                Y = cell.Y,
-                Letter = cell.Letter
-            });
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameters: Id = {model.Id}, Letter = {model.Letter}");
 
-            return result != null ? (IActionResult) Ok(result) : BadRequest();
+            var result = await _mediator.Send(model);
+            
+            if(result.IsFailure)
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                    $"Id = {model.Id}, Letter = {model.Letter}) - Letter can't be written");
+                return BadRequest(result.Error);
+            }
+            return Ok(result.Value);
         }
     }
 }

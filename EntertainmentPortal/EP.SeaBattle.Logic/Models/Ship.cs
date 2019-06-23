@@ -1,38 +1,45 @@
-﻿using System;
+﻿using EP.SeaBattle.Common.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EP.SeaBattle.Logic.Models
 {
     public class Ship
     {
-        private int _shipRank;
-        private ShipOrientation _shipOrientation;
-        private Point _startPosition;
+        public Ship()
+        {
+
+        }
+
+        public Ship(Game game, Player player, IEnumerable<Cell> cells)
+        {
+            //TODO проверку на ранк (не может быть больше 4)
+            //TODO проверку корабля на целостность
+            //TODO проверку на статус ячеек
+            Cells = cells;
+            Rank = (ShipRank)cells.Count();
+            Game = game;
+            Player = player;
+        }
 
         /// <summary>
-        /// Rank of ship
+        /// Ship rank
         /// </summary>
-        /// <remarks> 
-        /// 1, 2, 3 or 4
-        /// </remarks>
-        public int ShipRank { get => _shipRank; set => _shipRank = value; }
+        public ShipRank Rank { get; }
 
         /// <summary>
-        /// Ship orientation
+        /// Collection of ship cells
         /// </summary>
-        /// <remarks>
-        /// Vertical or horizontal
-        /// </remarks>
-        public ShipOrientation ShipOrientation { get => _shipOrientation; set => _shipOrientation = value; }
+        public IEnumerable<Cell> Cells { get; }
 
         /// <summary>
-        /// First point of ship
+        /// Inform is all cells destroyed
         /// </summary>
-        /// <remarks>
-        /// Top point if vertical and left point if horizontal
-        /// </remarks>
-        public Point StartPosition { get => _startPosition; set => _startPosition = value; }
+        public bool IsAlive { get => Cells.Any(a => a.Status == Common.Enums.CellStatus.Alive); }
+
+        public Player Player { get; set; }
+
+        public Game Game { get; set; }
     }
 }

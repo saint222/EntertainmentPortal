@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Models
 {
@@ -34,9 +35,18 @@ namespace EP.Balda.Logic.Models
         public int Score { get; set; }
 
         /// <summary>
-        ///     Words property. Represents the list of words that player already entered in one match
+        ///     IsMoveAllowed property. Represents player's turn in the game.
         /// </summary>
-        public List<string>
-            Words { get; set; } //words this player guessed per one game
+        public bool IsMoveAllowed { get; set; }
+        
+        /// <summary>
+        ///     Words property. Represents the list of words that player already entered in one match.
+        /// </summary>
+        public List<string> Words { get; set; } //words this player guessed per one game
+
+        /// <summary>
+        ///     Created property. Represents the data when player profile was created.
+        /// </summary>
+        public DateTime Created { get; set; }
     }
 }

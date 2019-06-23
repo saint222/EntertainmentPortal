@@ -1,7 +1,4 @@
-﻿using System;
-using EP.Balda.Data.Context;
-using EP.Balda.Logic.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Models
 {
@@ -12,11 +9,6 @@ namespace EP.Balda.Logic.Models
     public class Game
     {
         /// <summary>
-        ///     Context to WordsDB.
-        /// </summary>
-        private readonly WordDbContext _context;
-
-        /// <summary>
         ///     The field stores an Id of the map in the game.
         /// </summary>
         public long Id { get; set; }
@@ -24,61 +16,21 @@ namespace EP.Balda.Logic.Models
         /// <summary>
         ///     The field stores an object of the map in the game.
         /// </summary>
-        public IMap Map { get; }
+        public Map Map { get; set; }
 
         /// <summary>
-        ///     The Game constructor.
+        ///     InitWord property. Represents initial word on the game map.
         /// </summary>
-        /// <param name="map">
-        ///     Parameter map requires IMap argument.
-        /// </param>
-        /// <param name="context">word database context</param>
-        public Game(IMap map, WordDbContext context)
-        {
-            Map = map;
-            _context = context;
-            var initWord = GetStartingWord();
-            PutStartingWordToMap(initWord);
-        }
+        public string InitWord { get; set; }
 
         /// <summary>
-        ///     The method puts the starting word on the map.
+        ///     MapId property. Represents Id of Map.
         /// </summary>
-        /// <param name="word">Parameter word requires string argument.</param>
-        public void PutStartingWordToMap(string word)
-        {
-            var center = Map.Size / 2;
-            var charDestination = 0;
-
-            word = word.Trim();
-            foreach (var letter in word)
-                Map.GetCell(center, charDestination++).Letter =
-                    letter;
-        }
+        public long MapId { get; set; }
 
         /// <summary>
-        ///     The method gets the initial word.
+        ///     The field represents players in the game.
         /// </summary>
-        private string GetStartingWord()
-        {
-            var word = "";
-            var mapSize = Map.Size;
-            var sizeRepo = _context.Words.CountAsync();
-            var id = RandomWord(sizeRepo.Result);
-            while (word.Length != mapSize)
-                word = _context.Words.FindAsync(id).Result.Word;
-
-            return word;
-        }
-
-        /// <summary>
-        ///     The method choose random initial word.
-        /// </summary>
-        private int RandomWord(int size)
-        {
-            var rnd = new Random();
-            var next = rnd.Next(0, size - 1);
-            return next;
-        }
+        public List<Player> Players { get; set; }
     }
 }

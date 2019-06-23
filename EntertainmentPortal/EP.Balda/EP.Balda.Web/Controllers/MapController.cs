@@ -4,6 +4,7 @@ using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.Balda.Web.Controllers
@@ -12,19 +13,23 @@ namespace EP.Balda.Web.Controllers
     public class MapController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<MapController> _logger;
 
-        public MapController(IMediator mediator)
+        public MapController(IMediator mediator, ILogger<MapController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
-        [HttpGet("api/map/{id}")]
+        [HttpGet("api/map")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Map not found")]
-        public async Task<IActionResult> GetMapAsync([FromRoute]long id)
+        public async Task<IActionResult> GetMapAsync([FromQuery]GetMap model)
         {
-            var result = await _mediator.Send(new GetMap(id)).ConfigureAwait(false);
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+
+            var result = await _mediator.Send(model);
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
     }
