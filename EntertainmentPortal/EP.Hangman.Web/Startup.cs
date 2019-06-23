@@ -11,7 +11,9 @@ using EP.Hangman.Logic;
 using EP.Hangman.Logic.Commands;
 using EP.Hangman.Logic.Profiles;
 using EP.Hangman.Logic.Validators;
+using EP.Hangman.Web.Filters;
 using FluentValidation.AspNetCore;
+using Serilog;
 
 namespace EP.Hangman.Web
 {
@@ -27,12 +29,14 @@ namespace EP.Hangman.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetUserSession).Assembly);
             services.AddMediatR(typeof(CheckLetterCommand).Assembly);
             services.AddAutoMapper(typeof(MapperProfile).Assembly);
             services.AddGameServices();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddMvc(opt => opt.Filters.Add(typeof(GlobalExceptionFilter)))
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(cfg =>
                 {
                     cfg.RegisterValidatorsFromAssemblyContaining<DeleteGameValidator>();
@@ -49,8 +53,15 @@ namespace EP.Hangman.Web
             }
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
             app.UseMvc();
+
+            Log.Logger = new LoggerConfiguration()
+                //By default we have up to 31 latest log files with file size limited up to 1GB
+                //Shared parameter means that several processes can log simultaneously
+                .WriteTo.RollingFile("Logs/hangman_log_{Date}.txt", shared:true)
+                .CreateLogger();
         }
     }
 }

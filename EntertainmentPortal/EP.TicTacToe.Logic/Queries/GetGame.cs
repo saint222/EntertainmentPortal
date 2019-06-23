@@ -3,7 +3,8 @@ using MediatR;
 
 namespace EP.TicTacToe.Logic.Queries
 {
-    public class GetBoard: IRequest<Board>
+    public class GetGame : IRequest<Game>
     {
+        public uint Id { get; set; }
     }
 }
