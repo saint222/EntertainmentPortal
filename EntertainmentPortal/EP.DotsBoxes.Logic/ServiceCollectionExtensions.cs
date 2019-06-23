@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EP.DotsBoxes.Data;
+﻿using EP.DotsBoxes.Data;
 using Microsoft.Extensions.DependencyInjection;
+
+[assembly: Fody.ConfigureAwait(false)] // to set up ConfigureAwait(false) globally in the assembly
 
 namespace EP.DotsBoxes.Logic
 {

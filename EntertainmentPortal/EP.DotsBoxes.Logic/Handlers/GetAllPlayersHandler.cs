@@ -4,9 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using EP.DotsBoxes.Logic.Queries;
-using EP.DotsBoxes.Data;
 using EP.DotsBoxes.Data.Context;
-using EP.DotsBoxes.Logic.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using CSharpFunctionalExtensions;
@@ -29,8 +27,7 @@ namespace EP.DotsBoxes.Logic.Handlers
         {
             var result = await _context.Players
                .AsNoTracking()
-               .ToArrayAsync(cancellationToken)
-               .ConfigureAwait(false);
+               .ToArrayAsync(cancellationToken);
 
             return result.Any() ? 
                 Maybe<IEnumerable<PlayerDb>>.From(result) : 

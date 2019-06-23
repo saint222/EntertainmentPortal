@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using EP.DotsBoxes.Data;
 using EP.DotsBoxes.Data.Context;
-using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -31,8 +27,7 @@ namespace EP.DotsBoxes.Logic.Handlers
         {
             var result = await _context.Cells
                .AsNoTracking()
-               .ToArrayAsync(cancellationToken)
-               .ConfigureAwait(false);
+               .ToArrayAsync(cancellationToken);
 
            
             return result.Any() ?
