@@ -19,4 +19,3 @@ namespace EP.DotsBoxes.Logic.Commands
         public bool Right { get; set; }
     }
 }
-
