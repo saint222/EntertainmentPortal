@@ -7,10 +7,12 @@ using Bogus.Extensions;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using NJsonSchema.Annotations;
 using NSwag.Annotations;
 
 namespace EP.Sudoku.Web.Controllers
@@ -54,26 +56,28 @@ namespace EP.Sudoku.Web.Controllers
         [HttpPost("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> CreatePlayer([FromBody]Player model)
-        {
-            if (model == null)
-            {               
-                return BadRequest();
-            }            
-            var player = await _mediator.Send(new CreatePlayerCommand(model));
-            return player!=null ? (IActionResult)Ok(player) : BadRequest();
+        public async Task<IActionResult> CreatePlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationPlayer")]CreatePlayerCommand model)
+        {                   
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError($"Incorrect value for the player's NickName was set up...");
+                return BadRequest();                
+            }
+            var player = await _mediator.Send(model);
+            return player != null ? (IActionResult)Ok(player) : BadRequest();            
         }
 
         [HttpPut("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> EditPlayer([FromBody]Player model)
+        public async Task<IActionResult> EditPlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationPlayer")]UpdatePlayerCommand model)
         {
-            if (model == null)
-            {                
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError($"Incorrect value for the player's NickName was set up...");
                 return BadRequest();
             }
-            var player = await _mediator.Send(new UpdatePlayerCommand(model));
+            var player = await _mediator.Send(model);
             return player != null ? (IActionResult)Ok(player) : BadRequest();
         }
 
