@@ -59,7 +59,7 @@ namespace EP.Hangman.Web.Controllers
             _logger.LogInformation("Received PUT request");
             var result = await _mediator.Send(new CheckLetterCommand(model));
             _logger.LogInformation("PUT request executed");
-            return result.IsSuccess ? (IActionResult)Ok(result) : BadRequest(result.Error);
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
         }
 
         //DELETE: api/PlayHangman

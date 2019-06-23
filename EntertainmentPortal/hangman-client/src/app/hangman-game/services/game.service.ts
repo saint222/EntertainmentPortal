@@ -14,7 +14,6 @@ export class GameService {
   }
   updateGame(responseModel: GameData) {
 
-    console.log(responseModel);
     return this.http.put<GameData>('http://localhost:33224/api/PlayHangman', responseModel);
   }
 }

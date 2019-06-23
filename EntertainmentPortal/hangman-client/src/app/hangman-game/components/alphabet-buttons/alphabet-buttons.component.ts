@@ -21,10 +21,11 @@ export class AlphabetButtonsComponent implements OnInit {
     this.gameDataAlphabet.alphabet = null;
     this.gameDataAlphabet.correctLetters = null;
     this.gameDataAlphabet.userErrors = 0;
-    console.log(this.gameDataAlphabet);
 
-    /*this.gameService.updateGame(this.gameDataAlphabet).subscribe(b => {this.updatedGameData.emit(b); console.log(b); } );*/
-    this.gameService.updateGame(this.gameDataAlphabet).subscribe(b => {this.temp = b; console.log(b); } );
+    this.gameService.updateGame(this.gameDataAlphabet).subscribe(b => {
+      this.updatedGameData.emit(b);
+    } );
+
   }
 
 }

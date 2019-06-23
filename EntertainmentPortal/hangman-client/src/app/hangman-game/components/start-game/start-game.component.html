@@ -1,5 +1,5 @@
 
     <button class="btn btn-primary" (click)= "click()">Start Game</button>
   <div>
-    <app-game-field [gameFieldData] = "gameDataStart"></app-game-field>
+    <app-game-field [gameFieldData] = "gameDataStart" (updatedGameData)='updateField($event)'></app-game-field>
 </div>

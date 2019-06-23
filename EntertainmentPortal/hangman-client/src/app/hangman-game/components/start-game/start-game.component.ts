@@ -20,4 +20,8 @@ export class StartGameComponent implements OnInit {
     },
       (err: HttpResponseBase) => console.log(err.statusText));
   }
+
+  updateField(newData) {
+    this.gameDataStart = newData;
+  }
 }
