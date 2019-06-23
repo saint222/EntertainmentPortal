@@ -1,32 +1,38 @@
-﻿namespace EP.DotsBoxes.Data.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace EP.DotsBoxes.Data.Models
 {
     /// <summary>
-    /// The model <c>GameBoardDb</c> class.
+    /// <c>GameBoard</c> model class.
     /// Represents a playing field (game board).
     /// </summary>
     public class GameBoardDb
     {
         /// <summary>
-        /// Id property.
+        /// Id property. Stores unique game board's Id.
         /// </summary>
-        /// <value>
-        /// A value represents unique game board's Id.
-        /// </value>
         public int Id { get; set; }
+
         /// <summary>
-        /// Rows property.
+        /// Rows property. Stores the row of the playing field.
         /// </summary>
-        /// <value>
-        /// The value represents the row of the playing field.
-        /// </value>
         public int Rows { get; set; }
 
         /// <summary>
-        /// Columns property.
+        /// Columns property. Stores the column of the playing field.
         /// </summary>
-        /// <value>
-        /// The value represents the column of the playing field.
-        /// </value>
         public int Columns { get; set; }
+
+        /// <summary>
+        /// Cells property. Stores a list of cells of the playing field.
+        /// </summary>
+        public List<CellDb> Cells { get; set; }
+
+        /// <summary>
+        /// Created property. Stores date of creation / registration of the playing field.
+        /// </summary>
+        /// <seealso cref="System">
+        public DateTime Created { get; set; } = DateTime.UtcNow;
     }
 }

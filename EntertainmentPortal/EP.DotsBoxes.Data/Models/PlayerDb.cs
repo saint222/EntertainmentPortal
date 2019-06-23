@@ -1,53 +1,37 @@
 ﻿using System;
+
 namespace EP.DotsBoxes.Data.Models
 {
     /// <summary>
-    /// The model <c>PlayerDb</c> class.
-    /// Represents a Players.
+    /// <c>Player</c> model class.
+    /// Represents a Player.
     /// </summary>
     public class PlayerDb
     {
         /// <summary>
-        /// Id property.
+        /// Id property. Stores unique player's Id.
         /// </summary>
-        /// <value>
-        /// A value represents unique player's Id.
-        /// </value>
         public int Id { get; set; }
 
         /// <summary>
-        /// Name property.
+        /// Name property. Stores player's name.
         /// </summary>
-        /// <value>
-        /// A value represents player's nickname.
-        /// </value>
         public string Name { get; set; }
 
         /// <summary>
-        /// Color property.
+        /// Color property. Stores player's сolor.
         /// </summary>
-        /// <value>
-        /// A value represents player's сolor.
-        /// </value>
         public string Color { get; set; }
 
         /// <summary>
-        /// Score property.
+        /// Score property. Stores player's score.
         /// </summary>
-        /// <value>
-        /// A value represents player's score.
-        /// </value>
         public int Score { get; set; }
 
         /// <summary>
-        /// Created property.
+        /// Created property. Stores date of creation / registration of the player.
         /// </summary>
-        /// <value>
-        /// A value represents date of creation / registration of the player.
-        /// </value>
         /// <seealso cref="System">
-        public DateTime Created { get; set; }
-
+        public DateTime Created { get; set; } = DateTime.UtcNow;
     }
-
 }

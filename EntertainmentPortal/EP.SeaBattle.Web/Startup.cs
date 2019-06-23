@@ -31,13 +31,14 @@ namespace EP.SeaBattle.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging(cfg => cfg.AddConsole().AddDebug());
             services.AddSeaBattleServices();
-            services.AddMediatR(typeof(AddNewCellCommand).Assembly);
+            services.AddMediatR(typeof(AddNewPlayerCommand).Assembly);
             services.AddAutoMapper(typeof(CellProfile).Assembly);
             services.AddSwaggerDocument();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(cfg =>
             {
-                cfg.RegisterValidatorsFromAssemblyContaining<AddNewCellPresentationValidator>();
+                cfg.RegisterValidatorsFromAssemblyContaining<ShipAddValidation>();
                 cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
             });
         }

@@ -18,4 +18,8 @@
     <ProjectReference Include="..\EP.SeaBattle.Common\EP.SeaBattle.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

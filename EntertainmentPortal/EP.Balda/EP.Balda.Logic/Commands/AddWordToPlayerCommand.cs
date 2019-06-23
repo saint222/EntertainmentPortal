@@ -1,6 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using EP.Balda.Logic.Models;
 using MediatR;
+using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Commands
 {
@@ -10,6 +11,6 @@ namespace EP.Balda.Logic.Commands
         
         public long GameId { get; set; }
 
-        public string Word { get; set; }
+        public List<long> CellsIdFormWord { get; set; }
     }
 }

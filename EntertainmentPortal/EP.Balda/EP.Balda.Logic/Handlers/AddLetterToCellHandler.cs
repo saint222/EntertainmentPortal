@@ -32,6 +32,13 @@ namespace EP.Balda.Logic.Handlers
             if(cellDb == null)
                 return Result.Fail<Cell>($"There is no cell with id {request.Id} in database");
 
+            var isAllowedCell = await IsAllowedCell(cellDb);
+
+            if(!isAllowedCell)
+            {
+                return Result.Fail<Cell>($"The cell with id {request.Id} doesn't have occupied cells nearby");
+            }
+
             if(cellDb.Letter == null)
             {
                 cellDb.Letter = request.Letter;
@@ -51,6 +58,36 @@ namespace EP.Balda.Logic.Handlers
             {
                 return Result.Fail<Cell>(ex.Message);
             }
+        }
+
+        /// <summary>
+        ///     The method checks if the cell is allowed to insert a new letter.
+        /// </summary>
+        /// <param name="x">Parameter x requires an integer argument.</param>
+        /// <param name="y">Parameter y requires an integer argument.</param>
+        /// <returns>returns true if allowed</returns>
+        public async Task<bool> IsAllowedCell(CellDb cellDb)
+        {
+            var map = await _context.Maps.Include(m => m.Cells).Where(m => m.Id == cellDb.MapId).FirstOrDefaultAsync();
+
+            var cellTop = map.Cells.Where(c => c.X == cellDb.X & c.Y == cellDb.Y + 1).FirstOrDefault();   // cell on top
+            var cellDown = map.Cells.Where(c => c.X == cellDb.X & c.Y == cellDb.Y - 1).FirstOrDefault();  // bottom cell
+            var cellRight = map.Cells.Where(c => c.X == cellDb.X + 1 & c.Y == cellDb.Y).FirstOrDefault(); // right cell
+            var cellLeft = map.Cells.Where(c => c.X == cellDb.X - 1 & c.Y == cellDb.Y).FirstOrDefault();  // left cell
+
+            if (cellTop?.Letter != null)
+                    return true;
+            
+            if (cellDown?.Letter != null)
+                    return true;
+            
+            if (cellLeft?.Letter != null)
+                    return true;
+            
+            if (cellRight?.Letter != null)
+                    return true;
+
+            return false;
         }
     }
 }

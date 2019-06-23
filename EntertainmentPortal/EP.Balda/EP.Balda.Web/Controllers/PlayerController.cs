@@ -65,14 +65,14 @@ namespace EP.Balda.Web.Controllers
         public async Task<IActionResult> AddWordAsync([FromBody] AddWordToPlayerCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameters: Id = {model.Id}, GameId = {model.GameId} Word = {model.Word}");
+                $"Parameters: Id = {model.Id}, GameId = {model.GameId} CellsFormWord = {model.CellsIdFormWord}");
 
             var result = await _mediator.Send(model);
 
             if (result.IsFailure)
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"Id = {model.Id}, Word = {model.Word}) - Word can't be written");
+                    $"Id = {model.Id}, CellsFormWord = {model.CellsIdFormWord}) - Word can't be written");
                 return BadRequest(result.Error);
             }
             return Ok(result.Value);

@@ -1,32 +1,33 @@
-﻿namespace EP.DotsBoxes.Logic.Models
+﻿using System.Collections.Generic;
+
+namespace EP.DotsBoxes.Logic.Models
 {
     /// <summary>
-    /// The model <c>GameBoard</c> class.
+    /// <c>GameBoard</c> model class.
     /// Represents a playing field (game board).
     /// </summary>
     public class GameBoard
     {
         /// <summary>
-        /// Id property.
+        /// Id property. Represents unique game board's Id.
         /// </summary>
-        /// <value>
-        /// A value represents unique game board's Id.
-        /// </value>
         public int Id { get; set; }
+
         /// <summary>
-        /// Rows property.
+        /// Rows property. Represents the row of the playing field.
         /// </summary>
-        /// <value>
-        /// The value represents the row of the playing field.
-        /// </value>
         public int Rows { get; set; }
 
         /// <summary>
-        /// Columns property.
+        /// Columns property. Represents the column of the playing field.
         /// </summary>
-        /// <value>
-        /// The value represents the column of the playing field.
-        /// </value>
         public int Columns { get; set; }
+
+        /// <summary>
+        /// Cells property. Represents a list of cells of the playing field.
+        /// </summary>
+        public List<Cell> Cells { get; set; }
+
+
     }
 }
