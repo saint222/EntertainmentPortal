@@ -125,7 +125,7 @@ namespace EP.Balda.Logic.Handlers
             word = word.Trim();
             foreach (var letter in word)
             {
-                var cellDb = mapDb.Cells.Where(c => c.X == center & c.Y == charDestination).FirstOrDefault();
+                var cellDb = mapDb.Cells.Where(c => c.X == charDestination & c.Y == center).FirstOrDefault();
                 charDestination++;
                 cellDb.Letter = letter;
             }

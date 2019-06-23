@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -15,6 +15,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EP.Balda.Logic\EP.Balda.Logic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EP.Balda.Handlers.Tests\" />
   </ItemGroup>
 
 </Project>
