@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
-using System.Text;
+﻿using AutoMapper;
 using EP.DotsBoxes.Data.Models;
 using EP.DotsBoxes.Logic.Models;
 

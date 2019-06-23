@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using EP.DotsBoxes.Data.Models;
+﻿using EP.DotsBoxes.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP.DotsBoxes.Data.Context

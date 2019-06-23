@@ -7,7 +7,10 @@ namespace EP.DotsBoxes.Data.Context
     {
         public PlayerDbContext(DbContextOptions<PlayerDbContext> options) 
             :base(options: options)
-        {}
+        {
+
+        }
+
         public DbSet<PlayerDb> Players {get; set;}
     }
 }
