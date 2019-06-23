@@ -23,8 +23,18 @@ namespace EP.Balda.Data.Models
         public long MapId { get; set; }
 
         /// <summary>
+        ///     InitWord property. Represents initial word on the game map.
+        /// </summary>
+        public string InitWord { get; set; }
+
+        /// <summary>
         ///     PlayerGames property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerGameDb> PlayerGames { get; set; }
+        public IList<PlayerGame> PlayerGames { get; set; }
+
+        /// <summary>
+        ///     PlayerWords property. Used for many-to-many relationships.
+        /// </summary>
+        public IList<PlayerWord> PlayerWords { get; set; }
     }
 }

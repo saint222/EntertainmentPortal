@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using EP.Balda.Logic.Models;
+using EP.Balda.Data.Models;
 
 namespace EP.Balda.Logic.Handlers
 {
@@ -24,21 +25,27 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Result<Cell>> Handle(AddLetterToCellCommand request, CancellationToken cancellationToken)
         {
-            var result = _context.Cells.SingleOrDefault(c => c.Id == request.Id);
+            var cellDb = await (_context.Cells
+                .Where(c => c.Id == request.Id)
+                .FirstOrDefaultAsync<CellDb>());
+                
+            if(cellDb == null)
+                return Result.Fail<Cell>($"There is no cell with id {request.Id} in database");
 
-            if(result == null)
+            if(cellDb.Letter == null)
             {
-                return Result.Fail<Cell>($"There is no id {request.Id} in database");
+                cellDb.Letter = request.Letter;
             }
-
-            result.Letter = request.Letter;
+            else
+            {
+                return Result.Fail<Cell>("Cell already contains letter");
+            }
 
             try
             {
-                
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                await _context.SaveChangesAsync(cancellationToken);
 
-                return Result.Ok(_mapper.Map<Cell>(result));
+                return Result.Ok(_mapper.Map<Cell>(cellDb));
             }
             catch (DbUpdateException ex)
             {

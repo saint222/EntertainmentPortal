@@ -20,6 +20,6 @@ namespace EP.Balda.Data.Models
         /// <summary>
         ///     PlayerWords property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerWordDb> PlayerWords { get; set; }
+        public IList<PlayerWord> PlayerWords { get; set; }
     }
 }

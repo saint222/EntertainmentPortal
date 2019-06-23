@@ -1,4 +1,4 @@
-﻿namespace EP.Balda.Logic.Models
+﻿namespace EP.Balda.Data.Models
 {
     /// <summary>
     ///     Table to form many-to-many relations.
@@ -13,7 +13,7 @@
         /// <summary>
         ///     Player property. Navigation property of Player.
         /// </summary>
-        public Player Player { get; set; }
+        public PlayerDb Player { get; set; }
 
         /// <summary>
         ///     GameId property. Represents Id of Game.
@@ -23,6 +23,6 @@
         /// <summary>
         ///     Game property. Navigation property of Game.
         /// </summary>
-        public Game Game { get; set; }
+        public GameDb Game { get; set; }
     }
 }

@@ -4,7 +4,8 @@ using MediatR;
 
 namespace EP.Balda.Logic.Commands
 {
-    public class CreateNewMapCommand : IRequest<Result<Map>>
+    public class DeletePlayerCommand : IRequest<Result<Player>>
     {
+        public long Id { get; set; }
     }
 }

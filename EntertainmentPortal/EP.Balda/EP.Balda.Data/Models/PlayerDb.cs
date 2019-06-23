@@ -34,33 +34,23 @@ namespace EP.Balda.Data.Models
         public int Score { get; set; }
 
         /// <summary>
-        ///     IsMoveAllowed property. Represents player's availability of making move in the game.
+        ///     IsMoveAllowed property. Represents player's turn in the game.
         /// </summary>
         public bool IsMoveAllowed { get; set; }
-
-        /// <summary>
-        ///     WordId property. Represents Id of word player choose per game.
-        /// </summary>
-        public long WordId { get; set; }
-
-        /// <summary>
-        ///     GameId property. Represents Id of Game player plays.
-        /// </summary>
-        public long GameId { get; set; }
-
+        
         /// <summary>
         ///     PlayerGames property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerGameDb> PlayerGames { get; set; }
+        public IList<PlayerGame> PlayerGames { get; set; }
 
         /// <summary>
         ///     PlayerWords property. Used for many-to-many relationships.
         /// </summary>
-        public ICollection<PlayerWordDb> PlayerWords { get; set; }
+        public IList<PlayerWord> PlayerWords { get; set; }
 
         /// <summary>
         ///     Created property. Represents the data when player profile was created.
         /// </summary>
-        public DateTime Created { get; set; } = DateTime.UtcNow;
+        public DateTime Created { get; set; }
     }
 }
