@@ -1,6 +1,6 @@
 import { GameData } from './../../models/game-data';
 import { GameService } from './../../services/game.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpResponseBase } from '@angular/common/http';
 
 @Component({
@@ -9,15 +9,11 @@ import { HttpResponseBase } from '@angular/common/http';
   styleUrls: ['./game-field.component.sass']
 })
 export class GameFieldComponent implements OnInit {
-  gameData: GameData = null;
+  @Input() gameFieldData: GameData = null;
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.gameService.createGame().subscribe(b => {
-      this.gameData = b;
-    },
-      (err: HttpResponseBase) => console.log(err.statusText));
-  }
 
+  }
 }

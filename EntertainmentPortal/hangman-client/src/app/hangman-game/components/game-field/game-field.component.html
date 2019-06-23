@@ -1,4 +1,8 @@
-<div>Errors: {{gameData.userErrors}}</div>
-<div>Id: {{gameData.id}} </div>
-<div>Correct Letters: {{gameData.correctLetters}}</div>
-<div>Alphabet: {{gameData.alphabet}}</div>
+<div>Errors: {{gameFieldData.userErrors}}</div>
+<div>Id: {{gameFieldData.id}} </div>
+<div >Correct Letters:
+  <span *ngFor="let item of gameFieldData.correctLetters" >{{item}} </span>
+</div>
+<div>Alphabet:
+    <app-alphabet-buttons [gameDataAlphabet]= "gameFieldData">  </app-alphabet-buttons>
+</div>
