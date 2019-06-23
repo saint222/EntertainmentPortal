@@ -27,27 +27,27 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Result<Player>> Handle(AddWordToPlayerCommand request, CancellationToken cancellationToken)
         {
-            var player = await (_context.Players
+            var player = await _context.Players
                 .Where(p => p.Id == request.Id)
-                .FirstOrDefaultAsync<PlayerDb>());
+                .FirstOrDefaultAsync(cancellationToken);
 
             if (player == null)
                 return Result.Fail<Player>($"There is no player's id {request.Id} in database");
 
             var playerGame = await _context.PlayerGames
-                .FirstOrDefaultAsync(p => p.PlayerId == request.Id & p.GameId == request.GameId);
+                .FirstOrDefaultAsync(p => p.PlayerId == request.Id & p.GameId == request.GameId, cancellationToken);
                 
             if(playerGame == null)
                 return Result.Fail<Player>($"There is no relation of player's id {request.Id} with game's id {request.GameId} in database");
 
-            var game = await _context.Games.Where(g => g.Id == request.GameId).FirstOrDefaultAsync();
-            var map = await _context.Maps.Where(m => m.Id == game.MapId).Include(m => m.Cells).FirstOrDefaultAsync();
+            var game = await _context.Games.Where(g => g.Id == request.GameId).FirstOrDefaultAsync(cancellationToken);
+            var map = await _context.Maps.Where(m => m.Id == game.MapId).Include(m => m.Cells).FirstOrDefaultAsync(cancellationToken);
 
             var cellsFormWord = new List<CellDb>(); 
 
             foreach (var id in request.CellsIdFormWord)
             {
-                var cell = map.Cells.Where(c => c.Id == id).FirstOrDefault();
+                var cell = map.Cells.FirstOrDefault(c => c.Id == id);
 
                 if(cell == null)
                 {
@@ -58,7 +58,7 @@ namespace EP.Balda.Logic.Handlers
             }
 
             if (!IsWordCorrect(cellsFormWord))
-                return Result.Fail<Player>($"Some empty cells are chosen");           
+                return Result.Fail<Player>("Some empty cells are chosen");           
 
             var word = GetSelectedWord(cellsFormWord);
 
@@ -68,20 +68,20 @@ namespace EP.Balda.Logic.Handlers
             if (wordRu == null)
                 return Result.Fail<Player>($"There is no word {word} in word database");
 
-            var playerWordDb = new PlayerWord()
+            var playerWordDb = new PlayerWord
             {
                 PlayerId = request.Id,
                 WordId = wordRu.Id,
                 GameId = request.GameId
             };
 
-            var playerword = await _context.PlayerWords
-                .FirstOrDefaultAsync(pw => pw.GameId == request.GameId & pw.WordId == wordRu.Id);
+            var playerWord = await _context.PlayerWords
+                .FirstOrDefaultAsync(pw => pw.GameId == request.GameId & pw.WordId == wordRu.Id, cancellationToken);
 
             //TODO Add initial word check
 
-            if (playerword != null)
-                return Result.Fail<Player>($"Word has already been used");
+            if (playerWord != null)
+                return Result.Fail<Player>("Word has already been used");
 
             //TODO Add when create player
 
@@ -110,7 +110,7 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="word">Parameter requires List of Cell argument.</param>
         /// <returns>returns true if this is the correct word</returns>
-        public bool IsWordCorrect(List<CellDb> word)
+        public static bool IsWordCorrect(List<CellDb> word)
         {
             var areLettersCorrect = false;
 
@@ -163,11 +163,9 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="words">Parameter requires &lt;IEnumerable&lt;Cell&gt;&gt; argument.</param>
         /// <returns>The method returns word from the game map.</returns>
-        public string GetSelectedWord(List<CellDb> words)
+        public static string GetSelectedWord(List<CellDb> words)
         {
-            var word = "";
-            foreach (var cell in words) word += cell.Letter;
-            return word;
+            return words.Aggregate("", (current, cell) => current + cell.Letter);
         }
     }
 }

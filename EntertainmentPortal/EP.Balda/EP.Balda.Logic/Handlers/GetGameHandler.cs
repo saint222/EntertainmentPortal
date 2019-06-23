@@ -27,7 +27,7 @@ namespace EP.Balda.Logic.Handlers
         {
             var gameDb = await (_context.Games
                 .Where(g => g.Id == request.Id)
-                .FirstOrDefaultAsync<GameDb>());
+                .FirstOrDefaultAsync(cancellationToken));
 
             return gameDb == null? 
                 Maybe<Game>.None : 

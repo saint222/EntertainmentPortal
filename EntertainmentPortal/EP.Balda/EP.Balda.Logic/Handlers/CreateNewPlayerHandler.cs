@@ -17,14 +17,15 @@ namespace EP.Balda.Logic.Handlers
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
-        
+
         public CreateNewPlayerHandler(BaldaGameDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public async Task<Result<Player>> Handle(CreateNewPlayerCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Player>> Handle(CreateNewPlayerCommand request,
+                                                 CancellationToken cancellationToken)
         {
             var playerDb = new PlayerDb
             {
