@@ -9,18 +9,25 @@ namespace EP.WordsMaker.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActionController : ControllerBase
+    public class WordController : ControllerBase
     {
         // GET: api/Action
         [HttpGet]
-        public IEnumerable<string> GetAllActions()
+        public IEnumerable<string> GetAllWords(int id)
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Action/5
-        [HttpGet("{id}")]
-        public string GetAction(int id)
+        // GET: api/Action
+        [HttpGet]
+        public IEnumerable<string> GetKeyWord()
+        {
+	        return new string[] { "value1", "value2" };
+        }
+
+		// GET: api/Action/5
+		[HttpGet("{id}")]
+        public string GetWord(int id)
         {
             return "value";
         }

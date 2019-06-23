@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EP.WordsMaker.Data.Models
 {
-	class GameDb
+	public class GameDb
 	{
 		/// <summary>
 		/// ID property
