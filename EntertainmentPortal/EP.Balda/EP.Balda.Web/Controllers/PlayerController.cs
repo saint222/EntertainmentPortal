@@ -87,7 +87,7 @@ namespace EP.Balda.Web.Controllers
                 $"Parameters: Id = {model.Id}");
 
             var result = await _mediator.Send(model);
-            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
+            return result.IsSuccess ? (IActionResult)NoContent() : BadRequest(result.Error);
         }
     }
 }

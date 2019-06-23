@@ -46,6 +46,8 @@ namespace EP.Balda.Web.Controllers
             "Game can't be created")]
         public async Task<IActionResult> CreateNewGameAsync([FromBody]CreateNewGameCommand model)
         {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: PlayerId = {model.PlayerId}, MapSize = {model.MapSize}");
+
             var result = await _mediator.Send(model);
 
             if (result.IsFailure)
@@ -53,7 +55,7 @@ namespace EP.Balda.Web.Controllers
                 _logger.LogWarning($"Action: { ControllerContext.ActionDescriptor.ActionName} : - game can't be created");
                 return BadRequest(result.Error);
             }
-            return Created("", result.Value);
+            return Created("api/game", result.Value);
         }
     }
 }
