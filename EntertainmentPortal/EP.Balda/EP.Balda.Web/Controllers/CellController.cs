@@ -52,17 +52,6 @@ namespace EP.Balda.Web.Controllers
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameters: Id = {model.Id}, Letter = {model.Letter}");
 
-<<<<<<< HEAD
-            var result = await _mediator.Send(model);
-            
-            if(result.IsFailure)
-            {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"Id = {model.Id}, Letter = {model.Letter}) - Letter can't be written");
-                return BadRequest(result.Error);
-            }
-            return Ok(result.Value);
-=======
             var (isSuccess, isFailure, value, error) = await _mediator.Send(model);
 
             if (isSuccess)
@@ -74,7 +63,6 @@ namespace EP.Balda.Web.Controllers
             _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
                                $"Id = {model.Id}, Letter = {model.Letter}) - Letter can't be written");
             return BadRequest(error);
->>>>>>> dev_s
         }
     }
 }

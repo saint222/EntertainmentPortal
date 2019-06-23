@@ -27,46 +27,28 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Result<Player>> Handle(AddWordToPlayerCommand request, CancellationToken cancellationToken)
         {
-<<<<<<< HEAD
-            var player = await (_context.Players
-                .Where(p => p.Id == request.Id)
-                .FirstOrDefaultAsync<PlayerDb>());
-=======
             var player = await _context.Players
                 .Where(p => p.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
->>>>>>> dev_s
 
             if (player == null)
                 return Result.Fail<Player>($"There is no player's id {request.Id} in database");
 
             var playerGame = await _context.PlayerGames
-<<<<<<< HEAD
-                .FirstOrDefaultAsync(p => p.PlayerId == request.Id & p.GameId == request.GameId);
-=======
                 .FirstOrDefaultAsync(p => p.PlayerId == request.Id & p.GameId == request.GameId, cancellationToken);
->>>>>>> dev_s
                 
             if(playerGame == null)
                 return Result.Fail<Player>($"There is no relation of player's id {request.Id} with game's id {request.GameId} in database");
 
-<<<<<<< HEAD
-            var game = await _context.Games.Where(g => g.Id == request.GameId).FirstOrDefaultAsync();
-            var map = await _context.Maps.Where(m => m.Id == game.MapId).Include(m => m.Cells).FirstOrDefaultAsync();
-=======
             var game = await _context.Games.Where(g => g.Id == request.GameId).FirstOrDefaultAsync(cancellationToken);
             var map = await _context.Maps.Where(m => m.Id == game.MapId).Include(m => m.Cells).FirstOrDefaultAsync(cancellationToken);
->>>>>>> dev_s
+
 
             var cellsFormWord = new List<CellDb>(); 
 
             foreach (var id in request.CellsIdFormWord)
             {
-<<<<<<< HEAD
-                var cell = map.Cells.Where(c => c.Id == id).FirstOrDefault();
-=======
                 var cell = map.Cells.FirstOrDefault(c => c.Id == id);
->>>>>>> dev_s
 
                 if(cell == null)
                 {
@@ -77,11 +59,7 @@ namespace EP.Balda.Logic.Handlers
             }
 
             if (!IsWordCorrect(cellsFormWord))
-<<<<<<< HEAD
-                return Result.Fail<Player>($"Some empty cells are chosen");           
-=======
                 return Result.Fail<Player>("Some empty cells are chosen");           
->>>>>>> dev_s
 
             var word = GetSelectedWord(cellsFormWord);
 
@@ -91,26 +69,13 @@ namespace EP.Balda.Logic.Handlers
             if (wordRu == null)
                 return Result.Fail<Player>($"There is no word {word} in word database");
 
-<<<<<<< HEAD
-            var playerWordDb = new PlayerWord()
-=======
             var playerWordDb = new PlayerWord
->>>>>>> dev_s
             {
                 PlayerId = request.Id,
                 WordId = wordRu.Id,
                 GameId = request.GameId
             };
 
-<<<<<<< HEAD
-            var playerword = await _context.PlayerWords
-                .FirstOrDefaultAsync(pw => pw.GameId == request.GameId & pw.WordId == wordRu.Id);
-
-            //TODO Add initial word check
-
-            if (playerword != null)
-                return Result.Fail<Player>($"Word has already been used");
-=======
             var playerWord = await _context.PlayerWords
                 .FirstOrDefaultAsync(pw => pw.GameId == request.GameId & pw.WordId == wordRu.Id, cancellationToken);
 
@@ -118,7 +83,6 @@ namespace EP.Balda.Logic.Handlers
 
             if (playerWord != null)
                 return Result.Fail<Player>("Word has already been used");
->>>>>>> dev_s
 
             //TODO Add when create player
 
@@ -147,11 +111,7 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="word">Parameter requires List of Cell argument.</param>
         /// <returns>returns true if this is the correct word</returns>
-<<<<<<< HEAD
-        public bool IsWordCorrect(List<CellDb> word)
-=======
         public static bool IsWordCorrect(List<CellDb> word)
->>>>>>> dev_s
         {
             var areLettersCorrect = false;
 
@@ -204,17 +164,9 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="words">Parameter requires &lt;IEnumerable&lt;Cell&gt;&gt; argument.</param>
         /// <returns>The method returns word from the game map.</returns>
-<<<<<<< HEAD
-        public string GetSelectedWord(List<CellDb> words)
-        {
-            var word = "";
-            foreach (var cell in words) word += cell.Letter;
-            return word;
-=======
         public static string GetSelectedWord(List<CellDb> words)
         {
             return words.Aggregate("", (current, cell) => current + cell.Letter);
->>>>>>> dev_s
         }
     }
 }

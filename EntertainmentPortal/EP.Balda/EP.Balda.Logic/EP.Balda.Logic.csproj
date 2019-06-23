@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Handlers\DeletePlayerHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="AutoMapper.Collection" Version="5.0.0" />
     <PackageReference Include="ConfigureAwait.Fody" Version="3.1.0" />
@@ -20,6 +24,10 @@
 
   <ItemGroup>
     <Folder Include="Validators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Handlers\DeletePlayerHandler.cs" />
   </ItemGroup>
 
 </Project>
