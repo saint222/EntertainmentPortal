@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
+    [Fody.ConfigureAwait(true)]
     public class CreateDataBaseHandler : AsyncRequestHandler<CreateDatabaseCommand>
     {
         private readonly BaldaGameDbContext _context;
