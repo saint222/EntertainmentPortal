@@ -8,6 +8,7 @@ using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Profiles;
 using EP.Sudoku.Logic.Queries;
 using EP.Sudoku.Logic.Validators;
+using EP.Sudoku.Web.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -43,7 +44,12 @@ namespace EP.Sudoku.Web
             services.AddSwaggerDocument();
             services.AddSudokuServices();
             services.AddCors(); // to enable CrossOriginResourceSharing
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddMvc(opt =>
+            {
+                opt.Filters.Clear();
+                opt.Filters.Add(typeof(GlobalExceptionFilter));
+
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(cfg =>
                 {
                     cfg.RegisterValidatorsFromAssemblyContaining<ChangeCellValueValidator>();

@@ -1,0 +1,84 @@
+2019-06-23 21:02:54.596 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-23 21:02:58.523 +03:00 [Error] There is not a player with the Id '100'...
+2019-06-23 21:02:58.640 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ProblemDetails"'.
+2019-06-23 21:02:58.744 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-23 21:04:39.075 +03:00 [Information] CORS policy execution successful.
+2019-06-23 21:04:39.095 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:04:41.408 +03:00 [Error] Object reference not set to an instance of an object.
+2019-06-23 21:04:41.530 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-23 21:04:41.927 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:06:01.924 +03:00 [Information] CORS policy execution successful.
+2019-06-23 21:06:01.942 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:06:02.969 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-23 21:06:02.979 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:06:07.227 +03:00 [Information] CORS policy execution successful.
+2019-06-23 21:06:07.236 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:06:07.610 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-23 21:06:07.617 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:06:54.504 +03:00 [Information] CORS policy execution successful.
+2019-06-23 21:06:54.514 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:06:54.883 +03:00 [Error] Object reference not set to an instance of an object.
+2019-06-23 21:06:54.892 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-23 21:06:54.910 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:41:19.476 +03:00 [Information] CORS policy execution successful.
+2019-06-23 21:41:19.671 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:41:20.426 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 21:41:20.485 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:42:37.802 +03:00 [Information] CORS policy execution successful.
+2019-06-23 21:42:37.826 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:42:41.188 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-23 21:42:41.211 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:47:37.467 +03:00 [Information] CORS policy execution successful.
+2019-06-23 21:47:37.696 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:47:38.687 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 21:47:38.760 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:52:39.363 +03:00 [Information] CORS policy execution successful.
+2019-06-23 21:52:39.648 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 21:52:40.455 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 21:52:40.514 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:08:58.666 +03:00 [Information] CORS policy execution successful.
+2019-06-23 22:08:58.938 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:08:59.531 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 22:08:59.579 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:12:06.253 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-23 22:12:08.860 +03:00 [Error] There is not a player with the Id '100'...
+2019-06-23 22:12:08.925 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ProblemDetails"'.
+2019-06-23 22:12:08.983 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-23 22:12:53.258 +03:00 [Information] CORS policy execution successful.
+2019-06-23 22:12:53.269 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:12:53.876 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 22:12:53.898 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:19:36.557 +03:00 [Information] CORS policy execution successful.
+2019-06-23 22:19:36.890 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:19:37.714 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 22:19:37.793 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:25:36.120 +03:00 [Information] CORS policy execution successful.
+2019-06-23 22:25:36.353 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:25:37.099 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 22:25:37.172 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:44:06.370 +03:00 [Information] CORS policy execution successful.
+2019-06-23 22:44:06.650 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:44:08.524 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 22:44:08.668 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 22:51:59.692 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-23 22:52:02.136 +03:00 [Error] There is not a player with the Id '100'...
+2019-06-23 22:52:02.171 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ProblemDetails"'.
+2019-06-23 22:52:02.199 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-06-23 23:02:33.611 +03:00 [Information] CORS policy execution successful.
+2019-06-23 23:02:33.951 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 23:02:34.892 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 23:02:34.936 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 23:13:03.896 +03:00 [Information] CORS policy execution successful.
+2019-06-23 23:13:04.202 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 23:13:04.964 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 23:13:05.006 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 23:27:51.679 +03:00 [Information] CORS policy execution successful.
+2019-06-23 23:27:51.895 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 23:27:52.700 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 23:27:52.746 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 23:30:42.584 +03:00 [Information] CORS policy execution successful.
+2019-06-23 23:30:44.292 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'.
+2019-06-23 23:38:15.281 +03:00 [Information] CORS policy execution successful.
+2019-06-23 23:38:15.524 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-23 23:38:16.468 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-23 23:38:16.522 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
