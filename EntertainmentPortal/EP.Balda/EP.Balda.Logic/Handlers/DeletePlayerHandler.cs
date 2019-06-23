@@ -24,20 +24,20 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Result<Player>> Handle(DeletePlayerCommand request, CancellationToken cancellationToken)
         {
-            var result = await (_context.Players.
-                Where(p => p.Id == request.Id)
+            var playerDb = await (_context.Players
+                .Where(p => p.Id == request.Id)
                 .FirstOrDefaultAsync());
 
-            if(result == null)
+            if(playerDb == null)
                 return Result.Fail<Player>($"There is no player with id {request.Id} in DB");
 
-            _context.Players.Remove(result);
+            _context.Players.Remove(playerDb);
 
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return Result.Ok(_mapper.Map<Player>(result));
+                return Result.Ok(_mapper.Map<Player>(playerDb));
             }
             catch (DbUpdateException ex)
             {

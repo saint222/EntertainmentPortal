@@ -26,7 +26,7 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Result<Player>> Handle(CreateNewPlayerCommand request, CancellationToken cancellationToken)
         {
-            var model = new PlayerDb
+            var playerDb = new PlayerDb
             {
                 NickName = request.NickName,
                 Login = request.Login,
@@ -34,13 +34,13 @@ namespace EP.Balda.Logic.Handlers
                 Created = DateTime.UtcNow
             };
 
-            _context.Players.Add(model);
+            _context.Players.Add(playerDb);
 
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return Result.Ok(_mapper.Map<Player>(model));
+                return Result.Ok(_mapper.Map<Player>(playerDb));
             }
             catch (DbUpdateException ex)
             {

@@ -56,6 +56,11 @@ namespace EP.Balda.Logic.Handlers
 
             gameDb.PlayerGames.Add(playerGame);
 
+            gameDb = await (_context.Games
+                .Where(g => g.Id == request.PlayerId)
+                .Include(g => g.Map)
+                .FirstOrDefaultAsync<GameDb>());
+
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);

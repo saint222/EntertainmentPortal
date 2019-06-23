@@ -66,6 +66,7 @@ namespace EP.Balda.Data.Context
 
             var mapEntity = modelBuilder.Entity<MapDb>();
             mapEntity.HasKey(m => m.Id);
+            mapEntity.Property(m => m.Size).IsRequired();
             mapEntity.HasMany(m => m.Cells).WithOne();
 
             var cellEntity = modelBuilder.Entity<CellDb>();

@@ -25,13 +25,13 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Maybe<Map>> Handle(GetMap request, CancellationToken cancellationToken)
         {
-            var result = await (_context.Maps.
-                Where(m => m.Id == request.Id).
-                FirstOrDefaultAsync<MapDb>());
+            var mapDb = await (_context.Maps
+                .Where(m => m.Id == request.Id)
+                .FirstOrDefaultAsync<MapDb>());
 
-            return result == null ? 
+            return mapDb == null ? 
                 Maybe<Map>.None : 
-                Maybe<Map>.From(_mapper.Map<Map>(result));
+                Maybe<Map>.From(_mapper.Map<Map>(mapDb));
         }
     }
 }

@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <Folder Include="DbStore\" />
-    <Folder Include="Migrations\GameDbMigrations\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

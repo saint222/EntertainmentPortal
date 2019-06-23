@@ -25,13 +25,13 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Maybe<Cell>> Handle(GetCell request, CancellationToken cancellationToken)
         {
-            var result = await (_context.Cells.
-                Where(c => c.Id == request.Id).
-                FirstOrDefaultAsync<CellDb>());
+            var cellDb = await (_context.Cells
+                .Where(c => c.Id == request.Id)
+                .FirstOrDefaultAsync<CellDb>());
 
-            return result == null ? 
+            return cellDb == null ? 
                 Maybe<Cell>.None : 
-                Maybe<Cell>.From(_mapper.Map<Cell>(result));
+                Maybe<Cell>.From(_mapper.Map<Cell>(cellDb));
         }
     }
 }

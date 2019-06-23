@@ -25,16 +25,16 @@ namespace EP.Balda.Logic.Handlers
 
         public async Task<Result<Cell>> Handle(AddLetterToCellCommand request, CancellationToken cancellationToken)
         {
-            var result = await (_context.Cells
+            var cellDb = await (_context.Cells
                 .Where(c => c.Id == request.Id)
                 .FirstOrDefaultAsync<CellDb>());
                 
-            if(result == null)
+            if(cellDb == null)
                 return Result.Fail<Cell>($"There is no cell with id {request.Id} in database");
 
-            if(result.Letter == null)
+            if(cellDb.Letter == null)
             {
-                result.Letter = request.Letter;
+                cellDb.Letter = request.Letter;
             }
             else
             {
@@ -45,7 +45,7 @@ namespace EP.Balda.Logic.Handlers
             {
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return Result.Ok(_mapper.Map<Cell>(result));
+                return Result.Ok(_mapper.Map<Cell>(cellDb));
             }
             catch (DbUpdateException ex)
             {

@@ -34,7 +34,7 @@ namespace EP.Balda.Data.Models
         public int Score { get; set; }
 
         /// <summary>
-        ///     IsMoveAllowed property. Represents player's availability of making move in the game.
+        ///     IsMoveAllowed property. Represents player's turn in the game.
         /// </summary>
         public bool IsMoveAllowed { get; set; }
         

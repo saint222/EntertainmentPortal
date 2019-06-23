@@ -26,11 +26,11 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Maybe<IEnumerable<Player>>> Handle(
             GetAllPlayers request, CancellationToken cancellationToken)
         {
-            var result = await _context.Players
+            var playersDb = await _context.Players
                 .ToArrayAsync(cancellationToken);
 
-            return result.Any()
-                ? Maybe<IEnumerable<Player>>.From(_mapper.Map<IEnumerable<Player>>(result))
+            return playersDb.Any()
+                ? Maybe<IEnumerable<Player>>.From(_mapper.Map<IEnumerable<Player>>(playersDb))
                 : Maybe<IEnumerable<Player>>.None;
         }
     }

@@ -52,8 +52,21 @@ namespace EP.Balda.Logic.Handlers
                 GameId = request.GameId
             };
 
+            var playerword = _context.PlayerWords
+                .FirstOrDefaultAsync(pw => pw.GameId == request.GameId & pw.WordId == wordRu.Id);
+
+            //TODO Add initial word check
+
+            if (playerword != null)
+                return Result.Fail<Player>($"Word has already been used");
+
             //TODO Add when create player
-            player.PlayerWords = new List<PlayerWord>();
+
+            if(player.PlayerWords == null)
+            {
+                player.PlayerWords = new List<PlayerWord>();
+            }
+            
             player.PlayerWords.Add(playerWordDb);
 
             try

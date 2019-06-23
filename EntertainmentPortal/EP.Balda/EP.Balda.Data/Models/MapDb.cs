@@ -13,6 +13,11 @@ namespace EP.Balda.Data.Models
         public long Id { get; set; }
 
         /// <summary>
+        ///     Size property. Represents size of playing field.
+        /// </summary>
+        public int Size { get; set; }
+
+        /// <summary>
         ///     Cells property. Represents Cells of map.
         /// </summary>
         public IList<CellDb> Cells { get; set; }
