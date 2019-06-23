@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
-using EP.Balda.Data.Models;
+using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class
-        GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<PlayerDb>>
-        >
+    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<Player>>>
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
@@ -25,16 +23,15 @@ namespace EP.Balda.Logic.Handlers
             _context = context;
         }
 
-        public async Task<Maybe<IEnumerable<PlayerDb>>> Handle(
+        public async Task<Maybe<IEnumerable<Player>>> Handle(
             GetAllPlayers request, CancellationToken cancellationToken)
         {
-            var result = await _context.Players
-                .ToArrayAsync(cancellationToken)
-                .ConfigureAwait(false);
+            var playersDb = await _context.Players
+                .ToArrayAsync(cancellationToken);
 
-            return result.Any()
-                ? Maybe<IEnumerable<PlayerDb>>.None
-                : Maybe<IEnumerable<PlayerDb>>.From(result);
+            return playersDb.Any()
+                ? Maybe<IEnumerable<Player>>.From(_mapper.Map<IEnumerable<Player>>(playersDb))
+                : Maybe<IEnumerable<Player>>.None;
         }
     }
 }

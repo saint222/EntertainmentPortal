@@ -1,6 +1,8 @@
 ﻿using EP.Balda.Data.Services;
 using Microsoft.Extensions.DependencyInjection;
 
+[assembly: Fody.ConfigureAwait(false)]
+
 namespace EP.Balda.Logic.Services
 {
     /// <summary>

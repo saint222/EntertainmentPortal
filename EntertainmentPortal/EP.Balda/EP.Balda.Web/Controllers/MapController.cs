@@ -21,15 +21,15 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/map/{id}")]
+        [HttpGet("api/map")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Map not found")]
-        public async Task<IActionResult> GetMapAsync([FromRoute]long id)
+        public async Task<IActionResult> GetMapAsync([FromQuery]GetMap model)
         {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
 
-            var result = await _mediator.Send(new GetMap(id)).ConfigureAwait(false);
+            var result = await _mediator.Send(model);
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
     }
