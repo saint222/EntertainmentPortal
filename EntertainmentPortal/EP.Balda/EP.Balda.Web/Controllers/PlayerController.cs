@@ -73,7 +73,7 @@ namespace EP.Balda.Web.Controllers
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
                     $"Id = {model.Id}, Word = {model.Word}) - Word can't be written");
-                return BadRequest();
+                return BadRequest(result.Error);
             }
             return Ok(result.Value);
         }

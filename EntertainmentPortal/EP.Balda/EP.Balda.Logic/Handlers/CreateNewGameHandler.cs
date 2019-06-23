@@ -29,8 +29,7 @@ namespace EP.Balda.Logic.Handlers
             //TODO: add cells initializator
             var player = await (_context.Players
                 .Where(p => p.Id == request.PlayerId)
-                .FirstOrDefaultAsync<PlayerDb>())
-                .ConfigureAwait(false);
+                .FirstOrDefaultAsync<PlayerDb>());
 
             if (player == null)
                 return Result.Fail<Game>($"There is no player's id {request.PlayerId} in database");
@@ -42,7 +41,7 @@ namespace EP.Balda.Logic.Handlers
             var gameDb = new GameDb()
             {
                 Map = mapDb,
-                MapId = mapDb.Id
+                MapId = mapDb.Id,
             };
 
             _context.Games.Add(gameDb);
@@ -59,8 +58,7 @@ namespace EP.Balda.Logic.Handlers
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken)
-                    .ConfigureAwait(false);
+                await _context.SaveChangesAsync(cancellationToken);
 
                 return Result.Ok(_mapper.Map<Game>(gameDb));
             }

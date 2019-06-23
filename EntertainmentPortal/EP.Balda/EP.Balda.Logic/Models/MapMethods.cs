@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using EP.Balda.Logic.Interfaces;
 
 namespace EP.Balda.Logic.Models
 {
 
-        public class MapMethods : IMap, IGame
+    public class MapMethods
         {
             /// <summary>
             ///     Id property. Represents playing field Id.
             /// </summary>
-            public long Id { get; private set; }
+            public long Id { get; set; }
 
             /// <summary>
             ///     Fields property. Represents playing field as array of cells.

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using EP.Balda.Data.Context;
-using EP.Balda.Logic.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Models
@@ -25,7 +24,7 @@ namespace EP.Balda.Logic.Models
         /// <summary>
         ///     The field stores an object of the map in the game.
         /// </summary>
-        public IMap Map { get; }
+        public Map Map { get; set; }
 
         /// <summary>
         ///     MapId property. Represents Id of Map.
@@ -53,7 +52,7 @@ namespace EP.Balda.Logic.Models
         /// <param name="players">
         ///     Parameter players requires List&lt;Player&gt; argument.
         /// </param>
-        public Game(IMap map, BaldaGameDbContext context, List<Player> players)
+        public Game(Map map, BaldaGameDbContext context, List<Player> players)
         {
             Map = map;
             Players = players;
@@ -69,12 +68,12 @@ namespace EP.Balda.Logic.Models
         public void PutStartingWordToMap(string word)
         {
             var center = Map.Size / 2;
-            var charDestination = 0;
+            //var charDestination = 0;
 
             word = word.Trim();
-            foreach (var letter in word)
-                Map.GetCell(center, charDestination++).Letter =
-                    letter;
+            //foreach (var letter in word)
+                //Map.GetCell(center, charDestination++).Letter =
+                  //  letter;
         }
 
         /// <summary>

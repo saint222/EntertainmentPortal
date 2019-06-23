@@ -27,8 +27,7 @@ namespace EP.Balda.Logic.Handlers
             GetAllPlayers request, CancellationToken cancellationToken)
         {
             var result = await _context.Players
-                .ToArrayAsync(cancellationToken)
-                .ConfigureAwait(false);
+                .ToArrayAsync(cancellationToken);
 
             return result.Any()
                 ? Maybe<IEnumerable<Player>>.From(_mapper.Map<IEnumerable<Player>>(result))

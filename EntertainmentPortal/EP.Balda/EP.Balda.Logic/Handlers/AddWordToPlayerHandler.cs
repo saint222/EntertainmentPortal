@@ -28,18 +28,19 @@ namespace EP.Balda.Logic.Handlers
         {
             var player = await (_context.Players
                 .Where(p => p.Id == request.Id)
-                .FirstOrDefaultAsync<PlayerDb>())
-                .ConfigureAwait(false);
+                .FirstOrDefaultAsync<PlayerDb>());
 
             if (player == null)
                 return Result.Fail<Player>($"There is no player's id {request.Id} in database");
 
-            var playerGame = _context.PlayerGames.Where(p => p.PlayerId == request.Id && p.GameId == request.GameId);
-
+            var playerGame = await _context.PlayerGames
+                .FirstOrDefaultAsync(p => p.PlayerId == request.Id & p.GameId == request.GameId);
+                
             if(playerGame == null)
                 return Result.Fail<Player>($"There is no player's id {request.Id} or game's {request.GameId} in database");
 
-            var wordRu = _context.WordsRu.SingleOrDefault(w => w.Word == request.Word);
+            var wordRu = _context.WordsRu
+                .SingleOrDefault(w => w.Word == request.Word);
 
             if (wordRu == null)
                 return Result.Fail<Player>($"There is no word {request.Word} in word database");
@@ -57,8 +58,7 @@ namespace EP.Balda.Logic.Handlers
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken)
-                    .ConfigureAwait(false);
+                await _context.SaveChangesAsync(cancellationToken);
 
                 return Result.Ok(_mapper.Map<Player>(player));
             }

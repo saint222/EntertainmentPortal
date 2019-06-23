@@ -27,9 +27,8 @@ namespace EP.Balda.Logic.Handlers
         {
             var result = await (_context.Cells
                 .Where(c => c.Id == request.Id)
-                .FirstOrDefaultAsync<CellDb>())
-                .ConfigureAwait(false);
-
+                .FirstOrDefaultAsync<CellDb>());
+                
             if(result == null)
                 return Result.Fail<Cell>($"There is no cell with id {request.Id} in database");
 
@@ -44,8 +43,7 @@ namespace EP.Balda.Logic.Handlers
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken)
-                    .ConfigureAwait(false);
+                await _context.SaveChangesAsync(cancellationToken);
 
                 return Result.Ok(_mapper.Map<Cell>(result));
             }

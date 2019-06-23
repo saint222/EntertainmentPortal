@@ -27,8 +27,7 @@ namespace EP.Balda.Logic.Handlers
         {
             var result = await (_context.Maps.
                 Where(m => m.Id == request.Id).
-                FirstOrDefaultAsync<MapDb>())
-                .ConfigureAwait(false);
+                FirstOrDefaultAsync<MapDb>());
 
             return result == null ? 
                 Maybe<Map>.None : 

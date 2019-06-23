@@ -26,8 +26,7 @@ namespace EP.Balda.Logic.Handlers
         {
             var result = await (_context.Players.
                 Where(p => p.Id == request.Id)
-                .FirstOrDefaultAsync())
-                .ConfigureAwait(false);
+                .FirstOrDefaultAsync());
 
             if(result == null)
                 return Result.Fail<Player>($"There is no player with id {request.Id} in DB");
@@ -36,8 +35,7 @@ namespace EP.Balda.Logic.Handlers
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken).
-                    ConfigureAwait(false);
+                await _context.SaveChangesAsync(cancellationToken);
 
                 return Result.Ok(_mapper.Map<Player>(result));
             }

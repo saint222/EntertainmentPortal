@@ -38,8 +38,7 @@ namespace EP.Balda.Logic.Handlers
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken)
-                    .ConfigureAwait(false);
+                await _context.SaveChangesAsync(cancellationToken);
 
                 return Result.Ok(_mapper.Map<Player>(model));
             }

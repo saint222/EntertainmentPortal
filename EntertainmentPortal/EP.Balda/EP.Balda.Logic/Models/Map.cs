@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using EP.Balda.Logic.Interfaces;
+﻿using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Models
 {
@@ -13,7 +11,12 @@ namespace EP.Balda.Logic.Models
         /// <summary>
         ///     Id property. Represents playing field Id.
         /// </summary>
-        public long Id { get; private set; }
+        public long Id { get; set; }
+
+        /// <summary>
+        ///     Size property. Represents size of playing field.
+        /// </summary>
+        public int Size { get; set; }
 
         /// <summary>
         ///     Fields property. Represents playing field as array of cells.

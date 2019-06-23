@@ -24,12 +24,12 @@
         /// <summary>
         ///     X property. Represents X coordinate of the cell in game map.
         /// </summary>
-        public int X { get; }
+        public int X { get; set; }
 
         /// <summary>
         ///     Y property. Represents Y coordinate of the cell in game map.
         /// </summary>
-        public int Y { get; }
+        public int Y { get; set; }
 
         /// <summary>
         ///     Letter property. Represents letter to store in the cell.

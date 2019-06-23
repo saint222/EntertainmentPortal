@@ -27,8 +27,7 @@ namespace EP.Balda.Logic.Handlers
         {
             var result = await (_context.Cells.
                 Where(c => c.Id == request.Id).
-                FirstOrDefaultAsync<CellDb>())
-                .ConfigureAwait(false);
+                FirstOrDefaultAsync<CellDb>());
 
             return result == null ? 
                 Maybe<Cell>.None : 

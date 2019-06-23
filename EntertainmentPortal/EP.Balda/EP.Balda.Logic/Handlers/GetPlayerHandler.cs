@@ -27,8 +27,7 @@ namespace EP.Balda.Logic.Handlers
         {
             var result = await (_context.Players.
                 Where(p => p.Id == request.Id).
-                FirstOrDefaultAsync<PlayerDb>())
-                .ConfigureAwait(false);
+                FirstOrDefaultAsync<PlayerDb>());
 
             return result == null ? 
                 Maybe<Player>.None : 
