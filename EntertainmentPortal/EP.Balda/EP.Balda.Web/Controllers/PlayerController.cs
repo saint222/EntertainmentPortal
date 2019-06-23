@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EP.Balda.Logic.Commands;
@@ -27,9 +28,16 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Player not found")]
+<<<<<<< HEAD
         public async Task<IActionResult> GetPlayerAsync([FromQuery]GetPlayer model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+=======
+        public async Task<IActionResult> GetPlayerAsync([FromQuery] GetPlayer model)
+        {
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+>>>>>>> dev_s
 
             var result = await _mediator.Send(model);
             return result.HasValue ? (IActionResult) Ok(result.Value) : NotFound();
@@ -49,12 +57,62 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Player can't be created")]
-        public async Task<IActionResult> CreateNewPlayerAsync(CreateNewPlayerCommand model)
+        public async Task<IActionResult> CreateNewPlayerAsync(
+            CreateNewPlayerCommand model)
         {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Player: " +
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Player: " +
                 $"Login = {model.Login}, NickName = {model.NickName}, Password = {model.Password}");
 
+            var (isSuccess, isFailure, value) = await _mediator.Send(model);
+
+            if (isFailure)
+                _logger.LogWarning(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                    $"Login = {model.Login}, NickName = {model.NickName}) - can't be written");
+
+            return isSuccess
+                ? (IActionResult) Created("api/players", value)
+                : BadRequest();
+        }
+
+        [HttpPut("api/player/word")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+            "Invalid data")]
+        public async Task<IActionResult> AddWordAsync(
+            [FromBody] AddWordToPlayerCommand model)
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                             $"Parameters: Id = {model.Id}, GameId = {model.GameId} CellsFormWord = {model.CellsIdFormWord}");
+
+            var (isSuccess, isFailure, value, error) = await _mediator.Send(model);
+            if (isSuccess)
+                _logger.LogInformation(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                    $"The word was written at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+
+            if (!isFailure) return Ok(value);
+            _logger.LogWarning(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                $"Id = {model.Id}, CellsFormWord = {model.CellsIdFormWord}) - here the word can not be written");
+            return BadRequest(error);
+
+        }
+
+        [HttpDelete("api/player/delete")]
+        [SwaggerResponse(HttpStatusCode.NoContent, typeof(Player), Description =
+            "Player deleted")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description =
+            "Player can't be deleted")]
+        public async Task<IActionResult> DeletePlayerAsync(
+            [FromBody] DeletePlayerCommand model)
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                             $"Parameters: Id = {model.Id}");
+
             var result = await _mediator.Send(model);
+<<<<<<< HEAD
             return result.IsSuccess ? (IActionResult) Created("api/players", result.Value) : BadRequest();
         }
 
@@ -88,6 +146,11 @@ namespace EP.Balda.Web.Controllers
 
             var result = await _mediator.Send(model);
             return result.IsSuccess ? (IActionResult)NoContent() : BadRequest(result.Error);
+=======
+            return result.IsSuccess
+                ? (IActionResult) NoContent()
+                : BadRequest(result.Error);
+>>>>>>> dev_s
         }
     }
 }

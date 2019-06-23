@@ -14,22 +14,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class CreateNewGameHandler : IRequestHandler<CreateNewGameCommand, Result<Game>>
+    public class
+        CreateNewGameHandler : IRequestHandler<CreateNewGameCommand, Result<Game>>
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
-        
+
         public CreateNewGameHandler(BaldaGameDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public async Task<Result<Game>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Game>> Handle(CreateNewGameCommand request,
+                                               CancellationToken cancellationToken)
         {
             //TODO: add cells initializator
             var player = await (_context.Players
                 .Where(p => p.Id == request.PlayerId)
+<<<<<<< HEAD
                 .FirstOrDefaultAsync<PlayerDb>());
 
             if (player == null)
@@ -37,11 +40,24 @@ namespace EP.Balda.Logic.Handlers
 
             var map = new Map();
             map.Size = request.MapSize;
+=======
+                .FirstOrDefaultAsync(cancellationToken));
+
+            if (player == null)
+                return Result.Fail<Game>(
+                    $"There is no player's id {request.PlayerId} in database");
+
+            var map = new Map {Size = request.MapSize};
+>>>>>>> dev_s
 
             var mapDb = _mapper.Map<MapDb>(map);
             _context.Maps.Add(mapDb);
 
+<<<<<<< HEAD
             await _context.SaveChangesAsync(); //remove
+=======
+            await _context.SaveChangesAsync(cancellationToken); //remove
+>>>>>>> dev_s
 
             InitMap(mapDb);
 
@@ -67,11 +83,19 @@ namespace EP.Balda.Logic.Handlers
 
             gameDb.PlayerGames.Add(playerGame);
 
+<<<<<<< HEAD
             await _context.SaveChangesAsync(); //remove
 
             var game = await (_context.Games
                 .Where(g => g.Id == gameDb.Id)
                 .FirstOrDefaultAsync<GameDb>());
+=======
+            await _context.SaveChangesAsync(cancellationToken); //remove
+
+            var game = await (_context.Games
+                .Where(g => g.Id == gameDb.Id)
+                .FirstOrDefaultAsync(cancellationToken));
+>>>>>>> dev_s
 
             try
             {
@@ -86,11 +110,17 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
+<<<<<<< HEAD
         ///     The method initializes add cells to DB that represents the game map.
         /// </summary>
         /// <param name="size">
         ///     Parameter size requires an integer argument.
         /// </param>
+=======
+        /// The method initializes add cells to DB that represents the game map.
+        /// </summary>
+        /// <param name="mapDb">Map database projection</param>
+>>>>>>> dev_s
         private async void InitMap(MapDb mapDb)
         {
             var cells = new List<CellDb>();
@@ -114,8 +144,14 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
+<<<<<<< HEAD
         ///     The method puts the starting word on the map.
         /// </summary>
+=======
+        /// The method puts the starting word on the map.
+        /// </summary>
+        /// <param name="mapDb">Map database projection</param>
+>>>>>>> dev_s
         /// <param name="word">Parameter word requires string argument.</param>
         public async void PutStartingWordToMap(MapDb mapDb, string word)
         {
@@ -125,7 +161,13 @@ namespace EP.Balda.Logic.Handlers
             word = word.Trim();
             foreach (var letter in word)
             {
+<<<<<<< HEAD
                 var cellDb = mapDb.Cells.Where(c => c.X == charDestination & c.Y == center).FirstOrDefault();
+=======
+                var cellDb =
+                    mapDb.Cells.FirstOrDefault(
+                        c => c.X == charDestination & c.Y == center);
+>>>>>>> dev_s
                 charDestination++;
                 cellDb.Letter = letter;
             }
@@ -134,24 +176,46 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
+<<<<<<< HEAD
         ///     The method gets the initial word.
         /// </summary>
+=======
+        /// The method gets the initial word.
+        /// </summary>
+        /// <param name="mapDb">Map database projection</param>
+        /// <returns></returns>
+>>>>>>> dev_s
         private string GetStartingWord(MapDb mapDb)
         {
             var word = "";
             var sizeRepo = _context.WordsRu.CountAsync();
+<<<<<<< HEAD
             
             while (word.Length != mapDb.Size)
                 word = _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo.Result)).FirstOrDefaultAsync().Result.Word;
+=======
+
+            while (word.Length != mapDb.Size)
+                word = _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo.Result))
+                    .FirstOrDefaultAsync().Result.Word;
+>>>>>>> dev_s
 
             //word = _dataRepository.Get(RandomWord(sizeRepo));
             return word;
         }
 
         /// <summary>
+<<<<<<< HEAD
         ///     The method choose random initial word.
         /// </summary>
         private int RandomWord(int size)
+=======
+        /// The method choose random initial word.
+        /// </summary>
+        /// <param name="size">Word length</param>
+        /// <returns></returns>
+        private static int RandomWord(int size)
+>>>>>>> dev_s
         {
             var rnd = new Random();
             var next = rnd.Next(0, size - 1);

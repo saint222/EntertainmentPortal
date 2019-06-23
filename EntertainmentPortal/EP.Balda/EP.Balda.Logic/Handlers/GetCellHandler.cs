@@ -27,7 +27,11 @@ namespace EP.Balda.Logic.Handlers
         {
             var cellDb = await (_context.Cells
                 .Where(c => c.Id == request.Id)
+<<<<<<< HEAD
                 .FirstOrDefaultAsync<CellDb>());
+=======
+                .FirstOrDefaultAsync(cancellationToken));
+>>>>>>> dev_s
 
             return cellDb == null ? 
                 Maybe<Cell>.None : 

@@ -1,40 +1,37 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
-using EP.Balda.Data.Models;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class
-        CreateNewPlayerHandler : IRequestHandler<CreateNewPlayerCommand, Result<Player>>
+    public class DeletePlayerHandler : IRequestHandler<DeletePlayerCommand, Result<Player>>
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
 
-        public CreateNewPlayerHandler(BaldaGameDbContext context, IMapper mapper)
+        public DeletePlayerHandler(IMapper mapper, BaldaGameDbContext context)
         {
-            _context = context;
             _mapper = mapper;
+            _context = context;
         }
 
-        public async Task<Result<Player>> Handle(CreateNewPlayerCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Player>> Handle(DeletePlayerCommand request, CancellationToken cancellationToken)
         {
-            var playerDb = new PlayerDb
-            {
-                NickName = request.NickName,
-                Login = request.Login,
-                Password = request.Password,
-                Created = DateTime.UtcNow
-            };
+            var playerDb = await _context.Players
+                .Where(p => p.Id == request.Id)
+                .FirstOrDefaultAsync( cancellationToken);
 
-            _context.Players.Add(playerDb);
+            if(playerDb == null)
+                return Result.Fail<Player>($"There is no player with id {request.Id} in DB");
+
+            _context.Players.Remove(playerDb);
 
             try
             {

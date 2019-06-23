@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
@@ -51,6 +52,7 @@ namespace EP.Balda.Web.Controllers
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameters: Id = {model.Id}, Letter = {model.Letter}");
 
+<<<<<<< HEAD
             var result = await _mediator.Send(model);
             
             if(result.IsFailure)
@@ -60,6 +62,19 @@ namespace EP.Balda.Web.Controllers
                 return BadRequest(result.Error);
             }
             return Ok(result.Value);
+=======
+            var (isSuccess, isFailure, value, error) = await _mediator.Send(model);
+
+            if (isSuccess)
+                _logger.LogInformation(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                    $"Letter {model.Letter} was written at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+
+            if (!isFailure) return Ok(value);
+            _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                               $"Id = {model.Id}, Letter = {model.Letter}) - Letter can't be written");
+            return BadRequest(error);
+>>>>>>> dev_s
         }
     }
 }

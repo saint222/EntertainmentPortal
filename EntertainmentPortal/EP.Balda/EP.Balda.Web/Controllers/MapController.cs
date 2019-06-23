@@ -25,12 +25,22 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Map not found")]
+<<<<<<< HEAD
         public async Task<IActionResult> GetMapAsync([FromQuery]GetMap model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
 
             var result = await _mediator.Send(model);
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
+=======
+        public async Task<IActionResult> GetMapAsync([FromQuery] GetMap model)
+        {
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+
+            var result = await _mediator.Send(model);
+            return result.HasValue ? (IActionResult) Ok(result.Value) : NotFound();
+>>>>>>> dev_s
         }
     }
 }
