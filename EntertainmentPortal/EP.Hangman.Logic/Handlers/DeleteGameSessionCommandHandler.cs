@@ -54,7 +54,7 @@ namespace EP.Hangman.Logic.Handlers
             try
             {
                 _logger.LogInformation("Updating database");
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                await _context.SaveChangesAsync(cancellationToken);
                 _logger.LogInformation("Database was updated");
 
                 return Result.Ok<ControllerData>(null);

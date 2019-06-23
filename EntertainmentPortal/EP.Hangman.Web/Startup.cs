@@ -35,6 +35,8 @@ namespace EP.Hangman.Web
             services.AddMediatR(typeof(CheckLetterCommand).Assembly);
             services.AddAutoMapper(typeof(MapperProfile).Assembly);
             services.AddGameServices();
+            services.AddCors();
+
             services.AddMvc(opt => opt.Filters.Add(typeof(GlobalExceptionFilter)))
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(cfg =>
@@ -51,6 +53,11 @@ namespace EP.Hangman.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(o =>
+                o.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin());
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseOpenApi();
