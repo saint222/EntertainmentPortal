@@ -8,7 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using EP.Balda.Data.Models;
 
 namespace EP.Balda.Logic.Handlers
 {

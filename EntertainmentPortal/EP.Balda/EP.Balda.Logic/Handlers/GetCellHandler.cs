@@ -8,7 +8,6 @@ using AutoMapper;
 using EP.Balda.Data.Context;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using EP.Balda.Data.Models;
 
 namespace EP.Balda.Logic.Handlers
 {

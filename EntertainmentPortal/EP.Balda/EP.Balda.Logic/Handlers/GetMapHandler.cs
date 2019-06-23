@@ -8,7 +8,6 @@ using EP.Balda.Logic.Queries;
 using MediatR;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using EP.Balda.Data.Models;
 
 namespace EP.Balda.Logic.Handlers
 {
