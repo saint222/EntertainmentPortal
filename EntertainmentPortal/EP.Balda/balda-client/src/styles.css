@@ -1,0 +1,36 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body {
+  background-image: url(./assets/images/newspaper.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+
+  background-color: #eae5c7;
+  opacity: 0.8;
+  filter: alpha(Opacity=70);
+  border-radius: 5px;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
