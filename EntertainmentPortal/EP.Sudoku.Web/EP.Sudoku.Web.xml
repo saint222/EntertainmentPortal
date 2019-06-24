@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EP.Sudoku.Web</name>
+    </assembly>
+    <members>
+        <member name="T:EP.Sudoku.Web.Controllers.PlayersController">
+            <summary>
+            Here are CRUD operations that touch upon players of the game.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.PlayersController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EP.Sudoku.Web.Controllers.PlayersController})">
+            <summary>
+            Is used for DI usage.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync">
+            <summary>
+            Fetches all registered players from the Db.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync(System.Int32)">
+            <summary>
+            Fetches a player of the game by the unique Id.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer(EP.Sudoku.Logic.Commands.CreatePlayerCommand)">
+            <summary>
+            Creates a new player and saves information about him/her in the Db.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.PlayersController.EditPlayer(EP.Sudoku.Logic.Commands.UpdatePlayerCommand)">
+            <summary>
+            Changes the known information about a chosen player and saves it in the Db.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.PlayersController.DeletePlayer(System.Int32)">
+            <summary>
+            Removes the whole information about a chosen player from the Db.
+            </summary>
+        </member>
+        <member name="T:EP.Sudoku.Web.Controllers.SessionsController">
+            <summary>
+            Here are CRUD operations that touch upon the game itself.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EP.Sudoku.Web.Controllers.SessionsController})">
+            <summary>
+            Is used for DI usage.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync(System.Int32)">
+            <summary>
+            Fetches a gamesession by the unique Id.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.CreateSession(EP.Sudoku.Logic.Models.Session)">
+            <summary>
+            Creates a new gamesession doue to the set parametrs.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.EditSession(EP.Sudoku.Logic.Commands.UpdateSessionCommand)">
+            <summary>
+            Changes the known information about a gamesession and saves it in the Db.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.SetCellValue(EP.Sudoku.Logic.Commands.SetCellValueCommand)">
+            <summary>
+            Changes the value of a cell durring a gamesession and saves it in the Db.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.GetHint(EP.Sudoku.Logic.Commands.GetHintCommand)">
+            <summary>    
+            Changes the value of a cell after each of three possibilies to get automatically set values durring the game as prompts.
+            </summary>
+        </member>
+    </members>
+</doc>

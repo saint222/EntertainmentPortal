@@ -1507,3 +1507,4 @@ System.AggregateException: One or more errors occurred. (Source sequence doesn't
 2019-06-24 18:29:38.091 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
 2019-06-24 18:29:41.358 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
 2019-06-24 18:29:41.430 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-24 22:39:34.945 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
