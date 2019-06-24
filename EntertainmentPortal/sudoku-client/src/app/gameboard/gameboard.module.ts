@@ -10,6 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
-  exports:[SessionComponent]
+  exports: [SessionComponent]
 })
 export class GameboardModule { }

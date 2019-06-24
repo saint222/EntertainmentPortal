@@ -25,7 +25,7 @@ namespace EP.Sudoku.Logic.Handlers
             playerDb.GameSessionsDb = null;
             _context.Add(playerDb);
             await _context.SaveChangesAsync(cancellationToken);
-            return await Task.FromResult(request.player);
+            return await Task.FromResult(_mapper.Map<Player>(playerDb));
         }
     }
 }

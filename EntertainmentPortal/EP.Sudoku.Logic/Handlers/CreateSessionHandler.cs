@@ -33,7 +33,7 @@ namespace EP.Sudoku.Logic.Handlers
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return await Task.FromResult(request.session);
+            return await Task.FromResult(_mapper.Map<Session>(sessionDb));
         }
     }
 }

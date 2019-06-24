@@ -31,7 +31,10 @@ namespace EP.Sudoku.Logic.Models
         /// </summary>
         public int Y { get; set; }
 
-        public int SessionId { get; set; }
+        /// <summary>
+        /// Is used to provide coinsaidence between a game session and a cell of the gameboard.
+        /// </summary> 
+        public long SessionId { get; set; }
 
     }
 }

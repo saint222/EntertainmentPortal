@@ -1382,3 +1382,128 @@ System.AggregateException: One or more errors occurred. (Source sequence doesn't
 2019-06-24 15:57:21.411 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
 2019-06-24 15:57:22.584 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
 2019-06-24 15:57:22.704 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-24 16:26:46.141 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:26:46.534 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:26:50.096 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:26:50.183 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:29.693 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:29.718 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:29.788 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:27:29.799 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:30.634 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:30.658 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:30.700 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:27:30.731 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:31.162 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:31.176 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:31.228 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:27:31.252 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:31.284 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:31.347 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:31.382 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:27:31.399 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:31.411 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:31.422 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:31.445 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:27:31.466 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:31.761 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:32.112 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:32.194 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:27:32.218 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:32.232 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:32.244 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:32.270 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:27:32.334 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:32.384 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:32.427 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:32.496 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:27:32.516 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:27:36.883 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:36.925 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:27:36.976 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.151 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:46:27.163 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.197 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:46:27.200 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:46:27.212 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.219 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.239 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:46:27.269 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:46:27.280 +03:00 [Error] One or more errors occurred. (Source sequence doesn't contain any elements.)
+2019-06-24 16:46:27.282 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.280 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:46:27.282 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.311 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:46:27.312 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.323 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:46:27.339 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:46:27.343 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.378 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.391 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:46:27.455 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:46:27.554 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 16:46:27.563 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.595 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.447 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:46:27.622 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.697 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.697 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:46:27.719 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.719 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:46:27.755 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:46:27.765 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.781 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:27.799 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:46:27.834 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:46:29.048 +03:00 [Error] One or more errors occurred. (Source sequence doesn't contain any elements.)
+2019-06-24 16:46:29.056 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 16:46:29.065 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 16:47:27.197 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:47:27.247 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:47:28.493 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:47:28.529 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:47:39.238 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:47:40.140 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:47:40.843 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 16:47:44.018 +03:00 [Error] One or more errors occurred. (Source sequence doesn't contain any elements.)
+2019-06-24 16:47:44.062 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 16:47:44.195 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:47:44.456 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 16:47:44.560 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:47:44.768 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:47:45.019 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:47:48.015 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:47:48.234 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:47:48.276 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:47:48.339 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:47:50.237 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:47:50.660 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:47:50.684 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 16:47:51.788 +03:00 [Error] One or more errors occurred. (Source sequence doesn't contain any elements.)
+2019-06-24 16:47:51.820 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 16:47:51.861 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 16:47:56.525 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:47:56.953 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:47:56.971 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 16:47:57.592 +03:00 [Error] One or more errors occurred. (Source sequence doesn't contain any elements.)
+2019-06-24 16:47:57.600 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 16:47:57.610 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 16:48:00.933 +03:00 [Information] CORS policy execution successful.
+2019-06-24 16:48:00.947 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 16:48:00.969 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 16:48:00.979 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 18:14:32.863 +03:00 [Information] CORS policy execution successful.
+2019-06-24 18:14:33.075 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-24 18:14:37.040 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-24 18:14:37.086 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-24 18:19:09.653 +03:00 [Information] CORS policy execution successful.
+2019-06-24 18:19:09.713 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-24 18:19:10.865 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 18:19:11.001 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-24 18:19:49.427 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 18:19:49.831 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 18:19:49.841 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 18:29:37.814 +03:00 [Information] CORS policy execution successful.
+2019-06-24 18:29:38.091 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-06-24 18:29:41.358 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 18:29:41.430 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
