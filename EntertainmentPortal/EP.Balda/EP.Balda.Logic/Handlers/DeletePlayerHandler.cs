@@ -26,9 +26,9 @@ namespace EP.Balda.Logic.Handlers
         {
             var playerDb = await _context.Players
                 .Where(p => p.Id == request.Id)
-                .FirstOrDefaultAsync( cancellationToken);
+                .FirstOrDefaultAsync(cancellationToken);
 
-            if(playerDb == null)
+            if (playerDb == null)
                 return Result.Fail<Player>($"There is no player with id {request.Id} in DB");
 
             _context.Players.Remove(playerDb);
