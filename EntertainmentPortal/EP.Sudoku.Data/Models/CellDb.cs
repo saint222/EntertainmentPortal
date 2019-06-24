@@ -27,10 +27,7 @@ namespace EP.Sudoku.Data.Models
         /// </summary>
         public int Y { get; set; }
 
-        /// <summary>
-        /// Is used to write all possible digits to the cell (DbInfo).
-        /// </summary>        
-        public SessionDb GameSessionDb { get; set; }
+        public int SessionDbId { get; set; }
     }
 }
 

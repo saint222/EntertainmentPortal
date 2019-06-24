@@ -25,7 +25,6 @@ export class SessionComponent implements OnInit {
     this.sessionService.getSessionById(1).subscribe(
       s => {
         this.session = s;
-        console.log(s);
         this.cells = s.squares;
       },
       (err: HttpResponseBase) => {

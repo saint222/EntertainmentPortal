@@ -11,6 +11,7 @@ using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Remotion.Linq.Clauses;
 
 namespace EP.Sudoku.Logic.Handlers
 {
@@ -40,7 +41,9 @@ namespace EP.Sudoku.Logic.Handlers
             {
                 _logger.LogError($"There is not a gamesession with the Id '{request.Id}'...");
             }
-            
+
+            chosenSession.Squares = chosenSession.Squares.OrderBy(c => c.X).ThenBy(c => c.Y).ToList();
+
             return await Task.FromResult(chosenSession);
         }
     }

@@ -1,4 +1,5 @@
 <h1>Sudoku</h1>
+<button type="button" class="btn btn-primary" (click)="getSessionById()">Refresh</button>
 <div class="container">
   <div class="row-sudoku" *ngFor="let cell of cells">
     <app-cell [cell]="cell"></app-cell>

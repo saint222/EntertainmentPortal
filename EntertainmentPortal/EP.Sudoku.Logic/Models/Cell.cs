@@ -31,5 +31,7 @@ namespace EP.Sudoku.Logic.Models
         /// </summary>
         public int Y { get; set; }
 
+        public int SessionId { get; set; }
+
     }
 }

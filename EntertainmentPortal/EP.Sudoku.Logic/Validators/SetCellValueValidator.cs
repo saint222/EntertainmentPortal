@@ -10,26 +10,33 @@ using Solver = SudokuSolver.SudokuSolver;
 
 namespace EP.Sudoku.Logic.Validators
 {
-    public class ChangeCellValueValidator : AbstractValidator<ChangeCellValueCommand>
+    public class SetCellValueValidator : AbstractValidator<SetCellValueCommand>
     {
         private const int GRID_DIMENSION = 9;
         private readonly SudokuDbContext _context;
 
-        public ChangeCellValueValidator(SudokuDbContext context)
+        public SetCellValueValidator(SudokuDbContext context)
         {
             _context = context;
+
+            RuleSet("PreValidationCell", () =>
+            {
+                RuleFor(x => x.Value)
+                    .InclusiveBetween(0, 9)
+                    .WithMessage("Numbers with values from 1 to 9 can be used only!");
+            });
 
             RuleSet("IsValidSudokuGameSet", () =>
             {
                 RuleFor(x => x)
                     .Must((o, token) =>
-                        {
-                            var session = GetSession(o);
-                            var result = Solver.IsValidSudokuGame(CellsToGrid(session.Result.SquaresDb));
+                    {
+                        var session = GetSession(o);
+                        var result = Solver.IsValidSudokuGame(CellsToGrid(session.Result.SquaresDb));
 
-                            return result ? true : false;
-                        })
-                    .WithMessage("Numbers with values from 1 to 9 can be used only!");
+                        return result ? true : false;
+                    })
+                    .WithMessage($"Incorrect value. The row or column already has this number!");
 
                 RuleFor(x => x)
                     .Must( (o, token) => 
@@ -56,13 +63,16 @@ namespace EP.Sudoku.Logic.Validators
             return grid;
         }
 
-        private async Task<SessionDb> GetSession(ChangeCellValueCommand model)
+        private async Task<SessionDb> GetSession(SetCellValueCommand model)
         {
             var session = await _context.Sessions
                 .Include(d => d.SquaresDb)
-                .FirstAsync(d => d.Id == model.Id);
+                .FirstAsync(d => d.Id == model.SessionId);
 
-            session.SquaresDb.First(x => x.X == model.X && x.Y == model.Y).Value = model.Value;
+            if (session != null)
+            {
+                session.SquaresDb.First(x => x.Id == model.Id).Value = model.Value;
+            }
 
             return session;
         }

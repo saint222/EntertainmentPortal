@@ -52,7 +52,7 @@ namespace EP.Sudoku.Web
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(cfg =>
                 {
-                    cfg.RegisterValidatorsFromAssemblyContaining<ChangeCellValueValidator>();
+                    cfg.RegisterValidatorsFromAssemblyContaining<SetCellValueValidator>();
                     cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 });
             services.AddLogging();

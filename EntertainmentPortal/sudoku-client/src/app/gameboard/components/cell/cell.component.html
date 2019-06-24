@@ -1,8 +1,21 @@
-<div class="square">
-  <div *ngIf="cell.value != 0">
-    <input type="text" value="{{cell.value}}">
-  </div>
-  <div *ngIf="cell.value == 0">
-      <input type="text" (keydown.enter)="updateCell(cell, $event.target.value)">
+
+<div class="colorGray" *ngIf="isGrayColor(cell)">
+  <div class="square" >
+    <div *ngIf="cell.value != 0">
+        <input type="text" value="{{cell.value}}" (input)="updateCell(cell, $event.target.value)">
     </div>
+    <div *ngIf="cell.value == 0">
+        <input type="text" (input)="updateCell(cell, $event.target.value)">
+    </div>
+  </div>
+</div>
+<div class="colorAqua" *ngIf="!isGrayColor(cell)">
+    <div class="square" >
+        <div *ngIf="cell.value != 0">
+            <input type="text" value="{{cell.value}}" (input)="updateCell(cell, $event.target.value)">
+        </div>
+        <div *ngIf="cell.value == 0">
+            <input type="text" (input)="updateCell(cell, $event.target.value)">
+        </div>
+      </div>
 </div>
