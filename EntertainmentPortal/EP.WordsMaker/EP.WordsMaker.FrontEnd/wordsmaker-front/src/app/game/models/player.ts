@@ -1,6 +1,6 @@
 export class Player {
-  Id: number;
-  Name: string;
-  Score: number;
-  Lastgame: number;
+  id: number;
+  name: string;
+  score: number;
+  lastgame: number;
 }
