@@ -7,8 +7,8 @@ using EP._15Puzzle.Data;
 using EP._15Puzzle.Data.Context;
 using EP._15Puzzle.Data.Models;
 using EP._15Puzzle.Logic.Handlers;
+using EP._15Puzzle.Logic.Models;
 using Microsoft.EntityFrameworkCore;
-using Moq;
 using NUnit.Framework;
 
 namespace Tests
@@ -16,104 +16,127 @@ namespace Tests
     [TestFixture]
     public class NewDeckHandlerTests
     {
-        private DeckDbContext _context;
-        private IMapper _mapper;
-        [SetUp]
-        public void MockInitialize()
-        {
-            var mockContext = new Mock<DeckDbContext>(new DbContextOptions<DeckDbContext>());
-            _context = mockContext.Object;
-            var mockMapper = new Mock<IMapper>();
-            _mapper = mockMapper.Object;
-        }
-
+        
         [Test]
         public void Test_Create_New_Deck()
         {
-            var newDeck = new DeckDb(4);
+            var newDeck = new LogicDeck(4);
 
-            var expectedDeck = new DeckDb()
+            var expectedDeck = new LogicDeck()
             {
+                Size = 4,
                 Score = 0,
                 Victory = false,
-                Tiles = new List<TileDb>()
+                Tiles = new List<LogicTile>()
                 {
-                    new TileDb(1),
-                    new TileDb(2),
-                    new TileDb(3),
-                    new TileDb(4),
-                    new TileDb(5),
-                    new TileDb(6),
-                    new TileDb(7),
-                    new TileDb(8),
-                    new TileDb(9),
-                    new TileDb(10),
-                    new TileDb(11),
-                    new TileDb(12),
-                    new TileDb(13),
-                    new TileDb(14),
-                    new TileDb(15),
-                },
-                EmptyTile = new TileDb(16)
+                    new LogicTile(0,4),
+                    new LogicTile(1,4),
+                    new LogicTile(2,4),
+                    new LogicTile(3,4),
+                    new LogicTile(4,4),
+                    new LogicTile(5,4),
+                    new LogicTile(6,4),
+                    new LogicTile(7,4),
+                    new LogicTile(8,4),
+                    new LogicTile(9,4),
+                    new LogicTile(10,4),
+                    new LogicTile(11,4),
+                    new LogicTile(12,4),
+                    new LogicTile(13,4),
+                    new LogicTile(14,4),
+                    new LogicTile(15,4),
+                }
+
             };
 
-            Assert.IsTrue(Equals(expectedDeck, newDeck));
+            Assert.IsTrue(EqualsDeck(expectedDeck, newDeck));
 
         }
 
         [Test]
         public void Test_Unsort_Deck()
         {
-            var newDeck = new DeckDb(4);
-            var handle = new NewDeckHandler(_context,_mapper);
-            handle.Unsort(newDeck);
-            var expectdDeck = new DeckDb()
+            var newDeck = new LogicDeck(4);
+            newDeck.Unsort();
+            var expectedDeck = new LogicDeck()
             {
+                Size = 4,
                 Score = 0,
                 Victory = false,
-                Tiles = new List<TileDb>()
+                Tiles = new List<LogicTile>()
                 {
-                    new TileDb(1),
-                    new TileDb(2),
-                    new TileDb(3),
-                    new TileDb(4),
-                    new TileDb(5),
-                    new TileDb(6),
-                    new TileDb(7),
-                    new TileDb(8),
-                    new TileDb(9),
-                    new TileDb(10),
-                    new TileDb(11),
-                    new TileDb(12),
-                    new TileDb(13),
-                    new TileDb(14),
-                    new TileDb(15),
-                },
-                EmptyTile = new TileDb(16)
+                    new LogicTile(0,4),
+                    new LogicTile(1,4),
+                    new LogicTile(2,4),
+                    new LogicTile(3,4),
+                    new LogicTile(4,4),
+                    new LogicTile(5,4),
+                    new LogicTile(6,4),
+                    new LogicTile(7,4),
+                    new LogicTile(8,4),
+                    new LogicTile(9,4),
+                    new LogicTile(10,4),
+                    new LogicTile(11,4),
+                    new LogicTile(12,4),
+                    new LogicTile(13,4),
+                    new LogicTile(14,4),
+                    new LogicTile(15,4),
+                }
+
             };
 
-            Assert.IsFalse(Equals(expectdDeck, newDeck));
+            Assert.IsFalse(Equals(expectedDeck, newDeck));
         }
-        
-        private bool Equals(DeckDb expected, DeckDb actual)
+
+        [Test]
+        [TestCase(4, 5, ExpectedResult = false)]
+        public bool Test_Move_Unmovable_tile_Num_5(int size, int numMoveTile)
         {
-            return (expected.Score == actual.Score &&
+            var newDeck = new LogicDeck(size);
+            return newDeck.TileCanMove(numMoveTile);
+        }
+
+        [Test]
+        [TestCase(4, 15, ExpectedResult = true)]
+        public bool Test_Move_Movable_tile_Num_15(int size, int numMoveTile)
+        {
+            var newDeck = new LogicDeck(size);
+            return newDeck.TileCanMove(numMoveTile);
+        }
+
+        [Test]
+        [TestCase(4, 15, ExpectedResult = true)]
+        public bool Test_Move_tile_Num_15(int size, int numMoveTile)
+        {
+            var newDeck = new LogicDeck(size);
+            newDeck.Move(numMoveTile);
+            var tileMovable = newDeck.Tiles.First(t => t.Num == numMoveTile);
+            var tileEmpty = newDeck.Tiles.First(t => t.Num == 0);
+
+            return tileMovable.Pos == 16 &&
+                   tileEmpty.Pos == 15;
+        }
+       
+
+        private bool EqualsDeck(LogicDeck expected, LogicDeck actual)
+        {
+            return (expected.Size == actual.Size &&
+                    expected.Score == actual.Score &&
                     expected.Victory == actual.Victory &&
-                    expected.Tiles.SequenceEqual(actual.Tiles ,new ComparerTiles()));
+                    expected.Tiles.SequenceEqual(actual.Tiles, new ComparerTiles()));
 
         }
     }
 
-    public class ComparerTiles : IEqualityComparer< TileDb >
+    public class ComparerTiles : IEqualityComparer<LogicTile>
     {
-        public bool Equals(TileDb expected, TileDb actual)
+        public bool Equals(LogicTile expected, LogicTile actual)
         {
-            return (expected.Id == actual.Id &&
-                    expected.Num == actual.Num &&
+            return (expected.Num == actual.Num &&
                     expected.Pos == actual.Pos);
         }
 
-        public int GetHashCode(TileDb obj)
+        public int GetHashCode(LogicTile obj)
         {
             throw new NotImplementedException();
         }
