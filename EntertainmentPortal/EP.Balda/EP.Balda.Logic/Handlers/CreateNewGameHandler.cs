@@ -29,7 +29,6 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Result<Game>> Handle(CreateNewGameCommand request,
                                                CancellationToken cancellationToken)
         {
-            //TODO: add cells initializator
             var player = await (_context.Players
                 .Where(p => p.Id == request.PlayerId)
                 .FirstOrDefaultAsync(cancellationToken));
@@ -78,6 +77,8 @@ namespace EP.Balda.Logic.Handlers
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
+
+                game.Map = null; //remove lately
 
                 return Result.Ok(_mapper.Map<Game>(game));
             }

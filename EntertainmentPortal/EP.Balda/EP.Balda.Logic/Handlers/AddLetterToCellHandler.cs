@@ -54,6 +54,8 @@ namespace EP.Balda.Logic.Handlers
             {
                 await _context.SaveChangesAsync(cancellationToken);
 
+                cellDb.Map = null; //remove lately
+
                 return Result.Ok(_mapper.Map<Cell>(cellDb));
             }
             catch (DbUpdateException ex)
