@@ -5,10 +5,11 @@ namespace EP.WordsMaker.Data.Context
 {
     public class PlayerDbContext : DbContext
     {
-        public PlayerDbContext(DbContextOptions<PlayerDbContext> options)
+        public PlayerDbContext(DbContextOptions<GameDbContext> options)
             : base(options: options)
         { }
 
         public DbSet<PlayerDb> Players { get; set; }
-    }
+        public DbSet<GameDb> Games { get; set; }
+	}
 }

@@ -36,7 +36,7 @@ namespace EP.WordsMaker.Web.Controllers
 
 		[SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
 		[SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
-		public async Task<IActionResult> GetPlayer(int id)
+		public async Task<IActionResult> GetPlayerAsync(int id)
 		{
 			var result = await _mediator.Send(new GetPlayerCommand(){Id = id});
 			return result.IsSuccess ? Ok(result.Value): (IActionResult)NotFound(result.Error);

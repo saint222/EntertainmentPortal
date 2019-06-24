@@ -16,11 +16,11 @@ namespace EP.WordsMaker.Logic.Handlers
 {
     public class AddNewPlayerHandler : IRequestHandler<AddNewPlayerCommand, Result<Player>>
     {
-        private readonly PlayerDbContext _context;
+        private readonly GameDbContext _context;
         private readonly IMapper _mapper;
         private readonly IValidator<AddNewPlayerCommand> _validator;
 
-        public AddNewPlayerHandler(PlayerDbContext context, IMapper mapper, IValidator<AddNewPlayerCommand> validator)
+        public AddNewPlayerHandler(GameDbContext context, IMapper mapper, IValidator<AddNewPlayerCommand> validator)
         {
             _context = context;
             _mapper = mapper;

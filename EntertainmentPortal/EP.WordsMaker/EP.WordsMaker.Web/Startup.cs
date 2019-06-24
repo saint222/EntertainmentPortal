@@ -36,9 +36,11 @@ namespace EP.WordsMaker.Web
         {
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
-            services.AddAutoMapper(typeof(PlayerProfile).Assembly);
-            //services.AddAutoMapper(cfg => cfg.AddProfile(new PlayerProfile()));
-            services.AddPlayerServices();
+            services.AddMediatR(typeof(GetAllGames).Assembly);
+			services.AddAutoMapper(typeof(PlayerProfile).Assembly);
+            services.AddAutoMapper(typeof(GameProfile).Assembly);
+			//services.AddAutoMapper(cfg => cfg.AddProfile(new PlayerProfile()));
+			services.AddPlayerServices();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(cfg =>
                 {

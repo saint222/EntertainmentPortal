@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using EP.WordsMaker.Logic.Commands;
 using EP.WordsMaker.Logic.Models;
 using EP.WordsMaker.Logic.Queries;
 using MediatR;
@@ -24,45 +25,38 @@ namespace EP.WordsMaker.Web.Controllers
 	    }
 
 		[HttpGet]
-	    [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
-	    [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Geme collection is empty")]
+	    [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Game>), Description = "Success")]
+	    [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game collection is empty")]
 	    public async Task<IActionResult> GetAllGamesAsync()
 	    {
 		    var result = await _mediator.Send(new GetAllGames());
 		    return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
 	    }
 
-		// GET: api/Game
-		[HttpGet]// Name = "GetGame")]
-		public IEnumerable<string> GetAllGames()
+		[HttpGet("{id}")]
+		[SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Game>), Description = "Success")]
+		[SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game not found")]
+		public async Task<IActionResult> GetGameAsync(int id)
         {
-            return new string[] { "value1", "value2" };
-        }
+			var result = await _mediator.Send(new GetGameCommand(){Id = id});
+			return result.IsSuccess ? Ok(result.Value) : (IActionResult)NotFound(result.Error);
+		}
 
-        // GET: api/Game/5
-        [HttpGet("{id}")]//, Name = "GetGame")]
-        public string GetGame(int id)
-        {
-            return "value";
-        }
+		[HttpPost]
+		[SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success. Game created")]
+		[SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
 
-        // POST: api/Game
-        //[HttpPost(Name = "PostGame")]
-        //public void PostGame([FromBody] string value)
-        //{
-        //}
+		public async Task<IActionResult> AddNewGameAsync([FromBody] AddNewGameCommand model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-        //// PUT: api/Game/5
-        //[HttpPut("{id}", Name = "PutName")]
-        //public void PutGame(int id, [FromBody] string value)
-        //{
-
-        //}
-
-        // DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void DeleteGame(int id)
-        //{
-        //}
-    }
+			var result = await _mediator.Send(model);
+			return result.IsFailure ?
+				(IActionResult)BadRequest(result.Error)
+				: Ok(result.Value);
+		}
+	}
 }

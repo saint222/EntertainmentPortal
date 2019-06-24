@@ -8,7 +8,7 @@ namespace EP.WordsMaker.Data.Context
 		public GameDbContext(DbContextOptions<GameDbContext> options)
 			: base(options: options)
 		{ }
-
+		public DbSet<PlayerDb> Players { get; set; }
 		public DbSet<GameDb> Games { get; set; }
 	}
 }

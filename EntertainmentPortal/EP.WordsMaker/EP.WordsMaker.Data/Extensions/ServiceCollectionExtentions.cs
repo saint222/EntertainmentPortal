@@ -8,8 +8,9 @@ namespace EP.WordsMaker.Data.Extensions
     {
         public static IServiceCollection AddPlayerData(this IServiceCollection services)
         {
-            services.AddDbContext<PlayerDbContext>(opt => opt.UseSqlite("Data Source=player.db"));
-            return services;
+            services.AddDbContext<GameDbContext>(opt => opt.UseSqlite("Data Source=wordsMaker.db"));
+            //services.AddDbContext<GameDbContext>(opt => opt.UseSqlite("Data Source=player.db"));
+			return services;
         }
     }
 }

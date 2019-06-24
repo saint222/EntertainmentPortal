@@ -8,9 +8,9 @@ namespace EP.WordsMaker.Logic.Handlers
 {
     public class CreateDatabaseHandler : AsyncRequestHandler<CreateDatabaseCommand>
     {
-        private readonly PlayerDbContext _context;
+        private readonly GameDbContext _context;
 
-        public CreateDatabaseHandler(PlayerDbContext context)
+        public CreateDatabaseHandler(GameDbContext context)
         {
             _context = context;
         }

@@ -21,9 +21,9 @@ namespace EP.WordsMaker.Logic.Handlers
 	public class GetPlayerHandler : IRequestHandler<GetPlayerCommand, Result<Player>>
 	{
 		private readonly IMapper _mapper;
-		private readonly PlayerDbContext _context;
+		private readonly GameDbContext _context;
 
-		public GetPlayerHandler(IMapper mapper, PlayerDbContext context)
+		public GetPlayerHandler(IMapper mapper, GameDbContext context)
 		{
 			_mapper = mapper;
 			_context = context;
