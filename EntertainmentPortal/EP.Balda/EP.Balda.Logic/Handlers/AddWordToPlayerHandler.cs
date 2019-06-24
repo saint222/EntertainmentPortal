@@ -111,7 +111,7 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="word">Parameter requires List of Cell argument.</param>
         /// <returns>returns true if this is the correct word</returns>
-        public static bool IsWordCorrect(List<CellDb> word)
+        public bool IsWordCorrect(List<CellDb> word)
         {
             var areLettersCorrect = false;
 
@@ -164,7 +164,7 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="words">Parameter requires &lt;IEnumerable&lt;Cell&gt;&gt; argument.</param>
         /// <returns>The method returns word from the game map.</returns>
-        public static string GetSelectedWord(List<CellDb> words)
+        public string GetSelectedWord(List<CellDb> words)
         {
             return words.Aggregate("", (current, cell) => current + cell.Letter);
         }
