@@ -36,6 +36,7 @@ namespace EP.WordsMaker.Web
         {
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
+            services.AddCors();
             services.AddMediatR(typeof(GetAllGames).Assembly);
 			services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddAutoMapper(typeof(GameProfile).Assembly);
@@ -62,6 +63,9 @@ namespace EP.WordsMaker.Web
                 app.UseHsts();
             }
 
+            app.UseCors(opt => opt.AllowAnyHeader() // CORS configuration.
+                .AllowAnyMethod()
+                .AllowAnyOrigin());
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();

@@ -1,0 +1,8 @@
+<div *ngIf= "done" >{{id}}</div>
+<div class="form-group">
+  <label>Введите число</label>
+  <input class="form-control" type="number" name="factorial" ngModel="id" />
+</div>
+<div class="form-group">
+  <button class="btn btn-default" (click)="submit(id)">Отправить</button>
+</div>
