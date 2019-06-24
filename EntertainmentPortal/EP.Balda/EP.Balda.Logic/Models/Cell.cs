@@ -10,7 +10,7 @@
         ///     Id property. Represents Id of Cell in game map.
         /// </summary>
         public long Id { get; set; }
-        
+
         /// <summary>
         ///     MapId property. Represents Id of Map.
         /// </summary>

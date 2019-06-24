@@ -29,9 +29,9 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Result<Game>> Handle(CreateNewGameCommand request,
                                                CancellationToken cancellationToken)
         {
-            var player = await (_context.Players
+            var player = await _context.Players
                 .Where(p => p.Id == request.PlayerId)
-                .FirstOrDefaultAsync(cancellationToken));
+                .FirstOrDefaultAsync(cancellationToken);
 
             if (player == null)
                 return Result.Fail<Game>(
@@ -49,7 +49,7 @@ namespace EP.Balda.Logic.Handlers
             var initWord = GetStartingWord(mapDb);
             PutStartingWordToMap(mapDb, initWord);
 
-            var gameDb = new GameDb()
+            var gameDb = new GameDb
             {
                 Map = mapDb,
                 MapId = mapDb.Id,
@@ -70,9 +70,9 @@ namespace EP.Balda.Logic.Handlers
 
             await _context.SaveChangesAsync(cancellationToken); //remove
 
-            var game = await (_context.Games
+            var game = await _context.Games
                 .Where(g => g.Id == gameDb.Id)
-                .FirstOrDefaultAsync(cancellationToken));
+                .FirstOrDefaultAsync(cancellationToken);
 
             try
             {
@@ -89,7 +89,7 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
-        /// The method initializes add cells to DB that represents the game map.
+        ///     The method initializes add cells to DB that represents the game map.
         /// </summary>
         /// <param name="mapDb">Map database projection</param>
         public async void InitCellsForMap(MapDb mapDb)
@@ -116,7 +116,7 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
-        /// The method puts the starting word on the map.
+        ///     The method puts the starting word on the map.
         /// </summary>
         /// <param name="mapDb">Map database projection</param>
         /// <param name="word">Parameter word requires string argument.</param>
@@ -130,7 +130,7 @@ namespace EP.Balda.Logic.Handlers
             {
                 var cellDb =
                     mapDb.Cells.FirstOrDefault(
-                        c => c.X == charDestination & c.Y == center);
+                        c => (c.X == charDestination) & (c.Y == center));
 
                 charDestination++;
                 cellDb.Letter = letter;
@@ -140,7 +140,7 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
-        /// The method gets the initial word.
+        ///     The method gets the initial word.
         /// </summary>
         /// <param name="mapDb">Map database projection</param>
         /// <returns></returns>
@@ -158,7 +158,7 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
-        /// The method choose random initial word.
+        ///     The method choose random initial word.
         /// </summary>
         /// <param name="size">Word length</param>
         /// <returns></returns>

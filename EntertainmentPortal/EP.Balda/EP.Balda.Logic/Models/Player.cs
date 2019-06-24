@@ -38,7 +38,7 @@ namespace EP.Balda.Logic.Models
         ///     IsMoveAllowed property. Represents player's turn in the game.
         /// </summary>
         public bool IsMoveAllowed { get; set; }
-        
+
         /// <summary>
         ///     Words property. Represents the list of words that player already entered in one match.
         /// </summary>

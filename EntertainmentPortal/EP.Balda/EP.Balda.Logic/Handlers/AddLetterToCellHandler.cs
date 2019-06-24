@@ -1,22 +1,22 @@
-﻿using AutoMapper;
-using CSharpFunctionalExtensions;
-using EP.Balda.Data.Context;
-using EP.Balda.Logic.Commands;
-using MediatR;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using EP.Balda.Logic.Models;
+using AutoMapper;
+using CSharpFunctionalExtensions;
+using EP.Balda.Data.Context;
 using EP.Balda.Data.Models;
+using EP.Balda.Logic.Commands;
+using EP.Balda.Logic.Models;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Handlers
 {
     public class
         AddLetterToCellHandler : IRequestHandler<AddLetterToCellCommand, Result<Cell>>
     {
-        private readonly IMapper _mapper;
         private readonly BaldaGameDbContext _context;
+        private readonly IMapper _mapper;
 
         public AddLetterToCellHandler(IMapper mapper, BaldaGameDbContext context)
         {
@@ -27,28 +27,24 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Result<Cell>> Handle(AddLetterToCellCommand request,
                                                CancellationToken cancellationToken)
         {
-            var cellDb = await (_context.Cells
+            var cellDb = await _context.Cells
                 .Where(c => c.Id == request.Id)
-                .FirstOrDefaultAsync(cancellationToken));
-                
-            if(cellDb == null)
-                return Result.Fail<Cell>($"There is no cell with id {request.Id} in database");
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (cellDb == null)
+                return Result.Fail<Cell>(
+                    $"There is no cell with id {request.Id} in database");
 
             var isAllowedCell = await IsAllowedCell(cellDb);
 
-            if(!isAllowedCell)
-            {
-                return Result.Fail<Cell>($"The cell with id {request.Id} doesn't have occupied cells nearby");
-            }
+            if (!isAllowedCell)
+                return Result.Fail<Cell>(
+                    $"The cell with id {request.Id} doesn't have occupied cells nearby");
 
-            if(cellDb.Letter == null)
-            {
+            if (cellDb.Letter == null)
                 cellDb.Letter = request.Letter;
-            }
             else
-            {
                 return Result.Fail<Cell>("Cell already contains letter");
-            }
 
             try
             {
@@ -78,16 +74,16 @@ namespace EP.Balda.Logic.Handlers
 
             var cellTop =
                 map.Cells.FirstOrDefault(c =>
-                    c.X == cellDb.X & c.Y == cellDb.Y + 1); // cell on top
+                    (c.X == cellDb.X) & (c.Y == cellDb.Y + 1)); // cell on top
             var cellDown =
                 map.Cells.FirstOrDefault(c =>
-                    c.X == cellDb.X & c.Y == cellDb.Y - 1); // bottom cell
+                    (c.X == cellDb.X) & (c.Y == cellDb.Y - 1)); // bottom cell
             var cellRight =
                 map.Cells.FirstOrDefault(c =>
-                    c.X == cellDb.X + 1 & c.Y == cellDb.Y); // right cell
+                    (c.X == cellDb.X + 1) & (c.Y == cellDb.Y)); // right cell
             var cellLeft =
                 map.Cells.FirstOrDefault(c =>
-                    c.X == cellDb.X - 1 & c.Y == cellDb.Y); // left cell
+                    (c.X == cellDb.X - 1) & (c.Y == cellDb.Y)); // left cell
 
             if (cellTop?.Letter != null)
                 return true;

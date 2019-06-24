@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -7,6 +8,7 @@ using EP.Balda.Data.Context;
 using EP.Balda.Data.Models;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,14 +19,19 @@ namespace EP.Balda.Logic.Handlers
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IValidator<CreateNewPlayerCommand> _validator;
 
-        public CreateNewPlayerHandler(BaldaGameDbContext context, IMapper mapper)
+
+        public CreateNewPlayerHandler(BaldaGameDbContext context, IMapper mapper,
+                                      IValidator<CreateNewPlayerCommand> validator)
         {
             _context = context;
             _mapper = mapper;
+            _validator = validator;
         }
 
-        public async Task<Result<Player>> Handle(CreateNewPlayerCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Player>> Handle(CreateNewPlayerCommand request,
+                                                 CancellationToken cancellationToken)
         {
             var playerDb = new PlayerDb
             {
@@ -33,6 +40,13 @@ namespace EP.Balda.Logic.Handlers
                 Password = request.Password,
                 Created = DateTime.UtcNow
             };
+
+            var validator = _validator.Validate(request);
+
+            if (!validator.IsValid)
+            {
+                return Result.Fail<Player>(validator.Errors.First().ErrorMessage);
+            }
 
             _context.Players.Add(playerDb);
 

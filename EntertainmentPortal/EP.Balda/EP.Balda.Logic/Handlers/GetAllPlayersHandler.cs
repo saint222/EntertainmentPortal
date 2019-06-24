@@ -12,7 +12,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<Player>>>
+    public class
+        GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<Player>>>
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
@@ -30,7 +31,8 @@ namespace EP.Balda.Logic.Handlers
                 .ToArrayAsync(cancellationToken);
 
             return playersDb.Any()
-                ? Maybe<IEnumerable<Player>>.From(_mapper.Map<IEnumerable<Player>>(playersDb))
+                ? Maybe<IEnumerable<Player>>.From(
+                    _mapper.Map<IEnumerable<Player>>(playersDb))
                 : Maybe<IEnumerable<Player>>.None;
         }
     }
