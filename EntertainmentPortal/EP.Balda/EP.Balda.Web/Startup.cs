@@ -36,7 +36,6 @@ namespace EP.Balda.Web
                 .AddFluentValidation(cfg =>
                 {
                     cfg.RegisterValidatorsFromAssemblyContaining<DeletePlayerValidator>();
-                    cfg.RegisterValidatorsFromAssemblyContaining<CreateNewPlayerValidator>();
                     cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 }); ;
         }
