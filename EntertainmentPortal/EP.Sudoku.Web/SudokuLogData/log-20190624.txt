@@ -911,3 +911,168 @@ System.AggregateException: One or more errors occurred. (Source sequence doesn't
 2019-06-24 11:01:47.197 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
 2019-06-24 11:01:47.235 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
 2019-06-24 11:01:47.279 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 11:15:23.188 +03:00 [Information] CORS policy execution successful.
+2019-06-24 11:15:23.468 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 11:15:28.897 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 11:15:29.030 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 11:16:48.954 +03:00 [Information] CORS policy execution successful.
+2019-06-24 11:16:49.049 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 11:18:38.304 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 11:18:38.500 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 11:18:49.359 +03:00 [Information] CORS policy execution successful.
+2019-06-24 11:18:49.371 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 11:18:49.385 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-24 11:18:49.435 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 11:18:59.847 +03:00 [Information] CORS policy execution successful.
+2019-06-24 11:18:59.851 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 11:18:59.863 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-24 11:18:59.869 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 12:31:33.135 +03:00 [Information] CORS policy execution successful.
+2019-06-24 12:31:35.390 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 12:31:49.450 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 12:31:50.197 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 12:33:28.410 +03:00 [Information] CORS policy execution successful.
+2019-06-24 12:33:28.864 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 12:33:28.969 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 12:33:30.046 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 12:35:30.715 +03:00 [Information] CORS policy execution successful.
+2019-06-24 12:35:30.758 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 12:35:31.231 +03:00 [Error] Error constructing handler for request of type MediatR.IRequestHandler`2[EP.Sudoku.Logic.Commands.GetHintCommand,CSharpFunctionalExtensions.Result`1[EP.Sudoku.Logic.Models.Session]]. Register your handlers with the container. See the samples in GitHub for examples.
+2019-06-24 12:35:31.244 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 12:35:31.249 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 12:35:49.456 +03:00 [Information] CORS policy execution successful.
+2019-06-24 12:35:49.464 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 12:35:49.711 +03:00 [Error] Error constructing handler for request of type MediatR.IRequestHandler`2[EP.Sudoku.Logic.Commands.GetHintCommand,CSharpFunctionalExtensions.Result`1[EP.Sudoku.Logic.Models.Session]]. Register your handlers with the container. See the samples in GitHub for examples.
+2019-06-24 12:35:49.716 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 12:35:49.727 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 12:37:21.196 +03:00 [Information] CORS policy execution successful.
+2019-06-24 12:37:21.397 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 12:40:12.992 +03:00 [Information] CORS policy execution successful.
+2019-06-24 12:40:13.432 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 12:40:17.796 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 12:40:18.371 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 12:41:10.729 +03:00 [Information] CORS policy execution successful.
+2019-06-24 12:41:10.777 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 12:41:27.216 +03:00 [Error] Error constructing handler for request of type MediatR.IRequestHandler`2[EP.Sudoku.Logic.Commands.GetHintCommand,CSharpFunctionalExtensions.Result`1[EP.Sudoku.Logic.Models.Session]]. Register your handlers with the container. See the samples in GitHub for examples.
+2019-06-24 12:41:27.765 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 12:41:28.656 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 12:41:40.679 +03:00 [Information] CORS policy execution successful.
+2019-06-24 12:41:40.844 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 12:42:39.385 +03:00 [Error] Error constructing handler for request of type MediatR.IRequestHandler`2[EP.Sudoku.Logic.Commands.GetHintCommand,CSharpFunctionalExtensions.Result`1[EP.Sudoku.Logic.Models.Session]]. Register your handlers with the container. See the samples in GitHub for examples.
+2019-06-24 12:52:49.033 +03:00 [Information] CORS policy execution successful.
+2019-06-24 12:52:49.045 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 12:52:49.249 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 12:52:49.853 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 12:52:50.818 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 12:52:51.110 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:03:23.044 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:03:23.216 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:14:36.911 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:14:37.407 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:14:50.744 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:14:52.926 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:16:01.099 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:16:01.164 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:16:10.927 +03:00 [Error] Error constructing handler for request of type MediatR.IRequestHandler`2[EP.Sudoku.Logic.Commands.GetHintCommand,CSharpFunctionalExtensions.Result`1[EP.Sudoku.Logic.Models.Session]]. Register your handlers with the container. See the samples in GitHub for examples.
+2019-06-24 13:16:11.244 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 13:16:11.743 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:17:18.876 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:17:20.373 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:17:20.731 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:17:21.051 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:17:25.793 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:17:26.153 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:17:26.174 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:17:27.730 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 13:17:28.168 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:17:31.313 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:17:31.886 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:17:32.140 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:17:32.173 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 13:17:32.184 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:17:42.921 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:17:43.597 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:17:43.729 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:17:43.775 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-24 13:17:43.786 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:30:59.949 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:31:00.154 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:31:30.762 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:31:31.215 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:31:43.481 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:31:43.488 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:31:43.949 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:31:44.054 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:31:49.099 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:31:49.310 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:31:49.401 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:31:49.898 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:31:54.295 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:31:54.656 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:31:54.665 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:31:54.903 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:31:55.029 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:35:55.697 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:35:55.729 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:35:55.850 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:35:55.862 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:37:47.929 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:37:48.364 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:37:48.397 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:37:48.425 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:37:54.197 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:37:54.459 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:38:40.945 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:38:43.169 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:38:43.853 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:38:43.941 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:40:32.627 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:40:32.787 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:40:32.798 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:40:33.153 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:40:33.266 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:41:17.316 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:41:17.812 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:41:18.046 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:41:19.541 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:41:40.674 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:41:41.808 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:41:42.450 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:41:42.488 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:41:48.804 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:41:49.206 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:41:49.268 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:41:49.438 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:41:49.447 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:41:52.481 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:41:52.508 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:41:52.514 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:41:52.639 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:41:52.656 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:41:58.319 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:41:58.324 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:41:58.336 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:41:58.341 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:42:06.525 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:42:06.548 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:42:06.552 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:42:06.687 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:42:06.705 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetHint (EP.Sudoku.Web)"'
+2019-06-24 13:42:07.735 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:42:07.739 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:42:07.763 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:42:07.770 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:42:09.937 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:42:10.156 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:42:10.162 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:42:10.237 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:42:10.258 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:42:17.878 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:42:18.132 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:42:18.136 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:42:18.416 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:42:18.702 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.SetCellValue (EP.Sudoku.Web)"'
+2019-06-24 13:42:18.756 +03:00 [Information] CORS policy execution successful.
+2019-06-24 13:42:18.810 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-06-24 13:42:18.869 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-06-24 13:42:18.875 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'

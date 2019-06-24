@@ -16,13 +16,26 @@ export class CellComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateCell(cell: Cell, value: number){
+  updateCell(value: number){
 
     console.log(value);
     this.cell.value = value;
 
     this.sessionService.updateCell(this.cell).subscribe(
       s => { 
+      },
+      (err: HttpResponseBase) => {
+        this.cell.value = 0;
+        return console.log(err.statusText);
+      }
+    );
+  }
+
+  getHint(){
+
+    this.sessionService.getHint(this.cell).subscribe(
+      s => { 
+        this.cell = s.squares.find(c => c.id == this.cell.id);
       },
       (err: HttpResponseBase) => {
         return console.log(err.statusText);

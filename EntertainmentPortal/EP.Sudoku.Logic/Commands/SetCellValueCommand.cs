@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CSharpFunctionalExtensions;
+﻿using CSharpFunctionalExtensions;
 using EP.Sudoku.Logic.Models;
 using MediatR;
 

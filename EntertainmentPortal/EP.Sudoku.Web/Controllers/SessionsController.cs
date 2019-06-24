@@ -84,5 +84,21 @@ namespace EP.Sudoku.Web.Controllers
             var result = await _mediator.Send(model);
             return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
         }
+
+        [HttpPut("api/getHint")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> GetHint([FromBody, NotNull,
+            CustomizeValidator(RuleSet = "IsValidGetHint")]GetHintCommand model)
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError($"Incorrect value for the cell's Value was set up...");
+                return BadRequest();
+            }
+
+            var result = await _mediator.Send(model);
+            return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
+        }
     }
 }

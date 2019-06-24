@@ -17,4 +17,8 @@ export class SessionService {
   updateCell(cell: Cell) {
     return this.http.put<Cell>('http://localhost:58857/api/setCellValue/', cell);
   }
+
+  getHint(cell: Cell) {
+    return this.http.put<Session>('http://localhost:58857/api/getHint/', cell);
+  }
 }
