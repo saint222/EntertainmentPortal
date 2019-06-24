@@ -45,7 +45,7 @@ namespace EP.Balda.Logic.Handlers
 
             await _context.SaveChangesAsync(cancellationToken); //remove
 
-            InitMap(mapDb);
+            InitCellsForMap(mapDb);
 
             var initWord = GetStartingWord(mapDb);
             PutStartingWordToMap(mapDb, initWord);
@@ -91,7 +91,7 @@ namespace EP.Balda.Logic.Handlers
         /// The method initializes add cells to DB that represents the game map.
         /// </summary>
         /// <param name="mapDb">Map database projection</param>
-        private async void InitMap(MapDb mapDb)
+        public async void InitCellsForMap(MapDb mapDb)
         {
             var cells = new List<CellDb>();
 
@@ -111,6 +111,7 @@ namespace EP.Balda.Logic.Handlers
                 }
 
             await _context.AddRangeAsync(cells);
+            await _context.SaveChangesAsync();
         }
 
         /// <summary>
