@@ -52,7 +52,7 @@ namespace EP._15Puzzle.Logic.Handlers
                 {
                     logicDeck.Unsort();
                 } while (!logicDeck.CheckWinIsPossible());
-                
+                logicDeck.Tiles = logicDeck.Tiles.OrderBy(t => t.Pos).ToList();
                 _context.Update(_mapper.Map<DeckDb>(logicDeck));
                 await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
                 return Result.Ok<Deck>(_mapper.Map<Deck>(logicDeck));

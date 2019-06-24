@@ -25,8 +25,8 @@ export class DeckComponent implements OnInit {
     new Tile(12, 12),
     new Tile(13, 13),
     new Tile(14, 14),
-    new Tile(0, 15),
-    new Tile(15, 16),
+    new Tile(15, 15),
+    new Tile(0, 16),
 
   ]);
   constructor(private deckService: DeckService) { }

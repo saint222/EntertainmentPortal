@@ -36,7 +36,7 @@ namespace EP._15Puzzle.Logic.Handlers
             {
                 logicDeck.Unsort();
             } while (!logicDeck.CheckWinIsPossible());
-
+            logicDeck.Tiles = logicDeck.Tiles.OrderBy(t => t.Pos).ToList();
             var deckDb = _mapper.Map<DeckDb>(logicDeck);
             _context.Add(deckDb);
             try

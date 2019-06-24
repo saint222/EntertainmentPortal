@@ -55,6 +55,12 @@ namespace EP._15Puzzle.Logic.Models
                 tiles[j].Num = temp;
             }
 
+            var tile0 = tiles.First(t => t.Num == 0);
+            var tile = tiles.First(t => t.Pos == 16);
+            var tem = tile0.Num;
+            tile0.Num = tile.Num;
+            tile.Num = tem;
+
             Tiles = tiles;
         }
 
