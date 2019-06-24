@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -47,10 +48,15 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Invalid data")]
-        public async Task<IActionResult> AddLetterToCellAsync([FromBody] AddLetterToCellCommand model)
+        public async Task<IActionResult> AddLetterToCellAsync([FromBody, CustomizeValidator(RuleSet = "PreValidation")] AddLetterToCellCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameters: Id = {model.Id}, Letter = {model.Letter}");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             var (isSuccess, isFailure, value, error) = await _mediator.Send(model);
 

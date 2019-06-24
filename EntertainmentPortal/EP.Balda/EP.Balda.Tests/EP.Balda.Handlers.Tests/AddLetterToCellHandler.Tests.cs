@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using EP.Balda.Data.Context;
 using EP.Balda.Data.Models;
+using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Handlers;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
@@ -12,11 +14,13 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
     public class AddLetterToCellHandler_Tests
     {
         IMapper _mapper;
+        IValidator<AddLetterToCellCommand> _validator;
 
         [SetUp]
         public void Setup()
         {
             _mapper = new Mock<IMapper>().Object;
+            _validator = new Mock<IValidator<AddLetterToCellCommand>>().Object;
         }
 
         [Test]
@@ -30,7 +34,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             using (var context = new BaldaGameDbContext(options))
             {
-                var service = new AddLetterToCellHandler(_mapper, context);
+                var service = new AddLetterToCellHandler(_mapper, context, _validator);
                 var mapDb = new MapDb() { Id = 1, Size = 3 };
                 context.Cells.Add(new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 0, Y = 0, Letter = 'g' });
                 var cell = new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 0, Y = 1, Letter = null };
@@ -55,7 +59,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             using (var context = new BaldaGameDbContext(options))
             {
-                var service = new AddLetterToCellHandler(_mapper, context);
+                var service = new AddLetterToCellHandler(_mapper, context, _validator);
                 var mapDb = new MapDb() { Id = 1, Size = 3 };
                 context.Cells.Add(new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 0, Y = 0, Letter = 'g' });
                 var cell = new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 2, Y = 2, Letter = null };

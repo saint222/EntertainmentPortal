@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using EP.Balda.Logic.Models;
 using EP.Balda.Data.Models;
+using FluentValidation;
 
 namespace EP.Balda.Logic.Handlers
 {
@@ -17,22 +18,29 @@ namespace EP.Balda.Logic.Handlers
     {
         private readonly IMapper _mapper;
         private readonly BaldaGameDbContext _context;
+        private readonly IValidator<AddLetterToCellCommand> _validator;
 
-        public AddLetterToCellHandler(IMapper mapper, BaldaGameDbContext context)
+        public AddLetterToCellHandler(IMapper mapper, BaldaGameDbContext context, IValidator<AddLetterToCellCommand> validator)
         {
             _mapper = mapper;
             _context = context;
+            _validator = validator;
         }
 
         public async Task<Result<Cell>> Handle(AddLetterToCellCommand request,
                                                CancellationToken cancellationToken)
         {
+            var result = await _validator
+                .ValidateAsync(request, ruleSet: "CellExistingSet", cancellationToken: cancellationToken);
+
+            if (!result.IsValid)
+            {
+                return Result.Fail<Cell>(result.Errors.First().ErrorMessage);
+            }
+
             var cellDb = await (_context.Cells
                 .Where(c => c.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken));
-                
-            if(cellDb == null)
-                return Result.Fail<Cell>($"There is no cell with id {request.Id} in database");
 
             var isAllowedCell = await IsAllowedCell(cellDb);
 
