@@ -91,9 +91,8 @@ namespace EP.Sudoku.Web.Controllers
                 _logger.LogError($"Incorrect value for the player's Id was set. '{id}' - is <= 0...");
                 return BadRequest();
             }
-            var result = await _mediator.Send(new DeletePlayerCommand(id));
-            
-            return true ? (IActionResult)Ok() : BadRequest();
+            var result = await _mediator.Send(new DeletePlayerCommand(id));           
+            return result == true ? (IActionResult)Ok() : BadRequest();
         }
     }
 }

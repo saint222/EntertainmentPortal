@@ -12,7 +12,7 @@ namespace EP.Sudoku.Data.Models
         /// <summary>    
         /// Is used to denote an identification value of a game session (DbInfo).
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>    
         /// Is used to denote the level of a game session difficulty (is expected to be chosen by a player) (DbInfo).
@@ -23,7 +23,7 @@ namespace EP.Sudoku.Data.Models
         public int Level { get; set; }
 
         /// <summary>    
-        /// Is used to denote the number of tips (DbInfo).
+        /// Represents the possibility to get three automatically set values durring the game as prompts (DbInfo).
         /// </summary>
         public int Hint { get; set; } = 3;
 

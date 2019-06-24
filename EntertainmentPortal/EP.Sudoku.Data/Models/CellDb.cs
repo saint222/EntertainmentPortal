@@ -10,7 +10,7 @@ namespace EP.Sudoku.Data.Models
         /// <summary>    
         /// Is used to denote an identification value of a cell (DbInfo).
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Is used to denote a value (number) from 0 till 9 for each cell filling up (DbInfo).

@@ -41,7 +41,7 @@ namespace EP.Sudoku.Logic.Handlers
                 if (chosenPlayer != null)
                 {
                     _memoryCache.Set(chosenPlayer.Id, chosenPlayer,
-                        new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(60)));
+                        new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(10)));
                 }
                 else
                 {
