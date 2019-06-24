@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Profiles;
-using EP.Balda.Logic.Queries;
 using EP.Balda.Logic.Services;
-using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,7 +45,7 @@ namespace EP.Balda.Web
                 app.UseHsts();
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();
+            app.UseOpenApi().UseSwaggerUi3();
             app.UseMvc();
         }
     }

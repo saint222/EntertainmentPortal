@@ -7,18 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Moq" Version="4.11.0" />
-    <PackageReference Include="nunit" Version="3.11.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.4" />
+    <PackageReference Include="Moq" Version="4.12.0" />
+    <PackageReference Include="nunit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EP.Balda.Logic\EP.Balda.Logic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="EP.Balda.Handlers.Tests\" />
   </ItemGroup>
 
 </Project>
