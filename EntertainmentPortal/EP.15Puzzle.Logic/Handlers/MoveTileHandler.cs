@@ -54,7 +54,7 @@ namespace EP._15Puzzle.Logic.Handlers
                 if (logicDeck.TileCanMove(request.Tile))
                 {
                     logicDeck.Move(request.Tile);
-
+                    logicDeck.Tiles=logicDeck.Tiles.OrderBy(t => t.Pos).ToList();
                     logicDeck.Score += 1;
                     if (logicDeck.CheckWin())
                     {

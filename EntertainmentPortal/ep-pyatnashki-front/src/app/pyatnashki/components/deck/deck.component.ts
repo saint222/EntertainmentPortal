@@ -32,11 +32,14 @@ export class DeckComponent implements OnInit {
   constructor(private deckService: DeckService) { }
 
   ngOnInit() {
-    this.deckService.newDeck().subscribe(d => this.deck = d);
+    this.deckService.getDeck().subscribe(d => this.deck = d);
   }
 
   newDeck() {
     this.deckService.newDeck().subscribe(d => this.deck = d);
+  }
+  moveTile(num: number) {
+    this.deckService.moveTile(num).subscribe(d => this.deck = d);
   }
 
 }
