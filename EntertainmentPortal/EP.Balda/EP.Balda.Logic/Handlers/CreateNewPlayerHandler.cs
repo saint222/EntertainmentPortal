@@ -33,6 +33,14 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Result<Player>> Handle(CreateNewPlayerCommand request,
                                                  CancellationToken cancellationToken)
         {
+            var result = await _validator
+                .ValidateAsync(request, ruleSet: "PlayerCreateExistingSet", cancellationToken: cancellationToken);
+
+            if (!result.IsValid)
+            {
+                return Result.Fail<Player>(result.Errors.First().ErrorMessage);
+            }
+
             var playerDb = new PlayerDb
             {
                 NickName = request.NickName,
@@ -40,13 +48,6 @@ namespace EP.Balda.Logic.Handlers
                 Password = request.Password,
                 Created = DateTime.UtcNow
             };
-
-            var validator = _validator.Validate(request);
-
-            if (!validator.IsValid)
-            {
-                return Result.Fail<Player>(validator.Errors.First().ErrorMessage);
-            }
 
             _context.Players.Add(playerDb);
 

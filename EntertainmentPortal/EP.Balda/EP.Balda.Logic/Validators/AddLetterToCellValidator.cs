@@ -26,7 +26,7 @@ namespace EP.Balda.Logic.Validators
                            ).WithMessage("Cell doesn't exist");
             });
 
-            RuleSet("PreValidation", () =>
+            RuleSet("AddLetterToCellPreValidation", () =>
             {
                 RuleFor(x => x.Id)
                     .GreaterThan(0)

@@ -48,7 +48,8 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Invalid data")]
-        public async Task<IActionResult> AddLetterToCellAsync([FromBody, CustomizeValidator(RuleSet = "PreValidation")] AddLetterToCellCommand model)
+        public async Task<IActionResult> AddLetterToCellAsync([FromBody, 
+            CustomizeValidator(RuleSet = "AddLetterToCellPreValidation")] AddLetterToCellCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameters: Id = {model.Id}, Letter = {model.Letter}");
