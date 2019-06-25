@@ -1,4 +1,4 @@
-import { GameboardModule } from './gameboard/gameboard.module';
+import { ApiModule } from './typescript-angular-client/api.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,8 +12,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GameboardModule,
-    FormsModule
+    FormsModule,
+    ApiModule.forRoot(null)
   ],
   providers: [],
   bootstrap: [AppComponent]
