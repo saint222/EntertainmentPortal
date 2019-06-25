@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -26,9 +27,10 @@ namespace EP.Balda.Web.Controllers
 
         [HttpGet("api/player")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Player not found")]
-        public async Task<IActionResult> GetPlayerAsync([FromQuery] GetPlayer model)
+        public async Task<IActionResult> GetPlayerAsync([FromQuery, 
+            CustomizeValidator(RuleSet = "GetPlayerPreValidation")] GetPlayer model)
         {
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
@@ -51,14 +53,14 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Player can't be created")]
-        public async Task<IActionResult> CreateNewPlayerAsync(
-            CreateNewPlayerCommand model)
+        public async Task<IActionResult> CreateNewPlayerAsync([FromBody,
+            CustomizeValidator(RuleSet = "CreatePlayerPreValidation")] CreateNewPlayerCommand model)
         {
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Player: " +
                 $"Login = {model.Login}, NickName = {model.NickName}, Password = {model.Password}");
 
-            var (isSuccess, isFailure, value) = await _mediator.Send(model);
+            var (isSuccess, isFailure, value, error) = await _mediator.Send(model);
 
             if (isFailure)
                 _logger.LogWarning(
@@ -67,7 +69,7 @@ namespace EP.Balda.Web.Controllers
 
             return isSuccess
                 ? (IActionResult) Created("api/players", value)
-                : BadRequest();
+                : BadRequest(error);
         }
 
         [HttpPut("api/player/word")]
@@ -100,7 +102,8 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description =
             "Player can't be deleted")]
         public async Task<IActionResult> DeletePlayerAsync(
-            [FromBody] DeletePlayerCommand model)
+            [FromBody,
+            CustomizeValidator(RuleSet = "DeletePlayerPreValidation")] DeletePlayerCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                              $"Parameters: Id = {model.Id}");

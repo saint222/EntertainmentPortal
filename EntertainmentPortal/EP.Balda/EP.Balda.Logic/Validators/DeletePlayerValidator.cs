@@ -25,7 +25,7 @@ namespace EP.Balda.Logic.Validators
                     ).WithMessage("No such player exists.");
             });
 
-            RuleSet("PlayerDelPreValidation", () =>
+            RuleSet("DeletePlayerPreValidation", () =>
             {
                 RuleFor(x => x.Id)
                     .NotEmpty()
@@ -36,8 +36,8 @@ namespace EP.Balda.Logic.Validators
 
         private async Task<bool> CheckForNonExistingPlayerAsync(DeletePlayerCommand model)
         {
-            var result = await _context.Players.AnyAsync(c => c.Id == model.Id)
-                .ConfigureAwait(false);
+            var result = await _context.Players.
+                AnyAsync(c => c.Id == model.Id);
 
             return result;
         }

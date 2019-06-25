@@ -17,41 +17,41 @@ namespace EP.Balda.Logic.Validators
         {
             _context = context;
 
-            RuleSet("PlayerExistingSet", () =>
+            RuleSet("PlayerCreateExistingSet", () =>
             {
                 RuleFor(x => x)
                     .MustAsync(
                         (o, s, token) => CheckExistingPlayer(o)
-                    ).WithMessage("Player already exists.");
+                    ).WithMessage("Another player already exists in the system with the same login name");
             });
 
-            RuleSet("PlayerPreValidation", () =>
+            RuleSet("CreatePlayerPreValidation", () =>
             {
                 RuleFor(x => x.Login)
                     .NotEmpty()
-                    .WithMessage("Login cannot be null.")
+                    .WithMessage("Login shouldn't be empty")
                     .Length(1, 50)
-                    .WithMessage("Login must be more than empty.");
+                    .WithMessage("Login shouldn't be empty");
 
                 RuleFor(x => x.Password)
                     .NotEmpty()
-                    .WithMessage("Password cannot be null.")
+                    .WithMessage("Password shouldn't be empty")
                     .Length(4, 8)
                     .WithMessage(
                         "Password must be more than 4 and less than 9 characters.");
 
                 RuleFor(x => x.NickName)
                     .NotEmpty()
-                    .WithMessage("NickName cannot be null.")
+                    .WithMessage("NickName shouldn't be empty.")
                     .Length(1, 50)
-                    .WithMessage("NickName must be more than empty.");
+                    .WithMessage("NickName shouldn't be empty.");
             });
         }
 
         private async Task<bool> CheckExistingPlayer(CreateNewPlayerCommand model)
         {
-            var result = await _context.Players.AnyAsync(c => c.Login == model.Login)
-                .ConfigureAwait(false);
+            var result = await _context.Players.
+                AnyAsync(c => c.Login == model.Login);
 
             return !result;
         }
