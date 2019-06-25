@@ -1,5 +1,3 @@
-import { PlayerService } from './../../services/player.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { Player } from '../../models/player';
 

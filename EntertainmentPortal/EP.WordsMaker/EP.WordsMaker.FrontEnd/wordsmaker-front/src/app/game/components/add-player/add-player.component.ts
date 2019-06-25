@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Player } from '../../models/player';
 import { PlayerService } from '../../services/player.service';
 import { of } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,18 +12,21 @@ import { of } from 'rxjs';
 })
 export class AddPlayerComponent implements OnInit {
 
-  player: Player = new Player();
-  recievedPlayer: Player;
+  playerGroup: FormGroup;
+  input_class: 'something';
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private fb: FormBuilder) {
+    this.playerGroup = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]]
+    });
+  }
 
   ngOnInit() {
   }
 
-  click(player: Player) {
-    this.playerService.addPlayer(player).
-    subscribe( (p: Player) => {this.recievedPlayer = player}
-      );
+  onSubmit(form: FormGroup) {
+    this.playerService.addPlayer(form.value).
+    subscribe( r => console.log(r));
   }
 
 }
