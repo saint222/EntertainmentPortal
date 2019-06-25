@@ -1,8 +1,14 @@
+<div>
+    <button class="btn btn-primary" (click)= "startNewGame()">Start Game</button>
+</div>
+
 <div>Errors: {{gameFieldData.userErrors}}</div>
 <div>Id: {{gameFieldData.id}} </div>
 <div >Correct Letters:
   <span *ngFor="let item of gameFieldData.correctLetters" >{{item}} </span>
 </div>
 <div>Alphabet:
-    <app-alphabet-buttons [gameDataAlphabet]= "gameFieldData" (updatedGameData)='updateField($event)'>  </app-alphabet-buttons>
+  <span *ngFor="let item of gameFieldData.alphabet" >
+    <button class="btn btn-primary" (click)= "checkLetter(item)">{{item}}</button>
+  </span>
 </div>
