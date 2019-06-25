@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { CellComponent } from './components/cell/cell.component';
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
 import { Configuration } from './configuration';
@@ -7,14 +8,23 @@ import { PlayersService } from './api/players.service';
 import { SessionsService } from './api/sessions.service';
 import { SessionComponent } from './components/session/session.component';
 import { CommonModule } from '@angular/common';
+import { CreateSessionComponent } from './components/create-session/create-session.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [SessionComponent, CellComponent],
+  declarations: [SessionComponent, CellComponent, CreateSessionComponent],
   imports: [
     CommonModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule
   ],
-  exports:      [SessionComponent],
+  exports: [
+      SessionComponent,
+      CreateSessionComponent,
+      RouterModule,
+      ReactiveFormsModule
+],
   providers: [
     PlayersService,
     SessionsService ]

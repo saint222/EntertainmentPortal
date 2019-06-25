@@ -1,5 +1,5 @@
 import { Cell } from './../../model/cell';
-import { HttpResponseBase } from '@angular/common/http';
+import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { SessionsService } from '../../api/api';
 
@@ -24,9 +24,9 @@ export class CellComponent implements OnInit {
     this.sessionService.sessionsSetCellValue(this.cell).subscribe(
       s => {
       },
-      (err: HttpResponseBase) => {
+      (err: HttpErrorResponse) => {
         this.cell.value = 0;
-        return console.log(err.statusText);
+        return console.log(err.error);
       }
     );
   }
@@ -37,8 +37,8 @@ export class CellComponent implements OnInit {
       s => {
         this.cell = s.squares.find(c => c.id === this.cell.id);
       },
-      (err: HttpResponseBase) => {
-        return console.log(err.statusText);
+      (err: HttpErrorResponse) => {
+        return console.log(err.error);
       }
     );
   }

@@ -26,10 +26,14 @@ namespace EP.Sudoku.Logic.Handlers
         public async Task<Session> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
         {
             var sessionDb = _mapper.Map<SessionDb>(request.session);
-            sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
+            if (request.session.Participant != null)
+            {
+                sessionDb.ParticipantDb = _context.Find<PlayerDb>(request.session.Participant.Id);
+            }
             GenerationSudokuService sudokuService = new GenerationSudokuService();
             List<Cell> cells = sudokuService.GetSudoku((DifficultyLevel)sessionDb.Level);         
             sessionDb.SquaresDb = _mapper.Map<List<CellDb>>(cells);
+            sessionDb.Hint = 3;
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken);
 

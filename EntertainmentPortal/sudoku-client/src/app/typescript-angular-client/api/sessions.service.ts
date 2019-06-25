@@ -1,3 +1,4 @@
+import { PlayerShort } from './../model/playerShort';
 import { Inject, Injectable, Optional } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent } from '@angular/common/http';

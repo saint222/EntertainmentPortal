@@ -37,12 +37,14 @@ namespace EP.Sudoku.Logic.Handlers
                 .Where(x => x.Id == request.Id)
                 .Select(d => _mapper.Map<Session>(d)).FirstOrDefault();
 
-            if (chosenSession == null)
+            if (chosenSession != null)
+            {
+                chosenSession.Squares = chosenSession.Squares.OrderBy(c => c.X).ThenBy(c => c.Y).ToList();
+            }
+            else
             {
                 _logger.LogError($"There is not a gamesession with the Id '{request.Id}'...");
             }
-
-            chosenSession.Squares = chosenSession.Squares.OrderBy(c => c.X).ThenBy(c => c.Y).ToList();
 
             return await Task.FromResult(chosenSession);
         }

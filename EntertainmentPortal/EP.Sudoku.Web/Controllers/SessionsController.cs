@@ -63,6 +63,10 @@ namespace EP.Sudoku.Web.Controllers
             {
                 return BadRequest();
             }
+            //if (model.Participant == null)
+            //{
+            //    return BadRequest();
+            //}
             var session = await _mediator.Send(new CreateSessionCommand(model));
 
             return session != null ? (IActionResult)Ok(session) : BadRequest();

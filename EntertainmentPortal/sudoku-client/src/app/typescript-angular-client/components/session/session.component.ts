@@ -1,8 +1,10 @@
 import { Cell } from './../../model/cell';
 import { Component, OnInit } from '@angular/core';
-import { HttpResponseBase } from '@angular/common/http';
+import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 import { Session } from '../../model/models';
 import { SessionsService } from '../../api/api';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-session',
@@ -15,10 +17,24 @@ export class SessionComponent implements OnInit {
   cells: Cell[] = [];
   cell: Cell;
 
-  constructor(private sessionService: SessionsService) { }
+  constructor(private route: ActivatedRoute, private sessionService: SessionsService) {
+    this.route.paramMap
+      .pipe(
+        switchMap(m => {
+          return this.sessionService.sessionsGetSessionById(+m.get('id'));
+        })
+      )
+      .subscribe(result => {
+          this.session = result;
+          this.cells = result.squares;
+        },
+        (err: HttpErrorResponse) => {
+          return console.log(err.error);
+        }
+      );
+   }
 
   ngOnInit() {
-    this.getSessionById();
   }
 
   getSessionById(){
@@ -27,8 +43,8 @@ export class SessionComponent implements OnInit {
         this.session = s;
         this.cells = s.squares;
       },
-      (err: HttpResponseBase) => {
-        return console.log(err.statusText);
+      (err: HttpErrorResponse) => {
+        return console.log(err.error);
       }
     );
   }
