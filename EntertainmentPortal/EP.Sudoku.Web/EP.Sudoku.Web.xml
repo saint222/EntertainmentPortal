@@ -21,7 +21,7 @@
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync(System.Int32)">
             <summary>
-            Fetches a player of the game by the unique Id.
+            Fetches a player of the game from the Db by the unique Id.
             </summary>
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer(EP.Sudoku.Logic.Commands.CreatePlayerCommand)">
@@ -51,12 +51,12 @@
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync(System.Int32)">
             <summary>
-            Fetches a gamesession by the unique Id.
+            Fetches a gamesession from the Db by the unique Id.
             </summary>
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.SessionsController.CreateSession(EP.Sudoku.Logic.Models.Session)">
             <summary>
-            Creates a new gamesession doue to the set parametrs.
+            Creates a new gamesession due to the set parametrs and saves it in the Db.
             </summary>
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.SessionsController.EditSession(EP.Sudoku.Logic.Commands.UpdateSessionCommand)">
@@ -71,7 +71,7 @@
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.SessionsController.GetHint(EP.Sudoku.Logic.Commands.GetHintCommand)">
             <summary>    
-            Changes the value of a cell after each of three possibilies to get automatically set values durring the game as prompts.
+            Changes the value of a cell after each of three possibilies to get automatically set values durring the game as prompts and saves it in the Db.
             </summary>
         </member>
     </members>

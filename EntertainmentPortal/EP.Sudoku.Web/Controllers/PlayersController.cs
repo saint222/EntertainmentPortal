@@ -74,8 +74,7 @@ namespace EP.Sudoku.Web.Controllers
         public async Task<IActionResult> CreatePlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationPlayer")]CreatePlayerCommand model)
         {                   
             if (!ModelState.IsValid)
-            {
-                _logger.LogError($"Incorrect value for the player's NickName was set up...");
+            {                
                 return BadRequest();                
             }
             var player = await _mediator.Send(model);
@@ -91,8 +90,7 @@ namespace EP.Sudoku.Web.Controllers
         public async Task<IActionResult> EditPlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationPlayer")]UpdatePlayerCommand model)
         {
             if (!ModelState.IsValid)
-            {
-                _logger.LogError($"Incorrect value for the player's NickName was set up...");
+            {                
                 return BadRequest();
             }
             var player = await _mediator.Send(model);

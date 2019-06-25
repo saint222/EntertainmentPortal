@@ -1,0 +1,30 @@
+2019-06-25 12:39:38.621 +03:00 [Information] The file "/swagger-ui-bundle.js" was not modified
+2019-06-25 12:39:38.621 +03:00 [Information] The file "/swagger-ui.css" was not modified
+2019-06-25 12:39:38.621 +03:00 [Information] The file "/swagger-ui-standalone-preset.js" was not modified
+2019-06-25 12:40:13.512 +03:00 [Information] CORS policy execution successful.
+2019-06-25 12:40:13.564 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-25 12:40:17.913 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-25 12:40:17.973 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-25 12:40:54.009 +03:00 [Information] CORS policy execution successful.
+2019-06-25 12:40:54.032 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-25 12:40:54.211 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-25 12:40:54.259 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-25 13:14:07.878 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-25 13:14:11.395 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-06-25 13:14:11.475 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-25 13:14:25.114 +03:00 [Information] CORS policy execution successful.
+2019-06-25 13:14:25.124 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-25 13:14:26.125 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-25 13:14:26.163 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-25 13:15:29.538 +03:00 [Information] CORS policy execution successful.
+2019-06-25 13:15:29.557 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-25 13:15:30.361 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-06-25 13:15:30.389 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-25 13:23:13.853 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-25 13:23:17.122 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-06-25 13:23:17.199 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-06-25 13:23:41.057 +03:00 [Information] CORS policy execution successful.
+2019-06-25 13:23:41.066 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-06-25 13:23:41.908 +03:00 [Error] There was an attempt to create a player with the existing nickname.
+2019-06-25 13:23:41.965 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-06-25 13:23:42.015 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
