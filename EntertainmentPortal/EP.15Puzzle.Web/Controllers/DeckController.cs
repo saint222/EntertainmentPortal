@@ -104,17 +104,7 @@ namespace EP._15Puzzle.Web.Controllers
         {
         }
 
-        // GET: api/Deck/leaderboard
-        [HttpGet("leaderboard")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Record), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> GetLeaderboard()
-        {
-
-            var result = await _mediator.Send(new GetLeaderboardCommand());
-            return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
-
-        }
+        
         
     }
     

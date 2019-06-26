@@ -26,6 +26,7 @@ namespace EP._15Puzzle.Data.Context
                 .WithOne(d => d.User)
                 .HasForeignKey<DeckDb>(d => d.UserId);
             
+            
             var deckEntity = modelBuilder.Entity<DeckDb>();
             deckEntity.HasMany(t => t.Tiles);
             deckEntity.Property(d => d.Victory).IsRequired();
@@ -34,9 +35,7 @@ namespace EP._15Puzzle.Data.Context
             var tileEntity = modelBuilder.Entity<TileDb>();
             tileEntity.Property(f => f.Num).IsRequired();
             tileEntity.Property(f => f.Pos).IsRequired();
-
-            var recordEntity = modelBuilder.Entity<RecordDb>();
-            recordEntity.HasOne(r => r.User);
+            
             
 
         }

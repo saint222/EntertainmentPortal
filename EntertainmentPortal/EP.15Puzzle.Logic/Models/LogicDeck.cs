@@ -82,7 +82,7 @@ namespace EP._15Puzzle.Logic.Models
                     break;
                 }
             }
-            int chetnost = 0;
+            int chetnost = 1;
             for (int i = 0; i < 16; i++)
             {
                 if (tilesOnDeck[i] != 0)

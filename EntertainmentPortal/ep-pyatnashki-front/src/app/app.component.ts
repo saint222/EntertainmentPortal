@@ -1,7 +1,5 @@
 
 import { Component } from '@angular/core';
-import { DeckService } from './pyatnashki/services/deck.service';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-root',

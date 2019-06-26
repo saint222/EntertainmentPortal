@@ -48,6 +48,7 @@ namespace EP._15Puzzle.Logic.Handlers
                 var deckDb = _context.DeckDbs
                     .AsNoTracking()
                     .Include(d => d.Tiles)
+                    .Include(d=>d.User)
                     .First(d => d.UserId == request.Id);
                 var logicDeck = _mapper.Map<LogicDeck>(deckDb);
                 logicDeck.SetNearbyTiles();
@@ -59,6 +60,9 @@ namespace EP._15Puzzle.Logic.Handlers
                     if (logicDeck.CheckWin())
                     {
                         logicDeck.Victory = true;
+
+                        var recordDb = new RecordDb() {Score = logicDeck.Score, User = logicDeck.User, UserId = logicDeck.UserId};
+                        logicDeck.User.Records.Add(recordDb);
                     }
                     _context.Update(_mapper.Map<DeckDb>(logicDeck));
                     await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);

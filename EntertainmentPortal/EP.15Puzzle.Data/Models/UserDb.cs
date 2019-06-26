@@ -12,8 +12,7 @@ namespace EP._15Puzzle.Data.Models
         public int Id { get; set; }
 
         public DeckDb Deck { get; set; }
-        //public int DeckId { get; set; }
-
+        public ICollection<RecordDb> Records { get; set; } = new List<RecordDb>();
         public string Name { get; set; }
         public string Country { get; set; }
         

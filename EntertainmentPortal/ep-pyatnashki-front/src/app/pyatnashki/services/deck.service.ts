@@ -1,4 +1,3 @@
-import { Tile } from './../models/tile';
 import { Deck } from './../models/deck';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';

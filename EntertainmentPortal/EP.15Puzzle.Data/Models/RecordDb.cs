@@ -8,6 +8,7 @@ namespace EP._15Puzzle.Data.Models
     {
         public int Id { get; set; }
         public UserDb User { get; set; }
+        public int UserId { get; set; }
         public int Score { get; set; }
     }
 }

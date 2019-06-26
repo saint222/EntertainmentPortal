@@ -17,7 +17,6 @@ namespace EP._15Puzzle.Logic.Handlers
     {
         private readonly IMapper _mapper;
         private readonly DeckDbContext _context;
-        
 
         public GetLeaderboardHandler(DeckDbContext context, IMapper mapper)
         {
@@ -29,11 +28,11 @@ namespace EP._15Puzzle.Logic.Handlers
             
             try
             {
-                var decks = await _context.RecordDbs
+                var records = await _context.RecordDbs
                     .Include(d => d.User).OrderByDescending(r=>r.Score).Take(10).AsNoTracking()
                     .ToArrayAsync(cancellationToken)
                     .ConfigureAwait(false);
-                var deckRecords = decks.Select(d => _mapper.Map<Record>(d));
+                var deckRecords = records.Select(d => _mapper.Map<Record>(d));
                 return await Task.FromResult(Result.Ok<IEnumerable<Record>>(deckRecords));
             }
             catch (DbException ex)
