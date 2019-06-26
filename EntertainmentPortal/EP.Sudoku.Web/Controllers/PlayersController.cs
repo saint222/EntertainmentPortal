@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Bogus.Extensions;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using NJsonSchema.Annotations;
 using NSwag.Annotations;
@@ -77,8 +74,8 @@ namespace EP.Sudoku.Web.Controllers
             {                
                 return BadRequest();                
             }
-            var player = await _mediator.Send(model);
-            return player != null ? (IActionResult)Ok(player) : BadRequest();            
+            var result = await _mediator.Send(model);
+            return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);           
         }
 
         /// <summary>

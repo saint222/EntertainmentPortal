@@ -1,8 +1,13 @@
-<h1>Sudoku</h1>
-<p>Hint {{session?.hint}}</p>
-<button type="button" class="btn btn-primary" (click)="getSessionById()">Refresh</button>
 <div class="container">
-  <div class="row-sudoku" *ngFor="let cell of cells">
+  <div class="header-sudoku">
+    <p>Hint: {{session?.hint}}</p>
+  </div>
+
+  <div class="sudoku" *ngFor="let cell of cells">
     <app-cell [cell]="cell"></app-cell>
   </div>
+</div>
+
+<div class="form-group">
+
 </div>

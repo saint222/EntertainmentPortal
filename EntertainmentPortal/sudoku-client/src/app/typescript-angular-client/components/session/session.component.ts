@@ -18,6 +18,18 @@ export class SessionComponent implements OnInit {
   cell: Cell;
 
   constructor(private route: ActivatedRoute, private sessionService: SessionsService) {
+    this.sessionService.UpdateHint.subscribe(s => this.session.hint = this.session.hint - 1);
+    this.sessionService.NewSession.subscribe(s => {
+      this.sessionService.sessionsGetSessionById(+s).subscribe(x => {
+          this.session = x;
+          this.cells = x.squares;
+        },
+        (err: HttpErrorResponse) => {
+          return console.log(err.error);
+        }
+      );
+    });
+
     this.route.paramMap
       .pipe(
         switchMap(m => {

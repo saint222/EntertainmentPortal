@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders, HttpParams,
 import { CustomHttpUrlEncodingCodec } from '../encoder';
 
 import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { GetHintCommand } from '../model/getHintCommand';
 import { Session } from '../model/session';
@@ -14,13 +15,15 @@ import { UpdateSessionCommand } from '../model/updateSessionCommand';
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
 import { Configuration } from '../configuration';
 
-
 @Injectable()
 export class SessionsService {
 
     protected basePath = 'http://localhost:58857';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
+
+    private updateHint: Subject<string> = new Subject<string>();
+    public newSession: Subject<string> = new Subject<string>();
 
     constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
@@ -183,6 +186,7 @@ export class SessionsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
+        this.updateHint.next("update");
         return this.httpClient.put<Session>(`${this.basePath}/api/getHint`,
             model,
             {
@@ -281,6 +285,14 @@ export class SessionsService {
                 reportProgress: reportProgress
             }
         );
+    }
+
+    get UpdateHint() {
+      return this.updateHint.asObservable();
+    }
+
+    get NewSession() {
+      return this.newSession.asObservable();
     }
 
 }

@@ -13,7 +13,7 @@ export class CreateSessionComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private sessionService: SessionsService) {
     this.sessionGroup = this.fb.group({
-      level: ['0', Validators.required]
+      level: ['Easy', Validators.required]
     });
   }
 
@@ -21,9 +21,10 @@ export class CreateSessionComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    console.log(form.value);
-    this.sessionService.sessionsCreateSession(form.value).subscribe(
-      c => console.log(c),
+    this.sessionService.sessionsCreateSession(form.value).subscribe(c => {
+        console.log(c);
+        this.sessionService.newSession.next(c.id.toString());
+      },
       (err: HttpErrorResponse) => {
         return console.log(err.error);
       }

@@ -34,13 +34,13 @@ namespace EP.Sudoku.Logic.Handlers
                 return Result.Fail<Session>(result.Errors.First().ErrorMessage);
             }
 
-            var session = _context.Sessions
+            var sessionDb = _context.Sessions
                 .Include(d => d.SquaresDb)
                 .First(d => d.Id == request.SessionId);
-            session.SquaresDb.First(x => x.Id == request.Id).Value = request.Value;
+            sessionDb.SquaresDb.First(x => x.Id == request.Id).Value = request.Value;
             await _context.SaveChangesAsync(cancellationToken);
 
-            return Result.Ok<Session>(_mapper.Map<Session>(session));
+            return Result.Ok<Session>(_mapper.Map<Session>(sessionDb));
         }
 
 
