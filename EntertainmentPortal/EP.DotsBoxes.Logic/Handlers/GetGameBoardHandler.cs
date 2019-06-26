@@ -9,6 +9,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using EP.DotsBoxes.Data.Models;
 using CSharpFunctionalExtensions;
+using EP.DotsBoxes.Logic.Models;
 
 namespace EP.DotsBoxes.Logic.Handlers
 {
@@ -28,7 +29,7 @@ namespace EP.DotsBoxes.Logic.Handlers
             var result = await _context.GameBoard
                 .Include(b => b.Cells)
                 .AsNoTracking()
-               .ToListAsync(cancellationToken)
+                .ToListAsync(cancellationToken);
 
             IEnumerable<GameBoard> gameBoard = _mapper.Map<List<GameBoardDb>, IEnumerable<GameBoard>>(result);
 

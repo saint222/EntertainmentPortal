@@ -12,9 +12,9 @@ namespace EP.DotsBoxes.Logic.Handlers
     public class GetPlayerHandler : IRequestHandler<GetPlayer, Maybe<PlayerDb>>
     {
         private readonly IMapper _mapper;
-        private readonly PlayerDbContext _context;
+        private readonly GameBoardDbContext _context;
 
-        public GetPlayerHandler(IMapper mapper, PlayerDbContext context)
+        public GetPlayerHandler(IMapper mapper, GameBoardDbContext context)
         {
             _mapper = mapper;
             _context = context;
