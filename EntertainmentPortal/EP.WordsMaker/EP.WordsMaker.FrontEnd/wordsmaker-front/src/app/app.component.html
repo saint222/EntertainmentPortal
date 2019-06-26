@@ -1,8 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>Welcome to {{ title }}!</h1>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link" routerLinkActive="active" routerLink="get">Home</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/players">Players</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="edit">Reg</a>
+      </nav>
+    </div>
+  </header>
+  <main role="main" class="inner cover">
+      <router-outlet></router-outlet>
+  </main>
 </div>
-<app-player-list></app-player-list>
-<app-add-player></app-add-player>
-<app-get-player></app-get-player>
-<router-outlet></router-outlet>

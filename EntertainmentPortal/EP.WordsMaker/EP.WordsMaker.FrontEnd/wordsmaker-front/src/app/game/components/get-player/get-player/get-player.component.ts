@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Player } from 'src/app/game/models/player';
 import { PlayerService } from 'src/app/game/services/player.service';
@@ -9,21 +10,19 @@ import { PlayerService } from 'src/app/game/services/player.service';
 })
 export class GetPlayerComponent implements OnInit {
 
-  id: number;
-  player: Player = new Player();
-  done: boolean = false;
+  playerGroup: FormGroup;
+  input_class: 'something';
 
-  constructor(private playerService: PlayerService) { }
-
-  submit(num: number){
-    this.playerService.getPlayer(num).subscribe(
-      (data: Player) => {
-        this.player = data;
-        this.done = true;
-      });
+  constructor(private playerService: PlayerService, private fb: FormBuilder) {
+    this.playerGroup = this.fb.group({
+      id: ['', Validators.required]
+    })
   }
 
   ngOnInit() {
   }
 
+  onSubmit(form: FormGroup) {
+    this.playerService.getPlayer(form.value).subscribe(s => console.log(s))
+  }
 }

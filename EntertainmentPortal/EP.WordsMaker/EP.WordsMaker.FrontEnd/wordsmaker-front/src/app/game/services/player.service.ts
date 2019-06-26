@@ -1,5 +1,5 @@
 import { Player } from './../models/player';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 
@@ -17,12 +17,12 @@ export class PlayerService {
   }
 
   getPlayer(id: number) {
-    return this.http.get<Player>('http://localhost:56657/api/player?number' + id);
+    const params = new HttpParams().set('number', id.toString());
+    return this.http.get('http://localhost:56657/api/player', {params});
   }
 
-  addPlayer(player: Player): Observable<Player> {
-
-      return this.http.post<Player>('http://localhost:56657/api/player', player);
+  addPlayer(player: Player) {
+      return this.http.post('http://localhost:56657/api/player', player);
   }
 
 }
