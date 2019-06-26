@@ -8,6 +8,6 @@ namespace EP.Balda.Logic.Commands
     {
         public long Id { get; set; }
 
-        public char? Letter { get; set; }
+        public char Letter { get; set; }
     }
 }

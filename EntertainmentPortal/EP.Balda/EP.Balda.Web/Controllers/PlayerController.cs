@@ -102,13 +102,12 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description =
             "Player can't be deleted")]
         public async Task<IActionResult> DeletePlayerAsync(
-            [FromBody,
-            CustomizeValidator(RuleSet = "DeletePlayerPreValidation")] DeletePlayerCommand model)
+            [FromBody] DeletePlayerCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                              $"Parameters: Id = {model.Id}");
 
-            var (isSuccess, error) = await _mediator.Send(model);
+            var (isSuccess, isFailure, value, error) = await _mediator.Send(model);
             return isSuccess
                 ? (IActionResult) NoContent()
                 : BadRequest(error);

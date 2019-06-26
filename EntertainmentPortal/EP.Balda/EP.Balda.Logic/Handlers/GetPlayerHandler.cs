@@ -16,30 +16,24 @@ namespace EP.Balda.Logic.Handlers
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IValidator<GetPlayer> _validator;
 
-        public GetPlayerHandler(IMapper mapper, BaldaGameDbContext context, 
-            IValidator<GetPlayer> validator)
+        public GetPlayerHandler(IMapper mapper, BaldaGameDbContext context)
         {
             _mapper = mapper;
             _context = context;
-            _validator = validator;
         }
 
         public async Task<Maybe<Player>> Handle(GetPlayer request,
                                                 CancellationToken cancellationToken)
         {
-            var result = await _validator
-                .ValidateAsync(request, ruleSet: "PlayerExistingSet", cancellationToken: cancellationToken);
-
-            if (!result.IsValid)
-            {
-                return Maybe<Player>.None;
-            }
-
             var playerDb = await _context.Players
                 .Where(p => p.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
+
+            if(playerDb == null)
+            {
+                return Maybe<Player>.None;
+            }
 
             return playerDb == null
                 ? Maybe<Player>.None

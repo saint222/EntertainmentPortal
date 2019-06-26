@@ -17,30 +17,24 @@ namespace EP.Balda.Logic.Handlers
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IValidator<DeletePlayerCommand> _validator;
 
-        public DeletePlayerHandler(IMapper mapper, BaldaGameDbContext context,
-                                   IValidator<DeletePlayerCommand> validator)
+        public DeletePlayerHandler(IMapper mapper, BaldaGameDbContext context)
         {
             _mapper = mapper;
             _context = context;
-            _validator = validator;
         }
 
         public async Task<Result<Player>> Handle(DeletePlayerCommand request,
                                                  CancellationToken cancellationToken)
         {
-            var result = await _validator
-                .ValidateAsync(request, ruleSet: "PlayerDbNotExistingSet", cancellationToken: cancellationToken);
-
-            if (!result.IsValid)
-            {
-                return Result.Fail<Player>(result.Errors.First().ErrorMessage);
-            }
-
             var playerDb = await _context.Players
                 .Where(p => p.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
+
+            if(playerDb == null)
+            {
+                return Result.Fail<Player>($"The player with id {request.Id} doesn't exist");
+            }
 
             _context.Players.Remove(playerDb);
 

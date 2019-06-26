@@ -18,29 +18,29 @@ namespace EP.Balda.Logic.Handlers
     {
         private readonly IMapper _mapper;
         private readonly BaldaGameDbContext _context;
-        private readonly IValidator<AddLetterToCellCommand> _validator;
 
-        public AddLetterToCellHandler(IMapper mapper, BaldaGameDbContext context, IValidator<AddLetterToCellCommand> validator)
+        public AddLetterToCellHandler(IMapper mapper, BaldaGameDbContext context)
         {
             _mapper = mapper;
             _context = context;
-            _validator = validator;
         }
 
         public async Task<Result<Cell>> Handle(AddLetterToCellCommand request,
                                                CancellationToken cancellationToken)
         {
-            var result = await _validator
-                .ValidateAsync(request, ruleSet: "CellExistingSet", cancellationToken: cancellationToken);
-
-            if (!result.IsValid)
-            {
-                return Result.Fail<Cell>(result.Errors.First().ErrorMessage);
-            }
-
             var cellDb = await (_context.Cells
                 .Where(c => c.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken));
+
+            if(cellDb == null)
+            {
+                return Result.Fail<Cell>($"The cell with id {request.Id} doesn't exist");
+            }
+
+            if (cellDb.Letter != null)
+            {
+                return Result.Fail<Cell>("Cell already contains letter");
+            }
 
             var isAllowedCell = await IsAllowedCell(cellDb);
 
@@ -48,16 +48,9 @@ namespace EP.Balda.Logic.Handlers
             {
                 return Result.Fail<Cell>($"The cell with id {request.Id} doesn't have occupied cells nearby");
             }
-
-            if(cellDb.Letter == null)
-            {
-                cellDb.Letter = request.Letter;
-            }
-            else
-            {
-                return Result.Fail<Cell>("Cell already contains letter");
-            }
-
+            
+            cellDb.Letter = request.Letter;
+            
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
