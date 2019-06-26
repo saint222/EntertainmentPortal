@@ -70,6 +70,9 @@ namespace EP.Balda.Logic.Handlers
 
             var word = GetSelectedWord(cellsFormWord);
 
+            if (word == game.InitWord)
+                return Result.Fail<Player>("It is initial word");
+
             var wordRu = _context.WordsRu
                 .SingleOrDefault(w => w.Word == word);
 
@@ -87,8 +90,6 @@ namespace EP.Balda.Logic.Handlers
                 .FirstOrDefaultAsync(
                     pw => (pw.GameId == request.GameId) & (pw.WordId == wordRu.Id),
                     cancellationToken);
-
-            //TODO Add initial word check
 
             if (playerWord != null)
                 return Result.Fail<Player>("Word has already been used");
