@@ -1,17 +1,22 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace EP.DotsBoxes.Web.Filters
 {
     public class GlobalExceptionFilter : IExceptionFilter
     {
+        private readonly ILogger<GlobalExceptionFilter> _logger;
+
+        public GlobalExceptionFilter(ILogger<GlobalExceptionFilter> logger)
+        {
+            _logger = logger;
+        }
+
         public void OnException(ExceptionContext context)
         {
+            _logger.LogCritical(context.Exception.Message, "Unexpected exception!");
             context.ExceptionHandled = true;
 
             context.Result = new ContentResult

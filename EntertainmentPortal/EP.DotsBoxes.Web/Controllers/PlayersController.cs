@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EP.DotsBoxes.Logic.Commands;
@@ -26,6 +24,19 @@ namespace EP.DotsBoxes.Web.Controllers
             _logger = logger;
         }
 
+        // GET api/player/{id}
+        [HttpGet("api/player/{id}")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
+        public async Task<IActionResult> GetPlayerAsync([FromRoute]int id)
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName}, Parameters: id = {id}");
+            var result = await _mediator.Send(new GetPlayer(id));
+            _logger.LogWarning($"Exit from method: {ControllerContext.ActionDescriptor.ActionName}");
+
+            return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
+        }
+
         // GET api/players
         [HttpGet("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Received collection of players")]
@@ -33,7 +44,7 @@ namespace EP.DotsBoxes.Web.Controllers
         public async Task<IActionResult> GetAllPlayersAsync()
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName}");
-            var result = await _mediator.Send(new GetAllPlayers()).ConfigureAwait(false);
+            var result = await _mediator.Send(new GetAllPlayers());
             _logger.LogWarning($"Exit from method: {ControllerContext.ActionDescriptor.ActionName}");
 
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
@@ -50,6 +61,7 @@ namespace EP.DotsBoxes.Web.Controllers
 
             if (!ModelState.IsValid)
             {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: Name = {model.Name}, Color = {model.Color} - Invalid data");
                 return BadRequest(ModelState);
             }
 

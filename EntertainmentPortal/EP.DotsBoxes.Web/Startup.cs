@@ -35,6 +35,7 @@ namespace EP.DotsBoxes.Web
             services.AddAutoMapper(typeof(GameBoardProfile).Assembly);
             services.AddPlayerServices();
             services.CreateGameBoardServices();
+            services.AddCors(); // To enable CrossOriginResourceSharing.
             services.AddMvc(opt =>
             {
                 opt.Filters.Add(typeof(GlobalExceptionFilter));
@@ -55,6 +56,12 @@ namespace EP.DotsBoxes.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // CORS configuration.
+            app.UseCors(opt =>
+                opt.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin());
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseSwagger().UseSwaggerUi3();

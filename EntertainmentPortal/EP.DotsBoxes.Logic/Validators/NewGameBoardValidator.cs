@@ -1,8 +1,5 @@
 ﻿using EP.DotsBoxes.Logic.Commands;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EP.DotsBoxes.Logic.Validators
 {

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EP.DotsBoxes.Data.Context;
-using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +29,6 @@ namespace EP.DotsBoxes.Logic.Handlers
                 .Include(b => b.Cells)
                 .AsNoTracking()
                .ToListAsync(cancellationToken)
-               .ConfigureAwait(false);
 
             IEnumerable<GameBoard> gameBoard = _mapper.Map<List<GameBoardDb>, IEnumerable<GameBoard>>(result);
 

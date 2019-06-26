@@ -27,8 +27,7 @@ namespace EP.DotsBoxes.Logic.Handlers
         {
             var result = await _context.Players
                .AsNoTracking()
-               .ToArrayAsync(cancellationToken)
-               .ConfigureAwait(false);
+               .ToArrayAsync(cancellationToken);
 
             return result.Any() ? 
                 Maybe<IEnumerable<PlayerDb>>.From(result) : 
