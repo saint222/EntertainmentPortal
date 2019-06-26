@@ -22,7 +22,7 @@ namespace EP.DotsBoxes.Logic.Handlers
         private readonly IValidator<AddPlayerCommand> _validator;
         private readonly ILogger<AddPLayerHandler> _logger;
 
-        public AddPLayerHandler(GameBoardDbContext context, IMapper mapper, IValidator<AddPlayerCommand> validator)
+        public AddPLayerHandler(GameBoardDbContext context, IMapper mapper, IValidator<AddPlayerCommand> validator, ILogger<AddPLayerHandler> logger)
         {
             _context = context;
             _mapper = mapper;
@@ -33,6 +33,7 @@ namespace EP.DotsBoxes.Logic.Handlers
         public async Task<Result<Player>> Handle([NotNull]AddPlayerCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Adding a new player.");
+
             //validate
             var result = _validator.Validate(request);
 

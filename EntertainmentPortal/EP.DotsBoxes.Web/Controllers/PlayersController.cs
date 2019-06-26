@@ -61,7 +61,9 @@ namespace EP.DotsBoxes.Web.Controllers
 
             if (!ModelState.IsValid)
             {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: Name = {model.Name}, Color = {model.Color} - Invalid data");
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                                   $"Name = {model.Name} - Invalid data");
+
                 return BadRequest(ModelState);
             }
 

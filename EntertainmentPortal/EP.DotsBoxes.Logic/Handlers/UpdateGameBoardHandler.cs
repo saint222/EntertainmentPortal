@@ -8,6 +8,7 @@ using EP.DotsBoxes.Logic.Models;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.DotsBoxes.Data.Context;
+using EP.DotsBoxes.Data.Models;
 using EP.DotsBoxes.Logic.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,7 @@ namespace EP.DotsBoxes.Logic.Handlers
         public async Task<Result<GameBoard>> Handle(UpdateGameBoardCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Updating the game board.");
-           
+
             var cell = new Cell()
             {
                 Row = request.Row,
@@ -51,15 +52,16 @@ namespace EP.DotsBoxes.Logic.Handlers
 
             //_context.Entry(context).State = EntityState.Modified;
             try
-             {
+            {
                 _logger.LogInformation("Updating database the game board.");
                 await _context.SaveChangesAsync(cancellationToken);
-                return Result.Ok<Cell>(model);
+                return Result.Ok<GameBoard>(gameBoard);
             }
             catch (DbUpdateException ex)
             {
                 _logger.LogError(ex.Message, "Unsuccessful database update the game board!");
                 return Result.Ok<GameBoard>(gameBoard);
             }
+        }
     }
 }

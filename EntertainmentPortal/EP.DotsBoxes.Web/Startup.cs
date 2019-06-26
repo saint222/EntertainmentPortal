@@ -33,7 +33,6 @@ namespace EP.DotsBoxes.Web
             services.AddMediatR(typeof(GetGameBoard).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddAutoMapper(typeof(GameBoardProfile).Assembly);
-            services.AddPlayerServices();
             services.CreateGameBoardServices();
             services.AddCors(); // To enable CrossOriginResourceSharing.
             services.AddMvc(opt =>
