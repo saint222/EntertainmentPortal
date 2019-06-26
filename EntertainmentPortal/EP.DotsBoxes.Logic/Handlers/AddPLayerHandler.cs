@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -19,11 +16,11 @@ namespace EP.DotsBoxes.Logic.Handlers
 {
     public class AddPLayerHandler : IRequestHandler<AddPlayerCommand, Result<Player>>
     {
-        private readonly PlayerDbContext _context;
+        private readonly GameBoardDbContext _context;
         private readonly IMapper _mapper;
         private readonly IValidator<AddPlayerCommand> _validator;
 
-        public AddPLayerHandler(PlayerDbContext context, IMapper mapper, IValidator<AddPlayerCommand> validator)
+        public AddPLayerHandler(GameBoardDbContext context, IMapper mapper, IValidator<AddPlayerCommand> validator)
         {
             _context = context;
             _mapper = mapper;
@@ -40,18 +37,18 @@ namespace EP.DotsBoxes.Logic.Handlers
                 return Result.Fail<Player>(result.Errors.First().ErrorMessage);
             }
 
-            var model = new PlayerDb
+            var model = new Player
             {
                 Name = request.Name,
-                Color = request.Color
             };
 
-            _context.Players.Add(model);
-
+            var context = _context.GameBoard.Find(request.GameBoardId);
+            context.Players.Add(_mapper.Map<PlayerDb>(model));
+            
             try
             {
                 await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                return Result.Ok<Player>(_mapper.Map<Player>(model));
+                return Result.Ok<Player>(model);
             }
             catch (DbUpdateException ex)
             {

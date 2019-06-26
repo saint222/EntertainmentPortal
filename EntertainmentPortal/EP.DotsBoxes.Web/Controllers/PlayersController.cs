@@ -46,7 +46,7 @@ namespace EP.DotsBoxes.Web.Controllers
         public async Task<IActionResult> AddPlayerAsync([FromBody][NotNull]AddPlayerCommand model) 
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Player: " +
-                $"Name = {model.Name}, Color = {model.Color}");
+                $"Name = {model.Name}");
 
             if (!ModelState.IsValid)
             {

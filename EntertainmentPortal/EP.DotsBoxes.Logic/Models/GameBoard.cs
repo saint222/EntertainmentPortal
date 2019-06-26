@@ -28,6 +28,7 @@ namespace EP.DotsBoxes.Logic.Models
         /// </summary>
         public List<Cell> Cells { get; set; }
 
+        public List<Player> Players { get; set; }
 
     }
 }

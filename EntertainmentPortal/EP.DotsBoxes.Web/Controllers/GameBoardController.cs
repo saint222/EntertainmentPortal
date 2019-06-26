@@ -27,7 +27,7 @@ namespace EP.DotsBoxes.Web.Controllers
 
         // GET api/gameboard
         [HttpGet("api/gameboard")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Cell>), Description = "Received game board")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<GameBoard>), Description = "Received game board")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game board is not created")]
         public async Task<IActionResult> GetGameBoardAsync()
         {
@@ -60,7 +60,7 @@ namespace EP.DotsBoxes.Web.Controllers
 
         //PUT api/gameboard
        [HttpPut("api/gameboard")]
-       [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Update game board")]
+       [SwaggerResponse(HttpStatusCode.OK, typeof(GameBoard), Description = "Update game board")]
        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> UpdateGameBoardAsync([FromBody][NotNull]UpdateGameBoardCommand model)
         {

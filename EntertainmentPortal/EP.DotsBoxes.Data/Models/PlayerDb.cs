@@ -13,6 +13,8 @@ namespace EP.DotsBoxes.Data.Models
         /// </summary>
         public int Id { get; set; }
 
+        public int GameBoardId { get; set; }
+
         /// <summary>
         /// Name property. Stores player's name.
         /// </summary>
@@ -27,6 +29,8 @@ namespace EP.DotsBoxes.Data.Models
         /// Score property. Stores player's score.
         /// </summary>
         public int Score { get; set; }
+
+        public GameBoardDb GameBoard { get; set; }
 
         /// <summary>
         /// Created property. Stores date of creation / registration of the player.

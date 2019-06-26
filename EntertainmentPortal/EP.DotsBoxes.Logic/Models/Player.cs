@@ -1,4 +1,6 @@
-﻿namespace EP.DotsBoxes.Logic.Models
+﻿using System;
+
+namespace EP.DotsBoxes.Logic.Models
 {
     /// <summary>
     /// <c>Player</c> model class.
@@ -6,6 +8,11 @@
     /// </summary>
     public class Player
     {
+        public Player()
+        {
+            Color = CreateRandomColor();
+        }
+
         /// <summary>
         /// Id property. Represents unique player's Id.
         /// </summary>
@@ -25,5 +32,15 @@
         /// Score property. Represents player's score.
         /// </summary>
         public int Score { get; set; }
+
+
+        private string CreateRandomColor()
+        {
+            Random randon = new Random();
+            
+            return System.Drawing.Color.FromArgb(randon.Next(255),
+                randon.Next(255),
+                randon.Next(255)).Name;
+        }
     }
 }

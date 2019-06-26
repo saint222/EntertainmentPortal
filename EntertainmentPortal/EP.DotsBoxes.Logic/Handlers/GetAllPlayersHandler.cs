@@ -4,9 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using EP.DotsBoxes.Logic.Queries;
-using EP.DotsBoxes.Data;
 using EP.DotsBoxes.Data.Context;
-using EP.DotsBoxes.Logic.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using CSharpFunctionalExtensions;
@@ -17,9 +15,9 @@ namespace EP.DotsBoxes.Logic.Handlers
     public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<PlayerDb>>>
     {
         private readonly IMapper _mapper;
-        private readonly PlayerDbContext _context;
+        private readonly GameBoardDbContext _context;
 
-        public GetAllPlayersHandler(IMapper mapper, PlayerDbContext context)
+        public GetAllPlayersHandler(IMapper mapper, GameBoardDbContext context)
         {
             _mapper = mapper;
             _context = context;

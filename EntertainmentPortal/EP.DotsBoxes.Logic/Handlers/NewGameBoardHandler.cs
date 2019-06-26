@@ -1,17 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Bogus.Extensions;
 using CSharpFunctionalExtensions;
-using EP.DotsBoxes.Data;
 using EP.DotsBoxes.Data.Context;
 using EP.DotsBoxes.Data.Models;
 using EP.DotsBoxes.Logic.Commands;
 using EP.DotsBoxes.Logic.Models;
-using EP.DotsBoxes.Logic.Queries;
-using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,10 +28,10 @@ namespace EP.DotsBoxes.Logic.Handlers
             {
                 Rows = request.Rows,
                 Columns = request.Columns,
-                Cells = CreateGameBoard(request.Rows,request.Columns)
+                Cells = new GameLogic().CreateGameBoard(request.Rows,request.Columns)
             };
 
-            _context.GameBoard.Add(_mapper.Map<GameBoardDb>(model));
+           _context.GameBoard.Add(_mapper.Map<GameBoardDb>(model));
             
             try
             {
@@ -48,21 +42,6 @@ namespace EP.DotsBoxes.Logic.Handlers
             {
                 return Result.Fail<GameBoard>(ex.Message);
             }
-        }
-
-        private List<Cell> CreateGameBoard(int row, int column)
-        {
-            List<Cell> cells = new List<Cell>();
-
-            for (int i = 1; i <= row; i++)
-            {
-                for (int j = 1; j <= column; j++)
-                {
-                    cells.Add(new Cell() {Row = i, Column = j});
-                }
-            }
-
-            return cells;
         }
     }
 }

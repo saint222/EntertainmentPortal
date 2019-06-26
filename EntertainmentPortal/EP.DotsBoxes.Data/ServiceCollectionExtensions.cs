@@ -6,19 +6,7 @@ namespace EP.DotsBoxes.Data
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddPlayerData(this IServiceCollection services)
-        {
-            services.AddDbContext<PlayerDbContext>(
-                opt => {
-                    opt.UseSqlite("Data Source = player.db");
-                    opt.UseQueryTrackingBehavior(
-                        QueryTrackingBehavior.NoTracking);
-                });
-
-            return services;
-        }
-
-        public static IServiceCollection CreateGameBoardData(this IServiceCollection services)
+       public static IServiceCollection CreateGameBoardData(this IServiceCollection services)
         {
            services.AddDbContext<GameBoardDbContext>(
                 opt => {

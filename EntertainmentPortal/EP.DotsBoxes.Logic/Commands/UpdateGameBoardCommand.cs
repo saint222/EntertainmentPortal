@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CSharpFunctionalExtensions;
+﻿using CSharpFunctionalExtensions;
 using EP.DotsBoxes.Logic.Models;
 using MediatR;
 
 namespace EP.DotsBoxes.Logic.Commands
 {
-    public class UpdateGameBoardCommand : IRequest<Result<Cell>>
+    public class UpdateGameBoardCommand : IRequest<Result<GameBoard>>
     {
+        public int GameBoardId { get; set; }
+
         public int Row { get; set; }
 
         public int Column { get; set; }

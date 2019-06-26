@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EP.DotsBoxes.Logic.Models
+﻿namespace EP.DotsBoxes.Logic.Models
 {
     /// <summary>
     /// <c>Cell</c> model class.
@@ -10,7 +6,7 @@ namespace EP.DotsBoxes.Logic.Models
     /// </summary>
     public class Cell
     {
-        /// <summary>
+       /// <summary>
         /// Id property. Represents unique cell's Id.
         /// </summary>
         public int Id { get; set; }
@@ -49,38 +45,5 @@ namespace EP.DotsBoxes.Logic.Models
         /// Name property. Represents player's name who made the move.
         /// </summary>
         public string Name { get; set; }
-
-        public GameBoard GameBoard { get; set; }
-
-        private List<Cell> Cells = new List<Cell>();
-
-        public List<Cell> AddCommonSide(Cell cell)
-        {
-            var row = cell.Row;
-            var column = cell.Column;
-
-            if ((row != 1) & cell.Top)
-            {
-                Cells.Add(new Cell() { Row = row - 1, Column = column, Bottom = true});
-            }
-
-            if ((row != GameBoard.Rows) & cell.Bottom)
-            {
-                Cells.Add(new Cell() { Row = row + 1, Column = column, Top = true });
-            }
-
-            if ((column != 1) & cell.Left)
-            {
-                Cells.Add(new Cell() { Row = row, Column = column - 1, Right = true });
-            }
-
-            if ((column != GameBoard.Columns) & cell.Right)
-            {
-                Cells.Add(new Cell() { Row = row, Column = column + 1, Left = true });
-            }
-
-            Cells.Add(cell);
-            return Cells;
-        }
     }
 }

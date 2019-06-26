@@ -6,8 +6,8 @@ namespace EP.DotsBoxes.Logic.Commands
 {
     public class AddPlayerCommand : IRequest<Result<Player>>
     {
-        public string Name { get; set; }
+        public int GameBoardId { get; set; }
 
-        public string Color { get; set; }
+        public string Name { get; set; }
     }
 }

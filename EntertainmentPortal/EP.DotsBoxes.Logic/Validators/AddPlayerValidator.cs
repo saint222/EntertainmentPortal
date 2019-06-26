@@ -12,11 +12,6 @@ namespace EP.DotsBoxes.Logic.Validators
                 .WithMessage("Name shouldn't be empty")
                 .Length(2, 30)
                 .WithMessage("NickName should contain from 2 to 30 characters");
-
-            RuleFor(x => x.Color)
-                .NotEmpty()
-                .WithMessage("Color shouldn't be empty")
-                .Length(2, 30);
         }
     }
 }
