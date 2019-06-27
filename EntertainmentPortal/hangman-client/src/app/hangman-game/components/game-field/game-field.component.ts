@@ -12,6 +12,7 @@ import { HttpResponseBase } from '@angular/common/http';
 export class GameFieldComponent implements OnInit {
   gameFieldData: GameData = null;
   tmpGameData: GameData = null;
+  endGameStatus: string = null;
 
   constructor(private gameService: GameService, private router: Router) { }
 
@@ -31,13 +32,14 @@ export class GameFieldComponent implements OnInit {
     this.gameService.updateGame(this.tmpGameData).subscribe(b => {
       this.gameFieldData = b;
       if (this.gameFieldData.userErrors === 6) {
-        this.gameService.deleteGame(b.id).subscribe(b => {
-          this.router.navigateByUrl('/endScreen');
-        },
-          (err: HttpResponseBase) => console.log(err.statusText)
-        );
+        this.deleteSession(b.id);
+        this.router.navigateByUrl('/loose');
       }
 
+      if (!this.gameFieldData.correctLetters.includes('_')) {
+        this.deleteSession(b.id);
+        this.router.navigateByUrl('/win');
+      }
     },
         (err: HttpResponseBase) => console.log(err.statusText)
     );
@@ -48,5 +50,11 @@ export class GameFieldComponent implements OnInit {
       this.gameFieldData = b;
     },
       (err: HttpResponseBase) => console.log(err.statusText));
+  }
+
+  deleteSession(id: number) {
+    this.gameService.deleteGame(id).subscribe(
+      (err: HttpResponseBase) => console.log(err.statusText)
+    );
   }
 }
