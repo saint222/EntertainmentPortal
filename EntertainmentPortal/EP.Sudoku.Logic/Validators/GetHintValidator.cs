@@ -15,6 +15,13 @@ namespace EP.Sudoku.Logic.Validators
         {
             _context = context;
 
+            RuleSet("PreValidationGetHint", () =>
+            {
+                RuleFor(x => x)
+                    .Must(p => p.Id > 0)
+                    .WithMessage("Id must be greater than 0!");
+            });
+
             RuleSet("IsValidGetHint", () =>
             {
                 RuleFor(x => x)

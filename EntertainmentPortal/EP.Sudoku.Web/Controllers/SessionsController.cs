@@ -111,7 +111,7 @@ namespace EP.Sudoku.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> GetHint([FromBody, NotNull,
-            CustomizeValidator(RuleSet = "IsValidGetHint")]GetHintCommand model)
+            CustomizeValidator(RuleSet = "PreValidationGetHint")]GetHintCommand model)
         {
             if (!ModelState.IsValid)
             {

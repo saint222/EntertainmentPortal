@@ -9,12 +9,14 @@ namespace EP.Sudoku.Logic.Profiles
         public SessionProfile()
         {
             CreateMap<SessionDb, Session>()
-                .ForMember(dest => dest.Participant, e => e.MapFrom(src => src.ParticipantDb))
-                .ForMember(dest => dest.Squares, e => e.MapFrom(src => src.SquaresDb));
+                //.ForMember(dest => dest.Participant, e => e.MapFrom(src => src.ParticipantDb))
+                .ForMember(dest => dest.Squares, e => e.MapFrom(src => src.SquaresDb))
+                .ForMember(dest => dest.PlayerId, e => e.MapFrom(src => src.PlayerDbId));
 
             CreateMap<Session, SessionDb>()
-               .ForMember(dest => dest.ParticipantDb, e => e.MapFrom(src => src.Participant))
-               .ForMember(dest => dest.SquaresDb, e => e.MapFrom(src => src.Squares));               
+               //.ForMember(dest => dest.ParticipantDb, e => e.MapFrom(src => src.Participant))
+               .ForMember(dest => dest.SquaresDb, e => e.MapFrom(src => src.Squares))              
+               .ForMember(dest => dest.PlayerDbId, e => e.MapFrom(src => src.PlayerId));
         }
 
     }

@@ -22,7 +22,7 @@ export class SessionsService {
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    private updateHint: Subject<string> = new Subject<string>();
+    public updateSession: Subject<string> = new Subject<string>();
     public newSession: Subject<string> = new Subject<string>();
 
     constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
@@ -186,7 +186,6 @@ export class SessionsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        this.updateHint.next("update");
         return this.httpClient.put<Session>(`${this.basePath}/api/getHint`,
             model,
             {
@@ -287,8 +286,8 @@ export class SessionsService {
         );
     }
 
-    get UpdateHint() {
-      return this.updateHint.asObservable();
+    get UpdateSession() {
+      return this.updateSession.asObservable();
     }
 
     get NewSession() {

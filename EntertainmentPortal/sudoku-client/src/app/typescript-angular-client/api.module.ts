@@ -10,9 +10,11 @@ import { SessionComponent } from './components/session/session.component';
 import { CommonModule } from '@angular/common';
 import { CreateSessionComponent } from './components/create-session/create-session.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PlayerComponent } from './components/player/player.component';
+import { PlayerInfoComponent } from './components/player-info/player-info.component';
 
 @NgModule({
-  declarations: [SessionComponent, CellComponent, CreateSessionComponent],
+  declarations: [SessionComponent, CellComponent, CreateSessionComponent, PlayerComponent, PlayerInfoComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -22,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
       SessionComponent,
       CreateSessionComponent,
+      PlayerComponent,
       RouterModule,
       ReactiveFormsModule
 ],

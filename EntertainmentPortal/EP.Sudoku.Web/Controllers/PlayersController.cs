@@ -84,14 +84,14 @@ namespace EP.Sudoku.Web.Controllers
         [HttpPut("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> EditPlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationPlayer")]UpdatePlayerCommand model)
+        public async Task<IActionResult> EditPlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationEditPlayer")]UpdatePlayerCommand model)
         {
             if (!ModelState.IsValid)
             {                
                 return BadRequest();
             }
-            var player = await _mediator.Send(model);
-            return player != null ? (IActionResult)Ok(player) : BadRequest();
+            var result = await _mediator.Send(model);
+            return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
         }
 
         /// <summary>

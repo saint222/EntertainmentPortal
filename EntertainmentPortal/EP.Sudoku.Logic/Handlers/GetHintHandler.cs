@@ -31,11 +31,19 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<Result<Session>> Handle(GetHintCommand request, CancellationToken cancellationToken)
         {
+            var result = _validator.Validate(request, ruleSet: "IsValidGetHint");
+
+            if (result.Errors.Count > 0)
+            {
+                return Result.Fail<Session>(result.Errors.First().ErrorMessage);
+            }
+
             var session = _context.Sessions
                 .Include(d => d.SquaresDb)
                 .First(d => d.Id == request.SessionId);
             session.SquaresDb.First(x => x.Id == request.Id).Value = GetHint(session, request.Id);
             session.Hint--;
+            session.IsOver = IsOver(session.SquaresDb);
             await _context.SaveChangesAsync(cancellationToken);
 
             return Result.Ok<Session>(_mapper.Map<Session>(session));
@@ -64,5 +72,18 @@ namespace EP.Sudoku.Logic.Handlers
 
             return grid;
         }
-}
+
+        private bool IsOver(List<CellDb> cells)
+        {
+            foreach (CellDb cell in cells)
+            {
+                if (cell.Value == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
 }

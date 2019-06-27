@@ -1,13 +1,15 @@
 <div class="container">
   <div class="header-sudoku">
+      <a
+      class="card-title"
+      [routerLink]="['/create-session']"
+      >New Game!
+    </a>
+    <h2 *ngIf="session?.isOver">You are WIN!!!</h2>
     <p>Hint: {{session?.hint}}</p>
   </div>
 
   <div class="sudoku" *ngFor="let cell of cells">
     <app-cell [cell]="cell"></app-cell>
   </div>
-</div>
-
-<div class="form-group">
-
 </div>

@@ -40,6 +40,7 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>
         /// Is used to provide a player with a possibility to have more than one unfinished game.
         /// </summary> 
-        public List<Session> GameSessions { get; set; }
+        public Session GameSession { get; set; }
+
     }
 }

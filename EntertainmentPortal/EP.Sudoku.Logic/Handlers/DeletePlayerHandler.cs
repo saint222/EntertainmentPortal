@@ -24,7 +24,7 @@ namespace EP.Sudoku.Logic.Handlers
         public async Task<bool> Handle(DeletePlayerCommand request, CancellationToken cancellationToken)
         {
             var deletedPlayer = _context.Players
-                    .Include(p => p.GameSessionsDb)
+                    .Include(p => p.GameSessionDb)
                     .Where(x => x.Id == request.Id)                    
                     .FirstOrDefault();                            
 

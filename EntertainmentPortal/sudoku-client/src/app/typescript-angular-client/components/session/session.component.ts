@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 import { Session } from '../../model/models';
 import { SessionsService } from '../../api/api';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -17,12 +17,23 @@ export class SessionComponent implements OnInit {
   cells: Cell[] = [];
   cell: Cell;
 
-  constructor(private route: ActivatedRoute, private sessionService: SessionsService) {
-    this.sessionService.UpdateHint.subscribe(s => this.session.hint = this.session.hint - 1);
+  constructor(private route: ActivatedRoute, private router: Router, private sessionService: SessionsService) {
+
+    this.sessionService.UpdateSession.subscribe(s => {
+      this.sessionService.sessionsGetSessionById(this.session.id).subscribe(x => {
+        this.session = x;
+        this.cells = x.squares;
+      },
+      (err: HttpErrorResponse) => {
+        return console.log(err.error);
+      });
+    });
+
     this.sessionService.NewSession.subscribe(s => {
       this.sessionService.sessionsGetSessionById(+s).subscribe(x => {
           this.session = x;
           this.cells = x.squares;
+          this.router.navigate(['/session', +s]);
         },
         (err: HttpErrorResponse) => {
           return console.log(err.error);
@@ -47,17 +58,5 @@ export class SessionComponent implements OnInit {
    }
 
   ngOnInit() {
-  }
-
-  getSessionById(){
-    this.sessionService.sessionsGetSessionById(1).subscribe(
-      s => {
-        this.session = s;
-        this.cells = s.squares;
-      },
-      (err: HttpErrorResponse) => {
-        return console.log(err.error);
-      }
-    );
   }
 }

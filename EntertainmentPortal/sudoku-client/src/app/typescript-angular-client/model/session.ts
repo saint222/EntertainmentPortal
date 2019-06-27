@@ -22,6 +22,6 @@ export interface Session {
     level: DifficultyLevel;
     hint: number;
     isOver: boolean;
-    participant?: PlayerShort;
+    playerId?: number;
     squares?: Array<Cell>;
 }

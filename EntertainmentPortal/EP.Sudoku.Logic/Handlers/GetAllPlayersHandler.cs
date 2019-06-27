@@ -34,7 +34,7 @@ namespace EP.Sudoku.Logic.Handlers
             {
                 players = await _context.Players
                                 .Include(p => p.IconDb)
-                                .Include(p => p.GameSessionsDb)
+                                .Include(p => p.GameSessionDb)
                                 .Select(b => _mapper.Map<Player>(b))
                                 .ToListAsync()
                                 .ConfigureAwait(false);

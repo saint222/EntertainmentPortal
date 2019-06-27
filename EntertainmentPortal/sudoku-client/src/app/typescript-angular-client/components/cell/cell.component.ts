@@ -18,11 +18,11 @@ export class CellComponent implements OnInit {
 
   updateCell(value: number) {
 
-    console.log(value);
     this.cell.value = value;
 
     this.sessionService.sessionsSetCellValue(this.cell).subscribe(
       s => {
+        this.sessionService.updateSession.next();
       },
       (err: HttpErrorResponse) => {
         this.cell.value = 0;
@@ -36,6 +36,7 @@ export class CellComponent implements OnInit {
     this.sessionService.sessionsGetHint(this.cell).subscribe(
       s => {
         this.cell = s.squares.find(c => c.id === this.cell.id);
+        this.sessionService.updateSession.next();
       },
       (err: HttpErrorResponse) => {
         return console.log(err.error);

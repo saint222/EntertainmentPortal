@@ -34,7 +34,7 @@ namespace EP.Sudoku.Logic.Handlers
             {
                 chosenPlayer = _context.Players
                     .Include(p => p.IconDb)
-                    .Include(p => p.GameSessionsDb)
+                    .Include(p => p.GameSessionDb)
                     .Where(x => x.Id == request.Id)
                     .Select(b => _mapper.Map<Player>(b)).FirstOrDefault();
 

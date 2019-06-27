@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SessionsService } from './../../api/sessions.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CreateSessionComponent implements OnInit {
   sessionGroup: FormGroup;
 
-  constructor(private fb: FormBuilder, private sessionService: SessionsService) {
+  constructor(private fb: FormBuilder, private sessionService: SessionsService, private route: ActivatedRoute) {
     this.sessionGroup = this.fb.group({
       level: ['Easy', Validators.required]
     });
