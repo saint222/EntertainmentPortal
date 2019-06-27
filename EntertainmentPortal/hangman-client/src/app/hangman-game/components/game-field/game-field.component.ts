@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { GameData } from './../../models/game-data';
 import { GameService } from './../../services/game.service';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
@@ -12,9 +13,10 @@ export class GameFieldComponent implements OnInit {
   gameFieldData: GameData = null;
   tmpGameData: GameData = null;
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit() {
+    this.startNewGame();
   }
 
   checkLetter(letter: string) {
@@ -28,6 +30,14 @@ export class GameFieldComponent implements OnInit {
 
     this.gameService.updateGame(this.tmpGameData).subscribe(b => {
       this.gameFieldData = b;
+      if (this.gameFieldData.userErrors === 6) {
+        this.gameService.deleteGame(b.id).subscribe(b => {
+          this.router.navigateByUrl('/endScreen');
+        },
+          (err: HttpResponseBase) => console.log(err.statusText)
+        );
+      }
+
     },
         (err: HttpResponseBase) => console.log(err.statusText)
     );

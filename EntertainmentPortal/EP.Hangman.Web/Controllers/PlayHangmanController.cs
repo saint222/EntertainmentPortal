@@ -63,7 +63,7 @@ namespace EP.Hangman.Web.Controllers
         }
 
         //DELETE: api/PlayHangman/{id}
-        [HttpDelete]
+        [HttpDelete("id")]
         [SwaggerResponse(HttpStatusCode.NoContent, typeof(ControllerData), Description = "Deleted")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't delete")]
         [ValidationFilter]

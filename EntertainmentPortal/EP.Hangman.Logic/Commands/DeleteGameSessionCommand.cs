@@ -11,7 +11,9 @@ namespace EP.Hangman.Logic.Commands
     {
         public DeleteGameSessionCommand(string id)
         {
-            _data.Id = Convert.ToInt64(id);
+            _data = new ControllerData {
+                Id = Convert.ToInt64(id)
+            };
         }
 
         public ControllerData _data;
