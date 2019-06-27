@@ -2,16 +2,20 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EP.TicTacToe.Data
+namespace EP.TicTacToe.Data.Services
 {
+    /// <summary>
+    ///     Connection service of project database providers.
+    /// </summary>
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddPlayerData(this IServiceCollection services)
+        public static IServiceCollection AddGameData(this IServiceCollection services)
         {
-            services.AddDbContext<PlayerDbContext>(
+            services.AddDbContext<TicTacDbContext>(
                 opt =>
                 {
-                    opt.UseSqlite("Data Source=player.db");
+                    opt.UseSqlite(
+                        @"Data Source =..\EP.TicTacToe.Data\DbStore\tictactoeDb.db");
                     opt.UseQueryTrackingBehavior(
                         QueryTrackingBehavior.NoTracking);
                 });

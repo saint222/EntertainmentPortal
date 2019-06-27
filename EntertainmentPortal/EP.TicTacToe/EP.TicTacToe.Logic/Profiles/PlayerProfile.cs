@@ -4,7 +4,7 @@ using EP.TicTacToe.Logic.Models;
 
 namespace EP.TicTacToe.Logic.Profiles
 {
-    public class PlayerProfile: Profile
+    public class PlayerProfile : Profile
     {
         public PlayerProfile()
         {

@@ -1,34 +1,43 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace EP.TicTacToe.Data.Models
 {
-    /// <summary>    
-    /// Entity class, which specifies all properties of players stored in database.
+    /// <summary>
+    ///     Entity class, which specifies all properties of players stored in database.
     /// </summary>
     public class PlayerDb
     {
-        /// <summary>    
-        /// Property indicates unique Id-number of a player.
+        /// <summary>
+        ///     Property indicates unique Id-number of a player.
         /// </summary>
         public int Id { get; set; }
-        
-        /// <summary>    
-        /// Property indicates age of a player.
-        /// </summary>
-        public int Age { get; set; }
 
-        /// <summary>    
-        /// Property indicates unique nickname of a player.
+        /// <summary>
+        ///     Property indicates unique nickname of a player.
         /// </summary>
         public string NickName { get; set; }
 
-        /// <summary>    
-        /// Property indicates password of a player to login.
+        /// <summary>
+        ///     Login property. Represents player's Login.
+        /// </summary>
+        public string Login { get; set; }
+
+        /// <summary>
+        ///     Property indicates password of a player to login.
         /// </summary>
         public string Password { get; set; }
 
-        /// <summary>    
-        /// Property indicates country of living of a player.
+        /// <summary>
+        ///     PlayerGames property. Used for many-to-many relationships.
         /// </summary>
-        public string CountryOfLiving { get; set; }
+        public IEnumerable<PlayerGameDb> PlayerGames { get; set; }
+
+
+        /// <summary>
+        ///     StepDb property. Navigation property of StepDb.
+        ///     Used for one-to-one relationships.
+        /// </summary>
+        public int StepId { get; set; }
+        public StepDb StepDb { get; set; }
     }
 }

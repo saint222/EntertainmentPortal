@@ -1,58 +1,50 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using EP.TicTacToe.Data.Models;
-using EP.TicTacToe.Data.Context;
-using EP.TicTacToe.Logic.Models;
-using EP.TicTacToe.Logic.Commands;
 using CSharpFunctionalExtensions;
-using FluentValidation;
-using JetBrains.Annotations;
+using EP.TicTacToe.Data.Context;
+using EP.TicTacToe.Data.Models;
+using EP.TicTacToe.Logic.Commands;
+using EP.TicTacToe.Logic.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP.TicTacToe.Logic.Handlers
 {
-    public class AddNewPlayerHandler : IRequestHandler<AddNewPlayerCommand, Result<Player>>
+    public class
+        CreateNewPlayerHandler : IRequestHandler<AddNewPlayerCommand, Result<Player>>
     {
-        private readonly PlayerDbContext _context;
+        private readonly TicTacDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IValidator<AddNewPlayerCommand>[] _validators;
 
-        public AddNewPlayerHandler(PlayerDbContext context, IMapper mapper, IValidator<AddNewPlayerCommand>[] validators)
+        public CreateNewPlayerHandler(TicTacDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _validators = validators;
         }
 
-        public async Task<Result<Player>> Handle([NotNull]AddNewPlayerCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Player>> Handle(AddNewPlayerCommand request,
+                                                 CancellationToken cancellationToken)
         {
-            //validate
-            var result = _validators.Select(x => x.Validate(request)).FirstOrDefault(x => !x.IsValid);
-            if (result != null)
-            {
-                return Result.Fail<Player>(result.Errors.First().ErrorMessage);
-            }
-
-            var model = new PlayerDb
+            var playerDb = new PlayerDb
             {
                 NickName = request.NickName,
-                Password = request.Password
+                Login = request.Login,
+                Password = request.Password,
             };
 
-            _context.Players.Add(model);
+            _context.Players.Add(playerDb);
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                return Result.Ok<Player>(_mapper.Map<Player>(model));
+                await _context.SaveChangesAsync(cancellationToken);
+
+                return Result.Ok(_mapper.Map<Player>(playerDb));
             }
             catch (DbUpdateException ex)
             {
                 return Result.Fail<Player>(ex.Message);
-            }            
+            }
         }
     }
 }

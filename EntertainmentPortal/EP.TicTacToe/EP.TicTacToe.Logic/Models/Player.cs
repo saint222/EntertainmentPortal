@@ -1,23 +1,27 @@
-﻿
-namespace EP.TicTacToe.Logic.Models
+﻿namespace EP.TicTacToe.Logic.Models
 {
-    /// <summary>    
-    /// Class, which specifies all properties of players in a current game.
+    /// <summary>
+    ///     Class, which specifies all properties of players in a current game.
     /// </summary>
     public class Player
     {
-        /// <summary>    
-        /// Property indicates unique Id-number of a player in a current game.
+        /// <summary>
+        ///     Id property. Represents unique player's Id
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        /// <summary>    
-        /// Property indicates unique nickname of a player in a current game.
+        /// <summary>
+        ///     NickName property. Represents player's Nickname.
         /// </summary>
         public string NickName { get; set; }
 
-        /// <summary>    
-        /// Property indicates password of a player in a current game.
+        /// <summary>
+        ///     Login property. Represents player's Login.
+        /// </summary>
+        public string Login { get; set; }
+
+        /// <summary>
+        ///     Password property. Represents player's Password.
         /// </summary>
         public string Password { get; set; }
     }

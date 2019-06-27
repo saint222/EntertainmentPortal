@@ -8,14 +8,15 @@ namespace EP.TicTacToe.Logic.Handlers
 {
     public class CreateDatabaseHandler : AsyncRequestHandler<CreateDatabaseCommand>
     {
-        private readonly PlayerDbContext _context;
+        private readonly TicTacDbContext _context;
 
-        public CreateDatabaseHandler (PlayerDbContext context)
+        public CreateDatabaseHandler(TicTacDbContext context)
         {
             _context = context;
         }
 
-        protected override async Task Handle(CreateDatabaseCommand request, CancellationToken cancellationToken)
+        protected override async Task Handle(CreateDatabaseCommand request,
+                                             CancellationToken cancellationToken)
         {
             await _context.Database.EnsureCreatedAsync(cancellationToken);
         }

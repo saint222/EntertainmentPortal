@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using EP.TicTacToe.Logic.Commands;
+﻿using EP.TicTacToe.Logic.Commands;
+using FluentValidation;
 
 namespace EP.TicTacToe.Logic.Validators
 {
