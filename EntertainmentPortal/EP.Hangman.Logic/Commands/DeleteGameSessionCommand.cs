@@ -9,9 +9,9 @@ namespace EP.Hangman.Logic.Commands
 {
     public class DeleteGameSessionCommand : IRequest<Result<ControllerData>>
     {
-        public DeleteGameSessionCommand(ControllerData data)
+        public DeleteGameSessionCommand(string id)
         {
-            _data = data;
+            _data.Id = Convert.ToInt64(id);
         }
 
         public ControllerData _data;
