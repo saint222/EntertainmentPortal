@@ -30,3 +30,6 @@ namespace EP.TicTacToe.Data.Context
         }
     }
 }
+
+// Add-Migration InitialCreateDb -OutputDir Migrations\GameDbMigrations -Context TicTacDbContext -Project EP.TicTacToe.Data -StartupProject EP.TicTacToe.Web
+// Update-Database InitialCreateDb -Context TicTacDbContext -Project EP.TicTacToe.Data -StartupProject EP.TicTacToe.Web

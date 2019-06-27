@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 {
     [DbContext(typeof(TicTacDbContext))]
-    [Migration("20190627213753_InitialCreateDb")]
+    [Migration("20190627230353_InitialCreateDb")]
     partial class InitialCreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -115,11 +115,11 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("GameId");
+                    b.Property<int?>("GameDbId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GameId");
+                    b.HasIndex("GameDbId");
 
                     b.ToTable("Steps");
                 });
@@ -169,7 +169,7 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                 {
                     b.HasOne("EP.TicTacToe.Data.Models.GameDb", "GameDb")
                         .WithMany("Steps")
-                        .HasForeignKey("GameId");
+                        .HasForeignKey("GameDbId");
                 });
 #pragma warning restore 612, 618
         }
