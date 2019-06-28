@@ -15,6 +15,15 @@ namespace EP._15Puzzle.Data.Models
         public ICollection<RecordDb> Records { get; set; } = new List<RecordDb>();
         public string Name { get; set; }
         public string Country { get; set; }
-        
+
+        public UserDb()
+        {
+            
+        }
+        public UserDb(string name, string country)
+        {
+            Name = name;
+            Country = country;
+        }
     }
 }

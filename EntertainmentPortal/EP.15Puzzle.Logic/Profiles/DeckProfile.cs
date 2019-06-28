@@ -13,8 +13,8 @@ namespace EP._15Puzzle.Logic.Profiles
     {
         public DeckProfile()
         {
-            //CreateMap<DeckDb, Deck>();
             CreateMap<LogicDeck, DeckDb>().ReverseMap();
+            CreateMap<UserDb, User>();
             CreateMap<LogicDeck, Deck>()
                 .ForMember(d => d.Tiles, opt => opt.MapFrom(f => ConvertTiles(f.Tiles, f.Size)));
             CreateMap<DeckDb, Deck>()
