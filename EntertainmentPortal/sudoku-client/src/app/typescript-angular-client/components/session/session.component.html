@@ -5,11 +5,15 @@
       [routerLink]="['/create-session']"
       >New Game!
     </a>
-    <h2 *ngIf="session?.isOver">You are WIN!!!</h2>
-    <p>Hint: {{session?.hint}}</p>
+    <div *ngIf="session?.isOver">
+        <h2>You are WIN!!!</h2>
+        <p><img src="http://i.imgur.com/B5aTato.gif"></p>
+    </div>
   </div>
-
-  <div class="sudoku" *ngFor="let cell of cells">
-    <app-cell [cell]="cell"></app-cell>
+  <div class="sudoku" *ngIf="!session?.isOver">
+    <p>Hint: {{session?.hint}}</p>
+    <div class="gridCells" *ngFor="let cell of cells">
+      <app-cell [cell]="cell"></app-cell>
+    </div>
   </div>
 </div>
