@@ -16,7 +16,7 @@ namespace EP.TicTacToe.Data.Models
         ///     MapDb property. Navigation property of MapDb.
         ///     Used for one-to-one relationships.
         /// </summary>
-        public MapDb MapDb { get; set; }
+        public MapDb Map { get; set; }
 
         /// <summary>
         ///     PlayerGames property. Used for many-to-many relationships.

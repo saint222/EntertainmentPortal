@@ -10,8 +10,8 @@ namespace EP.TicTacToe.Data.Context.Configuration
         {
             builder.ToTable("Games");
             builder
-                .HasOne(g => g.MapDb)
-                .WithOne(g => g.GameDb)
+                .HasOne(g => g.Map)
+                .WithOne(g => g.Game)
                 .HasForeignKey<MapDb>(g => g.GameId);
         }
     }

@@ -12,11 +12,11 @@ namespace EP.TicTacToe.Data.Context.Configuration
             builder
                 .HasKey(pg => new {pg.PlayerId, pg.GameId});
             builder
-                .HasOne(pg => pg.PlayerDb)
+                .HasOne(pg => pg.Player)
                 .WithMany(pg => pg.PlayerGames)
                 .HasForeignKey(pg => pg.PlayerId);
             builder
-                .HasOne(pg => pg.GameDb)
+                .HasOne(pg => pg.Game)
                 .WithMany(pg => pg.PlayerGames)
                 .HasForeignKey(pg => pg.GameId);
         }

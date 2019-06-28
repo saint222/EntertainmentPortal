@@ -2,7 +2,7 @@
 
 namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 {
-    public partial class InitialCreateDb : Migration
+    public partial class OptionalOneToMany : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,6 +16,21 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Games", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Players",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NickName = table.Column<string>(maxLength: 30, nullable: false),
+                    Login = table.Column<string>(maxLength: 30, nullable: false),
+                    Password = table.Column<string>(maxLength: 8, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Players", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -39,22 +54,53 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PlayerGames",
+                columns: table => new
+                {
+                    PlayerId = table.Column<int>(nullable: false),
+                    GameId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlayerGames", x => new { x.PlayerId, x.GameId });
+                    table.ForeignKey(
+                        name: "FK_PlayerGames_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PlayerGames_Players_PlayerId",
+                        column: x => x.PlayerId,
+                        principalTable: "Players",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Steps",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    GameDbId = table.Column<int>(nullable: true)
+                    GameId = table.Column<int>(nullable: true),
+                    PlayerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Steps", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Steps_Games_GameDbId",
-                        column: x => x.GameDbId,
+                        name: "FK_Steps_Games_GameId",
+                        column: x => x.GameId,
                         principalTable: "Games",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Steps_Players_PlayerId",
+                        column: x => x.PlayerId,
+                        principalTable: "Players",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,52 +132,6 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Players",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    NickName = table.Column<string>(maxLength: 30, nullable: false),
-                    Login = table.Column<string>(maxLength: 30, nullable: false),
-                    Password = table.Column<string>(maxLength: 8, nullable: false),
-                    StepId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Players", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Players_Steps_StepId",
-                        column: x => x.StepId,
-                        principalTable: "Steps",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PlayerGames",
-                columns: table => new
-                {
-                    PlayerId = table.Column<int>(nullable: false),
-                    GameId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PlayerGames", x => new { x.PlayerId, x.GameId });
-                    table.ForeignKey(
-                        name: "FK_PlayerGames_Games_GameId",
-                        column: x => x.GameId,
-                        principalTable: "Games",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PlayerGames_Players_PlayerId",
-                        column: x => x.PlayerId,
-                        principalTable: "Players",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Cells_MapId",
                 table: "Cells",
@@ -155,15 +155,14 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                 column: "GameId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Players_StepId",
-                table: "Players",
-                column: "StepId",
-                unique: true);
+                name: "IX_Steps_GameId",
+                table: "Steps",
+                column: "GameId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Steps_GameDbId",
+                name: "IX_Steps_PlayerId",
                 table: "Steps",
-                column: "GameDbId");
+                column: "PlayerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -178,13 +177,13 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                 name: "Maps");
 
             migrationBuilder.DropTable(
-                name: "Players");
-
-            migrationBuilder.DropTable(
                 name: "Steps");
 
             migrationBuilder.DropTable(
                 name: "Games");
+
+            migrationBuilder.DropTable(
+                name: "Players");
         }
     }
 }

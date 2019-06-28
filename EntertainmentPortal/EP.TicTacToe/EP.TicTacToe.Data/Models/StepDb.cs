@@ -8,18 +8,20 @@
         public int Id { get; set; }
 
         /// <summary>
-        ///     PlayerId property. Represents Id of PlayerDb.
-        /// </summary>
-        public PlayerDb PlayerDb { get; set; }
-
-        /// <summary>
         ///     CellDb property. Navigation property of CellDb.
         /// </summary>
-        public CellDb CellDb { get; set; }
+        public CellDb Cell { get; set; }
 
         /// <summary>
         ///     GameDb property. Navigation property of GameDb.
         /// </summary>
-        public GameDb GameDb { get; set; }
+        public GameDb Game { get; set; }
+
+        /// <summary>
+        ///     PlayerDb property. Navigation property of StepDb.
+        ///     Used for one-to-many relationships.
+        /// </summary>
+        public int PlayerId { get; set; }
+        public PlayerDb Player { get; set; }
     }
 }

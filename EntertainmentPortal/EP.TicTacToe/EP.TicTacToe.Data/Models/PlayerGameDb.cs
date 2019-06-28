@@ -13,7 +13,7 @@
         /// <summary>
         ///     PlayerDb property. Navigation property of PlayerDb.
         /// </summary>
-        public PlayerDb PlayerDb { get; set; }
+        public PlayerDb Player { get; set; }
 
         /// <summary>
         ///     GameId property. Represents Id of GameDb.
@@ -23,6 +23,6 @@
         /// <summary>
         ///     GameDb property. Navigation property of GameDb.
         /// </summary>
-        public GameDb GameDb { get; set; }
+        public GameDb Game { get; set; }
     }
 }

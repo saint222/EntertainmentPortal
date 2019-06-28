@@ -27,7 +27,7 @@ namespace EP.TicTacToe.Data.Models
         ///     GameDb property. Navigation property of GameDb.
         ///     Used for one-to-one relationships.
         /// </summary>
-        public GameDb GameDb { get; set; }
+        public GameDb Game { get; set; }
 
 
         /// <summary>

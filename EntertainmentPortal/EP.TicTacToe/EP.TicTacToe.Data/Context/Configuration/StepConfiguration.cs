@@ -10,11 +10,11 @@ namespace EP.TicTacToe.Data.Context.Configuration
         {
             builder.ToTable("Steps");
             builder
-                .HasOne(s => s.PlayerDb)
-                .WithOne(s => s.StepDb)
-                .HasForeignKey<PlayerDb>(s => s.StepId);
+                .HasOne(s => s.Player)
+                .WithMany(s => s.Steps)
+                .IsRequired();
             builder
-                .HasOne(s => s.CellDb)
+                .HasOne(s => s.Cell)
                 .WithOne(s => s.StepDb)
                 .HasForeignKey<CellDb>(s => s.StepId);
         }

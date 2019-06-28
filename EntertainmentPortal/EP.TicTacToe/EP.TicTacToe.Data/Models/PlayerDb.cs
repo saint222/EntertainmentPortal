@@ -30,14 +30,11 @@ namespace EP.TicTacToe.Data.Models
         /// <summary>
         ///     PlayerGames property. Used for many-to-many relationships.
         /// </summary>
-        public IEnumerable<PlayerGameDb> PlayerGames { get; set; }
-
+        public IList<PlayerGameDb> PlayerGames { get; set; }
 
         /// <summary>
-        ///     StepDb property. Navigation property of StepDb.
-        ///     Used for one-to-one relationships.
+        ///     StepDb property. Used for one-to-many relationships.
         /// </summary>
-        public int StepId { get; set; }
-        public StepDb StepDb { get; set; }
+        public IList<StepDb> Steps { get; set; }
     }
 }
