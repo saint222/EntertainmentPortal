@@ -4,5 +4,7 @@
   <span *ngFor="let item of gameFieldData.correctLetters" >{{item}} </span>
 </div>
 <div>Alphabet:
-    <app-alphabet-buttons [gameDataAlphabet]= "gameFieldData" (updatedGameData)='updateField($event)'>  </app-alphabet-buttons>
+  <span *ngFor="let item of gameFieldData.alphabet" >
+    <button class="btn btn-primary" (click)= "checkLetter(item)">{{item}}</button>
+  </span>
 </div>

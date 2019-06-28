@@ -62,15 +62,15 @@ namespace EP.Hangman.Web.Controllers
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
         }
 
-        //DELETE: api/PlayHangman
-        [HttpDelete]
+        //DELETE: api/PlayHangman/{id}
+        [HttpDelete("id")]
         [SwaggerResponse(HttpStatusCode.NoContent, typeof(ControllerData), Description = "Deleted")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't delete")]
         [ValidationFilter]
-        public async Task<IActionResult> DeleteGameSessionAsync([FromBody]ControllerData model)
+        public async Task<IActionResult> DeleteGameSessionAsync(string id)
         {
             _logger.LogInformation("Received DELETE request");
-            var result = await _mediator.Send(new DeleteGameSessionCommand(model));
+            var result = await _mediator.Send(new DeleteGameSessionCommand(id));
             _logger.LogInformation("DELETE request executed");
             return result.IsSuccess ? (IActionResult) Ok(result.Value) : BadRequest(result.Error);
         }
