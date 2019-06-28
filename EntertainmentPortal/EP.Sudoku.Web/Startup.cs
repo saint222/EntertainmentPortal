@@ -11,6 +11,7 @@ using EP.Sudoku.Logic.Validators;
 using EP.Sudoku.Web.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,7 @@ namespace EP.Sudoku.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
             services.AddMediatR(typeof(GetAllPlayers).Assembly);   
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);            
             services.AddSwaggerDocument();
@@ -71,6 +73,7 @@ namespace EP.Sudoku.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseAuthentication();
             app.UseCors(opt => opt.AllowAnyHeader() // CORS configuration.
                 .AllowAnyMethod()
                 .AllowAnyOrigin());
