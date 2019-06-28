@@ -1,4 +1,5 @@
 ﻿using EP.TicTacToe.Data.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,6 +20,13 @@ namespace EP.TicTacToe.Data.Services
                     opt.UseQueryTrackingBehavior(
                         QueryTrackingBehavior.NoTracking);
                 });
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<TicTacDbContext>()
+                .AddUserManager<UserManager<IdentityUser>>()
+                .AddRoleManager<RoleManager<IdentityRole>>()
+                .AddDefaultTokenProviders();
+
             return services;
         }
     }

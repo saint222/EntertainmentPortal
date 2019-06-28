@@ -11,6 +11,7 @@ using NSwag.Annotations;
 
 namespace EP.TicTacToe.Web.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
     public class PlayerController : ControllerBase
     {

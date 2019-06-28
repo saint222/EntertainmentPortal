@@ -3,14 +3,16 @@ using System;
 using EP.TicTacToe.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 {
     [DbContext(typeof(TicTacDbContext))]
-    partial class TicTacDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190628225125_OptionalIdentity")]
+    partial class OptionalIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

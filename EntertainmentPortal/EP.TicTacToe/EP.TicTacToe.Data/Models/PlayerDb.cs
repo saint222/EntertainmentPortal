@@ -10,7 +10,7 @@ namespace EP.TicTacToe.Data.Models
         /// <summary>
         ///     Property indicates unique Id-number of a player.
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         ///     Property indicates unique nickname of a player.

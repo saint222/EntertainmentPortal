@@ -1,10 +1,11 @@
 ﻿using EP.TicTacToe.Data.Context.Configuration;
 using EP.TicTacToe.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP.TicTacToe.Data.Context
 {
-    public class TicTacDbContext : DbContext
+    public class TicTacDbContext : IdentityDbContext
     {
         public DbSet<PlayerDb> Players { get; set; }
         public DbSet<GameDb> Games { get; set; }

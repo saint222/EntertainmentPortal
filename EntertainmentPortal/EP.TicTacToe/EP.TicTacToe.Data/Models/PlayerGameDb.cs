@@ -8,7 +8,7 @@
         /// <summary>
         ///     PlayerId property. Represents Id of PlayerDb.
         /// </summary>
-        public int PlayerId { get; set; }
+        public string PlayerId { get; set; }
 
         /// <summary>
         ///     PlayerDb property. Navigation property of PlayerDb.
