@@ -2,21 +2,19 @@
 
 
 
-<button class="btn btn-primary" (click)="newDeck()">Reset deck</button>
-  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+<button class="btn btn-primary" (click)="newDeck()">Reset</button>
+<div class="gui">
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <h5>Score: {{deck.score}}</h5>
-            <h5>Victory: {{deck.victory}}</h5>
           </div>
-      <div class="col-md-8">
-        <div class="row" style="border-radius: 1ch; border: 1px solid darkolivegreen; width: 43ch; padding: 0.5ch;">
-            <div class="col-md-3" id="tile{{tile.num}}" *ngFor="let tile of deck.tiles" style="padding: 0.5ch;">
-                <button class="btn btn-outline-secondary btn-lg" (click)="moveTile(tile.num)" style="width: 7.5ch; height: 7.5ch; padding: 0px">
-                    <h4>{{tile.num}}</h4>
-                </button>
-            </div>
+      <div class="col-md-12" style="text-align: center;">
+        <div id="deck">
+          <div *ngFor="let row of deck.tiles">
+              <app-tile id="tile{{tile.num}}" (click)="moveTile(tile.num)" [num]=tile.num *ngFor="let tile of row"></app-tile>
+          </div>
+
         </div>
       </div>
     </div>

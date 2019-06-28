@@ -1,5 +1,5 @@
 
-export class Record {
+export class Champion {
   name: string;
   country: string;
   score: number;

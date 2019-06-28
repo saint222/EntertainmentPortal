@@ -1,4 +1,4 @@
-import { Record } from './../../models/record';
+import { Champion } from './../../models/champion';
 import { LeaderboardService } from './../../services/leaderboard.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardComponent implements OnInit {
 
-  records: Record[]
+  records: Champion[] = [];
   constructor(private leaderboardService: LeaderboardService) { }
 
   ngOnInit() {
