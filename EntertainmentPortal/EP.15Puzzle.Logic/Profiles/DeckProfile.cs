@@ -12,10 +12,10 @@ namespace EP._15Puzzle.Logic.Profiles
     {
         public DeckProfile()
         {
-            //CreateMap<DeckDb, Deck>();
             CreateMap<LogicDeck, DeckDb>().ReverseMap();
             CreateMap<LogicDeck, Deck>();
             CreateMap<DeckDb, Deck>();
+            CreateMap<UserDb, User>();
             CreateMap<LogicTile, Tile>();
             CreateMap<TileDb, LogicTile>()
                 .ForMember(t => t.NearbyTiles, opt => opt.Ignore());
