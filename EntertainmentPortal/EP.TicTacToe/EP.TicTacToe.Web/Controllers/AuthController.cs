@@ -21,7 +21,7 @@ namespace EP.TicTacToe.Web.Controllers
         [HttpGet("simple")]
         public async Task<IActionResult> SimpleLogin()
         {
-            var identity = new ClaimsIdentity(new Claim[]
+            var identity = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, "Petr Petrov"),
                     new Claim(ClaimTypes.Role, "admin")
@@ -50,25 +50,24 @@ namespace EP.TicTacToe.Web.Controllers
 
             if (user == null) return BadRequest("User does not exist");
 
-            if (await _manager.CheckPasswordAsync(user, userInfo.Password))
-            {
-                var identity = new ClaimsIdentity(new Claim[]
-                    {
-                        new Claim(ClaimTypes.Name, "Ivan Ivanov"),
-                        new Claim(ClaimTypes.Role, "admin"),
-                        new Claim("hobby", "running")
-                    }, CookieAuthenticationDefaults.AuthenticationScheme,
-                    ClaimTypes.Name, ClaimTypes.Role);
-                var principal = new ClaimsPrincipal(identity);
+            if (!await _manager.CheckPasswordAsync(user, userInfo.Password))
+                return BadRequest("Username or password is incorrect");
 
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                return Ok();
-            }
+            var identity = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Name, "Ivan Ivanov"),
+                    new Claim(ClaimTypes.Role, "admin"),
+                    new Claim("hobby", "running")
+                }, CookieAuthenticationDefaults.AuthenticationScheme,
+                ClaimTypes.Name, ClaimTypes.Role);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            return Ok();
 
             // check user logic
 
 
-            return BadRequest("Username or password is incorrect");
         }
 
         [HttpGet("logout")]
