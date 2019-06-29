@@ -13,6 +13,7 @@ using EP.Hangman.Logic.Profiles;
 using EP.Hangman.Logic.Validators;
 using EP.Hangman.Web.Filters;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
 
 namespace EP.Hangman.Web
@@ -29,6 +30,9 @@ namespace EP.Hangman.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+
             services.AddMemoryCache();
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetUserSession).Assembly);
@@ -58,6 +62,8 @@ namespace EP.Hangman.Web
                 o.AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowAnyOrigin());
+
+            app.UseAuthentication();
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseOpenApi();
