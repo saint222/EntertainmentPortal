@@ -14,6 +14,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { PlayerInfoComponent } from './components/player-info/player-info.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AccountService } from './api/account.service';
 
 @NgModule({
   declarations: [SessionComponent, CellComponent, CreateSessionComponent, PlayerComponent, PlayerInfoComponent, SignInComponent, RegisterComponent],
@@ -33,7 +34,8 @@ import { RegisterComponent } from './components/register/register.component';
 ],
   providers: [
     PlayersService,
-    SessionsService ]
+    SessionsService,
+  AccountService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

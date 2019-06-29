@@ -45,6 +45,7 @@ namespace EP.Sudoku.Data.Models
         /// </summary> 
         public List<CellDb> SquaresDb { get; set; }
 
-        public long PlayerDbId { get; set; }
+
+        public string PlayerDbId { get; set; }
     }
 }
