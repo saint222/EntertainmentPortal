@@ -1,11 +1,10 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using EP.Hangman.Web.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using EP.Hangman.Web.Models;
 
 namespace EP.Hangman.Web.Controllers
 {
@@ -19,6 +18,7 @@ namespace EP.Hangman.Web.Controllers
         public AuthController(UserManager<IdentityUser> manager)
         {
             _manager = manager;
+
         }
 
         [HttpPost("register")]
@@ -30,12 +30,16 @@ namespace EP.Hangman.Web.Controllers
             {
                 var newUser = new IdentityUser()
                 {
-                    UserName = userAuthData.UserName,
-                    PasswordHash = userAuthData.Password
+                    UserName = userAuthData.UserName
                 };
 
-                await _manager.CreateAsync(newUser);
-                return Ok();
+                var status = await _manager.CreateAsync(newUser, userAuthData.Password);
+                await _manager.AddClaimsAsync(newUser, new Claim[]
+                 {
+                     new Claim(ClaimTypes.Name, userAuthData.UserName),
+                     new Claim(ClaimTypes.Role, AUTH_ROLE_USER),
+                 });
+                return status.Succeeded ? (IActionResult)Ok() : BadRequest(status.Errors);
             }
             else
             {

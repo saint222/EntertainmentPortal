@@ -32,7 +32,7 @@ namespace EP.Hangman.Web
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();
-
+            services.AddAuthorization();
             services.AddMemoryCache();
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetUserSession).Assembly);

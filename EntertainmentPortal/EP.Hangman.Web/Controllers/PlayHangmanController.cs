@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using EP.Hangman.Logic.Queries;
 using EP.Hangman.Web.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
@@ -14,6 +15,7 @@ namespace EP.Hangman.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PlayHangmanController : ControllerBase
     {
         private readonly IMediator _mediator;
