@@ -1,9 +1,10 @@
 ﻿using EP.Hangman.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP.Hangman.Data.Context
 {
-    public class GameDbContext : DbContext
+    public class GameDbContext : IdentityDbContext
     {
         public GameDbContext(DbContextOptions<GameDbContext> options) 
             : base(options: options)
@@ -15,7 +16,7 @@ namespace EP.Hangman.Data.Context
         {
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
-
+        
         public DbSet<GameDb> Games { get; set; }
     }
 }
