@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using EP.TicTacToe.Logic.Commands;
 using EP.TicTacToe.Logic.Profiles;
 using EP.TicTacToe.Logic.Queries;
@@ -14,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NJsonSchema;
+using Serilog;
 
 namespace EP.TicTacToe.Web
 {
@@ -66,7 +68,11 @@ namespace EP.TicTacToe.Web
                     cfg.RegisterValidatorsFromAssemblyContaining<AddNewPlayerValidator>();
                     cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 });
+
+            services.AddLogging();
+            services.AddMemoryCache();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
@@ -88,6 +94,15 @@ namespace EP.TicTacToe.Web
             app.UseSwagger().UseSwaggerUi3();
             app.UseSession();
             app.UseMvc();
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.Console()
+                .WriteTo.Debug()
+                .WriteTo.RollingFile($@"TTTLoggerData\log-{DateTime.UtcNow}.txt", shared: true)
+                .WriteTo.SQLite(Environment.CurrentDirectory + @"TTTLoggerData\TTTLogger.db")
+                .Enrich.WithProperty("App TicTacToe", "Serilog Web App TicTacToe")
+                .CreateLogger();
         }
     }
 }
