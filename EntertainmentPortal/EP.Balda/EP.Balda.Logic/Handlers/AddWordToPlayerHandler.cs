@@ -20,10 +20,10 @@ namespace EP.Balda.Logic.Handlers
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
 
-        public AddWordToPlayerHandler(IMapper mapper, BaldaGameDbContext context)
+        public AddWordToPlayerHandler(BaldaGameDbContext context, IMapper mapper)
         {
-            _mapper = mapper;
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<Result<Player>> Handle(AddWordToPlayerCommand request,
@@ -48,9 +48,9 @@ namespace EP.Balda.Logic.Handlers
 
             var game = await _context.Games.Where(g => g.Id == request.GameId)
                 .FirstOrDefaultAsync(cancellationToken);
+
             var map = await _context.Maps.Where(m => m.Id == game.MapId)
                 .Include(m => m.Cells).FirstOrDefaultAsync(cancellationToken);
-
 
             var cellsFormWord = new List<CellDb>();
 
@@ -96,7 +96,8 @@ namespace EP.Balda.Logic.Handlers
 
             //TODO Add when create player
 
-            if (player.PlayerWords == null) player.PlayerWords = new List<PlayerWord>();
+            if (player.PlayerWords == null)
+                player.PlayerWords = new List<PlayerWord>();
 
             player.PlayerWords.Add(playerWordDb);
 

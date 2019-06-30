@@ -16,10 +16,10 @@ namespace EP.Balda.Logic.Handlers
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetMapHandler(IMapper mapper, BaldaGameDbContext context)
+        public GetMapHandler(BaldaGameDbContext context, IMapper mapper)
         {
-            _mapper = mapper;
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<Maybe<Map>> Handle(GetMap request,

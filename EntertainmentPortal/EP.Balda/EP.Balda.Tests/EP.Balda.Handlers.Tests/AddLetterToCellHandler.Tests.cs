@@ -25,20 +25,20 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
         }
 
         [Test]
-        public async Task TestAddLetterToCellHandler_IsAllowedCell_True()
+        public async Task TestIsAllowedCell_True()
         {
             var options = new DbContextOptionsBuilder<BaldaGameDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestAddLetterToCellHandler_True")
+                .UseInMemoryDatabase(databaseName: "TestIsAllowedCell_True")
                 .Options;
 
             bool isAllowed;
 
             using (var context = new BaldaGameDbContext(options))
             {
-                var service = new AddLetterToCellHandler(_mapper, context);
+                var service = new AddLetterToCellHandler(context, _mapper);
                 var mapDb = new MapDb() { Id = 1, Size = 3 };
-                await context.Cells.AddAsync(new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 0, Y = 0, Letter = 'g' });
-                var cell = new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 0, Y = 1, Letter = null };
+                await context.Cells.AddAsync(new CellDb() { MapId = 1, Map = mapDb, X = 0, Y = 0, Letter = 'g' });
+                var cell = new CellDb() { MapId = 1, Map = mapDb, X = 0, Y = 1, Letter = null };
                 await context.SaveChangesAsync();
                 isAllowed = await service.IsAllowedCell(cell);
             }
@@ -50,20 +50,20 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
         }
 
         [Test]
-        public async Task TestAddLetterToCellHandler_IsAllowedCell_False()
+        public async Task TestIsAllowedCell_False()
         {
             var options = new DbContextOptionsBuilder<BaldaGameDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestAddLetterToCellHandler_False")
+                .UseInMemoryDatabase(databaseName: "TestIsAllowedCell_False")
                 .Options;
 
             bool isAllowed;
 
             using (var context = new BaldaGameDbContext(options))
             {
-                var service = new AddLetterToCellHandler(_mapper, context);
+                var service = new AddLetterToCellHandler(context, _mapper);
                 var mapDb = new MapDb() { Id = 1, Size = 3 };
                 await context.Cells.AddAsync(new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 0, Y = 0, Letter = 'g' });
-                var cell = new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 2, Y = 2, Letter = null };
+                var cell = new CellDb() { MapId = 1, Map = mapDb, X = 2, Y = 2, Letter = null };
                 await context.SaveChangesAsync();
                 isAllowed = await service.IsAllowedCell(cell);
             }
@@ -75,13 +75,13 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
         }
 
         [Test]
-        public async Task TestHandle_NormalData()
+        public async Task TestAddLetterToCell_Handle_NormalData()
         {
             var options = new DbContextOptionsBuilder<BaldaGameDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestHandle_NormalData")
+                .UseInMemoryDatabase(databaseName: "TestAddLetterToCell_Handle_NormalData")
                 .Options;
 
-            AddLetterToCellCommand request = new AddLetterToCellCommand()
+            var request = new AddLetterToCellCommand()
             {
                 Id = 1,
                 Letter = 'c'
@@ -91,7 +91,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             using (var context = new BaldaGameDbContext(options))
             {
-                var service = new AddLetterToCellHandler(_mapper, context);
+                var service = new AddLetterToCellHandler(context, _mapper);
                 var mapDb = new MapDb() { Id = 1, Size = 3 };
                 await context.Maps.AddAsync(mapDb);
                 await context.SaveChangesAsync();
@@ -105,19 +105,19 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             using (var context = new BaldaGameDbContext(options))
             {
-                var expected = new Result<Cell>() { };
                 Assert.IsTrue(result.IsSuccess);
+                Assert.AreEqual(2, await context.Cells.CountAsync());
             }
         }
 
         [Test]
-        public async Task TestHandle_CellDoesntExist()
+        public async Task TestAddLetterToCell_Handle_CellDoesntExist()
         {
             var options = new DbContextOptionsBuilder<BaldaGameDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestHandle_CellDoesntExist")
+                .UseInMemoryDatabase(databaseName: "TestAddLetterToCell_Handle_CellDoesntExist")
                 .Options;
 
-            AddLetterToCellCommand request = new AddLetterToCellCommand()
+            var request = new AddLetterToCellCommand()
             {
                 Id = 1,
                 Letter = 'c'
@@ -127,27 +127,26 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             using (var context = new BaldaGameDbContext(options))
             {
-                var service = new AddLetterToCellHandler(_mapper, context);
+                var service = new AddLetterToCellHandler(context, _mapper);
                 result = await service.Handle(request, CancellationToken.None);
             }
 
             using (var context = new BaldaGameDbContext(options))
             {
-                var expected = new Result<Cell>() { };
                 Assert.IsFalse(result.IsSuccess);
             }
         }
 
         [Test]
-        public async Task TestHandle_CellLetterNotNull()
+        public async Task TestAddLetterToCell_Handle_CellLetterNotNull()
         {
             var options = new DbContextOptionsBuilder<BaldaGameDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestHandle_CellLetterNotNull")
+                .UseInMemoryDatabase(databaseName: "TestAddLetterToCell_Handle_CellLetterNotNull")
                 .Options;
 
-            AddLetterToCellCommand request = new AddLetterToCellCommand()
+            var request = new AddLetterToCellCommand()
             {
-                Id = 1,
+                Id = 2,
                 Letter = 'c'
             };
 
@@ -155,12 +154,12 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             using (var context = new BaldaGameDbContext(options))
             {
-                var service = new AddLetterToCellHandler(_mapper, context);
-                var mapDb = new MapDb() { Id = 1, Size = 3 };
+                var service = new AddLetterToCellHandler(context, _mapper);
+                var mapDb = new MapDb() { Size = 3 };
                 await context.Maps.AddAsync(mapDb);
                 await context.SaveChangesAsync();
-                var cellNearBy = new CellDb() { Id = 2, MapId = 1, Map = mapDb, X = 2, Y = 3, Letter = 'v' };
-                var cell = new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 2, Y = 2, Letter = 'b' };
+                var cellNearBy = new CellDb() { MapId = 1, Map = mapDb, X = 2, Y = 3, Letter = 'v' };
+                var cell = new CellDb() { MapId = 1, Map = mapDb, X = 2, Y = 2, Letter = 'b' };
                 await context.Cells.AddAsync(cellNearBy);
                 await context.Cells.AddAsync(cell);
                 await context.SaveChangesAsync();

@@ -37,17 +37,21 @@ namespace EP.Balda.Logic.Handlers
                 return Result.Fail<Game>(
                     $"There is no player's id {request.PlayerId} in database");
 
-            var map = new Map {Size = request.MapSize};
+            var mapDb = new MapDb { Size = request.MapSize };
 
-            var mapDb = _mapper.Map<MapDb>(map);
-            _context.Maps.Add(mapDb);
+            await _context.Maps.AddAsync(mapDb);
 
-            await _context.SaveChangesAsync(cancellationToken); //remove
+            await _context.SaveChangesAsync(); //remove
 
-            InitCellsForMap(mapDb);
+            var cells = CreateCellsForMap(mapDb);
+            await _context.AddRangeAsync(cells);
+
+            await _context.SaveChangesAsync();
 
             var initWord = GetStartingWord(mapDb);
-            PutStartingWordToMap(mapDb, initWord);
+            await PutStartingWordToMap(mapDb, initWord);
+
+            await _context.SaveChangesAsync();
 
             var gameDb = new GameDb
             {
@@ -56,7 +60,7 @@ namespace EP.Balda.Logic.Handlers
                 InitWord = initWord
             };
 
-            _context.Games.Add(gameDb);
+            await _context.Games.AddAsync(gameDb);
 
             gameDb.PlayerGames = new List<PlayerGame>();
 
@@ -68,17 +72,15 @@ namespace EP.Balda.Logic.Handlers
 
             gameDb.PlayerGames.Add(playerGame);
 
-            await _context.SaveChangesAsync(cancellationToken); //remove
+            await _context.SaveChangesAsync(); //remove
 
             var game = await _context.Games
                 .Where(g => g.Id == gameDb.Id)
-                .FirstOrDefaultAsync(cancellationToken);
+                .SingleOrDefaultAsync(cancellationToken);
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken);
-
-                game.Map = null; //remove lately
+                await _context.SaveChangesAsync();
 
                 return Result.Ok(_mapper.Map<Game>(game));
             }
@@ -92,7 +94,7 @@ namespace EP.Balda.Logic.Handlers
         ///     The method initializes add cells to DB that represents the game map.
         /// </summary>
         /// <param name="mapDb">Map database projection</param>
-        public async void InitCellsForMap(MapDb mapDb)
+        public List<CellDb> CreateCellsForMap(MapDb mapDb)
         {
             var cells = new List<CellDb>();
 
@@ -111,8 +113,7 @@ namespace EP.Balda.Logic.Handlers
                     cells.Add(cell);
                 }
 
-            await _context.AddRangeAsync(cells);
-            await _context.SaveChangesAsync();
+            return cells;
         }
 
         /// <summary>
@@ -120,7 +121,7 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="mapDb">Map database projection</param>
         /// <param name="word">Parameter word requires string argument.</param>
-        public async void PutStartingWordToMap(MapDb mapDb, string word)
+        public async Task PutStartingWordToMap(MapDb mapDb, string word)
         {
             var center = mapDb.Size / 2;
             var charDestination = 0;
@@ -129,7 +130,7 @@ namespace EP.Balda.Logic.Handlers
             foreach (var letter in word)
             {
                 var cellDb =
-                    mapDb.Cells.FirstOrDefault(
+                    mapDb.Cells.SingleOrDefault(
                         c => (c.X == charDestination) & (c.Y == center));
 
                 charDestination++;
@@ -147,13 +148,12 @@ namespace EP.Balda.Logic.Handlers
         private string GetStartingWord(MapDb mapDb)
         {
             var word = "";
-            var sizeRepo = _context.WordsRu.CountAsync();
+            var sizeRepo = _context.WordsRu.Count();
 
             while (word.Length != mapDb.Size)
-                word = _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo.Result))
-                    .FirstOrDefaultAsync().Result.Word;
+                word =  _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo))
+                    .FirstOrDefault().Word;
 
-            //word = _dataRepository.Get(RandomWord(sizeRepo));
             return word;
         }
 
@@ -162,10 +162,10 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="size">Word length</param>
         /// <returns></returns>
-        private static int RandomWord(int size)
+        private int RandomWord(int size)
         {
             var rnd = new Random();
-            var next = rnd.Next(0, size - 1);
+            var next = rnd.Next(1, size);
             return next;
         }
     }

@@ -19,10 +19,10 @@ namespace EP.Balda.Logic.Handlers
         private readonly IMapper _mapper;
         private readonly BaldaGameDbContext _context;
 
-        public AddLetterToCellHandler(IMapper mapper, BaldaGameDbContext context)
+        public AddLetterToCellHandler(BaldaGameDbContext context, IMapper mapper)
         {
-            _mapper = mapper;
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<Result<Cell>> Handle(AddLetterToCellCommand request,
@@ -54,8 +54,6 @@ namespace EP.Balda.Logic.Handlers
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
-
-                cellDb.Map = null; //remove lately
 
                 return Result.Ok(_mapper.Map<Cell>(cellDb));
             }

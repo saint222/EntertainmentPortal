@@ -18,10 +18,10 @@ namespace EP.Balda.Logic.Handlers
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetAllPlayersHandler(IMapper mapper, BaldaGameDbContext context)
+        public GetAllPlayersHandler(BaldaGameDbContext context, IMapper mapper)
         {
-            _mapper = mapper;
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<Maybe<IEnumerable<Player>>> Handle(

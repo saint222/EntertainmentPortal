@@ -14,11 +14,6 @@ namespace EP.Balda.Logic.Models
         public long Id { get; set; }
 
         /// <summary>
-        ///     The field stores an object of the map in the game.
-        /// </summary>
-        public Map Map { get; set; }
-
-        /// <summary>
         ///     InitWord property. Represents initial word on the game map.
         /// </summary>
         public string InitWord { get; set; }
