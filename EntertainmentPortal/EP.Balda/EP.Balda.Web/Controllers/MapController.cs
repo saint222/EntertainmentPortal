@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -25,12 +26,14 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Map not found")]
-        public async Task<IActionResult> GetMapAsync([FromQuery]GetMap model)
+        public async Task<IActionResult> GetMapAsync([FromQuery,
+            CustomizeValidator(RuleSet = "GetMapPreValidation")] GetMap model)
         {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
 
             var result = await _mediator.Send(model);
-            return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
+            return result.HasValue ? (IActionResult) Ok(result.Value) : NotFound();
         }
     }
 }

@@ -14,48 +14,53 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class CreateNewGameHandler : IRequestHandler<CreateNewGameCommand, Result<Game>>
+    public class
+        CreateNewGameHandler : IRequestHandler<CreateNewGameCommand, Result<Game>>
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
-        
+
         public CreateNewGameHandler(BaldaGameDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public async Task<Result<Game>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Game>> Handle(CreateNewGameCommand request,
+                                               CancellationToken cancellationToken)
         {
-            //TODO: add cells initializator
-            var player = await (_context.Players
+            var player = await _context.Players
                 .Where(p => p.Id == request.PlayerId)
-                .FirstOrDefaultAsync<PlayerDb>());
+                .FirstOrDefaultAsync(cancellationToken);
 
             if (player == null)
-                return Result.Fail<Game>($"There is no player's id {request.PlayerId} in database");
+                return Result.Fail<Game>(
+                    $"There is no player's id {request.PlayerId} in database");
 
-            var map = new Map();
-            map.Size = request.MapSize;
+            var mapDb = new MapDb { Size = request.MapSize };
 
-            var mapDb = _mapper.Map<MapDb>(map);
-            _context.Maps.Add(mapDb);
+            await _context.Maps.AddAsync(mapDb);
 
             await _context.SaveChangesAsync(); //remove
 
-            InitMap(mapDb);
+            var cells = CreateCellsForMap(mapDb);
+            await _context.AddRangeAsync(cells);
+
+            await _context.SaveChangesAsync();
 
             var initWord = GetStartingWord(mapDb);
-            PutStartingWordToMap(mapDb, initWord);
+            await PutStartingWordToMap(mapDb, initWord);
 
-            var gameDb = new GameDb()
+            await _context.SaveChangesAsync();
+
+            var gameDb = new GameDb
             {
                 Map = mapDb,
                 MapId = mapDb.Id,
                 InitWord = initWord
             };
 
-            _context.Games.Add(gameDb);
+            await _context.Games.AddAsync(gameDb);
 
             gameDb.PlayerGames = new List<PlayerGame>();
 
@@ -69,13 +74,13 @@ namespace EP.Balda.Logic.Handlers
 
             await _context.SaveChangesAsync(); //remove
 
-            var game = await (_context.Games
+            var game = await _context.Games
                 .Where(g => g.Id == gameDb.Id)
-                .FirstOrDefaultAsync<GameDb>());
+                .SingleOrDefaultAsync(cancellationToken);
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken);
+                await _context.SaveChangesAsync();
 
                 return Result.Ok(_mapper.Map<Game>(game));
             }
@@ -88,10 +93,8 @@ namespace EP.Balda.Logic.Handlers
         /// <summary>
         ///     The method initializes add cells to DB that represents the game map.
         /// </summary>
-        /// <param name="size">
-        ///     Parameter size requires an integer argument.
-        /// </param>
-        private async void InitMap(MapDb mapDb)
+        /// <param name="mapDb">Map database projection</param>
+        public List<CellDb> CreateCellsForMap(MapDb mapDb)
         {
             var cells = new List<CellDb>();
 
@@ -110,14 +113,15 @@ namespace EP.Balda.Logic.Handlers
                     cells.Add(cell);
                 }
 
-            await _context.AddRangeAsync(cells);
+            return cells;
         }
 
         /// <summary>
         ///     The method puts the starting word on the map.
         /// </summary>
+        /// <param name="mapDb">Map database projection</param>
         /// <param name="word">Parameter word requires string argument.</param>
-        public async void PutStartingWordToMap(MapDb mapDb, string word)
+        public async Task PutStartingWordToMap(MapDb mapDb, string word)
         {
             var center = mapDb.Size / 2;
             var charDestination = 0;
@@ -125,7 +129,10 @@ namespace EP.Balda.Logic.Handlers
             word = word.Trim();
             foreach (var letter in word)
             {
-                var cellDb = mapDb.Cells.Where(c => c.X == charDestination & c.Y == center).FirstOrDefault();
+                var cellDb =
+                    mapDb.Cells.SingleOrDefault(
+                        c => (c.X == charDestination) & (c.Y == center));
+
                 charDestination++;
                 cellDb.Letter = letter;
             }
@@ -136,25 +143,29 @@ namespace EP.Balda.Logic.Handlers
         /// <summary>
         ///     The method gets the initial word.
         /// </summary>
+        /// <param name="mapDb">Map database projection</param>
+        /// <returns></returns>
         private string GetStartingWord(MapDb mapDb)
         {
             var word = "";
-            var sizeRepo = _context.WordsRu.CountAsync();
-            
-            while (word.Length != mapDb.Size)
-                word = _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo.Result)).FirstOrDefaultAsync().Result.Word;
+            var sizeRepo = _context.WordsRu.Count();
 
-            //word = _dataRepository.Get(RandomWord(sizeRepo));
+            while (word.Length != mapDb.Size)
+                word =  _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo))
+                    .FirstOrDefault().Word;
+
             return word;
         }
 
         /// <summary>
         ///     The method choose random initial word.
         /// </summary>
+        /// <param name="size">Word length</param>
+        /// <returns></returns>
         private int RandomWord(int size)
         {
             var rnd = new Random();
-            var next = rnd.Next(0, size - 1);
+            var next = rnd.Next(1, size);
             return next;
         }
     }
