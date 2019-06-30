@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
+using EP.Balda.Data.Models;
 using EP.Balda.Logic.Commands;
+using EP.Balda.Logic.Models;
+using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using EP.Balda.Logic.Models;
-using EP.Balda.Data.Models;
-using FluentValidation;
 
 namespace EP.Balda.Logic.Handlers
 {
@@ -32,7 +32,7 @@ namespace EP.Balda.Logic.Handlers
                 .Where(c => c.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken));
 
-            if(cellDb == null)
+            if (cellDb == null)
             {
                 return Result.Fail<Cell>($"The cell with id {request.Id} doesn't exist");
             }
@@ -42,15 +42,15 @@ namespace EP.Balda.Logic.Handlers
                 return Result.Fail<Cell>("Cell already contains letter");
             }
 
-            var isAllowedCell = await IsAllowedCell(cellDb);
+            bool isAllowedCell = await IsAllowedCell(cellDb);
 
-            if(!isAllowedCell)
+            if (!isAllowedCell)
             {
                 return Result.Fail<Cell>($"The cell with id {request.Id} doesn't have occupied cells nearby");
             }
-            
+
             cellDb.Letter = request.Letter;
-            
+
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
@@ -64,7 +64,7 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
-        ///     The method checks if the cell is allowed to insert a new letter.
+        /// The method checks if the cell is allowed to insert a new letter.
         /// </summary>
         /// <param name="x">Parameter x requires an integer argument.</param>
         /// <param name="y">Parameter y requires an integer argument.</param>

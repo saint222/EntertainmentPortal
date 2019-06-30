@@ -29,7 +29,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             var validationResult = new ValidationResult(failures);
             _validator = new Mock<IValidator<CreateNewPlayerCommand>>();
             _validator.Setup(x => x.ValidateAsync(It.IsAny<FluentValidation.ValidationContext>(), It.IsAny<CancellationToken>())).ReturnsAsync(validationResult);
-            
+
         }
 
         [Test]

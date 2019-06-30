@@ -125,7 +125,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             var request = new AddWordToPlayerCommand()
             {
                 Id = 1,
-                CellsIdFormWord = new List<long>() {1,2,3},
+                CellsIdFormWord = new List<long>() { 1, 2, 3 },
                 GameId = 1
             };
 
@@ -311,7 +311,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
                 await context.Games.AddAsync(gameDb);
                 await context.PlayerGames.AddAsync(playerGame);
                 await context.SaveChangesAsync();
-                
+
                 await context.Cells.AddRangeAsync(cells);
                 await context.WordsRu.AddAsync(wordRuDb);
                 context.SaveChanges();

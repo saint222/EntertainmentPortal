@@ -17,7 +17,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
     public class GetPlayerHandler_Tests
     {
         IMapper _mapper;
-        
+
         [SetUp]
         public void Setup()
         {
@@ -47,7 +47,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
                 NickName = "NickName",
                 Password = "Password"
             };
-           
+
             using (var context = new BaldaGameDbContext(options))
             {
                 await context.Players.AddAsync(playerDb);

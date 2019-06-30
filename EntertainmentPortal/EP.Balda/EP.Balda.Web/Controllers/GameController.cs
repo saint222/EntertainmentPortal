@@ -34,10 +34,19 @@ namespace EP.Balda.Web.Controllers
 
             var result = await _mediator.Send(model);
 
-            if (!result.HasNoValue) return Ok(result.Value);
-            _logger.LogWarning(
-                $"Action: {ControllerContext.ActionDescriptor.ActionName} : Id = {model.Id}, - game not not found");
-            return NotFound();
+            if (result.HasValue)
+            {
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameter: Id = {model.Id}");
+
+                return Ok(result.Value);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} : " +
+                    $"Id = {model.Id}, - game not found");
+                return NotFound();
+            }
         }
 
         [HttpPost("api/game")]
@@ -50,18 +59,23 @@ namespace EP.Balda.Web.Controllers
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: PlayerId = {model.PlayerId}, MapSize = {model.MapSize}");
 
-            var (isSuccess, isFailure, value, error) = await _mediator.Send(model);
+            var result = await _mediator.Send(model);
 
-            if (isSuccess)
+            if (result.IsSuccess)
+            {
                 _logger.LogInformation(
                     $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
-                    $"game was created at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+                    $"Game was created at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
 
-            if (!isFailure) return Created("api/game", value);
-            _logger.LogWarning(
-                $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
-                "game can't be created");
-            return BadRequest(error);
+                return Created("api/game", result.Value);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                "Game can't be created");
+
+                return BadRequest(result.Error);
+            }
         }
     }
 }

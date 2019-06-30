@@ -100,7 +100,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
                 Assert.IsTrue(result.IsFailure);
             }
         }
-        
+
         [Test]
         public async Task TestCreateNewGame_Handle_NormalData()
         {

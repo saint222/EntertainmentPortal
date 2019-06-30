@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace EP.Balda.Data.Services
 {
     /// <summary>
-    ///     Connection service of project database providers.
+    /// Connection service of project database providers.
     /// </summary>
     public static class ServiceCollectionExtensions
     {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
 using EP.Balda.Data.Models;
@@ -11,6 +6,11 @@ using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
@@ -54,7 +54,7 @@ namespace EP.Balda.Logic.Handlers
 
             var cellsFormWord = new List<CellDb>();
 
-            foreach (var id in request.CellsIdFormWord)
+            foreach (long id in request.CellsIdFormWord)
             {
                 var cell = map.Cells.FirstOrDefault(c => c.Id == id);
 
@@ -68,7 +68,7 @@ namespace EP.Balda.Logic.Handlers
             if (!IsWordCorrect(cellsFormWord))
                 return Result.Fail<Player>("Some empty cells are chosen");
 
-            var word = GetSelectedWord(cellsFormWord);
+            string word = GetSelectedWord(cellsFormWord);
 
             if (word == game.InitWord)
                 return Result.Fail<Player>("It is initial word");
@@ -114,16 +114,16 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
-        ///     The method checks that all letters
-        ///     comply with the rules of the game on making words.
+        /// The method checks that all letters
+        /// comply with the rules of the game on making words.
         /// </summary>
         /// <param name="word">Parameter requires List of Cell argument.</param>
         /// <returns>returns true if this is the correct word</returns>
         public bool IsWordCorrect(List<CellDb> word)
         {
-            var areLettersCorrect = false;
+            bool areLettersCorrect = false;
 
-            for (var letterPosition = 0; letterPosition < word.Count; letterPosition++)
+            for (int letterPosition = 0; letterPosition < word.Count; letterPosition++)
             {
                 //current cell in the word
                 var currentCell = word[letterPosition];
@@ -168,7 +168,7 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
-        ///     The method returns the word from the game map according to the entered cells.
+        /// The method returns the word from the game map according to the entered cells.
         /// </summary>
         /// <param name="words">Parameter requires &lt;IEnumerable&lt;Cell&gt;&gt; argument.</param>
         /// <returns>The method returns word from the game map.</returns>

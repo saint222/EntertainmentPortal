@@ -5,6 +5,7 @@ using EP.Balda.Logic.Services;
 using EP.Balda.Logic.Validators;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,10 @@ namespace EP.Balda.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+            services.AddAuthorization();
+            services.AddSession();
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddMediatR(typeof(CreateNewPlayerCommand).Assembly);
@@ -51,6 +56,13 @@ namespace EP.Balda.Web
                 // The default HSTS value is 30 days. You may want to change this
                 // for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+
+            app.UseCors(o =>
+                o.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin());
+
+            app.UseAuthentication();
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseOpenApi().UseSwaggerUi3();

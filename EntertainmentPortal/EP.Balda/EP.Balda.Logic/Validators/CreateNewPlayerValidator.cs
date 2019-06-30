@@ -1,13 +1,13 @@
-﻿using System.Threading.Tasks;
-using EP.Balda.Data.Context;
+﻿using EP.Balda.Data.Context;
 using EP.Balda.Logic.Commands;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Validators
 {
     /// <summary>
-    ///     Player creation validator.
+    /// Player creation validator.
     /// </summary>
     public class CreateNewPlayerValidator : AbstractValidator<CreateNewPlayerCommand>
     {
@@ -50,7 +50,7 @@ namespace EP.Balda.Logic.Validators
 
         private async Task<bool> CheckExistingPlayer(CreateNewPlayerCommand model)
         {
-            var result = await _context.Players.
+            bool result = await _context.Players.
                 AnyAsync(c => c.Login == model.Login);
 
             return !result;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
 using EP.Balda.Data.Models;
@@ -11,6 +7,10 @@ using EP.Balda.Logic.Models;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {

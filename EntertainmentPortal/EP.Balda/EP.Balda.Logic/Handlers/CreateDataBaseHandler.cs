@@ -1,9 +1,9 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using EP.Balda.Data.Context;
+﻿using EP.Balda.Data.Context;
 using EP.Balda.Logic.Commands;
 using Fody;
 using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
