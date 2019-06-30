@@ -11,7 +11,7 @@ namespace EP.Sudoku.Data.Models
         /// <summary>    
         /// Is used to denote an identification value of a player (DbInfo).
         /// </summary>
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>    
         /// Is used to denote the nickname of a player (DbInfo).

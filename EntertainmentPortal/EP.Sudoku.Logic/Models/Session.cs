@@ -45,6 +45,6 @@ namespace EP.Sudoku.Logic.Models
         public List<Cell> Squares { get; set; }
 
 
-        public string PlayerId { get; set; }
+        public long PlayerId { get; set; }
     }
 }

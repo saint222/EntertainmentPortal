@@ -9,7 +9,7 @@ namespace EP.Sudoku.Data.Models
         /// <summary>    
         /// Is used to denote an identification value of a user (DbInfo).
         /// </summary>
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>    
         /// Is used to denote the full name of a user (DbInfo).
@@ -29,7 +29,7 @@ namespace EP.Sudoku.Data.Models
         /// <summary>    
         /// Is used to denote the password of a user's account (DbInfo).
         /// </summary>
-        public string Password { get; set; }
+        public long Password { get; set; }
 
 
         public PlayerDb PlayerDb { get; set; }

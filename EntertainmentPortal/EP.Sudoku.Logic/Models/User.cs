@@ -9,7 +9,7 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>    
         /// Is used to denote an identification value of a user.
         /// </summary>
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>    
         /// Is used to denote the full name of a user.

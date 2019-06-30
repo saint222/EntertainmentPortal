@@ -12,7 +12,7 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>    
         /// Is used to denote an identification value of a player.
         /// </summary>
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>    
         /// Is used to denote the nickname of a player.
@@ -43,6 +43,6 @@ namespace EP.Sudoku.Logic.Models
         public Session GameSession { get; set; }
 
 
-        public string UserId { get; set; }
+        public long UserId { get; set; }
     }
 }

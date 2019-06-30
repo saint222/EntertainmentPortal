@@ -17,7 +17,7 @@
         outerLinkActive="router-link-active"
         >Continue game
       </a>
-      <p  *ngIf="!player.gameSession">Continue game</p>
+      <a  *ngIf="!player.gameSession" [routerLink]="['/create-session']">New game</a>
       </div>
   </div>
 </div>

@@ -24,12 +24,12 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>
         /// Is used to denote cell's coordinates on the gameboard(X and Y values are expected to be used). 
         /// </summary>
-        public int X { get; set; }
+        public long X { get; set; }
 
         /// <summary>
         /// Is used to denote cell's coordinates on the gameboard (X and Y values are expected to be used). 
         /// </summary>
-        public int Y { get; set; }
+        public long Y { get; set; }
 
         /// <summary>
         /// Is used to provide coinsaidence between a game session and a cell of the gameboard.
