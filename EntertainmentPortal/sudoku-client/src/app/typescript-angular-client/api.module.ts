@@ -15,9 +15,10 @@ import { PlayerInfoComponent } from './components/player-info/player-info.compon
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AccountService } from './api/account.service';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
-  declarations: [SessionComponent, CellComponent, CreateSessionComponent, PlayerComponent, PlayerInfoComponent, SignInComponent, RegisterComponent],
+  declarations: [SessionComponent, CellComponent, CreateSessionComponent, PlayerComponent, PlayerInfoComponent, SignInComponent, RegisterComponent, HomeComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
