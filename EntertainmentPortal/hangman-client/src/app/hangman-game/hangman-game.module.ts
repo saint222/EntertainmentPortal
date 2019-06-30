@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameFieldComponent } from './components/game-field/game-field.component';
 import {HttpClientModule} from '@angular/common/http';
-import { AlphabetButtonsComponent } from './components/alphabet-buttons/alphabet-buttons.component';
-import { StartGameComponent } from './components/start-game/start-game.component';
+import { StartScreenComponent } from './components/start-screen/start-screen.component';
+import { LooseGameComponent } from './components/loose-game/loose-game.component';
+import { WinGameComponent } from './components/win-game/win-game.component';
 
 @NgModule({
-  declarations: [GameFieldComponent, AlphabetButtonsComponent, StartGameComponent],
+  declarations: [GameFieldComponent, StartScreenComponent, LooseGameComponent, WinGameComponent],
   imports: [
     CommonModule,
     HttpClientModule
   ],
-  exports: [StartGameComponent]
+  exports: [GameFieldComponent, StartScreenComponent, LooseGameComponent]
 })
 export class HangmanGameModule { }
