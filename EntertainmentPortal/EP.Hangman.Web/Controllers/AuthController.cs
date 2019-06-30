@@ -1,14 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Net;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using EP.Hangman.Logic.Models;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using EP.Hangman.Web.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
@@ -28,7 +23,6 @@ namespace EP.Hangman.Web.Controllers
             _signInManager = signInManager;
             _logger = logger;
         }
-
         
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was registered")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
