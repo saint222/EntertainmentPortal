@@ -1,10 +1,16 @@
-﻿using System.Security.Claims;
+﻿using System.Collections.Generic;
+using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using EP.Hangman.Logic.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using EP.Hangman.Web.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using NSwag.Annotations;
 
 namespace EP.Hangman.Web.Controllers
 {
@@ -12,15 +18,20 @@ namespace EP.Hangman.Web.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private const string AUTH_ROLE_USER = "User";
         private readonly UserManager<IdentityUser> _manager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly ILogger _logger;
 
-        public AuthController(UserManager<IdentityUser> manager)
+        public AuthController(UserManager<IdentityUser> manager, SignInManager<IdentityUser> signInManager, ILogger<AuthController> logger)
         {
             _manager = manager;
-
+            _signInManager = signInManager;
+            _logger = logger;
         }
 
+        
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was registered")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserAuthData userAuthData)
         {
@@ -34,48 +45,49 @@ namespace EP.Hangman.Web.Controllers
                 };
 
                 var status = await _manager.CreateAsync(newUser, userAuthData.Password);
-                await _manager.AddClaimsAsync(newUser, new Claim[]
-                 {
-                     new Claim(ClaimTypes.Name, userAuthData.UserName),
-                     new Claim(ClaimTypes.Role, AUTH_ROLE_USER),
-                 });
-                return status.Succeeded ? (IActionResult)Ok() : BadRequest(status.Errors);
+                if (status.Succeeded)
+                {
+                    _logger.LogInformation($"{newUser.UserName} was registered");
+                    await _signInManager.SignInAsync(newUser, false);
+                }
+                else
+                {
+                    _logger.LogWarning($"Register failed.\n{status.Errors}");
+                }
+                return status.Succeeded ? (IActionResult) Ok() : BadRequest(status.Errors);
             }
             else
             {
+                _logger.LogWarning("Register failed. User does exist");
                 return BadRequest("User does exist");
             }
         }
 
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged in")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User wasn't logged in")]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserAuthData userAuthData)
         {
-
-            var user = await _manager.FindByNameAsync(userAuthData.UserName);
-            if (user != null)
+            var result = await _signInManager.PasswordSignInAsync(userAuthData.UserName, userAuthData.Password, true, false);
+            if (result.Succeeded)
             {
-                if (await _manager.CheckPasswordAsync(user, userAuthData.Password))
-                {
-                    var identity = new ClaimsIdentity(new Claim[]
-                        {
-                            new Claim(ClaimTypes.Name, userAuthData.UserName),
-                            new Claim(ClaimTypes.Role, AUTH_ROLE_USER),
-                        }, CookieAuthenticationDefaults.AuthenticationScheme,
-                        ClaimTypes.Name, ClaimTypes.Role);
-                    var principal = new ClaimsPrincipal(identity);
-
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                    return Ok();
-                }
-                else
-                {
-                    return BadRequest("Wrong password");
-                }
+                _logger.LogInformation($"User {userAuthData.UserName} signed in");
             }
             else
             {
-                return BadRequest("User wasn't found");
+                _logger.LogWarning($"Unsuccessful login of user: {userAuthData.UserName}");
             }
+            return result.Succeeded ? (IActionResult)Ok() : BadRequest();
+        }
+
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            
+            _logger.LogInformation($"User: {_signInManager.Context.User.Identity.Name} logged out ");
+            return Ok();
         }
     }
 }
