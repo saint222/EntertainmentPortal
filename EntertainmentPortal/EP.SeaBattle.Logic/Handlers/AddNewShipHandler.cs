@@ -37,6 +37,7 @@ namespace EP.SeaBattle.Logic.Handlers
             {
                 PlayerDb playerDb = await _context.Players
                                                     .Include(p => p.Ships)
+                                                    .ThenInclude(s => s.Cells)
                                                     .FirstOrDefaultAsync(p => p.Id == request.PlayerId)
                                                     .ConfigureAwait(false);
 
