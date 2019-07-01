@@ -44,12 +44,12 @@ namespace EP.Balda.Logic.Handlers
             var playerDb = new PlayerDb
             {
                 NickName = request.NickName,
-                Login = request.Login,
+                UserName = request.Login,
                 Password = request.Password,
                 Created = DateTime.UtcNow
             };
 
-            _context.Players.Add(playerDb);
+            await _context.Users.AddAsync(playerDb);
 
             try
             {

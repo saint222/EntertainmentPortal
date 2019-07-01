@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace EP.Balda.Data.Models
@@ -6,22 +7,12 @@ namespace EP.Balda.Data.Models
     /// <summary>
     /// Entity of Players.
     /// </summary>
-    public class PlayerDb
+    public class PlayerDb : IdentityUser<string>
     {
-        /// <summary>
-        /// Id property. Represents unique player's Id
-        /// </summary>
-        public long Id { get; set; }
-
-        /// <summary>
-        /// NickName property. Represents player's Nickname.
-        /// </summary>
-        public string NickName { get; set; }
-
         /// <summary>
         /// Login property. Represents player's Login.
         /// </summary>
-        public string Login { get; set; }
+        public string NickName { get; set; }
 
         /// <summary>
         /// Password property. Represents player's Password.
@@ -33,11 +24,6 @@ namespace EP.Balda.Data.Models
         /// </summary>
         public int Score { get; set; }
 
-        /// <summary>
-        /// IsMoveAllowed property. Represents player's turn in the game.
-        /// </summary>
-        public bool IsMoveAllowed { get; set; }
-        
         /// <summary>
         /// PlayerGames property. Used for many-to-many relationships.
         /// </summary>

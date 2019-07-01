@@ -1,4 +1,6 @@
 ﻿using EP.Balda.Data.Context;
+using EP.Balda.Data.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,6 +19,13 @@ namespace EP.Balda.Data.Services
                 {
                     opt.UseSqlite(@"Data Source =..\EP.Balda.Data\DbStore\baldaGameDb.db");
                 });
+
+            services.AddIdentity<PlayerDb, IdentityRole>()
+                .AddEntityFrameworkStores<BaldaGameDbContext>()
+                .AddUserManager<UserManager<PlayerDb>>()
+                .AddRoleManager<RoleManager<IdentityRole>>()
+                .AddDefaultTokenProviders();
+
             return services;
         }
     }

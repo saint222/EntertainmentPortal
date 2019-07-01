@@ -124,7 +124,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var request = new AddWordToPlayerCommand()
             {
-                Id = 1,
+                Id = "1",
                 CellsIdFormWord = new List<long>() { 1, 2, 3 },
                 GameId = 1
             };
@@ -153,7 +153,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var request = new AddWordToPlayerCommand()
             {
-                Id = 1,
+                Id = "1",
                 CellsIdFormWord = new List<long>() { 1, 2, 3 },
                 GameId = 1
             };
@@ -161,7 +161,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             var playerDb = new PlayerDb()
             {
                 Created = DateTime.UtcNow,
-                Login = "Login",
+                UserName = "Login",
                 NickName = "Name",
                 Password = "12345"
             };
@@ -198,14 +198,14 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             var playerDb = new PlayerDb()
             {
                 Created = DateTime.UtcNow,
-                Login = "Login",
+                UserName = "Login",
                 NickName = "Name",
                 Password = "12345"
             };
 
             var playerGame = new PlayerGame()
             {
-                PlayerId = 1
+                PlayerId = "1"
             };
 
             var mapDb = new MapDb()
@@ -224,7 +224,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             using (var context = new BaldaGameDbContext(options))
             {
                 var service = new AddWordToPlayerHandler(context, _mapper);
-                await context.Players.AddAsync(playerDb);
+                await context.Users.AddAsync(playerDb);
                 await context.Maps.AddAsync(mapDb);
                 await context.Games.AddAsync(gameDb);
                 await context.PlayerGames.AddAsync(playerGame);
@@ -256,23 +256,23 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var request = new AddWordToPlayerCommand()
             {
-                Id = 1,
+                Id = "1",
                 CellsIdFormWord = new List<long>() { 1, 2, 3 },
                 GameId = 1
             };
 
             var playerDb = new PlayerDb()
             {
-                Id = 1,
+                Id = "1",
                 Created = DateTime.UtcNow,
-                Login = "Login",
+                UserName = "Login",
                 NickName = "Name",
                 Password = "12345"
             };
 
             var playerGame = new PlayerGame()
             {
-                PlayerId = 1,
+                PlayerId = "1",
                 GameId = 1
             };
 
@@ -306,7 +306,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             using (var context = new BaldaGameDbContext(options))
             {
                 var service = new AddWordToPlayerHandler(context, _mapper);
-                await context.Players.AddAsync(playerDb);
+                await context.Users.AddAsync(playerDb);
                 await context.Maps.AddAsync(mapDb);
                 await context.Games.AddAsync(gameDb);
                 await context.PlayerGames.AddAsync(playerGame);

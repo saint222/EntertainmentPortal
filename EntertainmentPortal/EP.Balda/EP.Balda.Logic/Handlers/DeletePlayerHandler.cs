@@ -27,7 +27,7 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Result<Player>> Handle(DeletePlayerCommand request,
                                                  CancellationToken cancellationToken)
         {
-            var playerDb = await _context.Players
+            var playerDb = await _context.Users
                 .Where(p => p.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 
@@ -36,7 +36,7 @@ namespace EP.Balda.Logic.Handlers
                 return Result.Fail<Player>($"The player with id {request.Id} doesn't exist");
             }
 
-            _context.Players.Remove(playerDb);
+            _context.Users.Remove(playerDb);
 
             try
             {

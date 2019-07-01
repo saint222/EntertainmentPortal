@@ -38,14 +38,14 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var playerDb = new PlayerDb()
             {
-                Login = "Login",
+                UserName = "Login",
                 NickName = "NickName",
                 Password = "Password"
             };
 
             using (var context = new BaldaGameDbContext(options))
             {
-                await context.Players.AddAsync(playerDb);
+                await context.Users.AddAsync(playerDb);
                 await context.SaveChangesAsync();
                 var service = new GetAllPlayersHandler(context, _mapper);
                 result = await service.Handle(request, CancellationToken.None);

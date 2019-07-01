@@ -7,7 +7,7 @@
         /// <summary>
         /// Login property.
         /// </summary>
-        public string Login { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
         /// Property for user's password

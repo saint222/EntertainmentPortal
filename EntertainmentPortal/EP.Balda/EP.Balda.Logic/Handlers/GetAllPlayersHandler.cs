@@ -27,7 +27,7 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Maybe<IEnumerable<Player>>> Handle(
             GetAllPlayers request, CancellationToken cancellationToken)
         {
-            var playersDb = await _context.Players
+            var playersDb = await _context.Users
                 .ToArrayAsync(cancellationToken);
 
             return playersDb.Any()

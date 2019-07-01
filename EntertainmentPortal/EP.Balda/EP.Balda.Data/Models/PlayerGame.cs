@@ -8,7 +8,7 @@
         /// <summary>
         /// PlayerId property. Represents Id of Player.
         /// </summary>
-        public long PlayerId { get; set; }
+        public string PlayerId { get; set; }
 
         /// <summary>
         /// Player property. Navigation property of Player.

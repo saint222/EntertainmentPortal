@@ -35,22 +35,22 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var request = new GetPlayer()
             {
-                Id = 1
+                Id = "1"
             };
 
             Maybe<Player> result;
 
             var playerDb = new PlayerDb()
             {
-                Id = 1,
-                Login = "Login",
+                Id = "1",
+                UserName = "Login",
                 NickName = "NickName",
                 Password = "Password"
             };
 
             using (var context = new BaldaGameDbContext(options))
             {
-                await context.Players.AddAsync(playerDb);
+                await context.Users.AddAsync(playerDb);
                 await context.SaveChangesAsync();
                 var service = new GetPlayerHandler(context, _mapper);
                 result = await service.Handle(request, CancellationToken.None);
@@ -71,7 +71,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var request = new GetPlayer()
             {
-                Id = 1
+                Id = "1"
             };
 
             Maybe<Player> result;

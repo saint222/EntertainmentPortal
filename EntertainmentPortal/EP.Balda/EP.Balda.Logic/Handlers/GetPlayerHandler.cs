@@ -26,7 +26,7 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Maybe<Player>> Handle(GetPlayer request,
                                                 CancellationToken cancellationToken)
         {
-            var playerDb = await _context.Players
+            var playerDb = await _context.Users
                 .Where(p => p.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 

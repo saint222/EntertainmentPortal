@@ -24,6 +24,11 @@ namespace EP.Balda.Logic.Models
         public long MapId { get; set; }
 
         /// <summary>
+        /// The field represents player's turn in the game.
+        /// </summary>
+        public string PlayerIdTurn { get; set; }
+
+        /// <summary>
         /// The field represents players in the game.
         /// </summary>
         public List<Player> Players { get; set; }

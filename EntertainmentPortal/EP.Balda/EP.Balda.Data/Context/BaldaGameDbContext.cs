@@ -1,16 +1,16 @@
 ﻿using EP.Balda.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Data.Context
 {
-    public class BaldaGameDbContext : DbContext
+    public class BaldaGameDbContext : IdentityDbContext<PlayerDb, IdentityRole, string>
     {
         public BaldaGameDbContext(DbContextOptions<BaldaGameDbContext> options)
             : base(options: options)
         {
         }
-
-        public DbSet<PlayerDb> Players { get; set; }
 
         public DbSet<GameDb> Games { get; set; }
         
@@ -28,11 +28,6 @@ namespace EP.Balda.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            var playerEntity = modelBuilder.Entity<PlayerDb>();
-            playerEntity.Property(p => p.Login).IsRequired().HasMaxLength(30);
-            playerEntity.Property(p => p.NickName).IsRequired().HasMaxLength(30);
-            playerEntity.Property(p => p.Password).IsRequired();
-            
             var gameEntity = modelBuilder.Entity<GameDb>();
             gameEntity.HasOne(g => g.Map).WithOne();
 

@@ -6,6 +6,6 @@ namespace EP.Balda.Logic.Commands
 {
     public class DeletePlayerCommand : IRequest<Result<Player>>
     {
-        public long Id { get; set; }
+        public string Id { get; set; }
     }
 }

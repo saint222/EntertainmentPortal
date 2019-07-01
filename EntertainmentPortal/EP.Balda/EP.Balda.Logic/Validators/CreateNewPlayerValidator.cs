@@ -50,8 +50,8 @@ namespace EP.Balda.Logic.Validators
 
         private async Task<bool> CheckExistingPlayer(CreateNewPlayerCommand model)
         {
-            bool result = await _context.Players.
-                AnyAsync(c => c.Login == model.Login);
+            bool result = await _context.Users.
+                AnyAsync(c => c.UserName == model.Login);
 
             return !result;
         }

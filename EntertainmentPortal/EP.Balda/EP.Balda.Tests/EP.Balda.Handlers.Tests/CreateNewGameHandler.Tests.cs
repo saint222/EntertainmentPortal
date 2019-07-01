@@ -84,7 +84,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             var request = new CreateNewGameCommand()
             {
                 MapSize = 3,
-                PlayerId = 1
+                PlayerId = "1"
             };
 
             Result<Game> result;
@@ -110,15 +110,15 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var request = new CreateNewGameCommand()
             {
-                PlayerId = 1,
+                PlayerId = "1",
                 MapSize = 3
             };
 
             var playerDb = new PlayerDb()
             {
-                Id = 1,
+                Id = "1",
                 Created = DateTime.UtcNow,
-                Login = "Login",
+                UserName = "Login",
                 NickName = "Name",
                 Password = "1234567",
             };
@@ -135,7 +135,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             {
                 var service = new CreateNewGameHandler(context, _mapper);
                 await context.WordsRu.AddAsync(wordRuDb);
-                await context.Players.AddAsync(playerDb);
+                await context.Users.AddAsync(playerDb);
                 await context.SaveChangesAsync();
                 result = await service.Handle(request, CancellationToken.None);
             }
