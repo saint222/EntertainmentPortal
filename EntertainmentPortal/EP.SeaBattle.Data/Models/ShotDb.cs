@@ -4,17 +4,14 @@ using System.Text;
 
 namespace EP.SeaBattle.Data.Models
 {
-    public class PlayerDb
+    public class ShotDb
     {
-        public PlayerDb()
-        {
-            Ships = new List<ShipDb>();
-        }
         public string Id { get; set; } = Guid.NewGuid().ToString();
-        public string NickName { get; set; }
-
+        public byte X { get; set; }
+        public byte Y { get; set; }
+        public string PlayerId { get; set; }
+        public PlayerDb Player { get; set; }
         public string GameId { get; set; }
         public GameDb Game { get; set; }
-        public ICollection<ShipDb> Ships { get; set; }
     }
 }

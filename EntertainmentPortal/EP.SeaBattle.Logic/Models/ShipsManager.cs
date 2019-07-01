@@ -7,7 +7,7 @@ namespace EP.SeaBattle.Logic.Models
 {
     public class ShipsManager
     {
-        private Dictionary<ShipRank, byte> _shipsCount;
+        private readonly Dictionary<ShipRank, byte> _shipsCount;
         private readonly Dictionary<ShipRank, byte> shipsRuleCount = new Dictionary<ShipRank, byte>
         {
             { ShipRank.One, SHIP_RANK_ONE_MAX_COUNT },
@@ -15,26 +15,20 @@ namespace EP.SeaBattle.Logic.Models
             { ShipRank.Three, SHIP_RANK_THREE_MAX_COUNT },
             { ShipRank.Four, SHIP_RANK_FOUR_MAX_COUNT },
         };
-        
-        //TODO обдумать а нужны ли они в public?
+
         public const byte SHIP_RANK_FOUR_MAX_COUNT = 1;
         public const byte SHIP_RANK_THREE_MAX_COUNT = 2;
         public const byte SHIP_RANK_TWO_MAX_COUNT = 3;
         public const byte SHIP_RANK_ONE_MAX_COUNT = 4;
 
         public const byte MAX_SHIPS_COUNT = 10;
+        readonly Player _player;
 
-        List<Ship> _ships;
-        readonly Game Game;
-        readonly Player Player;
-        /// <summary>
-        /// .ctor
-        /// </summary>
-        /// <param name="ships">Collection of ships</param>
-        public ShipsManager(Game game, Player player, IEnumerable<Ship> ships)
+
+        public ShipsManager(Player player)
         {
-            Game = game;
-            Player = player;
+
+            _player = player;
             _shipsCount = new Dictionary<ShipRank, byte>(4)
             {
                 { ShipRank.One, 0 },
@@ -43,15 +37,13 @@ namespace EP.SeaBattle.Logic.Models
                 { ShipRank.Four, 0 }
             };
 
-            foreach (var ship in ships)
+            foreach (var ship in player.Ships)
             {
                 _shipsCount[ship.Rank] += 1;
             }
-            _ships = new List<Ship>(ships);
+
         }
 
-        //TODO обсудить необходимость наличия поля
-        public ICollection<Ship> Ships { get => _ships; }
 
         /// <summary>
         /// Returns true if all ships are set
@@ -60,8 +52,11 @@ namespace EP.SeaBattle.Logic.Models
         {
             get
             {
-                if (_ships.Count >= MAX_SHIPS_COUNT)
+                if (_player.Ships.Count() == MAX_SHIPS_COUNT)
+                {
                     return true;
+                }
+
                 return false;
             }
         }
@@ -69,7 +64,7 @@ namespace EP.SeaBattle.Logic.Models
         /// <summary>
         /// Inform is all ships destroyed
         /// </summary>
-        public bool AllShipsDestroyed { get => _ships.Any(a => a.IsAlive); }
+        //public bool AllShipsDestroyed { get => _ships.Any(a => a.IsAlive); }
 
         /// <summary>
         /// Add ship
@@ -77,13 +72,21 @@ namespace EP.SeaBattle.Logic.Models
         /// <param name="ship">Ship</param>
         private bool AddShip(Ship ship)
         {
-            //TODO Throw message if cannot add ship
+
             var rank = ship.Rank;
-            if (_shipsCount[rank] < shipsRuleCount[rank])
+            try
             {
-                _ships.Add(ship);
-                return true;
+                if (_shipsCount[rank] < shipsRuleCount[rank])
+                {
+                    _player.Ships.Add(ship);
+                    return true;
+                }
             }
+            catch (Exception)
+            {
+                return false;
+            }
+
             return false;
         }
 
@@ -95,14 +98,16 @@ namespace EP.SeaBattle.Logic.Models
         /// <param name="shipOrientation">Orientation</param>
         /// <param name="rank">Rank</param>
         /// <returns></returns>
-        public bool AddShip(byte x, byte y, ShipOrientation shipOrientation, ShipRank rank)
+
+        public bool AddShip(byte x, byte y, ShipOrientation shipOrientation, ShipRank rank, out Ship ship)
         {
-            FieldManager fieldManager = new FieldManager(_ships);
-            if (fieldManager.AddShip(x, y, shipOrientation, rank))
+            FieldManager fieldManager = new FieldManager(_player.Ships);
+            if (fieldManager.CheckShip(x, y, shipOrientation, rank))
             {
-                var ship = new Ship(Game, Player, GenerateCell(x, y, shipOrientation, rank));
+                ship = new Ship { PlayerId = _player.Id, Cells = GenerateCell(x, y, shipOrientation, rank), Rank = rank };
                 return AddShip(ship);
             }
+            ship = null;
             return false;
         }
 
@@ -113,7 +118,7 @@ namespace EP.SeaBattle.Logic.Models
         private bool DeleteShip(Ship ship)
         {
             //TODO Throw message if ship not found
-            return _ships.Remove(ship);
+            return _player.Ships.Remove(ship);
         }
 
         /// <summary>
@@ -124,19 +129,19 @@ namespace EP.SeaBattle.Logic.Models
         /// <param name="shipOrientation">Orientation</param>
         /// <param name="rank">Rank</param>
         /// <returns></returns>
-        private IEnumerable<Cell> GenerateCell(byte x, byte y, ShipOrientation shipOrientation, ShipRank rank)
+        private ICollection<Cell> GenerateCell(byte x, byte y, ShipOrientation shipOrientation, ShipRank rank)
         {
             List<Cell> cells = new List<Cell>((byte)rank);
             for (byte i = 0; i < (byte)rank; i++)
             {
                 if (shipOrientation == ShipOrientation.Horizontal)
                 {
-                    var cell = new Cell(Convert.ToByte(x + i), y, Common.Enums.CellStatus.Alive);
+                    Cell cell = new Cell { X = Convert.ToByte(x + i), Y = y, IsAlive = true };
                     cells.Add(cell);
                 }
                 else
                 {
-                    var cell = new Cell(x, Convert.ToByte(y + i), Common.Enums.CellStatus.Alive);
+                    Cell cell = new Cell { X = x, Y = Convert.ToByte(y + i), IsAlive = true };
                     cells.Add(cell);
                 }
             }

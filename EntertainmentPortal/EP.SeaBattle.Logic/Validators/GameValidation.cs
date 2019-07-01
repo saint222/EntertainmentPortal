@@ -1,54 +1,60 @@
 ﻿using EP.SeaBattle.Data.Context;
 using EP.SeaBattle.Logic.Commands;
+using EP.SeaBattle.Logic.Models;
+using EP.SeaBattle.Data.Models;
 using FluentValidation;
 using System.Threading.Tasks;
+using System.Linq;
+using AutoMapper;
 
 namespace EP.SeaBattle.Logic.Validators
 {
     //TODO объявить названия валидаций как константы и использовать константы
-    public class GameValidation : AbstractValidator<CreateNewGameCommand>
+    public class GameValidation : AbstractValidator<StartGameCommand>
     {
-        SeaBattleDbContext _context;
-        public GameValidation(SeaBattleDbContext context)
+        private SeaBattleDbContext _context;
+        private readonly IMapper _mapper;
+        public GameValidation(SeaBattleDbContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
             RuleSet("GamePreValidation", () =>
             {
-                RuleFor(o => o.Player1Id)
-                    .NotEmpty().WithMessage("Player 1 cannot be null");
-                RuleFor(o => o.Player2Id)
-                    .NotEmpty().WithMessage("Player 2 cannot be null");
-                RuleFor(o => o.Player1Id)
-                    .NotEqual(p => p.Player2Id).WithMessage("Player 1 cannot be equal Player 2");
-                RuleFor(o => o.PlayerAllowedToMoveId)
-                    .NotEmpty().WithMessage("Player allow to move not set");
+                RuleFor(o => o.PlayerId)
+                    .NotEmpty()
+                    .WithMessage("Player cannot be null");
             });
+
 
             RuleSet("GameValidation", () =>
             {
                 RuleFor(x => x)
-                    .MustAsync((o, s, token) => CheckExistingPlayer(o.Player1Id))
-                        .WithMessage(player => $"Player1 with id {player.Player1Id} doesn't exists");
+                        .MustAsync((x, s, token) => CheckExistingPlayer(x.PlayerId))
+                        .WithMessage(player => $"Player with id {player.PlayerId} doesn't exists!!!");
 
-                RuleFor(x => x)
-                    .MustAsync((o, s, token) => CheckExistingPlayer(o.Player1Id))
-                        .WithMessage(player => $"Player2 with id {player.Player2Id} doesn't exists");
-
-                RuleFor(x => x)
-                    .MustAsync((o, s, token) => CheckExistingPlayer(o.PlayerAllowedToMoveId))
-                        .WithMessage(player => $"Player1 with id {player.PlayerAllowedToMoveId} doesn't exists");
-
-                //TODO Id ходящего игрока должен быть равен id первого или второго игрока
+                RuleFor(command => command)
+                        .MustAsync((o, s, token) => IsFullShipsSet(o.PlayerId))
+                        .WithMessage(player => $"Player with id {player.PlayerId} does not have enough ships.");
             });
+
         }
 
         private async Task<bool> CheckExistingPlayer(string id)
         {
-            var result = await _context.Players.FindAsync(id)
-                .ConfigureAwait(false);
+            var result = await _context.Players.FindAsync(id).ConfigureAwait(false);
             if (result == null)
                 return false;
             return true;
         }
+
+        private async Task<bool> IsFullShipsSet(string playerId)
+        {
+
+            PlayerDb playerDb = await _context.Players.FindAsync(playerId).ConfigureAwait(false);
+            ShipsManager shipsManager = new ShipsManager(_mapper.Map<Player>(playerDb));
+
+            return shipsManager.IsFull;
+        }
     }
 }
+

@@ -7,15 +7,17 @@ namespace EP.SeaBattle.Data.Models
 {
     public class ShipDb
     {
-        //TODO Change to Guid
+        public ShipDb()
+        {
+            Cells = new List<CellDb>();
+        }
         public string Id { get; set; } = Guid.NewGuid().ToString();
 
         public ShipRank Rank { get; set; }
 
-        public IEnumerable<CellDb> Cells { get; set; }
 
+        virtual public ICollection<CellDb> Cells { get; set; }
+        public string PlayerId { get; set; }
         public PlayerDb Player { get; set; }
-
-        public GameDb Game { get; set; }
     }
 }

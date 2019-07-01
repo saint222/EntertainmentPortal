@@ -4,8 +4,8 @@ using MediatR;
 
 namespace EP.SeaBattle.Logic.Commands
 {
-    public class AddNewPlayerCommand : IRequest<Result<Player>>
+    public class GetPlayerQuery : IRequest<Result<Player>>
     {
-        public string NickName { get; set; }
+        public string Id { get; set; }
     }
 }
