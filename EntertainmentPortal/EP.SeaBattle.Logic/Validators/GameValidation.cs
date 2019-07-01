@@ -6,6 +6,7 @@ using FluentValidation;
 using System.Threading.Tasks;
 using System.Linq;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.SeaBattle.Logic.Validators
 {
@@ -50,7 +51,10 @@ namespace EP.SeaBattle.Logic.Validators
         private async Task<bool> IsFullShipsSet(string playerId)
         {
 
-            PlayerDb playerDb = await _context.Players.FindAsync(playerId).ConfigureAwait(false);
+            PlayerDb playerDb = await _context.Players
+                                                .Include(p => p.Ships)
+                                                .FirstOrDefaultAsync(p => p.Id == playerId)
+                                                .ConfigureAwait(false);
             ShipsManager shipsManager = new ShipsManager(_mapper.Map<Player>(playerDb));
 
             return shipsManager.IsFull;
