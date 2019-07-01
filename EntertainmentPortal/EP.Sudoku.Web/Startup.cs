@@ -44,6 +44,7 @@ namespace EP.Sudoku.Web
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();
+            services.AddAuthorization();
             services.AddMediatR(typeof(GetAllPlayers).Assembly);   
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);            
             services.AddSwaggerDocument();

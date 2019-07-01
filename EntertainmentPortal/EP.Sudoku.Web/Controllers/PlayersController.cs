@@ -7,6 +7,7 @@ using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NJsonSchema.Annotations;
@@ -18,6 +19,7 @@ namespace EP.Sudoku.Web.Controllers
     /// Here are CRUD operations that touch upon players of the game.
     /// </summary>
     [ApiController]
+    [Authorize]
     public class PlayersController : ControllerBase
     {        
         private readonly IMediator _mediator;       
