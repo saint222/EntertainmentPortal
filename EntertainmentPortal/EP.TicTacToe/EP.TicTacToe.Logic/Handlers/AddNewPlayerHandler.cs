@@ -28,7 +28,7 @@ namespace EP.TicTacToe.Logic.Handlers
         {
             var playerDb = new PlayerDb
             {
-                NickName = request.NickName,
+                UserName = request.NickName,
                 Login = request.Login,
                 Password = request.Password,
             };

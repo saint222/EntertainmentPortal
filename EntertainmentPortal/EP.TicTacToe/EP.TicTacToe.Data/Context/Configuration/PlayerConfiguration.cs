@@ -10,8 +10,9 @@ namespace EP.TicTacToe.Data.Context.Configuration
         {
             builder.ToTable("Players").HasKey(p => p.Id);
             builder.Property(p => p.Login).IsRequired().HasMaxLength(30);
-            builder.Property(p => p.NickName).IsRequired().HasMaxLength(30);
+            builder.Property(p => p.UserName).IsRequired().HasMaxLength(30);
             builder.Property(p => p.Password).IsRequired().HasMaxLength(8);
+            //builder.HasOne(p => p.AspNetUser).WithOne();
         }
     }
 }

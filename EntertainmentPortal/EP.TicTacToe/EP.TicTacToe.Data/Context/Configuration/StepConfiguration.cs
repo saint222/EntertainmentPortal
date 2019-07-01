@@ -9,14 +9,9 @@ namespace EP.TicTacToe.Data.Context.Configuration
         public void Configure(EntityTypeBuilder<StepDb> builder)
         {
             builder.ToTable("Steps");
-            builder
-                .HasOne(s => s.Player)
-                .WithMany(s => s.Steps)
-                .IsRequired();
-            builder
-                .HasOne(s => s.Cell)
-                .WithOne(s => s.StepDb)
-                .HasForeignKey<CellDb>(s => s.StepId);
+            builder.HasKey(c => c.Id);
+            builder.Property(c => c.X).IsRequired();
+            builder.Property(c => c.Y).IsRequired();
         }
     }
 }

@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NJsonSchema;
 using Serilog;
+#pragma warning disable 618
 
 namespace EP.TicTacToe.Web
 {
@@ -103,6 +104,17 @@ namespace EP.TicTacToe.Web
                 .WriteTo.SQLite(Environment.CurrentDirectory + @"TTTLoggerData\TTTLogger.db")
                 .Enrich.WithProperty("App TicTacToe", "Serilog Web App TicTacToe")
                 .CreateLogger();
+
+            //app.Run(async (context) =>
+            //{
+            //    if (context.Session.Keys.Contains("name"))
+            //        await context.Response.WriteAsync($"Hello {context.Session.GetString("name")}!");
+            //    else
+            //    {
+            //        context.Session.SetString("name", "Tom");
+            //        await context.Response.WriteAsync("Hello World!");
+            //    }
+            //});
         }
     }
 }

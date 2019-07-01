@@ -11,7 +11,8 @@ namespace EP.TicTacToe.Data.Context.Configuration
             builder.ToTable("Maps");
             builder.HasKey(m => m.Id);
             builder.Property(m => m.Size).IsRequired();
-            builder.HasMany(m => m.Cells).WithOne();
+            builder.Property(m => m.WinningChain).IsRequired();
+            builder.HasOne(m => m.Game).WithOne(m=>m.Map);
         }
     }
 }

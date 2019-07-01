@@ -3,7 +3,7 @@
     public class Game
     {
         /// <summary>
-        ///     Indicates lenth and width of the board.
+        ///     Indicates length and width of the board.
         /// </summary>
         public const int SIZE = 3;
 

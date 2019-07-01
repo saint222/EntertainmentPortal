@@ -18,14 +18,15 @@ namespace EP.TicTacToe.Data.Models
         /// </summary>
         public MapDb Map { get; set; }
 
+
         /// <summary>
         ///     PlayerGames property. Used for many-to-many relationships.
         /// </summary>
-        public IList<PlayerGameDb> PlayerGames { get; set; }
+        public IList<PlayerDb> Players { get; set; }
 
         /// <summary>
         ///     StepDb property. Used for one-to-many relationships.
         /// </summary>
-        public IList<StepDb> Steps { get; set; }
+        public IList<ChainDb> Chains { get; set; }
     }
 }

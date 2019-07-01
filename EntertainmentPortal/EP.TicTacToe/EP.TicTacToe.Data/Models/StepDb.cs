@@ -1,27 +1,46 @@
 ﻿namespace EP.TicTacToe.Data.Models
 {
+    /// <summary>
+    ///     Entity of Cells.
+    /// </summary>
     public class StepDb
     {
         /// <summary>
-        ///     Id property. Represents Id of StepDb.
+        ///     Id property. Represents Id of CellDb in game map.
         /// </summary>
         public int Id { get; set; }
-
+        
         /// <summary>
-        ///     CellDb property. Navigation property of CellDb.
+        ///     X property. Represents X coordinate of the cell in game map.
         /// </summary>
-        public CellDb Cell { get; set; }
+        public int X { get; set; }
 
         /// <summary>
-        ///     GameDb property. Navigation property of GameDb.
+        ///     Y property. Represents Y coordinate of the cell in game map.
         /// </summary>
-        public GameDb Game { get; set; }
+        public int Y { get; set; }
 
         /// <summary>
-        ///     PlayerDb property. Navigation property of StepDb.
+        ///     Char tic-tac-toe property. Represents char to store in the cell.
+        /// </summary>
+        /// <remarks>
+        ///     Nullable char is used to store empty symbol if there is no tictactoe-char in the cell yet.
+        /// </remarks>
+        public char? TicTac { get; set; }
+
+        /// <summary>
+        ///     StepDb property. Navigation property of ChainDb.
         ///     Used for one-to-many relationships.
         /// </summary>
-        public int PlayerId { get; set; }
-        public PlayerDb Player { get; set; }
+        /// <remarks>
+        ///     The Nullable property is used to highlight that there may be no records in a related table.
+        /// </remarks>
+        public int? ChainId { get; set; }
+
+        /// <summary>
+        ///     StepDb property. Navigation property of ChainDb.
+        ///     Used for one-to-many relationships.
+        /// </summary>
+        public ChainDb ChainDb { get; set; }
     }
 }

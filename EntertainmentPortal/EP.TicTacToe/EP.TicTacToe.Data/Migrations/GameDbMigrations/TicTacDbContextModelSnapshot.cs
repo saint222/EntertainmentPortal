@@ -16,29 +16,23 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
-            modelBuilder.Entity("EP.TicTacToe.Data.Models.CellDb", b =>
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.ChainDb", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id");
 
-                    b.Property<int>("MapId");
+                    b.Property<int>("ChainLength");
 
-                    b.Property<int?>("StepId");
+                    b.Property<int>("GameId");
 
-                    b.Property<char?>("TicTac");
-
-                    b.Property<int>("X");
-
-                    b.Property<int>("Y");
+                    b.Property<int>("PlayerId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MapId");
+                    b.HasAlternateKey("PlayerId");
 
-                    b.HasIndex("StepId")
-                        .IsUnique();
+                    b.HasIndex("PlayerId");
 
-                    b.ToTable("Cells");
+                    b.ToTable("Chains");
                 });
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.GameDb", b =>
@@ -60,6 +54,8 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 
                     b.Property<int>("Size");
 
+                    b.Property<int>("WinningChain");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GameId")
@@ -73,11 +69,9 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<int>("GameId");
 
-                    b.Property<string>("NickName")
+                    b.Property<string>("Login")
                         .IsRequired()
                         .HasMaxLength(30);
 
@@ -85,22 +79,15 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                         .IsRequired()
                         .HasMaxLength(8);
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(30);
+
                     b.HasKey("Id");
-
-                    b.ToTable("Players");
-                });
-
-            modelBuilder.Entity("EP.TicTacToe.Data.Models.PlayerGameDb", b =>
-                {
-                    b.Property<string>("PlayerId");
-
-                    b.Property<int>("GameId");
-
-                    b.HasKey("PlayerId", "GameId");
 
                     b.HasIndex("GameId");
 
-                    b.ToTable("PlayerGames");
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.StepDb", b =>
@@ -108,18 +95,19 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("GameId");
+                    b.Property<int?>("ChainDbId");
 
-                    b.Property<int>("PlayerId");
+                    b.Property<int?>("ChainId");
 
-                    b.Property<string>("PlayerId1")
-                        .IsRequired();
+                    b.Property<char?>("TicTac");
+
+                    b.Property<int>("X");
+
+                    b.Property<int>("Y");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("PlayerId1");
+                    b.HasIndex("ChainDbId");
 
                     b.ToTable("Steps");
                 });
@@ -281,16 +269,12 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("EP.TicTacToe.Data.Models.CellDb", b =>
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.ChainDb", b =>
                 {
-                    b.HasOne("EP.TicTacToe.Data.Models.MapDb", "MapDb")
-                        .WithMany("Cells")
-                        .HasForeignKey("MapId")
+                    b.HasOne("EP.TicTacToe.Data.Models.GameDb", "Game")
+                        .WithMany("Chains")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EP.TicTacToe.Data.Models.StepDb", "StepDb")
-                        .WithOne("Cell")
-                        .HasForeignKey("EP.TicTacToe.Data.Models.CellDb", "StepId");
                 });
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.MapDb", b =>
@@ -301,29 +285,19 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("EP.TicTacToe.Data.Models.PlayerGameDb", b =>
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.PlayerDb", b =>
                 {
                     b.HasOne("EP.TicTacToe.Data.Models.GameDb", "Game")
-                        .WithMany("PlayerGames")
+                        .WithMany("Players")
                         .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EP.TicTacToe.Data.Models.PlayerDb", "Player")
-                        .WithMany("PlayerGames")
-                        .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.StepDb", b =>
                 {
-                    b.HasOne("EP.TicTacToe.Data.Models.GameDb", "Game")
+                    b.HasOne("EP.TicTacToe.Data.Models.ChainDb", "ChainDb")
                         .WithMany("Steps")
-                        .HasForeignKey("GameId");
-
-                    b.HasOne("EP.TicTacToe.Data.Models.PlayerDb", "Player")
-                        .WithMany("Steps")
-                        .HasForeignKey("PlayerId1")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ChainDbId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

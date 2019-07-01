@@ -17,6 +17,10 @@ namespace EP.TicTacToe.Data.Models
         /// </summary>
         public int Size { get; set; }
 
+        /// <summary>
+        ///     The size of the chain of characters to win on the card.
+        /// </summary>
+        public int WinningChain { get; set; }
 
         /// <summary>
         ///     External key of class GameDb.
@@ -29,10 +33,5 @@ namespace EP.TicTacToe.Data.Models
         /// </summary>
         public GameDb Game { get; set; }
 
-
-        /// <summary>
-        ///     Cells property. Represents Cells of map.
-        /// </summary>
-        public IList<CellDb> Cells { get; set; }
     }
 }

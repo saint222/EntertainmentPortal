@@ -11,9 +11,9 @@
         public long Id { get; set; }
 
         /// <summary>
-        ///     NickName property. Represents player's Nickname.
+        ///     UserName property. Represents player's UserName.
         /// </summary>
-        public string NickName { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
         ///     Login property. Represents player's Login.
