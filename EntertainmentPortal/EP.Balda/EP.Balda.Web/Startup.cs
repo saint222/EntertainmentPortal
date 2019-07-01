@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Profiles;
-using EP.Balda.Logic.Queries;
 using EP.Balda.Logic.Services;
 using EP.Balda.Logic.Validators;
 using FluentValidation.AspNetCore;
@@ -28,15 +27,17 @@ namespace EP.Balda.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
-            services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
+            services.AddMediatR(typeof(CreateNewPlayerCommand).Assembly);
+            
             services.AddBaldaGameServices();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(cfg =>
                 {
-                    cfg.RegisterValidatorsFromAssemblyContaining<AddNewPlayerValidator>();
+                    cfg.RegisterValidatorsFromAssemblyContaining<CreateNewPlayerValidator>();
                     cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-                });
+                }); ;
         }
 
         // This method gets called by the runtime. Use this method to
@@ -52,7 +53,7 @@ namespace EP.Balda.Web
                 app.UseHsts();
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();
+            app.UseOpenApi().UseSwaggerUi3();
             app.UseMvc();
         }
     }

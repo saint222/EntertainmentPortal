@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using EP.Hangman.Logic.Queries;
 using EP.Hangman.Web.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
@@ -14,6 +15,7 @@ namespace EP.Hangman.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PlayHangmanController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -59,18 +61,18 @@ namespace EP.Hangman.Web.Controllers
             _logger.LogInformation("Received PUT request");
             var result = await _mediator.Send(new CheckLetterCommand(model));
             _logger.LogInformation("PUT request executed");
-            return result.IsSuccess ? (IActionResult)Ok(result) : BadRequest(result.Error);
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
         }
 
-        //DELETE: api/PlayHangman
-        [HttpDelete]
+        //DELETE: api/PlayHangman/{id}
+        [HttpDelete("id")]
         [SwaggerResponse(HttpStatusCode.NoContent, typeof(ControllerData), Description = "Deleted")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't delete")]
         [ValidationFilter]
-        public async Task<IActionResult> DeleteGameSessionAsync([FromBody]ControllerData model)
+        public async Task<IActionResult> DeleteGameSessionAsync(string id)
         {
             _logger.LogInformation("Received DELETE request");
-            var result = await _mediator.Send(new DeleteGameSessionCommand(model));
+            var result = await _mediator.Send(new DeleteGameSessionCommand(id));
             _logger.LogInformation("DELETE request executed");
             return result.IsSuccess ? (IActionResult) Ok(result.Value) : BadRequest(result.Error);
         }

@@ -4,6 +4,7 @@ using EP.Hangman.Data.Context;
 using EP.Hangman.Logic.Commands;
 using MediatR;
 
+[assembly:Fody.ConfigureAwait(false)]
 namespace EP.Hangman.Logic.Handlers
 {
     public class CreateDatabaseHandler : AsyncRequestHandler<CreateDatabaseCommand>
