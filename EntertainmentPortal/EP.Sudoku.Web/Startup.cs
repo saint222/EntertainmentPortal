@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EP.Sudoku.Logic;
 using EP.Sudoku.Logic.Commands;
+using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Profiles;
 using EP.Sudoku.Logic.Queries;
 using EP.Sudoku.Logic.Validators;
+using EP.Sudoku.Web.Controllers;
 using EP.Sudoku.Web.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -40,7 +42,8 @@ namespace EP.Sudoku.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
             services.AddMediatR(typeof(GetAllPlayers).Assembly);   
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);            
             services.AddSwaggerDocument();
@@ -59,6 +62,8 @@ namespace EP.Sudoku.Web
                 });
             services.AddLogging();
             services.AddMemoryCache();
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.AddSingleton<AuthController.IEmailSender, AuthController.EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
