@@ -36,8 +36,22 @@ namespace EP.SeaBattle.Logic.Validators
                 RuleFor(command => command)
                         .MustAsync((o, s, token) => IsFullShipsSet(o.PlayerId))
                         .WithMessage(player => $"Player with id {player.PlayerId} does not have enough ships.");
+
+                RuleFor(command => command)
+                        .MustAsync((o, s, token) => IsNotInGame(o.PlayerId))
+                        .WithMessage(player => $"Player with id {player.PlayerId} in the game.");
             });
 
+        }
+
+        private async Task<bool> IsNotInGame(string id)
+        {
+            PlayerDb playerDb = await _context.Players.FindAsync(id).ConfigureAwait(false);
+            if (playerDb.GameId != null)
+            {
+                return false;
+            }
+            return true;
         }
 
         private async Task<bool> CheckExistingPlayer(string id)

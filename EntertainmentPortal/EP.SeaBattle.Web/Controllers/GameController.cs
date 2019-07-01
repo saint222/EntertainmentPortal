@@ -38,8 +38,9 @@ namespace EP.SeaBattle.Web.Controllers
             }
 
             var result = await _mediator.Send(model);
-            return result.IsSuccess ? Ok(result.Value)
-                : (IActionResult)Ok();
+            return result.IsFailure
+                ? (IActionResult)BadRequest(result.Error)
+                : Ok(result.Value);
         }
 
         [Route("api/FinishGame")]

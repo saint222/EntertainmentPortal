@@ -10,6 +10,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace EP.SeaBattle.Logic.Handlers
 {
@@ -80,7 +81,7 @@ namespace EP.SeaBattle.Logic.Handlers
             else
             {
                 _logger.LogWarning(string.Join(", ", validationResult.Errors));
-                return Result.Fail<Game>("The game not valid. Cannot create start the game");
+                return Result.Fail<Game>(validationResult.Errors.First().ErrorMessage);
             }
         }
     }
