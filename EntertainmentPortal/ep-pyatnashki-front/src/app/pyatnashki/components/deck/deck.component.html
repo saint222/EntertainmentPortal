@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <h5>Score: {{deck.score}}</h5>
           </div>
-      <div class="col-md-12" style="text-align: center;">
+      <div class="col-md-8 offset-md-2" style="text-align: center;">
         <div id="deck">
           <div *ngFor="let row of deck.tiles">
               <app-tile id="tile{{tile.num}}" (click)="moveTile(tile.num)" [num]=tile.num *ngFor="let tile of row"></app-tile>
