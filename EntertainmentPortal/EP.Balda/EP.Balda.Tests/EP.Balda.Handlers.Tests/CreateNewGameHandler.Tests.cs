@@ -118,9 +118,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             {
                 Id = "1",
                 Created = DateTime.UtcNow,
-                UserName = "Login",
-                NickName = "Name",
-                Password = "1234567",
+                UserName = "Login"
             };
 
             var wordRuDb = new WordRuDb()

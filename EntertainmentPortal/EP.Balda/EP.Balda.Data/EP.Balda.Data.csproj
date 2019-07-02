@@ -11,9 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Migrations\InitialDbMigrations\20190701125801_Initial.cs" />
-    <Compile Include="Migrations\InitialDbMigrations\20190701125801_Initial.designer.cs" />
-    <Compile Include="Migrations\InitialDbMigrations\BaldaGameDbContextModelSnapshot.cs" />
+    <Compile Include="Migrations\20190702120309_ChangePlayer.cs" />
+    <Compile Include="Migrations\20190702120309_ChangePlayer.Designer.cs" />
+    <Compile Include="Migrations\BaldaGameDbContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>

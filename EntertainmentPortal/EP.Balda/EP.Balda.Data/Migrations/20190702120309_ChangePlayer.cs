@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EP.Balda.Data.Migrations.InitialDbMigrations
+namespace EP.Balda.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class ChangePlayer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,8 +40,8 @@ namespace EP.Balda.Data.Migrations.InitialDbMigrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    NickName = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
                     Score = table.Column<int>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false)
                 },

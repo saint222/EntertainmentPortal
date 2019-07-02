@@ -2,7 +2,7 @@
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Profiles;
 using EP.Balda.Logic.Services;
-using EP.Balda.Logic.Validators;
+//using EP.Balda.Logic.Validators;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -33,16 +33,16 @@ namespace EP.Balda.Web
             services.AddSession();
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
-            services.AddMediatR(typeof(CreateNewPlayerCommand).Assembly);
+            services.AddMediatR(typeof(CreateNewGameCommand).Assembly);
             
             services.AddBaldaGameServices();
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddFluentValidation(cfg =>
-                {
-                    cfg.RegisterValidatorsFromAssemblyContaining<CreateNewPlayerValidator>();
-                    cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-                }); ;
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                //.AddFluentValidation(cfg =>
+                //{
+                //    cfg.RegisterValidatorsFromAssemblyContaining<CreateNewPlayerValidator>();
+                //    cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                //}); ;
         }
 
         // This method gets called by the runtime. Use this method to

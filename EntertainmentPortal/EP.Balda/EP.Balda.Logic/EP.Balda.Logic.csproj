@@ -18,4 +18,8 @@
     <ProjectReference Include="..\EP.Balda.Data\EP.Balda.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
 </Project>

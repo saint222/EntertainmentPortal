@@ -1,4 +1,5 @@
-﻿using EP.Balda.Logic.Models;
+﻿using EP.Balda.Data.Models;
+using EP.Balda.Logic.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,11 +13,11 @@ namespace EP.Balda.Web.Controllers
     [ApiController]
     public class AutheticationController : ControllerBase
     {
-        private readonly UserManager<Player> _manager;
-        private readonly SignInManager<Player> _signInManager;
+        private readonly UserManager<PlayerDb> _manager;
+        private readonly SignInManager<PlayerDb> _signInManager;
         private readonly ILogger _logger;
 
-        public AutheticationController(UserManager<Player> manager, SignInManager<Player> signInManager, ILogger<AutheticationController> logger)
+        public AutheticationController(UserManager<PlayerDb> manager, SignInManager<PlayerDb> signInManager, ILogger<AutheticationController> logger)
         {
             _manager = manager;
             _signInManager = signInManager;
@@ -32,7 +33,7 @@ namespace EP.Balda.Web.Controllers
 
             if (user == null)
             {
-                var newUser = new Player()
+                var newUser = new PlayerDb()
                 {
                     UserName = userData.UserName
                 };

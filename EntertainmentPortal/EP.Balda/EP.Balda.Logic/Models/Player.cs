@@ -10,14 +10,14 @@ namespace EP.Balda.Logic.Models
     public class Player : IdentityUser<string>
     {
         /// <summary>
-        /// Login property. Represents player's login.
+        /// FirstName property. Represents player'first name.
         /// </summary>
-        public string NickName { get; set; }
+        public string FirstName { get; set; }
 
         /// <summary>
-        /// Password property. Represents player's password.
+        /// LastName property. Represents player's last name.
         /// </summary>
-        public string Password { get; set; }
+        public string LastName { get; set; }
 
         /// <summary>
         /// Score property. Represents player's score.

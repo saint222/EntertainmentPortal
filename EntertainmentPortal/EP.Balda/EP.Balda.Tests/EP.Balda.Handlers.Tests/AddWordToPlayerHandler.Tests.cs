@@ -161,9 +161,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             var playerDb = new PlayerDb()
             {
                 Created = DateTime.UtcNow,
-                UserName = "Login",
-                NickName = "Name",
-                Password = "12345"
+                UserName = "Login"
             };
 
             Result<Player> result;
@@ -198,9 +196,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             var playerDb = new PlayerDb()
             {
                 Created = DateTime.UtcNow,
-                UserName = "Login",
-                NickName = "Name",
-                Password = "12345"
+                UserName = "Login"
             };
 
             var playerGame = new PlayerGame()
@@ -265,9 +261,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             {
                 Id = "1",
                 Created = DateTime.UtcNow,
-                UserName = "Login",
-                NickName = "Name",
-                Password = "12345"
+                UserName = "Login"
             };
 
             var playerGame = new PlayerGame()

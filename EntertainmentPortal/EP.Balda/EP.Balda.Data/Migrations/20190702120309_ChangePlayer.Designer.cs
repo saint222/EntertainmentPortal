@@ -3,14 +3,16 @@ using System;
 using EP.Balda.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace EP.Balda.Data.Migrations.InitialDbMigrations
+namespace EP.Balda.Data.Migrations
 {
     [DbContext(typeof(BaldaGameDbContext))]
-    partial class BaldaGameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190702120309_ChangePlayer")]
+    partial class ChangePlayer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,19 +84,19 @@ namespace EP.Balda.Data.Migrations.InitialDbMigrations
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NickName");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Password");
 
                     b.Property<string>("PasswordHash");
 
