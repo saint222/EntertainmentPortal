@@ -4,7 +4,7 @@ using MediatR;
 
 namespace EP.TicTacToe.Logic.Queries
 {
-    public class GetGame : IRequest<Maybe<Game>>
+    public class GetChain : IRequest<Maybe<Chain>>
     { 
         public uint Id { get; set; }
     }

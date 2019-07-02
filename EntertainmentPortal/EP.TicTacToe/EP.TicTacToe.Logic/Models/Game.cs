@@ -1,20 +1,30 @@
-﻿namespace EP.TicTacToe.Logic.Models
+﻿using System.Collections.Generic;
+
+namespace EP.TicTacToe.Logic.Models
 {
+    /// <summary>
+    ///     Entity of Games.
+    /// </summary>
     public class Game
     {
         /// <summary>
-        ///     Indicates length and width of the board.
+        ///     <c>Id</c> property. Represents Id of Game.
         /// </summary>
-        public const int SIZE = 3;
+        public int Id { get; set; }
 
         /// <summary>
-        ///     Array indicates cells of the game board.
+        ///     <c>Map</c> navigation property.
         /// </summary>
-        public static int[] field;
+        public IList<Map> Maps { get; set; }
 
         /// <summary>
-        ///     Property indicates unique Id-number of a game session.
+        ///     <c>Player</c> navigation property.
         /// </summary>
-        public uint Id { get; set; }
+        public IList<Player> Players { get; set; }
+
+        /// <summary>
+        ///     <c>Chain</c> navigation property.
+        /// </summary>
+        public IList<Chain> Chains { get; set; }
     }
 }

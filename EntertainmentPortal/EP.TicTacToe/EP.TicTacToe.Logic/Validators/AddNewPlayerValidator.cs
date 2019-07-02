@@ -7,7 +7,7 @@ namespace EP.TicTacToe.Logic.Validators
     {
         public AddNewPlayerValidator()
         {
-            RuleFor(x => x.NickName)
+            RuleFor(x => x.UserName)
                 .NotEmpty()
                 .WithMessage("NickName cannot be null")
                 .Length(3, 20)

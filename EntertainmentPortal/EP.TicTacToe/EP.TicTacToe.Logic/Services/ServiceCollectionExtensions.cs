@@ -2,6 +2,7 @@
 using Fody;
 using Microsoft.Extensions.DependencyInjection;
 
+//Fodu extension
 [assembly: ConfigureAwait(false)]
 
 namespace EP.TicTacToe.Logic.Services

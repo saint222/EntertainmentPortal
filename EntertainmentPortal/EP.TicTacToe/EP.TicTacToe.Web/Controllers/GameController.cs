@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EP.TicTacToe.Logic.Commands;
@@ -6,6 +7,7 @@ using EP.TicTacToe.Logic.Models;
 using EP.TicTacToe.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.TicTacToe.Web.Controllers
@@ -14,33 +16,71 @@ namespace EP.TicTacToe.Web.Controllers
     public class GameController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<GameController> _logger;
 
-        public GameController(IMediator mediator)
+        public GameController(IMediator mediator, ILogger<GameController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
-        // GET api/game/id
-        [HttpGet("api/game/{id}")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Game>), Description =
-            "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
-            "Game is not found")]
-        public async Task<IActionResult> GetGameAsync(uint id)
-        {
-            var result = await _mediator.Send(new GetGame {Id = id});
-            return result != null ? (IActionResult) Ok(result) : NotFound();
-        }
-
-        // POST api/game/id
-        [HttpPost("api/game/{id}")]
+        [HttpGet("api/game")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
-            "Invalid data")]
-        public async Task<IActionResult> AddGameAsync()
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
+            "Game not found")]
+        public async Task<IActionResult> GetGameAsync([FromQuery] GetGame model)
         {
-            var result = await _mediator.Send(new AddNewGameCommand());
-            return result != null ? (IActionResult) Ok(result) : BadRequest();
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+
+            var result = await _mediator.Send(model);
+
+            if (result.HasValue)
+            {
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameter: Id = {model.Id}");
+
+                return Ok(result.Value);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} : " +
+                    $"Id = {model.Id}, - game not found");
+                return NotFound();
+            }
+        }
+
+        [HttpPost("api/game")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+            "Game can't be created")]
+        public async Task<IActionResult> CreateNewGameAsync(
+            [FromBody] AddNewGameCommand model)
+        {
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameters: PlayerOne = {model.PlayerOne}, " +
+                $"PlayerTwo = {model.PlayerTwo}," +
+                $"MapSize = {model.MapSize}");
+
+            // ReSharper disable once UseDeconstruction
+            var result = await _mediator.Send(model);
+
+            if (result.IsSuccess)
+            {
+                _logger.LogInformation(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                    $"Game was created at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+
+                return Created("api/game", result.Value);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                "Game can't be created");
+
+                return BadRequest(result.Error);
+            }
         }
     }
 }
