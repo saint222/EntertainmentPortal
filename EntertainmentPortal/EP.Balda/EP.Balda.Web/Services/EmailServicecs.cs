@@ -10,7 +10,7 @@ namespace EP.Balda.Web.Services
         {
             var emailMessage = new MimeMessage();
 
-            emailMessage.From.Add(new MailboxAddress("Entartainment Portal Administration", "jemelache@google.com"));
+            emailMessage.From.Add(new MailboxAddress("Entertainment Portal Administration", "jemelache@google.com"));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -21,7 +21,7 @@ namespace EP.Balda.Web.Services
             using (var client = new SmtpClient())
             {
                 await client.ConnectAsync("smtp.gmail.com", 25, false);
-                await client.AuthenticateAsync("jemelache@google.com", "ice14cream23");
+                await client.AuthenticateAsync("jemelachee@gmail.com", "mmlygmwcspqfwkjv");
                 await client.SendAsync(emailMessage);
 
                 await client.DisconnectAsync(true);

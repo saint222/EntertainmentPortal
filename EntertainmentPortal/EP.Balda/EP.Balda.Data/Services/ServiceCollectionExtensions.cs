@@ -20,7 +20,16 @@ namespace EP.Balda.Data.Services
                     opt.UseSqlite(@"Data Source =..\EP.Balda.Data\DbStore\baldaGameDb.db");
                 });
 
-            services.AddIdentity<PlayerDb, IdentityRole>()
+            services.AddIdentity<PlayerDb, IdentityRole>(
+                opt =>
+                {
+                    opt.Password.RequiredUniqueChars = 0;
+                    opt.Password.RequireLowercase = false;
+                    opt.Password.RequireUppercase = false;
+                    opt.Password.RequireDigit = false;
+                    opt.Password.RequireNonAlphanumeric = false;
+                }
+                )
                 .AddEntityFrameworkStores<BaldaGameDbContext>()
                 .AddUserManager<UserManager<PlayerDb>>()
                 .AddRoleManager<RoleManager<IdentityRole>>()

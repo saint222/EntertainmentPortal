@@ -14,13 +14,13 @@ using System.Threading.Tasks;
 namespace EP.Balda.Web.Controllers
 {
     [ApiController]
-    public class AutheticationController : ControllerBase
+    public class AuthenticationController : ControllerBase
     {
         private readonly UserManager<PlayerDb> _userManager;
         private readonly SignInManager<PlayerDb> _signInManager;
         private readonly ILogger _logger;
 
-        public AutheticationController(UserManager<PlayerDb> manager, SignInManager<PlayerDb> signInManager, ILogger<AutheticationController> logger)
+        public AuthenticationController(UserManager<PlayerDb> manager, SignInManager<PlayerDb> signInManager, ILogger<AuthenticationController> logger)
         {
             _userManager = manager;
             _signInManager = signInManager;
@@ -30,7 +30,7 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User has been registered")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
         [HttpPost("api/register")]
-        public async Task<IActionResult> Register([FromBody] User userData)
+        public async Task<IActionResult> Register([FromBody] UserRegistration userData)
         {
             var user = await _userManager.FindByNameAsync(userData.UserName);
 
@@ -63,12 +63,13 @@ namespace EP.Balda.Web.Controllers
 
                 var callbackUrl = Url.Action(
                        "ConfirmEmail",
-                       "Authetication",
+                       "Authentication",
                        new { userId = newUser.Id, code = code },
                        protocol: HttpContext.Request.Scheme);
                 var emailService = new EmailService();
                 await emailService.SendEmailAsync(userData.Email, "Confirm your account",
-                    $"Confirm your registration by clicking on the link: <a href='{callbackUrl}'>link</a>");
+                    $"Dear {userData.UserName}, please, confirm your registration by clicking on the link: <a href='{callbackUrl}'>link</a>" +
+                    $"With best regards, Entertainment Portal Administration");
 
                 return Content("To complete registration, please check your e-mail and follow the link provided in the letter");
             }
@@ -83,7 +84,7 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged in")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User wasn't logged in")]
         [HttpPost("api/login")]
-        public async Task<IActionResult> Login([FromBody] User userData)
+        public async Task<IActionResult> Login([FromBody] UserLogin userData)
         {
             var user = await _userManager.FindByNameAsync(userData.UserName);
 
