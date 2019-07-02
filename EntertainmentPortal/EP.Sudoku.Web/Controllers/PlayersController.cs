@@ -33,7 +33,7 @@ namespace EP.Sudoku.Web.Controllers
             _mediator = mediator;
             _logger = logger;           
         }
-
+        //[Authorize(AuthenticationSchemes = "Facebook")]
         /// <summary>
         /// Fetches all registered players from the Db.
         /// </summary>

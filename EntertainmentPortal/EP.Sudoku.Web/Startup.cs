@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using EP.Sudoku.Logic;
@@ -15,6 +16,7 @@ using EP.Sudoku.Web.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +26,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using NJsonSchema;
 using Serilog;
@@ -44,10 +47,35 @@ namespace EP.Sudoku.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie();
+                .AddCookie()
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+                {
+                    opt.RequireHttpsMetadata = true;
+                    opt.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidIssuer = SudokuConstants.ISSUER_NAME,
+                        ValidateIssuer = true,
+                        ValidAudience = SudokuConstants.AUDIENCE_NAME,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SudokuConstants.SECRET)),
+                        ValidateLifetime = true,
+                        RequireExpirationTime = true,
+                        RequireSignedTokens = true
+                    };
+                })
+                .AddFacebook(
+                facebookOptions =>
+                {
+                    facebookOptions.CallbackPath = new PathString("/api/signInFacebook");
+                    //facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                    //facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                    facebookOptions.ClientId = "692105217894763";
+                    facebookOptions.ClientSecret = "82669c46d46a697d7c967d96bc2c7ceb";
+                });
             services.AddAuthorization();
-            services.AddMediatR(typeof(GetAllPlayers).Assembly);   
-            services.AddAutoMapper(typeof(PlayerProfile).Assembly);            
+            services.AddMediatR(typeof(GetAllPlayers).Assembly);
+            services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddSwaggerDocument();
             services.AddSudokuServices();
             services.AddCors(); // to enable CrossOriginResourceSharing
@@ -70,30 +98,34 @@ namespace EP.Sudoku.Web
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
-        {            
+        {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
             else
-            {                
+            {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseAuthentication();
             app.UseCors(opt => opt.AllowAnyHeader() // CORS configuration.
-                .AllowAnyMethod()
-                .AllowAnyOrigin());
+               .AllowAnyMethod()
+               .AllowAnyOrigin()
+               .WithOrigins("http://localhost:4200")
+               .AllowCredentials()
+);
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();            
+            app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();
 
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .WriteTo.Console()
                 .WriteTo.Debug()
-                .WriteTo.RollingFile("SudokuLogData/log-{Date}.txt", shared:true)
+                .WriteTo.RollingFile("SudokuLogData/log-{Date}.txt", shared: true)
                 .WriteTo.SQLite(Environment.CurrentDirectory + @"\sudoku.db")
                 .CreateLogger();
         }

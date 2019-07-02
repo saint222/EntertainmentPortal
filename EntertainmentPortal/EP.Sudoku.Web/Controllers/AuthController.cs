@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
+using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using EP.Sudoku.Logic.Models;
@@ -17,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols;
+using Microsoft.IdentityModel.Tokens;
 using NSwag.Annotations;
 
 namespace EP.Sudoku.Web.Controllers
@@ -91,7 +94,7 @@ namespace EP.Sudoku.Web.Controllers
         }
 
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
-        [HttpPost("logout")]
+        [HttpGet("logout")]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -141,6 +144,30 @@ namespace EP.Sudoku.Web.Controllers
                 _logger.LogError("Register failed. User already exists...");
                 return BadRequest("User already exists...");
             }
+        }
+
+        [HttpGet("token")]
+        public IActionResult GetToken()
+        {
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SudokuConstants.SECRET));
+            var handler = new JwtSecurityTokenHandler();
+            var tokenDescr = new SecurityTokenDescriptor()
+            {
+                Issuer = SudokuConstants.ISSUER_NAME,
+                Audience = SudokuConstants.AUDIENCE_NAME,
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, $"{User.Identity.Name}")                    
+                }),
+                IssuedAt = DateTime.Now,
+                NotBefore = DateTime.Now,
+                Expires = DateTime.Now.AddSeconds(15),
+                SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512)
+            };
+
+            var token = handler.CreateJwtSecurityToken(tokenDescr);
+
+            return Ok(handler.WriteToken(token));
         }
     }
 }
