@@ -22,10 +22,12 @@ namespace EP.TicTacToe.Web
                 Log.CloseAndFlush();
             }
         }
-        
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseSerilog();
+        }
     }
 }

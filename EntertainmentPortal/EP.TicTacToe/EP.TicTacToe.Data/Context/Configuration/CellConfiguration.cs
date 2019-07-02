@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EP.TicTacToe.Data.Context.Configuration
 {
-    public class StepConfiguration : IEntityTypeConfiguration<StepDb>
+    public class CellConfiguration : IEntityTypeConfiguration<CellDb>
     {
-        public void Configure(EntityTypeBuilder<StepDb> builder)
+        public void Configure(EntityTypeBuilder<CellDb> builder)
         {
-            builder.ToTable("Steps");
-            builder.HasKey(c => c.Id);
+            builder.ToTable("Cells").HasKey(c => c.Id);
             builder.Property(c => c.X).IsRequired();
             builder.Property(c => c.Y).IsRequired();
+            builder.Property(c => c.TicTac).IsRequired();
         }
     }
 }

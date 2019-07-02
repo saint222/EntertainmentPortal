@@ -30,7 +30,7 @@ namespace EP.TicTacToe.Logic.Handlers
             {
                 UserName = request.NickName,
                 Login = request.Login,
-                Password = request.Password,
+                Password = request.Password
             };
 
             _context.Players.Add(playerDb);

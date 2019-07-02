@@ -12,7 +12,6 @@ namespace EP.TicTacToe.Data.Context.Configuration
             builder.Property(p => p.Login).IsRequired().HasMaxLength(30);
             builder.Property(p => p.UserName).IsRequired().HasMaxLength(30);
             builder.Property(p => p.Password).IsRequired().HasMaxLength(8);
-            //builder.HasOne(p => p.AspNetUser).WithOne();
         }
     }
 }

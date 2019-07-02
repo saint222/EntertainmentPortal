@@ -8,12 +8,7 @@ namespace EP.TicTacToe.Data.Context.Configuration
     {
         public void Configure(EntityTypeBuilder<ChainDb> builder)
         {
-            builder.ToTable("Chains");
-            builder.HasKey(c => c.Id);
-            builder.HasAlternateKey(c => c.PlayerId);
-            builder.HasIndex(c => c.PlayerId);
-            builder.Property(c => c.PlayerId).IsRequired();
-            builder.HasOne(c => c.Game).WithMany(c => c.Chains).HasForeignKey(c=>c.Id);
+            builder.ToTable("Chains").HasKey(c => c.Id);
         }
     }
 }

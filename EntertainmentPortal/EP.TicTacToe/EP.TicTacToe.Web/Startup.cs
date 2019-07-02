@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NJsonSchema;
 using Serilog;
+
 #pragma warning disable 618
 
 namespace EP.TicTacToe.Web
@@ -100,8 +101,10 @@ namespace EP.TicTacToe.Web
                 .MinimumLevel.Information()
                 .WriteTo.Console()
                 .WriteTo.Debug()
-                .WriteTo.RollingFile($@"TTTLoggerData\log-{DateTime.UtcNow}.txt", shared: true)
-                .WriteTo.SQLite(Environment.CurrentDirectory + @"TTTLoggerData\TTTLogger.db")
+                .WriteTo.RollingFile($@"TTTLoggerData\log-{DateTime.UtcNow}.txt",
+                    shared: true)
+                .WriteTo.SQLite(Environment.CurrentDirectory +
+                                @"TTTLoggerData\TTTLogger.db")
                 .Enrich.WithProperty("App TicTacToe", "Serilog Web App TicTacToe")
                 .CreateLogger();
 

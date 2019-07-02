@@ -29,16 +29,17 @@ namespace EP.TicTacToe.Web.Controllers
                 ClaimTypes.Name, ClaimTypes.Role);
             var principal = new ClaimsPrincipal(identity);
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             return Ok();
         }
 
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody]UserInfo userInfo)
+        public async Task<IActionResult> Login([FromBody] UserInfo userInfo)
         {
-            var newUser = new IdentityUser()
+            var newUser = new IdentityUser
             {
                 UserName = "asas",
                 Email = "asasas",
@@ -62,12 +63,11 @@ namespace EP.TicTacToe.Web.Controllers
                 ClaimTypes.Name, ClaimTypes.Role);
             var principal = new ClaimsPrincipal(identity);
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme, principal);
             return Ok();
 
             // check user logic
-
-
         }
 
         [HttpGet("logout")]
@@ -84,6 +84,5 @@ namespace EP.TicTacToe.Web.Controllers
         public string UserName { get; set; }
 
         public string Password { get; set; }
-
     }
 }

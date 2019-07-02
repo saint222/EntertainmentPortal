@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EP.TicTacToe.Data.Models
+﻿namespace EP.TicTacToe.Data.Models
 {
     /// <summary>
     ///     Entity of Maps.
@@ -21,17 +19,5 @@ namespace EP.TicTacToe.Data.Models
         ///     The size of the chain of characters to win on the card.
         /// </summary>
         public int WinningChain { get; set; }
-
-        /// <summary>
-        ///     External key of class GameDb.
-        /// </summary>
-        public int GameId { get; set; }
-
-        /// <summary>
-        ///     GameDb property. Navigation property of GameDb.
-        ///     Used for one-to-one relationships.
-        /// </summary>
-        public GameDb Game { get; set; }
-
     }
 }

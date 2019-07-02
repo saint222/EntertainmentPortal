@@ -10,7 +10,7 @@ namespace EP.TicTacToe.Web.Filters
         {
             context.ExceptionHandled = true;
             context.Result = new ObjectResult(context.Exception.Message)
-                { StatusCode = StatusCodes.Status500InternalServerError };
+                {StatusCode = StatusCodes.Status500InternalServerError};
         }
     }
 }

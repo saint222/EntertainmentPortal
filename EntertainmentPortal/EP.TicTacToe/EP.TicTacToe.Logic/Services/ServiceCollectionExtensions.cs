@@ -1,7 +1,9 @@
 ﻿using EP.TicTacToe.Data.Services;
+using Fody;
 using Microsoft.Extensions.DependencyInjection;
 
-[assembly: Fody.ConfigureAwait(false)]
+[assembly: ConfigureAwait(false)]
+
 namespace EP.TicTacToe.Logic.Services
 {
     /// <summary>
@@ -9,7 +11,6 @@ namespace EP.TicTacToe.Logic.Services
     /// </summary>
     public static class ServiceCollectionExtensions
     {
-
         public static IServiceCollection AddGameServices(this IServiceCollection services)
         {
             services.AddGameData();

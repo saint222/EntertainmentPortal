@@ -3,13 +3,13 @@
     /// <summary>
     ///     Entity of Cells.
     /// </summary>
-    public class StepDb
+    public class CellDb
     {
         /// <summary>
         ///     Id property. Represents Id of CellDb in game map.
         /// </summary>
         public int Id { get; set; }
-        
+
         /// <summary>
         ///     X property. Represents X coordinate of the cell in game map.
         /// </summary>
@@ -24,12 +24,12 @@
         ///     Char tic-tac-toe property. Represents char to store in the cell.
         /// </summary>
         /// <remarks>
-        ///     Nullable char is used to store empty symbol if there is no tictactoe-char in the cell yet.
+        ///     <c>1</c> corresponds to a cross, <c>-1</c> zero, <c>0</c> empty field
         /// </remarks>
-        public char? TicTac { get; set; }
+        public int TicTac { get; set; }
 
         /// <summary>
-        ///     StepDb property. Navigation property of ChainDb.
+        ///     Chain external key.
         ///     Used for one-to-many relationships.
         /// </summary>
         /// <remarks>
@@ -38,9 +38,9 @@
         public int? ChainId { get; set; }
 
         /// <summary>
-        ///     StepDb property. Navigation property of ChainDb.
+        ///     Chain property. Navigation property of ChainDb.
         ///     Used for one-to-many relationships.
         /// </summary>
-        public ChainDb ChainDb { get; set; }
+        public ChainDb Chain { get; set; }
     }
 }

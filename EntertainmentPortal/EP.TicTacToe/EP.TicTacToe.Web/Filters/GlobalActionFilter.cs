@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EP.TicTacToe.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -9,27 +10,25 @@ namespace EP.TicTacToe.Web.Filters
     {
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        public Task OnActionExecutionAsync(ActionExecutingContext context,
+                                           ActionExecutionDelegate next)
         {
             if (context.Controller is GameController)
             {
-
             }
 
             if (!context.ModelState.IsValid)
-            {
                 context.Result = new BadRequestObjectResult(context.ModelState);
-            }
 
-            context.Result = new ContentResult() { Content = "Filter Executed" };
+            context.Result = new ContentResult {Content = "Filter Executed"};
             return Task.CompletedTask;
         }
     }

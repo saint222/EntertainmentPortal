@@ -11,8 +11,8 @@ namespace EP.TicTacToe.Data.Context
         public DbSet<GameDb> Games { get; set; }
         public DbSet<MapDb> Maps { get; set; }
         public DbSet<ChainDb> Chains { get; set; }
-        public DbSet<StepDb> Steps { get; set; }
-        
+        public DbSet<CellDb> Steps { get; set; }
+
         public TicTacDbContext(DbContextOptions options) : base(options)
         {
         }
@@ -25,7 +25,7 @@ namespace EP.TicTacToe.Data.Context
             modelBuilder.ApplyConfiguration(new GameConfiguration());
             modelBuilder.ApplyConfiguration(new MapConfiguration());
             modelBuilder.ApplyConfiguration(new ChainConfiguration());
-            modelBuilder.ApplyConfiguration(new StepConfiguration());
+            modelBuilder.ApplyConfiguration(new CellConfiguration());
         }
     }
 }

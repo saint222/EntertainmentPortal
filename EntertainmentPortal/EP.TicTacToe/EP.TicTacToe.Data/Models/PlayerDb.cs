@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
 
 namespace EP.TicTacToe.Data.Models
 {
@@ -12,11 +11,6 @@ namespace EP.TicTacToe.Data.Models
         ///     Property indicates unique Id-number of a player.
         /// </summary>
         public string Id { get; set; }
-
-        ///// <summary>
-        /////     Property AspNetUser. Navigation property of AspNetUsers.
-        ///// </summary>
-        //public AspNetUserManager<PlayerDb> AspNetUser { get; set; }
 
         /// <summary>
         ///     Property indicates unique username of a player.
@@ -34,13 +28,8 @@ namespace EP.TicTacToe.Data.Models
         public string Password { get; set; }
 
         /// <summary>
-        ///     GameDb property. Used for one-to-many relationships.
+        ///     <c>PlayerDb</c> navigation property. Used for one-to-many relationships.
         /// </summary>
-        public int GameId { get; set; }
-
-        /// <summary>
-        ///     Navigation property of set <c>Players</c> in <c>Games</c>.
-        /// </summary>
-        public GameDb Game { get; set; }
+        public IList<ChainDb>Chains { get; set; }
     }
 }

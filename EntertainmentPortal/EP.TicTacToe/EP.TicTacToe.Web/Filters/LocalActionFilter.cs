@@ -7,7 +7,7 @@ namespace EP.TicTacToe.Web.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            context.Result = new ContentResult() { Content = "Filter Executed" };
+            context.Result = new ContentResult {Content = "Filter Executed"};
             base.OnActionExecuting(context);
         }
     }
