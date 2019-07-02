@@ -22,32 +22,22 @@ namespace EP._15Puzzle.Logic.Handlers
     public class GetDeckHandler : IRequestHandler<GetDeckQuery, Result<Deck>>
     {
         private readonly IMapper _mapper;
-        private readonly IValidator<GetDeckQuery> _validator;
         private readonly DeckDbContext _context;
         
 
-        public GetDeckHandler(DeckDbContext context, IMapper mapper, IValidator<GetDeckQuery> validator)
+        public GetDeckHandler(DeckDbContext context, IMapper mapper)
         {
             _mapper = mapper;
-            _validator = validator;
             _context = context;
         }
-        public async Task<Result<Deck>> Handle([NotNull]GetDeckQuery request, CancellationToken cancellationToken)
+        public async Task<Result<Deck>> Handle(GetDeckQuery request, CancellationToken cancellationToken)
         {
-            //validate
-            var result = await _validator.ValidateAsync(request,ruleSet: "IdExistingSet",cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
-            if (!result.IsValid)
-            {
-                return Result.Fail<Deck>(result.Errors.First().ErrorMessage);
-            }
-
-
+            
             try
             {
                 var deckDb = _context.UserDbs
                     .Include(d => d.Deck.Tiles)
-                    .First(u => u.Id == request.Id).Deck;
+                    .First(u => u.AuthType == request.AuthType && u.AuthId==request.AuthId).Deck;
                 return await Task.FromResult(Result.Ok<Deck>(_mapper.Map<Deck>(deckDb)));
             }
             catch (DbException ex)

@@ -20,4 +20,9 @@
     <ProjectReference Include="..\EP.15Puzzle.Data\EP.15Puzzle.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\Auth\" />
+    <Folder Include="Handlers\Auth\" />
+  </ItemGroup>
+
 </Project>

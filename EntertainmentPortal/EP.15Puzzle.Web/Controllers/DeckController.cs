@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
@@ -9,8 +10,10 @@ using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
 using JetBrains.Annotations;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.Extensions.Logging;
@@ -21,10 +24,10 @@ namespace EP._15Puzzle.Web.Controllers
     
     [Route("api/[controller]")]
     [ApiController]
-    
     public class DeckController : ControllerBase
     {
         private readonly IMediator _mediator;
+
 
         public DeckController(IMediator mediator)
         {
@@ -32,51 +35,37 @@ namespace EP._15Puzzle.Web.Controllers
         }
         // GET: api/Deck
         [HttpGet]
+        [Authorize(AuthenticationSchemes = "Google")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Deck), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> Get()
+
+
         {
-            
-            if (HttpContext.Request.Cookies.ContainsKey("id"))
-            {
-                int id = int.Parse(HttpContext.Request.Cookies["id"]);
-                var result = await _mediator.Send(new GetDeckQuery(id));
-                return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
-            }
-            return NotFound("StartPage");
+            var result = await _mediator.Send(new GetDeckQuery(User.Identity.AuthenticationType, User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value));
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound("Start page");
         }
 
         // POST: api/Deck
+        [Authorize(AuthenticationSchemes = "Google")]
         [HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Deck), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> Post()
         {
-            if (HttpContext.Request.Cookies.ContainsKey("id"))
+            var result = await _mediator.Send(new NewDeckCommand(User.Identity.AuthenticationType, User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value));
+            if (result.IsSuccess)
             {
-                var id = int.Parse(HttpContext.Request.Cookies["id"]);
-                var result = await _mediator.Send(new ResetDeckCommand(id));
-                return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
+                return (IActionResult)Ok(result.Value);
             }
-            else
-            {
-                var result = await _mediator.Send(new NewDeckCommand());
-                if (result.Item1.IsSuccess)
-                {
-                    HttpContext.Response.Cookies.Append("id", result.Item2);
-                    return (IActionResult) Ok(result.Item1.Value);
-                }
 
-                return NotFound(result.Item1.Error);
-
-
-                //return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
-            }
+            return NotFound(result.Error);
         }
 
-        
+
 
         // PUT: api/Deck
+        [Authorize(AuthenticationSchemes = "Google")]
         [HttpPut]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Deck), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
@@ -87,24 +76,12 @@ namespace EP._15Puzzle.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (HttpContext.Request.Cookies.ContainsKey("id"))
-            {
-
-                var id = int.Parse(HttpContext.Request.Cookies["id"]);
-                var result = await _mediator.Send(new MoveTileCommand(){Id = id, Tile = tile});
-                return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
-            }
-            return NotFound();
+            var result = await _mediator.Send(new MoveTileCommand(User.Identity.AuthenticationType, User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value, tile));
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
 
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-
-        
+       
         
     }
     

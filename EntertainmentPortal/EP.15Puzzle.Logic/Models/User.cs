@@ -1,10 +1,13 @@
-﻿namespace EP._15Puzzle.Logic.Models
+﻿using System.Collections.Generic;
+using EP._15Puzzle.Data.Models;
+
+namespace EP._15Puzzle.Logic.Models
 {
     public class User
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Country { get; set; }
-        
+        public string UserName { get; set; }
+        public string Password { get; set; }
+
+        public ICollection<RecordDb> Records { get; set; } = new List<RecordDb>();
     }
 }

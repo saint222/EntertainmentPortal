@@ -11,15 +11,15 @@ export class DeckService {
   constructor(private http: HttpClient) { }
 
   newDeck() {
-    return this.http.post<Deck>(this.url, null, { withCredentials: true });
+    return this.http.post<Deck>(this.url, null);
   }
 
   moveTile(num: number) {
-    return this.http.put<Deck>(this.url, num, { withCredentials: true });
+    return this.http.put<Deck>(this.url, num);
   }
 
   getDeck() {
-    return this.http.get<Deck>(this.url, { withCredentials: true });
+    return this.http.get<Deck>(this.url);
   }
 
 

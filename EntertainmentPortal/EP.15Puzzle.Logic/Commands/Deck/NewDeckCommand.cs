@@ -5,10 +5,22 @@ using MediatR;
 
 namespace EP._15Puzzle.Logic.Commands
 {
-    public class NewDeckCommand : IRequest <Tuple<Result<Deck>, string>>
+    public class NewDeckCommand : IRequest <Result<Deck>>
     {
-        public NewDeckCommand()
+        private string _authType;
+        private string _authId;
+        public string AuthId
         {
+            get { return _authId; }
+        }
+        public string AuthType
+        {
+            get { return _authType; }
+        }
+        public NewDeckCommand(string authType, string authId)
+        {
+            _authType = authType;
+            _authId = authId;
         }
     }
 }

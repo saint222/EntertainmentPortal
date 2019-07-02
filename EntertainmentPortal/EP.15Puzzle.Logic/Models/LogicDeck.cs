@@ -11,7 +11,7 @@ namespace EP._15Puzzle.Logic.Models
         public int Id { get; set; }
         public int Size { get; set; }
         public UserDb User { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public int Score { get; set; } = 0;
         public bool Victory { get; set; } = false;

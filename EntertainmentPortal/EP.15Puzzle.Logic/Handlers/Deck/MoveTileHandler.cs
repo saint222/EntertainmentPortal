@@ -43,13 +43,24 @@ namespace EP._15Puzzle.Logic.Handlers
                 return Result.Fail<Deck>(result.Errors.First().ErrorMessage);
             }
 
+
+
+            var user = await _context.UserDbs.AsNoTracking()
+                .Include(u=>u.Deck)
+                .Include(u => u.Deck.Tiles)
+                .Include(u => u.Records)
+                .FirstOrDefaultAsync(
+                u => u.AuthType == request.AuthType && u.AuthId == request.AuthId, cancellationToken);
+
+            if (user==null)
+            {
+                return Result.Fail<Deck>("There is no user with such id.");
+            }
+
             try
             {
-                var deckDb = _context.DeckDbs
-                    .AsNoTracking()
-                    .Include(d => d.Tiles)
-                    .Include(d=>d.User)
-                    .First(d => d.UserId == request.Id);
+                var deckDb = user.Deck;
+
                 var logicDeck = _mapper.Map<LogicDeck>(deckDb);
                 logicDeck.SetNearbyTiles();
                 if (logicDeck.TileCanMove(request.Tile))
@@ -61,7 +72,7 @@ namespace EP._15Puzzle.Logic.Handlers
                     {
                         logicDeck.Victory = true;
 
-                        var recordDb = new RecordDb() {Score = logicDeck.Score, User = logicDeck.User, UserId = logicDeck.UserId};
+                        var recordDb = new RecordDb() {Score = logicDeck.Score, User = user};
                         logicDeck.User.Records.Add(recordDb);
                     }
                     _context.Update(_mapper.Map<DeckDb>(logicDeck));
