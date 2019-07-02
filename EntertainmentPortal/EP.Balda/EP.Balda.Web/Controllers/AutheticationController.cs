@@ -1,9 +1,12 @@
 ﻿using EP.Balda.Data.Models;
 using EP.Balda.Logic.Models;
+using EP.Balda.Web.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -13,13 +16,13 @@ namespace EP.Balda.Web.Controllers
     [ApiController]
     public class AutheticationController : ControllerBase
     {
-        private readonly UserManager<PlayerDb> _manager;
+        private readonly UserManager<PlayerDb> _userManager;
         private readonly SignInManager<PlayerDb> _signInManager;
         private readonly ILogger _logger;
 
         public AutheticationController(UserManager<PlayerDb> manager, SignInManager<PlayerDb> signInManager, ILogger<AutheticationController> logger)
         {
-            _manager = manager;
+            _userManager = manager;
             _signInManager = signInManager;
             _logger = logger;
         }
@@ -29,34 +32,52 @@ namespace EP.Balda.Web.Controllers
         [HttpPost("api/register")]
         public async Task<IActionResult> Register([FromBody] User userData)
         {
-            var user = await _manager.FindByNameAsync(userData.UserName);
+            var user = await _userManager.FindByNameAsync(userData.UserName);
 
-            if (user == null)
+            if(userData.Password != userData.PasswordConfirm)
             {
-                var newUser = new PlayerDb()
-                {
-                    UserName = userData.UserName
-                };
-
-                var status = await _manager.CreateAsync(newUser, userData.Password);
-
-                if (status.Succeeded)
-                {
-                    _logger.LogInformation($"{newUser.UserName} was registered");
-                    await _signInManager.SignInAsync(newUser, false);
-                }
-                else
-                {
-                    _logger.LogWarning($"Register failed.\n{status.Errors}");
-                }
-
-                return status.Succeeded ? (IActionResult)Ok() : BadRequest(status.Errors);
+                return BadRequest($"Passwords don't match"); //add validator
             }
-            else
+
+            if (user != null)
             {
                 _logger.LogWarning($"Register failed. User {userData.UserName} does exist");
                 return BadRequest($"User {userData.UserName} already exists");
             }
+            
+            var newUser = new PlayerDb()
+            {
+                UserName = userData.UserName,
+                PasswordHash = _userManager.PasswordHasher.HashPassword(user, userData.Password),
+                Email = userData.Email,
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+
+            var status = await _userManager.CreateAsync(newUser, userData.Password);
+
+            if (status.Succeeded)
+            {
+                _logger.LogInformation($"{newUser.UserName} was registered");
+
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
+
+                var callbackUrl = Url.Action(
+                       "ConfirmEmail",
+                       "Authetication",
+                       new { userId = newUser.Id, code = code },
+                       protocol: HttpContext.Request.Scheme);
+                var emailService = new EmailService();
+                await emailService.SendEmailAsync(userData.Email, "Confirm your account",
+                    $"Confirm your registration by clicking on the link: <a href='{callbackUrl}'>link</a>");
+
+                return Content("To complete registration, please check your e-mail and follow the link provided in the letter");
+            }
+            else
+            {
+                _logger.LogWarning($"Register failed.\n{status.Errors}");
+            }
+
+            return status.Succeeded ? (IActionResult)Ok() : BadRequest(status.Errors);
         }
 
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged in")]
@@ -64,6 +85,16 @@ namespace EP.Balda.Web.Controllers
         [HttpPost("api/login")]
         public async Task<IActionResult> Login([FromBody] User userData)
         {
+            var user = await _userManager.FindByNameAsync(userData.UserName);
+
+            if (user != null)
+            {
+                if (!await _userManager.IsEmailConfirmedAsync(user))
+                {
+                    return BadRequest("You didn't confirm your e-mail");
+                }
+            }
+
             var result = await _signInManager.PasswordSignInAsync(userData.UserName, userData.Password, true, false);
 
             if (result.Succeeded)
@@ -76,6 +107,35 @@ namespace EP.Balda.Web.Controllers
             }
 
             return result.Succeeded ? (IActionResult)Ok() : BadRequest();
+        }
+
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User confirmed e-mail")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User didn't confirm e-mail")]
+        [HttpGet("api/confirm")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return BadRequest("Error");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return BadRequest("Error");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest("Error");
+            }
         }
 
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
