@@ -9,16 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AvatarIcon } from './avatarIcon';
 
 
-export interface PlayerShort { 
+export interface IdentityError { 
   [key: string]: any | any;
 
 
-    id: number;
-    nickName?: string;
-    experiencePoint: number;
-    level: number;
-    icon?: AvatarIcon;
+    code?: string;
+    description?: string;
 }

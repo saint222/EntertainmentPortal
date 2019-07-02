@@ -19,7 +19,7 @@ namespace EP.Sudoku.Web.Controllers
     /// Here are CRUD operations that touch upon players of the game.
     /// </summary>
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class PlayersController : ControllerBase
     {        
         private readonly IMediator _mediator;       

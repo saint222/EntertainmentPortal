@@ -1,3 +1,4 @@
+import { AuthService } from './api/auth.service';
 import { RouterModule } from '@angular/router';
 import { CellComponent } from './components/cell/cell.component';
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
@@ -14,11 +15,11 @@ import { PlayerComponent } from './components/player/player.component';
 import { PlayerInfoComponent } from './components/player-info/player-info.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AccountService } from './api/account.service';
 import { HomeComponent } from './components/home/home.component';
+import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 
 @NgModule({
-  declarations: [SessionComponent, CellComponent, CreateSessionComponent, PlayerComponent, PlayerInfoComponent, SignInComponent, RegisterComponent, HomeComponent],
+  declarations: [SessionComponent, CellComponent, CreateSessionComponent, PlayerComponent, PlayerInfoComponent, SignInComponent, RegisterComponent, HomeComponent, ConfirmEmailComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -34,9 +35,10 @@ import { HomeComponent } from './components/home/home.component';
       ReactiveFormsModule
 ],
   providers: [
+    AuthService,
     PlayersService,
-    SessionsService,
-  AccountService ]
+    SessionsService
+   ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

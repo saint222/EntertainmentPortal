@@ -8,6 +8,7 @@ using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Profiles;
 using EP.Sudoku.Logic.Queries;
+using EP.Sudoku.Logic.Services;
 using EP.Sudoku.Logic.Validators;
 using EP.Sudoku.Web.Controllers;
 using EP.Sudoku.Web.Filters;
@@ -64,7 +65,7 @@ namespace EP.Sudoku.Web
             services.AddLogging();
             services.AddMemoryCache();
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
-            services.AddSingleton<AuthController.IEmailSender, AuthController.EmailSender>();
+            services.AddSingleton<IEmailSenderService, EmailSenderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

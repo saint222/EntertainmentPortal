@@ -17,7 +17,7 @@ export class SessionComponent implements OnInit {
   cells: Cell[] = [];
   cell: Cell;
 
-  constructor(private route: ActivatedRoute, private router: Router, private sessionService: SessionsService) {
+  constructor(private route: ActivatedRoute, private sessionService: SessionsService) {
 
     this.sessionService.UpdateSession.subscribe(s => {
       this.sessionService.sessionsGetSessionById(this.session.id).subscribe(x => {
@@ -27,18 +27,6 @@ export class SessionComponent implements OnInit {
       (err: HttpErrorResponse) => {
         return console.log(err.error);
       });
-    });
-
-    this.sessionService.NewSession.subscribe(s => {
-      this.sessionService.sessionsGetSessionById(+s).subscribe(x => {
-          this.session = x;
-          this.cells = x.squares;
-          this.router.navigate(['/session', +s]);
-        },
-        (err: HttpErrorResponse) => {
-          return console.log(err.error);
-        }
-      );
     });
 
     this.route.paramMap

@@ -43,6 +43,6 @@ namespace EP.Sudoku.Logic.Models
         public Session GameSession { get; set; }
 
 
-        public long UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

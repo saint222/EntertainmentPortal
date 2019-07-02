@@ -9,19 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AvatarIcon } from './avatarIcon';
-import { Session } from './session';
 
 
-export interface Player { 
+export interface User { 
   [key: string]: any | any;
 
 
-    id: number;
-    nickName?: string;
-    experiencePoint: number;
-    level: number;
-    icon?: AvatarIcon;
-    gameSession?: Session;
-    userId: number;
+    name?: string;
+    email?: string;
+    password?: string;
 }

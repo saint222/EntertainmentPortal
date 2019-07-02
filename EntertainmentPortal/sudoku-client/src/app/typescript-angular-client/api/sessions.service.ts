@@ -1,4 +1,3 @@
-import { PlayerShort } from './../model/playerShort';
 import { Inject, Injectable, Optional } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent } from '@angular/common/http';
@@ -23,7 +22,6 @@ export class SessionsService {
     public configuration = new Configuration();
 
     public updateSession: Subject<string> = new Subject<string>();
-    public newSession: Subject<string> = new Subject<string>();
 
     constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
@@ -289,9 +287,4 @@ export class SessionsService {
     get UpdateSession() {
       return this.updateSession.asObservable();
     }
-
-    get NewSession() {
-      return this.newSession.asObservable();
-    }
-
 }
