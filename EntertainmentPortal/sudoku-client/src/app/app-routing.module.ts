@@ -8,9 +8,11 @@ import { NotExistsComponent } from './shared/not-exists/not-exists.component';
 import { SignInComponent } from './typescript-angular-client/components/sign-in/sign-in.component';
 import { RegisterComponent } from './typescript-angular-client/components/register/register.component';
 import { HomeComponent } from './typescript-angular-client/components/home/home.component';
+import { PrivacyComponent } from './typescript-angular-client/components/privacy/privacy.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'privacy', component: PrivacyComponent},
   {path: 'player', component: PlayerComponent},
   {path: 'player/:id', component: PlayerInfoComponent},
   {path: 'session/:id', component: SessionComponent},

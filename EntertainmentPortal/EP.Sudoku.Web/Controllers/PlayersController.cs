@@ -33,7 +33,7 @@ namespace EP.Sudoku.Web.Controllers
             _mediator = mediator;
             _logger = logger;           
         }
-        //[Authorize(AuthenticationSchemes = "Facebook")]
+        [Authorize(AuthenticationSchemes = "Facebook")]
         /// <summary>
         /// Fetches all registered players from the Db.
         /// </summary>
@@ -46,6 +46,7 @@ namespace EP.Sudoku.Web.Controllers
             return result.Any() ? (IActionResult)Ok(result) : NotFound();
         }
 
+        [Authorize(AuthenticationSchemes = "Google")]
         /// <summary>
         /// Fetches a player of the game from the Db by the unique Id.
         /// </summary>
