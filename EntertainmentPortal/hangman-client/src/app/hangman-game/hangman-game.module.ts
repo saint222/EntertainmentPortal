@@ -5,13 +5,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { StartScreenComponent } from './components/start-screen/start-screen.component';
 import { LooseGameComponent } from './components/loose-game/loose-game.component';
 import { WinGameComponent } from './components/win-game/win-game.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
-  declarations: [GameFieldComponent, StartScreenComponent, LooseGameComponent, WinGameComponent],
+  declarations: [GameFieldComponent, StartScreenComponent, LooseGameComponent, WinGameComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     HttpClientModule
   ],
-  exports: [GameFieldComponent, StartScreenComponent, LooseGameComponent]
+  exports: [GameFieldComponent, StartScreenComponent, LooseGameComponent, LoginComponent, RegisterComponent]
 })
 export class HangmanGameModule { }
