@@ -32,6 +32,7 @@ namespace EP.Balda.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddAuthenticationCore();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
@@ -50,7 +51,7 @@ namespace EP.Balda.Web
                         RequireSignedTokens = true
                     };
                 })
-                .AddGoogle(opt =>
+                .AddGoogle("Google", opt =>
                  {
                      var googleAuthNSection =
                          Configuration.GetSection("Authentication:Google");
@@ -59,7 +60,7 @@ namespace EP.Balda.Web
                      opt.ClientSecret = googleAuthNSection["ClientSecret"];
                      opt.CallbackPath = new PathString("/api/google");
                  })
-                .AddFacebook(opt =>
+                .AddFacebook("Facebook", opt =>
                 {
                     var facebookAuthNSection =
                         Configuration.GetSection("Authentication:Facebook");
@@ -83,6 +84,8 @@ namespace EP.Balda.Web
             services.AddMediatR(typeof(CreateNewGameCommand).Assembly);
             
             services.AddBaldaGameServices();
+
+            services.AddCors();
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //.AddFluentValidation(cfg =>

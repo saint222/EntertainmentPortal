@@ -51,7 +51,7 @@ namespace EP.Balda.Web.Controllers
             }
         }
 
-        [Authorize(AuthenticationSchemes = "Google")]
+        [Authorize(AuthenticationSchemes = "Facebook")]
         [HttpPost("api/game")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
