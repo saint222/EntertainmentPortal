@@ -2,6 +2,7 @@
 using EP.Balda.Logic.Commands;
 using Fody;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace EP.Balda.Logic.Handlers
         protected override async Task Handle(CreateDatabaseCommand request,
                                              CancellationToken cancellationToken)
         {
-            await _context.Database.EnsureCreatedAsync(cancellationToken);
+            await _context.Database.MigrateAsync(cancellationToken);
         }
     }
 }

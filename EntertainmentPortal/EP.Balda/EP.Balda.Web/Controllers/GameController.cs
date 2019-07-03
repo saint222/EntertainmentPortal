@@ -5,6 +5,7 @@ using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
@@ -23,6 +24,7 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
+        [Authorize(AuthenticationSchemes = "Facebook")]
         [HttpGet("api/game")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
@@ -49,6 +51,7 @@ namespace EP.Balda.Web.Controllers
             }
         }
 
+        [Authorize(AuthenticationSchemes = "Google")]
         [HttpPost("api/game")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =

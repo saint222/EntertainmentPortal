@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EP.Balda.Data.Migrations
 {
     [DbContext(typeof(BaldaGameDbContext))]
-    [Migration("20190702120309_ChangePlayer")]
-    partial class ChangePlayer
+    [Migration("20190703152131_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

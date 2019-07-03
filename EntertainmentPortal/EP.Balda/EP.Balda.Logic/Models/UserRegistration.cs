@@ -1,7 +1,9 @@
 ﻿namespace EP.Balda.Logic.Models
 {
-    /// <c>User</c> model class.
-    /// Represents the user.
+    /// <summary>
+    /// UserRegistration model class.
+    /// Represents the user to register.
+    /// </summary>
     public class UserRegistration : UserLogin
     {
         /// <summary>

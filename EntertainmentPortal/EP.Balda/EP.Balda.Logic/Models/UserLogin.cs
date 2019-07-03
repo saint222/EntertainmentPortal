@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EP.Balda.Logic.Models
+﻿namespace EP.Balda.Logic.Models
 {
+    /// <summary>
+    /// Represents the user to login.
+    /// </summary>UserLogin model class.
     public class UserLogin
     {
         /// <summary>

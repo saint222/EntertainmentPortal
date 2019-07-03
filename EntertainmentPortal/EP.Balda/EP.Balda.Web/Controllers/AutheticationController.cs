@@ -1,14 +1,21 @@
 ﻿using EP.Balda.Data.Models;
 using EP.Balda.Logic.Models;
+using EP.Balda.Web.Constants;
 using EP.Balda.Web.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using NSwag.Annotations;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace EP.Balda.Web.Controllers
@@ -25,6 +32,22 @@ namespace EP.Balda.Web.Controllers
             _userManager = manager;
             _signInManager = signInManager;
             _logger = logger;
+        }
+
+        [HttpGet("api/simple")]
+        public async Task<IActionResult> SimpleLogin()
+        {
+            var identity = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, "Petr Petrov"),
+                    new Claim(ClaimTypes.Role, "admin")
+                }, CookieAuthenticationDefaults.AuthenticationScheme,
+                ClaimTypes.Name, ClaimTypes.Role);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+            return Ok();
         }
 
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User has been registered")]
@@ -148,5 +171,46 @@ namespace EP.Balda.Web.Controllers
             _logger.LogInformation($"User: {_signInManager.Context.User.Identity.Name} logged out ");
             return Ok();
         }
+
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was sign in")]
+        [HttpGet("api/google")]
+        public IActionResult SignInGoogle()
+        {
+            return Ok();
+        }
+
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was sign in")]
+        [HttpGet("api/facebook")]
+        public IActionResult SignInFacebook()
+        {
+            return Ok();
+        }
+
+
+        [HttpGet("token")]
+        public IActionResult GetToken()
+        {
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthConstants.SECRET));
+            var handler = new JwtSecurityTokenHandler();
+            var tokenDescr = new SecurityTokenDescriptor()
+            {
+                Issuer = AuthConstants.ISSUER_NAME,
+                Audience = AuthConstants.AUDIENCE_NAME,
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim("sub", "123-123-123-123"),
+                    new Claim("name", "Ivan Ivanov"),
+                }),
+                IssuedAt = DateTime.Now,
+                NotBefore = DateTime.Now,
+                Expires = DateTime.Now.AddSeconds(15),
+                SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512)
+            };
+
+            var token = handler.CreateJwtSecurityToken(tokenDescr);
+
+            return Ok(handler.WriteToken(token));
+        }
+
     }
 }

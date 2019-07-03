@@ -10,7 +10,7 @@ namespace EP.Balda.Data.Models
     public class PlayerDb : IdentityUser<string>
     {
         /// <summary>
-        /// FirstName property. Represents player'first name.
+        /// FirstName property. Represents player's first name.
         /// </summary>
         public string FirstName { get; set; }
 
