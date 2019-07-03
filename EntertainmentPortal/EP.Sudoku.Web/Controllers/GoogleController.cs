@@ -7,14 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EP.Sudoku.Web.Controllers
 {
-    [Route("api/signInFacebook")]
     [ApiController]
-    public class FacebookController : ControllerBase
+    [Route("api/google")]
+    public class GoogleController : Controller
     {
         [HttpGet("")]
         public IActionResult Index()
         {
             return Ok();
         }
+
+
     }
 }

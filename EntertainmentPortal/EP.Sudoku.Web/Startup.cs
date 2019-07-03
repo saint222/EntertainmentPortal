@@ -64,7 +64,7 @@ namespace EP.Sudoku.Web
                         RequireSignedTokens = true
                     };
                 })
-                .AddFacebook(
+                .AddFacebook("Facebook",
                 facebookOptions =>
                 {
                     facebookOptions.CallbackPath = new PathString("/api/signInFacebook");
@@ -72,7 +72,16 @@ namespace EP.Sudoku.Web
                     //facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
                     facebookOptions.ClientId = "692105217894763";
                     facebookOptions.ClientSecret = "82669c46d46a697d7c967d96bc2c7ceb";
-                });
+                })
+                .AddGoogle("Google",
+                googleOptions =>
+                {
+                    googleOptions.CallbackPath = new PathString("/api/google");
+                    //facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                    //facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                    googleOptions.ClientId = "274043152218-ud0e3mc8lv0lm4bdjn67kfsudv5j4p0h.apps.googleusercontent.com";
+                    googleOptions.ClientSecret = "qQMR0R_keZgQHPbhhe8Tirdq";
+                }); ;
             services.AddAuthorization();
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
