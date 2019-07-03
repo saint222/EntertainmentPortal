@@ -1,4 +1,5 @@
-﻿using EP.Hangman.Logic.Queries;
+﻿using System.Text;
+using EP.Hangman.Logic.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +12,12 @@ using EP.Hangman.Logic;
 using EP.Hangman.Logic.Commands;
 using EP.Hangman.Logic.Profiles;
 using EP.Hangman.Logic.Validators;
+using EP.Hangman.Web.Constants;
 using EP.Hangman.Web.Filters;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
 namespace EP.Hangman.Web
@@ -31,7 +35,23 @@ namespace EP.Hangman.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie();
+                .AddCookie()
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+                {
+                    opt.RequireHttpsMetadata = true;
+                    opt.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidIssuer = HangmanConstants.ISSUER_NAME,
+                        ValidateIssuer = true,
+                        ValidAudience = HangmanConstants.AUDIENCE_NAME,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(HangmanConstants.SECRET)),
+                        ValidateLifetime = true,
+                        RequireExpirationTime = true,
+                        RequireSignedTokens = true
+                    };
+                });
             services.AddAuthorization();
             services.AddMemoryCache();
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);

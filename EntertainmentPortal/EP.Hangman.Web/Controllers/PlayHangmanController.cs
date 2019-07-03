@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using EP.Hangman.Logic.Queries;
 using EP.Hangman.Web.Filters;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
@@ -18,6 +20,7 @@ namespace EP.Hangman.Web.Controllers
     [Authorize]
     public class PlayHangmanController : ControllerBase
     {
+
         private readonly IMediator _mediator;
         private readonly ILogger _logger;
 
@@ -29,6 +32,7 @@ namespace EP.Hangman.Web.Controllers
 
         //GET: api/PlayHangman/{id}
         [HttpGet("id")]
+
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Red")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(ControllerData), Description = "Session not found")]
         public async Task<IActionResult> GetUserSessionAsync(string id)
@@ -40,10 +44,10 @@ namespace EP.Hangman.Web.Controllers
         }
 
         //POST: api/PlayHangman
-        [HttpPost]
+        [HttpPost("cookie")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(ControllerData), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Object didn't create")]
-        public async Task<IActionResult> CreateNewGameAsync()
+        public async Task<IActionResult> CreateNewGameCookieAsync()
         {
             _logger.LogInformation("Received POST request");
             var result = await _mediator.Send(new CreateNewGameCommand());
@@ -51,6 +55,19 @@ namespace EP.Hangman.Web.Controllers
             return result.IsFailure ? BadRequest(result.Error) : (IActionResult) Created("Success", result.Value); 
         }
 
+        //POST: api/PlayHangman
+        [HttpPost("token")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(ControllerData), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Object didn't create")]
+        public async Task<IActionResult> CreateNewGameTokenAsync()
+        {
+            _logger.LogInformation("Received POST request");
+            var result = await _mediator.Send(new CreateNewGameCommand());
+            _logger.LogInformation("POST request executed");
+            return result.IsFailure ? BadRequest(result.Error) : (IActionResult) Created("Success", result.Value); 
+        }
+        
         //PUT: api/PlayHangman
         [HttpPut]
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Updated")]
