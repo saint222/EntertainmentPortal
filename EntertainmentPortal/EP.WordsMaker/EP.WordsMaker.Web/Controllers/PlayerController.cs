@@ -8,6 +8,7 @@ using EP.WordsMaker.Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using EP.WordsMaker.Logic.Queries;
+using Microsoft.AspNetCore.Authorization;
 using NSwag.Annotations;
 
 namespace EP.WordsMaker.Web.Controllers
@@ -24,6 +25,7 @@ namespace EP.WordsMaker.Web.Controllers
         }
   
 		[HttpGet]
+        [Authorize(AuthenticationSchemes = "Facebook")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player collection is empty")]
         public async Task<IActionResult> GetAllPlayersAsync()
@@ -57,6 +59,14 @@ namespace EP.WordsMaker.Web.Controllers
             return result.IsFailure ?
                 (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);
+        }
+
+        [HttpDelete]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        public async Task<IActionResult> DeletePlayerAsync([FromBody] DeletePlayerCommand model)
+        {
+            var result = await _mediator.Send(model);
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
         }
     }
 }

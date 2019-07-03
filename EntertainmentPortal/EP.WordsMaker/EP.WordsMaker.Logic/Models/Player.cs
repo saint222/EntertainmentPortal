@@ -29,5 +29,6 @@ namespace EP.WordsMaker.Logic.Models
         public int Score { get; set; }
 		public int BestScore { get; set; }
 		
+        public string Password { get; set; }
     }
 }

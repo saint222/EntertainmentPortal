@@ -7,6 +7,7 @@ using EP.WordsMaker.Logic.Commands;
 using EP.WordsMaker.Logic.Models;
 using EP.WordsMaker.Logic.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
@@ -15,6 +16,7 @@ namespace EP.WordsMaker.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class GameController : ControllerBase
     {
 	    private readonly IMediator _mediator;
