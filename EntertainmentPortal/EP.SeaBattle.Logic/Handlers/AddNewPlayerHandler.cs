@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
@@ -11,6 +12,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
+
 namespace EP.SeaBattle.Logic.Handlers
 {
     public class AddNewPlayerHandler : IRequestHandler<AddNewPlayerCommand, Result<Player>>
@@ -19,7 +21,6 @@ namespace EP.SeaBattle.Logic.Handlers
         private readonly IMapper _mapper;
         private readonly IValidator<AddNewPlayerCommand> _validator;
         private readonly ILogger _logger;
-
         public AddNewPlayerHandler(SeaBattleDbContext context, IMapper mapper, IValidator<AddNewPlayerCommand> validator, ILogger<AddNewPlayerHandler> logger)
         {
             _context = context;
@@ -33,12 +34,16 @@ namespace EP.SeaBattle.Logic.Handlers
             var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddPlayerValidation", cancellationToken: cancellationToken);
             if (validationResult.IsValid)
             {
-                _context.Players.Add(_mapper.Map<PlayerDb>(request));
+                PlayerDb playerDb = new PlayerDb
+                {
+                    NickName = request.NickName
+                };
+                _context.Players.Add(playerDb);
                 try
                 {
                     await _context.SaveChangesAsync();
-                    _logger.LogInformation($"Player with NickName {request.NickName} saved");
-                    return Result.Ok(_mapper.Map<Player>(request));
+                    _logger.LogInformation($"Player with NickName {playerDb.NickName} saved");
+                    return Result.Ok(_mapper.Map<Player>(playerDb));
                 }
                 catch (DbUpdateException ex)
                 {
@@ -49,7 +54,7 @@ namespace EP.SeaBattle.Logic.Handlers
             else
             {
                 _logger.LogWarning(string.Join(", ", validationResult.Errors));
-                return Result.Fail<Player>("Player not valid. Cannot create player");
+                return Result.Fail<Player>(validationResult.Errors.First().ErrorMessage);
             }
         }
     }
