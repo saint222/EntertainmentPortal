@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EP.Hangman.Web.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/google")]
     public class GoogleController : ControllerBase
     {
         [HttpGet("")]

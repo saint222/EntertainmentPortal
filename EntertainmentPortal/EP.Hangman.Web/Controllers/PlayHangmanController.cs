@@ -15,9 +15,10 @@ using NSwag.Annotations;
 
 namespace EP.Hangman.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/playhangman")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
+
     public class PlayHangmanController : ControllerBase
     {
 
@@ -29,10 +30,12 @@ namespace EP.Hangman.Web.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-
+        
         //GET: api/PlayHangman/{id}
-        [HttpGet("id")]
-
+        [HttpGet("{id}")]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = "Google")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Red")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(ControllerData), Description = "Session not found")]
         public async Task<IActionResult> GetUserSessionAsync(string id)
@@ -44,8 +47,11 @@ namespace EP.Hangman.Web.Controllers
         }
 
         //POST: api/PlayHangman
-        [HttpPost("cookie")]
+        [HttpPost]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Authorize(AuthenticationSchemes = "Google")]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [SwaggerResponse(HttpStatusCode.Created, typeof(ControllerData), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Object didn't create")]
         public async Task<IActionResult> CreateNewGameCookieAsync()
@@ -56,21 +62,11 @@ namespace EP.Hangman.Web.Controllers
             return result.IsFailure ? BadRequest(result.Error) : (IActionResult) Created("Success", result.Value); 
         }
 
-        //POST: api/PlayHangman
-        [HttpPost("token")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [SwaggerResponse(HttpStatusCode.Created, typeof(ControllerData), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Object didn't create")]
-        public async Task<IActionResult> CreateNewGameTokenAsync()
-        {
-            _logger.LogInformation("Received POST request");
-            var result = await _mediator.Send(new CreateNewGameCommand());
-            _logger.LogInformation("POST request executed");
-            return result.IsFailure ? BadRequest(result.Error) : (IActionResult) Created("Success", result.Value); 
-        }
-        
         //PUT: api/PlayHangman
         [HttpPut]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = "Google")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Updated")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't update")]
         [ValidationFilter]
@@ -83,7 +79,10 @@ namespace EP.Hangman.Web.Controllers
         }
 
         //DELETE: api/PlayHangman/{id}
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = "Google")]
         [SwaggerResponse(HttpStatusCode.NoContent, typeof(ControllerData), Description = "Deleted")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't delete")]
         [ValidationFilter]

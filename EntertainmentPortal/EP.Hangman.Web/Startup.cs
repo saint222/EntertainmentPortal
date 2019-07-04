@@ -62,7 +62,8 @@ namespace EP.Hangman.Web
                     opt.ClientSecret = Configuration["Google:ClientSecret"];
                     opt.UserInformationEndpoint = "https://www.googleapis.com/oauth2/v2/userinfo";
                 });
-            services.AddAuthorization();
+            services.AddAuthorization(opt => opt.AddPolicy("google", 
+                cfg => cfg.AddAuthenticationSchemes("Google").RequireAuthenticatedUser()));
             services.AddMemoryCache();
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetUserSession).Assembly);
@@ -98,7 +99,7 @@ namespace EP.Hangman.Web
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseOpenApi();
             app.UseSwaggerUi3();
-            app.UseMvc();
+            app.UseMvc(routes => routes.MapRoute("default", "{controller = PlayHangman}/{action = Index}/{id?}"));
 
             Log.Logger = new LoggerConfiguration()
                 //By default we have up to 31 latest log files with file size limited up to 1GB
