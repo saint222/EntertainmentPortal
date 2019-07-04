@@ -1,4 +1,4 @@
-﻿namespace EP.Balda.Logic.Models
+﻿namespace EP.Balda.Web.Models
 {
     /// <summary>
     /// UserRegistration model class.

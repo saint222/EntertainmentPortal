@@ -3,8 +3,9 @@ using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Profiles;
 using EP.Balda.Logic.Services;
 using EP.Balda.Web.Constants;
-//using EP.Balda.Logic.Validators;
-//using FluentValidation.AspNetCore;
+using EP.Balda.Web.Filters;
+using EP.Balda.Web.Validators;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -86,13 +87,13 @@ namespace EP.Balda.Web
             services.AddBaldaGameServices();
 
             services.AddCors();
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //.AddFluentValidation(cfg =>
-            //{
-            //    cfg.RegisterValidatorsFromAssemblyContaining<CreateNewPlayerValidator>();
-            //    cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-            //}); ;
+            services.AddMvc(opt => opt.Filters.Add(typeof(ModelValidationFilter)))
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddFluentValidation(cfg =>
+            {
+                cfg.RegisterValidatorsFromAssemblyContaining<UserLoginValidator>();
+                cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            }); ;
         }
 
         // This method gets called by the runtime. Use this method to

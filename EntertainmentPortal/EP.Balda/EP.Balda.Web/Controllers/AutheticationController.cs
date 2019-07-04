@@ -1,6 +1,7 @@
 ﻿using EP.Balda.Data.Models;
-using EP.Balda.Logic.Models;
 using EP.Balda.Web.Constants;
+using EP.Balda.Web.Filters;
+using EP.Balda.Web.Models;
 using EP.Balda.Web.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -34,9 +35,10 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/simplelogin")]
+        [HttpPost("api/simplelogin")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User has been registered")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
+        [ModelValidationFilter]
         public async Task<IActionResult> SimpleLogin(UserLogin userData)
         {
             var identity = new ClaimsIdentity(new Claim[]
@@ -64,28 +66,17 @@ namespace EP.Balda.Web.Controllers
         [HttpPost("api/register")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User has been registered")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
+        [ModelValidationFilter]
         public async Task<IActionResult> Register([FromBody] UserRegistration userData)
         {
-            if(userData.Password != userData.PasswordConfirm)
-            {
-                return BadRequest($"Passwords don't match"); //add validator
-            }
-
-            var user = await _userManager.FindByNameAsync(userData.UserName);
-
-            if (user != null)
-            {
-                _logger.LogWarning($"Register failed. User {userData.UserName} does exist");
-                return BadRequest($"User {userData.UserName} already exists");
-            }
-            
             var newUser = new PlayerDb()
             {
                 UserName = userData.UserName,
-                PasswordHash = _userManager.PasswordHasher.HashPassword(user, userData.Password),
                 Email = userData.Email,
                 SecurityStamp = Guid.NewGuid().ToString()
             };
+
+            //newUser.PasswordHash = _userManager.PasswordHasher.HashPassword(newUser, userData.Password);
 
             var status = await _userManager.CreateAsync(newUser, userData.Password);
 
