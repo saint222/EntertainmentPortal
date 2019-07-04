@@ -45,6 +45,7 @@ namespace EP.Hangman.Web.Controllers
 
         //POST: api/PlayHangman
         [HttpPost("cookie")]
+        [Authorize(AuthenticationSchemes = "Google")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(ControllerData), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Object didn't create")]
         public async Task<IActionResult> CreateNewGameCookieAsync()

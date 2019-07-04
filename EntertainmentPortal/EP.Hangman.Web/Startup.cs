@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Claims;
+using System.Text;
 using EP.Hangman.Logic.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,8 +16,10 @@ using EP.Hangman.Logic.Validators;
 using EP.Hangman.Web.Constants;
 using EP.Hangman.Web.Filters;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
@@ -51,6 +54,13 @@ namespace EP.Hangman.Web
                         RequireExpirationTime = true,
                         RequireSignedTokens = true
                     };
+                })
+                .AddGoogle("Google", opt =>
+                {
+                    opt.CallbackPath = new PathString("/api/google");
+                    opt.ClientId = Configuration["Google:ClientId"];
+                    opt.ClientSecret = Configuration["Google:ClientSecret"];
+                    opt.UserInformationEndpoint = "https://www.googleapis.com/oauth2/v2/userinfo";
                 });
             services.AddAuthorization();
             services.AddMemoryCache();
