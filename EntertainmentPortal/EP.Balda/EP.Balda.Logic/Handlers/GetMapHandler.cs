@@ -22,8 +22,7 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Maybe<Map>> Handle(GetMap request,
-                                             CancellationToken cancellationToken)
+        public async Task<Maybe<Map>> Handle(GetMap request, CancellationToken cancellationToken)
         {
             var mapDb = await _context.Maps
                 .Where(m => m.Id == request.Id)

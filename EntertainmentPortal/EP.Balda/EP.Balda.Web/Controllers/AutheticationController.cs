@@ -34,33 +34,44 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/simple")]
-        public async Task<IActionResult> SimpleLogin()
+        [HttpGet("api/simplelogin")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User has been registered")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
+        public async Task<IActionResult> SimpleLogin(UserLogin userData)
         {
             var identity = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, "Petr Petrov"),
-                    new Claim(ClaimTypes.Role, "admin")
-                }, CookieAuthenticationDefaults.AuthenticationScheme,
+                    new Claim(ClaimTypes.Name, userData.UserName),
+                    new Claim(ClaimTypes.Role, "user")
+                }, 
+                CookieAuthenticationDefaults.AuthenticationScheme,
                 ClaimTypes.Name, ClaimTypes.Role);
+
             var principal = new ClaimsPrincipal(identity);
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            try
+            {
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-            return Ok();
+                return Ok(identity);
+            }
+            catch (Exception)
+            {
+                return BadRequest("Error");
+            }
         }
 
+        [HttpPost("api/register")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User has been registered")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
-        [HttpPost("api/register")]
         public async Task<IActionResult> Register([FromBody] UserRegistration userData)
         {
-            var user = await _userManager.FindByNameAsync(userData.UserName);
-
             if(userData.Password != userData.PasswordConfirm)
             {
                 return BadRequest($"Passwords don't match"); //add validator
             }
+
+            var user = await _userManager.FindByNameAsync(userData.UserName);
 
             if (user != null)
             {
@@ -89,7 +100,9 @@ namespace EP.Balda.Web.Controllers
                        "Authentication",
                        new { userId = newUser.Id, code = code },
                        protocol: HttpContext.Request.Scheme);
+
                 var emailService = new EmailService();
+
                 await emailService.SendEmailAsync(userData.Email, "Confirm your account",
                     $"Dear {userData.UserName}, please, confirm your registration by clicking on the link: <a href='{callbackUrl}'>link</a>" +
                     $"With best regards, Entertainment Portal Administration");
@@ -104,9 +117,9 @@ namespace EP.Balda.Web.Controllers
             return status.Succeeded ? (IActionResult)Ok() : BadRequest(status.Errors);
         }
 
+        [HttpPost("api/login")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged in")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User wasn't logged in")]
-        [HttpPost("api/login")]
         public async Task<IActionResult> Login([FromBody] UserLogin userData)
         {
             var user = await _userManager.FindByNameAsync(userData.UserName);
@@ -133,9 +146,9 @@ namespace EP.Balda.Web.Controllers
             return result.Succeeded ? (IActionResult)Ok() : BadRequest();
         }
 
+        [HttpGet("api/confirmemail")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User confirmed e-mail")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User didn't confirm e-mail")]
-        [HttpGet("api/confirm")]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
@@ -162,8 +175,8 @@ namespace EP.Balda.Web.Controllers
             }
         }
 
-        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
         [HttpPost("api/logout")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -186,9 +199,8 @@ namespace EP.Balda.Web.Controllers
             return Ok();
         }
 
-
         [HttpGet("token")]
-        public IActionResult GetToken()
+        public IActionResult GetToken(UserLogin userData)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthConstants.SECRET));
             var handler = new JwtSecurityTokenHandler();
@@ -198,8 +210,7 @@ namespace EP.Balda.Web.Controllers
                 Audience = AuthConstants.AUDIENCE_NAME,
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim("sub", "123-123-123-123"),
-                    new Claim("name", "Ivan Ivanov"),
+                    new Claim("name", userData.UserName),
                 }),
                 IssuedAt = DateTime.Now,
                 NotBefore = DateTime.Now,
@@ -211,6 +222,5 @@ namespace EP.Balda.Web.Controllers
 
             return Ok(handler.WriteToken(token));
         }
-
     }
 }

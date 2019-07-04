@@ -22,8 +22,7 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Maybe<Game>> Handle(GetGame request,
-                                              CancellationToken cancellationToken)
+        public async Task<Maybe<Game>> Handle(GetGame request, CancellationToken cancellationToken)
         {
             var gameDb = await _context.Games
                 .Where(g => g.Id == request.Id)

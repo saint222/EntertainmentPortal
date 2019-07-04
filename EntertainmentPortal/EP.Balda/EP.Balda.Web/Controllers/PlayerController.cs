@@ -22,8 +22,7 @@ namespace EP.Balda.Web.Controllers
         private readonly ILogger<PlayerController> _logger;
         private readonly UserManager<PlayerDb> _manager;
 
-        public PlayerController(IMediator mediator, ILogger<PlayerController> logger,
-            UserManager<PlayerDb> manager)
+        public PlayerController(IMediator mediator, ILogger<PlayerController> logger, UserManager<PlayerDb> manager)
         {
             _mediator = mediator;
             _logger = logger;
@@ -32,8 +31,7 @@ namespace EP.Balda.Web.Controllers
 
         [HttpGet("api/player")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
-            "Player not found")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
         public async Task<IActionResult> GetPlayerAsync([FromQuery]string userName)
         {
             _logger.LogDebug(
@@ -59,8 +57,7 @@ namespace EP.Balda.Web.Controllers
 
         [HttpGet("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
-            "List of players is empty")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "List of players is empty")]
         public async Task<IActionResult> GetAllPlayersAsync()
         {
             var users = await _manager.Users.ToArrayAsync();
@@ -82,8 +79,7 @@ namespace EP.Balda.Web.Controllers
         
         [HttpPut("api/player/word")] //move to game controller
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
-            "Invalid data")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> AddWordAsync([FromBody] AddWordToPlayerCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
@@ -109,11 +105,9 @@ namespace EP.Balda.Web.Controllers
         }
 
         [HttpDelete("api/player/delete")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description =
-            "Player successfully deleted")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description =
-            "Player can't be deleted")]
-        public async Task<IActionResult> DeletePlayerAsync([FromBody]string id)
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Player successfully deleted")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description = "Player can't be deleted")]
+        public async Task<IActionResult> DeletePlayerAsync([FromQuery]string id)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                              $"Parameters: Id = {id}");
@@ -126,9 +120,7 @@ namespace EP.Balda.Web.Controllers
 
                 if (status.Succeeded)
                 {
-                    _logger.LogInformation(
-                   $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
-                   $"Player with id {id} was deleted at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+                    _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} : - Player with id {id} was deleted at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
 
                     return Ok(user);
                 }
@@ -137,8 +129,7 @@ namespace EP.Balda.Web.Controllers
             }
             else
             {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                $"Id = {id} - Player can't be deleted");
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: Id = {id} - Player can't be deleted");
 
                 return BadRequest("Player can't be deleted");
             }

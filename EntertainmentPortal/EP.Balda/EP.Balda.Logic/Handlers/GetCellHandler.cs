@@ -22,8 +22,7 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Maybe<Cell>> Handle(GetCell request,
-                                              CancellationToken cancellationToken)
+        public async Task<Maybe<Cell>> Handle(GetCell request, CancellationToken cancellationToken)
         {
             var cellDb = await _context.Cells
                 .Where(c => c.Id == request.Id)

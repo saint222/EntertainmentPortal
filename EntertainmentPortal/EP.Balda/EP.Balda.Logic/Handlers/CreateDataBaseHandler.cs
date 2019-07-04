@@ -18,8 +18,7 @@ namespace EP.Balda.Logic.Handlers
             _context = context;
         }
 
-        protected override async Task Handle(CreateDatabaseCommand request,
-                                             CancellationToken cancellationToken)
+        protected override async Task Handle(CreateDatabaseCommand request, CancellationToken cancellationToken)
         {
             await _context.Database.MigrateAsync(cancellationToken);
         }

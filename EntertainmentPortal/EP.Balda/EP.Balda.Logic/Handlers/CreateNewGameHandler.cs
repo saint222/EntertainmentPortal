@@ -26,8 +26,7 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Result<Game>> Handle(CreateNewGameCommand request,
-                                               CancellationToken cancellationToken)
+        public async Task<Result<Game>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
         {
             var player = await _context.Users
                 .Where(p => p.Id == request.PlayerId)

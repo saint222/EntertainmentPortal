@@ -23,8 +23,7 @@ namespace EP.Balda.Web.Controllers
 
         [HttpGet("api/map")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
-            "Map not found")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Map not found")]
         public async Task<IActionResult> GetMapAsync([FromQuery] GetMap model)
         {
             _logger.LogDebug(

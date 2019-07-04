@@ -26,8 +26,7 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Result<Player>> Handle(AddWordToPlayerCommand request,
-                                                 CancellationToken cancellationToken)
+        public async Task<Result<Player>> Handle(AddWordToPlayerCommand request, CancellationToken cancellationToken)
         {
             var player = await _context.Users
                 .Where(p => p.Id == request.Id)

@@ -27,8 +27,7 @@ namespace EP.Balda.Web.Controllers
         [Authorize(AuthenticationSchemes = "Facebook")]
         [HttpGet("api/game")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
-            "Game not found")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game not found")]
         public async Task<IActionResult> GetGameAsync([FromQuery] GetGame model)
         {
             _logger.LogDebug(
@@ -54,10 +53,8 @@ namespace EP.Balda.Web.Controllers
         [Authorize(AuthenticationSchemes = "Facebook")]
         [HttpPost("api/game")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
-            "Game can't be created")]
-        public async Task<IActionResult> CreateNewGameAsync(
-            [FromBody] CreateNewGameCommand model)
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Game can't be created")]
+        public async Task<IActionResult> CreateNewGameAsync([FromBody] CreateNewGameCommand model)
         {
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: PlayerId = {model.PlayerId}, MapSize = {model.MapSize}");

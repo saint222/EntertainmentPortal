@@ -23,7 +23,6 @@ namespace EP.Balda.Web.Services
                 await client.ConnectAsync("smtp.gmail.com", 25, false);
                 await client.AuthenticateAsync("jemelachee@gmail.com", "mmlygmwcspqfwkjv");
                 await client.SendAsync(emailMessage);
-
                 await client.DisconnectAsync(true);
             }
         }
