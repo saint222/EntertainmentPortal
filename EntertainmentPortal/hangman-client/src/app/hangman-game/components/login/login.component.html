@@ -1,13 +1,30 @@
-<form class="form-signin">
-  <div class="form-label-group">
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    <label for="inputEmail">Email address</label>
+<form [formGroup]="userDataGroup" (ngSubmit)="onSubmit(form)" #form="ngForm" class="form-signin">
+  <div class="form-group">
+    <input
+      type="text"
+      name=""
+      id=""
+      class="form-control"
+      placeholder="Username"
+      aria-describedby="helpId"
+      formControlName="username"
+      autofocus
+    />
   </div>
-
-  <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <label for="inputPassword">Password</label>
+  <div class="form-group">
+    <input
+      type="password"
+      name=""
+      id=""
+      class="form-control"
+      placeholder="Password"
+      aria-describedby="helpId"
+      formControlName="password"
+    />
   </div>
-
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" >
+      Sign in
+    </button>
+  </div>
 </form>

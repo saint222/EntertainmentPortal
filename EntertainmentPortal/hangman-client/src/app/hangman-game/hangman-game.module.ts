@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameFieldComponent } from './components/game-field/game-field.component';
@@ -12,7 +13,8 @@ import { RegisterComponent } from './components/register/register.component';
   declarations: [GameFieldComponent, StartScreenComponent, LooseGameComponent, WinGameComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   exports: [GameFieldComponent, StartScreenComponent, LooseGameComponent, LoginComponent, RegisterComponent]
 })
