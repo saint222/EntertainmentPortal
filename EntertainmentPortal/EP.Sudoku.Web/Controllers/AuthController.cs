@@ -66,7 +66,7 @@ namespace EP.Sudoku.Web.Controllers
                     _logger.LogError($"Registration failed...\n{status.Errors}");
                 }
 
-                return status.Succeeded ? (IActionResult)Ok() : BadRequest(status.Errors);
+                return status.Succeeded ? (IActionResult)Ok(newUser) : BadRequest(status.Errors);
             }
             else
             {

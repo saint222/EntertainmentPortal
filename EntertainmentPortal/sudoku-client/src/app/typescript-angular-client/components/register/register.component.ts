@@ -11,13 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
   registerGroup: FormGroup;
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(private service: RegisterService, private fb: FormBuilder, private route: ActivatedRoute) {
 
-    this.registerGroup = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-    });
+
   }
 
   ngOnInit() {

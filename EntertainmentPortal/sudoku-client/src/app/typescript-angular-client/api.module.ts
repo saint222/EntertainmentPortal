@@ -18,9 +18,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
-  declarations: [SessionComponent, CellComponent, CreateSessionComponent, PlayerComponent, PlayerInfoComponent, SignInComponent, RegisterComponent, HomeComponent, ConfirmEmailComponent, PrivacyComponent],
+  declarations: [SessionComponent, CellComponent, CreateSessionComponent, PlayerComponent, PlayerInfoComponent, SignInComponent, RegisterComponent, HomeComponent, ConfirmEmailComponent, PrivacyComponent, UserComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
