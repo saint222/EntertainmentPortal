@@ -6,13 +6,16 @@ using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using JetBrains.Annotations;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.DotsBoxes.Web.Controllers
 {
-    [ApiController]
+    [ApiController]   
     public class GameBoardController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -26,6 +29,7 @@ namespace EP.DotsBoxes.Web.Controllers
 
         // GET api/gameboard
         [HttpGet("api/gameboard")]
+        [Authorize(AuthenticationSchemes = "Google")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<GameBoard>), Description = "Received game board")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game board is not created")]
         public async Task<IActionResult> GetGameBoardAsync()

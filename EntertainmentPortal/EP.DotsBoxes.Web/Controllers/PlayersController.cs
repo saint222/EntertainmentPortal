@@ -9,10 +9,12 @@ using EP.DotsBoxes.Logic.Queries;
 using NSwag.Annotations;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EP.DotsBoxes.Web.Controllers
 {
     [ApiController]
+    [Authorize]
     public class PlayersController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -54,7 +56,7 @@ namespace EP.DotsBoxes.Web.Controllers
         [HttpPost("api/player")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Added new player")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> AddPlayerAsync([FromBody][NotNull]AddPlayerCommand model) 
+        public async Task<IActionResult> AddPlayerAsync([FromBody][NotNull]AddPlayerCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Player: " +
                 $"Name = {model.Name}");
