@@ -9,10 +9,11 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using CSharpFunctionalExtensions;
 using EP.DotsBoxes.Data.Models;
+using EP.DotsBoxes.Logic.Models;
 
 namespace EP.DotsBoxes.Logic.Handlers
 {
-    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<PlayerDb>>>
+    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<Player>>>
     {
         private readonly IMapper _mapper;
         private readonly GameBoardDbContext _context;
@@ -23,15 +24,17 @@ namespace EP.DotsBoxes.Logic.Handlers
             _context = context;
         }
 
-        public async Task<Maybe<IEnumerable<PlayerDb>>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
+        public async Task<Maybe<IEnumerable<Player>>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
         {
             var result = await _context.Players
                .AsNoTracking()
-               .ToArrayAsync(cancellationToken);
+               .ToListAsync(cancellationToken);
 
-            return result.Any() ? 
-                Maybe<IEnumerable<PlayerDb>>.From(result) : 
-                Maybe<IEnumerable<PlayerDb>>.None;
+            IEnumerable<Player> player = _mapper.Map<List<PlayerDb>, IEnumerable<Player>>(result);
+
+            return result.Any() ?
+                Maybe<IEnumerable<Player>>.From(player) :
+                Maybe<IEnumerable<Player>>.None;
         }
     }
 }

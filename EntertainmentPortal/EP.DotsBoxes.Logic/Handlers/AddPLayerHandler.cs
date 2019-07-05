@@ -45,17 +45,19 @@ namespace EP.DotsBoxes.Logic.Handlers
 
             var model = new Player
             {
-                Name = request.Name,
+                Name = request.Name,             
             };
 
-            var context = _context.GameBoard.Find(request.GameBoardId);
+            var context = _context.GameBoard.Include(g => g.Players)
+                .FirstOrDefault(b => b.Id == request.GameBoardId);
+
             context.Players.Add(_mapper.Map<PlayerDb>(model));
-            
+
             try
             {
                 _logger.LogInformation("Updating database with a new player.");
                 await _context.SaveChangesAsync(cancellationToken);
-                return Result.Ok<Player>(_mapper.Map<Player>(model));
+                return Result.Ok<Player>(model);
             }
             catch (DbUpdateException ex)
             {

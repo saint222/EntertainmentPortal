@@ -14,7 +14,7 @@ namespace EP.DotsBoxes.Data.Models
         /// Id property. Stores unique game board's Id.
         /// </summary>
         public int Id { get; set; }
-        
+
         /// <summary>
         /// Rows property. Stores the row of the playing field.
         /// </summary>
@@ -24,11 +24,10 @@ namespace EP.DotsBoxes.Data.Models
         /// Columns property. Stores the column of the playing field.
         /// </summary>
         public int Columns { get; set; }
-        
+
         /// <summary>
         /// Cells property. Stores a list of cells of the playing field.
         /// </summary>
-        
         public List<CellDb> Cells { get; set; }
 
         public List<PlayerDb> Players { get; set; }

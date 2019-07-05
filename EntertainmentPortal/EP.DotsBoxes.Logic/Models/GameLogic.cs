@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Bogus.Extensions;
@@ -11,15 +12,16 @@ namespace EP.DotsBoxes.Logic.Models
     {
         private List<Cell> _cells = new List<Cell>();
 
-        private  List<Player> _players = new List<Player>();
+        private List<Player> _players = new List<Player>();
 
         public GameLogic()
         {
         }
 
-        public GameLogic(List<Cell> cells)
+        public GameLogic(List<Cell> cells, List<Player> players)
         {
             _cells = cells;
+            _players = players;
         }
 
         public List<Cell> CreateGameBoard(int row, int column)
@@ -28,76 +30,92 @@ namespace EP.DotsBoxes.Logic.Models
             {
                 for (int j = 1; j <= column; j++)
                 {
-                    _cells.Add(new Cell() {Row = i, Column = j});
+                    _cells.Add(new Cell() { Row = i, Column = j });
                 }
             }
 
             return _cells;
         }
 
-        public List<Cell> AddCommonSide(Cell cell, int rows, int columns)
+        public Cell[] AddSides(Cell cell, int rows, int columns)
+        {
+           return new Cell[] { AddCurrentSide(cell), AddCommonSide(cell, rows, columns) };                    
+        }
+
+        public Cell AddCommonSide(Cell cell, int rows, int columns)
         {
             var row = cell.Row;
             var column = cell.Column;
-            AddCurrentSide(cell);
+            Cell result = null;
 
             if ((row != 1) & cell.Top)
             {
-                _cells.Where(p => p.Row == row - 1 & p.Column == column).ToList().ForEach(p => p.Bottom = true);
+                result = _cells.Where(p => p.Row == row - 1 & p.Column == column).First();
+                result.Bottom = true;
             }
             if ((row != rows) & cell.Bottom)
             {
-                _cells.Where(p => p.Row == row + 1 & p.Column == column).ToList().ForEach(p => p.Top = true);
+                result = _cells.Where(p => p.Row == row + 1 & p.Column == column).First();
+                result.Top = true;
             }
             if ((column != 1) & cell.Left)
             {
-                _cells.Where(p => p.Row == row & p.Column == column - 1).ToList().ForEach(p => p.Right = true);
+                result = _cells.Where(p => p.Row == row & p.Column == column - 1).First();
+                result.Right = true;
             }
             if ((column != columns) & cell.Right)
             {
-                _cells.Where(p => p.Row == row & p.Column == column + 1).ToList().ForEach(p => p.Left = true);
+                result = _cells.Where(p => p.Row == row & p.Column == column + 1).First();
+                result.Left = true;
             }
-
-            return _cells;
+            result.Name = cell.Name;
+            return result;
         }
 
-        public List<Cell> AddCurrentSide(Cell cell)
+        public Cell AddCurrentSide(Cell cell)
         {
             var row = cell.Row;
             var column = cell.Column;
+            Cell result = null;
 
             if (cell.Top)
             {
-                _cells.Where(p => p.Row == row & p.Column == column).ToList().ForEach(p => p.Top = true);
+                result = _cells.Where(p => p.Row == row & p.Column == column).First();
+                result.Top = true;
             }
-
             if (cell.Bottom)
             {
-                _cells.Where(p => p.Row == row & p.Column == column).ToList().ForEach(p => p.Bottom = true);
+                result = _cells.Where(p => p.Row == row & p.Column == column).First();
+                result.Bottom = true;
             }
             if (cell.Left)
             {
-                _cells.Where(p => p.Row == row & p.Column == column).ToList().ForEach(p => p.Left = true);
+                result = _cells.Where(p => p.Row == row & p.Column == column).First();
+                result.Left = true;
             }
             if (cell.Right)
             {
-                _cells.Where(p => p.Row == row & p.Column == column).ToList().ForEach(p => p.Right = true);
+                result = _cells.Where(p => p.Row == row & p.Column == column).First();
+                result.Right = true;
             }
-
-            return _cells;
+            result.Name = cell.Name;
+            return result;
         }
 
-        public List<Player> CheckSquare()
-        {
-            foreach (var cell in _cells)
-            {
-                if (cell.Top & cell.Bottom & cell.Left & cell.Right)
+        public Player CheckSquare(Cell[] cells)
+        {           
+            Player result = null;
+
+            foreach (var cell in cells)
+            {              
+                if (cell != null && cell.Top & cell.Bottom & cell.Left & cell.Right)
                 {
-                    _players.Where(p => p.Name == cell.Name).ToList().ForEach(p => p.Score += 1);
+                    result = _players.Where(p => p.Name.Equals(cell.Name)).First();
+                    result.Score += 1;                 
                 }
             }
 
-            return _players;
+            return result;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace EP.DotsBoxes.Logic
     {
         public static IServiceCollection CreateGameBoardServices(this IServiceCollection services)
         {
-            services.CreateGameBoardData();
+            services.CreateGameBoardData();            
             return services;
         }
     }

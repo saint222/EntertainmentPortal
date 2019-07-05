@@ -8,7 +8,7 @@ namespace EP.DotsBoxes.Logic.Profiles
     {
         public PlayerProfile()
         {
-            CreateMap<PlayerDb, Player>()
+            CreateMap<Player, PlayerDb>()
                 .ForMember(b => b.Id, opt => opt.MapFrom(b => b.Id))
                 .ForMember(b => b.Name, opt => opt.MapFrom(b => b.Name))
                 .ForMember(b => b.Color, opt => opt.MapFrom(b => b.Color))

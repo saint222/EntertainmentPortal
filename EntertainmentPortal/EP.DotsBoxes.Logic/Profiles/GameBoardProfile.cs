@@ -16,7 +16,7 @@ namespace EP.DotsBoxes.Logic.Profiles
                 .ForMember(b => b.Players, opt => opt.MapFrom(b => b.Players))
                 .ReverseMap();
 
-           //Mapper.Initialize(cfg => cfg.CreateMap<GameBoardDb, GameBoard>());
+          
         }
     }
 }
