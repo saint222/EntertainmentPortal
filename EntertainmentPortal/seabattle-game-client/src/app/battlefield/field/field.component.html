@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 style="text-align-last: center">Корабли</h2>
+      <table id="shipField">
+        <thead>
+            <th class="cell no_border" *ngFor="let letter of alphabet" >{{ letter }}</th>
+        </thead>
+        <tr *ngFor="let row of shipField; let i = index" >
+          <td class="cell no_border">{{ i + 1 }}</td>
+          <td *ngFor="let cell of row">
+              <app-cell [status]=cell.status></app-cell>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <h2 style="text-align-last: center">Выстрелы</h2>
+        <table id="shootField">
+          <thead>
+              <th class="cell no_border" *ngFor="let letter of alphabet" >{{ letter }}</th>
+          </thead>
+          <tr *ngFor="let row of shootField; let i = index">
+              <td class="cell no_border">{{ i + 1 }}</td>
+              <td *ngFor="let cell of row">
+                <app-cell [status]=cell.status></app-cell>
+            </td>
+          </tr>
+        </table>
+      </div>
+  </div>
+</div>
