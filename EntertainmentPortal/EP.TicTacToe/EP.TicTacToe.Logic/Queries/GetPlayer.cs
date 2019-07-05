@@ -4,8 +4,8 @@ using MediatR;
 
 namespace EP.TicTacToe.Logic.Queries
 {
-    public class GetChain : IRequest<Maybe<Chain>>
-    { 
-        public uint Id { get; set; }
+    public class GetPlayer : IRequest<Maybe<Player>>
+    {
+        public string Id { get; set; }
     }
 }

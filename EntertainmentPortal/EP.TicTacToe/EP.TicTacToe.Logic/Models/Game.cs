@@ -21,10 +21,5 @@ namespace EP.TicTacToe.Logic.Models
         ///     <c>Player</c> navigation property.
         /// </summary>
         public IList<Player> Players { get; set; }
-
-        /// <summary>
-        ///     <c>Chain</c> navigation property.
-        /// </summary>
-        public IList<Chain> Chains { get; set; }
     }
 }

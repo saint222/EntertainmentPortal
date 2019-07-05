@@ -7,11 +7,14 @@ namespace EP.TicTacToe.Data.Context
 {
     public class TicTacDbContext : IdentityDbContext
     {
+        public DbSet<HaunterDb> Haunters { get; set; }
         public DbSet<PlayerDb> Players { get; set; }
         public DbSet<GameDb> Games { get; set; }
         public DbSet<MapDb> Maps { get; set; }
-        public DbSet<ChainDb> Chains { get; set; }
-        public DbSet<CellDb> Steps { get; set; }
+        public DbSet<CellDb> Cells { get; set; }
+        public DbSet<FirstPlayerDb> FirstPlayers { get; set; }
+        public DbSet<SecondPlayerDb> SecondPlayers { get; set; }
+
 
         public TicTacDbContext(DbContextOptions options) : base(options)
         {
@@ -21,10 +24,12 @@ namespace EP.TicTacToe.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfiguration(new PlayerConfiguration());
+            modelBuilder.ApplyConfiguration(new HaunterConfiguration());
+            modelBuilder.ApplyConfiguration(new FirstPlayerConfiguration());
+            modelBuilder.ApplyConfiguration(new SecondPlayerConfiguration());
             modelBuilder.ApplyConfiguration(new GameConfiguration());
+            modelBuilder.ApplyConfiguration(new PlayerConfiguration());
             modelBuilder.ApplyConfiguration(new MapConfiguration());
-            modelBuilder.ApplyConfiguration(new ChainConfiguration());
             modelBuilder.ApplyConfiguration(new CellConfiguration());
         }
     }

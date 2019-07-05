@@ -11,7 +11,6 @@ namespace EP.TicTacToe.Data.Context.Configuration
             builder.ToTable("Cells").HasKey(c => c.Id);
             builder.Property(c => c.X).IsRequired();
             builder.Property(c => c.Y).IsRequired();
-            builder.Property(c => c.TicTac).IsRequired();
         }
     }
 }

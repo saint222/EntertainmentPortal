@@ -9,9 +9,6 @@ namespace EP.TicTacToe.Data.Context.Configuration
         public void Configure(EntityTypeBuilder<PlayerDb> builder)
         {
             builder.ToTable("Players").HasKey(p => p.Id);
-            builder.Property(p => p.Login).IsRequired().HasMaxLength(30);
-            builder.Property(p => p.UserName).IsRequired().HasMaxLength(30);
-            builder.Property(p => p.Password).IsRequired().HasMaxLength(8);
         }
     }
 }

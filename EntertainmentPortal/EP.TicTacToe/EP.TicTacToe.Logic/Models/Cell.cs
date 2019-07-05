@@ -1,6 +1,4 @@
-﻿using EP.TicTacToe.Data.Models;
-
-namespace EP.TicTacToe.Logic.Models
+﻿namespace EP.TicTacToe.Logic.Models
 {
     /// <summary>
     ///     Entity of Cells.
@@ -8,7 +6,7 @@ namespace EP.TicTacToe.Logic.Models
     public class Cell
     {
         /// <summary>
-        ///     Id property. Represents Id of Cell in game map.
+        ///     Id property. Represents Id of CellDb in game map.
         /// </summary>
         public int Id { get; set; }
 
@@ -31,16 +29,16 @@ namespace EP.TicTacToe.Logic.Models
         public int TicTac { get; set; }
 
         /// <summary>
-        ///     Chain external key.
+        ///     Map external key.
         /// </summary>
         /// <remarks>
         ///     The Nullable property is used to highlight that there may be no records in a related table.
         /// </remarks>
-        public int? ChainId { get; set; }
+        public int? MapId { get; set; }
 
-        /// <summary>
-        ///     Chain property. Navigation property of Chain.
-        /// </summary>
-        public ChainDb Chain { get; set; }
+        /// <remarks>
+        ///     Navigation property of <c>MapDb</c>.
+        /// </remarks>
+        public Map Map { get; set; }
     }
 }

@@ -4,11 +4,11 @@ using EP.TicTacToe.Logic.Models;
 
 namespace EP.TicTacToe.Logic.Profiles
 {
-    public class ChainProfile : Profile
+    public class HaunterProfile : Profile
     {
-        public ChainProfile()
+        public HaunterProfile()
         {
-            CreateMap<ChainDb, Chain>()
+            CreateMap<HaunterDb, Haunter>()
                 .ReverseMap();
         }
     }

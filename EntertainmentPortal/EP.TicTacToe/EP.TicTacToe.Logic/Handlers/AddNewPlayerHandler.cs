@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
@@ -28,9 +30,8 @@ namespace EP.TicTacToe.Logic.Handlers
         {
             var playerDb = new PlayerDb
             {
-                UserName = request.UserName,
-                Login = request.Login,
-                Password = request.Password
+                Id = request.Id,
+                GameId = request.GameId
             };
 
             _context.Players.Add(playerDb);

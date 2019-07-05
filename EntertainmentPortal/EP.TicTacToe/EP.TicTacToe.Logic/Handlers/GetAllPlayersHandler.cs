@@ -12,7 +12,8 @@ using Microsoft.EntityFrameworkCore.Internal;
 
 namespace EP.TicTacToe.Logic.Handlers
 {
-    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<Player>>>
+    public class
+        GetAllPlayersHandler : IRequestHandler<GetAllPlayers, Maybe<IEnumerable<Player>>>
     {
         private readonly TicTacDbContext _context;
         private readonly IMapper _mapper;
@@ -30,7 +31,8 @@ namespace EP.TicTacToe.Logic.Handlers
                 .ToArrayAsync(cancellationToken);
 
             return playersDb.Any()
-                ? Maybe<IEnumerable<Player>>.From(_mapper.Map<IEnumerable<Player>>(playersDb))
+                ? Maybe<IEnumerable<Player>>.From(
+                    _mapper.Map<IEnumerable<Player>>(playersDb))
                 : Maybe<IEnumerable<Player>>.None;
         }
     }

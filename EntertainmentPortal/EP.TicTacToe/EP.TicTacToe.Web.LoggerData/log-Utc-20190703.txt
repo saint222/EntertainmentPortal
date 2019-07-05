@@ -1,0 +1,123 @@
+2019-07-03 00:08:12.331 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetAllPlayersAsync (EP.TicTacToe.Web)"'
+2019-07-03 00:08:16.600 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.TicTacToe.Logic.Models.Player, EP.TicTacToe.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-07-03 00:08:16.663 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetAllPlayersAsync (EP.TicTacToe.Web)"'
+2019-07-03 00:11:15.931 +03:00 [Information] CORS policy execution successful.
+2019-07-03 00:11:15.950 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-03 00:13:43.558 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Player"'.
+2019-07-03 00:13:43.715 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-03 00:15:03.953 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetAllPlayersAsync (EP.TicTacToe.Web)"'
+2019-07-03 00:15:03.993 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.TicTacToe.Logic.Models.Player, EP.TicTacToe.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-07-03 00:15:04.010 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetAllPlayersAsync (EP.TicTacToe.Web)"'
+2019-07-03 11:44:35.055 +03:00 [Information] The file "/swagger-ui-bundle.js" was not modified
+2019-07-03 11:44:35.051 +03:00 [Information] The file "/swagger-ui.css" was not modified
+2019-07-03 11:44:35.054 +03:00 [Information] The file "/swagger-ui-standalone-preset.js" was not modified
+2019-07-03 11:47:33.453 +03:00 [Information] CORS policy execution successful.
+2019-07-03 11:47:33.682 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 11:47:37.110 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-03 11:47:37.131 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 11:47:57.535 +03:00 [Information] CORS policy execution successful.
+2019-07-03 11:47:57.542 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 11:47:57.701 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-03 11:47:57.703 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 11:49:01.228 +03:00 [Information] CORS policy execution successful.
+2019-07-03 11:49:01.229 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 11:49:01.292 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-03 11:49:01.293 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 11:58:25.954 +03:00 [Information] CORS policy execution successful.
+2019-07-03 11:58:26.681 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:02:32.266 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-03 12:02:32.320 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:25:31.249 +03:00 [Information] CORS policy execution successful.
+2019-07-03 12:25:31.732 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:25:36.145 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 9:25:36 [Utc]
+2019-07-03 12:25:36.211 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 12:25:36.255 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:27:24.249 +03:00 [Information] CORS policy execution successful.
+2019-07-03 12:27:24.259 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:27:24.513 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 9:27:24 [Utc]
+2019-07-03 12:27:24.518 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 12:27:24.526 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:29:48.928 +03:00 [Information] CORS policy execution successful.
+2019-07-03 12:29:48.929 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:29:49.054 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 9:29:49 [Utc]
+2019-07-03 12:29:49.055 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 12:29:49.057 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:35:42.789 +03:00 [Information] CORS policy execution successful.
+2019-07-03 12:35:42.790 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:35:42.940 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 9:35:42 [Utc]
+2019-07-03 12:35:42.941 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 12:35:42.945 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:36:30.073 +03:00 [Information] CORS policy execution successful.
+2019-07-03 12:36:30.074 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:36:30.178 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 9:36:30 [Utc]
+2019-07-03 12:36:30.179 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 12:36:30.181 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:37:39.124 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:37:39.262 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-03 12:37:39.263 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:42:20.209 +03:00 [Information] CORS policy execution successful.
+2019-07-03 12:42:20.210 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:42:20.338 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 9:42:20 [Utc]
+2019-07-03 12:42:20.340 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 12:42:20.346 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:42:33.060 +03:00 [Information] CORS policy execution successful.
+2019-07-03 12:42:33.062 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:42:33.225 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 9:42:33 [Utc]
+2019-07-03 12:42:33.227 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 12:42:33.229 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:42:45.075 +03:00 [Information] CORS policy execution successful.
+2019-07-03 12:42:45.076 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 12:42:45.625 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 9:42:45 [Utc]
+2019-07-03 12:42:45.626 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 12:42:45.627 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 13:18:29.433 +03:00 [Information] CORS policy execution successful.
+2019-07-03 13:18:29.945 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-03 13:18:33.480 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-03 13:18:33.511 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-03 13:18:49.567 +03:00 [Information] CORS policy execution successful.
+2019-07-03 13:18:49.573 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-03 13:18:49.629 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-03 13:18:49.632 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-03 13:23:19.562 +03:00 [Information] CORS policy execution successful.
+2019-07-03 13:23:19.564 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 13:23:21.325 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 10:23:21 [Utc]
+2019-07-03 13:23:21.329 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 13:23:21.360 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 13:38:30.313 +03:00 [Information] CORS policy execution successful.
+2019-07-03 13:38:30.863 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 13:38:34.956 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 10:38:34 [Utc]
+2019-07-03 13:38:35.054 +03:00 [Information] Executing ObjectResult, writing value of type '"null"'.
+2019-07-03 13:38:35.063 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:38:53.832 +03:00 [Information] CORS policy execution successful.
+2019-07-03 14:38:53.840 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:38:54.142 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 11:38:54 [Utc]
+2019-07-03 14:38:54.148 +03:00 [Information] Executing ObjectResult, writing value of type '"null"'.
+2019-07-03 14:38:54.150 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:45:23.627 +03:00 [Information] CORS policy execution successful.
+2019-07-03 14:45:24.182 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:45:28.660 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 11:45:28 [Utc]
+2019-07-03 14:45:28.713 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 14:45:28.742 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:52:51.497 +03:00 [Information] CORS policy execution successful.
+2019-07-03 14:52:51.507 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:52:52.133 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 11:52:52 [Utc]
+2019-07-03 14:52:52.136 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 14:52:52.138 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:56:38.367 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:56:40.582 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-03 14:56:40.675 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:56:53.201 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:56:53.745 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-03 14:56:53.777 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 14:57:39.836 +03:00 [Information] CORS policy execution successful.
+2019-07-03 14:57:39.879 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 15:01:53.239 +03:00 [Information] CORS policy execution successful.
+2019-07-03 15:01:53.745 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 15:01:58.946 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 12:01:58 [Utc]
+2019-07-03 15:01:59.019 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 15:01:59.063 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 15:03:59.901 +03:00 [Information] CORS policy execution successful.
+2019-07-03 15:04:01.080 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-03 15:09:30.234 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 03.07.2019 12:09:29 [Utc]
+2019-07-03 15:09:44.567 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-03 15:09:45.403 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'

@@ -5,7 +5,7 @@ using MediatR;
 namespace EP.TicTacToe.Logic.Queries
 {
     public class GetMap : IRequest<Maybe<Map>>
-    { 
-        public uint Id { get; set; }
+    {
+        public int Id { get; set; }
     }
 }

@@ -89,7 +89,8 @@ namespace EP.TicTacToe.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                     .AllowAnyMethod()
-                    .AllowAnyOrigin());
+                    .AllowAnyOrigin()
+                    .AllowCredentials());
             app.UseAuthentication();
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
@@ -101,23 +102,14 @@ namespace EP.TicTacToe.Web
                 .MinimumLevel.Information()
                 .WriteTo.Console()
                 .WriteTo.Debug()
-                .WriteTo.RollingFile($@"TTTLoggerData\log-{DateTime.UtcNow}.txt",
+                .WriteTo.RollingFile(
+                    Environment.CurrentDirectory +
+                    $@".LoggerData\log-{DateTime.UtcNow.Kind}.txt",
                     shared: true)
                 .WriteTo.SQLite(Environment.CurrentDirectory +
-                                @"TTTLoggerData\TTTLogger.db")
+                                @".LoggerData\Logger.db")
                 .Enrich.WithProperty("App TicTacToe", "Serilog Web App TicTacToe")
                 .CreateLogger();
-
-            //app.Run(async (context) =>
-            //{
-            //    if (context.Session.Keys.Contains("name"))
-            //        await context.Response.WriteAsync($"Hello {context.Session.GetString("name")}!");
-            //    else
-            //    {
-            //        context.Session.SetString("name", "Tom");
-            //        await context.Response.WriteAsync("Hello World!");
-            //    }
-            //});
         }
     }
 }

@@ -1,0 +1,31 @@
+2019-07-02 22:43:33.784 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.AuthController.Logout (EP.TicTacToe.Web)"'
+2019-07-02 22:43:34.184 +03:00 [Information] AuthenticationScheme: "Cookies" signed out.
+2019-07-02 22:43:34.220 +03:00 [Information] Executing HttpStatusCodeResult, setting HTTP status code 200
+2019-07-02 22:43:34.250 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.AuthController.Logout (EP.TicTacToe.Web)"'
+2019-07-02 22:43:45.390 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.AuthController.SimpleLogin (EP.TicTacToe.Web)"'
+2019-07-02 22:43:45.502 +03:00 [Information] AuthenticationScheme: "Cookies" signed in.
+2019-07-02 22:43:45.504 +03:00 [Information] Executing HttpStatusCodeResult, setting HTTP status code 200
+2019-07-02 22:43:45.505 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.AuthController.SimpleLogin (EP.TicTacToe.Web)"'
+2019-07-02 22:44:13.966 +03:00 [Information] CORS policy execution successful.
+2019-07-02 22:44:13.974 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 22:44:16.629 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-02 22:44:16.649 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:28:45.392 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:28:45.808 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-02 23:28:45.839 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:29:52.823 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:29:52.828 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-02 23:29:52.830 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:30:15.135 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetAllPlayersAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:30:15.156 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-02 23:30:15.158 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.GetAllPlayersAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:44:35.722 +03:00 [Information] CORS policy execution successful.
+2019-07-02 23:44:36.298 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:44:39.722 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-02 23:44:39.760 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:47:03.064 +03:00 [Information] CORS policy execution successful.
+2019-07-02 23:47:03.071 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:47:03.157 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-02 23:47:03.163 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'
+2019-07-02 23:50:29.028 +03:00 [Information] CORS policy execution successful.
+2019-07-02 23:50:29.881 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.PlayerController.AddPlayerAsync (EP.TicTacToe.Web)"'

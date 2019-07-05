@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 {
     [DbContext(typeof(TicTacDbContext))]
-    [Migration("20190702130206_InitialCreateDb")]
+    [Migration("20190705121123_InitialCreateDb")]
     partial class InitialCreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ChainId");
+                    b.Property<int?>("MapId");
 
                     b.Property<int>("TicTac");
 
@@ -33,29 +33,25 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChainId");
+                    b.HasIndex("MapId");
 
                     b.ToTable("Cells");
                 });
 
-            modelBuilder.Entity("EP.TicTacToe.Data.Models.ChainDb", b =>
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.FirstPlayerDb", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ChainLength");
+                    b.Property<string>("HaunterId");
 
-                    b.Property<int>("GameId");
-
-                    b.Property<string>("PlayerId");
+                    b.Property<int>("TicTac");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GameId");
+                    b.HasIndex("HaunterId");
 
-                    b.HasIndex("PlayerId");
-
-                    b.ToTable("Chains");
+                    b.ToTable("FirstPlayers");
                 });
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.GameDb", b =>
@@ -68,12 +64,28 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                     b.ToTable("Games");
                 });
 
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.HaunterDb", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FullName");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Haunters");
+                });
+
             modelBuilder.Entity("EP.TicTacToe.Data.Models.MapDb", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("GameDbId");
+                    b.Property<int?>("GameId");
 
                     b.Property<int>("Size");
 
@@ -81,35 +93,51 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GameDbId");
+                    b.HasIndex("GameId")
+                        .IsUnique();
 
                     b.ToTable("Maps");
                 });
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.PlayerDb", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("GameDbId");
+                    b.Property<int?>("FirstPlayerId");
 
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<int?>("GameId");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(8);
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<int?>("SecondPlayerId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GameDbId");
+                    b.HasIndex("FirstPlayerId")
+                        .IsUnique();
+
+                    b.HasIndex("GameId")
+                        .IsUnique();
+
+                    b.HasIndex("SecondPlayerId")
+                        .IsUnique();
 
                     b.ToTable("Players");
+                });
+
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.SecondPlayerDb", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("HaunterId");
+
+                    b.Property<int>("TicTac");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HaunterId");
+
+                    b.ToTable("SecondPlayers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -271,35 +299,47 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.CellDb", b =>
                 {
-                    b.HasOne("EP.TicTacToe.Data.Models.ChainDb", "Chain")
+                    b.HasOne("EP.TicTacToe.Data.Models.MapDb", "Map")
                         .WithMany("Cells")
-                        .HasForeignKey("ChainId");
+                        .HasForeignKey("MapId");
                 });
 
-            modelBuilder.Entity("EP.TicTacToe.Data.Models.ChainDb", b =>
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.FirstPlayerDb", b =>
                 {
-                    b.HasOne("EP.TicTacToe.Data.Models.GameDb", "Game")
-                        .WithMany("Chains")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EP.TicTacToe.Data.Models.PlayerDb", "Player")
-                        .WithMany("Chains")
-                        .HasForeignKey("PlayerId");
+                    b.HasOne("EP.TicTacToe.Data.Models.HaunterDb", "Haunter")
+                        .WithMany("FirstPlayers")
+                        .HasForeignKey("HaunterId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.MapDb", b =>
                 {
-                    b.HasOne("EP.TicTacToe.Data.Models.GameDb")
-                        .WithMany("Maps")
-                        .HasForeignKey("GameDbId");
+                    b.HasOne("EP.TicTacToe.Data.Models.GameDb", "Game")
+                        .WithOne("Map")
+                        .HasForeignKey("EP.TicTacToe.Data.Models.MapDb", "GameId");
                 });
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.PlayerDb", b =>
                 {
-                    b.HasOne("EP.TicTacToe.Data.Models.GameDb")
-                        .WithMany("Players")
-                        .HasForeignKey("GameDbId");
+                    b.HasOne("EP.TicTacToe.Data.Models.FirstPlayerDb", "FirstPlayer")
+                        .WithOne("Player")
+                        .HasForeignKey("EP.TicTacToe.Data.Models.PlayerDb", "FirstPlayerId");
+
+                    b.HasOne("EP.TicTacToe.Data.Models.GameDb", "Game")
+                        .WithOne("Player")
+                        .HasForeignKey("EP.TicTacToe.Data.Models.PlayerDb", "GameId");
+
+                    b.HasOne("EP.TicTacToe.Data.Models.SecondPlayerDb", "SecondPlayer")
+                        .WithOne("Player")
+                        .HasForeignKey("EP.TicTacToe.Data.Models.PlayerDb", "SecondPlayerId");
+                });
+
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.SecondPlayerDb", b =>
+                {
+                    b.HasOne("EP.TicTacToe.Data.Models.HaunterDb", "Haunter")
+                        .WithMany("SecondPlayers")
+                        .HasForeignKey("HaunterId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

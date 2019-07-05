@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EP.TicTacToe.Data.Models
+﻿namespace EP.TicTacToe.Data.Models
 {
     /// <summary>
     ///     Entity of Games.
@@ -13,18 +11,13 @@ namespace EP.TicTacToe.Data.Models
         public int Id { get; set; }
 
         /// <summary>
-        ///     <c>MapDb</c> navigation property. Used for one-to-many relationships.
+        ///     <c>MapDb</c> navigation property. Used for one-to-one relationships.
         /// </summary>
-        public IList<MapDb> Maps { get; set; }
+        public MapDb Map { get; set; }
 
         /// <summary>
-        ///     <c>PlayerDb</c> navigation property. Used for one-to-many relationships.
+        ///     <c>PlayerDb</c> navigation property. Used for one-to-one relationships.
         /// </summary>
-        public IList<PlayerDb> Players { get; set; }
-
-        /// <summary>
-        ///     <c>ChainDb</c> navigation property. Used for one-to-many relationships.
-        /// </summary>
-        public IList<ChainDb> Chains { get; set; }
+        public PlayerDb Player { get; set; }
     }
 }

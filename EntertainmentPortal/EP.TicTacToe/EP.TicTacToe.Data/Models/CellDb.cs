@@ -1,4 +1,6 @@
-﻿namespace EP.TicTacToe.Data.Models
+﻿using System;
+
+namespace EP.TicTacToe.Data.Models
 {
     /// <summary>
     ///     Entity of Cells.
@@ -29,18 +31,16 @@
         public int TicTac { get; set; }
 
         /// <summary>
-        ///     Chain external key.
-        ///     Used for one-to-many relationships.
+        ///     Map external key.
         /// </summary>
         /// <remarks>
         ///     The Nullable property is used to highlight that there may be no records in a related table.
         /// </remarks>
-        public int? ChainId { get; set; }
+        public int? MapId { get; set; }
 
-        /// <summary>
-        ///     Chain property. Navigation property of ChainDb.
-        ///     Used for one-to-many relationships.
-        /// </summary>
-        public ChainDb Chain { get; set; }
+        /// <remarks>
+        ///     Navigation property of <c>MapDb</c>.
+        /// </remarks>
+        public MapDb Map { get; set; }
     }
 }

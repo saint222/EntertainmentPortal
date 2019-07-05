@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EP.TicTacToe.Logic.Commands;
@@ -37,17 +36,17 @@ namespace EP.TicTacToe.Web.Controllers
 
             if (result.HasValue)
             {
-                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameter: Id = {model.Id}");
+                _logger.LogInformation(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                    $"Parameter: Id = {model.Id}");
 
                 return Ok(result.Value);
             }
-            else
-            {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} : " +
-                    $"Id = {model.Id}, - game not found");
-                return NotFound();
-            }
+
+            _logger.LogWarning(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} : " +
+                $"Id = {model.Id}, - game not found");
+            return NotFound();
         }
 
         [HttpPost("api/game")]
@@ -60,10 +59,9 @@ namespace EP.TicTacToe.Web.Controllers
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameters: PlayerOne = {model.PlayerOne}, " +
-                $"PlayerTwo = {model.PlayerTwo}," +
+                $"PlayerTwo = {model.PlayerTwo}, " +
                 $"MapSize = {model.MapSize}");
 
-            // ReSharper disable once UseDeconstruction
             var result = await _mediator.Send(model);
 
             if (result.IsSuccess)
@@ -74,13 +72,12 @@ namespace EP.TicTacToe.Web.Controllers
 
                 return Created("api/game", result.Value);
             }
-            else
-            {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+
+            _logger.LogWarning(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
                 "Game can't be created");
 
-                return BadRequest(result.Error);
-            }
+            return BadRequest(result.Error);
         }
     }
 }

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EP.TicTacToe.Data.Context.Configuration
 {
-    public class ChainConfiguration : IEntityTypeConfiguration<ChainDb>
+    public class HaunterConfiguration : IEntityTypeConfiguration<HaunterDb>
     {
-        public void Configure(EntityTypeBuilder<ChainDb> builder)
+        public void Configure(EntityTypeBuilder<HaunterDb> builder)
         {
-            builder.ToTable("Chains").HasKey(c => c.Id);
+            builder.ToTable("Haunters").HasKey(p => p.Id);
         }
     }
 }

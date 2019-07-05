@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EP.TicTacToe.Data.Models
+﻿namespace EP.TicTacToe.Data.Models
 {
     /// <summary>
     ///     Entity class, which specifies all properties of players stored in database.
@@ -10,26 +8,36 @@ namespace EP.TicTacToe.Data.Models
         /// <summary>
         ///     Property indicates unique Id-number of a player.
         /// </summary>
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
-        ///     Property indicates unique username of a player.
+        ///     Player external key.
         /// </summary>
-        public string UserName { get; set; }
+        public int? GameId { get; set; }
+
+        /// <remarks>
+        ///     Navigation property of <c>PlayerDb</c>. Used for one-to-one relationships.
+        /// </remarks>
+        public GameDb Game { get; set; }
 
         /// <summary>
-        ///     Login property. Represents player's Login.
+        ///     Player external key.
         /// </summary>
-        public string Login { get; set; }
+        public int? FirstPlayerId { get; set; }
+
+        /// <remarks>
+        ///     Navigation property of <c>PlayerDb</c>.
+        /// </remarks>
+        public FirstPlayerDb FirstPlayer { get; set; }
 
         /// <summary>
-        ///     Property indicates password of a player to login.
+        ///     Player external key.
         /// </summary>
-        public string Password { get; set; }
+        public int? SecondPlayerId { get; set; }
 
-        /// <summary>
-        ///     <c>PlayerDb</c> navigation property. Used for one-to-many relationships.
-        /// </summary>
-        public IList<ChainDb>Chains { get; set; }
+        /// <remarks>
+        ///     Navigation property of <c>PlayerDb</c>.
+        /// </remarks>
+        public SecondPlayerDb SecondPlayer { get; set; }
     }
 }

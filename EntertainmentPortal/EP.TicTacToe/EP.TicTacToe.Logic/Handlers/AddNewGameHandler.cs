@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Bogus;
 using CSharpFunctionalExtensions;
 using EP.TicTacToe.Data.Context;
 using EP.TicTacToe.Data.Models;
@@ -27,39 +28,49 @@ namespace EP.TicTacToe.Logic.Handlers
         public async Task<Result<Game>> Handle(AddNewGameCommand request,
                                                CancellationToken cancellationToken)
         {
-            //  Check for the existence of players in the database.
-            var playerOne = await (_context.Players
-                .Where(p => p.Id == request.PlayerOne)
-                .FirstOrDefaultAsync(cancellationToken: cancellationToken));
-            if (playerOne == null)
-                return Result.Fail<Game>(
-                    $"There is no player's id {request.PlayerOne} in database.");
-
-            var playerTwo = await (_context.Players
-                .Where(p => p.Id == request.PlayerTwo)
-                .FirstOrDefaultAsync(cancellationToken: cancellationToken));
-            if (playerTwo == null)
-                return Result.Fail<Game>(
-                    $"There is no player's id {request.PlayerTwo} in database.");
-
-
             //  Creating new clean game.
             var gameDb = new GameDb();
             await _context.Games.AddAsync(gameDb, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            // Creating fake haunters if HaunterDb is empty.
+            if (!_context.Haunters.Any()) Seed(_context, 100);
+
+            // Creating two new players in the game.
+            await CheckPlayerIdForExistenceAsync(_context, request.PlayerOne,
+                cancellationToken);
+            var firstPlayerDb = new FirstPlayerDb {HaunterId = request.PlayerOne};
+            await _context.FirstPlayers.AddAsync(firstPlayerDb, cancellationToken);
+
+            await CheckPlayerIdForExistenceAsync(_context, request.PlayerTwo,
+                cancellationToken);
+            var secondPlayerDb = new SecondPlayerDb {HaunterId = request.PlayerTwo};
+            await _context.SecondPlayers.AddAsync(secondPlayerDb, cancellationToken);
+
+            var playersDb = new PlayerDb
+            {
+                GameId = gameDb.Id, FirstPlayerId = firstPlayerDb.Id,
+                SecondPlayerId = secondPlayerDb.Id
+            };
+            await _context.Players.AddAsync(playersDb, cancellationToken);
 
             // Creating new map with received parameters
             var mapDb = new MapDb
-                {Size = request.MapSize, WinningChain = request.MapWinningChain};
+            {
+                Size = request.MapSize,
+                WinningChain = request.MapWinningChain,
+                GameId = gameDb.Id
+            };
             await _context.Maps.AddAsync(mapDb, cancellationToken);
 
+            //  Creating new map cells
             var cells = CreateCellsForMap(mapDb);
             await _context.AddRangeAsync(cells, cancellationToken);
-
-            await _context.SaveChangesAsync(cancellationToken);
 
             var game = await _context.Games
                 .Where(g => g.Id == gameDb.Id)
                 .SingleOrDefaultAsync(cancellationToken);
+
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
@@ -72,19 +83,35 @@ namespace EP.TicTacToe.Logic.Handlers
             }
         }
 
+
+        /// <summary>
+        ///     Check for the existence of players in the database.
+        /// </summary>
+        private static async Task CheckPlayerIdForExistenceAsync(
+            TicTacDbContext context, string id, CancellationToken cancellationToken)
+        {
+            var haunterOne = await context.Haunters
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (haunterOne != null) return;
+            Result.Fail<Game>($"There is no player's id {id} in database");
+        }
+
         /// <summary>
         ///     The method initializes add cells to DB that represents the game map.
         /// </summary>
         /// <param name="mapDb">Map database projection</param>
-        public static IEnumerable<CellDb> CreateCellsForMap(MapDb mapDb)
+        private static IEnumerable<CellDb> CreateCellsForMap(MapDb mapDb)
         {
             var cells = new List<CellDb>();
+            var mapId = mapDb.Id;
 
             for (var i = 0; i < mapDb.Size; i++)     // lines
                 for (var j = 0; j < mapDb.Size; j++) // columns
                 {
                     var cell = new CellDb
                     {
+                        MapId = mapId,
                         X = i,
                         Y = j,
                         TicTac = 0
@@ -94,6 +121,24 @@ namespace EP.TicTacToe.Logic.Handlers
                 }
 
             return cells;
+        }
+
+        /// <summary>
+        ///     Creating fake haunters if HaunterDb is empty.
+        /// </summary>
+        /// <param name="context">Db context.</param>
+        /// <param name="cnt">Count of faker.</param>
+        private static void Seed(DbContext context, int cnt)
+        {
+            var faker = new Faker<HaunterDb>()
+                .RuleFor(r => r.Id, f => f.IndexFaker.ToString())
+                .RuleFor(r => r.FullName, f => f.Person.FullName)
+                .RuleFor(r => r.Password, f => f.Internet.Password(8))
+                .RuleFor(r => r.UserName, f => f.Person.UserName);
+
+            var haunter = faker.Generate(cnt);
+            context.AddRange(haunter);
+            context.SaveChanges();
         }
     }
 }

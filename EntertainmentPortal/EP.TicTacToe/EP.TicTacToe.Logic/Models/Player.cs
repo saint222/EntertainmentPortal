@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EP.TicTacToe.Logic.Models
+﻿namespace EP.TicTacToe.Logic.Models
 {
     /// <summary>
     ///     Class, which specifies all properties of players in a current game.
@@ -10,26 +8,36 @@ namespace EP.TicTacToe.Logic.Models
         /// <summary>
         ///     Property indicates unique Id-number of a player.
         /// </summary>
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
-        ///     Property indicates unique username of a player.
+        ///     Player external key.
         /// </summary>
-        public string UserName { get; set; }
+        public int? GameId { get; set; }
+
+        /// <remarks>
+        ///     Navigation property of <c>PlayerDb</c>. Used for one-to-one relationships.
+        /// </remarks>
+        public Game Game { get; set; }
 
         /// <summary>
-        ///     Login property. Represents player's Login.
+        ///     Player external key.
         /// </summary>
-        public string Login { get; set; }
+        public int? FirstPlayerId { get; set; }
+
+        /// <remarks>
+        ///     Navigation property of <c>PlayerDb</c>.
+        /// </remarks>
+        public FirstPlayer FirstPlayer { get; set; }
 
         /// <summary>
-        ///     Property indicates password of a player to login.
+        ///     Player external key.
         /// </summary>
-        public string Password { get; set; }
+        public int? SecondPlayerId { get; set; }
 
-        /// <summary>
-        ///     <c>PlayerDb</c> navigation property.
-        /// </summary>
-        public IList<Chain> Chains { get; set; }
+        /// <remarks>
+        ///     Navigation property of <c>PlayerDb</c>.
+        /// </remarks>
+        public SecondPlayer SecondPlayer { get; set; }
     }
 }
