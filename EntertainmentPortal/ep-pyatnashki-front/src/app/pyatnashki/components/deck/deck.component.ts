@@ -1,3 +1,4 @@
+import { ConfigService } from './../../../shared/services/config.service';
 import { HttpResponseBase } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Deck } from '../../models/deck';
@@ -7,7 +8,8 @@ import { Tile } from '../../models/tile';
 @Component({
   selector: 'app-deck',
   templateUrl: './deck.component.html',
-  styleUrls: ['./deck.component.scss']
+  styleUrls: ['./deck.component.scss'],
+  providers: [DeckService, ConfigService]
 })
 export class DeckComponent implements OnInit {
   deck: Deck = new Deck(0, 4, false, [
@@ -35,6 +37,9 @@ export class DeckComponent implements OnInit {
     this.deckService.getDeck().subscribe(d => this.deck = d);
   }
 
+  getDeck() {
+    this.deckService.getDeck().subscribe(d => this.deck = d);
+  }
   newDeck() {
     this.deckService.newDeck().subscribe(d => this.deck = d);
   }

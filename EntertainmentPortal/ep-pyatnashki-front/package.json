@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.0.1",
     "@angular/platform-browser-dynamic": "~8.0.1",
     "@angular/router": "~8.0.1",
+    "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.3.1",
     "jquery": "^1.9.1",
     "popper.js": "^1.14.7",

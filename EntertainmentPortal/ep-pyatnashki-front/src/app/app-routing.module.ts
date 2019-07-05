@@ -5,8 +5,10 @@ import { DeckComponent } from './pyatnashki/components/deck/deck.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './account/components/login/login.component';
 
 const routes: Routes = [
+  {path: 'account', component: LoginComponent},
   {path: 'deck', component: DeckComponent},
   {path: 'leaderboard', component: LeaderboardComponent},
   {path: 'userinfo', component: UserinfoComponent},

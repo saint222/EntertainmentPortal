@@ -23,6 +23,7 @@ using EP._15Puzzle.Web.Filters;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -44,17 +45,51 @@ namespace EP._15Puzzle.Web
             services.AddAuthenticationCore();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+                {
+                    opt.RequireHttpsMetadata = true;
+                    opt.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidIssuer = AuthConstants.ISSUER_NAME,
+                        ValidateIssuer = true,
+                        ValidAudience = AuthConstants.AUDIENCE_NAME,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthConstants.SECRET)),
+                        ValidateLifetime = true,
+                        RequireExpirationTime = true,
+                        RequireSignedTokens = true
+                    };
+                    
+                })
                 .AddGoogle("Google", opt =>
                 {
                     opt.ClientId = "734768643870-2ls26lml1ifn9kdcfoppvfmagujj8nki.apps.googleusercontent.com";
                     opt.ClientSecret = "KnuFajDb0Y-xTuaoodohxSEa";
+                })
+                .AddFacebook("Facebook", opt =>
+                {
+                    opt.AppId = "1257326831111548";
+                    opt.AppSecret = "a0a9b3ced9bed2aae3cfb0b92a8e9d30";
                 }); 
 
             services.AddAuthorization(opt =>
             {
+                opt.AddPolicy("bearer",
+                    cfg => cfg.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                        .RequireAuthenticatedUser());
                 opt.AddPolicy("google",
                     cfg => cfg.AddAuthenticationSchemes("Google")
                         .RequireAuthenticatedUser());
+                opt.AddPolicy("facebook",
+                    cfg => cfg.AddAuthenticationSchemes("Facebook")
+                        .RequireAuthenticatedUser());
+                /*{
+                    var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(
+                        JwtBearerDefaults.AuthenticationScheme, "Google", "Facebook");
+                    defaultAuthorizationPolicyBuilder = defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
+                    opt.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
+                }*/
             });
 
 
@@ -94,13 +129,12 @@ namespace EP._15Puzzle.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                     .AllowAnyMethod()
-                    .WithOrigins("http://localhost:4200")
+                    .WithOrigins("http://localhost:4200", "https://localhost:44380", "https://accounts.google.com", "https://www.facebook.com")
                     .AllowCredentials());
             app.UseAuthentication();
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseSwagger().UseSwaggerUi3();
             app.UseMvc();
-           
         }
     }
 }

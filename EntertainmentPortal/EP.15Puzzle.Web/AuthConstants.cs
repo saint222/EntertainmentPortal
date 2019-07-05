@@ -11,6 +11,6 @@ namespace EP._15Puzzle.Web
 
         public const string AUDIENCE_NAME = "15PuzzleApp";
 
-        public const string SECRET = "top_secret";
+        public const string SECRET = "top_secrettop_secrettop_secrettop_secrettop_secret";
     }
 }

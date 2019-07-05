@@ -3,11 +3,14 @@ using EP._15Puzzle.Data.Models;
 
 namespace EP._15Puzzle.Logic.Models
 {
-    public class User
+    public class UserCred
     {
         public string UserName { get; set; }
+
         public string Password { get; set; }
 
-        public ICollection<RecordDb> Records { get; set; } = new List<RecordDb>();
+        public string Email { get; set; }
+        public string AuthType { get; set; }
+        public string AuthId { get; set; }
     }
 }

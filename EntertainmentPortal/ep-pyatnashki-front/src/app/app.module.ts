@@ -1,3 +1,5 @@
+
+import { AccountModule } from './account/account.module';
 import { PyatnashkiModule } from './pyatnashki/pyatnashki.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -8,7 +10,7 @@ import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, PyatnashkiModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, PyatnashkiModule, AccountModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent]
 })
