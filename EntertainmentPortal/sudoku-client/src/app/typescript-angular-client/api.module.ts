@@ -1,10 +1,8 @@
-import { AuthService } from './api/auth.service';
 import { RouterModule } from '@angular/router';
 import { CellComponent } from './components/cell/cell.component';
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
 import { Configuration } from './configuration';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
 import { PlayersService } from './api/players.service';
 import { SessionsService } from './api/sessions.service';
 import { SessionComponent } from './components/session/session.component';
@@ -21,7 +19,11 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserComponent } from './components/user/user.component';
 
 @NgModule({
-  declarations: [SessionComponent, CellComponent, CreateSessionComponent, PlayerComponent, PlayerInfoComponent, SignInComponent, RegisterComponent, HomeComponent, ConfirmEmailComponent, PrivacyComponent, UserComponent],
+  declarations: [SessionComponent, CellComponent,
+    CreateSessionComponent, PlayerComponent,
+    PlayerInfoComponent, SignInComponent,
+    RegisterComponent, HomeComponent,
+    ConfirmEmailComponent, PrivacyComponent, UserComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -37,7 +39,6 @@ import { UserComponent } from './components/user/user.component';
       ReactiveFormsModule
 ],
   providers: [
-    AuthService,
     PlayersService,
     SessionsService
    ]

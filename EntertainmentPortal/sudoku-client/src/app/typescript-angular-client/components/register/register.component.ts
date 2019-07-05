@@ -1,6 +1,4 @@
-import { AuthService } from './../../api/auth.service';
-import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from './../../api/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,15 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
-  registerGroup: FormGroup;
+export class RegisterComponent {
 
-  constructor(private service: RegisterService, private fb: FormBuilder, private route: ActivatedRoute) {
-
-
-  }
-
-  ngOnInit() {
-  }
-
+  constructor (public service: UserService ){}
 }

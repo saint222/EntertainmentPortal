@@ -127,7 +127,7 @@ namespace EP.Sudoku.Web
             app.UseCors(opt => opt.AllowAnyHeader() // CORS configuration.
                .AllowAnyMethod()
                .AllowAnyOrigin()
-               .WithOrigins("http://localhost:4200")
+               .WithOrigins("https://localhost:4200")
                .AllowCredentials()
 );
 
