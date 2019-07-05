@@ -1,0 +1,38 @@
+2019-06-18 19:57:26.273 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.GetUserSessionAsync (EP.Hangman.Web)"'
+2019-06-18 19:57:26.448 +03:00 [Information] Received GET request
+2019-06-18 19:57:27.434 +03:00 [Error] Game session 15 wasn't found
+2019-06-18 19:57:27.440 +03:00 [Information] GET request executed
+2019-06-18 19:57:27.451 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-18 19:57:27.558 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.GetUserSessionAsync (EP.Hangman.Web)"'
+2019-06-18 19:57:34.506 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.GetUserSessionAsync (EP.Hangman.Web)"'
+2019-06-18 19:57:34.508 +03:00 [Information] Received GET request
+2019-06-18 19:57:34.545 +03:00 [Information] GET request executed
+2019-06-18 19:57:34.546 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-18 19:57:34.557 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.GetUserSessionAsync (EP.Hangman.Web)"'
+2019-06-18 19:57:58.150 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-18 19:57:58.186 +03:00 [Information] Received POST request
+2019-06-18 19:57:58.192 +03:00 [Information] Creating new game session
+2019-06-18 19:57:58.289 +03:00 [Information] Updating database with new game session
+2019-06-18 19:57:58.458 +03:00 [Information] Database was updated
+2019-06-18 19:57:58.459 +03:00 [Information] POST request executed
+2019-06-18 19:57:58.459 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Hangman.Logic.Models.ControllerData"'.
+2019-06-18 19:57:58.460 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.CreateNewGameAsync (EP.Hangman.Web)"'
+2019-06-18 19:58:10.372 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.DeleteGameSessionAsync (EP.Hangman.Web)"'
+2019-06-18 19:58:10.406 +03:00 [Information] Received DELETE request
+2019-06-18 19:58:10.437 +03:00 [Error] Request is invalid
+2019-06-18 19:58:10.438 +03:00 [Information] DELETE request executed
+2019-06-18 19:58:10.444 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-18 19:58:10.446 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.DeleteGameSessionAsync (EP.Hangman.Web)"'
+2019-06-18 19:58:20.287 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.DeleteGameSessionAsync (EP.Hangman.Web)"'
+2019-06-18 19:58:20.288 +03:00 [Information] Received DELETE request
+2019-06-18 19:58:20.296 +03:00 [Error] Game session 16 wasn't found
+2019-06-18 19:58:20.296 +03:00 [Information] DELETE request executed
+2019-06-18 19:58:20.296 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-06-18 19:58:20.297 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.DeleteGameSessionAsync (EP.Hangman.Web)"'
+2019-06-18 19:58:27.294 +03:00 [Information] Executing endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.DeleteGameSessionAsync (EP.Hangman.Web)"'
+2019-06-18 19:58:27.295 +03:00 [Information] Received DELETE request
+2019-06-18 19:58:27.299 +03:00 [Information] Updating database
+2019-06-18 19:58:27.350 +03:00 [Information] Database was updated
+2019-06-18 19:58:27.350 +03:00 [Information] DELETE request executed
+2019-06-18 19:58:27.351 +03:00 [Information] Executing ObjectResult, writing value of type '"null"'.
+2019-06-18 19:58:27.351 +03:00 [Information] Executed endpoint '"EP.Hangman.Web.Controllers.PlayHangmanController.DeleteGameSessionAsync (EP.Hangman.Web)"'

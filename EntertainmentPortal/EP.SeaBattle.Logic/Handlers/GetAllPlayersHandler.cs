@@ -1,29 +1,39 @@
-﻿using System;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
+using EP.SeaBattle.Data.Context;
+using EP.SeaBattle.Logic.Queries;
+using EP.SeaBattle.Logic.Models;
+using CSharpFunctionalExtensions;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using EP.SeaBattle.Data.Storages;
-using EP.SeaBattle.Logic.Models;
-using EP.SeaBattle.Logic.Queries;
-using MediatR;
 
 namespace EP.SeaBattle.Logic.Handlers
 {
-    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayers, IEnumerable<Player>>
+    public class GetAllPlayersHandler : IRequestHandler<GetAllPlayersQuery, Maybe<IEnumerable<Player>>>
     {
-        public Task<IEnumerable<Player>> Handle(GetAllPlayers request, CancellationToken cancellationToken)
-        {
-            var items = PlayersStorage.Players.Select(s => new Player()
-            {
-                Id = s.Id,
-                Login = s.Login,
-                IsBanned = s.IsBanned,
-                BanExpire = s.BanExpire
-            }).ToArray();
+        private readonly SeaBattleDbContext _context;
+        private readonly IMapper _mapper;
 
-            return Task.FromResult((IEnumerable<Player>)items);
+        public GetAllPlayersHandler(SeaBattleDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<Maybe<IEnumerable<Player>>> Handle(GetAllPlayersQuery request, CancellationToken cancellationToken)
+        {
+            var result = _mapper.Map<IEnumerable<Player>>(await _context.Players
+                                                                    .Include(p => p.Ships)
+                                                                    .AsNoTracking()
+                                                                    .ToArrayAsync(cancellationToken)
+                                                                    .ConfigureAwait(false));
+
+            return !result.Any() ?
+                Maybe<IEnumerable<Player>>.None :
+                Maybe<IEnumerable<Player>>.From(result);
         }
     }
 }
