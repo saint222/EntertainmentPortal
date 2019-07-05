@@ -23,4 +23,10 @@
     <ProjectReference Include="..\EP.DotsBoxes.Data\EP.DotsBoxes.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.IdentityModel.Logging">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.identitymodel.logging\5.3.0\lib\netstandard2.0\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
