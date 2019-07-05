@@ -17,7 +17,7 @@
         <member name="M:EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync">
             <summary>
             Fetches all registered players from the Db.
-            </summary>
+            </summary>  
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync(System.Int32)">
             <summary>

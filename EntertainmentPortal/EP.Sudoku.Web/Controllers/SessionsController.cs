@@ -5,6 +5,7 @@ using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NJsonSchema.Annotations;
@@ -30,9 +31,11 @@ namespace EP.Sudoku.Web.Controllers
             _logger = logger;
         }
 
+
         /// <summary>
         /// Fetches a gamesession from the Db by the unique Id.
         /// </summary>
+        [Authorize(AuthenticationSchemes = "Google")]
         [HttpGet("api/sessions/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Session not found")]
