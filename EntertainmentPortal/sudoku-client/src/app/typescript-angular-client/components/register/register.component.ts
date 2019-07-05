@@ -10,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  registerGroup: FormGroup;
+  error: string;
 
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
 
@@ -40,6 +42,7 @@ export class RegisterComponent {
   }
 
   onSubmit(form: FormGroup) {
+
     var body = {
       Name: form.value.name,
       Email: form.value.email,
@@ -51,7 +54,10 @@ export class RegisterComponent {
       this.router.navigate(['/home']);
     },
     (err: HttpErrorResponse) => {
+      this.error = err.error[0].description;
+      console.log(this.error);
       return console.log(err.error);
+      
     }
   );
   }

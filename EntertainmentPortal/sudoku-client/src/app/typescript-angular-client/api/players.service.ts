@@ -30,7 +30,7 @@ import { Configuration } from '../configuration';
 export class PlayersService {
 
     //protected basePath = 'http://localhost:58857';
-    protected basePath = 'https://localhost:44387';
+    protected basePath = 'https://localhost:44332';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

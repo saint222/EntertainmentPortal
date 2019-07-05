@@ -10,7 +10,7 @@
         <div class="form-group required">
           <label>Email</label>
           <input class="form-control" formControlName="email" placeholder="Email">
-          <label class="text-danger" *ngIf="registerGroup.get('email')?.touched && registerGroup.get('email').errors?.required">This field is mandatory.</label>
+          <label class="text-danger" *ngIf="registerGroup.get('email')?.touched && registerGroup.get('email').errors?.email">This field is put incorrectly.</label>
          </div>
          <div formGroupName="passwords">
             <div class="form-group required">
@@ -25,6 +25,7 @@
                 <label class="text-danger" *ngIf="registerGroup.get('passwords.confirmPassword').touched && registerGroup.get('passwords.confirmPassword').errors?.passwordMismatch">Confirm Password does not match.</label>
                </div>
          </div>
+         <label *ngIf=error>{{error}}</label>
          <div class="form-row">
            <div class="form-group col-md8 offset-md">
              <button type="submit" class="btn btn-success btn-lg btn-block">Registration</button>
