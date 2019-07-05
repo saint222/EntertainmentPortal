@@ -1,0 +1,21 @@
+
+<div class="colorGray" *ngIf="isGrayColor(cell)">
+  <div class="square" >
+    <div *ngIf="cell.value != 0">
+      <input type="text" value="{{cell.value}}" (input)="updateCell($event.target.value)" (keydown.enter)="getHint()">
+    </div>
+    <div *ngIf="cell.value == 0">
+      <input type="text" (input)="updateCell($event.target.value)" (keydown.enter)="getHint()">
+    </div>
+  </div>
+</div>
+<div class="colorFloralwhite" *ngIf="!isGrayColor(cell)">
+  <div class="square" >
+    <div *ngIf="cell.value != 0">
+      <input type="text" value="{{cell.value}}" (input)="updateCell($event.target.value)" (keydown.enter)="getHint()">
+    </div>
+    <div *ngIf="cell.value == 0">
+      <input type="text" (input)="updateCell($event.target.value)" (keydown.enter)="getHint()">
+    </div>
+    </div>
+</div>
