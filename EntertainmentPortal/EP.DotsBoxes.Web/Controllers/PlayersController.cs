@@ -17,6 +17,7 @@ namespace EP.DotsBoxes.Web.Controllers
     /// This is PlayersController.
     /// </summary>
     [ApiController]
+    [Authorize]
     public class PlayersController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -70,14 +71,16 @@ namespace EP.DotsBoxes.Web.Controllers
         [HttpPost("api/player")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Added new player")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> AddPlayerAsync([FromBody][NotNull]AddPlayerCommand model) 
+        public async Task<IActionResult> AddPlayerAsync([FromBody][NotNull]AddPlayerCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Player: " +
-                $"Name = {model.Name}, Color = {model.Color}");
+                $"Name = {model.Name}");
 
             if (!ModelState.IsValid)
             {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: Name = {model.Name}, Color = {model.Color} - Invalid data");
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                                   $"Name = {model.Name} - Invalid data");
+
                 return BadRequest(ModelState);
             }
 

@@ -15,7 +15,7 @@ namespace EP.DotsBoxes.Web.Filters
         }
 
         public void OnException(ExceptionContext context)
-        {
+           {
             _logger.LogCritical(context.Exception.Message, "Unexpected exception!");
             context.ExceptionHandled = true;
 

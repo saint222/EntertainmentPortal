@@ -27,5 +27,8 @@ namespace EP.DotsBoxes.Logic.Models
         /// Cells property. Represents a list of cells of the playing field.
         /// </summary>
         public List<Cell> Cells { get; set; }
+
+        public List<Player> Players { get; set; }
+
     }
 }

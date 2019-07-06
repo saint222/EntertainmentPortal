@@ -7,15 +7,9 @@ namespace EP.DotsBoxes.Logic
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddPlayerServices(this IServiceCollection services)
-        {
-            services.AddPlayerData();
-            return services;
-        }
-
         public static IServiceCollection CreateGameBoardServices(this IServiceCollection services)
         {
-            services.CreateGameBoardData();
+            services.CreateGameBoardData();            
             return services;
         }
     }

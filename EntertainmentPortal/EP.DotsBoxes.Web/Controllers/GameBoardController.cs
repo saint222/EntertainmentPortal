@@ -6,6 +6,9 @@ using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using JetBrains.Annotations;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
@@ -35,7 +38,8 @@ namespace EP.DotsBoxes.Web.Controllers
         /// </summary>
         // GET api/gameboard
         [HttpGet("api/gameboard")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Cell>), Description = "Received game board")]
+        [Authorize(AuthenticationSchemes = "Google")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<GameBoard>), Description = "Received game board")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game board is not created")]
         public async Task<IActionResult> GetGameBoardAsync()
         {
@@ -74,8 +78,8 @@ namespace EP.DotsBoxes.Web.Controllers
         /// Changes the gameboard after the player’s move and saves in the Db.
         /// </summary>
         //PUT api/gameboard
-        [HttpPut("api/gameboard")]
-       [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Update game board")]
+       [HttpPut("api/gameboard")]
+       [SwaggerResponse(HttpStatusCode.OK, typeof(GameBoard), Description = "Update game board")]
        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> UpdateGameBoardAsync([FromBody][NotNull]UpdateGameBoardCommand model)
         {

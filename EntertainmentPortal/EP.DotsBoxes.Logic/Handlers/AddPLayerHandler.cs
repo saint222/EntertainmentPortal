@@ -17,12 +17,12 @@ namespace EP.DotsBoxes.Logic.Handlers
 {
     public class AddPLayerHandler : IRequestHandler<AddPlayerCommand, Result<Player>>
     {
-        private readonly PlayerDbContext _context;
+        private readonly GameBoardDbContext _context;
         private readonly IMapper _mapper;
         private readonly IValidator<AddPlayerCommand> _validator;
         private readonly ILogger<AddPLayerHandler> _logger;
 
-        public AddPLayerHandler(PlayerDbContext context, IMapper mapper, IValidator<AddPlayerCommand> validator, ILogger<AddPLayerHandler> logger)
+        public AddPLayerHandler(GameBoardDbContext context, IMapper mapper, IValidator<AddPlayerCommand> validator, ILogger<AddPLayerHandler> logger)
         {
             _context = context;
             _mapper = mapper;
@@ -33,6 +33,7 @@ namespace EP.DotsBoxes.Logic.Handlers
         public async Task<Result<Player>> Handle([NotNull]AddPlayerCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Adding a new player.");
+
             //validate
             var result = _validator.Validate(request);
 
@@ -42,19 +43,21 @@ namespace EP.DotsBoxes.Logic.Handlers
                 return Result.Fail<Player>(result.Errors.First().ErrorMessage);
             }
 
-            var model = new PlayerDb
+            var model = new Player
             {
-                Name = request.Name,
-                Color = request.Color
+                Name = request.Name,             
             };
 
-            _context.Players.Add(model);
+            var context = _context.GameBoard.Include(g => g.Players)
+                .FirstOrDefault(b => b.Id == request.GameBoardId);
+
+            context.Players.Add(_mapper.Map<PlayerDb>(model));
 
             try
             {
                 _logger.LogInformation("Updating database with a new player.");
                 await _context.SaveChangesAsync(cancellationToken);
-                return Result.Ok<Player>(_mapper.Map<Player>(model));
+                return Result.Ok<Player>(model);
             }
             catch (DbUpdateException ex)
             {

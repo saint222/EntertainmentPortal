@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using CSharpFunctionalExtensions;
-using EP.DotsBoxes.Data.Models;
+using EP.DotsBoxes.Logic.Models;
 using MediatR;
 
 namespace EP.DotsBoxes.Logic.Queries
 {
-    public class GetAllPlayers : IRequest<Maybe<IEnumerable<PlayerDb>>>
+    public class GetAllPlayers : IRequest<Maybe<IEnumerable<Player>>>
     {
 
     }

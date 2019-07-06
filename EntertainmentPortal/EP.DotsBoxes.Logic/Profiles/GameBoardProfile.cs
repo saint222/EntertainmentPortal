@@ -13,18 +13,10 @@ namespace EP.DotsBoxes.Logic.Profiles
                 .ForMember(b => b.Rows, opt => opt.MapFrom(b => b.Rows))
                 .ForMember(b => b.Columns, opt => opt.MapFrom(b => b.Columns))
                 .ForMember(b => b.Cells, opt => opt.MapFrom(b => b.Cells))
+                .ForMember(b => b.Players, opt => opt.MapFrom(b => b.Players))
                 .ReverseMap();
 
-            CreateMap<Cell, CellDb>()
-                .ForMember(b => b.Id, opt => opt.MapFrom(b => b.Id))
-                .ForMember(b => b.Row, opt => opt.MapFrom(b => b.Row))
-                .ForMember(b => b.Column, opt => opt.MapFrom(b => b.Column))
-                .ForMember(b => b.Id, opt => opt.MapFrom(b => b.Id))
-                .ForMember(b => b.Top, opt => opt.MapFrom(b => b.Top))
-                .ForMember(b => b.Bottom, opt => opt.MapFrom(b => b.Bottom))
-                .ForMember(b => b.Right, opt => opt.MapFrom(b => b.Right))
-                .ForMember(b => b.Left, opt => opt.MapFrom(b => b.Left))
-                .ReverseMap();
+          
         }
     }
 }

@@ -56,7 +56,7 @@ namespace EP.DotsBoxes.Data.Models
         /// <summary>
         /// GameBoard property. Stores the game board where the cell is located.
         /// </summary>
-        public GameBoardDb GameBoard { get; set; }
+        public virtual GameBoardDb GameBoard { get; set; }
 
         /// <summary>
         /// Created property. Stores date of creation / registration of the cell.

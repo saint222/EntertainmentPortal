@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EP.DotsBoxes.Data.Models
 {
@@ -28,6 +29,8 @@ namespace EP.DotsBoxes.Data.Models
         /// Cells property. Stores a list of cells of the playing field.
         /// </summary>
         public List<CellDb> Cells { get; set; }
+
+        public List<PlayerDb> Players { get; set; }
 
         /// <summary>
         /// Created property. Stores date of creation / registration of the playing field.

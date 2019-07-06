@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -46,10 +45,10 @@ namespace EP.DotsBoxes.Logic.Handlers
             {
                 Rows = request.Rows,
                 Columns = request.Columns,
-                Cells = CreateGameBoard(request.Rows,request.Columns)
+                Cells = new GameLogic().CreateGameBoard(request.Rows,request.Columns)
             };
 
-            _context.GameBoard.Add(_mapper.Map<GameBoardDb>(model));
+           _context.GameBoard.Add(_mapper.Map<GameBoardDb>(model));
             
             try
             {
@@ -62,21 +61,6 @@ namespace EP.DotsBoxes.Logic.Handlers
                 _logger.LogError(ex.Message, "Unsuccessful database update with a new game board!");
                 return Result.Fail<GameBoard>(ex.Message);
             }
-        }
-
-        private List<Cell> CreateGameBoard(int row, int column)
-        {
-            List<Cell> cells = new List<Cell>();
-
-            for (int i = 1; i <= row; i++)
-            {
-                for (int j = 1; j <= column; j++)
-                {
-                    cells.Add(new Cell() {Row = i, Column = j});
-                }
-            }
-
-            return cells;
         }
     }
 }
