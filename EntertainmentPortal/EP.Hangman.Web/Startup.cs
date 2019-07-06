@@ -61,6 +61,12 @@ namespace EP.Hangman.Web
                     opt.ClientId = Configuration["Google:ClientId"];
                     opt.ClientSecret = Configuration["Google:ClientSecret"];
                     opt.UserInformationEndpoint = "https://www.googleapis.com/oauth2/v2/userinfo";
+                })
+                .AddFacebook("Facebook", opt =>
+                {
+                    opt.CallbackPath = new PathString("/api/facebook");
+                    opt.AppId = Configuration["Facebook:AppId"];
+                    opt.AppSecret = Configuration["Facebook:AppSecret"];
                 });
             services.AddAuthorization(opt => opt.AddPolicy("google", 
                 cfg => cfg.AddAuthenticationSchemes("Google").RequireAuthenticatedUser()));
