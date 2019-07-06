@@ -2,9 +2,6 @@
 using EP.SeaBattle.Data.Models;
 using EP.SeaBattle.Logic.Commands;
 using EP.SeaBattle.Logic.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EP.SeaBattle.Logic.Profiles
 {

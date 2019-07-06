@@ -8,11 +8,10 @@ namespace EP.Sudoku.Logic.Models
     /// </summary>
     public class Session
     {
-
         /// <summary>    
         /// Is used to denote an identification value of a game session.
         /// </summary>
-        public int Id { get; set; }        
+        public long Id { get; set; }        
 
         /// <summary>    
         /// Is used to denote the level of a game session difficulty (is expected to be chosen by a player).
@@ -23,31 +22,29 @@ namespace EP.Sudoku.Logic.Models
         public DifficultyLevel Level { get; set; }
 
         /// <summary>    
-        /// Is used to denote the number of tips.
+        /// Represents the possibility to get three automatically set values durring the game as prompts.
         /// </summary>
         public int Hint { get; set; } = 3;
 
         /// <summary>    
         /// Is used as a flag for the business logic of the Session class.
         /// </summary>
-        public bool IsOver { get; set; }
-
-        /// <summary>
-        /// Is used to denote a period of time from the beginning of a game session till it's end for subsequent convertation to player's points of experience. 
-        /// </summary>        
-        public double Duration { get; set; }
-
+        public bool IsOver { get; set; }        
+        
         /// <summary>    
         /// Is used to denote the necessary data, which concernes a player of a game session.
         /// </summary>
         /// <remarks>
         /// Navigation property.
-        /// </remarks> 
-        public Player Participant { get; set; }
+        /// </remarks>        
+        //public PlayerShort Participant { get; set; }
 
         /// <summary>
-        /// Is used for keeping a stric number (81) of the gameboard parts. 
+        /// Is used for keeping a strict number (81) of the gameboard parts. 
         /// </summary> 
         public List<Cell> Squares { get; set; }
+
+
+        public long PlayerId { get; set; }
     }
 }
