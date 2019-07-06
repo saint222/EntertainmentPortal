@@ -12,18 +12,27 @@ using NSwag.Annotations;
 
 namespace EP.DotsBoxes.Web.Controllers
 {
+    /// <summary>
+    /// This is GameBoardController.
+    /// </summary>
     [ApiController]
     public class GameBoardController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly ILogger<GameBoardController> _logger;
 
+        /// <summary>
+        /// GameBoardController сonstructor. Is used for DI.
+        /// </summary>
         public GameBoardController(IMediator mediator, ILogger<GameBoardController> logger)
         {
             _mediator = mediator;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Select a gameboard from the Db.
+        /// </summary>
         // GET api/gameboard
         [HttpGet("api/gameboard")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Cell>), Description = "Received game board")]
@@ -37,6 +46,9 @@ namespace EP.DotsBoxes.Web.Controllers
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
 
+        /// <summary>
+        /// Сreates a new gameboard according to specified parameters and saves it to the database.
+        /// </summary>
         // POST api/gameboard
         [HttpPost("api/gameboard")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(GameBoard), Description = "Create new game board")]
@@ -58,8 +70,11 @@ namespace EP.DotsBoxes.Web.Controllers
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
         }
 
+        /// <summary>
+        /// Changes the gameboard after the player’s move and saves in the Db.
+        /// </summary>
         //PUT api/gameboard
-       [HttpPut("api/gameboard")]
+        [HttpPut("api/gameboard")]
        [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Update game board")]
        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> UpdateGameBoardAsync([FromBody][NotNull]UpdateGameBoardCommand model)

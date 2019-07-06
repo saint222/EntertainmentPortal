@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EP.DotsBoxes.Web</name>
+    </assembly>
+    <members>
+        <member name="T:EP.DotsBoxes.Web.Controllers.GameBoardController">
+            <summary>
+            This is GameBoardController.
+            </summary>
+        </member>
+        <member name="M:EP.DotsBoxes.Web.Controllers.GameBoardController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EP.DotsBoxes.Web.Controllers.GameBoardController})">
+            <summary>
+            GameBoardController сonstructor. Is used for DI.
+            </summary>
+        </member>
+        <member name="M:EP.DotsBoxes.Web.Controllers.GameBoardController.GetGameBoardAsync">
+            <summary>
+            Select a gameboard from the Db.
+            </summary>
+        </member>
+        <member name="M:EP.DotsBoxes.Web.Controllers.GameBoardController.NewGameBoardAsync(EP.DotsBoxes.Logic.Commands.NewGameBoardCommand)">
+            <summary>
+            Сreates a new gameboard according to specified parameters and saves it to the database.
+            </summary>
+        </member>
+        <member name="M:EP.DotsBoxes.Web.Controllers.GameBoardController.UpdateGameBoardAsync(EP.DotsBoxes.Logic.Commands.UpdateGameBoardCommand)">
+            <summary>
+            Changes the gameboard after the player’s move and saves in the Db.
+            </summary>
+        </member>
+        <member name="T:EP.DotsBoxes.Web.Controllers.PlayersController">
+            <summary>
+            This is PlayersController.
+            </summary>
+        </member>
+        <member name="M:EP.DotsBoxes.Web.Controllers.PlayersController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EP.DotsBoxes.Web.Controllers.PlayersController})">
+            <summary>
+            PlayersController constructor. Is used for DI.
+            </summary>
+        </member>
+        <member name="M:EP.DotsBoxes.Web.Controllers.PlayersController.GetPlayerAsync(System.Int32)">
+            <summary>
+            Select a player of the game from the Db by the unique Id.
+            </summary>
+        </member>
+        <member name="M:EP.DotsBoxes.Web.Controllers.PlayersController.GetAllPlayersAsync">
+            <summary>
+            Select all registered players from the Db.
+            </summary>
+        </member>
+        <member name="M:EP.DotsBoxes.Web.Controllers.PlayersController.AddPlayerAsync(EP.DotsBoxes.Logic.Commands.AddPlayerCommand)">
+            <summary>
+            Creates a new player and saves data in the Db.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using EP.DotsBoxes.Logic;
 using EP.DotsBoxes.Logic.Commands;
 using EP.DotsBoxes.Logic.Profiles;
@@ -7,6 +7,7 @@ using EP.DotsBoxes.Logic.Validators;
 using EP.DotsBoxes.Web.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,13 @@ namespace EP.DotsBoxes.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
+            services.AddSwaggerDocument(cfg =>
+            {
+                cfg.SchemaType = SchemaType.OpenApi3;
+                cfg.Version = "v1";
+                cfg.Title = "Dots and Boxes game";
+                cfg.Description = "ASP.NET Core Web API";
+            });
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddMediatR(typeof(GetGameBoard).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
@@ -56,6 +64,7 @@ namespace EP.DotsBoxes.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
 
             // CORS configuration.
             app.UseCors(opt =>

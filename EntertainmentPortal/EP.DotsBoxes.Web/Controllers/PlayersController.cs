@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EP.DotsBoxes.Logic.Commands;
@@ -9,21 +9,31 @@ using EP.DotsBoxes.Logic.Queries;
 using NSwag.Annotations;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EP.DotsBoxes.Web.Controllers
 {
+    /// <summary>
+    /// This is PlayersController.
+    /// </summary>
     [ApiController]
     public class PlayersController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly ILogger<PlayersController> _logger;
 
+        /// <summary>
+        /// PlayersController constructor. Is used for DI.
+        /// </summary>
         public PlayersController(IMediator mediator, ILogger<PlayersController> logger)
         {
             _mediator = mediator;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Select a player of the game from the Db by the unique Id.
+        /// </summary>
         // GET api/player/{id}
         [HttpGet("api/player/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
@@ -37,6 +47,9 @@ namespace EP.DotsBoxes.Web.Controllers
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
 
+        /// <summary>
+        /// Select all registered players from the Db.
+        /// </summary>
         // GET api/players
         [HttpGet("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Received collection of players")]
@@ -50,6 +63,9 @@ namespace EP.DotsBoxes.Web.Controllers
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
 
+        /// <summary>
+        /// Creates a new player and saves data in the Db.
+        /// </summary>
         // POST api/player
         [HttpPost("api/player")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Added new player")]
