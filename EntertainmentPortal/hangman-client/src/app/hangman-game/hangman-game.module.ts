@@ -8,9 +8,10 @@ import { LooseGameComponent } from './components/loose-game/loose-game.component
 import { WinGameComponent } from './components/win-game/win-game.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PageNotExistsComponent } from './components/page-not-exists/page-not-exists.component';
 
 @NgModule({
-  declarations: [GameFieldComponent, StartScreenComponent, LooseGameComponent, WinGameComponent, LoginComponent, RegisterComponent],
+  declarations: [GameFieldComponent, StartScreenComponent, LooseGameComponent, WinGameComponent, LoginComponent, RegisterComponent, PageNotExistsComponent],
   imports: [
     CommonModule,
     HttpClientModule,

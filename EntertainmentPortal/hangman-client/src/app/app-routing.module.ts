@@ -1,3 +1,4 @@
+import { PageNotExistsComponent } from './hangman-game/components/page-not-exists/page-not-exists.component';
 import { LoginComponent } from './hangman-game/components/login/login.component';
 import { RegisterComponent } from './hangman-game/components/register/register.component';
 import { LooseGameComponent } from './hangman-game/components/loose-game/loose-game.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'loose', component: LooseGameComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: '', redirectTo: 'startScreen', pathMatch: 'full'}
+  {path: '', redirectTo: 'startScreen', pathMatch: 'full'},
+  {path: '**', component: PageNotExistsComponent}
 ];
 
 @NgModule({
