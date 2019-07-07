@@ -29,7 +29,8 @@ import { Configuration } from '../configuration';
 @Injectable()
 export class PlayersService {
 
-    protected basePath = 'http://localhost:58857';
+    //protected basePath = 'http://localhost:58857';
+    protected basePath = 'https://localhost:44332';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

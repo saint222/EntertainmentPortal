@@ -1,38 +1,27 @@
-﻿using System;
+﻿using EP.SeaBattle.Common.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EP.SeaBattle.Logic.Models
 {
     public class Ship
     {
-        private int _shipRank;
-        private ShipOrientation _shipOrientation;
-        private Point _startPosition;
+        /// <summary>
+        /// Ship rank
+        /// </summary>
+        public ShipRank Rank { get; set; }
 
         /// <summary>
-        /// Rank of ship
+        /// Collection of ship cells
         /// </summary>
-        /// <remarks> 
-        /// 1, 2, 3 or 4
-        /// </remarks>
-        public int ShipRank { get => _shipRank; set => _shipRank = value; }
+        public ICollection<Cell> Cells { get; set; }
 
         /// <summary>
-        /// Ship orientation
+        /// Inform is all cells destroyed
         /// </summary>
-        /// <remarks>
-        /// Vertical or horizontal
-        /// </remarks>
-        public ShipOrientation ShipOrientation { get => _shipOrientation; set => _shipOrientation = value; }
+        public bool IsAlive { get => Cells.Any(c => c.IsAlive == true); }
 
-        /// <summary>
-        /// First point of ship
-        /// </summary>
-        /// <remarks>
-        /// Top point if vertical and left point if horizontal
-        /// </remarks>
-        public Point StartPosition { get => _startPosition; set => _startPosition = value; }
+        public string PlayerId { get; set; }
     }
 }

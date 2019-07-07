@@ -1,3 +1,4 @@
+import { AuthService } from './api/auth.service';
 import { RouterModule } from '@angular/router';
 import { CellComponent } from './components/cell/cell.component';
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
@@ -32,13 +33,14 @@ import { UserComponent } from './components/user/user.component';
   ],
   exports: [
     SignInComponent,
-      SessionComponent,
-      CreateSessionComponent,
-      PlayerComponent,
-      RouterModule,
-      ReactiveFormsModule
+    SessionComponent,
+    CreateSessionComponent,
+    PlayerComponent,
+    RouterModule,
+    ReactiveFormsModule
 ],
   providers: [
+    AuthService,
     PlayersService,
     SessionsService
    ]

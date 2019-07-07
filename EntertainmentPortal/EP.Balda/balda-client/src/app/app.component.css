@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'ubuntu';
+  font-size: medium;
+  src: url(../assets/fonts/3974.ttf);
+}
+
+h1 {
+  color: #4d1567;
+  background-color: #eae5c7;
+  opacity: 0.7;
+  filter: alpha(Opacity=70);
+  padding: 0 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2em;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.flex-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container-justify {
+  justify-content: center;
+}
+

@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Profiles;
-using EP.Balda.Logic.Queries;
+using EP.Balda.Logic.Services;
+using EP.Balda.Logic.Validators;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,14 +27,23 @@ namespace EP.Balda.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
-            services.AddMediatR(typeof(GetAllPlayers).Assembly);
-            services.AddAutoMapper(typeof(Startup).Assembly);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddAutoMapper(typeof(PlayerProfile).Assembly);
+            services.AddMediatR(typeof(CreateNewPlayerCommand).Assembly);
+            
+            services.AddBaldaGameServices();
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(cfg =>
+                {
+                    cfg.RegisterValidatorsFromAssemblyContaining<CreateNewPlayerValidator>();
+                    cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                }); ;
         }
 
         // This method gets called by the runtime. Use this method to
         // configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
+                              IMediator mediator)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
@@ -40,7 +52,8 @@ namespace EP.Balda.Web
                 // for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
 
-            app.UseSwagger().UseSwaggerUi3();
+            mediator.Send(new CreateDatabaseCommand()).Wait();
+            app.UseOpenApi().UseSwaggerUi3();
             app.UseMvc();
         }
     }

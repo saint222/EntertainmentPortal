@@ -1,11 +1,13 @@
-﻿using EP.Balda.Logic.Commands;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
+using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace EP.Balda.Web.Controllers
 {
@@ -13,28 +15,53 @@ namespace EP.Balda.Web.Controllers
     public class GameController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<GameController> _logger;
 
-        public GameController(IMediator mediator)
+        public GameController(IMediator mediator, ILogger<GameController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
-        
-        [HttpGet("api/game/{id}")]
+
+        [HttpGet("api/game")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game not found")]
-        public async Task<IActionResult> GetGameAsync(long id)
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
+            "Game not found")]
+        public async Task<IActionResult> GetGameAsync([FromQuery] GetGame model)
         {
-            var result = await _mediator.Send(new GetGame { Id = id });
-            return result != null ? (IActionResult)Ok(result) : NotFound();
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+
+            var result = await _mediator.Send(model);
+
+            if (!result.HasNoValue) return Ok(result.Value);
+            _logger.LogWarning(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} : Id = {model.Id}, - game not not found");
+            return NotFound();
         }
-        
+
         [HttpPost("api/game")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Game can't be created")]
-        public async Task<IActionResult> CreateNewGameAsync()
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+            "Game can't be created")]
+        public async Task<IActionResult> CreateNewGameAsync(
+            [FromBody] CreateNewGameCommand model)
         {
-            var result = await _mediator.Send(new CreateNewGameCommand());
-            return result != null ? (IActionResult)Ok(result) : BadRequest();
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: PlayerId = {model.PlayerId}, MapSize = {model.MapSize}");
+
+            var (isSuccess, isFailure, value, error) = await _mediator.Send(model);
+
+            if (isSuccess)
+                _logger.LogInformation(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                    $"game was created at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+
+            if (!isFailure) return Created("api/game", value);
+            _logger.LogWarning(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                "game can't be created");
+            return BadRequest(error);
         }
     }
 }

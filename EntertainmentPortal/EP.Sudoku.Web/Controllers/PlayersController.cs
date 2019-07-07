@@ -7,7 +7,6 @@ using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using FluentValidation.AspNetCore;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -34,11 +33,12 @@ namespace EP.Sudoku.Web.Controllers
             _mediator = mediator;
             _logger = logger;           
         }
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
         /// <summary>
         /// Fetches all registered players from the Db.
-        /// </summary>
-        [HttpGet("api/players")] 
+        /// </summary>  
+        [HttpGet("api/players")]
+        [Authorize(AuthenticationSchemes = "Facebook")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> GetAllPlayerAsync()
@@ -46,12 +46,12 @@ namespace EP.Sudoku.Web.Controllers
             var result = await _mediator.Send(new GetAllPlayers());
             return result.Any() ? (IActionResult)Ok(result) : NotFound();
         }
-
-        [Authorize(AuthenticationSchemes = "Google")]
+        
         /// <summary>
         /// Fetches a player of the game from the Db by the unique Id.
         /// </summary>
         [HttpGet("api/players/{id}")]
+        [Authorize(AuthenticationSchemes = "Google")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]

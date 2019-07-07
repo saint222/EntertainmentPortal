@@ -1,20 +1,39 @@
 <div class="signup-form">
 		<h2>Register</h2>
     <p class="hint-text">Create your account. It's free and takes just a minute.</p>
-        <div class="form-group">
-          <div class="col-xs-6"><input type="text" class="form-control" name="Login" placeholder="Name" required="required"></div>
+    <form [formGroup]="registerGroup" autocomplete="off" (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="form-group required">
+            <label>Name</label>
+            <input class="form-control" formControlName="name" placeholder="Name">
+            <label class="text-danger" *ngIf="registerGroup.get('name')?.touched && registerGroup.get('name').errors?.required">This field is mandatory.</label>
         </div>
-        <div class="form-group">
-        	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
-        </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
-        </div>
-		<div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block" >Register Now</button>
-        </div>
-	<div class="text-center">Already have an account? <a routerLink="/signIn">Sign in</a></div>
+        <div class="form-group required">
+          <label>Email</label>
+          <input class="form-control" formControlName="email" placeholder="Email">
+          <label class="text-danger" *ngIf="registerGroup.get('email')?.touched && registerGroup.get('email').errors?.email">This field is put incorrectly.</label>
+         </div>
+         <div formGroupName="passwords">
+            <div class="form-group required">
+                <label>Password</label>
+                <input class="form-control" formControlName="password" placeholder="Password">
+                <label class="text-danger" *ngIf="registerGroup.get('password')?.touched && registerGroup.get('password').errors?.required">This field is mandatory.</label>
+               </div>
+               <div class="form-group required">
+                <label>Confirm Password</label>
+                <input class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+                <label class="text-danger" *ngIf="registerGroup.get('confirmPassword')?.touched && registerGroup.get('confirmPassword').errors?.required">This field is mandatory.</label>
+                <label class="text-danger" *ngIf="registerGroup.get('passwords.confirmPassword').touched && registerGroup.get('passwords.confirmPassword').errors?.passwordMismatch">Confirm Password does not match.</label>
+               </div>
+         </div>
+         <label *ngIf=error>{{error}}</label>
+         <div class="form-row">
+           <div class="form-group col-md8 offset-md">
+             <button type="submit" class="btn btn-success btn-lg btn-block">Registration</button>
+           </div>
+         </div>
+      </form>
+      <div class="text-center">Already have an account? <a routerLink="/signIn">Sign in</a></div>
 </div>
+
+
+
