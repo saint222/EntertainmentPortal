@@ -121,7 +121,6 @@ namespace EP.Sudoku.Web.Controllers
             }
         }
 
-
         [HttpPost("register")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was registered")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
@@ -155,7 +154,6 @@ namespace EP.Sudoku.Web.Controllers
             }
         }
 
-
         [HttpPost("login")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged in")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User wasn't logged in")]
@@ -173,12 +171,12 @@ namespace EP.Sudoku.Web.Controllers
             return result.Succeeded ? (IActionResult)Ok() : BadRequest();
         }
 
+
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
         [HttpGet("logout")]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-
             _logger.LogInformation($"User '{_signInManager.Context.User.Identity.Name}' was signed out...");
             return Ok();
         }
@@ -246,7 +244,6 @@ namespace EP.Sudoku.Web.Controllers
             };
 
             var token = handler.CreateJwtSecurityToken(tokenDescr);
-
             return Ok(handler.WriteToken(token));
         }
     }
