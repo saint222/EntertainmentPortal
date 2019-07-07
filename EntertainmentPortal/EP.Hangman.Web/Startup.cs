@@ -41,19 +41,22 @@ namespace EP.Hangman.Web
                 .AddCookie()
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.RequireHttpsMetadata = true;
-                    opt.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidIssuer = HangmanConstants.ISSUER_NAME,
-                        ValidateIssuer = true,
-                        ValidAudience = HangmanConstants.AUDIENCE_NAME,
-                        ValidateAudience = true,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(HangmanConstants.SECRET)),
-                        ValidateLifetime = true,
-                        RequireExpirationTime = true,
-                        RequireSignedTokens = true
-                    };
+                    opt.RequireHttpsMetadata = false;
+                    opt.Authority = "http://localhost:5000";
+                    opt.Audience = "hangman-api";
+//                    opt.TokenValidationParameters = new TokenValidationParameters()
+//                    {
+//
+//                        ValidIssuer = HangmanConstants.ISSUER_NAME,
+//                        ValidateIssuer = true,
+//                        ValidAudience = HangmanConstants.AUDIENCE_NAME,
+//                        ValidateAudience = true,
+//                        ValidateIssuerSigningKey = true,
+//                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(HangmanConstants.SECRET)),
+//                        ValidateLifetime = true,
+//                        RequireExpirationTime = true,
+//                        RequireSignedTokens = true
+//                    };
                 })
                 .AddGoogle("Google", opt =>
                 {

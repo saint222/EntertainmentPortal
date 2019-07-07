@@ -1,0 +1,98 @@
+2019-07-07 19:59:44.196 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-07 19:59:44.267 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-07 19:59:44.277 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-07 19:59:44.277 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-07 19:59:44.277 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-07 19:59:44.278 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-07 19:59:44.278 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-07 20:11:04.540 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-07 20:11:04.638 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-07 20:11:04.643 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-07 20:11:04.643 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-07 20:11:04.643 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-07 20:11:04.643 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-07 20:11:04.644 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-07 20:11:11.892 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-07 20:15:39.093 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-07 20:15:39.194 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-07 20:15:39.198 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-07 20:15:39.199 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-07 20:15:39.199 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-07 20:15:39.199 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-07 20:15:39.199 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-07 20:15:44.493 +03:00 [DBG] Login Url: /Account/Login
+2019-07-07 20:15:44.496 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-07 20:15:44.496 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-07 20:15:44.497 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-07 20:15:44.497 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-07 20:15:44.497 +03:00 [DBG] Error Url: /home/error
+2019-07-07 20:15:44.497 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-07 20:15:44.516 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:15:44.579 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:16:08.155 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:16:08.155 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:16:08.245 +03:00 [INF] AuthenticationScheme: idsrv was challenged.
+2019-07-07 20:16:08.254 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:16:08.254 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:16:11.009 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:16:11.009 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:16:11.039 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-07 20:16:24.063 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:16:24.064 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:24:07.420 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:24:07.423 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:24:07.436 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-07 20:24:12.776 +03:00 [INF] AuthenticationScheme: idsrv.external signed in.
+2019-07-07 20:24:12.802 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:24:12.802 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:24:12.901 +03:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"108324361500567311668","SubjectId":"649e7217b25183738a8625199b0ec0ee73f973003f74e69293e7f3cf50ce617f","DisplayName":"Sergey Makarov","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVJ:00000003","TimeStamp":"2019-07-07T17:24:12.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-07 20:24:12.959 +03:00 [DBG] Augmenting SignInContext
+2019-07-07 20:24:12.964 +03:00 [DBG] Adding amr claim with value: external
+2019-07-07 20:24:12.972 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-07 20:24:12.975 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-07 20:24:12.996 +03:00 [INF] AuthenticationScheme: idsrv.external signed out.
+2019-07-07 20:25:29.512 +03:00 [WRN] '.AspNetCore.Correlation.Google.v2sbPcrZXxawhiyrmwNUPFd3kj4CG45T5d5VS-OnGy8' cookie not found.
+2019-07-07 20:25:29.513 +03:00 [INF] Error from RemoteAuthentication: Correlation failed..
+2019-07-07 20:25:29.516 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: An error was encountered while handling the remote login. ---> System.Exception: Correlation failed.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at IdentityServer4.Hosting.FederatedSignOut.AuthenticationRequestHandlerWrapper.HandleRequestAsync() in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\AuthenticationRequestHandlerWrapper.cs:line 38
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-07 20:25:46.536 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-07 20:25:46.963 +03:00 [INF] AuthenticationScheme: idsrv.external signed in.
+2019-07-07 20:25:46.986 +03:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"108324361500567311668","SubjectId":"649e7217b25183738a8625199b0ec0ee73f973003f74e69293e7f3cf50ce617f","DisplayName":"Sergey Makarov","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVJ:0000000B","TimeStamp":"2019-07-07T17:25:46.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-07 20:25:47.012 +03:00 [DBG] Augmenting SignInContext
+2019-07-07 20:25:47.013 +03:00 [DBG] Adding amr claim with value: external
+2019-07-07 20:25:47.014 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-07 20:25:47.014 +03:00 [INF] AuthenticationScheme: idsrv.external signed out.
+2019-07-07 20:27:22.524 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-07 20:27:22.657 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVJ:0000000E","TimeStamp":"2019-07-07T17:27:22.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-07 20:27:22.669 +03:00 [DBG] Augmenting SignInContext
+2019-07-07 20:27:22.669 +03:00 [DBG] Adding idp claim with value: local
+2019-07-07 20:27:22.669 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-07 20:27:22.670 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-07 22:15:48.926 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-07 22:15:48.934 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVQ:00000003","TimeStamp":"2019-07-07T19:15:48.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-07 22:15:48.935 +03:00 [DBG] Augmenting SignInContext
+2019-07-07 22:15:48.935 +03:00 [DBG] Adding idp claim with value: local
+2019-07-07 22:15:48.937 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-07 22:15:48.939 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-07 22:16:10.194 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-07 22:16:10.198 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVV:00000003","TimeStamp":"2019-07-07T19:16:10.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-07 22:16:10.203 +03:00 [DBG] Augmenting SignInContext
+2019-07-07 22:16:10.203 +03:00 [DBG] Adding idp claim with value: local
+2019-07-07 22:16:10.207 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-07 22:16:10.217 +03:00 [INF] AuthenticationScheme: idsrv signed in.

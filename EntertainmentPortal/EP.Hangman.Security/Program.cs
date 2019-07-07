@@ -2,15 +2,12 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using Microsoft.AspNetCore.Hosting;
-using System;
-using Serilog;
-using Serilog.Sinks.SystemConsole.Themes;
 using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Serilog;
 using Serilog.Events;
-using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+using Serilog.Sinks.SystemConsole.Themes;
+using System;
 
 namespace EP.Hangman.Security
 {
@@ -18,25 +15,9 @@ namespace EP.Hangman.Security
     {
         public static void Main(string[] args)
         {
-            Console.Title = "IdentityServer4.EntityFramework";
+            Console.Title = "IdentityServer4";
 
-            var seed = args.Contains("/seed");
-            if (seed)
-            {
-                args = args.Except(new[] {"/seed"}).ToArray();
-            }
-
-            var host = CreateWebHostBuilder(args).Build();
-
-            if (seed)
-            {
-                var config = host.Services.GetRequiredService<IConfiguration>();
-                var connectionString = config.GetConnectionString("DefaultConnection");
-                SeedData.EnsureSeedData(connectionString);
-                return;
-            }
-
-            host.Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
