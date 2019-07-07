@@ -7,6 +7,7 @@ using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -33,7 +34,7 @@ namespace EP.Sudoku.Web.Controllers
             _mediator = mediator;
             _logger = logger;           
         }
-        [Authorize(AuthenticationSchemes = "Facebook")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         /// <summary>
         /// Fetches all registered players from the Db.
         /// </summary>
