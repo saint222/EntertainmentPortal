@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -18,10 +19,11 @@ namespace EP.Balda.Logic.Handlers
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IValidator _validator;
+        private readonly IValidator<CreateNewPlayerCommand> _validator;
+
 
         public CreateNewPlayerHandler(BaldaGameDbContext context, IMapper mapper,
-                                      IValidator validator)
+                                      IValidator<CreateNewPlayerCommand> validator)
         {
             _context = context;
             _mapper = mapper;
@@ -31,24 +33,29 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Result<Player>> Handle(CreateNewPlayerCommand request,
                                                  CancellationToken cancellationToken)
         {
-            var result = _validator.Validate(request);
+            var result = await _validator
+                .ValidateAsync(request, ruleSet: "PlayerCreateExistingSet", cancellationToken: cancellationToken);
 
-            if (result != null)
+            if (!result.IsValid)
+            {
                 return Result.Fail<Player>(result.Errors.First().ErrorMessage);
+            }
 
-            var model = new PlayerDb
+            var playerDb = new PlayerDb
             {
                 NickName = request.NickName,
                 Login = request.Login,
-                Password = request.Password
+                Password = request.Password,
+                Created = DateTime.UtcNow
             };
 
-            _context.Players.Add(model);
+            _context.Players.Add(playerDb);
 
             try
             {
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                return Result.Ok(_mapper.Map<Player>(model));
+                await _context.SaveChangesAsync(cancellationToken);
+
+                return Result.Ok(_mapper.Map<Player>(playerDb));
             }
             catch (DbUpdateException ex)
             {

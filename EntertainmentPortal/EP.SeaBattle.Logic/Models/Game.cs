@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace EP.SeaBattle.Logic.Models
 {
@@ -8,25 +6,20 @@ namespace EP.SeaBattle.Logic.Models
     {
         //TODO Change to Guid
         public string Id { get; set; }
-
         /// <summary>
-        /// First player
+        /// The game is looking for an enemy
         /// </summary>
-        public Player Player1 { get; set; }
-
-        /// <summary>
-        /// Second player
-        /// </summary>
-        public Player Player2 { get; set; }
-
+        public bool EnemySearch { get; set; }
         /// <summary>
         /// Tells if the game is over
         /// </summary>
         public bool Finish { get; set; }
 
+        public ICollection<Player> Players { get; set; }
+        public ICollection<Shot> Shots { get; set; }
         /// <summary>
         /// The player who is allowed to move
         /// </summary>
-        public Player PlayerAllowedToMove { get; set; }
+        public string PlayerAllowedToMove { get; set; }
     }
 }

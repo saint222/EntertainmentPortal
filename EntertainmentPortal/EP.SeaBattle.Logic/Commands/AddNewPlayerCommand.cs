@@ -1,9 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 using EP.SeaBattle.Logic.Models;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EP.SeaBattle.Logic.Commands
 {

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace EP.SeaBattle.Logic.Handlers
 {
-    public class GetPlayerHandler : IRequestHandler<GetPlayerCommand, Result<Player>>
+    public class GetPlayerHandler : IRequestHandler<GetPlayerQuery, Result<Player>>
     {
         private readonly SeaBattleDbContext _context;
         private readonly IMapper _mapper;
@@ -28,11 +28,13 @@ namespace EP.SeaBattle.Logic.Handlers
             _logger = logger;
         }
 
-        public async Task<Result<Player>> Handle(GetPlayerCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Player>> Handle(GetPlayerQuery request, CancellationToken cancellationToken)
         {          
             try
             {
-                var player = await _context.Players.FindAsync(request.Id);
+                var player = await _context.Players
+                                            .FindAsync(request.Id)
+                                            .ConfigureAwait(false);
                 if (player == null)
                 {
                     _logger.LogInformation($"Player with id {request.Id} not found");

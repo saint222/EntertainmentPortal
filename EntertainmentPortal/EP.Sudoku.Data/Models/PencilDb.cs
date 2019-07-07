@@ -3,12 +3,15 @@ using System.Collections.Generic;
 
 namespace EP.Sudoku.Data.Models
 {
+    /// <summary>    
+    ///Represents an auxiliary tool, that helps to solve sudoku (DbInfo).
+    /// </summary>
     public class PencilDb
     {
         /// <summary>    
         /// Is used to denote an identification value of a pencil (DbInfo).
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>    
         /// Is used to denote the possibility to enter the value (number) 1 in the CellId (DbInfo).

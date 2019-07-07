@@ -1,33 +1,43 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
-using EP.Balda.Data.Models;
+using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class GetPlayerHandler : IRequestHandler<GetPlayer, Maybe<PlayerDb>>
+    public class GetPlayerHandler : IRequestHandler<GetPlayer, Maybe<Player>>
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetPlayerHandler(IMapper mapper, BaldaGameDbContext context)
+        public GetPlayerHandler(BaldaGameDbContext context, IMapper mapper)
         {
-            _mapper = mapper;
             _context = context;
+            _mapper = mapper;
         }
 
-        public async Task<Maybe<PlayerDb>> Handle(GetPlayer request,
-                                                  CancellationToken cancellationToken)
+        public async Task<Maybe<Player>> Handle(GetPlayer request,
+                                                CancellationToken cancellationToken)
         {
-            var result = await _context.Players
-                .FindAsync(request.Id)
-                .ConfigureAwait(false);
+            var playerDb = await _context.Players
+                .Where(p => p.Id == request.Id)
+                .FirstOrDefaultAsync(cancellationToken);
 
-            return result == null ? Maybe<PlayerDb>.None : Maybe<PlayerDb>.From(result);
+            if(playerDb == null)
+            {
+                return Maybe<Player>.None;
+            }
+
+            return playerDb == null
+                ? Maybe<Player>.None
+                : Maybe<Player>.From(_mapper.Map<Player>(playerDb));
         }
     }
 }
