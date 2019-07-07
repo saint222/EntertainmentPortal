@@ -155,6 +155,7 @@ namespace EP.Sudoku.Web.Controllers
             }
         }
 
+
         [HttpPost("login")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged in")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User wasn't logged in")]
