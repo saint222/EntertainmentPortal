@@ -153,7 +153,6 @@ namespace EP.Sudoku.Web.Controllers
                 _logger.LogError("Register failed. User already exists...");
                 return BadRequest("User already exists...");
             }
-
         }
 
         [HttpPost("login")]
