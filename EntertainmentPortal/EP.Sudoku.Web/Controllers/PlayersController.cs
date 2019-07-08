@@ -38,7 +38,7 @@ namespace EP.Sudoku.Web.Controllers
         /// Fetches all registered players from the Db.
         /// </summary>  
         [HttpGet("api/players")]
-        [Authorize(AuthenticationSchemes = "Facebook")]
+        //[Authorize(AuthenticationSchemes = "Facebook")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> GetAllPlayerAsync()

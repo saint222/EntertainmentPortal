@@ -13,7 +13,7 @@ namespace EP.Sudoku.Data
         public static IServiceCollection AddSudokuData(this IServiceCollection services)
         {
             services.AddDbContext<SudokuDbContext>(
-                opt => opt.UseSqlite("Data Source=sudoku.db"));
+                opt => opt.UseSqlite(@"Data Source=..\EP.Sudoku.Data\sudoku.db"));
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<SudokuDbContext>()
                 .AddUserManager<UserManager<IdentityUser>>()
