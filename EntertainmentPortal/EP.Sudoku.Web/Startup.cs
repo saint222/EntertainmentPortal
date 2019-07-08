@@ -90,7 +90,7 @@ namespace EP.Sudoku.Web
             services.AddAuthorization();
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
-            services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
+            services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.Swagger2);
             services.AddSudokuServices();
             services.AddCors(); // to enable CrossOriginResourceSharing
             services.AddMvc(opt =>
@@ -132,7 +132,9 @@ namespace EP.Sudoku.Web
 );
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();            
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
+            /*app.UseSwagger().*/
             app.UseMvc();
 
             Log.Logger = new LoggerConfiguration()
