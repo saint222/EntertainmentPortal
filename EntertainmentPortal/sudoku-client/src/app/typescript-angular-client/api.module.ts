@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserComponent } from './components/user/user.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [SessionComponent, CellComponent,
@@ -29,7 +30,8 @@ import { UserComponent } from './components/user/user.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    OAuthModule.forRoot()
   ],
   exports: [
     SignInComponent,
