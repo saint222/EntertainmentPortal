@@ -29,8 +29,8 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>    
         /// Is used as a flag for the business logic of the Session class.
         /// </summary>
-        public bool IsOver { get; set; }        
-        
+        public bool IsOver { get; set; }
+
         /// <summary>    
         /// Is used to denote the necessary data, which concernes a player of a game session.
         /// </summary>
@@ -38,13 +38,12 @@ namespace EP.Sudoku.Logic.Models
         /// Navigation property.
         /// </remarks>        
         //public PlayerShort Participant { get; set; }
+        public long PlayerId { get; set; }
 
         /// <summary>
         /// Is used for keeping a strict number (81) of the gameboard parts. 
         /// </summary> 
         public List<Cell> Squares { get; set; }
 
-
-        public long PlayerId { get; set; }
     }
 }

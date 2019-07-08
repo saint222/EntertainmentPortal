@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using CSharpFunctionalExtensions;
 using EP.Sudoku.Data.Context;
 using EP.Sudoku.Data.Models;
 using EP.Sudoku.Logic.Models;
@@ -14,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP.Sudoku.Logic.Handlers
 {
-    public class CreateSessionHandler : IRequestHandler<CreateSessionCommand, Session>
+    public class CreateSessionHandler : IRequestHandler<CreateSessionCommand, Result<Session>>
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
@@ -25,10 +26,18 @@ namespace EP.Sudoku.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Session> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Session>> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
         {
-            var sessionDb = _mapper.Map<SessionDb>(request.session);
-            if (request.session.PlayerId == 0)
+            // var sessionDb = _mapper.Map<SessionDb>(request); не работает в тестах, а так работает
+            var sessionDb = new SessionDb
+            { 
+                  Level = (int) request.Level,
+                  Hint = request.Hint,
+                  IsOver = request.IsOver,
+                  PlayerDbId = request.PlayerId
+            };
+
+            if (request.PlayerId == 0)
             {
                 sessionDb.PlayerDbId = 1;
             }
@@ -41,7 +50,7 @@ namespace EP.Sudoku.Logic.Handlers
             _context.Add(sessionDb);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return await Task.FromResult(_mapper.Map<Session>(sessionDb));
+            return Result.Ok<Session>(_mapper.Map<Session>(sessionDb));
         }
 
         public async void RemoveSessionIfExists(long id, CancellationToken cancellationToken)

@@ -57,7 +57,7 @@ namespace EP.Sudoku.Web.Controllers
         [HttpPost("api/sessions")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> CreateSession([FromBody] Session model)
+        public async Task<IActionResult> CreateSession([FromBody] CreateSessionCommand model)
         {
             if (model == null)
             {
@@ -67,9 +67,9 @@ namespace EP.Sudoku.Web.Controllers
             //{
             //    return BadRequest();
             //}
-            var session = await _mediator.Send(new CreateSessionCommand(model));
+            var result = await _mediator.Send(model);
 
-            return session != null ? (IActionResult)Ok(session) : BadRequest();
+            return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
         }
 
         /// <summary>
