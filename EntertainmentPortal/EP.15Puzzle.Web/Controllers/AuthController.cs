@@ -133,9 +133,9 @@ namespace EP._15Puzzle.Web.Controllers
                 Audience = AuthConstants.AUDIENCE_NAME,
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Email,  User.Claims.FirstOrDefault(t=>t.Type==ClaimTypes.Email).Value),
-                    new Claim(ClaimTypes.Name, User.Claims.FirstOrDefault(t=>t.Type==ClaimTypes.Name).Value),
-                    new Claim(ClaimTypes.NameIdentifier, User.Claims.FirstOrDefault(t=>t.Type==ClaimTypes.NameIdentifier).Value),
+                    new Claim(ClaimTypes.Email,  ""),
+                    new Claim(ClaimTypes.Name, ""),
+                    new Claim(ClaimTypes.NameIdentifier, "b00000001"),
                 }),
                 IssuedAt = DateTime.Now,
                 NotBefore = DateTime.Now,
