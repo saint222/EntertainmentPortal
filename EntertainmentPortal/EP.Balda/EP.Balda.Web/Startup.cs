@@ -2,7 +2,6 @@
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Profiles;
 using EP.Balda.Logic.Services;
-using EP.Balda.Web.Constants;
 using EP.Balda.Web.Filters;
 using EP.Balda.Web.Validators;
 using FluentValidation.AspNetCore;
@@ -15,12 +14,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using NJsonSchema;
 using NSwag;
 using NSwag.AspNetCore;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EP.Balda.Web
 {
@@ -41,7 +38,7 @@ namespace EP.Balda.Web
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "http://localhost:5000";
+                    opt.Authority = "https://localhost:44370";
                     opt.RequireHttpsMetadata = false;
                 })
                 .AddGoogle("Google", opt =>
@@ -51,7 +48,7 @@ namespace EP.Balda.Web
 
                      opt.ClientId = googleAuthNSection["ClientId"];
                      opt.ClientSecret = googleAuthNSection["ClientSecret"];
-                     opt.CallbackPath = new PathString("/api/google");
+                     opt.CallbackPath = new PathString("/signin-google");
                  })
                 .AddFacebook("Facebook", opt =>
                 {
@@ -60,7 +57,7 @@ namespace EP.Balda.Web
 
                     opt.ClientId = facebookAuthNSection["ClientId"];
                     opt.ClientSecret = facebookAuthNSection["ClientSecret"];
-                    opt.CallbackPath = new PathString("/api/facebook");
+                    opt.CallbackPath = new PathString("/signin-google");
                 });
 
             services.AddAuthorization(opt =>
@@ -82,7 +79,7 @@ namespace EP.Balda.Web
                 {
                     Flow = OpenApiOAuth2Flow.Implicit,
                     Type = NSwag.OpenApiSecuritySchemeType.OAuth2,
-                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                    AuthorizationUrl = "http://localhost:44370/connect/authorize",
                     Scopes = new Dictionary<string, string>()
                     {
                         { "baldagame_api", "Access to Balda Game api" }

@@ -177,14 +177,14 @@ namespace EP.Balda.Web.Controllers
         }
 
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was sign in")]
-        [HttpGet("api/google")]
+        [HttpGet("/signin-google")]
         public IActionResult SignInGoogle()
         {
             return Ok();
         }
 
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was sign in")]
-        [HttpGet("api/facebook")]
+        [HttpGet("/signin-facebook")]
         public IActionResult SignInFacebook()
         {
             return Ok();
