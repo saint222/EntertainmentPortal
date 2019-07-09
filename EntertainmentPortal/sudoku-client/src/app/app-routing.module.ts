@@ -9,9 +9,11 @@ import { SignInComponent } from './typescript-angular-client/components/sign-in/
 import { RegisterComponent } from './typescript-angular-client/components/register/register.component';
 import { HomeComponent } from './typescript-angular-client/components/home/home.component';
 import { PrivacyComponent } from './typescript-angular-client/components/privacy/privacy.component';
+import { ReristeredComponent } from './typescript-angular-client/components/reristered/reristered.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'registered', component: ReristeredComponent},
   {path: 'privacy', component: PrivacyComponent},
   {path: 'player', component: PlayerComponent},
   {path: 'player/:id', component: PlayerInfoComponent},

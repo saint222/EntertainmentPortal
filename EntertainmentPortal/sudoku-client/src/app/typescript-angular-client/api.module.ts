@@ -19,9 +19,10 @@ import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserComponent } from './components/user/user.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { ReristeredComponent } from './components/reristered/reristered.component';
 
 @NgModule({
-  declarations: [SessionComponent, CellComponent,
+  declarations: [ReristeredComponent, SessionComponent, CellComponent,
     CreateSessionComponent, PlayerComponent,
     PlayerInfoComponent, SignInComponent,
     RegisterComponent, HomeComponent,

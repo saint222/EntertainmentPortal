@@ -51,13 +51,13 @@ export class RegisterComponent {
 
     this.authService.authRegister(body).subscribe(c => {
       console.log(c);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/registered']);
     },
     (err: HttpErrorResponse) => {
       this.error = err.error[0].description;
       console.log(this.error);
       return console.log(err.error);
-      
+
     }
   );
   }

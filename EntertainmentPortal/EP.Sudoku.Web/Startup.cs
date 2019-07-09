@@ -127,7 +127,7 @@ namespace EP.Sudoku.Web
             app.UseCors(opt => opt.AllowAnyHeader() // CORS configuration.
                .AllowAnyMethod()
                .AllowAnyOrigin()
-               .WithOrigins("https://localhost:4200")
+               .WithOrigins("http://localhost:4200")
                .AllowCredentials()
 );
 
@@ -142,7 +142,7 @@ namespace EP.Sudoku.Web
                 .WriteTo.Console()
                 .WriteTo.Debug()
                 .WriteTo.RollingFile("SudokuLogData/log-{Date}.txt", shared: true)
-                .WriteTo.SQLite(Environment.CurrentDirectory + @"\sudoku.db")
+                .WriteTo.SQLite(@"..\EP.Sudoku.Data\sudoku.db"/*Environment.CurrentDirectory + @"sudoku.db"*/)
                 .CreateLogger();
         }
     }

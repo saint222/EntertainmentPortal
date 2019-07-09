@@ -35,7 +35,7 @@ namespace EP.Sudoku.Web.Controllers
         /// <summary>
         /// Fetches a gamesession from the Db by the unique Id.
         /// </summary>
-        [Authorize(AuthenticationSchemes = "Google")]
+        //[Authorize(AuthenticationSchemes = "Google")]
         [HttpGet("api/sessions/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Session not found")]
