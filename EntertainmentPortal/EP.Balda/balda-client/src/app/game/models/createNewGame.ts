@@ -1,4 +1,6 @@
 export class CreateNewGame {
-  playerId: string;
-  mapSize: number;
+  constructor(public playerId: string, public mapSize: number) {
+    this.playerId = playerId;
+    this.mapSize = mapSize;
+    }
 }

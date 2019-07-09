@@ -10,8 +10,6 @@ import { Size } from '../../models/size';
 export class StartGameComponent implements OnInit {
 
   constructor(private router: Router) { }
-
-  selectedSizes: Size = new Size (5, '5x5');
   sizes = [
      new Size(3, '3x3' ),
      new Size(5, '5x5' ),

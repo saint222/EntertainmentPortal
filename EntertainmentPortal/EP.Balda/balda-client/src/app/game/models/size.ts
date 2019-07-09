@@ -1,6 +1,6 @@
 export class Size {
-  constructor(public id: number, public desciption: string) {
-      this.id = id;
+  constructor(public num: number, public desciption: string) {
+      this.num = num;
       this.desciption = desciption;
    }
 }
