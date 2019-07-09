@@ -1,0 +1,549 @@
+2019-07-09 11:37:07.930 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 11:37:08.146 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 11:37:08.156 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 11:37:08.157 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 11:37:08.165 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 11:37:08.165 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 11:37:08.165 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 11:37:09.203 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 11:37:09.207 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 11:37:09.207 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 11:37:09.208 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 11:37:09.208 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 11:37:09.208 +03:00 [DBG] Error Url: /home/error
+2019-07-09 11:37:09.208 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 11:37:42.138 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 11:37:42.147 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 11:37:42.147 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 11:37:42.158 +03:00 [DBG] Start authorize request
+2019-07-09 11:37:42.172 +03:00 [DBG] No user present in authorize request
+2019-07-09 11:37:42.180 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:37:42.215 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjM3OjQyIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:37:42.234 +03:00 [ERR] Request validation failed
+2019-07-09 11:37:42.235 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjM3OjQyIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:37:42.249 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO492GNE657:00000002","TimeStamp":"2019-07-09T08:37:42.0000000Z","ProcessId":17608,"LocalIpAddress":"127.0.0.1:20754","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-09 11:38:53.100 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 11:38:53.101 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 11:38:53.102 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 11:38:53.102 +03:00 [DBG] Start authorize request
+2019-07-09 11:38:53.103 +03:00 [DBG] No user present in authorize request
+2019-07-09 11:38:53.103 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:38:53.103 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjM4OjUzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:38:53.103 +03:00 [ERR] Request validation failed
+2019-07-09 11:38:53.104 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjM4OjUzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:38:53.104 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO492GNE658:00000001","TimeStamp":"2019-07-09T08:38:53.0000000Z","ProcessId":17608,"LocalIpAddress":"127.0.0.1:20754","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-09 11:41:44.084 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 11:41:44.174 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 11:41:44.181 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 11:41:44.181 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 11:41:44.182 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 11:41:44.182 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 11:41:44.182 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 11:41:44.705 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 11:41:44.709 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 11:41:44.709 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 11:41:44.710 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 11:41:44.710 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 11:41:44.710 +03:00 [DBG] Error Url: /home/error
+2019-07-09 11:41:44.711 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 11:42:13.713 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 11:42:13.723 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 11:42:13.723 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 11:42:13.729 +03:00 [DBG] Start authorize request
+2019-07-09 11:42:13.741 +03:00 [DBG] No user present in authorize request
+2019-07-09 11:42:13.748 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:42:13.783 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjQyOjEzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:42:13.804 +03:00 [ERR] Request validation failed
+2019-07-09 11:42:13.804 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjQyOjEzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:42:13.816 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO4952R4BPD:00000002","TimeStamp":"2019-07-09T08:42:13.0000000Z","ProcessId":11440,"LocalIpAddress":"127.0.0.1:6271","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-09 11:48:26.948 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 11:48:27.031 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 11:48:27.036 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 11:48:27.036 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 11:48:27.036 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 11:48:27.036 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 11:48:27.036 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 11:48:27.412 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 11:48:27.420 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 11:48:27.420 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 11:48:27.420 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 11:48:27.420 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 11:48:27.420 +03:00 [DBG] Error Url: /home/error
+2019-07-09 11:48:27.420 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 11:51:15.315 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 11:51:15.332 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 11:51:15.333 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 11:51:15.342 +03:00 [DBG] Start authorize request
+2019-07-09 11:51:15.359 +03:00 [DBG] No user present in authorize request
+2019-07-09 11:51:15.367 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:51:15.396 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:15.455 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:51:15.476 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDExOjUxOjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjUxOjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:51:15.508 +03:00 [INF] Showing login: User is not authenticated
+2019-07-09 11:51:15.636 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:51:15.636 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:15.639 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:51:15.645 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:18.276 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-09 11:51:18.392 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:51:18.392 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:18.393 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:51:18.419 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO498QSBR5S:00000003","TimeStamp":"2019-07-09T08:51:18.0000000Z","ProcessId":3312,"LocalIpAddress":"127.0.0.1:46316","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-09 11:51:18.447 +03:00 [DBG] Augmenting SignInContext
+2019-07-09 11:51:18.452 +03:00 [DBG] Adding idp claim with value: local
+2019-07-09 11:51:18.453 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-09 11:51:18.487 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-09 11:51:18.490 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:18.538 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-09 11:51:18.539 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-09 11:51:18.540 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-09 11:51:18.551 +03:00 [DBG] Start authorize callback request
+2019-07-09 11:51:18.559 +03:00 [DBG] User in authorize request: 818727
+2019-07-09 11:51:18.559 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:51:18.559 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:18.560 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:51:18.560 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"818727","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDExOjUxOjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"248baf980652da120a8d4d230e75bc22","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjUxOjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:51:18.563 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-09 11:51:18.590 +03:00 [DBG] user_consent grant with value: swagger|818727 not found in store.
+2019-07-09 11:51:18.590 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-09 11:51:18.590 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-09 11:51:18.629 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:51:18.629 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:18.630 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:51:18.630 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:22.689 +03:00 [DBG] CORS request made for path: /consent from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-09 11:51:22.726 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:51:22.727 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:22.728 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:51:22.733 +03:00 [INF] {"SubjectId":"818727","ClientId":"swagger","RequestedScopes":["pyatnashki_api"],"GrantedScopes":["pyatnashki_api"],"ConsentRemembered":false,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLO498QSBR5S:00000007","TimeStamp":"2019-07-09T08:51:22.0000000Z","ProcessId":3312,"LocalIpAddress":"127.0.0.1:46316","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-09 11:51:22.772 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:22.800 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-09 11:51:22.802 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-09 11:51:22.802 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-09 11:51:22.802 +03:00 [DBG] Start authorize callback request
+2019-07-09 11:51:22.809 +03:00 [DBG] User in authorize request: 818727
+2019-07-09 11:51:22.810 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:51:22.810 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:51:22.811 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:51:22.811 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"818727","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDExOjUxOjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"248baf980652da120a8d4d230e75bc22","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjUxOjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:51:22.811 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-09 11:51:22.811 +03:00 [DBG] user_consent grant with value: swagger|818727 not found in store.
+2019-07-09 11:51:22.812 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-09 11:51:22.822 +03:00 [INF] User consented to scopes: ["pyatnashki_api"]
+2019-07-09 11:51:22.830 +03:00 [DBG] Client allows remembering consent, and no scopes provided. Removing consent from consent store for subject: 818727
+2019-07-09 11:51:22.849 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-09 11:51:22.872 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-09 11:51:22.873 +03:00 [DBG] Getting claims for access token for subject: 818727
+2019-07-09 11:51:22.882 +03:00 [DBG] Get profile called for subject 818727 from client Swagger Client with claim types [] via ClaimsProviderAccessToken
+2019-07-09 11:51:22.885 +03:00 [DBG] Issued claims: []
+2019-07-09 11:51:23.000 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"818727","Scopes":"pyatnashki_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****Uy0Q","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO498QSBR5S:00000008","TimeStamp":"2019-07-09T08:51:22.0000000Z","ProcessId":3312,"LocalIpAddress":"127.0.0.1:46316","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-09 11:51:23.003 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"818727","ClientId":"swagger","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","State":"VHVlIEp1bCAwOSAyMDE5IDExOjUxOjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"pyatnashki_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-09 11:51:23.033 +03:00 [DBG] Augmenting SignInContext
+2019-07-09 11:51:23.034 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-09 11:55:56.928 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 11:55:56.929 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 11:55:56.930 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 11:55:56.930 +03:00 [DBG] Start authorize request
+2019-07-09 11:55:56.930 +03:00 [DBG] User in authorize request: 818727
+2019-07-09 11:55:56.931 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:55:56.931 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:55:56.931 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:55:56.931 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"818727","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDExOjU1OjU2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"248baf980652da120a8d4d230e75bc22","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjU1OjU2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:55:56.932 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-09 11:55:56.932 +03:00 [DBG] user_consent grant with value: swagger|818727 not found in store.
+2019-07-09 11:55:56.932 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-09 11:55:56.932 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-09 11:55:56.948 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:55:56.948 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:55:56.948 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:55:56.948 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:56:25.858 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 11:56:25.860 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 11:56:25.860 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 11:56:25.860 +03:00 [DBG] Start authorize request
+2019-07-09 11:56:25.861 +03:00 [DBG] No user present in authorize request
+2019-07-09 11:56:25.861 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:56:25.861 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:56:25.861 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:56:25.861 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDExOjU2OjI1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDExOjU2OjI1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 11:56:25.862 +03:00 [INF] Showing login: User is not authenticated
+2019-07-09 11:56:25.885 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:56:25.885 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:56:25.886 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:56:25.886 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:56:33.518 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-09 11:56:37.283 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 11:56:37.283 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:56:37.284 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 11:56:37.284 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 11:59:08.737 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 11:59:08.851 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 11:59:08.859 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 11:59:08.859 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 11:59:08.859 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 11:59:08.859 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 11:59:08.859 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 11:59:09.571 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 11:59:09.575 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 11:59:09.576 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 11:59:09.576 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 11:59:09.577 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 11:59:09.578 +03:00 [DBG] Error Url: /home/error
+2019-07-09 11:59:09.579 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 11:59:26.023 +03:00 [INF] AuthenticationScheme: idsrv was challenged.
+2019-07-09 11:59:27.773 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-09 12:02:20.276 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 12:02:20.329 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 12:02:20.332 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 12:02:20.333 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 12:02:20.333 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 12:02:20.333 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 12:02:20.334 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 12:02:20.880 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The path in 'value' must start with '/'.
+Parameter name: value
+   at Microsoft.AspNetCore.Http.PathString..ctor(String value)
+   at Microsoft.AspNetCore.Http.PathString.op_Implicit(String s)
+   at ep._15puzzle.security.Startup.<>c.<ConfigureServices>b__7_2(GoogleOptions options) in C:\courses\entertainment-portal\EntertainmentPortal\EP.15Puzzle.Security\Startup.cs:line 74
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c__DisplayClass10_0.<Get>b__0()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd(String name, Func`1 createOptions)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-09 12:02:58.920 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 12:02:59.015 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 12:02:59.022 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 12:02:59.023 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 12:02:59.023 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 12:02:59.023 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 12:02:59.023 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 12:02:59.586 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 12:02:59.591 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 12:02:59.591 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 12:02:59.592 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 12:02:59.592 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 12:02:59.592 +03:00 [DBG] Error Url: /home/error
+2019-07-09 12:02:59.592 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 12:03:07.733 +03:00 [INF] AuthenticationScheme: idsrv was challenged.
+2019-07-09 12:03:09.471 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-09 12:04:48.304 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 12:04:48.372 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 12:04:48.378 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 12:04:48.378 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 12:04:48.378 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 12:04:48.378 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 12:04:48.378 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 12:04:48.823 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 12:04:48.826 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 12:04:48.826 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 12:04:48.826 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 12:04:48.826 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 12:04:48.826 +03:00 [DBG] Error Url: /home/error
+2019-07-09 12:04:48.826 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 12:04:53.814 +03:00 [INF] AuthenticationScheme: idsrv was challenged.
+2019-07-09 12:04:55.714 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-09 12:05:02.111 +03:00 [INF] AuthenticationScheme: idsrv.external signed in.
+2019-07-09 12:05:02.188 +03:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"101570060797612121276","SubjectId":"0d4f41e7fd1343a4cf565f717323452532dad27cee26237d730749ced2344e61","DisplayName":"Илья Шершунович","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO49HVBT4G4:00000006","TimeStamp":"2019-07-09T09:05:02.0000000Z","ProcessId":5972,"LocalIpAddress":"127.0.0.1:2559","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-09 12:05:02.219 +03:00 [DBG] Augmenting SignInContext
+2019-07-09 12:05:02.223 +03:00 [DBG] Adding amr claim with value: external
+2019-07-09 12:05:02.234 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-09 12:05:02.241 +03:00 [INF] AuthenticationScheme: idsrv.external signed out.
+2019-07-09 12:07:11.624 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-09 12:07:11.679 +03:00 [INF] AuthenticationScheme: idsrv signed out.
+2019-07-09 12:07:11.680 +03:00 [INF] {"SubjectId":"0d4f41e7fd1343a4cf565f717323452532dad27cee26237d730749ced2344e61","DisplayName":"Илья Шершунович","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLO49HVBT4G5:00000002","TimeStamp":"2019-07-09T09:07:11.0000000Z","ProcessId":5972,"LocalIpAddress":"127.0.0.1:2559","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-09 12:07:17.701 +03:00 [INF] AuthenticationScheme: idsrv was challenged.
+2019-07-09 12:07:20.964 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-09 12:07:21.006 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO49HVBT4G5:00000006","TimeStamp":"2019-07-09T09:07:21.0000000Z","ProcessId":5972,"LocalIpAddress":"127.0.0.1:2559","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-09 12:07:21.012 +03:00 [DBG] Augmenting SignInContext
+2019-07-09 12:07:21.012 +03:00 [DBG] Adding idp claim with value: local
+2019-07-09 12:07:21.012 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-09 12:07:21.013 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-09 12:07:27.810 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-09 12:07:27.812 +03:00 [INF] AuthenticationScheme: idsrv signed out.
+2019-07-09 12:07:27.813 +03:00 [INF] {"SubjectId":"818727","DisplayName":"alice","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLO49HVBT4G5:00000009","TimeStamp":"2019-07-09T09:07:27.0000000Z","ProcessId":5972,"LocalIpAddress":"127.0.0.1:2559","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-09 12:11:10.382 +03:00 [INF] Error from RemoteAuthentication: The oauth state was missing or invalid..
+2019-07-09 12:11:10.385 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: An error was encountered while handling the remote login. ---> System.Exception: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at IdentityServer4.Hosting.FederatedSignOut.AuthenticationRequestHandlerWrapper.HandleRequestAsync() in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\AuthenticationRequestHandlerWrapper.cs:line 38
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-09 12:11:43.793 +03:00 [INF] Error from RemoteAuthentication: The oauth state was missing or invalid..
+2019-07-09 12:11:43.794 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: An error was encountered while handling the remote login. ---> System.Exception: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at IdentityServer4.Hosting.FederatedSignOut.AuthenticationRequestHandlerWrapper.HandleRequestAsync() in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\AuthenticationRequestHandlerWrapper.cs:line 38
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-09 12:14:56.162 +03:00 [INF] AuthenticationScheme: idsrv was challenged.
+2019-07-09 12:15:27.741 +03:00 [INF] Error from RemoteAuthentication: The oauth state was missing or invalid..
+2019-07-09 12:15:27.742 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: An error was encountered while handling the remote login. ---> System.Exception: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at IdentityServer4.Hosting.FederatedSignOut.AuthenticationRequestHandlerWrapper.HandleRequestAsync() in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\AuthenticationRequestHandlerWrapper.cs:line 38
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-09 12:19:28.861 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 12:19:28.944 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 12:19:28.950 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 12:19:28.950 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 12:19:28.950 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 12:19:28.950 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 12:19:28.950 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 12:19:29.403 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 12:19:29.407 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 12:19:29.408 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 12:19:29.408 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 12:19:29.408 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 12:19:29.408 +03:00 [DBG] Error Url: /home/error
+2019-07-09 12:19:29.408 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 12:19:36.357 +03:00 [INF] AuthenticationScheme: idsrv was challenged.
+2019-07-09 12:20:16.743 +03:00 [INF] Error from RemoteAuthentication: The oauth state was missing or invalid..
+2019-07-09 12:20:16.746 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: An error was encountered while handling the remote login. ---> System.Exception: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at IdentityServer4.Hosting.FederatedSignOut.AuthenticationRequestHandlerWrapper.HandleRequestAsync() in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\AuthenticationRequestHandlerWrapper.cs:line 38
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-09 12:25:20.907 +03:00 [INF] AuthenticationScheme: idsrv was challenged.
+2019-07-09 12:25:23.947 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-09 12:25:24.042 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO49Q5P4V9P:00000005","TimeStamp":"2019-07-09T09:25:24.0000000Z","ProcessId":8272,"LocalIpAddress":"127.0.0.1:6779","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-09 12:25:24.087 +03:00 [DBG] Augmenting SignInContext
+2019-07-09 12:25:24.091 +03:00 [DBG] Adding idp claim with value: local
+2019-07-09 12:25:24.091 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-09 12:25:24.108 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-09 12:25:29.075 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-09 12:25:29.103 +03:00 [INF] AuthenticationScheme: idsrv signed out.
+2019-07-09 12:25:29.104 +03:00 [INF] {"SubjectId":"818727","DisplayName":"alice","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLO49Q5P4V9P:00000008","TimeStamp":"2019-07-09T09:25:29.0000000Z","ProcessId":8272,"LocalIpAddress":"127.0.0.1:6779","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-09 12:25:35.714 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-09 12:25:35.722 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-09 12:25:35.722 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-09 12:25:35.730 +03:00 [DBG] Start discovery request
+2019-07-09 13:19:57.591 +03:00 [INF] Error from RemoteAuthentication: The oauth state was missing or invalid..
+2019-07-09 13:19:57.594 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: An error was encountered while handling the remote login. ---> System.Exception: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at IdentityServer4.Hosting.FederatedSignOut.AuthenticationRequestHandlerWrapper.HandleRequestAsync() in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\AuthenticationRequestHandlerWrapper.cs:line 38
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-09 14:11:45.368 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 14:11:45.618 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 14:11:45.634 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 14:11:45.635 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 14:11:45.635 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 14:11:45.635 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 14:11:45.635 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 14:11:47.765 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 14:11:47.770 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 14:11:47.770 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 14:11:47.770 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 14:11:47.770 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 14:11:47.770 +03:00 [DBG] Error Url: /home/error
+2019-07-09 14:11:47.770 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 14:12:15.040 +03:00 [INF] Error from RemoteAuthentication: The oauth state was missing or invalid..
+2019-07-09 14:12:15.042 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: An error was encountered while handling the remote login. ---> System.Exception: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at IdentityServer4.Hosting.FederatedSignOut.AuthenticationRequestHandlerWrapper.HandleRequestAsync() in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\AuthenticationRequestHandlerWrapper.cs:line 38
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-09 14:54:46.017 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 14:54:46.076 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 14:54:46.081 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 14:54:46.081 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 14:54:46.082 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 14:54:46.082 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 14:54:46.082 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 14:54:46.445 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 14:54:46.449 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 14:54:46.449 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 14:54:46.450 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 14:54:46.450 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 14:54:46.450 +03:00 [DBG] Error Url: /home/error
+2019-07-09 14:54:46.450 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 14:55:18.154 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 14:55:18.164 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 14:55:18.165 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 14:55:18.172 +03:00 [DBG] Start authorize request
+2019-07-09 14:55:18.184 +03:00 [DBG] No user present in authorize request
+2019-07-09 14:55:18.191 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:55:18.216 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:55:18.290 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:55:18.315 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDE0OjU1OjE4IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDE0OjU1OjE4IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 14:55:18.346 +03:00 [INF] Showing login: User is not authenticated
+2019-07-09 14:55:18.427 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:55:18.428 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:55:18.428 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:55:18.433 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:56:22.732 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-09 14:56:22.804 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-09 14:56:22.809 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-09 14:56:22.809 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-09 14:56:22.809 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-09 14:56:22.809 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-09 14:56:22.809 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-09 14:56:23.305 +03:00 [DBG] Login Url: /Account/Login
+2019-07-09 14:56:23.308 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-09 14:56:23.308 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-09 14:56:23.308 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-09 14:56:23.308 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-09 14:56:23.308 +03:00 [DBG] Error Url: /home/error
+2019-07-09 14:56:23.308 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-09 14:57:13.124 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 14:57:13.134 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 14:57:13.136 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 14:57:13.142 +03:00 [DBG] Start authorize request
+2019-07-09 14:57:13.153 +03:00 [DBG] No user present in authorize request
+2019-07-09 14:57:13.160 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:57:13.183 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:57:13.264 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:57:13.287 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDE0OjU3OjEzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDE0OjU3OjEzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 14:57:13.318 +03:00 [INF] Showing login: User is not authenticated
+2019-07-09 14:57:13.399 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:57:13.400 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:57:13.400 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:57:13.404 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:57:16.672 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-09 14:57:30.662 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:57:30.663 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:57:30.664 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:57:30.665 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:58:04.192 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-09 14:58:39.601 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 14:58:39.602 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 14:58:39.602 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 14:58:39.605 +03:00 [DBG] Start authorize request
+2019-07-09 14:58:39.606 +03:00 [DBG] No user present in authorize request
+2019-07-09 14:58:39.606 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:58:39.607 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:58:39.607 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:58:39.609 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDE0OjU4OjM5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDE0OjU4OjM5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 14:58:39.609 +03:00 [INF] Showing login: User is not authenticated
+2019-07-09 14:58:39.645 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:58:39.645 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:58:39.646 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:58:39.646 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:58:40.884 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-09 14:59:19.830 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-09 14:59:19.831 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-09 14:59:19.831 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-09 14:59:19.831 +03:00 [DBG] Start authorize request
+2019-07-09 14:59:19.831 +03:00 [DBG] No user present in authorize request
+2019-07-09 14:59:19.832 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:59:19.832 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:19.832 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:59:19.833 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDE0OjU5OjE5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDE0OjU5OjE5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 14:59:19.833 +03:00 [INF] Showing login: User is not authenticated
+2019-07-09 14:59:19.850 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:59:19.851 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:19.851 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:59:19.851 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:20.991 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-09 14:59:27.409 +03:00 [INF] AuthenticationScheme: idsrv.external signed in.
+2019-07-09 14:59:27.467 +03:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"101570060797612121276","SubjectId":"6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877","DisplayName":"Илья Шершунович","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO4CHRBND11:00000009","TimeStamp":"2019-07-09T11:59:27.0000000Z","ProcessId":5068,"LocalIpAddress":"127.0.0.1:6112","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-09 14:59:27.480 +03:00 [DBG] Augmenting SignInContext
+2019-07-09 14:59:27.485 +03:00 [DBG] Adding amr claim with value: external
+2019-07-09 14:59:27.491 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-09 14:59:27.500 +03:00 [INF] AuthenticationScheme: idsrv.external signed out.
+2019-07-09 14:59:27.500 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:59:27.500 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:27.501 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:59:27.503 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:27.511 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-09 14:59:27.514 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-09 14:59:27.514 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-09 14:59:27.526 +03:00 [DBG] Start authorize callback request
+2019-07-09 14:59:27.535 +03:00 [DBG] User in authorize request: 6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877
+2019-07-09 14:59:27.535 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:59:27.535 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:27.535 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:59:27.536 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDE0OjU5OjE5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"871ad940d912e9f24a71dd35feb2bd12","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDE0OjU5OjE5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 14:59:27.538 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-09 14:59:27.559 +03:00 [DBG] user_consent grant with value: swagger|6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877 not found in store.
+2019-07-09 14:59:27.559 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-09 14:59:27.559 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-09 14:59:27.603 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:59:27.603 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:27.603 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:59:27.603 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:31.039 +03:00 [DBG] CORS request made for path: /consent from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-09 14:59:31.097 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:59:31.097 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:31.097 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:59:31.099 +03:00 [INF] {"SubjectId":"6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877","ClientId":"swagger","RequestedScopes":["pyatnashki_api"],"GrantedScopes":["pyatnashki_api"],"ConsentRemembered":false,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLO4CHRBND11:0000000D","TimeStamp":"2019-07-09T11:59:31.0000000Z","ProcessId":5068,"LocalIpAddress":"127.0.0.1:6112","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-09 14:59:31.127 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:31.135 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-09 14:59:31.136 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-09 14:59:31.136 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-09 14:59:31.136 +03:00 [DBG] Start authorize callback request
+2019-07-09 14:59:31.147 +03:00 [DBG] User in authorize request: 6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877
+2019-07-09 14:59:31.147 +03:00 [DBG] Start authorize request protocol validation
+2019-07-09 14:59:31.147 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-09 14:59:31.148 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-09 14:59:31.148 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44380/swagger/oauth2-redirect.html"],"SubjectId":"6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"pyatnashki_api","State":"VHVlIEp1bCAwOSAyMDE5IDE0OjU5OjE5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"871ad940d912e9f24a71dd35feb2bd12","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44380/swagger/oauth2-redirect.html","scope":"pyatnashki_api","state":"VHVlIEp1bCAwOSAyMDE5IDE0OjU5OjE5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-09 14:59:31.148 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-09 14:59:31.148 +03:00 [DBG] user_consent grant with value: swagger|6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877 not found in store.
+2019-07-09 14:59:31.148 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-09 14:59:31.161 +03:00 [INF] User consented to scopes: ["pyatnashki_api"]
+2019-07-09 14:59:31.168 +03:00 [DBG] Client allows remembering consent, and no scopes provided. Removing consent from consent store for subject: 6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877
+2019-07-09 14:59:31.189 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-09 14:59:31.207 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-09 14:59:31.208 +03:00 [DBG] Getting claims for access token for subject: 6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877
+2019-07-09 14:59:31.214 +03:00 [DBG] Get profile called for subject 6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877 from client Swagger Client with claim types [] via ClaimsProviderAccessToken
+2019-07-09 14:59:31.216 +03:00 [DBG] Issued claims: []
+2019-07-09 14:59:31.317 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877","Scopes":"pyatnashki_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****z93A","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO4CHRBND11:0000000E","TimeStamp":"2019-07-09T11:59:31.0000000Z","ProcessId":5068,"LocalIpAddress":"127.0.0.1:6112","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-09 14:59:31.320 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"6dad757e0b355efe0f7f407256e1acbc463ab3c03899d33855343e38ee2ce877","ClientId":"swagger","RedirectUri":"https://localhost:44380/swagger/oauth2-redirect.html","State":"VHVlIEp1bCAwOSAyMDE5IDE0OjU5OjE5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"pyatnashki_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-09 14:59:31.350 +03:00 [DBG] Augmenting SignInContext
+2019-07-09 14:59:31.351 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-09 14:59:59.879 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-09 14:59:59.889 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-09 14:59:59.890 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-09 14:59:59.907 +03:00 [DBG] Start discovery request
+2019-07-09 15:00:00.200 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-09 15:00:00.203 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-09 15:00:00.203 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-09 15:00:00.209 +03:00 [DBG] Start key discovery request

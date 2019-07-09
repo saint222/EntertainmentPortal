@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 
 using EP._15Puzzle.Logic.Queries;
@@ -14,8 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using EP._15Puzzle.Logic.Profiles;
 using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
@@ -24,15 +18,14 @@ using EP._15Puzzle.Web.Filters;
 using FluentValidation.AspNetCore;
 using IdentityModel;
 using IdentityServer4;
-using IdentityServer4.AccessTokenValidation;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
+using NSwag.AspNetCore;
+using NJsonSchema;
+using NSwag;
 
 namespace EP._15Puzzle.Web
 {
@@ -51,52 +44,32 @@ namespace EP._15Puzzle.Web
             services.AddAuthenticationCore();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
-                //.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
-                //{
-                //    opt.RequireHttpsMetadata = true;
-                //    opt.TokenValidationParameters = new TokenValidationParameters()
-                //    {
-                //        ValidIssuer = AuthConstants.ISSUER_NAME,
-                //        ValidateIssuer = true,
-                //        ValidAudience = AuthConstants.AUDIENCE_NAME,
-                //        ValidateAudience = true,
-                //        ValidateIssuerSigningKey = true,
-                //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthConstants.SECRET)),
-                //        ValidateLifetime = true,
-                //        RequireExpirationTime = true,
-                //        RequireSignedTokens = true
-                //    };
-                //})
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "https://localhost:44380";
-                    opt.NameClaimType = JwtClaimTypes.Name;
-                    opt.RoleClaimType = JwtClaimTypes.Role;
+                    opt.Authority = "http://localhost:5000";
                     opt.RequireHttpsMetadata = false;
-                    opt.SupportedTokens = SupportedTokens.Jwt;
-                    opt.ApiName = "api";
-                })
-                .AddGoogle("Google", opt =>
-                {
-                    opt.ClientId = "734768643870-2ls26lml1ifn9kdcfoppvfmagujj8nki.apps.googleusercontent.com";
-                    opt.ClientSecret = "KnuFajDb0Y-xTuaoodohxSEa";
-                })
-                .AddFacebook("Facebook", opt =>
-                {
-                    opt.AppId = "1257326831111548";
-                    opt.AppSecret = "a0a9b3ced9bed2aae3cfb0b92a8e9d30";
-                }); 
+                });
+                //.AddGoogle("Google", opt =>
+                //{
+                //    opt.ClientId = "734768643870-2ls26lml1ifn9kdcfoppvfmagujj8nki.apps.googleusercontent.com";
+                //    opt.ClientSecret = "KnuFajDb0Y-xTuaoodohxSEa";
+                //})
+                //.AddFacebook("Facebook", opt =>
+                //{
+                //    opt.AppId = "1257326831111548";
+                //    opt.AppSecret = "a0a9b3ced9bed2aae3cfb0b92a8e9d30";
+                //}); 
 
             services.AddAuthorization(opt =>
             {
-                opt.AddPolicy("bearer",
-                    cfg => cfg.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
-                        .RequireAuthenticatedUser());
                 opt.AddPolicy("google",
                     cfg => cfg.AddAuthenticationSchemes("Google")
                         .RequireAuthenticatedUser());
                 opt.AddPolicy("facebook",
                     cfg => cfg.AddAuthenticationSchemes("Facebook")
+                        .RequireAuthenticatedUser());
+                opt.AddPolicy("bearer",
+                    cfg => cfg.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                         .RequireAuthenticatedUser());
             });
 
@@ -112,10 +85,25 @@ namespace EP._15Puzzle.Web
 
             services.AddMediatR(typeof(NewDeckCommand).Assembly);
             services.AddMediatR(typeof(GetDeckQuery).Assembly);
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(cfg =>
+            {
+                cfg.SchemaType = NJsonSchema.SchemaType.OpenApi3;
+                cfg.AddSecurity("oauth", new[] { "pyatnashki_api" }, new OpenApiSecurityScheme()
+                {
+                    Flow = OpenApiOAuth2Flow.Implicit,
+                    Type = OpenApiSecuritySchemeType.OAuth2,
+                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                    Scopes = new Dictionary<string, string>()
+                    {
+                        {"pyatnashki_api", "Access to 15Puzzle application." }
+                    }
+
+                });
+            });
             services.AddAutoMapper(cfg=>cfg.AllowNullCollections=true,typeof(DeckProfile).Assembly);
             services.AddDeckServices();
             SetupSecurity(services);
+
             services.AddMvc(opt =>
                 {
                     opt.Filters.Clear();
@@ -138,12 +126,20 @@ namespace EP._15Puzzle.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                     .AllowAnyMethod()
-                    .WithOrigins("http://localhost:4200", "https://localhost:44380", "https://accounts.google.com", "https://www.facebook.com")
+                    .WithOrigins("http://localhost:4200", "https://localhost:44380")
                     .AllowCredentials());
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseIdentityServer();
-            mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();
+            //mediator.Send(new CreateDatabaseCommand()).Wait();
+
+            app.UseOpenApi().UseSwaggerUi3(opt =>
+            {
+                opt.OAuth2Client = new OAuth2ClientSettings()
+                {
+                    AppName = "pyatnashki",
+                    ClientId = "swagger"
+                };
+            });
             app.UseMvc();
         }
 
@@ -221,7 +217,7 @@ namespace EP._15Puzzle.Web
                 {
                     Scopes = new List<Scope>()
                     {
-                        new Scope("deck_api")
+                        new Scope("pyatnashki_api")
                     }
                 },
             };
