@@ -17,6 +17,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using NJsonSchema;
+using NSwag;
+using NSwag.AspNetCore;
+using System.Collections.Generic;
 using System.Text;
 
 namespace EP.Balda.Web
@@ -36,21 +39,10 @@ namespace EP.Balda.Web
             //services.AddAuthenticationCore();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+                .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.RequireHttpsMetadata = true;
-                    opt.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidIssuer = AuthConstants.ISSUER_NAME,
-                        ValidateIssuer = true,
-                        ValidAudience = AuthConstants.AUDIENCE_NAME,
-                        ValidateAudience = true,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthConstants.SECRET)),
-                        ValidateLifetime = true,
-                        RequireExpirationTime = true,
-                        RequireSignedTokens = true
-                    };
+                    opt.Authority = "http://localhost:5000";
+                    opt.RequireHttpsMetadata = false;
                 })
                 .AddGoogle("Google", opt =>
                  {
@@ -70,6 +62,7 @@ namespace EP.Balda.Web
                     opt.ClientSecret = facebookAuthNSection["ClientSecret"];
                     opt.CallbackPath = new PathString("/api/facebook");
                 });
+
             services.AddAuthorization(opt =>
             {
                 opt.AddPolicy("google",
@@ -79,8 +72,24 @@ namespace EP.Balda.Web
                     cfg => cfg.AddAuthenticationSchemes("Facebook")
                     .RequireAuthenticatedUser());
             });
+
             services.AddSession();
-            services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
+
+            services.AddSwaggerDocument(cfg =>
+            {
+                cfg.SchemaType = SchemaType.OpenApi3;
+                cfg.AddSecurity("oauth", new[] { "baldagame_api" }, new OpenApiSecurityScheme()
+                {
+                    Flow = OpenApiOAuth2Flow.Implicit,
+                    Type = NSwag.OpenApiSecuritySchemeType.OAuth2,
+                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                    Scopes = new Dictionary<string, string>()
+                    {
+                        { "baldagame_api", "Access to Balda Game api" }
+                    }
+                });
+            });
+
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddMediatR(typeof(CreateNewGameCommand).Assembly);
             
@@ -108,16 +117,22 @@ namespace EP.Balda.Web
                 // for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
 
-            app.UseCors(o =>
-                o.AllowAnyHeader()
+            app.UseCors(opt =>
+                opt.AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowAnyOrigin()
+                .WithOrigins("http://localhost:4200")
                 .AllowCredentials());
 
             app.UseAuthentication();
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseOpenApi().UseSwaggerUi3();
+
+            app.UseOpenApi().UseSwaggerUi3(opt => opt.OAuth2Client = new OAuth2ClientSettings()
+            {
+                AppName = "Balda Game",
+                ClientId = "swagger"
+            });
+
             app.UseMvc();
 
         }
