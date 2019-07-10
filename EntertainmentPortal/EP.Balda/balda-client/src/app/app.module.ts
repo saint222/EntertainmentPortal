@@ -1,3 +1,4 @@
+import { HttpClientModule  } from '@angular/common/http';
 import { GameModule } from './game/game.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GameModule
+    GameModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

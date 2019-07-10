@@ -10,7 +10,7 @@ using NSwag.Annotations;
 namespace EP.Balda.Web.Controllers
 {
     [ApiController]
-    public class MapController : ControllerBase
+    public class MapController : BaseController
     {
         private readonly IMediator _mediator;
         private readonly ILogger<MapController> _logger;

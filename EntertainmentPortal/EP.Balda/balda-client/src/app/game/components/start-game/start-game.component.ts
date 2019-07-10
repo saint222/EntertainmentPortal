@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Size } from '../../models/size';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-start-game',
@@ -9,7 +10,8 @@ import { Size } from '../../models/size';
 })
 export class StartGameComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private gameService: GameService) {
+  }
   sizes = [
      new Size(3, '3x3' ),
      new Size(5, '5x5' ),
@@ -20,7 +22,16 @@ export class StartGameComponent implements OnInit {
   }
 
   onStartClick() {
-    this.router.navigateByUrl('api/game');
+      this.gameService.createNewGame()
+        .subscribe(
+          game => {
+            console.log(game);
+          } ,
+          err => {
+            console.log(err);
+          });
+
+      console.log('123');
   }
 
 }

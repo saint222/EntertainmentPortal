@@ -5,7 +5,6 @@ using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
@@ -13,7 +12,7 @@ using NSwag.Annotations;
 namespace EP.Balda.Web.Controllers
 {
     [ApiController]
-    public class GameController : ControllerBase
+    public class GameController : BaseController
     {
         private readonly IMediator _mediator;
         private readonly ILogger<GameController> _logger;
@@ -24,7 +23,6 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
-        [Authorize(AuthenticationSchemes = "Facebook")]
         [HttpGet("api/game")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game not found")]
@@ -50,12 +48,21 @@ namespace EP.Balda.Web.Controllers
             }
         }
 
-        [Authorize(AuthenticationSchemes = "Facebook")]
         [HttpPost("api/game")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Game can't be created")]
-        public async Task<IActionResult> CreateNewGameAsync([FromBody] CreateNewGameCommand model)
+        public async Task<IActionResult> CreateNewGameAsync([FromBody] int mapSize)
         {
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+            if(!isAuthenticated)
+            {
+                return BadRequest("User is not authorized");
+            }
+
+            var model = new CreateNewGameCommand();
+            model.PlayerId = UserId;
+            model.MapSize = mapSize;
+            
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: PlayerId = {model.PlayerId}, MapSize = {model.MapSize}");
 
@@ -67,6 +74,7 @@ namespace EP.Balda.Web.Controllers
                     $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
                     $"Game was created at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
 
+                //return Created("api/game", result.Value);
                 return Created("api/game", result.Value);
             }
             else
