@@ -289,3 +289,31 @@
 2019-07-05 15:43:57.334 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=1 was written at [Utc]
 2019-07-05 15:43:57.335 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Cell"'.
 2019-07-05 15:43:57.336 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-05 16:01:02.708 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-05 16:01:03.295 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-05 16:01:03.314 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-05 16:10:29.700 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-05 16:10:32.984 +03:00 [Information] Action: GetGameAsync Parameter: Id = 1
+2019-07-05 16:10:33.034 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-05 16:10:33.057 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-05 16:14:41.439 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.GetCellAsync (EP.TicTacToe.Web)"'
+2019-07-05 16:14:42.286 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-05 16:14:42.316 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.GetCellAsync (EP.TicTacToe.Web)"'
+2019-07-05 22:25:10.328 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-05 22:25:10.590 +03:00 [Information] CORS policy execution successful.
+2019-07-05 22:25:10.806 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-05 22:25:16.066 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 05.07.2019 19:25:16 [Utc]
+2019-07-05 22:25:16.116 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-05 22:25:16.149 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-05 22:31:05.573 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-05 22:31:05.574 +03:00 [Information] CORS policy execution successful.
+2019-07-05 22:31:05.581 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-05 22:31:06.301 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=1 was written at [Utc]
+2019-07-05 22:31:06.304 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Cell"'.
+2019-07-05 22:31:06.330 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-05 22:33:18.365 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-05 22:33:18.366 +03:00 [Information] CORS policy execution successful.
+2019-07-05 22:33:18.367 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-05 22:33:18.584 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=1 was written at [Utc]
+2019-07-05 22:33:18.585 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Cell"'.
+2019-07-05 22:33:18.587 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'

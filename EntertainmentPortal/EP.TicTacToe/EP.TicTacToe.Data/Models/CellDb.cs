@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EP.TicTacToe.Data.Models
+﻿namespace EP.TicTacToe.Data.Models
 {
     /// <summary>
     ///     Entity of Cells.

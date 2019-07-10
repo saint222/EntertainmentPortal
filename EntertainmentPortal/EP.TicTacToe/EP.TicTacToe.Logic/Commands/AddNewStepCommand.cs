@@ -10,8 +10,7 @@ namespace EP.TicTacToe.Logic.Commands
 
         public int PlayerId { get; set; }
 
-        public int X { get; set; }
+        public int Index { get; set; }
 
-        public int Y { get; set; }
     }
 }

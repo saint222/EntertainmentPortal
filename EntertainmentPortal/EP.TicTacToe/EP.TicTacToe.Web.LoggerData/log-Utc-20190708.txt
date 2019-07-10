@@ -1,0 +1,9 @@
+2019-07-08 13:47:56.582 +03:00 [Information] The file "/swagger-ui.css" was not modified
+2019-07-08 13:47:56.582 +03:00 [Information] The file "/swagger-ui-standalone-preset.js" was not modified
+2019-07-08 13:47:56.586 +03:00 [Information] The file "/swagger-ui-bundle.js" was not modified
+2019-07-08 13:48:43.493 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-08 13:48:43.518 +03:00 [Information] CORS policy execution successful.
+2019-07-08 13:48:43.793 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-08 13:54:25.736 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-08 13:54:26.107 +03:00 [Information] CORS policy execution successful.
+2019-07-08 13:54:26.616 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'

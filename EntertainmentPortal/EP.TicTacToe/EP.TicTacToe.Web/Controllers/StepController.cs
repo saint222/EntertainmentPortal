@@ -62,7 +62,7 @@ namespace EP.TicTacToe.Web.Controllers
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                              $"Parameters: GameId = {model.GameId}, PlayerId = {model.PlayerId}," +
-                             $" X={model.X} Y={model.Y}");
+                             $" index={model.Index}");
 
             var result = await _mediator.Send(model);
 
