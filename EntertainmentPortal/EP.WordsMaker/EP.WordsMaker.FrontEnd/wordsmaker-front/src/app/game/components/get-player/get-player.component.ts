@@ -1,7 +1,6 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Player } from 'src/app/game/models/player';
-import { PlayerService } from 'src/app/game/services/player.service';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
   selector: 'app-get-player',
@@ -16,7 +15,7 @@ export class GetPlayerComponent implements OnInit {
   constructor(private playerService: PlayerService, private fb: FormBuilder) {
     this.playerGroup = this.fb.group({
       id: ['', Validators.required]
-    })
+    });
   }
 
   ngOnInit() {

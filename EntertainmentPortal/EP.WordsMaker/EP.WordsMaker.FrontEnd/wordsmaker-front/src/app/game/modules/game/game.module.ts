@@ -1,3 +1,4 @@
+import { GetPlayerComponent } from './../../components/get-player/get-player.component';
 import { AddPlayerComponent } from './../../components/add-player/add-player.component';
 import { PlayerListComponent } from './../../components/player-list/player-list.component';
 import { PlayerInfoComponent } from './../../components/player-info/player-info.component';
@@ -9,8 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [PlayerInfoComponent, PlayerListComponent, AddPlayerComponent],
+  declarations: [PlayerInfoComponent, PlayerListComponent, AddPlayerComponent, GetPlayerComponent],
   imports: [CommonModule, HttpClientModule, ReactiveFormsModule, RouterModule],
-  exports: [PlayerInfoComponent ,PlayerListComponent, AddPlayerComponent, ReactiveFormsModule, RouterModule]
+  exports: [PlayerInfoComponent, PlayerListComponent, AddPlayerComponent, GetPlayerComponent, ReactiveFormsModule, RouterModule]
 })
 export class GameModule { }

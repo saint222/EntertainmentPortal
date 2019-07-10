@@ -1,15 +1,15 @@
-import { GetPlayerComponent } from './game/components/get-player/get-player/get-player.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PlayingFieldComponent } from './game/components/playing-field/playing-field.component';
+import { GetPlayerComponent } from './game/components/get-player/get-player.component';
 import { PlayerListComponent } from './game/components/player-list/player-list.component';
-import { PlayerInfoComponent } from './game/components/player-info/player-info.component';
 import { AddPlayerComponent } from './game/components/add-player/add-player.component';
 
 const routes: Routes = [
   {path: 'players', component: PlayerListComponent},
   {path: 'edit', component: AddPlayerComponent},
-  {path: 'player/:id', component: PlayerInfoComponent},
   {path: 'get', component: GetPlayerComponent},
+  {path: 'game', component: PlayingFieldComponent},
   {path: '', redirectTo: 'players', pathMatch: 'full'}
 ];
 

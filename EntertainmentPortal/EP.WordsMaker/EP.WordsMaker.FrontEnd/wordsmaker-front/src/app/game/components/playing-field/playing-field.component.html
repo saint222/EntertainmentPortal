@@ -1,0 +1,23 @@
+<div>
+  <table border='1' bordercolor="green" cellspacing="10">
+    <tr>
+      <td (click)="CellClick(i)" height='40' width='30' align='center'
+        *ngFor="let letter of keyWordLetters let i = index">
+        {{letter}}
+      </td>
+    </tr>
+
+  </table>
+  <table>
+      <label float=' center'>
+          {{resultWord.join('')}}
+        </label>
+  </table>
+</div>
+<div>
+
+</div>
+<div>
+  <button (click)="ClearBtnClick()" [disabled]="CheckResultWord()">Clear</button>
+  <button (click)="SubmitBtnClick()">Submit</button>
+</div>

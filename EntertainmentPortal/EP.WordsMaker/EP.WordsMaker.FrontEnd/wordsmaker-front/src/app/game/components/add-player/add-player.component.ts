@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Player } from '../../models/player';
-import { PlayerService } from '../../services/player.service';
-import { of } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Component, OnInit } from '@angular/core';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
   selector: 'app-add-player',
