@@ -1,8 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
 using EP.SeaBattle.Common.Enums;
 using EP.SeaBattle.Logic.Models;
-using MediatR;
 using System.Collections.Generic;
+using MediatR;
+
 
 namespace EP.SeaBattle.Logic.Commands
 {
@@ -12,8 +13,6 @@ namespace EP.SeaBattle.Logic.Commands
         public byte Y { get; set; }
         public ShipOrientation Orientation { get; set; }
         public ShipRank Rank { get; set; }
-        //TODO Change to Guid
         public string PlayerId { get; set; }
-        public string GameId { get; set; }
     }
 }

@@ -30,12 +30,11 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Maybe<IEnumerable<Ship>>> Handle(GetShipsQuery request, CancellationToken cancellationToken)
         {
-            if (!string.IsNullOrEmpty(request.GameId) && !string.IsNullOrEmpty(request.PlayerId))
+            if (!string.IsNullOrEmpty(request.PlayerId))
             {
 
-                var result = await _context.Ships.Where(w => w.Game.Id == request.GameId && w.Player.Id == request.PlayerId)
+                var result = await _context.Ships.Where(w => w.Player.Id == request.PlayerId)
                     .Include(i => i.Cells)
-                    .Include(i => i.Game)
                     .Include(i => i.Player)
                     .ToArrayAsync(cancellationToken).ConfigureAwait(false);
 

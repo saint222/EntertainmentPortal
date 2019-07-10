@@ -1,0 +1,10 @@
+<div align="center" class="dropdown">
+    <select>
+        <option *ngFor="let size of sizes" value= {{size.num}} [selected]="size.num === 5">
+          {{ size.desciption }}
+        </option>
+      </select>
+  </div>
+  <div align="center">
+  <button class="btn btn-primary" (click)="onStartClick()">Start Game</button>
+</div>

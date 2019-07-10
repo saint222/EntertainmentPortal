@@ -1,51 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace EP.Balda.Logic.Models
 {
     /// <summary>
-    ///     <c>Player</c> model class.
-    ///     Represents a Player.
+    /// <c>Player</c> model class.
+    /// Represents a Player.
     /// </summary>
-    public class Player
+    public class Player : IdentityUser<string>
     {
         /// <summary>
-        ///     Id property. Represents unique player's Id
+        /// FirstName property. Represents player's first name.
         /// </summary>
-        public int Id { get; set; }
+        public string FirstName { get; set; }
 
         /// <summary>
-        ///     NickName property. Represents player's nickname.
+        /// LastName property. Represents player's last name.
         /// </summary>
-        public string NickName { get; set; }
+        public string LastName { get; set; }
 
         /// <summary>
-        ///     Login property. Represents player's login.
-        /// </summary>
-        public string Login { get; set; }
-
-        /// <summary>
-        ///     Password property. Represents player's password.
-        /// </summary>
-        public string Password { get; set; }
-
-        /// <summary>
-        ///     Score property. Represents player's score.
+        /// Score property. Represents player's score.
         /// </summary>
         public int Score { get; set; }
 
         /// <summary>
-        ///     IsMoveAllowed property. Represents player's turn in the game.
-        /// </summary>
-        public bool IsMoveAllowed { get; set; }
-        
-        /// <summary>
-        ///     Words property. Represents the list of words that player already entered in one match.
-        /// </summary>
-        public List<string> Words { get; set; } //words this player guessed per one game
-
-        /// <summary>
-        ///     Created property. Represents the data when player profile was created.
+        /// Created property. Represents the data when player profile was created.
         /// </summary>
         public DateTime Created { get; set; }
     }

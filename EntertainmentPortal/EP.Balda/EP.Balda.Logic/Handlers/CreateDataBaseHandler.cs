@@ -1,12 +1,14 @@
 ﻿using EP.Balda.Data.Context;
 using EP.Balda.Logic.Commands;
+using Fody;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
-    [Fody.ConfigureAwait(true)]
+    [ConfigureAwait(true)]
     public class CreateDataBaseHandler : AsyncRequestHandler<CreateDatabaseCommand>
     {
         private readonly BaldaGameDbContext _context;
@@ -18,7 +20,7 @@ namespace EP.Balda.Logic.Handlers
 
         protected override async Task Handle(CreateDatabaseCommand request, CancellationToken cancellationToken)
         {
-            await _context.Database.EnsureCreatedAsync(cancellationToken);
+            await _context.Database.MigrateAsync(cancellationToken);
         }
     }
 }

@@ -1,37 +1,36 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using CSharpFunctionalExtensions;
+using EP.Balda.Data.Context;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
-using CSharpFunctionalExtensions;
-using AutoMapper;
-using EP.Balda.Data.Context;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using EP.Balda.Data.Models;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
     public class GetCellHandler : IRequestHandler<GetCell, Maybe<Cell>>
     {
-        private readonly IMapper _mapper;
         private readonly BaldaGameDbContext _context;
+        private readonly IMapper _mapper;
 
-        public GetCellHandler(IMapper mapper, BaldaGameDbContext context)
+        public GetCellHandler(BaldaGameDbContext context, IMapper mapper)
         {
-            _mapper = mapper;
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<Maybe<Cell>> Handle(GetCell request, CancellationToken cancellationToken)
         {
-            var cellDb = await (_context.Cells
+            var cellDb = await _context.Cells
                 .Where(c => c.Id == request.Id)
-                .FirstOrDefaultAsync<CellDb>());
+                .FirstOrDefaultAsync(cancellationToken);
 
-            return cellDb == null ? 
-                Maybe<Cell>.None : 
-                Maybe<Cell>.From(_mapper.Map<Cell>(cellDb));
+            return cellDb == null
+                ? Maybe<Cell>.None
+                : Maybe<Cell>.From(_mapper.Map<Cell>(cellDb));
         }
     }
 }

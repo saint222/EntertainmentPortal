@@ -7,8 +7,8 @@ namespace EP.Balda.Logic.Commands
 {
     public class AddWordToPlayerCommand : IRequest<Result<Player>>
     {
-        public long Id { get; set; }
-        
+        public string Id { get; set; }
+
         public long GameId { get; set; }
 
         public List<long> CellsIdFormWord { get; set; }
