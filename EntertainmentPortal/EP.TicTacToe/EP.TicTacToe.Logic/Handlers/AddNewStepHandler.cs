@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EP.TicTacToe.Logic.Handlers
 {
-    public class AddNewStepHandler : IRequestHandler<AddNewStepCommand, Result<Cell>>
+    public class AddNewStepHandler : IRequestHandler<AddNewStepCommand, Result<bool>>
     {
         private readonly TicTacDbContext _context;
         private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace EP.TicTacToe.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Result<Cell>> Handle(AddNewStepCommand request,
+        public async Task<Result<bool>> Handle(AddNewStepCommand request,
                                                CancellationToken cancellationToken)
         {
             var ticTacSymbol = 0;
@@ -42,7 +42,7 @@ namespace EP.TicTacToe.Logic.Handlers
             if (secondPlayer != null) ticTacSymbol = secondPlayer.TicTac;
 
             if (firstPlayer == null && secondPlayer == null)
-                return Result.Fail<Cell>(
+                return Result.Fail<bool>(
                     $"This game has no player ID {request.PlayerId}");
 
             var mapDb = await _context.Maps
@@ -57,12 +57,12 @@ namespace EP.TicTacToe.Logic.Handlers
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (cellDb == null)
-                return Result.Fail<Cell>($"This Cell with X={cel.X} Y={cel.Y} " +
+                return Result.Fail<bool>($"This Cell with X={cel.X} Y={cel.Y} " +
                                          $"in the game with ID [{request.GameId}], " +
                                          $"on this map with ID [{mapDb.Id}] does not exist.");
 
             if (cellDb.TicTac != 0)
-                return Result.Fail<Cell>("The cell is already taken.");
+                return Result.Fail<bool>("The cell is already taken.");
 
             cellDb.TicTac = ticTacSymbol;
             _context.Cells.Update(cellDb);
@@ -77,11 +77,11 @@ namespace EP.TicTacToe.Logic.Handlers
                 foreach (var item in cells) cellList.Add(item.TicTac);
                 var resGame = IsBingo( mapDb.WinningChain, cellList, request.Index);
 
-                return Result.Ok(_mapper.Map<Cell>(cellDb));
+                return Result.Ok(_mapper.Map<bool>(resGame));
             }
             catch (DbUpdateException ex)
             {
-                return Result.Fail<Cell>(ex.Message);
+                return Result.Fail<bool>(ex.Message);
             }
         }
 

@@ -78,3 +78,50 @@
 2019-07-11 20:19:02.725 +03:00 [Information] Action: GetGameAsync Parameter: Id = 4
 2019-07-11 20:19:02.729 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
 2019-07-11 20:19:02.730 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-11 20:53:21.044 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-11 20:53:21.364 +03:00 [Information] CORS policy execution successful.
+2019-07-11 20:53:22.002 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 20:55:13.216 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-11 20:55:13.303 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:02:57.508 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-11 21:02:58.062 +03:00 [Information] CORS policy execution successful.
+2019-07-11 21:02:58.377 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:04:05.619 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=4 was written at [11.07.2019 18:04:05]
+2019-07-11 21:05:06.807 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Boolean"'.
+2019-07-11 21:05:07.285 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:10:39.885 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-11 21:10:39.963 +03:00 [Information] CORS policy execution successful.
+2019-07-11 21:10:39.999 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:10:47.527 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=2 GameId=1 can't be written
+2019-07-11 21:10:47.755 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-11 21:10:47.860 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:12:06.820 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-11 21:12:06.878 +03:00 [Information] CORS policy execution successful.
+2019-07-11 21:12:06.905 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:12:14.075 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=1 was written at [11.07.2019 18:12:14]
+2019-07-11 21:14:23.463 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Boolean"'.
+2019-07-11 21:14:23.497 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:31:35.620 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-11 21:31:35.779 +03:00 [Information] CORS policy execution successful.
+2019-07-11 21:31:35.970 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:31:39.092 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=3 GameId=1 can't be written
+2019-07-11 21:31:39.146 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-11 21:31:39.178 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:31:54.670 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-11 21:31:54.670 +03:00 [Information] CORS policy execution successful.
+2019-07-11 21:31:54.676 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:31:54.751 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=3 GameId=10 can't be written
+2019-07-11 21:31:54.754 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-11 21:31:54.756 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:32:11.063 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-11 21:32:11.064 +03:00 [Information] CORS policy execution successful.
+2019-07-11 21:32:11.066 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:32:11.099 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=2 GameId=10 can't be written
+2019-07-11 21:32:11.100 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-11 21:32:11.102 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:32:59.660 +03:00 [Warning] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-07-11 21:32:59.661 +03:00 [Information] CORS policy execution successful.
+2019-07-11 21:32:59.662 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-11 21:33:00.882 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=1 was written at [11.07.2019 18:33:00]
+2019-07-11 21:33:00.888 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Boolean"'.
+2019-07-11 21:33:00.891 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'

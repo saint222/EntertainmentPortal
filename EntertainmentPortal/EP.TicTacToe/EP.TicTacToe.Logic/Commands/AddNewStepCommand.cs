@@ -4,7 +4,7 @@ using MediatR;
 
 namespace EP.TicTacToe.Logic.Commands
 {
-    public class AddNewStepCommand : IRequest<Result<Cell>>
+    public class AddNewStepCommand : IRequest<Result<bool>>
     {
         public int GameId { get; set; }
 
