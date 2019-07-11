@@ -28,7 +28,12 @@ namespace EP._15Puzzle.Web.Controllers
         [HttpGet("test")]
         public IActionResult LoginTest()
         {
-            return Ok();
+            var list = new List<string>();
+            foreach (var claim in User.Claims)
+            {
+                list.Add(claim.Type+':'+claim.Value);
+            }
+            return Ok(list);
         }
         
         

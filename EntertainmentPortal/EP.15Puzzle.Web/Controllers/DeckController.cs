@@ -40,7 +40,7 @@ namespace EP._15Puzzle.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> Get()
         {
-            var result = await _mediator.Send(new GetDeckQuery(User.Identity.AuthenticationType, User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value));
+            var result = await _mediator.Send(new GetDeckQuery(User.FindFirst(c => c.Type == "sub").Value));
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound("Start page");
         }
 
@@ -51,7 +51,7 @@ namespace EP._15Puzzle.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> Post()
         {
-            var result = await _mediator.Send(new NewDeckCommand(User.Identity.AuthenticationType, User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value));
+            var result = await _mediator.Send(new NewDeckCommand(User.FindFirst(c => c.Type == "sub").Value));
             if (result.IsSuccess)
             {
                 return (IActionResult)Ok(result.Value);
@@ -74,7 +74,7 @@ namespace EP._15Puzzle.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await _mediator.Send(new MoveTileCommand(User.Identity.AuthenticationType, User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value, tile));
+            var result = await _mediator.Send(new MoveTileCommand(User.FindFirst(c => c.Type == "sub").Value, tile));
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
 
         }

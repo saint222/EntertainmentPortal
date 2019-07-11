@@ -3,30 +3,53 @@ import { Jwt } from './../models/jwt';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserManager, UserManagerSettings, User } from 'oidc-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  private router: Router;
-  private isLoggedIn: boolean;
   private url = 'https://localhost:44380/api/auth/';
-  constructor(private http: HttpClient, router: Router) { this.router = router; }
 
-  IsLoggedIn() {
-    return this.isLoggedIn;
+  private config = {
+    authority: 'http://localhost:5000',
+    client_id: 'spa',
+    redirect_uri: 'http://localhost:4200/auth-callback',
+    response_type: 'id_token token',
+    scope: 'openid profile pyatnashki_api',
+    post_logout_redirect_uri : 'http://localhost:4200/login',
+  };
+  private mgr = new UserManager(this.config);
+  private user: User = null;
+
+  constructor() {
+      this.mgr.getUser().then(user => {
+          this.user = user;
+      });
   }
 
-  loginGoogle() {
-    return this.http.get<Jwt>(this.url + 'google', {withCredentials: true});
-  }
-  loginFacebook() {
-    return this.http.get<string>(this.url + 'facebook', {withCredentials: true});
-  }
-  loginBearer(userInfo: UserInfo) {
-    return this.http.post<Jwt>(this.url + 'login', userInfo, {withCredentials: true});
-  }
 
 
+
+
+
+  IsLoggedIn(): boolean {
+    return this.user != null && !this.user.expired;
+  }
+  getClaims(): any {
+    return this.user.profile;
+  }
+  getAuthorizationHeaderValue(): string {
+    return `${this.user.token_type} ${this.user.access_token}`;
+  }
+  startAuthentication(): Promise<void> {
+    return this.mgr.signinRedirect();
+  }
+
+  completeAuthentication(): Promise<void> {
+    return this.mgr.signinRedirectCallback().then(user => {
+        this.user = user;
+    });
+  }
 }

@@ -1,3 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
+import { AccountService } from './account/services/account.service';
+import { AuthguardService } from './account/services/authguard.service';
 
 import { AccountModule } from './account/account.module';
 import { PyatnashkiModule } from './pyatnashki/pyatnashki.module';
@@ -10,8 +13,8 @@ import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, PyatnashkiModule, AccountModule, SharedModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, PyatnashkiModule, AccountModule, SharedModule, HttpClientModule],
+  providers: [AuthguardService, AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

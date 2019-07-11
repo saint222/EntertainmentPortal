@@ -65,13 +65,14 @@ namespace ep._15puzzle.security
             .AddGoogle(options =>
             {
                 options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-
-                // register your IdentityServer with Google at https://console.developers.google.com
-                // enable the Google+ API
-                // set the redirect URI to http://localhost:5000/signin-google
                 options.ClientId = "734768643870-2ls26lml1ifn9kdcfoppvfmagujj8nki.apps.googleusercontent.com";
                 options.ClientSecret = "KnuFajDb0Y-xTuaoodohxSEa";
-                //options.CallbackPath = "/connect/authorize";
+            })
+            .AddFacebook(options =>
+            {
+                options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                options.AppId = "1257326831111548";
+                options.AppSecret = "a0a9b3ced9bed2aae3cfb0b92a8e9d30";
             });
         }
 

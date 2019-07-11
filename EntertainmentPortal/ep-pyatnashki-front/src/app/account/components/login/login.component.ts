@@ -1,6 +1,7 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,28 +9,19 @@ import { AccountService } from '../../services/account.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  userInfoGroup: FormGroup;
 
+// tslint:disable-next-line: ban-types
+  public response: Object;
 
-  constructor(private accountService: AccountService, private fb: FormBuilder) {
-    this.userInfoGroup = this.fb.group({
-      email: ['', Validators.required ],
-      password: ['', Validators.required ]
-    });
+  constructor(private http: HttpClient, private accountService: AccountService) {
+
   }
   ngOnInit() {
-  }
 
-  launchFbLogin() {
-    this.accountService.loginFacebook().subscribe(jwt => localStorage.setItem('jwt', JSON.stringify(jwt)));
-  }
 
-  launchGoogleLogin() {
-    this.accountService.loginGoogle().subscribe(jwt => localStorage.setItem('jwt', JSON.stringify(jwt)));
-  }
 
-  onSubmit(form: FormGroup) {
-    this.accountService.loginBearer(form.value).subscribe(jwt => localStorage.setItem('jwt', JSON.stringify(jwt)));
+    this.http.get('https://localhost:44380/api/auth/test', { headers: {Authorization: this.accountService.getAuthorizationHeaderValue()} })
+      .subscribe(response => this.response = response);
   }
 
 

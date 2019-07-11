@@ -11,8 +11,7 @@ namespace EP._15Puzzle.Data.Models
     /// </summary>
     public class UserDb : IdentityUser
     {
-        public string AuthType { get; set; }
-        public string AuthId { get; set; }
+        public string Sub { get; set; }
         public DeckDb Deck { get; set; }
         public ICollection<RecordDb> Records { get; set; } = new List<RecordDb>();
     }

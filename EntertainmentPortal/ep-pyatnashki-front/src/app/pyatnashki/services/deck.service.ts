@@ -1,3 +1,4 @@
+import { AccountService } from 'src/app/account/services/account.service';
 import { Jwt } from './../../account/models/jwt';
 import { ConfigService } from './../../shared/services/config.service';
 import { Deck } from './../models/deck';
@@ -10,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class DeckService {
 
   private url = 'https://localhost:44380/api/deck';
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private accountService: AccountService) {
    }
 
 
@@ -18,18 +19,17 @@ export class DeckService {
 
   newDeck() {
   // tslint:disable-next-line: max-line-length
-    return this.http.post<Deck>(this.url, null, {headers: {Authorization: 'Bearer ' + this.getJwt().jwt}, withCredentials: true});
+    return this.http.post<Deck>(this.url, null, {headers: {Authorization: this.accountService.getAuthorizationHeaderValue()} , withCredentials: true});
   }
 
   moveTile(num: number) {
-    return this.http.put<Deck>(this.url, num, {headers: {Authorization: 'Bearer ' + this.getJwt().jwt}, withCredentials: true});
+// tslint:disable-next-line: max-line-length
+    return this.http.put<Deck>(this.url, num, {headers: {Authorization: this.accountService.getAuthorizationHeaderValue()} , withCredentials: true});
   }
 
   getDeck() {
-    return this.http.get<Deck>(this.url, {headers: {Authorization: 'Bearer ' + this.getJwt().jwt}, withCredentials: true});
+// tslint:disable-next-line: max-line-length
+    return this.http.get<Deck>(this.url, {headers: {Authorization: this.accountService.getAuthorizationHeaderValue()}, withCredentials: true});
   }
 
-  getJwt() {
-    return JSON.parse(localStorage.getItem('jwt'));
-  }
 }

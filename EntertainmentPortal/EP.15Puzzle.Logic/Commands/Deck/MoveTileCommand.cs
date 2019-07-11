@@ -9,25 +9,19 @@ namespace EP._15Puzzle.Logic.Commands
         
         
         private int _tile;
-        private string _authType;
-        private string _authId;
-        public string AuthId
+        private readonly string _sub;
+        public string Sub
         {
-            get { return _authId; }
-        }
-        public string AuthType
-        {
-            get { return _authType; }
+            get { return _sub; }
         }
 
         public int Tile
         {
             get { return _tile; }
         }
-        public MoveTileCommand(string authType, string authId, int tile)
+        public MoveTileCommand(string sub, int tile)
         {
-            _authType = authType;
-            _authId = authId;
+            _sub = sub;
             _tile = tile;
         }
     }

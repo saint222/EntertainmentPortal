@@ -49,39 +49,23 @@ namespace EP._15Puzzle.Web
                     opt.Authority = "http://localhost:5000";
                     opt.RequireHttpsMetadata = false;
                 });
-                //.AddGoogle("Google", opt =>
-                //{
-                //    opt.ClientId = "734768643870-2ls26lml1ifn9kdcfoppvfmagujj8nki.apps.googleusercontent.com";
-                //    opt.ClientSecret = "KnuFajDb0Y-xTuaoodohxSEa";
-                //})
-                //.AddFacebook("Facebook", opt =>
-                //{
-                //    opt.AppId = "1257326831111548";
-                //    opt.AppSecret = "a0a9b3ced9bed2aae3cfb0b92a8e9d30";
-                //}); 
 
             services.AddAuthorization(opt =>
             {
-                opt.AddPolicy("google",
-                    cfg => cfg.AddAuthenticationSchemes("Google")
-                        .RequireAuthenticatedUser());
-                opt.AddPolicy("facebook",
-                    cfg => cfg.AddAuthenticationSchemes("Facebook")
-                        .RequireAuthenticatedUser());
                 opt.AddPolicy("bearer",
                     cfg => cfg.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                         .RequireAuthenticatedUser());
             });
 
 
-            services.Configure<IdentityOptions>(opt =>
-            {
-                opt.Password.RequireDigit = false;
-                opt.Password.RequiredLength = 6;
-                opt.Password.RequireLowercase = false;
-                opt.Password.RequireNonAlphanumeric = false;
-                opt.Password.RequireUppercase = false;
-            });
+            //services.Configure<IdentityOptions>(opt =>
+            //{
+            //    opt.Password.RequireDigit = false;
+            //    opt.Password.RequiredLength = 6;
+            //    opt.Password.RequireLowercase = false;
+            //    opt.Password.RequireNonAlphanumeric = false;
+            //    opt.Password.RequireUppercase = false;
+            //});
 
             services.AddMediatR(typeof(NewDeckCommand).Assembly);
             services.AddMediatR(typeof(GetDeckQuery).Assembly);
@@ -102,7 +86,7 @@ namespace EP._15Puzzle.Web
             });
             services.AddAutoMapper(cfg=>cfg.AllowNullCollections=true,typeof(DeckProfile).Assembly);
             services.AddDeckServices();
-            SetupSecurity(services);
+            //SetupSecurity(services);
 
             services.AddMvc(opt =>
                 {
@@ -126,11 +110,11 @@ namespace EP._15Puzzle.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                     .AllowAnyMethod()
-                    .WithOrigins("http://localhost:4200", "https://localhost:44380")
+                    .WithOrigins("http://localhost:4200", "https://localhost:44380", "http://localhost:5000")
                     .AllowCredentials());
             app.UseAuthentication();
-            app.UseIdentityServer();
-            //mediator.Send(new CreateDatabaseCommand()).Wait();
+            //app.UseIdentityServer();
+            mediator.Send(new CreateDatabaseCommand()).Wait();
 
             app.UseOpenApi().UseSwaggerUi3(opt =>
             {
@@ -155,98 +139,98 @@ namespace EP._15Puzzle.Web
 
 
 
-        private IServiceCollection SetupSecurity(IServiceCollection services)
-        {
-            var builder = services.AddIdentityServer(opt =>
-            {
-                opt.IssuerUri = "https://localhost:44380";
-                opt.Events.RaiseErrorEvents = true;
-                opt.Events.RaiseFailureEvents = true;
-                opt.Events.RaiseInformationEvents = true;
-                opt.Events.RaiseSuccessEvents = true;
-            });
+        //private IServiceCollection SetupSecurity(IServiceCollection services)
+        //{
+        //    var builder = services.AddIdentityServer(opt =>
+        //    {
+        //        opt.IssuerUri = "https://localhost:44380";
+        //        opt.Events.RaiseErrorEvents = true;
+        //        opt.Events.RaiseFailureEvents = true;
+        //        opt.Events.RaiseInformationEvents = true;
+        //        opt.Events.RaiseSuccessEvents = true;
+        //    });
 
-            builder.AddInMemoryClients(LoadClients())
-                .AddInMemoryApiResources(LoadResources())
-                .AddInMemoryPersistedGrants()
-                .AddInMemoryIdentityResources(LoadIdentity())
-                .AddTestUsers(LoadUsers())
-                .AddDeveloperSigningCredential();
+        //    builder.AddInMemoryClients(LoadClients())
+        //        .AddInMemoryApiResources(LoadResources())
+        //        .AddInMemoryPersistedGrants()
+        //        .AddInMemoryIdentityResources(LoadIdentity())
+        //        .AddTestUsers(LoadUsers())
+        //        .AddDeveloperSigningCredential();
 
-            return services;
-        }
-
-
+        //    return services;
+        //}
 
 
-        private List<IdentityResource> LoadIdentity()
-        {
-            return new List<IdentityResource>()
-            {
-                new IdentityResources.OpenId(),
-                new IdentityResources.Profile(),
-                new IdentityResources.Email()
-            };
-        }
 
 
-        private List<TestUser> LoadUsers()
-        {
-            return new List<TestUser>()
-            {
-                new TestUser()
-                {
-                    SubjectId = "1234-1234-1234-1234",
-                    Username = "admin",
-                    Password = "admin",
-                    IsActive = true,
-                    Claims = new List<Claim>()
-                    {
-                        new Claim(JwtClaimTypes.Name, "tester"),
-                        new Claim(JwtClaimTypes.Email, "jupitel1993trash@gmail.com")
-                    }
-                }
-            };
-        }
-
-        private IEnumerable<ApiResource> LoadResources()
-        {
-            return new[]
-            {
-                new ApiResource("api")
-                {
-                    Scopes = new List<Scope>()
-                    {
-                        new Scope("pyatnashki_api")
-                    }
-                },
-            };
-        }
+        //private List<IdentityResource> LoadIdentity()
+        //{
+        //    return new List<IdentityResource>()
+        //    {
+        //        new IdentityResources.OpenId(),
+        //        new IdentityResources.Profile(),
+        //        new IdentityResources.Email()
+        //    };
+        //}
 
 
-        private IEnumerable<Client> LoadClients()
-        {
-            return new[]
-            {
-                new Client()
-                {
-                    ClientId = "swagger",
-                    ClientSecrets = new List<Secret>() {new Secret("secret".Sha256())},
-                },
-                new Client()
-                {
-                    ClientId = "pyatnashki-front",
-                    ClientSecrets = new List<Secret>() {new Secret("secret".Sha256())},
-                    AllowedScopes = new List<string>(){
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email,
-                        "deck_api"
-                    },
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                    AlwaysIncludeUserClaimsInIdToken = true
-                },
-            };
-        }
+        //private List<TestUser> LoadUsers()
+        //{
+        //    return new List<TestUser>()
+        //    {
+        //        new TestUser()
+        //        {
+        //            SubjectId = "1234-1234-1234-1234",
+        //            Username = "admin",
+        //            Password = "admin",
+        //            IsActive = true,
+        //            Claims = new List<Claim>()
+        //            {
+        //                new Claim(JwtClaimTypes.Name, "tester"),
+        //                new Claim(JwtClaimTypes.Email, "jupitel1993trash@gmail.com")
+        //            }
+        //        }
+        //    };
+        //}
+
+        //private IEnumerable<ApiResource> LoadResources()
+        //{
+        //    return new[]
+        //    {
+        //        new ApiResource("api")
+        //        {
+        //            Scopes = new List<Scope>()
+        //            {
+        //                new Scope("pyatnashki_api")
+        //            }
+        //        },
+        //    };
+        //}
+
+
+        //private IEnumerable<Client> LoadClients()
+        //{
+        //    return new[]
+        //    {
+        //        new Client()
+        //        {
+        //            ClientId = "swagger",
+        //            ClientSecrets = new List<Secret>() {new Secret("secret".Sha256())},
+        //        },
+        //        new Client()
+        //        {
+        //            ClientId = "pyatnashki-front",
+        //            ClientSecrets = new List<Secret>() {new Secret("secret".Sha256())},
+        //            AllowedScopes = new List<string>(){
+        //                IdentityServerConstants.StandardScopes.OpenId,
+        //                IdentityServerConstants.StandardScopes.Profile,
+        //                IdentityServerConstants.StandardScopes.Email,
+        //                "deck_api"
+        //            },
+        //            AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+        //            AlwaysIncludeUserClaimsInIdToken = true
+        //        },
+        //    };
+        //}
     }
 }

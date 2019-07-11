@@ -50,7 +50,7 @@ namespace EP._15Puzzle.Logic.Handlers
                 .Include(u => u.Deck.Tiles)
                 .Include(u => u.Records)
                 .FirstOrDefaultAsync(
-                u => u.AuthType == request.AuthType && u.AuthId == request.AuthId, cancellationToken);
+                u => u.Sub == request.Sub, cancellationToken);
 
             if (user==null)
             {

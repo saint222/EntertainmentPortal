@@ -9,20 +9,14 @@ namespace EP._15Puzzle.Logic.Queries
 {
     public class GetDeckQuery : IRequest<Result<Deck>>
     {
-        private string _authType;
-        private string _authId;
-        public string AuthId
+        private readonly string _sub;
+        public string Sub
         {
-            get { return _authId; }
+            get { return _sub; }
         }
-        public string AuthType
+        public GetDeckQuery(string sub)
         {
-            get { return _authType; }
-        }
-        public GetDeckQuery(string authType, string authId)
-        {
-            _authType = authType;
-            _authId = authId;
+            _sub = sub;
         }
     }
 }
