@@ -10,6 +10,7 @@ import { RegisterComponent } from './typescript-angular-client/components/regist
 import { HomeComponent } from './typescript-angular-client/components/home/home.component';
 import { PrivacyComponent } from './typescript-angular-client/components/privacy/privacy.component';
 import { ReristeredComponent } from './typescript-angular-client/components/reristered/reristered.component';
+import {RegisteredDemoComponent} from './typescript-angular-client/components/registered-demo/registered-demo.component';
 import { PlayerFormComponent } from './typescript-angular-client/components/player-form/player-form.component';
 
 const registeredRoutes: Routes = [
@@ -23,7 +24,7 @@ const registeredRoutes: Routes = [
 ];
 
 const routes: Routes = [
-  {path: 'home', component: ReristeredComponent},
+  {path: 'home', component: RegisteredDemoComponent},
   {path: 'registered', component: ReristeredComponent},
   {path: 'registered', component: ReristeredComponent, children: registeredRoutes},
   {path: 'signIn', component: SignInComponent},

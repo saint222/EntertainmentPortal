@@ -30,10 +30,8 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<Session> Handle(GetSessionById request, CancellationToken cancellationToken)
         {
-            var chosenSession = _context.Sessions
-                //.Include(b => b.ParticipantDb)
-                //.ThenInclude(a => a.IconDb)
-                .Include(c => c.SquaresDb)                
+            var chosenSession = _context.Sessions                
+                .Include(c => c.SquaresDb)               
                 .Where(x => x.Id == request.Id)
                 .Select(d => _mapper.Map<Session>(d)).FirstOrDefault();
 

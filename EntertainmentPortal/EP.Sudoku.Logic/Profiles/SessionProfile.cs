@@ -24,6 +24,8 @@ namespace EP.Sudoku.Logic.Profiles
                 .ForMember(dest => dest.PlayerId, e => e.MapFrom(src => src.PlayerDbId))
                 .ReverseMap()
                 .ForMember(dest => dest.PlayerDbId, e => e.MapFrom(src => src.PlayerId));
+
+
         }
 
     }

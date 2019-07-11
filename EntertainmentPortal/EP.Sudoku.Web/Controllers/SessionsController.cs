@@ -62,11 +62,7 @@ namespace EP.Sudoku.Web.Controllers
             if (model == null)
             {
                 return BadRequest();
-            }
-            //if (model.Participant == null)
-            //{
-            //    return BadRequest();
-            //}
+            }            
             var result = await _mediator.Send(model);
 
             return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);

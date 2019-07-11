@@ -134,8 +134,7 @@ namespace EP.Sudoku.Web
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseOpenApi();
-            app.UseSwaggerUi3();
-            /*app.UseSwagger().*/
+            app.UseSwaggerUi3();            
             app.UseMvc();
 
             Log.Logger = new LoggerConfiguration()
@@ -143,8 +142,7 @@ namespace EP.Sudoku.Web
                 .WriteTo.Console()
                 .WriteTo.Debug()
                 .WriteTo.RollingFile("SudokuLogData/log-{Date}.txt", shared: true)
-                .WriteTo.SQLite(Path.Combine(Environment.CurrentDirectory, @"..\EP.Sudoku.Data\sudoku.db"))
-                //.WriteTo.SQLite(@"..\EP.Sudoku.Data\sudoku.db"/*Environment.CurrentDirectory + @"sudoku.db"*/)
+                .WriteTo.SQLite(Path.Combine(Environment.CurrentDirectory, @"..\EP.Sudoku.Data\sudoku.db"))                
                 .CreateLogger();
         }
     }

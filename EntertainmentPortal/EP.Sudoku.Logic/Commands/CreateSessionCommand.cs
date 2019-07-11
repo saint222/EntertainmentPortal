@@ -10,6 +10,11 @@ namespace EP.Sudoku.Logic.Commands
 {
     public class CreateSessionCommand : IRequest<Result<Session>>
     {
+        //public Session session { get; set; }
+        //public CreateSessionCommand(Session session)
+        //{
+        //    this.session = session;
+        //}
 
         public DifficultyLevel Level { get; set; }
 

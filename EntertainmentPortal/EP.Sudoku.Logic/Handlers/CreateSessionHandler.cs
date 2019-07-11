@@ -28,15 +28,15 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<Result<Session>> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
         {
-            // var sessionDb = _mapper.Map<SessionDb>(request); не работает в тестах, а так работает
-            var sessionDb = new SessionDb
-            { 
-                  Level = (int) request.Level,
-                  Hint = request.Hint,
-                  IsOver = request.IsOver,
-                  PlayerDbId = request.PlayerId
-            };
-
+            var sessionDb = _mapper.Map<SessionDb>(request); //не работает в тестах, а так работает
+            //var sessionDb = new SessionDb
+            //{
+            //    Level = (int)request.Level,
+            //    Hint = request.Hint,
+            //    IsOver = request.IsOver,
+            //    PlayerDbId = request.PlayerId
+            //};
+           
             if (request.PlayerId == 0)
             {
                 sessionDb.PlayerDbId = 1;

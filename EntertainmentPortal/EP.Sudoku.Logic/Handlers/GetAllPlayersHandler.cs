@@ -39,7 +39,7 @@ namespace EP.Sudoku.Logic.Handlers
                                 .ToListAsync()
                                 .ConfigureAwait(false);
                 _memoryCache.Set(KEY, players, new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(TimeSpan.FromSeconds(30)));
+                    .SetAbsoluteExpiration(TimeSpan.FromSeconds(10)));
             }                      
 
             return await Task.FromResult(players);
