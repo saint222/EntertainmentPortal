@@ -13,13 +13,23 @@ namespace EP.TicTacToe.Logic.Models
         public int Id { get; set; }
 
         /// <summary>
-        ///     <c>Map</c> navigation property.
+        ///     <c>Map</c>
         /// </summary>
-        public IList<Map> Maps { get; set; }
+        public int MapId { get; set; }
 
         /// <summary>
-        ///     <c>Player</c> navigation property.
+        ///     <c>First Player</c> 
         /// </summary>
-        public IList<Player> Players { get; set; }
+        public int PlayerOne { get; set; }
+
+        /// <summary>
+        ///     <c>Second Player</c> 
+        /// </summary>
+        public int PlayerTwo { get; set; }
+
+        /// <summary>
+        ///     Values of all <c>Cells</c> on the map in the current game.
+        /// </summary>
+        public List<int> TicTacList { get; set; }
     }
 }

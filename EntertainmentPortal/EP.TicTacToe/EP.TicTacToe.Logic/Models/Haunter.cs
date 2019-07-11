@@ -24,14 +24,5 @@ namespace EP.TicTacToe.Logic.Models
         /// </summary>
         public string Password { get; set; }
 
-        /// <remarks>
-        ///     Navigation property of <c>HaunterDb</c>.
-        /// </remarks>
-        public List<FirstPlayer> FirstPlayers { get; set; }
-
-        /// <remarks>
-        ///     Navigation property of <c>HaunterDb</c>.
-        /// </remarks>
-        public List<SecondPlayer> SecondPlayers { get; set; }
     }
 }

@@ -13,7 +13,7 @@
         /// <summary>
         ///     Player external key.
         /// </summary>
-        public int? GameId { get; set; }
+        public int GameId { get; set; }
 
         /// <remarks>
         ///     Navigation property of <c>PlayerDb</c>. Used for one-to-one relationships.
@@ -21,23 +21,14 @@
         public Game Game { get; set; }
 
         /// <summary>
-        ///     Player external key.
+        ///     Player Id.
         /// </summary>
-        public int? FirstPlayerId { get; set; }
-
-        /// <remarks>
-        ///     Navigation property of <c>PlayerDb</c>.
-        /// </remarks>
-        public FirstPlayer FirstPlayer { get; set; }
+        public int FirstPlayerId { get; set; }
 
         /// <summary>
-        ///     Player external key.
+        ///     Player Id.
         /// </summary>
-        public int? SecondPlayerId { get; set; }
+        public int SecondPlayerId { get; set; }
 
-        /// <remarks>
-        ///     Navigation property of <c>PlayerDb</c>.
-        /// </remarks>
-        public SecondPlayer SecondPlayer { get; set; }
     }
 }

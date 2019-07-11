@@ -67,23 +67,12 @@ namespace EP.TicTacToe.Logic.Handlers
             cellDb.TicTac = ticTacSymbol;
             _context.Cells.Update(cellDb);
 
-            //var cells = await _context.Cells.Where(c => c.MapId == mapDb.Id)
-            //    .ToListAsync(cancellationToken: cancellationToken);
-
-            //var cellList=new List<int>();
-
-            //foreach (var item in cells)
-            //{
-            //    cellList.Add(item.TicTac);
-            //}
-
-
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
                 var cells = await _context.Cells.Where(c => c.MapId == mapDb.Id)
                     .ToListAsync(cancellationToken: cancellationToken);
-
+                
                 var cellList = new List<int>();
                 foreach (var item in cells) cellList.Add(item.TicTac);
                 var resGame = IsBingo( mapDb.WinningChain, cellList, request.Index);
@@ -175,7 +164,7 @@ namespace EP.TicTacToe.Logic.Handlers
             return new List<int> { east, 0, 0, 0, west, nw, north, ne };
         }
 
-        private static bool IsBingo(int currentWinChain,
+        public static bool IsBingo(int currentWinChain,
                                     IReadOnlyList<int> cells, int index)
         {
             var mapSize = (int)Math.Sqrt(cells.Count);

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using EP.TicTacToe.Logic.Queries;
 using EP.TicTacToe.Web.Filters;
+using JetBrains.Annotations;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -27,32 +28,7 @@ namespace EP.TicTacToe.Web.Controllers
             _logger = logger;
         }
 
-
-        [HttpGet("api/cell")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
-            "Cell not found")]
-        public async Task<IActionResult> GetCellAsync([FromQuery] GetCell model)
-        {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                             $"Parameters: Id = {model.Id}");
-
-            var result = await _mediator.Send(model);
-
-            if (result.HasValue)
-            {
-                _logger.LogInformation(
-                    $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameter: Id = {model.Id}");
-
-                return Ok(result.Value);
-            }
-
-            _logger.LogWarning(
-                $"Action: {ControllerContext.ActionDescriptor.ActionName}: Id = {model.Id} - Cell not found");
-
-            return NotFound();
-        }
-
+        
         [HttpPut("api/cell")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
@@ -71,7 +47,7 @@ namespace EP.TicTacToe.Web.Controllers
                 _logger.LogInformation(
                     $"Action: {ControllerContext.ActionDescriptor.ActionName} : " +
                     $"step from PlayerId={model.PlayerId} GameId={model.GameId} " +
-                    $"was written at [{DateTime.UtcNow.Kind}]");
+                    $"was written at [{DateTime.UtcNow}]");
 
                 return Ok(result.Value);
             }
