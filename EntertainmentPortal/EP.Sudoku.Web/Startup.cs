@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -142,7 +143,8 @@ namespace EP.Sudoku.Web
                 .WriteTo.Console()
                 .WriteTo.Debug()
                 .WriteTo.RollingFile("SudokuLogData/log-{Date}.txt", shared: true)
-                .WriteTo.SQLite(@"..\EP.Sudoku.Data\sudoku.db"/*Environment.CurrentDirectory + @"sudoku.db"*/)
+                .WriteTo.SQLite(Path.Combine(Environment.CurrentDirectory, @"..\EP.Sudoku.Data\sudoku.db"))
+                //.WriteTo.SQLite(@"..\EP.Sudoku.Data\sudoku.db"/*Environment.CurrentDirectory + @"sudoku.db"*/)
                 .CreateLogger();
         }
     }

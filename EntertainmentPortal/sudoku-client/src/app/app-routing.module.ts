@@ -10,15 +10,22 @@ import { RegisterComponent } from './typescript-angular-client/components/regist
 import { HomeComponent } from './typescript-angular-client/components/home/home.component';
 import { PrivacyComponent } from './typescript-angular-client/components/privacy/privacy.component';
 import { ReristeredComponent } from './typescript-angular-client/components/reristered/reristered.component';
+import { PlayerFormComponent } from './typescript-angular-client/components/player-form/player-form.component';
+
+const registeredRoutes: Routes = [
+
+    {path: 'privacy', component: PrivacyComponent},
+    {path: 'create-session', component: CreateSessionComponent},
+    {path: 'session/:id', component: SessionComponent},
+    {path: 'player', component: PlayerComponent},
+    {path: 'playerForm', component: PlayerFormComponent},
+  {path: 'player/:id', component: PlayerInfoComponent}
+];
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: ReristeredComponent},
   {path: 'registered', component: ReristeredComponent},
-  {path: 'privacy', component: PrivacyComponent},
-  {path: 'player', component: PlayerComponent},
-  {path: 'player/:id', component: PlayerInfoComponent},
-  {path: 'session/:id', component: SessionComponent},
-  {path: 'create-session', component: CreateSessionComponent},
+  {path: 'registered', component: ReristeredComponent, children: registeredRoutes},
   {path: 'signIn', component: SignInComponent},
   {path: 'register', component: RegisterComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
