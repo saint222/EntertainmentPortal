@@ -41,47 +41,52 @@ namespace EP.WordsMaker.Web
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie()
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
-                {
-                    opt.RequireHttpsMetadata = true;
-                    opt.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidIssuer = WordsMakerConstants.ISSUER_NAME,
-                        ValidateIssuer = true,
-                        ValidAudience = WordsMakerConstants.AUDIENCE_NAME,
-                        ValidateAudience = true,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(WordsMakerConstants.SECRET)),
-                        ValidateLifetime = true,
-                        RequireExpirationTime = true,
-                        RequireSignedTokens = true
-                    };
-                })
-                .AddFacebook("Facebook", opt =>
-                    {
-                        opt.CallbackPath = new PathString("/api/facebook");
-                        opt.ClientId = "689466208162671";
-                        opt.ClientSecret = "024b114f793bdbda75839893e4e6c612";
-                    }
-                );
+		{
+			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie()
+				.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+				{
+					opt.RequireHttpsMetadata = true;
+					opt.TokenValidationParameters = new TokenValidationParameters()
+					{
+						ValidIssuer = WordsMakerConstants.ISSUER_NAME,
+						ValidateIssuer = true,
+						ValidAudience = WordsMakerConstants.AUDIENCE_NAME,
+						ValidateAudience = true,
+						ValidateIssuerSigningKey = true,
+						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(WordsMakerConstants.SECRET)),
+						ValidateLifetime = true,
+						RequireExpirationTime = true,
+						RequireSignedTokens = true
+					};
+				})
+				.AddFacebook("Facebook", opt =>
+					{
+						opt.CallbackPath = new PathString("/api/facebook");
+						opt.ClientId = "689466208162671";
+						opt.ClientSecret = "024b114f793bdbda75839893e4e6c612";
+					}
+				);
 
-            services.AddAuthorization(opt =>
-                {
-                    opt.AddPolicy("admin", cfg => cfg.RequireAuthenticatedUser()
-                        .RequireClaim("admin"));
-                    opt.AddPolicy("user", cfg => cfg.RequireAuthenticatedUser()
-                        .RequireClaim("user"));
-                }
-            );
+			services.AddAuthorization(opt =>
+				{
+					opt.AddPolicy("admin", cfg => cfg.RequireAuthenticatedUser()
+						.RequireClaim("admin"));
+					opt.AddPolicy("user", cfg => cfg.RequireAuthenticatedUser()
+						.RequireClaim("user"));
+				}
+			);
 
-            services.AddMemoryCache();
-            services.AddDistributedMemoryCache();
-            services.AddSession();
+			services.AddMemoryCache();
+			services.AddDistributedMemoryCache();
+			services.AddSession();
 
-            services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
+			services.AddSwaggerDocument(cfg =>
+			{
+				cfg.SchemaType = SchemaType.OpenApi3;
+				cfg.Title = "WordsMakerGame";
+				cfg.Description = "SharpCodeTeam";
+			});
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddCors();
             services.AddMediatR(typeof(GetAllGames).Assembly);
