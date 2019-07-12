@@ -49,9 +49,10 @@ namespace EP._15Puzzle.Web.Controllers
         [HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Deck), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> Post()
+        public async Task<IActionResult> Post([FromBody] NewDeckCommand newDeckCommand)
         {
-            var result = await _mediator.Send(new NewDeckCommand(User.FindFirst(c => c.Type == "sub").Value));
+            newDeckCommand.Sub = User.FindFirst(c => c.Type == "sub").Value;
+            var result = await _mediator.Send(newDeckCommand);
             if (result.IsSuccess)
             {
                 return (IActionResult)Ok(result.Value);

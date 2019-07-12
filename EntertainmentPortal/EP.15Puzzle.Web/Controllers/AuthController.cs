@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -35,7 +36,20 @@ namespace EP._15Puzzle.Web.Controllers
             }
             return Ok(list);
         }
-        
-        
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [HttpPost("testuser")]
+        public IActionResult LoginTestUser([FromBody] NewDeckCommand newDeck)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+
+            return Ok();
+        }
+
+
     }
 }

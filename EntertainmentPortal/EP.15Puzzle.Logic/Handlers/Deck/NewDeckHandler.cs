@@ -46,6 +46,8 @@ namespace EP._15Puzzle.Logic.Handlers
                 } while (!logicDeck.CheckWinIsPossible());
                 logicDeck.Tiles = logicDeck.Tiles.OrderBy(t => t.Pos).ToList();
                 logicDeck.User.Sub = request.Sub;
+                logicDeck.User.Email = request.Email;
+                logicDeck.User.UserName = request.UserName;
 
                 var deckDb = _mapper.Map<DeckDb>(logicDeck);
                 _context.Add(deckDb);
@@ -67,6 +69,8 @@ namespace EP._15Puzzle.Logic.Handlers
                 var deckDb = user.Deck;
 
                 var logicDeck = _mapper.Map<LogicDeck>(deckDb);
+                logicDeck.User.Email = request.Email;
+                logicDeck.User.UserName = request.UserName;
                 do
                 {
                     logicDeck.Unsort();

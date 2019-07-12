@@ -12,6 +12,7 @@ namespace EP._15Puzzle.Data.Models
     public class UserDb : IdentityUser
     {
         public string Sub { get; set; }
+
         public DeckDb Deck { get; set; }
         public ICollection<RecordDb> Records { get; set; } = new List<RecordDb>();
     }

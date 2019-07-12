@@ -19,7 +19,7 @@ export class DeckService {
 
   newDeck() {
   // tslint:disable-next-line: max-line-length
-    return this.http.post<Deck>(this.url, null, {headers: {Authorization: this.accountService.getAuthorizationHeaderValue()} , withCredentials: true});
+    return this.http.post<Deck>(this.url, this.accountService.getUserInfo(), {headers: {Authorization: this.accountService.getAuthorizationHeaderValue()} , withCredentials: true});
   }
 
   moveTile(num: number) {
