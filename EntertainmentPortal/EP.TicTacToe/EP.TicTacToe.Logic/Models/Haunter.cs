@@ -23,6 +23,5 @@ namespace EP.TicTacToe.Logic.Models
         ///     Property indicates password of a player to login.
         /// </summary>
         public string Password { get; set; }
-
     }
 }

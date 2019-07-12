@@ -32,7 +32,6 @@ namespace EP.TicTacToe.Data.Models
         /// </remarks>
         public GameDb Game { get; set; }
 
-
         /// <summary>
         ///     <c>CellDb</c> navigation property. Used for one-to-many relationships.
         /// </summary>

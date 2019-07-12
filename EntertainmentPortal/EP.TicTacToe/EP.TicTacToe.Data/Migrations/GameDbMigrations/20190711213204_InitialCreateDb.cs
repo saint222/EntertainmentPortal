@@ -192,6 +192,27 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                 });
 
             migrationBuilder.CreateTable(
+                "StepResults",
+                table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NextPlayerId = table.Column<int>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
+                    GameId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StepResults", x => x.Id);
+                    table.ForeignKey(
+                        "FK_StepResults_Games_GameId",
+                        x => x.GameId,
+                        "Games",
+                        "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 "FirstPlayers",
                 table => new
                 {
@@ -361,6 +382,11 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                 "IX_SecondPlayers_HaunterId",
                 "SecondPlayers",
                 "HaunterId");
+
+            migrationBuilder.CreateIndex(
+                "IX_StepResults_GameId",
+                "StepResults",
+                "GameId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -385,6 +411,9 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 
             migrationBuilder.DropTable(
                 "Players");
+
+            migrationBuilder.DropTable(
+                "StepResults");
 
             migrationBuilder.DropTable(
                 "AspNetRoles");

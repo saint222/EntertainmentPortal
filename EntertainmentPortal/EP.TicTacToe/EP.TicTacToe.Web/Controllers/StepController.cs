@@ -28,7 +28,7 @@ namespace EP.TicTacToe.Web.Controllers
             _logger = logger;
         }
 
-        
+
         [HttpPut("api/cell")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =

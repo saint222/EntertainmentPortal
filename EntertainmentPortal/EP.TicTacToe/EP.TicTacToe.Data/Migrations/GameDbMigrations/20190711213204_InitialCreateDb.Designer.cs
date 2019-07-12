@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
 {
     [DbContext(typeof(TicTacDbContext))]
-    [Migration("20190705121123_InitialCreateDb")]
+    [Migration("20190711213204_InitialCreateDb")]
     partial class InitialCreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity("EP.TicTacToe.Data.Models.CellDb", b =>
                 {
@@ -138,6 +138,24 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                     b.HasIndex("HaunterId");
 
                     b.ToTable("SecondPlayers");
+                });
+
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.StepResultDb", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("GameId");
+
+                    b.Property<int>("NextPlayerId");
+
+                    b.Property<int>("Status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("StepResults");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -340,6 +358,13 @@ namespace EP.TicTacToe.Data.Migrations.GameDbMigrations
                         .WithMany("SecondPlayers")
                         .HasForeignKey("HaunterId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("EP.TicTacToe.Data.Models.StepResultDb", b =>
+                {
+                    b.HasOne("EP.TicTacToe.Data.Models.GameDb", "Game")
+                        .WithMany("StepResults")
+                        .HasForeignKey("GameId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

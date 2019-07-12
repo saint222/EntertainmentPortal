@@ -1,7 +1,7 @@
 ﻿namespace EP.TicTacToe.Logic.Models
 {
     /// <summary>
-    ///     Entity of Cells.
+    ///     Entity of Cells from BL.
     /// </summary>
     public class Cell
     {

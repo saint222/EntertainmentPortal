@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using EP.TicTacToe.Logic.Commands;
 using EP.TicTacToe.Logic.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using State = EP.TicTacToe.Logic.Models.State;
 
 namespace EP.TicTacToe.Logic.Handlers
 {
@@ -53,6 +55,16 @@ namespace EP.TicTacToe.Logic.Handlers
                 SecondPlayerId = secondPlayerDb.Id
             };
             await _context.Players.AddAsync(playersDb, cancellationToken);
+
+            // Creating new StepResult with received parameters
+            var stateResultDb = new StepResultDb
+            {
+                NextPlayerId = Convert.ToInt32(request.PlayerOne),
+                Status = Data.Models.State.Continuation,
+                GameId = gameDb.Id
+            };
+            await _context.StepResults.AddAsync(stateResultDb, cancellationToken);
+
 
             // Creating new map with received parameters
             var mapDb = new MapDb

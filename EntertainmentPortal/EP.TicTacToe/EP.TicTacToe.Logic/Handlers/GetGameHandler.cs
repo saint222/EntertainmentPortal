@@ -37,18 +37,18 @@ namespace EP.TicTacToe.Logic.Handlers
                 .FirstOrDefaultAsync(cancellationToken);
 
             var playerOne = _context.Players
-                                .Where(c => c.GameId == request.Id)
-                                .Select(s => s.FirstPlayer)
-                                .Select(x => x.HaunterId)
-                                .FirstOrDefaultAsync(cancellationToken)
-                                .Result;
+                .Where(c => c.GameId == request.Id)
+                .Select(s => s.FirstPlayer)
+                .Select(x => x.HaunterId)
+                .FirstOrDefaultAsync(cancellationToken)
+                .Result;
 
             var playerTwo = _context.Players
-                                .Where(c => c.GameId == request.Id)
-                                .Select(s => s.SecondPlayer)
-                                .Select(x=>x.HaunterId)
-                                .FirstOrDefaultAsync(cancellationToken)
-                                .Result;
+                .Where(c => c.GameId == request.Id)
+                .Select(s => s.SecondPlayer)
+                .Select(x => x.HaunterId)
+                .FirstOrDefaultAsync(cancellationToken)
+                .Result;
 
             var cells = await _context.Cells.Where(c => c.MapId == mapDb.Id)
                 .ToListAsync(cancellationToken);
