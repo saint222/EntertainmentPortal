@@ -28,9 +28,9 @@ export class RegisterComponent {
   }
 
   comparePasswords(fb: FormGroup) {
-    let confirmPswrdCtrl = fb.get('confirmPassword');
+    const confirmPswrdCtrl = fb.get('confirmPassword');
     if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
-      if (fb.get('password').value != confirmPswrdCtrl.value) {
+      if (fb.get('password').value !== confirmPswrdCtrl.value) {
         confirmPswrdCtrl.setErrors({ passwordMismatch: true });
       } else {
         confirmPswrdCtrl.setErrors(null);
@@ -51,7 +51,7 @@ export class RegisterComponent {
 
     this.authService.authRegister(body).subscribe(c => {
       console.log(c);
-      this.router.navigate(['/registered']);
+      this.router.navigate(['/home']);
     },
     (err: HttpErrorResponse) => {
       this.error = err.error[0].description;

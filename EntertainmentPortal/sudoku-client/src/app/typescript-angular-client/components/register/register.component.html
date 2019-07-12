@@ -6,12 +6,12 @@
         <div class="form-group required">
             <label>Name</label>
             <input class="form-control" formControlName="name" placeholder="Name">
-            <label class="text-danger" *ngIf="registerGroup.get('name')?.touched && registerGroup.get('name').errors?.required">This field is mandatory.</label>
+            <label class="text-danger" *ngIf="registerGroup.get('name') && registerGroup.get('name').errors?.required">This field is mandatory.</label>
         </div>
         <div class="form-group required">
           <label>Email</label>
           <input class="form-control" formControlName="email" placeholder="Email">
-          <label class="text-danger" *ngIf="registerGroup.get('email')?.touched && registerGroup.get('email').errors?.email">This field is put incorrectly.</label>
+          <label class="text-danger" *ngIf="registerGroup.get('email')?.touched && registerGroup.get('email').errors?.required">This field is put incorrectly.</label>
          </div>
          <div formGroupName="passwords">
             <div class="form-group required">
@@ -38,7 +38,8 @@
 -->
 
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <div class="container">
     <h2 class = "text">Register and join the incredible world of sudoku!</h2>
 
@@ -46,46 +47,55 @@
   <div class="card bg-light">
   <article class="card-body mx-auto" style="max-width: 400px;">
     <p>
-      <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-google" aria-hidden="true"></i>   Login with Google</a>
-      <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login with facebook</a>
+      <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-google" aria-hidden="true"></i>   Register with Google</a>
+      <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Register with facebook</a>
     </p>
     <p class="divider-text">
           <span class="bg-light">OR</span>
       </p>
-    <form [formGroup]="" autocomplete="off" #form="ngForm">
-    <div class="form-group input-group">
+    <form [formGroup]="registerGroup" autocomplete="off" (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="form-group input-group">
       <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-user"></i> </span>
        </div>
-          <input name="" class="form-control" placeholder="Name" type="text">
-      </div>
+          <input class="form-control" formControlName="name" placeholder="Name" type="text">
+</div>
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
        </div>
-          <input name="" class="form-control" placeholder="Email address" type="email">
+          <input class="form-control" formControlName="email" placeholder="Email address" type="email">
+          <label class="text-danger" *ngIf="registerGroup.get('email')?.touched && registerGroup.get('email').errors?.required">This field is put incorrectly!</label>
       </div>
+      <div formGroupName="passwords">
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
       </div>
-          <input class="form-control" placeholder="Password" type="password">
-      </div>
+          <input class="form-control" formControlName="password" placeholder="Password" type = "password">
+          <label class="text-danger" *ngIf="registerGroup.get('password')?.touched && registerGroup.get('password').errors?.required">This field is mandatory!</label>
+        </div>
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
       </div>
-          <input class="form-control" placeholder="Confirm password" type="password">
-      </div>
+          <input class="form-control" formControlName="confirmPassword" placeholder="Confirm password" type = "password">
+          <label class="text-danger" *ngIf="registerGroup.get('confirmPassword')?.touched && registerGroup.get('confirmPassword').errors?.required">This field is mandatory!</label>
+          <label class="text-danger" *ngIf="registerGroup.get('passwords.confirmPassword').touched && registerGroup.get('passwords.confirmPassword').errors?.passwordMismatch">Confirm Password does not match!</label>
+        </div>
+    </div>
+    <label *ngIf="error">Attention! {{error}}</label>
       <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block"> Login </button>
+          <button type="submit" class="btn btn-primary btn-block"> Register </button>
       </div>
       <br>
-      <div class="text-center">Already has an account? <a routerLink="/signIn">Login</a></div>
+      <div class="text-center">Already has an account? <a routerLink="/signIn" title = "Login">Login</a></div>
   </form>
   </article>
   </div>
   </div>
+
+
 
 
 
