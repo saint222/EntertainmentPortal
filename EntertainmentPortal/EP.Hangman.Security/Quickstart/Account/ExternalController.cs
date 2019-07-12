@@ -69,8 +69,8 @@ namespace Host.Quickstart.Account
                     RedirectUri = Url.Action(nameof(Callback)),
                     Items =
                     {
-                        {"returnUrl", returnUrl},
-                        {"scheme", provider},
+                        { "returnUrl", returnUrl },
+                        { "scheme", provider },
                     }
                 };
 
@@ -85,9 +85,7 @@ namespace Host.Quickstart.Account
         public async Task<IActionResult> Callback()
         {
             // read external identity from the temporary cookie
-            var result =
-                await HttpContext.AuthenticateAsync(IdentityServer4.IdentityServerConstants
-                    .ExternalCookieAuthenticationScheme);
+            var result = await HttpContext.AuthenticateAsync(IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme);
             if (result?.Succeeded != true)
             {
                 throw new Exception("External authentication error");
@@ -113,10 +111,8 @@ namespace Host.Quickstart.Account
             ProcessLoginCallbackForSaml2p(result, additionalLocalClaims, localSignInProps);
 
             // issue authentication cookie for user
-            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.SubjectId,
-                user.Username));
-            await HttpContext.SignInAsync(user.SubjectId, user.Username, provider, localSignInProps,
-                additionalLocalClaims.ToArray());
+            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.SubjectId, user.Username));
+            await HttpContext.SignInAsync(user.SubjectId, user.Username, provider, localSignInProps, additionalLocalClaims.ToArray());
 
             // delete temporary cookie used during external authentication
             await HttpContext.SignOutAsync(IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme);
@@ -132,7 +128,7 @@ namespace Host.Quickstart.Account
                 {
                     // if the client is PKCE then we assume it's native, so this change in how to
                     // return the response is for better UX for the end user.
-                    return View("Redirect", new RedirectViewModel {RedirectUrl = returnUrl});
+                    return View("Redirect", new RedirectViewModel { RedirectUrl = returnUrl });
                 }
             }
 
@@ -153,8 +149,8 @@ namespace Host.Quickstart.Account
                     RedirectUri = Url.Action("Callback"),
                     Items =
                     {
-                        {"returnUrl", returnUrl},
-                        {"scheme", AccountOptions.WindowsAuthenticationSchemeName},
+                        { "returnUrl", returnUrl },
+                        { "scheme", AccountOptions.WindowsAuthenticationSchemeName },
                     }
                 };
 
@@ -186,8 +182,7 @@ namespace Host.Quickstart.Account
             }
         }
 
-        private (TestUser user, string provider, string providerUserId, IEnumerable<Claim> claims)
-            FindUserFromExternalProvider(AuthenticateResult result)
+        private (TestUser user, string provider, string providerUserId, IEnumerable<Claim> claims) FindUserFromExternalProvider(AuthenticateResult result)
         {
             var externalUser = result.Principal;
 
@@ -217,8 +212,7 @@ namespace Host.Quickstart.Account
             return user;
         }
 
-        private void ProcessLoginCallbackForOidc(AuthenticateResult externalResult, List<Claim> localClaims,
-            AuthenticationProperties localSignInProps)
+        private void ProcessLoginCallbackForOidc(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
         {
             // if the external system sent a session id claim, copy it over
             // so we can use it for single sign-out
@@ -232,17 +226,15 @@ namespace Host.Quickstart.Account
             var id_token = externalResult.Properties.GetTokenValue("id_token");
             if (id_token != null)
             {
-                localSignInProps.StoreTokens(new[] {new AuthenticationToken {Name = "id_token", Value = id_token}});
+                localSignInProps.StoreTokens(new[] { new AuthenticationToken { Name = "id_token", Value = id_token } });
             }
         }
 
-        private void ProcessLoginCallbackForWsFed(AuthenticateResult externalResult, List<Claim> localClaims,
-            AuthenticationProperties localSignInProps)
+        private void ProcessLoginCallbackForWsFed(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
         {
         }
 
-        private void ProcessLoginCallbackForSaml2p(AuthenticateResult externalResult, List<Claim> localClaims,
-            AuthenticationProperties localSignInProps)
+        private void ProcessLoginCallbackForSaml2p(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
         {
         }
     }

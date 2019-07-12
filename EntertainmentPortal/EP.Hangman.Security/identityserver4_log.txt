@@ -1,98 +1,154 @@
-2019-07-07 19:59:44.196 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
-2019-07-07 19:59:44.267 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
-2019-07-07 19:59:44.277 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
-2019-07-07 19:59:44.277 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
-2019-07-07 19:59:44.277 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
-2019-07-07 19:59:44.278 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
-2019-07-07 19:59:44.278 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
-2019-07-07 20:11:04.540 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
-2019-07-07 20:11:04.638 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
-2019-07-07 20:11:04.643 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
-2019-07-07 20:11:04.643 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
-2019-07-07 20:11:04.643 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
-2019-07-07 20:11:04.643 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
-2019-07-07 20:11:04.644 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
-2019-07-07 20:11:11.892 +03:00 [ERR] An unhandled exception has occurred while executing the request.
-System.ArgumentException: The 'ClientId' option must be provided.
-Parameter name: ClientId
-   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
-   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
-   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
-   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
-   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
-   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
-   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
-   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
-2019-07-07 20:15:39.093 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
-2019-07-07 20:15:39.194 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
-2019-07-07 20:15:39.198 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
-2019-07-07 20:15:39.199 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
-2019-07-07 20:15:39.199 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
-2019-07-07 20:15:39.199 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
-2019-07-07 20:15:39.199 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
-2019-07-07 20:15:44.493 +03:00 [DBG] Login Url: /Account/Login
-2019-07-07 20:15:44.496 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
-2019-07-07 20:15:44.496 +03:00 [DBG] Logout Url: /Account/Logout
-2019-07-07 20:15:44.497 +03:00 [DBG] ConsentUrl Url: /consent
-2019-07-07 20:15:44.497 +03:00 [DBG] Consent Return Url Parameter: returnUrl
-2019-07-07 20:15:44.497 +03:00 [DBG] Error Url: /home/error
-2019-07-07 20:15:44.497 +03:00 [DBG] Error Id Parameter: errorId
-2019-07-07 20:15:44.516 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:15:44.579 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:16:08.155 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:16:08.155 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:16:08.245 +03:00 [INF] AuthenticationScheme: idsrv was challenged.
-2019-07-07 20:16:08.254 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:16:08.254 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:16:11.009 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:16:11.009 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:16:11.039 +03:00 [INF] AuthenticationScheme: Google was challenged.
-2019-07-07 20:16:24.063 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:16:24.064 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:24:07.420 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:24:07.423 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:24:07.436 +03:00 [INF] AuthenticationScheme: Google was challenged.
-2019-07-07 20:24:12.776 +03:00 [INF] AuthenticationScheme: idsrv.external signed in.
-2019-07-07 20:24:12.802 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:24:12.802 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:24:12.901 +03:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"108324361500567311668","SubjectId":"649e7217b25183738a8625199b0ec0ee73f973003f74e69293e7f3cf50ce617f","DisplayName":"Sergey Makarov","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVJ:00000003","TimeStamp":"2019-07-07T17:24:12.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
-2019-07-07 20:24:12.959 +03:00 [DBG] Augmenting SignInContext
-2019-07-07 20:24:12.964 +03:00 [DBG] Adding amr claim with value: external
-2019-07-07 20:24:12.972 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
-2019-07-07 20:24:12.975 +03:00 [INF] AuthenticationScheme: idsrv signed in.
-2019-07-07 20:24:12.996 +03:00 [INF] AuthenticationScheme: idsrv.external signed out.
-2019-07-07 20:25:29.512 +03:00 [WRN] '.AspNetCore.Correlation.Google.v2sbPcrZXxawhiyrmwNUPFd3kj4CG45T5d5VS-OnGy8' cookie not found.
-2019-07-07 20:25:29.513 +03:00 [INF] Error from RemoteAuthentication: Correlation failed..
-2019-07-07 20:25:29.516 +03:00 [ERR] An unhandled exception has occurred while executing the request.
-System.Exception: An error was encountered while handling the remote login. ---> System.Exception: Correlation failed.
-   --- End of inner exception stack trace ---
-   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
-   at IdentityServer4.Hosting.FederatedSignOut.AuthenticationRequestHandlerWrapper.HandleRequestAsync() in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\AuthenticationRequestHandlerWrapper.cs:line 38
-   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
-   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
-   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
-2019-07-07 20:25:46.536 +03:00 [INF] AuthenticationScheme: Google was challenged.
-2019-07-07 20:25:46.963 +03:00 [INF] AuthenticationScheme: idsrv.external signed in.
-2019-07-07 20:25:46.986 +03:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"108324361500567311668","SubjectId":"649e7217b25183738a8625199b0ec0ee73f973003f74e69293e7f3cf50ce617f","DisplayName":"Sergey Makarov","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVJ:0000000B","TimeStamp":"2019-07-07T17:25:46.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
-2019-07-07 20:25:47.012 +03:00 [DBG] Augmenting SignInContext
-2019-07-07 20:25:47.013 +03:00 [DBG] Adding amr claim with value: external
-2019-07-07 20:25:47.014 +03:00 [INF] AuthenticationScheme: idsrv signed in.
-2019-07-07 20:25:47.014 +03:00 [INF] AuthenticationScheme: idsrv.external signed out.
-2019-07-07 20:27:22.524 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
-2019-07-07 20:27:22.657 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVJ:0000000E","TimeStamp":"2019-07-07T17:27:22.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
-2019-07-07 20:27:22.669 +03:00 [DBG] Augmenting SignInContext
-2019-07-07 20:27:22.669 +03:00 [DBG] Adding idp claim with value: local
-2019-07-07 20:27:22.669 +03:00 [DBG] Adding amr claim with value: pwd
-2019-07-07 20:27:22.670 +03:00 [INF] AuthenticationScheme: idsrv signed in.
-2019-07-07 22:15:48.926 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
-2019-07-07 22:15:48.934 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVQ:00000003","TimeStamp":"2019-07-07T19:15:48.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
-2019-07-07 22:15:48.935 +03:00 [DBG] Augmenting SignInContext
-2019-07-07 22:15:48.935 +03:00 [DBG] Adding idp claim with value: local
-2019-07-07 22:15:48.937 +03:00 [DBG] Adding amr claim with value: pwd
-2019-07-07 22:15:48.939 +03:00 [INF] AuthenticationScheme: idsrv signed in.
-2019-07-07 22:16:10.194 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
-2019-07-07 22:16:10.198 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO2VQVD7JVV:00000003","TimeStamp":"2019-07-07T19:16:10.0000000Z","ProcessId":2354,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
-2019-07-07 22:16:10.203 +03:00 [DBG] Augmenting SignInContext
-2019-07-07 22:16:10.203 +03:00 [DBG] Adding idp claim with value: local
-2019-07-07 22:16:10.207 +03:00 [DBG] Adding amr claim with value: pwd
-2019-07-07 22:16:10.217 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-12 12:53:04.788 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-12 12:53:04.858 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-12 12:53:04.861 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-12 12:53:04.861 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-12 12:53:04.861 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-12 12:53:04.862 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-12 12:53:04.862 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-12 12:53:06.255 +03:00 [DBG] Login Url: /Account/Login
+2019-07-12 12:53:06.257 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-12 12:53:06.257 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-12 12:53:06.257 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-12 12:53:06.257 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-12 12:53:06.257 +03:00 [DBG] Error Url: /home/error
+2019-07-12 12:53:06.257 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-12 12:53:06.266 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:06.277 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.130 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.139 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.139 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.139 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.200 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.200 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.221 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.221 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.225 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.226 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.247 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.247 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.431 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:07.431 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:35.741 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:35.741 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:35.745 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-12 12:53:35.749 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-12 12:53:35.749 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-12 12:53:35.754 +03:00 [DBG] Start authorize request
+2019-07-12 12:53:35.774 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:35.777 +03:00 [DBG] No user present in authorize request
+2019-07-12 12:53:35.780 +03:00 [DBG] Start authorize request protocol validation
+2019-07-12 12:53:35.795 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:53:35.809 +03:00 [ERR] Invalid redirect_uri: https://localhost:44350/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"hangman_api","state":"RnJpIEp1bCAxMiAyMDE5IDEyOjUzOjM0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-12 12:53:35.828 +03:00 [ERR] Request validation failed
+2019-07-12 12:53:35.829 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"hangman_api","state":"RnJpIEp1bCAxMiAyMDE5IDEyOjUzOjM0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-12 12:53:35.865 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO6LQUB8CE4:00000005","TimeStamp":"2019-07-12T09:53:35.0000000Z","ProcessId":14988,"LocalIpAddress":"127.0.0.1:18401","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-12 12:53:36.050 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:53:36.050 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:55:19.127 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-12 12:55:19.153 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-12 12:55:19.155 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-12 12:55:19.155 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-12 12:55:19.155 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-12 12:55:19.155 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-12 12:55:19.155 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-12 12:55:19.865 +03:00 [DBG] Login Url: /Account/Login
+2019-07-12 12:55:19.867 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-12 12:55:19.867 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-12 12:55:19.867 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-12 12:55:19.867 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-12 12:55:19.867 +03:00 [DBG] Error Url: /home/error
+2019-07-12 12:55:19.867 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-12 12:55:19.876 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:55:19.884 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:55:43.725 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:55:43.725 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:55:43.730 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-12 12:55:43.734 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-12 12:55:43.734 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-12 12:55:43.736 +03:00 [DBG] Start authorize request
+2019-07-12 12:55:43.739 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:55:43.742 +03:00 [DBG] No user present in authorize request
+2019-07-12 12:55:43.745 +03:00 [DBG] Start authorize request protocol validation
+2019-07-12 12:55:43.756 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:55:43.787 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-12 12:55:43.800 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"hangman_api","State":"RnJpIEp1bCAxMiAyMDE5IDEyOjU1OjQzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"hangman_api","state":"RnJpIEp1bCAxMiAyMDE5IDEyOjU1OjQzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-12 12:55:43.816 +03:00 [INF] Showing login: User is not authenticated
+2019-07-12 12:55:43.840 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:55:43.840 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:55:43.881 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:55:43.881 +03:00 [DBG] Start authorize request protocol validation
+2019-07-12 12:55:43.881 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:55:43.881 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-12 12:55:43.885 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:57:11.214 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:57:11.214 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:57:11.318 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:57:11.318 +03:00 [DBG] Start authorize request protocol validation
+2019-07-12 12:57:11.318 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:57:11.318 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-12 12:57:11.353 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO6LS69GB9E:00000001","TimeStamp":"2019-07-12T09:57:11.0000000Z","ProcessId":4708,"LocalIpAddress":"127.0.0.1:7528","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-12 12:57:11.379 +03:00 [DBG] Augmenting SignInContext
+2019-07-12 12:57:11.381 +03:00 [DBG] Adding idp claim with value: local
+2019-07-12 12:57:11.381 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-12 12:57:11.385 +03:00 [INF] idsrv was not authenticated. Failure message: Unprotect ticket failed
+2019-07-12 12:57:11.403 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-12 12:57:11.406 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:57:11.439 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-12 12:57:11.440 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-12 12:57:11.440 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-12 12:57:11.444 +03:00 [DBG] Start authorize callback request
+2019-07-12 12:57:11.448 +03:00 [DBG] User in authorize request: 818727
+2019-07-12 12:57:11.448 +03:00 [DBG] Start authorize request protocol validation
+2019-07-12 12:57:11.448 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:57:11.448 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-12 12:57:11.449 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"818727","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"hangman_api","State":"RnJpIEp1bCAxMiAyMDE5IDEyOjU1OjQzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"2c02e292e9d4ab2bb50d6b5a1f7b0676","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"hangman_api","state":"RnJpIEp1bCAxMiAyMDE5IDEyOjU1OjQzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-12 12:57:11.450 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-12 12:57:11.463 +03:00 [DBG] user_consent grant with value: swagger|818727 not found in store.
+2019-07-12 12:57:11.463 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-12 12:57:11.463 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-12 12:57:11.572 +03:00 [DBG] Start authorize request protocol validation
+2019-07-12 12:57:11.573 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:57:11.573 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-12 12:57:11.573 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:57:13.949 +03:00 [DBG] Start authorize request protocol validation
+2019-07-12 12:57:13.949 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:57:13.949 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-12 12:57:13.950 +03:00 [INF] {"SubjectId":"818727","ClientId":"swagger","RequestedScopes":["hangman_api"],"GrantedScopes":["hangman_api"],"ConsentRemembered":true,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLO6LS69GB9E:00000005","TimeStamp":"2019-07-12T09:57:13.0000000Z","ProcessId":4708,"LocalIpAddress":"127.0.0.1:7528","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-12 12:57:13.974 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:57:13.998 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-12 12:57:13.998 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-12 12:57:13.998 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-12 12:57:13.998 +03:00 [DBG] Start authorize callback request
+2019-07-12 12:57:14.003 +03:00 [DBG] User in authorize request: 818727
+2019-07-12 12:57:14.003 +03:00 [DBG] Start authorize request protocol validation
+2019-07-12 12:57:14.003 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-12 12:57:14.005 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-12 12:57:14.006 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"818727","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"hangman_api","State":"RnJpIEp1bCAxMiAyMDE5IDEyOjU1OjQzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"2c02e292e9d4ab2bb50d6b5a1f7b0676","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"hangman_api","state":"RnJpIEp1bCAxMiAyMDE5IDEyOjU1OjQzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-12 12:57:14.006 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-12 12:57:14.006 +03:00 [DBG] user_consent grant with value: swagger|818727 not found in store.
+2019-07-12 12:57:14.006 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-12 12:57:14.014 +03:00 [INF] User consented to scopes: ["hangman_api"]
+2019-07-12 12:57:14.015 +03:00 [DBG] User indicated to remember consent for scopes: ["hangman_api"]
+2019-07-12 12:57:14.018 +03:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: 818727
+2019-07-12 12:57:14.048 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-12 12:57:14.054 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-12 12:57:14.055 +03:00 [DBG] Getting claims for access token for subject: 818727
+2019-07-12 12:57:14.058 +03:00 [DBG] Get profile called for subject 818727 from client Swagger Client with claim types [] via ClaimsProviderAccessToken
+2019-07-12 12:57:14.059 +03:00 [DBG] Issued claims: []
+2019-07-12 12:57:14.236 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"818727","Scopes":"hangman_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****yQHw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO6LS69GB9E:00000006","TimeStamp":"2019-07-12T09:57:14.0000000Z","ProcessId":4708,"LocalIpAddress":"127.0.0.1:7528","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-12 12:57:14.248 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"818727","ClientId":"swagger","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAxMiAyMDE5IDEyOjU1OjQzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"hangman_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-12 12:57:14.260 +03:00 [DBG] Augmenting SignInContext
+2019-07-12 12:57:14.261 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-12 12:57:47.744 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-12 12:57:47.746 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-12 12:57:47.746 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-12 12:57:47.748 +03:00 [DBG] Start discovery request
+2019-07-12 12:57:47.874 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-12 12:57:47.874 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-12 12:57:47.874 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-12 12:57:47.877 +03:00 [DBG] Start key discovery request
