@@ -12,7 +12,8 @@ export class GameService {
   constructor(private http: HttpClient) { }
 
   createGame() {
-    return this.http.post<GameData>('http://localhost:33224/api/PlayHangman', { withCredentials: true });
+    return this.http.post<GameData>('http://localhost:33224/api/PlayHangman',
+    {headers: {Authorization: `Bearer ${sessionStorage.getItem('access_token')}`}, withCredentials: true} );
   }
 
   updateGame(responseModel: GameData) {
