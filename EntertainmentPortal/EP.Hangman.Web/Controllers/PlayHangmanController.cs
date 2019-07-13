@@ -17,8 +17,10 @@ namespace EP.Hangman.Web.Controllers
 {
     [Route("api/playhangman")]
     [ApiController]
-    //[Authorize]
-
+    //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = "Google")]
+    //[Authorize(AuthenticationSchemes = "Facebook")]
     public class PlayHangmanController : ControllerBase
     {
 
@@ -33,10 +35,6 @@ namespace EP.Hangman.Web.Controllers
         
         //GET: api/PlayHangman/{id}
         [HttpGet("{id}")]
-        //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        //[Authorize(AuthenticationSchemes = "Google")]
-        //[Authorize(AuthenticationSchemes = "Facebook")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Red")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(ControllerData), Description = "Session not found")]
         public async Task<IActionResult> GetUserSessionAsync(string id)
@@ -49,10 +47,6 @@ namespace EP.Hangman.Web.Controllers
 
         //POST: api/PlayHangman
         [HttpPost]
-        //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        //[Authorize(AuthenticationSchemes = "Google")]
-        //[Authorize(AuthenticationSchemes = "Facebook")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(ControllerData), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Object didn't create")]
         public async Task<IActionResult> CreateNewGameCookieAsync()
@@ -65,10 +59,6 @@ namespace EP.Hangman.Web.Controllers
 
         //PUT: api/PlayHangman
         [HttpPut]
-        //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        //[Authorize(AuthenticationSchemes = "Google")]
-        //[Authorize(AuthenticationSchemes = "Facebook")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Updated")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't update")]
         [ValidationFilter]
@@ -82,10 +72,6 @@ namespace EP.Hangman.Web.Controllers
 
         //DELETE: api/PlayHangman/{id}
         [HttpDelete("{id}")]
-        //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        //[Authorize(AuthenticationSchemes = "Google")]
-        //[Authorize(AuthenticationSchemes = "Facebook")]
         [SwaggerResponse(HttpStatusCode.NoContent, typeof(ControllerData), Description = "Deleted")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't delete")]
         [ValidationFilter]

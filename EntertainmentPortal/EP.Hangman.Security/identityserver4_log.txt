@@ -2249,3 +2249,778 @@
 2019-07-12 16:10:26.162 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
 2019-07-12 16:10:26.162 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
 2019-07-12 16:10:26.162 +03:00 [DBG] Start key discovery request
+2019-07-13 14:18:43.066 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 14:18:43.102 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 14:18:43.105 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 14:18:43.105 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 14:18:43.105 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 14:18:43.105 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 14:18:43.105 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 14:18:44.529 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 14:18:44.532 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 14:18:44.532 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 14:18:44.532 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 14:18:44.532 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 14:18:44.532 +03:00 [DBG] Error Url: /home/error
+2019-07-13 14:18:44.532 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 14:18:44.555 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:44.568 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.390 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.390 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.397 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.409 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.429 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.429 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.430 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.430 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.494 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.494 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.495 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.494 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.647 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:18:45.648 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:35.251 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:19:35.269 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:19:35.269 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:19:35.269 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:19:35.269 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:19:35.270 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:19:35.272 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:19:35.272 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:19:35.277 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:19:35.277 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:19:35.277 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:19:35.277 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:19:35.281 +03:00 [DBG] Start discovery request
+2019-07-13 14:19:35.281 +03:00 [DBG] Start discovery request
+2019-07-13 14:19:35.514 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:19:35.515 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:19:35.515 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:19:35.515 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:19:35.516 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:19:35.516 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:19:35.529 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:19:35.530 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:19:35.530 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:19:35.530 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:19:35.530 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:19:35.530 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:19:35.532 +03:00 [DBG] Start key discovery request
+2019-07-13 14:19:35.532 +03:00 [DBG] Start key discovery request
+2019-07-13 14:19:37.646 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:37.646 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:37.647 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 14:19:37.650 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 14:19:37.651 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 14:19:37.654 +03:00 [DBG] Start authorize request
+2019-07-13 14:19:37.666 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:37.670 +03:00 [DBG] No user present in authorize request
+2019-07-13 14:19:37.675 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 14:19:37.692 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:37.730 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 14:19:37.748 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","AllowedRedirectUris":["http://localhost:4200/startScreen"],"SubjectId":"anonymous","ResponseType":"id_token token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"openid profile hangman_api","State":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","UiLocales":null,"Nonce":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"id_token token","client_id":"spa","state":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","redirect_uri":"http://localhost:4200/startScreen","scope":"openid profile hangman_api","nonce":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 14:19:37.773 +03:00 [INF] Showing login: User is not authenticated
+2019-07-13 14:19:37.819 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:37.819 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:37.895 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:37.895 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 14:19:37.895 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:37.895 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 14:19:37.900 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:38.923 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:38.923 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:46.048 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:46.048 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:46.109 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:46.110 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 14:19:46.110 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:46.110 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 14:19:46.252 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"818727","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO7GFES74O6:00000005","TimeStamp":"2019-07-13T11:19:46.0000000Z","ProcessId":22516,"LocalIpAddress":"127.0.0.1:29383","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-13 14:19:46.273 +03:00 [DBG] Augmenting SignInContext
+2019-07-13 14:19:46.276 +03:00 [DBG] Adding idp claim with value: local
+2019-07-13 14:19:46.276 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-13 14:19:46.279 +03:00 [INF] idsrv was not authenticated. Failure message: Ticket expired
+2019-07-13 14:19:46.287 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-13 14:19:46.290 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:46.337 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-13 14:19:46.338 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-13 14:19:46.338 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-13 14:19:46.344 +03:00 [DBG] Start authorize callback request
+2019-07-13 14:19:46.349 +03:00 [DBG] User in authorize request: 818727
+2019-07-13 14:19:46.350 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 14:19:46.350 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:46.350 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 14:19:46.351 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","AllowedRedirectUris":["http://localhost:4200/startScreen"],"SubjectId":"818727","ResponseType":"id_token token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"openid profile hangman_api","State":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","UiLocales":null,"Nonce":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"d5ada79cec2628cef5d25c063a73f548","Raw":{"response_type":"id_token token","client_id":"spa","state":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","redirect_uri":"http://localhost:4200/startScreen","scope":"openid profile hangman_api","nonce":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 14:19:46.352 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 14:19:46.366 +03:00 [DBG] user_consent grant with value: spa|818727 not found in store.
+2019-07-13 14:19:46.366 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-13 14:19:46.367 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-13 14:19:46.443 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 14:19:46.443 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:46.443 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 14:19:46.444 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:49.163 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 14:19:49.164 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:49.164 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 14:19:49.166 +03:00 [INF] {"SubjectId":"818727","ClientId":"spa","RequestedScopes":["openid","profile","hangman_api"],"GrantedScopes":["openid","profile","hangman_api"],"ConsentRemembered":true,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLO7GFES74O7:00000006","TimeStamp":"2019-07-13T11:19:49.0000000Z","ProcessId":22516,"LocalIpAddress":"127.0.0.1:29383","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-13 14:19:49.186 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:49.234 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-13 14:19:49.234 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-13 14:19:49.235 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-13 14:19:49.235 +03:00 [DBG] Start authorize callback request
+2019-07-13 14:19:49.240 +03:00 [DBG] User in authorize request: 818727
+2019-07-13 14:19:49.240 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 14:19:49.240 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:19:49.240 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 14:19:49.241 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","AllowedRedirectUris":["http://localhost:4200/startScreen"],"SubjectId":"818727","ResponseType":"id_token token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"openid profile hangman_api","State":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","UiLocales":null,"Nonce":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"d5ada79cec2628cef5d25c063a73f548","Raw":{"response_type":"id_token token","client_id":"spa","state":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","redirect_uri":"http://localhost:4200/startScreen","scope":"openid profile hangman_api","nonce":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 14:19:49.241 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 14:19:49.241 +03:00 [DBG] user_consent grant with value: spa|818727 not found in store.
+2019-07-13 14:19:49.241 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-13 14:19:49.249 +03:00 [INF] User consented to scopes: ["openid","profile","hangman_api"]
+2019-07-13 14:19:49.250 +03:00 [DBG] User indicated to remember consent for scopes: ["openid","profile","hangman_api"]
+2019-07-13 14:19:49.252 +03:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: 818727
+2019-07-13 14:19:49.278 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-13 14:19:49.284 +03:00 [DBG] Getting claims for access token for client: spa
+2019-07-13 14:19:49.285 +03:00 [DBG] Getting claims for access token for subject: 818727
+2019-07-13 14:19:49.289 +03:00 [DBG] Get profile called for subject 818727 from client SPA Client with claim types [] via ClaimsProviderAccessToken
+2019-07-13 14:19:49.291 +03:00 [DBG] Issued claims: []
+2019-07-13 14:19:49.495 +03:00 [DBG] Getting claims for identity token for subject: 818727 and client: spa
+2019-07-13 14:19:49.495 +03:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-07-13 14:19:49.504 +03:00 [INF] {"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","Endpoint":"Authorize","SubjectId":"818727","Scopes":"openid profile hangman_api","GrantType":"implicit","Tokens":[{"TokenType":"id_token","TokenValue":"****Od0g","$type":"Token"},{"TokenType":"access_token","TokenValue":"****oKaQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO7GFES74O9:00000006","TimeStamp":"2019-07-13T11:19:49.0000000Z","ProcessId":22516,"LocalIpAddress":"127.0.0.1:29383","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-13 14:19:49.507 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"818727","ClientId":"spa","RedirectUri":"http://localhost:4200/startScreen","State":"LwQeym1m6AM7yWjwx4gylTDIsAjU6VHSYGSe7Oeg","Scope":"openid profile hangman_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-13 14:19:49.521 +03:00 [DBG] Augmenting SignInContext
+2019-07-13 14:19:49.522 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-13 14:19:50.713 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:19:50.714 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:19:50.714 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:19:50.714 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:19:50.714 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:19:50.714 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:19:50.714 +03:00 [DBG] Start discovery request
+2019-07-13 14:19:50.917 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:19:50.917 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:19:50.918 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:19:50.918 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:19:50.918 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:19:50.918 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:19:50.918 +03:00 [DBG] Start discovery request
+2019-07-13 14:19:50.924 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:19:50.924 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:19:50.924 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:19:50.924 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:19:50.925 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:19:50.925 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:19:50.925 +03:00 [DBG] Start key discovery request
+2019-07-13 14:19:51.249 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:19:51.249 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:19:51.249 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:19:51.249 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:19:51.249 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:19:51.249 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:19:51.249 +03:00 [DBG] Start key discovery request
+2019-07-13 14:20:26.664 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:20:26.664 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:20:26.664 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:20:26.664 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:20:26.664 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:20:26.665 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:20:26.665 +03:00 [DBG] Start discovery request
+2019-07-13 14:20:26.704 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:20:26.704 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:20:26.704 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:20:26.705 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:20:26.705 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:20:26.705 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:20:26.705 +03:00 [DBG] Start key discovery request
+2019-07-13 14:20:43.198 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:20:43.198 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:20:43.198 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:20:43.198 +03:00 [DBG] Start discovery request
+2019-07-13 14:20:43.907 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:20:43.907 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:20:43.907 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:20:43.907 +03:00 [DBG] Start key discovery request
+2019-07-13 14:24:16.955 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:24:16.955 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:24:16.955 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:24:16.956 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:24:16.956 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:24:16.956 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:24:16.956 +03:00 [DBG] Start discovery request
+2019-07-13 14:24:17.494 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:24:17.502 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:24:17.502 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:24:17.502 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:24:17.502 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:24:17.502 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:24:17.502 +03:00 [DBG] Start key discovery request
+2019-07-13 14:35:47.444 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:35:47.484 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:35:47.487 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:35:47.541 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:35:47.559 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:35:47.559 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:35:47.559 +03:00 [DBG] Start discovery request
+2019-07-13 14:35:47.810 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:35:47.810 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:35:47.810 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:35:47.810 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:35:47.839 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:35:47.839 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:35:47.839 +03:00 [DBG] Start key discovery request
+2019-07-13 14:45:26.593 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:45:26.600 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:45:26.600 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:45:26.606 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:45:26.606 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:45:26.606 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:45:26.606 +03:00 [DBG] Start discovery request
+2019-07-13 14:45:26.687 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:45:26.687 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:45:26.687 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:45:26.687 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:45:26.687 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:45:26.687 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:45:26.687 +03:00 [DBG] Start key discovery request
+2019-07-13 14:50:14.407 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:50:14.407 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:50:14.407 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:50:14.408 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:50:14.408 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:50:14.408 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:50:14.408 +03:00 [DBG] Start discovery request
+2019-07-13 14:50:14.486 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:50:14.486 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:50:14.486 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:50:14.486 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:50:14.486 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:50:14.486 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:50:14.486 +03:00 [DBG] Start key discovery request
+2019-07-13 14:50:22.571 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:50:22.571 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:50:22.571 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:50:22.571 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:50:22.572 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:50:22.572 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:50:22.572 +03:00 [DBG] Start discovery request
+2019-07-13 14:50:22.609 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:50:22.624 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:50:22.624 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:50:22.624 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:50:22.624 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:50:22.624 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:50:22.625 +03:00 [DBG] Start key discovery request
+2019-07-13 14:50:27.986 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 14:50:28.057 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 14:50:28.057 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 14:50:28.065 +03:00 [DBG] Start authorize request
+2019-07-13 14:50:28.077 +03:00 [DBG] User in authorize request: 818727
+2019-07-13 14:50:28.077 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 14:50:28.077 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:50:28.096 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 14:50:28.104 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","AllowedRedirectUris":["http://localhost:4200/startScreen"],"SubjectId":"818727","ResponseType":"id_token token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"openid profile hangman_api","State":"3dIiA4acU0Zij9DlolOZKir0ymaTR8RdFdJjhpAj","UiLocales":null,"Nonce":"3dIiA4acU0Zij9DlolOZKir0ymaTR8RdFdJjhpAj","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"d5ada79cec2628cef5d25c063a73f548","Raw":{"response_type":"id_token token","client_id":"spa","state":"3dIiA4acU0Zij9DlolOZKir0ymaTR8RdFdJjhpAj","redirect_uri":"http://localhost:4200/startScreen","scope":"openid profile hangman_api","nonce":"3dIiA4acU0Zij9DlolOZKir0ymaTR8RdFdJjhpAj"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 14:50:28.105 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 14:50:28.315 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-13 14:50:28.315 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-13 14:50:28.315 +03:00 [DBG] Getting claims for access token for client: spa
+2019-07-13 14:50:28.315 +03:00 [DBG] Getting claims for access token for subject: 818727
+2019-07-13 14:50:28.316 +03:00 [DBG] Get profile called for subject 818727 from client SPA Client with claim types [] via ClaimsProviderAccessToken
+2019-07-13 14:50:28.316 +03:00 [DBG] Issued claims: []
+2019-07-13 14:50:28.336 +03:00 [DBG] Getting claims for identity token for subject: 818727 and client: spa
+2019-07-13 14:50:28.336 +03:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-07-13 14:50:28.353 +03:00 [INF] {"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","Endpoint":"Authorize","SubjectId":"818727","Scopes":"openid profile hangman_api","GrantType":"implicit","Tokens":[{"TokenType":"id_token","TokenValue":"****3wSA","$type":"Token"},{"TokenType":"access_token","TokenValue":"****A7dw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO7GFES74OD:00000005","TimeStamp":"2019-07-13T11:50:28.0000000Z","ProcessId":22516,"LocalIpAddress":"127.0.0.1:29383","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-13 14:50:28.354 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"818727","ClientId":"spa","RedirectUri":"http://localhost:4200/startScreen","State":"3dIiA4acU0Zij9DlolOZKir0ymaTR8RdFdJjhpAj","Scope":"openid profile hangman_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-13 14:50:30.337 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:50:30.338 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:50:30.338 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:50:30.338 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:50:30.338 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:50:30.338 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:50:30.338 +03:00 [DBG] Start discovery request
+2019-07-13 14:50:30.568 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:50:30.568 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:50:30.569 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:50:30.570 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:50:30.583 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:50:30.588 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:50:30.588 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:50:30.588 +03:00 [DBG] Start key discovery request
+2019-07-13 14:50:30.588 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:50:30.588 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:50:30.589 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:50:30.589 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:50:30.589 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:50:30.589 +03:00 [DBG] Start discovery request
+2019-07-13 14:50:30.950 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:50:30.951 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:50:30.951 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:50:30.951 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:50:30.951 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:50:30.952 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:50:30.952 +03:00 [DBG] Start key discovery request
+2019-07-13 14:51:19.461 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:51:19.461 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:51:19.461 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:51:19.461 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:51:19.461 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:51:19.461 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:51:19.461 +03:00 [DBG] Start discovery request
+2019-07-13 14:51:19.944 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:51:19.944 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:51:19.944 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:51:19.944 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:51:19.944 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:51:19.944 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:51:19.945 +03:00 [DBG] Start key discovery request
+2019-07-13 14:51:24.841 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:51:24.842 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:51:24.842 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:51:24.842 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:51:24.842 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:51:24.842 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:51:24.842 +03:00 [DBG] Start discovery request
+2019-07-13 14:51:24.921 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:51:24.921 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:51:24.921 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:51:24.921 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:51:24.921 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:51:24.921 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:51:24.921 +03:00 [DBG] Start key discovery request
+2019-07-13 14:53:26.401 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:53:26.401 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:53:26.401 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:53:26.401 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:53:26.401 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:53:26.401 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:53:26.401 +03:00 [DBG] Start discovery request
+2019-07-13 14:53:26.850 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:53:26.850 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:53:26.850 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:53:26.851 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:53:26.851 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:53:26.852 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:53:26.852 +03:00 [DBG] Start key discovery request
+2019-07-13 14:53:28.683 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:53:28.683 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:53:28.683 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:53:28.684 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:53:28.684 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:53:28.684 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:53:28.684 +03:00 [DBG] Start discovery request
+2019-07-13 14:53:28.707 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:53:28.707 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:53:28.707 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:53:28.708 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:53:28.708 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:53:28.708 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:53:28.708 +03:00 [DBG] Start key discovery request
+2019-07-13 14:53:31.772 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 14:53:31.773 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 14:53:31.773 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 14:53:31.773 +03:00 [DBG] Start authorize request
+2019-07-13 14:53:31.773 +03:00 [DBG] User in authorize request: 818727
+2019-07-13 14:53:31.773 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 14:53:31.773 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 14:53:31.774 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 14:53:31.774 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","AllowedRedirectUris":["http://localhost:4200/startScreen"],"SubjectId":"818727","ResponseType":"id_token token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"openid profile hangman_api","State":"59AoNeH0s88snevfRMLizVukddhYfn4MpZzuprwv","UiLocales":null,"Nonce":"59AoNeH0s88snevfRMLizVukddhYfn4MpZzuprwv","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"d5ada79cec2628cef5d25c063a73f548","Raw":{"response_type":"id_token token","client_id":"spa","state":"59AoNeH0s88snevfRMLizVukddhYfn4MpZzuprwv","redirect_uri":"http://localhost:4200/startScreen","scope":"openid profile hangman_api","nonce":"59AoNeH0s88snevfRMLizVukddhYfn4MpZzuprwv"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 14:53:31.774 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 14:53:31.779 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-13 14:53:31.779 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-13 14:53:31.779 +03:00 [DBG] Getting claims for access token for client: spa
+2019-07-13 14:53:31.779 +03:00 [DBG] Getting claims for access token for subject: 818727
+2019-07-13 14:53:31.780 +03:00 [DBG] Get profile called for subject 818727 from client SPA Client with claim types [] via ClaimsProviderAccessToken
+2019-07-13 14:53:31.780 +03:00 [DBG] Issued claims: []
+2019-07-13 14:53:31.785 +03:00 [DBG] Getting claims for identity token for subject: 818727 and client: spa
+2019-07-13 14:53:31.785 +03:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-07-13 14:53:31.789 +03:00 [INF] {"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","Endpoint":"Authorize","SubjectId":"818727","Scopes":"openid profile hangman_api","GrantType":"implicit","Tokens":[{"TokenType":"id_token","TokenValue":"****k4jA","$type":"Token"},{"TokenType":"access_token","TokenValue":"****x4fA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO7GFES74OF:00000005","TimeStamp":"2019-07-13T11:53:31.0000000Z","ProcessId":22516,"LocalIpAddress":"127.0.0.1:29383","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-13 14:53:31.789 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"818727","ClientId":"spa","RedirectUri":"http://localhost:4200/startScreen","State":"59AoNeH0s88snevfRMLizVukddhYfn4MpZzuprwv","Scope":"openid profile hangman_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-13 14:53:32.973 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:53:32.973 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:53:32.973 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:53:32.977 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:53:32.977 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:53:32.978 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:53:32.978 +03:00 [DBG] Start discovery request
+2019-07-13 14:53:33.224 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:53:33.225 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:53:33.225 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:53:33.225 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:53:33.225 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:53:33.225 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:53:33.225 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:53:33.225 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:53:33.225 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:53:33.225 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:53:33.225 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:53:33.225 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:53:33.225 +03:00 [DBG] Start key discovery request
+2019-07-13 14:53:33.225 +03:00 [DBG] Start discovery request
+2019-07-13 14:53:33.611 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:53:33.611 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:53:33.611 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:53:33.611 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:53:33.611 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:53:33.632 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:53:33.633 +03:00 [DBG] Start key discovery request
+2019-07-13 14:54:25.876 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:54:25.876 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:25.877 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:25.877 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:54:25.877 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:54:25.877 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:54:25.877 +03:00 [DBG] Start discovery request
+2019-07-13 14:54:26.015 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:54:26.016 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:26.016 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:26.016 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:54:26.016 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:54:26.016 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:54:26.016 +03:00 [DBG] Start key discovery request
+2019-07-13 14:54:34.508 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:54:34.508 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:34.508 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:34.509 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:54:34.509 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:54:34.509 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:54:34.509 +03:00 [DBG] Start discovery request
+2019-07-13 14:54:34.979 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:54:34.979 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:54:34.979 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:34.980 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:34.980 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:34.980 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:34.980 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:54:34.980 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:54:34.980 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:54:34.980 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:54:34.980 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:54:34.980 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:54:34.980 +03:00 [DBG] Start key discovery request
+2019-07-13 14:54:34.980 +03:00 [DBG] Start discovery request
+2019-07-13 14:54:35.109 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:54:35.110 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:35.110 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:35.110 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:54:35.110 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:54:35.110 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:54:35.110 +03:00 [DBG] Start key discovery request
+2019-07-13 14:54:48.273 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:54:48.273 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:48.273 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:48.273 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:54:48.274 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:54:48.274 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:54:48.274 +03:00 [DBG] Start discovery request
+2019-07-13 14:54:48.366 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:54:48.367 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:48.367 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:48.367 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:54:48.367 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:54:48.367 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:54:48.367 +03:00 [DBG] Start key discovery request
+2019-07-13 14:54:58.750 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 14:54:58.750 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:58.750 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:58.750 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 14:54:58.750 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 14:54:58.751 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 14:54:58.751 +03:00 [DBG] Start discovery request
+2019-07-13 14:54:58.840 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 14:54:58.840 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 14:54:58.840 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 14:54:58.841 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 14:54:58.841 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 14:54:58.841 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 14:54:58.841 +03:00 [DBG] Start key discovery request
+2019-07-13 15:02:02.675 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:02:02.676 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:02:02.676 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:02:02.676 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:02:02.676 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:02:02.676 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:02:02.676 +03:00 [DBG] Start discovery request
+2019-07-13 15:02:03.017 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:02:03.017 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:02:03.017 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:02:03.017 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:02:03.017 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:02:03.017 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:02:03.017 +03:00 [DBG] Start discovery request
+2019-07-13 15:02:03.172 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:02:03.173 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:02:03.173 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:02:03.173 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:02:03.173 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:02:03.173 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:02:03.173 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:02:03.173 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:02:03.173 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:02:03.173 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:02:03.173 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:02:03.173 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:02:03.173 +03:00 [DBG] Start key discovery request
+2019-07-13 15:02:03.173 +03:00 [DBG] Start key discovery request
+2019-07-13 15:02:11.031 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:02:11.031 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:02:11.031 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:02:11.031 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:02:11.031 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:02:11.032 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:02:11.032 +03:00 [DBG] Start discovery request
+2019-07-13 15:02:11.214 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:02:11.214 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:02:11.214 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:02:11.215 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:02:11.215 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:02:11.215 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:02:11.215 +03:00 [DBG] Start key discovery request
+2019-07-13 15:03:02.091 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:03:02.103 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:03:02.103 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:03:02.108 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:03:02.108 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:03:02.108 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:03:02.108 +03:00 [DBG] Start discovery request
+2019-07-13 15:03:02.165 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:03:02.166 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:03:02.166 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:03:02.166 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:03:02.166 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:03:02.167 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:03:02.167 +03:00 [DBG] Start key discovery request
+2019-07-13 15:04:01.822 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:04:01.822 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:04:01.822 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:04:01.823 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:04:01.823 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:04:01.824 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:04:01.824 +03:00 [DBG] Start discovery request
+2019-07-13 15:04:01.874 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:04:01.874 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:04:01.874 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:04:01.874 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:04:01.874 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:04:01.874 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:04:01.874 +03:00 [DBG] Start key discovery request
+2019-07-13 15:04:41.857 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:04:41.857 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:04:41.857 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:04:41.857 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:04:41.857 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:04:41.857 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:04:41.857 +03:00 [DBG] Start key discovery request
+2019-07-13 15:04:48.183 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:04:48.184 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:04:48.184 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:04:48.184 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:04:48.185 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:04:48.185 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:04:48.185 +03:00 [DBG] Start discovery request
+2019-07-13 15:04:48.236 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:04:48.237 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:04:48.237 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:04:48.238 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:04:48.238 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:04:48.243 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:04:48.243 +03:00 [DBG] Start key discovery request
+2019-07-13 15:04:54.227 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 15:04:54.238 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 15:04:54.238 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 15:04:54.238 +03:00 [DBG] Start authorize request
+2019-07-13 15:04:54.239 +03:00 [DBG] User in authorize request: 818727
+2019-07-13 15:04:54.239 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 15:04:54.239 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:04:54.239 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 15:04:54.259 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","AllowedRedirectUris":["http://localhost:4200/startScreen"],"SubjectId":"818727","ResponseType":"id_token token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"openid profile hangman_api","State":"ugqLG5gWrE3paR8Dnuh2FdCfs8GJ9gEdcCdD0qvg","UiLocales":null,"Nonce":"ugqLG5gWrE3paR8Dnuh2FdCfs8GJ9gEdcCdD0qvg","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"d5ada79cec2628cef5d25c063a73f548","Raw":{"response_type":"id_token token","client_id":"spa","state":"ugqLG5gWrE3paR8Dnuh2FdCfs8GJ9gEdcCdD0qvg","redirect_uri":"http://localhost:4200/startScreen","scope":"openid profile hangman_api","nonce":"ugqLG5gWrE3paR8Dnuh2FdCfs8GJ9gEdcCdD0qvg"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 15:04:54.259 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 15:04:54.303 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-13 15:04:54.303 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-13 15:04:54.303 +03:00 [DBG] Getting claims for access token for client: spa
+2019-07-13 15:04:54.303 +03:00 [DBG] Getting claims for access token for subject: 818727
+2019-07-13 15:04:54.304 +03:00 [DBG] Get profile called for subject 818727 from client SPA Client with claim types [] via ClaimsProviderAccessToken
+2019-07-13 15:04:54.304 +03:00 [DBG] Issued claims: []
+2019-07-13 15:04:54.313 +03:00 [DBG] Getting claims for identity token for subject: 818727 and client: spa
+2019-07-13 15:04:54.313 +03:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-07-13 15:04:54.318 +03:00 [INF] {"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","Endpoint":"Authorize","SubjectId":"818727","Scopes":"openid profile hangman_api","GrantType":"implicit","Tokens":[{"TokenType":"id_token","TokenValue":"****ECtA","$type":"Token"},{"TokenType":"access_token","TokenValue":"****aUpw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO7GFES74OH:00000008","TimeStamp":"2019-07-13T12:04:54.0000000Z","ProcessId":22516,"LocalIpAddress":"127.0.0.1:29383","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-13 15:04:54.319 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"818727","ClientId":"spa","RedirectUri":"http://localhost:4200/startScreen","State":"ugqLG5gWrE3paR8Dnuh2FdCfs8GJ9gEdcCdD0qvg","Scope":"openid profile hangman_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-13 15:04:55.266 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:04:55.266 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:04:55.266 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:04:55.266 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:04:55.267 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:04:55.267 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:04:55.267 +03:00 [DBG] Start discovery request
+2019-07-13 15:04:55.298 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:04:55.299 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:04:55.299 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:04:55.299 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:04:55.299 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:04:55.299 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:04:55.299 +03:00 [DBG] Start key discovery request
+2019-07-13 15:14:25.558 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 15:14:25.612 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 15:14:25.615 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 15:14:25.615 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 15:14:25.615 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 15:14:25.615 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 15:14:25.615 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 15:14:26.457 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 15:14:26.460 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 15:14:26.460 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 15:14:26.460 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 15:14:26.460 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 15:14:26.460 +03:00 [DBG] Error Url: /home/error
+2019-07-13 15:14:26.460 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 15:14:26.493 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:14:26.498 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:14:26.498 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:14:26.503 +03:00 [DBG] Start discovery request
+2019-07-13 15:14:26.930 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:14:26.931 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:14:26.931 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:14:26.937 +03:00 [DBG] Start key discovery request
+2019-07-13 15:20:48.495 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:20:48.504 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:20:48.504 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:20:48.512 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:20:48.512 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:20:48.512 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:20:48.512 +03:00 [DBG] Start discovery request
+2019-07-13 15:20:48.679 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:20:48.679 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:20:48.679 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:20:48.679 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:20:48.679 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:20:48.680 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:20:48.680 +03:00 [DBG] Start key discovery request
+2019-07-13 15:20:50.009 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 15:20:50.014 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 15:20:50.014 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 15:20:50.019 +03:00 [DBG] Start authorize request
+2019-07-13 15:20:50.049 +03:00 [DBG] User in authorize request: 818727
+2019-07-13 15:20:50.062 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 15:20:50.087 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:20:50.125 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 15:20:50.143 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","AllowedRedirectUris":["http://localhost:4200/startScreen"],"SubjectId":"818727","ResponseType":"id_token token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"openid profile hangman_api","State":"7it5TYLV89b8JM5BFBPLvLsvGNqYv9DjLQjGAUQT","UiLocales":null,"Nonce":"7it5TYLV89b8JM5BFBPLvLsvGNqYv9DjLQjGAUQT","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"d5ada79cec2628cef5d25c063a73f548","Raw":{"response_type":"id_token token","client_id":"spa","state":"7it5TYLV89b8JM5BFBPLvLsvGNqYv9DjLQjGAUQT","redirect_uri":"http://localhost:4200/startScreen","scope":"openid profile hangman_api","nonce":"7it5TYLV89b8JM5BFBPLvLsvGNqYv9DjLQjGAUQT"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 15:20:50.181 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 15:20:50.205 +03:00 [DBG] user_consent grant with value: spa|818727 not found in store.
+2019-07-13 15:20:50.205 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-13 15:20:50.205 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-13 15:20:50.799 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 15:20:50.800 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:20:50.800 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 15:20:50.802 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:20:54.597 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 15:20:54.597 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:20:54.597 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 15:20:54.628 +03:00 [INF] {"SubjectId":"818727","ClientId":"spa","RequestedScopes":["openid","profile","hangman_api"],"GrantedScopes":["openid","profile","hangman_api"],"ConsentRemembered":true,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLO7HEIUA2DG:00000007","TimeStamp":"2019-07-13T12:20:54.0000000Z","ProcessId":29132,"LocalIpAddress":"127.0.0.1:28321","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-13 15:20:54.649 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:20:54.694 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-13 15:20:54.695 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-13 15:20:54.695 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-13 15:20:54.702 +03:00 [DBG] Start authorize callback request
+2019-07-13 15:20:54.707 +03:00 [DBG] User in authorize request: 818727
+2019-07-13 15:20:54.707 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 15:20:54.707 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:20:54.708 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 15:20:54.708 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","AllowedRedirectUris":["http://localhost:4200/startScreen"],"SubjectId":"818727","ResponseType":"id_token token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"openid profile hangman_api","State":"7it5TYLV89b8JM5BFBPLvLsvGNqYv9DjLQjGAUQT","UiLocales":null,"Nonce":"7it5TYLV89b8JM5BFBPLvLsvGNqYv9DjLQjGAUQT","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"d5ada79cec2628cef5d25c063a73f548","Raw":{"response_type":"id_token token","client_id":"spa","state":"7it5TYLV89b8JM5BFBPLvLsvGNqYv9DjLQjGAUQT","redirect_uri":"http://localhost:4200/startScreen","scope":"openid profile hangman_api","nonce":"7it5TYLV89b8JM5BFBPLvLsvGNqYv9DjLQjGAUQT"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 15:20:54.708 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 15:20:54.708 +03:00 [DBG] user_consent grant with value: spa|818727 not found in store.
+2019-07-13 15:20:54.708 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-13 15:20:54.715 +03:00 [INF] User consented to scopes: ["openid","profile","hangman_api"]
+2019-07-13 15:20:54.716 +03:00 [DBG] User indicated to remember consent for scopes: ["openid","profile","hangman_api"]
+2019-07-13 15:20:54.720 +03:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: 818727
+2019-07-13 15:20:54.743 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-13 15:20:54.755 +03:00 [DBG] Getting claims for access token for client: spa
+2019-07-13 15:20:54.756 +03:00 [DBG] Getting claims for access token for subject: 818727
+2019-07-13 15:20:54.760 +03:00 [DBG] Get profile called for subject 818727 from client SPA Client with claim types [] via ClaimsProviderAccessToken
+2019-07-13 15:20:54.762 +03:00 [DBG] Issued claims: []
+2019-07-13 15:20:54.888 +03:00 [DBG] Getting claims for identity token for subject: 818727 and client: spa
+2019-07-13 15:20:54.888 +03:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-07-13 15:20:54.896 +03:00 [INF] {"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","Endpoint":"Authorize","SubjectId":"818727","Scopes":"openid profile hangman_api","GrantType":"implicit","Tokens":[{"TokenType":"id_token","TokenValue":"****KMAA","$type":"Token"},{"TokenType":"access_token","TokenValue":"****2j8g","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO7HEIUA2DG:00000008","TimeStamp":"2019-07-13T12:20:54.0000000Z","ProcessId":29132,"LocalIpAddress":"127.0.0.1:28321","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-13 15:20:54.899 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"818727","ClientId":"spa","RedirectUri":"http://localhost:4200/startScreen","State":"7it5TYLV89b8JM5BFBPLvLsvGNqYv9DjLQjGAUQT","Scope":"openid profile hangman_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-13 15:20:55.939 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:20:55.939 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:20:55.939 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:20:55.939 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:20:55.939 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:20:55.939 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:20:55.939 +03:00 [DBG] Start discovery request
+2019-07-13 15:20:56.389 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:20:56.389 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:20:56.389 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:20:56.389 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:20:56.390 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:20:56.390 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:20:56.390 +03:00 [DBG] Start key discovery request
+2019-07-13 15:21:22.682 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:21:22.682 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:21:22.682 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:21:22.683 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:21:22.683 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:21:22.683 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:21:22.683 +03:00 [DBG] Start discovery request
+2019-07-13 15:21:22.712 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:21:22.713 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:21:22.713 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:21:22.713 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:21:22.713 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:21:22.713 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:21:22.713 +03:00 [DBG] Start key discovery request
+2019-07-13 15:21:30.984 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:21:30.984 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:21:30.984 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:21:30.984 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:21:30.984 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:21:30.984 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:21:30.984 +03:00 [DBG] Start discovery request
+2019-07-13 15:21:31.024 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:21:31.025 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:21:31.025 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:21:31.025 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:21:31.025 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:21:31.025 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:21:31.025 +03:00 [DBG] Start key discovery request
+2019-07-13 15:21:46.179 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 15:21:46.179 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:21:46.179 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:21:46.180 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 15:21:46.180 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 15:21:46.180 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 15:21:46.180 +03:00 [DBG] Start discovery request
+2019-07-13 15:21:46.274 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4200
+2019-07-13 15:21:46.274 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is allowed
+2019-07-13 15:21:46.275 +03:00 [DBG] CorsPolicyService allowed origin: http://localhost:4200
+2019-07-13 15:21:46.275 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 15:21:46.275 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 15:21:46.275 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 15:21:46.275 +03:00 [DBG] Start key discovery request
+2019-07-13 15:21:47.264 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 15:21:47.264 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 15:21:47.265 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 15:21:47.265 +03:00 [DBG] Start authorize request
+2019-07-13 15:21:47.265 +03:00 [DBG] No user present in authorize request
+2019-07-13 15:21:47.266 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 15:21:47.300 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:21:47.300 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 15:21:47.301 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":"http://localhost:4200/startScreen","AllowedRedirectUris":["http://localhost:4200/startScreen"],"SubjectId":"anonymous","ResponseType":"id_token token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"openid profile hangman_api","State":"cbqyQIdnfDvy5mYChDv522AZUxX2tbfAMvvRJdVD","UiLocales":null,"Nonce":"cbqyQIdnfDvy5mYChDv522AZUxX2tbfAMvvRJdVD","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"id_token token","client_id":"spa","state":"cbqyQIdnfDvy5mYChDv522AZUxX2tbfAMvvRJdVD","redirect_uri":"http://localhost:4200/startScreen","scope":"openid profile hangman_api","nonce":"cbqyQIdnfDvy5mYChDv522AZUxX2tbfAMvvRJdVD"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 15:21:47.301 +03:00 [INF] Showing login: User is not authenticated
+2019-07-13 15:21:47.439 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 15:21:47.439 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:21:47.440 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 15:21:47.442 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-13 15:21:50.442 +03:00 [INF] AuthenticationScheme: Google was challenged.

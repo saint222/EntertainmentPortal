@@ -1,10 +1,12 @@
-<div>Errors: {{gameFieldData.userErrors}}</div>
-<div>Id: {{gameFieldData.id}} </div>
-<div >Correct Letters:
-  <span *ngFor="let item of gameFieldData.correctLetters" >{{item}} </span>
-</div>
-<div>Alphabet:
-  <span *ngFor="let item of gameFieldData.alphabet" >
-    <button class="btn btn-primary" (click)= "checkLetter(item)">{{item}}</button>
-  </span>
+<div *ngIf="gameFieldData">
+  <div>Errors: {{gameFieldData.userErrors}}</div>
+  <div>Id: {{gameFieldData.id}} </div>
+  <div>Correct Letters:
+    <span *ngFor="let item of gameFieldData.correctLetters" >{{item}} </span>
+  </div>
+  <div>Alphabet:
+    <span *ngFor="let item of gameFieldData.alphabet" >
+      <button class="btn btn-primary" (click)= "checkLetter(item)">{{item}}</button>
+    </span>
+  </div>
 </div>
