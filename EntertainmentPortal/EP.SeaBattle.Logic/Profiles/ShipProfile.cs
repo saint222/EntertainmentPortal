@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using EP.SeaBattle.Data.Models;
 using EP.SeaBattle.Logic.Commands;
 using EP.SeaBattle.Logic.Models;

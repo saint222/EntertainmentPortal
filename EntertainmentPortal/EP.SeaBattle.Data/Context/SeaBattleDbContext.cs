@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EP.SeaBattle.Data.Models;
+﻿using EP.SeaBattle.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -10,7 +7,7 @@ namespace EP.SeaBattle.Data.Context
     public class SeaBattleDbContext : DbContext
     {
         public SeaBattleDbContext(DbContextOptions<SeaBattleDbContext> options)
-            : base(options: options)
+     : base(options: options)
         {
 
         }
@@ -22,15 +19,32 @@ namespace EP.SeaBattle.Data.Context
         public DbSet<ShipDb> Ships { get; set; }
 
         public DbSet<CellDb> Cells { get; set; }
+        public DbSet<ShotDb> Shots { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<PlayerDb>()
+                        .HasMany(p => p.Ships)
+                        .WithOne(s => s.Player)
+                        .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<ShipDb>()
-                .HasMany(i => i.Cells)
-                .WithOne(c => c.Ship)
-                .OnDelete(DeleteBehavior.Cascade);   
+                        .HasMany(s => s.Cells)
+                        .WithOne(c => c.Ship)
+                        .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<GameDb>()
+                        .HasMany(g => g.Players)
+                        .WithOne(p => p.Game)
+                        .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<GameDb>()
+                        .HasMany(g => g.Shots)
+                        .WithOne(s => s.Game)
+                        .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

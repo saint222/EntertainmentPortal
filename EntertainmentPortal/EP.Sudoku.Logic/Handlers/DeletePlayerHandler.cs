@@ -1,36 +1,42 @@
-﻿using AutoMapper;
-using EP.Sudoku.Data;
-using EP.Sudoku.Data.Models;
-using EP.Sudoku.Logic.Models;
-using EP.Sudoku.Logic.Queries;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Data.Context;
+using Microsoft.EntityFrameworkCore;
+using EP.Sudoku.Logic.Models;
+using Microsoft.Extensions.Logging;
+using AutoMapper;
 
 namespace EP.Sudoku.Logic.Handlers
 {
     public class DeletePlayerHandler : IRequestHandler<DeletePlayerCommand, bool>
     {
-        private readonly SudokuDbContext _context;        
-        public DeletePlayerHandler(SudokuDbContext context)
+        private readonly SudokuDbContext _context;
+        private readonly ILogger<DeletePlayerHandler> _logger;
+        
+        public DeletePlayerHandler(SudokuDbContext context, ILogger<DeletePlayerHandler> logger)
         {
-            _context = context;            
+            _context = context;
+            _logger = logger;            
         }
         public async Task<bool> Handle(DeletePlayerCommand request, CancellationToken cancellationToken)
         {
-            var deletedPlayer = _context.Players.Where(x => x.Id == request.Id).FirstOrDefault();
+            var deletedPlayer = _context.Players
+                    .Include(p => p.GameSessionDb)
+                    .Where(x => x.Id == request.Id)                    
+                    .FirstOrDefault();                            
+
             if (deletedPlayer == null)
             {
+                _logger.LogError($"There is not a player with the Id '{request.Id}'...");
                 return await Task.FromResult(false);
             }
+
             _context.Remove(deletedPlayer);
-            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            await _context.SaveChangesAsync(cancellationToken);
+
             return await Task.FromResult(true);
         }
     }

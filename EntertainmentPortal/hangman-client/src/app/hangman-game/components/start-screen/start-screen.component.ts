@@ -13,8 +13,15 @@ export class StartScreenComponent implements OnInit {
   ngOnInit() {
   }
 
-  click() {
+  startGame() {
     this.router.navigateByUrl('/gameSession');
   }
 
+  loginUser() {
+    this.router.navigateByUrl('/login');
+  }
+
+  registerUser() {
+    this.router.navigateByUrl('/register');
+  }
 }

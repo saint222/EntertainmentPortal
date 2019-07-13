@@ -11,7 +11,7 @@ namespace EP.Sudoku.Data.Models
         /// <summary>    
         /// Is used to denote an identification value of a player (DbInfo).
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>    
         /// Is used to denote the nickname of a player (DbInfo).
@@ -39,6 +39,6 @@ namespace EP.Sudoku.Data.Models
         /// <summary>
         /// Is used to provide a player with a possibility to have more than one unfinished game (DbInfo).
         /// </summary> 
-        public List<SessionDb> GameSessions { get; set; }
+        public SessionDb GameSessionDb { get; set; }
     }
 }

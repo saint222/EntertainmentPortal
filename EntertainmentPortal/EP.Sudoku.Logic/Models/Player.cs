@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace EP.Sudoku.Logic.Models
 {
@@ -13,7 +12,7 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>    
         /// Is used to denote an identification value of a player.
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>    
         /// Is used to denote the nickname of a player.
@@ -41,8 +40,9 @@ namespace EP.Sudoku.Logic.Models
         /// <summary>
         /// Is used to provide a player with a possibility to have more than one unfinished game.
         /// </summary> 
-        public List<Session> GameSessions { get; set; }
+        public Session GameSession { get; set; }
 
 
+        public string UserId { get; set; }
     }
 }

@@ -4,13 +4,15 @@ using System.Text;
 
 namespace EP.Sudoku.Data.Models
 {
+    /// <summary>    
+    /// Is used to represent an instance of the game (DbInfo).
+    /// </summary>
     public class SessionDb
     {
-
         /// <summary>    
         /// Is used to denote an identification value of a game session (DbInfo).
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>    
         /// Is used to denote the level of a game session difficulty (is expected to be chosen by a player) (DbInfo).
@@ -21,31 +23,29 @@ namespace EP.Sudoku.Data.Models
         public int Level { get; set; }
 
         /// <summary>    
-        /// Is used to denote the number of tips (DbInfo).
+        /// Represents the possibility to get three automatically set values durring the game as prompts (DbInfo).
         /// </summary>
         public int Hint { get; set; } = 3;
 
         /// <summary>    
         /// Is used as a flag for the business logic of the Session class (DbInfo).
         /// </summary>
-        public bool IsOver { get; set; }
-
-        /// <summary>
-        /// Is used to denote a period of time from the beginning of a game session till it's end for subsequent convertation to player's points of experience (DbInfo). 
-        /// </summary>        
-        public double Duration { get; set; }
-
+        public bool IsOver { get; set; }        
+        
         /// <summary>    
         /// Is used to denote the necessary data, which concernes a player of a game session (DbInfo).
         /// </summary>
         /// <remarks>
         /// Navigation property.
-        /// </remarks>        
-        public PlayerDb ParticipantDb { get; set; }
+        /// </remarks>
+        //public PlayerDb ParticipantDb { get; set; }
 
         /// <summary>
-        /// Is used for keeping a stric number (81) of the gameboard parts (DbInfo). 
+        /// Is used for keeping a strict number (81) of the gameboard parts (DbInfo). 
         /// </summary> 
         public List<CellDb> SquaresDb { get; set; }
+
+
+        public long PlayerDbId { get; set; }
     }
 }
