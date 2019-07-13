@@ -29,6 +29,9 @@ export class StartGameComponent implements OnInit {
           } ,
           err => {
             console.log(err);
+          },
+          () => {
+            console.log('complete');
           });
 
       console.log('123');

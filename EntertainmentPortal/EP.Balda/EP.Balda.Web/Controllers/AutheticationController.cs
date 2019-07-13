@@ -58,7 +58,7 @@ namespace EP.Balda.Web.Controllers
                 _logger.LogWarning($"Unsuccessful login of user: {userData.UserName}");
             }
 
-            return result.Succeeded ? (IActionResult)Ok() : BadRequest();
+            return result.Succeeded ? (IActionResult)Ok(userData) : BadRequest();
         }
 
         [HttpPost("api/register")]
