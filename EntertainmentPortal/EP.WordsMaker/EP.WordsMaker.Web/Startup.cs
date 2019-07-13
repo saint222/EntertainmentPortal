@@ -27,6 +27,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
+using NSwag;
+using NSwag.AspNetCore;
 
 namespace EP.WordsMaker.Web
 {
@@ -44,22 +46,28 @@ namespace EP.WordsMaker.Web
 		{
 			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 				.AddCookie()
-				.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
-				{
-					opt.RequireHttpsMetadata = true;
-					opt.TokenValidationParameters = new TokenValidationParameters()
-					{
-						ValidIssuer = WordsMakerConstants.ISSUER_NAME,
-						ValidateIssuer = true,
-						ValidAudience = WordsMakerConstants.AUDIENCE_NAME,
-						ValidateAudience = true,
-						ValidateIssuerSigningKey = true,
-						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(WordsMakerConstants.SECRET)),
-						ValidateLifetime = true,
-						RequireExpirationTime = true,
-						RequireSignedTokens = true
-					};
-				})
+				//.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+				//{
+				//	opt.RequireHttpsMetadata = true;
+				//	opt.TokenValidationParameters = new TokenValidationParameters()
+				//	{
+				//		ValidIssuer = WordsMakerConstants.ISSUER_NAME,
+				//		ValidateIssuer = true,
+				//		ValidAudience = WordsMakerConstants.AUDIENCE_NAME,
+				//		ValidateAudience = true,
+				//		ValidateIssuerSigningKey = true,
+				//		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(WordsMakerConstants.SECRET)),
+				//		ValidateLifetime = true,
+				//		RequireExpirationTime = true,
+				//		RequireSignedTokens = true
+				//	};
+				//})
+                .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
+                    {
+                        opt.Authority = "http://localhost:5000";
+                        opt.RequireHttpsMetadata = false;
+                    }
+                  )
 				.AddFacebook("Facebook", opt =>
 					{
 						opt.CallbackPath = new PathString("/api/facebook");
@@ -81,12 +89,20 @@ namespace EP.WordsMaker.Web
 			services.AddDistributedMemoryCache();
 			services.AddSession();
 
-			services.AddSwaggerDocument(cfg =>
-			{
-				cfg.SchemaType = SchemaType.OpenApi3;
-				cfg.Title = "WordsMakerGame";
-				cfg.Description = "SharpCodeTeam";
-			});
+            services.AddSwaggerDocument(cfg =>
+            {
+                cfg.SchemaType = SchemaType.OpenApi3;
+                cfg.AddSecurity("oauth", new[] { "wordsmaker_api" }, new OpenApiSecurityScheme()
+                {
+                    Flow = OpenApiOAuth2Flow.Implicit,
+                    Type = OpenApiSecuritySchemeType.OAuth2,
+                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                    Scopes = new Dictionary<string, string>()
+                    {
+                        {"wordsmaker_api", "Access to wordsmaker api"}
+                    }
+                });
+            });
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddCors();
             services.AddMediatR(typeof(GetAllGames).Assembly);
@@ -117,12 +133,17 @@ namespace EP.WordsMaker.Web
 
             app.UseCors(opt => opt.AllowAnyHeader() // CORS configuration.
                 .AllowAnyMethod()
-                .AllowAnyOrigin());
+                .WithOrigins("http://localhost:4200")
+                .AllowCredentials());
 
             app.UseAuthentication();
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();
+            app.UseOpenApi().UseSwaggerUi3(opt => opt.OAuth2Client = new OAuth2ClientSettings()
+            {
+                AppName = "WordsMaker",
+                ClientId = "swagger"
+            });
             app.UseSession();
             app.UseMvc();
 		}

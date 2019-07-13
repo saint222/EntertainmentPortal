@@ -1,0 +1,712 @@
+2019-07-13 09:34:26.648 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 09:34:26.716 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 09:34:26.720 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 09:34:26.720 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 09:34:26.720 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 09:34:26.720 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 09:34:26.720 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 09:34:28.524 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 09:34:28.526 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 09:34:28.526 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 09:34:28.526 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 09:34:28.526 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 09:34:28.526 +03:00 [DBG] Error Url: /home/error
+2019-07-13 09:34:28.526 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 09:34:44.571 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:34:44.576 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:34:44.576 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:34:44.619 +03:00 [DBG] Start authorize request
+2019-07-13 09:34:44.686 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:34:44.692 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:34:44.726 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 09:34:44.746 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjM0OjQ0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:34:44.782 +03:00 [ERR] Request validation failed
+2019-07-13 09:34:44.783 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjM0OjQ0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:34:44.840 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BGJQTS10:00000002","TimeStamp":"2019-07-13T06:34:44.0000000Z","ProcessId":5652,"LocalIpAddress":"127.0.0.1:30844","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 09:35:11.413 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:35:11.413 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:35:11.414 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:35:11.414 +03:00 [DBG] Start authorize request
+2019-07-13 09:35:11.414 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:35:11.414 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:35:11.414 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 09:35:11.415 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjM1OjExIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:35:11.415 +03:00 [ERR] Request validation failed
+2019-07-13 09:35:11.416 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjM1OjExIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:35:11.416 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BGJQTS12:00000002","TimeStamp":"2019-07-13T06:35:11.0000000Z","ProcessId":5652,"LocalIpAddress":"127.0.0.1:30844","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 09:36:10.373 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:36:10.376 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:36:10.380 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:36:10.380 +03:00 [DBG] Start authorize request
+2019-07-13 09:36:10.381 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:36:10.381 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:36:10.381 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 09:36:10.381 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjM2OjEwIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:36:10.381 +03:00 [ERR] Request validation failed
+2019-07-13 09:36:10.382 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjM2OjEwIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:36:10.382 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BGJQTS12:00000003","TimeStamp":"2019-07-13T06:36:10.0000000Z","ProcessId":5652,"LocalIpAddress":"127.0.0.1:30844","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 09:41:31.873 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 09:41:31.974 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 09:41:31.980 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 09:41:31.980 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 09:41:31.980 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 09:41:31.980 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 09:41:31.980 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 09:41:32.638 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 09:41:32.641 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 09:41:32.641 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 09:41:32.641 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 09:41:32.641 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 09:41:32.641 +03:00 [DBG] Error Url: /home/error
+2019-07-13 09:41:32.641 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 09:41:42.348 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:41:42.354 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:41:42.354 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:41:42.359 +03:00 [DBG] Start authorize request
+2019-07-13 09:41:42.367 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:41:42.373 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:41:42.391 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 09:41:42.410 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjQxOjQyIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:41:42.429 +03:00 [ERR] Request validation failed
+2019-07-13 09:41:42.430 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjQxOjQyIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:41:42.452 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BKIA2HBF:00000002","TimeStamp":"2019-07-13T06:41:42.0000000Z","ProcessId":10600,"LocalIpAddress":"127.0.0.1:26568","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 09:42:04.934 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:42:04.934 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:42:04.935 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:42:04.935 +03:00 [DBG] Start authorize request
+2019-07-13 09:42:04.936 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:42:04.936 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:42:04.936 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 09:42:04.936 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjQyOjA0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:42:04.936 +03:00 [ERR] Request validation failed
+2019-07-13 09:42:04.937 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjQyOjA0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:42:04.937 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BKIA2HBC:00000003","TimeStamp":"2019-07-13T06:42:04.0000000Z","ProcessId":10600,"LocalIpAddress":"127.0.0.1:26568","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 09:42:16.695 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:42:16.695 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:42:16.696 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:42:16.696 +03:00 [DBG] Start authorize request
+2019-07-13 09:42:16.696 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:42:16.696 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:42:16.696 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 09:42:16.696 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjQyOjE2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:42:16.697 +03:00 [ERR] Request validation failed
+2019-07-13 09:42:16.697 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjQyOjE2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:42:16.697 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BKIA2HBD:00000002","TimeStamp":"2019-07-13T06:42:16.0000000Z","ProcessId":10600,"LocalIpAddress":"127.0.0.1:26568","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 09:50:41.400 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 09:50:41.445 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 09:50:41.449 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 09:50:41.449 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 09:50:41.449 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 09:50:41.449 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 09:50:41.449 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 09:50:41.890 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 09:50:41.892 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 09:50:41.892 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 09:50:41.892 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 09:50:41.892 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 09:50:41.892 +03:00 [DBG] Error Url: /home/error
+2019-07-13 09:50:41.892 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 09:50:41.918 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:50:41.924 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:50:41.925 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:50:41.929 +03:00 [DBG] Start authorize request
+2019-07-13 09:50:41.940 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:50:41.945 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:50:41.970 +03:00 [ERR] client_id is missing or too long
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:50:41.987 +03:00 [ERR] Request validation failed
+2019-07-13 09:50:41.987 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:50:42.001 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"invalid_request","ErrorDescription":"Invalid client_id","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BPM0VRBK:00000001","TimeStamp":"2019-07-13T06:50:41.0000000Z","ProcessId":4844,"LocalIpAddress":"127.0.0.1:30445","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 09:53:12.102 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 09:53:12.185 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 09:53:12.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 09:53:12.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 09:53:12.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 09:53:12.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 09:53:12.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 09:53:12.856 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 09:53:12.860 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 09:53:12.860 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 09:53:12.860 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 09:53:12.860 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 09:53:12.861 +03:00 [DBG] Error Url: /home/error
+2019-07-13 09:53:12.861 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 09:56:48.147 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 09:56:48.193 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 09:56:48.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 09:56:48.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 09:56:48.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 09:56:48.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 09:56:48.196 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 09:56:48.507 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 09:56:48.510 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 09:56:48.510 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 09:56:48.510 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 09:56:48.510 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 09:56:48.510 +03:00 [DBG] Error Url: /home/error
+2019-07-13 09:56:48.510 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 09:56:48.536 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:56:48.542 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:56:48.542 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:56:48.546 +03:00 [DBG] Start authorize request
+2019-07-13 09:56:48.558 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:56:48.563 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:56:48.582 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 09:56:48.600 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjU2OjQ2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:56:48.617 +03:00 [ERR] Request validation failed
+2019-07-13 09:56:48.617 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjU2OjQ2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:56:48.628 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BT39AFJB:00000001","TimeStamp":"2019-07-13T06:56:48.0000000Z","ProcessId":17376,"LocalIpAddress":"127.0.0.1:28908","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 09:57:24.623 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:57:24.624 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:57:24.624 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:57:24.624 +03:00 [DBG] Start authorize request
+2019-07-13 09:57:24.624 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:57:24.624 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:57:24.625 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 09:57:24.625 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjU3OjI0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:57:24.625 +03:00 [ERR] Request validation failed
+2019-07-13 09:57:24.625 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjU3OjI0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:57:24.626 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BT39AFJB:00000004","TimeStamp":"2019-07-13T06:57:24.0000000Z","ProcessId":17376,"LocalIpAddress":"127.0.0.1:28908","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 09:58:16.697 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 09:58:16.697 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 09:58:16.697 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 09:58:16.698 +03:00 [DBG] Start authorize request
+2019-07-13 09:58:16.698 +03:00 [DBG] No user present in authorize request
+2019-07-13 09:58:16.698 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 09:58:16.698 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 09:58:16.698 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjU4OjE2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:58:16.699 +03:00 [ERR] Request validation failed
+2019-07-13 09:58:16.699 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDA5OjU4OjE2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 09:58:16.699 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BT39AFJB:00000005","TimeStamp":"2019-07-13T06:58:16.0000000Z","ProcessId":17376,"LocalIpAddress":"127.0.0.1:28908","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 10:03:17.047 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:03:17.047 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:03:17.047 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:03:17.047 +03:00 [DBG] Start authorize request
+2019-07-13 10:03:17.047 +03:00 [DBG] No user present in authorize request
+2019-07-13 10:03:17.047 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:03:17.047 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:03:17.047 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjAzOjE2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:03:17.047 +03:00 [ERR] Request validation failed
+2019-07-13 10:03:17.048 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjAzOjE2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:03:17.048 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BT39AFJG:00000001","TimeStamp":"2019-07-13T07:03:17.0000000Z","ProcessId":17376,"LocalIpAddress":"127.0.0.1:28908","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 10:04:02.478 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:04:02.478 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:04:02.478 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:04:02.478 +03:00 [DBG] Start authorize request
+2019-07-13 10:04:02.478 +03:00 [DBG] No user present in authorize request
+2019-07-13 10:04:02.478 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:04:02.479 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:04:02.479 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjA0OjAyIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:04:02.479 +03:00 [ERR] Request validation failed
+2019-07-13 10:04:02.479 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjA0OjAyIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:04:02.479 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BT39AFJG:00000006","TimeStamp":"2019-07-13T07:04:02.0000000Z","ProcessId":17376,"LocalIpAddress":"127.0.0.1:28908","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 10:04:06.994 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:04:06.994 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:04:06.994 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:04:06.994 +03:00 [DBG] Start authorize request
+2019-07-13 10:04:06.994 +03:00 [DBG] No user present in authorize request
+2019-07-13 10:04:06.994 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:04:06.995 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:04:06.995 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjA0OjA2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:04:06.995 +03:00 [ERR] Request validation failed
+2019-07-13 10:04:06.995 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjA0OjA2IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:04:06.995 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BT39AFJG:00000007","TimeStamp":"2019-07-13T07:04:06.0000000Z","ProcessId":17376,"LocalIpAddress":"127.0.0.1:28908","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 10:04:50.821 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:04:50.821 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:04:50.821 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:04:50.822 +03:00 [DBG] Start authorize request
+2019-07-13 10:04:50.822 +03:00 [DBG] No user present in authorize request
+2019-07-13 10:04:50.822 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:04:50.823 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:04:50.823 +03:00 [ERR] Invalid redirect_uri: http://localhost:56657/swagger/oauth2-redirect.html
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjA0OjUwIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:04:50.823 +03:00 [ERR] Request validation failed
+2019-07-13 10:04:50.823 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:6001/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"http://localhost:56657/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjA0OjUwIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:04:50.824 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7BT39AFJG:00000009","TimeStamp":"2019-07-13T07:04:50.0000000Z","ProcessId":17376,"LocalIpAddress":"127.0.0.1:28908","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 10:08:37.941 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 10:08:38.025 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 10:08:38.030 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 10:08:38.031 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 10:08:38.031 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 10:08:38.031 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 10:08:38.031 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 10:08:38.830 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 10:08:38.833 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 10:08:38.833 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 10:08:38.834 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 10:08:38.834 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 10:08:38.834 +03:00 [DBG] Error Url: /home/error
+2019-07-13 10:08:38.834 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 10:08:47.661 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:08:47.667 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:08:47.668 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:08:47.673 +03:00 [DBG] Start authorize request
+2019-07-13 10:08:47.682 +03:00 [DBG] No user present in authorize request
+2019-07-13 10:08:47.688 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:08:47.709 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:08:47.771 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:08:47.795 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjA4OjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjA4OjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:08:47.825 +03:00 [INF] Showing login: User is not authenticated
+2019-07-13 10:08:47.911 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:08:47.912 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:08:47.913 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:08:47.916 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:25:11.328 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 10:25:11.391 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 10:25:11.395 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 10:25:11.395 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 10:25:11.395 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 10:25:11.395 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 10:25:11.395 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 10:25:12.387 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 10:25:12.391 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 10:25:12.391 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 10:25:12.391 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 10:25:12.391 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 10:25:12.391 +03:00 [DBG] Error Url: /home/error
+2019-07-13 10:25:12.391 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 10:25:17.605 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:25:17.610 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:25:17.610 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:25:17.615 +03:00 [DBG] Start authorize request
+2019-07-13 10:25:17.624 +03:00 [DBG] No user present in authorize request
+2019-07-13 10:25:17.630 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:25:17.649 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:25:17.680 +03:00 [ERR] scope is missing
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjI1OjE3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjI1OjE3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:25:17.700 +03:00 [ERR] Request validation failed
+2019-07-13 10:25:17.701 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjI1OjE3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjI1OjE3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:25:17.728 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":"implicit","Error":"invalid_request","ErrorDescription":"Invalid scope","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLO7CCV0OIQ4:00000003","TimeStamp":"2019-07-13T07:25:17.0000000Z","ProcessId":1932,"LocalIpAddress":"127.0.0.1:39651","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-13 10:25:21.292 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:25:21.292 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:25:21.293 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:25:21.293 +03:00 [DBG] Start authorize request
+2019-07-13 10:25:21.293 +03:00 [DBG] No user present in authorize request
+2019-07-13 10:25:21.293 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:25:21.293 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:25:21.339 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:25:21.340 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjI1OjIxIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjI1OjIxIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:25:21.353 +03:00 [INF] Showing login: User is not authenticated
+2019-07-13 10:25:21.450 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:25:21.450 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:25:21.451 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:25:21.454 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:25:23.273 +03:00 [INF] AuthenticationScheme: Facebook was challenged.
+2019-07-13 10:37:12.700 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 10:37:12.774 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 10:37:12.782 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 10:37:12.782 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 10:37:12.782 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 10:37:12.782 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 10:37:12.782 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 10:37:13.482 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 10:37:13.486 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 10:37:13.486 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 10:37:13.486 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 10:37:13.486 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 10:37:13.486 +03:00 [DBG] Error Url: /home/error
+2019-07-13 10:37:13.486 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 10:37:21.256 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:37:21.262 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:37:21.262 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:37:21.268 +03:00 [DBG] Start authorize request
+2019-07-13 10:37:21.277 +03:00 [DBG] No user present in authorize request
+2019-07-13 10:37:21.282 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:37:21.300 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:37:21.350 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:37:21.371 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjM3OjIxIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjM3OjIxIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:37:21.398 +03:00 [INF] Showing login: User is not authenticated
+2019-07-13 10:37:21.513 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:37:21.514 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:37:21.514 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:37:21.518 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:37:22.887 +03:00 [INF] AuthenticationScheme: Facebook was challenged.
+2019-07-13 10:37:24.885 +03:00 [DBG] Augmenting SignInContext
+2019-07-13 10:37:24.973 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: sub claim is missing
+   at IdentityServer4.Hosting.IdentityServerAuthenticationService.AssertRequiredClaims(ClaimsPrincipal principal) in C:\local\identity\server4\IdentityServer4\src\Hosting\IdentityServerAuthenticationService.cs:line 129
+   at IdentityServer4.Hosting.IdentityServerAuthenticationService.AugmentPrincipal(ClaimsPrincipal principal) in C:\local\identity\server4\IdentityServer4\src\Hosting\IdentityServerAuthenticationService.cs:line 90
+   at IdentityServer4.Hosting.IdentityServerAuthenticationService.SignInAsync(HttpContext context, String scheme, ClaimsPrincipal principal, AuthenticationProperties properties) in C:\local\identity\server4\IdentityServer4\src\Hosting\IdentityServerAuthenticationService.cs:line 78
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at IdentityServer4.Hosting.FederatedSignOut.AuthenticationRequestHandlerWrapper.HandleRequestAsync() in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\AuthenticationRequestHandlerWrapper.cs:line 38
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-13 10:38:18.184 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 10:38:18.262 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 10:38:18.270 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 10:38:18.270 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 10:38:18.270 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 10:38:18.270 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 10:38:18.270 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 10:39:30.957 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 10:39:31.008 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 10:39:31.012 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 10:39:31.012 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 10:39:31.012 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 10:39:31.012 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 10:39:31.012 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 10:39:31.535 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 10:39:31.538 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 10:39:31.538 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 10:39:31.538 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 10:39:31.538 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 10:39:31.539 +03:00 [DBG] Error Url: /home/error
+2019-07-13 10:39:31.539 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 10:39:40.023 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:39:40.028 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:39:40.028 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:39:40.036 +03:00 [DBG] Start authorize request
+2019-07-13 10:39:40.053 +03:00 [DBG] No user present in authorize request
+2019-07-13 10:39:40.059 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:39:40.085 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:40.148 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:39:40.171 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjM5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjM5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:39:40.197 +03:00 [INF] Showing login: User is not authenticated
+2019-07-13 10:39:40.267 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:39:40.268 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:40.268 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:39:40.272 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:42.186 +03:00 [INF] AuthenticationScheme: Facebook was challenged.
+2019-07-13 10:39:43.397 +03:00 [INF] AuthenticationScheme: idsrv.external signed in.
+2019-07-13 10:39:43.527 +03:00 [INF] {"Username":null,"Provider":"Facebook","ProviderUserId":"878884025810138","SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","DisplayName":"Vlad Kishkurno","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO7CKV3E257:00000004","TimeStamp":"2019-07-13T07:39:43.0000000Z","ProcessId":21840,"LocalIpAddress":"127.0.0.1:19400","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-13 10:39:43.539 +03:00 [DBG] Augmenting SignInContext
+2019-07-13 10:39:43.541 +03:00 [DBG] Adding amr claim with value: external
+2019-07-13 10:39:43.546 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-13 10:39:43.552 +03:00 [INF] AuthenticationScheme: idsrv.external signed out.
+2019-07-13 10:39:43.552 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:39:43.552 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:43.553 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:39:43.554 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:43.562 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-13 10:39:43.563 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-13 10:39:43.563 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-13 10:39:43.569 +03:00 [DBG] Start authorize callback request
+2019-07-13 10:39:43.574 +03:00 [DBG] User in authorize request: c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6
+2019-07-13 10:39:43.574 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:39:43.574 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:43.574 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:39:43.574 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjM5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"062b8ff4743eebb780c63b6a287019eb","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjM5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:39:43.575 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 10:39:43.590 +03:00 [DBG] user_consent grant with value: swagger|c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6 not found in store.
+2019-07-13 10:39:43.590 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-13 10:39:43.590 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-13 10:39:43.615 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:39:43.615 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:43.615 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:39:43.615 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:45.904 +03:00 [DBG] CORS request made for path: /consent from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-13 10:39:45.998 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:39:45.999 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:45.999 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:39:46.003 +03:00 [INF] {"SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","ClientId":"swagger","RequestedScopes":["wordsmaker_api"],"GrantedScopes":["wordsmaker_api"],"ConsentRemembered":true,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLO7CKV3E257:00000006","TimeStamp":"2019-07-13T07:39:46.0000000Z","ProcessId":21840,"LocalIpAddress":"127.0.0.1:19400","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-13 10:39:46.042 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:46.050 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-13 10:39:46.050 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-13 10:39:46.050 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-13 10:39:46.050 +03:00 [DBG] Start authorize callback request
+2019-07-13 10:39:46.055 +03:00 [DBG] User in authorize request: c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6
+2019-07-13 10:39:46.055 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:39:46.055 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:46.056 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:39:46.056 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjM5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"062b8ff4743eebb780c63b6a287019eb","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjM5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:39:46.056 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 10:39:46.056 +03:00 [DBG] user_consent grant with value: swagger|c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6 not found in store.
+2019-07-13 10:39:46.056 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-13 10:39:46.063 +03:00 [INF] User consented to scopes: ["wordsmaker_api"]
+2019-07-13 10:39:46.065 +03:00 [DBG] User indicated to remember consent for scopes: ["wordsmaker_api"]
+2019-07-13 10:39:46.068 +03:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6
+2019-07-13 10:39:46.084 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-13 10:39:46.096 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-13 10:39:46.096 +03:00 [DBG] Getting claims for access token for subject: c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6
+2019-07-13 10:39:46.100 +03:00 [DBG] Get profile called for subject c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6 from client Swagger Client with claim types [] via ClaimsProviderAccessToken
+2019-07-13 10:39:46.101 +03:00 [DBG] Issued claims: []
+2019-07-13 10:39:46.375 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","Scopes":"wordsmaker_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****ES1A","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO7CKV3E258:00000006","TimeStamp":"2019-07-13T07:39:46.0000000Z","ProcessId":21840,"LocalIpAddress":"127.0.0.1:19400","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-13 10:39:46.377 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","ClientId":"swagger","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjM5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"wordsmaker_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-13 10:39:46.396 +03:00 [DBG] Augmenting SignInContext
+2019-07-13 10:39:46.396 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-13 10:39:59.479 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:39:59.480 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:39:59.480 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:39:59.480 +03:00 [DBG] Start authorize request
+2019-07-13 10:39:59.480 +03:00 [DBG] User in authorize request: c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6
+2019-07-13 10:39:59.480 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:39:59.481 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:39:59.481 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:39:59.481 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjU5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"062b8ff4743eebb780c63b6a287019eb","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjU5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:39:59.481 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 10:39:59.491 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-13 10:39:59.491 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-13 10:39:59.491 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-13 10:39:59.491 +03:00 [DBG] Getting claims for access token for subject: c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6
+2019-07-13 10:39:59.491 +03:00 [DBG] Get profile called for subject c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6 from client Swagger Client with claim types [] via ClaimsProviderAccessToken
+2019-07-13 10:39:59.491 +03:00 [DBG] Issued claims: []
+2019-07-13 10:39:59.496 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","Scopes":"wordsmaker_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****17EQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO7CKV3E257:00000007","TimeStamp":"2019-07-13T07:39:59.0000000Z","ProcessId":21840,"LocalIpAddress":"127.0.0.1:19400","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-13 10:39:59.496 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","ClientId":"swagger","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjM5OjU5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"wordsmaker_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-13 10:42:25.202 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 10:42:25.270 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 10:42:25.273 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 10:42:25.273 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 10:42:25.273 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 10:42:25.274 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 10:42:25.274 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 10:42:26.032 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 10:42:26.035 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 10:42:26.035 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 10:42:26.035 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 10:42:26.035 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 10:42:26.035 +03:00 [DBG] Error Url: /home/error
+2019-07-13 10:42:26.035 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 10:42:47.111 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:42:47.116 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:42:47.116 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:42:47.121 +03:00 [DBG] Start authorize request
+2019-07-13 10:42:47.129 +03:00 [DBG] User in authorize request: c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6
+2019-07-13 10:42:47.134 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:42:47.153 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:47.213 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:42:47.232 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"c6e882b363ff3ade8810c167a6cd0a0c437f59ae906b8c56dca40a018e7439f6","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjQyOjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"062b8ff4743eebb780c63b6a287019eb","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjQyOjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:42:47.257 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 10:42:47.258 +03:00 [INF] Showing login: User is not active
+2019-07-13 10:42:47.334 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:42:47.334 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:47.334 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:42:47.338 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:48.434 +03:00 [INF] AuthenticationScheme: Facebook was challenged.
+2019-07-13 10:42:49.497 +03:00 [INF] AuthenticationScheme: idsrv.external signed in.
+2019-07-13 10:42:49.560 +03:00 [INF] {"Username":null,"Provider":"Facebook","ProviderUserId":"878884025810138","SubjectId":"858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe","DisplayName":"Vlad Kishkurno","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLO7CMJ3E988:00000004","TimeStamp":"2019-07-13T07:42:49.0000000Z","ProcessId":11716,"LocalIpAddress":"127.0.0.1:13462","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-13 10:42:49.571 +03:00 [DBG] Augmenting SignInContext
+2019-07-13 10:42:49.574 +03:00 [DBG] Adding amr claim with value: external
+2019-07-13 10:42:49.577 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-13 10:42:49.583 +03:00 [INF] AuthenticationScheme: idsrv.external signed out.
+2019-07-13 10:42:49.583 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:42:49.583 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:49.583 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:42:49.585 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:49.594 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-13 10:42:49.594 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-13 10:42:49.595 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-13 10:42:49.600 +03:00 [DBG] Start authorize callback request
+2019-07-13 10:42:49.605 +03:00 [DBG] User in authorize request: 858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe
+2019-07-13 10:42:49.606 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:42:49.606 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:49.606 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:42:49.606 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjQyOjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"5e5422689aedab23ec4d3dd4c6654e75","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjQyOjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:42:49.606 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 10:42:49.622 +03:00 [DBG] user_consent grant with value: swagger|858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe not found in store.
+2019-07-13 10:42:49.622 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-13 10:42:49.622 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-13 10:42:49.647 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:42:49.647 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:49.647 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:42:49.648 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:53.034 +03:00 [DBG] CORS request made for path: /consent from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-13 10:42:53.086 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:42:53.086 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:53.086 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:42:53.088 +03:00 [INF] {"SubjectId":"858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe","ClientId":"swagger","RequestedScopes":["wordsmaker_api"],"GrantedScopes":["wordsmaker_api"],"ConsentRemembered":true,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLO7CMJ3E989:00000005","TimeStamp":"2019-07-13T07:42:53.0000000Z","ProcessId":11716,"LocalIpAddress":"127.0.0.1:13462","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-13 10:42:53.107 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:53.115 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-13 10:42:53.116 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-13 10:42:53.116 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-13 10:42:53.116 +03:00 [DBG] Start authorize callback request
+2019-07-13 10:42:53.121 +03:00 [DBG] User in authorize request: 858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe
+2019-07-13 10:42:53.121 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:42:53.121 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:42:53.121 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:42:53.121 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjQyOjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"5e5422689aedab23ec4d3dd4c6654e75","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjQyOjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:42:53.121 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 10:42:53.122 +03:00 [DBG] user_consent grant with value: swagger|858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe not found in store.
+2019-07-13 10:42:53.122 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-13 10:42:53.128 +03:00 [INF] User consented to scopes: ["wordsmaker_api"]
+2019-07-13 10:42:53.130 +03:00 [DBG] User indicated to remember consent for scopes: ["wordsmaker_api"]
+2019-07-13 10:42:53.133 +03:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: 858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe
+2019-07-13 10:42:53.149 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-13 10:42:53.160 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-13 10:42:53.161 +03:00 [DBG] Getting claims for access token for subject: 858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe
+2019-07-13 10:42:53.165 +03:00 [DBG] Get profile called for subject 858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe from client Swagger Client with claim types [] via ClaimsProviderAccessToken
+2019-07-13 10:42:53.167 +03:00 [DBG] Issued claims: []
+2019-07-13 10:42:53.262 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe","Scopes":"wordsmaker_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****bDTw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLO7CMJ3E988:00000006","TimeStamp":"2019-07-13T07:42:53.0000000Z","ProcessId":11716,"LocalIpAddress":"127.0.0.1:13462","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-13 10:42:53.264 +03:00 [INF] Authorize endpoint response
+{"SubjectId":"858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe","ClientId":"swagger","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjQyOjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"wordsmaker_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-13 10:42:53.283 +03:00 [DBG] Augmenting SignInContext
+2019-07-13 10:42:53.283 +03:00 [INF] AuthenticationScheme: idsrv signed in.
+2019-07-13 10:42:57.126 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 10:42:57.129 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 10:42:57.129 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 10:42:57.133 +03:00 [DBG] Start discovery request
+2019-07-13 10:42:57.251 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-13 10:42:57.252 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-13 10:42:57.252 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-13 10:42:57.256 +03:00 [DBG] Start key discovery request
+2019-07-13 10:44:13.573 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 10:44:13.636 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 10:44:13.639 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 10:44:13.640 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 10:44:13.640 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 10:44:13.640 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 10:44:13.640 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 10:44:14.311 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 10:44:14.313 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 10:44:14.313 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 10:44:14.313 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 10:44:14.314 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 10:44:14.314 +03:00 [DBG] Error Url: /home/error
+2019-07-13 10:44:14.314 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 10:44:29.781 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:44:29.786 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:44:29.787 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:44:29.791 +03:00 [DBG] Start authorize request
+2019-07-13 10:44:29.801 +03:00 [DBG] User in authorize request: 858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe
+2019-07-13 10:44:29.805 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:44:29.823 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:44:29.878 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:44:29.902 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjQ0OjI5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"5e5422689aedab23ec4d3dd4c6654e75","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjQ0OjI5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:44:29.935 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 10:44:29.936 +03:00 [INF] Showing login: User is not active
+2019-07-13 10:44:30.022 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:44:30.022 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:44:30.022 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:44:30.025 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:44:55.961 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-13 10:44:56.004 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:44:56.004 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:44:56.005 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:44:56.028 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:44:56.041 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-13 10:44:56.042 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-13 10:44:56.042 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-13 10:44:56.047 +03:00 [DBG] Start authorize callback request
+2019-07-13 10:44:56.051 +03:00 [DBG] User in authorize request: 858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe
+2019-07-13 10:44:56.051 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:44:56.051 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:44:56.052 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:44:56.052 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjQ0OjI5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"5e5422689aedab23ec4d3dd4c6654e75","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjQ0OjI5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:44:56.052 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 10:44:56.052 +03:00 [INF] Showing login: User is not active
+2019-07-13 10:44:56.061 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:44:56.061 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:44:56.062 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:44:56.062 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:50:04.564 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 10:50:04.629 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 10:50:04.633 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 10:50:04.633 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 10:50:04.634 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 10:50:04.634 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 10:50:04.634 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 10:50:05.445 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 10:50:05.447 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 10:50:05.447 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 10:50:05.447 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 10:50:05.447 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 10:50:05.447 +03:00 [DBG] Error Url: /home/error
+2019-07-13 10:50:05.447 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 10:50:12.938 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-13 10:50:12.943 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-13 10:50:12.943 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-13 10:50:12.948 +03:00 [DBG] Start authorize request
+2019-07-13 10:50:12.958 +03:00 [DBG] User in authorize request: 858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe
+2019-07-13 10:50:12.965 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:50:12.983 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:50:13.040 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:50:13.061 +03:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html"],"SubjectId":"858636d6149d49549b92eed0093aa8f59dd02e9e762849b873a39f59ac6bfdfe","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"wordsmaker_api","State":"U2F0IEp1bCAxMyAyMDE5IDEwOjUwOjEyIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"5e5422689aedab23ec4d3dd4c6654e75","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"wordsmaker_api","state":"U2F0IEp1bCAxMyAyMDE5IDEwOjUwOjEyIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-13 10:50:13.091 +03:00 [DBG] IsActive called from: AuthorizeEndpoint
+2019-07-13 10:50:13.092 +03:00 [INF] Showing login: User is not active
+2019-07-13 10:50:13.181 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:50:13.182 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:50:13.183 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:50:13.187 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:50:19.047 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-13 10:50:19.091 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:50:19.091 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:50:19.092 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:50:19.112 +03:00 [INF] {"Username":"33","Endpoint":"UI","Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLO7CQS0MVQ0:00000003","TimeStamp":"2019-07-13T07:50:19.0000000Z","ProcessId":9428,"LocalIpAddress":"127.0.0.1:35873","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2019-07-13 10:50:19.115 +03:00 [DBG] Start authorize request protocol validation
+2019-07-13 10:50:19.115 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:50:19.116 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-13 10:50:19.116 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-13 10:54:22.861 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 10:54:22.931 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 10:54:22.936 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 10:54:22.936 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 10:54:22.936 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 10:54:22.936 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 10:54:22.936 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 10:54:25.638 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 10:54:25.641 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 10:54:25.641 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 10:54:25.641 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 10:54:25.641 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 10:54:25.641 +03:00 [DBG] Error Url: /home/error
+2019-07-13 10:54:25.641 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-13 11:02:40.308 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 11:02:40.354 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-13 11:02:40.355 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-13 11:02:40.380 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 11:02:40.387 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 11:02:40.387 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 11:02:40.393 +03:00 [DBG] Start discovery request
+2019-07-13 11:03:32.973 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 11:03:32.973 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-13 11:03:32.973 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-13 11:03:32.973 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 11:03:32.974 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 11:03:32.974 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 11:03:32.974 +03:00 [DBG] Start discovery request
+2019-07-13 11:07:01.573 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 11:07:01.573 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-13 11:07:01.573 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-13 11:07:01.574 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 11:07:01.574 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 11:07:01.574 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 11:07:01.574 +03:00 [DBG] Start discovery request
+2019-07-13 11:07:27.522 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-13 11:07:27.522 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-13 11:07:27.522 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-13 11:07:27.523 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-13 11:07:27.523 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-13 11:07:27.523 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-13 11:07:27.523 +03:00 [DBG] Start discovery request
+2019-07-13 11:08:52.347 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-13 11:08:52.391 +03:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-13 11:08:52.394 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-13 11:08:52.394 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-13 11:08:52.394 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-13 11:08:52.394 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-13 11:08:52.394 +03:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-13 11:08:53.715 +03:00 [DBG] Login Url: /Account/Login
+2019-07-13 11:08:53.718 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-13 11:08:53.718 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-13 11:08:53.718 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-13 11:08:53.718 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-13 11:08:53.718 +03:00 [DBG] Error Url: /home/error
+2019-07-13 11:08:53.718 +03:00 [DBG] Error Id Parameter: errorId
