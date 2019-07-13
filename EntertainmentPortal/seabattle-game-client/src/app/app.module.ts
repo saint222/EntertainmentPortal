@@ -6,17 +6,22 @@ import { AppComponent } from './app.component';
 import { CellComponent } from './battlefield/cell/cell.component';
 import { FieldComponent } from './battlefield/field/field.component';
 import { ButtonsComponent } from './game/buttons/buttons.component';
+import { ShipplacerComponent } from './shipplacer/shipplacer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CellComponent,
     FieldComponent,
-    ButtonsComponent
+    ButtonsComponent,
+    ShipplacerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

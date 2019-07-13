@@ -19,28 +19,23 @@ export class FieldComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.createShipField();
-    this.createShootField();
+    this.shipField = this.createField();
+    this.shootField = this.createField();
   }
 
-  createShipField() {
-    this.shipField = [];
-
+  createField(): Cell[][] {
+    let field = [];
     for (let i = 0; i < this.N; i++) {
-        this.shipField[i] = [];
-        for (let j = 0; j < this.N; j++) {
-            this.shipField[i][j] = new Cell(i, j, CellStatus.None);
-        }
+      field[i] = [];
+      for (let j = 0; j < this.N; j++) {
+          field[i][j] = new Cell(i, j, CellStatus.None);
+      }
     }
+    return field;
   }
 
-  createShootField() {
-    this.shootField = [];
-    for (let i = 0; i < this.N; i++) {
-        this.shootField[i] = [];
-        for (let j = 0; j < this.N; j++) {
-            this.shootField[i][j] = new Cell(i, j, CellStatus.ShootWithoutHit);
-        }
-    }
+  shoot(cell: Cell) {
+    console.log(`X = ${cell.x} Y = ${cell.y} Status = ${cell.status}`);
+    cell.status = CellStatus.ShootWithoutHit;
   }
 }

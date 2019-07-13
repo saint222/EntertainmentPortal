@@ -9,7 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CellComponent implements OnInit {
 
   @Input() status: CellStatus;
-
+  @Input() x: number;
+  @Input() y: number;
   constructor() { }
 
   ngOnInit() {
