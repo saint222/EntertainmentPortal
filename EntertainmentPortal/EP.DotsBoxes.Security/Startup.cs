@@ -43,9 +43,9 @@ namespace EP.DotsBoxes.Security
                 .AddTestUsers(TestUsers.Users);
 
             // in-memory, code config
-            builder.AddInMemoryIdentityResources(Config.GetIdentityResources());
-            builder.AddInMemoryApiResources(Config.GetApis());
-            builder.AddInMemoryClients(Config.GetClients());
+            //builder.AddInMemoryIdentityResources(Config.GetIdentityResources());
+            //builder.AddInMemoryApiResources(Config.GetApis());
+            //builder.AddInMemoryClients(Config.GetClients());
 
             // in-memory, json config
             builder.AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"));

@@ -15,9 +15,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using NJsonSchema;
-using System.Text;
+using NSwag;
+using NSwag.AspNetCore;
+using System.Collections.Generic;
 
 namespace EP.DotsBoxes.Web
 {
@@ -35,37 +36,39 @@ namespace EP.DotsBoxes.Web
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
-                 {
-                     opt.RequireHttpsMetadata = true;                     
-                     opt.TokenValidationParameters = new TokenValidationParameters()
-                     {
-                         ValidIssuer = DotsBoxesConstants.ISSUER_NAME,
-                         ValidateIssuer = true,
-                         ValidAudience = DotsBoxesConstants.AUDIENCE_NAME,
-                         ValidateAudience = true,
-                         ValidateIssuerSigningKey = true,
-                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(DotsBoxesConstants.SECRET)),
-                         ValidateLifetime = true,
-                         RequireExpirationTime = true,
-                         RequireSignedTokens = true
-                     };
-                 })
+                .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
+                {
+                    opt.Authority = "http://localhost:5000";
+                    opt.RequireHttpsMetadata = false;
+                })
                 .AddGoogle("Google", opt =>
                 {
                     opt.CallbackPath = new PathString("/api/google");
-                    opt.ClientId = "1097896526158-k9dr1a3jppmunnu0ehg88l9ve5jibrdm.apps.googleusercontent.com";               
+                    opt.ClientId = "1097896526158-k9dr1a3jppmunnu0ehg88l9ve5jibrdm.apps.googleusercontent.com";
                     opt.ClientSecret = "xTjiJQXW9xmqLfwQtF_IfzgA";
                 });
 
-            services.AddAuthorization(opt => 
-                 {
-                     opt.AddPolicy("google",
-                    cfg => cfg.AddAuthenticationSchemes("Google")
-                        .RequireAuthenticatedUser());
-                 });
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("google",
+                cfg => cfg.AddAuthenticationSchemes("Google")
+                .RequireAuthenticatedUser());
+            });
 
-            services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
+            services.AddSwaggerDocument(cfg =>
+            {
+                cfg.SchemaType = SchemaType.OpenApi3;
+                cfg.AddSecurity("oauth", new[] { "dotsboxes_api" }, new OpenApiSecurityScheme()
+                {
+                    Flow = OpenApiOAuth2Flow.Implicit,
+                    Type = OpenApiSecuritySchemeType.OAuth2,
+                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                    Scopes = new Dictionary<string, string>()
+                    {
+                        {"dotsboxes_api", "Access to dots boxes game api."}
+                    }
+                });
+            });
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddMediatR(typeof(GetGameBoard).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
@@ -74,15 +77,16 @@ namespace EP.DotsBoxes.Web
             services.AddCors(); // To enable CrossOriginResourceSharing.
             services.AddMvc(opt =>
             {
+                opt.Filters.Clear();
                 opt.Filters.Add(typeof(GlobalExceptionFilter));
             })
-               .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddFluentValidation(cfg =>
-                {
-                    cfg.RegisterValidatorsFromAssemblyContaining<AddPlayerValidator>();
-                    cfg.RegisterValidatorsFromAssemblyContaining<NewGameBoardValidator>();
-                    cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-                });
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddFluentValidation(cfg =>
+            {
+                cfg.RegisterValidatorsFromAssemblyContaining<AddPlayerValidator>();
+                cfg.RegisterValidatorsFromAssemblyContaining<NewGameBoardValidator>();
+                cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -97,11 +101,18 @@ namespace EP.DotsBoxes.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                 .AllowAnyMethod()
+                .WithOrigins("http://localhost:4200")
                 .AllowAnyOrigin());
-            app.UseAuthentication();           
 
-            mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();
+            app.UseAuthentication();
+
+            app.UseOpenApi().UseSwaggerUi3(opt => opt.OAuth2Client = new OAuth2ClientSettings()
+            {
+                AppName = "Dots Boxes game",
+                ClientId = "swagger"
+            });
+
+            //mediator.Send(new CreateDatabaseCommand()).Wait();           
             app.UseMvc();
         }
     }
