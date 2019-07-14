@@ -18,6 +18,11 @@ namespace EP.DotsBoxes.Logic.Models
         {
         }
 
+        public GameLogic(List<Player> players)
+        {
+            _players = players;
+        }
+
         public GameLogic(List<Cell> cells, List<Player> players)
         {
             _cells = cells;
