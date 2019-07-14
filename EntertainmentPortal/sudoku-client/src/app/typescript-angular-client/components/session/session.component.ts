@@ -5,6 +5,7 @@ import { Session } from '../../model/models';
 import { SessionsService } from '../../api/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { SudokuHubService } from '../../api/sudoku-hub.service';
 
 @Component({
   selector: 'app-session',
@@ -17,7 +18,7 @@ export class SessionComponent implements OnInit {
   cells: Cell[] = [];
   cell: Cell;
 
-  constructor(private route: ActivatedRoute, private sessionService: SessionsService) {
+  constructor(private route: ActivatedRoute, private sessionService: SessionsService, public sudokuHub: SudokuHubService) {
 
     this.sessionService.UpdateSession.subscribe(s => {
       this.sessionService.sessionsGetSessionById(this.session.id).subscribe(x => {
@@ -47,5 +48,7 @@ export class SessionComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  callServer() {
+    this.sudokuHub.callServer();
+  }
 }

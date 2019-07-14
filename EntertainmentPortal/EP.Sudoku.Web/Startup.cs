@@ -14,6 +14,7 @@ using EP.Sudoku.Logic.Services;
 using EP.Sudoku.Logic.Validators;
 using EP.Sudoku.Web.Controllers;
 using EP.Sudoku.Web.Filters;
+using EP.Sudoku.Web.Hubs;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -92,8 +93,19 @@ namespace EP.Sudoku.Web
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.Swagger2);
-            services.AddSudokuServices();
-            services.AddCors(); // to enable CrossOriginResourceSharing
+            services.AddSudokuServices();            
+            services.AddLogging();
+            services.AddMemoryCache();
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.AddSingleton<IEmailSenderService, EmailSenderService>();
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+            builder =>
+            {
+                builder.AllowAnyMethod().AllowAnyHeader()
+                       .WithOrigins("http://localhost:4200")
+                       .AllowCredentials();
+            }));
+            services.AddSignalR();
             services.AddMvc(opt =>
             {
                 opt.Filters.Clear();
@@ -105,10 +117,6 @@ namespace EP.Sudoku.Web
                     cfg.RegisterValidatorsFromAssemblyContaining<SetCellValueValidator>();
                     cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 });
-            services.AddLogging();
-            services.AddMemoryCache();
-            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
-            services.AddSingleton<IEmailSenderService, EmailSenderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -125,16 +133,14 @@ namespace EP.Sudoku.Web
                 app.UseHsts();
             }
             app.UseAuthentication();
-            app.UseCors(opt => opt.AllowAnyHeader() // CORS configuration.
-               .AllowAnyMethod()
-               .AllowAnyOrigin()
-               .WithOrigins("http://localhost:4200")
-               .AllowCredentials()
-);
-
+            app.UseCors("CorsPolicy");
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseOpenApi();
-            app.UseSwaggerUi3();            
+            app.UseSwaggerUi3();
+            app.UseSignalR(cfg =>
+            {
+                cfg.MapHub<SudokuHub>("/sudoku");
+            });
             app.UseMvc();
 
             Log.Logger = new LoggerConfiguration()

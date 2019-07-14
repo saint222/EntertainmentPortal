@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent {
   registerGroup: FormGroup;
   error: string;
@@ -23,8 +24,6 @@ export class RegisterComponent {
         confirmPassword: ['', Validators.required],
       }, {validator: this.comparePasswords })
     });
-
-
   }
 
   comparePasswords(fb: FormGroup) {
@@ -43,7 +42,7 @@ export class RegisterComponent {
 
   onSubmit(form: FormGroup) {
 
-    var body = {
+    const body = {
       Name: form.value.name,
       Email: form.value.email,
       Password: form.value.passwords.password
@@ -61,5 +60,4 @@ export class RegisterComponent {
     }
   );
   }
-
 }
