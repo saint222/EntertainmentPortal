@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
 using EP.Balda.Data.Models;
@@ -11,6 +6,11 @@ using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
@@ -26,10 +26,9 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Result<Game>> Handle(CreateNewGameCommand request,
-                                               CancellationToken cancellationToken)
+        public async Task<Result<Game>> Handle(CreateNewGameCommand request, CancellationToken cancellationToken)
         {
-            var player = await _context.Players
+            var player = await _context.Users
                 .Where(p => p.Id == request.PlayerId)
                 .FirstOrDefaultAsync(cancellationToken);
 
@@ -48,7 +47,7 @@ namespace EP.Balda.Logic.Handlers
 
             await _context.SaveChangesAsync();
 
-            var initWord = GetStartingWord(mapDb);
+            string initWord = GetStartingWord(mapDb);
             await PutStartingWordToMap(mapDb, initWord);
 
             await _context.SaveChangesAsync();
@@ -98,8 +97,8 @@ namespace EP.Balda.Logic.Handlers
         {
             var cells = new List<CellDb>();
 
-            for (var i = 0; i < mapDb.Size; i++)     // lines
-                for (var j = 0; j < mapDb.Size; j++) // columns
+            for (int i = 0; i < mapDb.Size; i++)     // lines
+                for (int j = 0; j < mapDb.Size; j++) // columns
                 {
                     var cell = new CellDb
                     {
@@ -123,11 +122,11 @@ namespace EP.Balda.Logic.Handlers
         /// <param name="word">Parameter word requires string argument.</param>
         public async Task PutStartingWordToMap(MapDb mapDb, string word)
         {
-            var center = mapDb.Size / 2;
-            var charDestination = 0;
+            int center = mapDb.Size / 2;
+            int charDestination = 0;
 
             word = word.Trim();
-            foreach (var letter in word)
+            foreach (char letter in word)
             {
                 var cellDb =
                     mapDb.Cells.SingleOrDefault(
@@ -141,31 +140,31 @@ namespace EP.Balda.Logic.Handlers
         }
 
         /// <summary>
-        ///     The method gets the initial word.
+        /// The method gets the initial word.
         /// </summary>
         /// <param name="mapDb">Map database projection</param>
         /// <returns></returns>
         private string GetStartingWord(MapDb mapDb)
         {
-            var word = "";
-            var sizeRepo = _context.WordsRu.Count();
+            string word = "";
+            int sizeRepo = _context.WordsRu.Count();
 
             while (word.Length != mapDb.Size)
-                word =  _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo))
+                word = _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo))
                     .FirstOrDefault().Word;
 
             return word;
         }
 
         /// <summary>
-        ///     The method choose random initial word.
+        /// The method choose random initial word.
         /// </summary>
         /// <param name="size">Word length</param>
         /// <returns></returns>
         private int RandomWord(int size)
         {
             var rnd = new Random();
-            var next = rnd.Next(1, size);
+            int next = rnd.Next(1, size);
             return next;
         }
     }
