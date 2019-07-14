@@ -74,7 +74,7 @@ namespace IdentityServer4.Quickstart.UI
                 {
                     // if the client is PKCE then we assume it's native, so this change in how to
                     // return the response is for better UX for the end user.
-                    return View("Redirect", new RedirectViewModel { RedirectUrl = result.RedirectUri });
+                    return View("Redirect", new RedirectViewModel {RedirectUrl = result.RedirectUri});
                 }
 
                 return Redirect(result.RedirectUri);
@@ -112,7 +112,8 @@ namespace IdentityServer4.Quickstart.UI
                 grantedConsent = ConsentResponse.Denied;
 
                 // emit event
-                await _events.RaiseAsync(new ConsentDeniedEvent(User.GetSubjectId(), request.ClientId, request.ScopesRequested));
+                await _events.RaiseAsync(new ConsentDeniedEvent(User.GetSubjectId(), request.ClientId,
+                    request.ScopesRequested));
             }
             // user clicked 'yes' - validate the data
             else if (model?.Button == "yes")
@@ -123,7 +124,8 @@ namespace IdentityServer4.Quickstart.UI
                     var scopes = model.ScopesConsented;
                     if (ConsentOptions.EnableOfflineAccess == false)
                     {
-                        scopes = scopes.Where(x => x != IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess);
+                        scopes = scopes.Where(x =>
+                            x != IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess);
                     }
 
                     grantedConsent = new ConsentResponse
@@ -133,7 +135,8 @@ namespace IdentityServer4.Quickstart.UI
                     };
 
                     // emit event
-                    await _events.RaiseAsync(new ConsentGrantedEvent(User.GetSubjectId(), request.ClientId, request.ScopesRequested, grantedConsent.ScopesConsented, grantedConsent.RememberConsent));
+                    await _events.RaiseAsync(new ConsentGrantedEvent(User.GetSubjectId(), request.ClientId,
+                        request.ScopesRequested, grantedConsent.ScopesConsented, grantedConsent.RememberConsent));
                 }
                 else
                 {
@@ -178,7 +181,8 @@ namespace IdentityServer4.Quickstart.UI
                     }
                     else
                     {
-                        _logger.LogError("No scopes matching: {0}", request.ScopesRequested.Aggregate((x, y) => x + ", " + y));
+                        _logger.LogError("No scopes matching: {0}",
+                            request.ScopesRequested.Aggregate((x, y) => x + ", " + y));
                     }
                 }
                 else
@@ -212,12 +216,17 @@ namespace IdentityServer4.Quickstart.UI
                 AllowRememberConsent = client.AllowRememberConsent
             };
 
-            vm.IdentityScopes = resources.IdentityResources.Select(x => CreateScopeViewModel(x, vm.ScopesConsented.Contains(x.Name) || model == null)).ToArray();
-            vm.ResourceScopes = resources.ApiResources.SelectMany(x => x.Scopes).Select(x => CreateScopeViewModel(x, vm.ScopesConsented.Contains(x.Name) || model == null)).ToArray();
+            vm.IdentityScopes = resources.IdentityResources
+                .Select(x => CreateScopeViewModel(x, vm.ScopesConsented.Contains(x.Name) || model == null)).ToArray();
+            vm.ResourceScopes = resources.ApiResources.SelectMany(x => x.Scopes).Select(x =>
+                CreateScopeViewModel(x, vm.ScopesConsented.Contains(x.Name) || model == null)).ToArray();
             if (ConsentOptions.EnableOfflineAccess && resources.OfflineAccess)
             {
-                vm.ResourceScopes = vm.ResourceScopes.Union(new ScopeViewModel[] {
-                    GetOfflineAccessScope(vm.ScopesConsented.Contains(IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null)
+                vm.ResourceScopes = vm.ResourceScopes.Union(new ScopeViewModel[]
+                {
+                    GetOfflineAccessScope(
+                        vm.ScopesConsented.Contains(
+                            IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null)
                 });
             }
 

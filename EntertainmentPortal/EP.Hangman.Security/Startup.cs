@@ -2,15 +2,14 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using EP.Hangman.Security.Data;
-using EP.Hangman.Security.Models;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using IdentityServer4.Quickstart.UI;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
+using IdentityServer4;
 
 namespace EP.Hangman.Security
 {
@@ -19,71 +18,66 @@ namespace EP.Hangman.Security
         public IConfiguration Configuration { get; }
         public IHostingEnvironment Environment { get; }
 
-        public Startup(IConfiguration configuration, IHostingEnvironment environment)
+        public Startup(IConfiguration config, IHostingEnvironment env)
         {
-            Configuration = configuration;
-            Environment = environment;
+            Configuration = config;
+            Environment = env;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
-            services.Configure<IISOptions>(iis =>
+            services.Configure<IISOptions>(options =>
             {
-                iis.AuthenticationDisplayName = "Windows";
-                iis.AutomaticAuthentication = false;
+                options.AutomaticAuthentication = false;
+                options.AuthenticationDisplayName = "Windows";
             });
 
-            var builder = services.AddIdentityServer(options =>
-            {
-                options.Events.RaiseErrorEvents = true;
-                options.Events.RaiseInformationEvents = true;
-                options.Events.RaiseFailureEvents = true;
-                options.Events.RaiseSuccessEvents = true;
-            })
-                
-//                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-//                .AddInMemoryApiResources(Config.GetApis())
-//                .AddInMemoryClients(Config.GetClients())
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-                // in-memory, json config
-                .AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"))
-                .AddInMemoryApiResources(Configuration.GetSection("ApiResources"))
-                .AddInMemoryClients(Configuration.GetSection("clients"))
-                
-                .AddAspNetIdentity<ApplicationUser>();
+            var identityServer = services.AddIdentityServer(options =>
+                {
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+                })
+                .AddTestUsers(TestUsers.Users)
+                // this adds the config data from DB (clients, resources, CORS)
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
+                })
+                // this adds the operational data from DB (codes, tokens, consents)
+                .AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
+
+                    // this enables automatic token cleanup. this is optional.
+                    options.EnableTokenCleanup = true;
+                });
+
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+                    // register your IdentityServer with Google at https://console.developers.google.com
+                    // enable the Google+ API
+                    // set the redirect URI to http://localhost:5000/signin-google
+                    options.ClientId = "copy client ID from Google here";
+                    options.ClientSecret = "copy client secret from Google here";
+                });
 
             if (Environment.IsDevelopment())
             {
-                builder.AddDeveloperSigningCredential();
+                identityServer.AddDeveloperSigningCredential();
             }
             else
             {
                 throw new Exception("need to configure key material");
             }
-
-            services.AddAuthentication()
-                .AddGoogle(opt =>
-                {
-                    // register your IdentityServer with Google at https://console.developers.google.com
-                    // enable the Google+ API
-                    // set the redirect URI to http://localhost:5000/signin-google
-                    opt.ClientId = Configuration["Google:ClientId"];
-                    opt.ClientSecret = Configuration["Google:ClientSecret"];
-                })
-                .AddFacebook(opt =>
-                {
-                    opt.AppId = Configuration["Facebook:AppId"];
-                    opt.AppSecret = Configuration["Facebook:AppSecret"];
-                });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -98,8 +92,8 @@ namespace EP.Hangman.Security
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
             app.UseIdentityServer();
+            app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }
     }

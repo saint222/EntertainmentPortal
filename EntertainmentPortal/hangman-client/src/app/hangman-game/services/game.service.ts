@@ -1,4 +1,3 @@
-import { environment } from './../../../environments/environment';
 import { GameData } from './../models/game-data';
 import { Injectable, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -12,33 +11,23 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  private url = `${environment.base_url}/api/PlayHangman`;
-
-  // Gets auth server's token from session storage
-  getToken() {
-    return `Bearer ${sessionStorage.getItem('access_token')}`;
-  }
-
-
   createGame() {
-    return this.http.post<GameData>(this.url, null, {headers: {Authorization: this.getToken()}});
+    return this.http.post<GameData>('http://localhost:33224/api/PlayHangman', { withCredentials: true });
   }
 
   updateGame(responseModel: GameData) {
-    return this.http.put<GameData>(this.url, responseModel, {headers: {Authorization: this.getToken()}});
-
+    return this.http.put<GameData>('http://localhost:33224/api/PlayHangman', responseModel);
   }
 
   deleteGame(id: number) {
-    return this.http.delete(this.url + `/${id}`, {headers: {Authorization: this.getToken()}});
-
+    return this.http.delete(`http://localhost:33224/api/PlayHangman/id?id=${id}`);
   }
 
   registerUser(userData: UserData) {
-    return this.http.post(`${environment.base_url}/api/cookiesauth/register`, userData);
+    return this.http.post('http://localhost:33224/api/cookiesauth/register', userData);
   }
 
   loginUser(userData: UserData) {
-    return this.http.post(`${environment.base_url}/api/cookiesauth/login`, userData);
+    return this.http.post('http://localhost:33224/api/cookiesauth/login', userData);
   }
 }

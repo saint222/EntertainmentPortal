@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Text;
 using EP.Hangman.Logic.Queries;
 using Microsoft.AspNetCore.Builder;
@@ -22,8 +21,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
-using NSwag;
-using NSwag.AspNetCore;
 using Serilog;
 
 namespace EP.Hangman.Web
@@ -42,30 +39,22 @@ namespace EP.Hangman.Web
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
-                .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "http://localhost:5000";
-                    opt.RequireHttpsMetadata = false;
+                    opt.RequireHttpsMetadata = true;
+                    opt.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidIssuer = HangmanConstants.ISSUER_NAME,
+                        ValidateIssuer = true,
+                        ValidAudience = HangmanConstants.AUDIENCE_NAME,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(HangmanConstants.SECRET)),
+                        ValidateLifetime = true,
+                        RequireExpirationTime = true,
+                        RequireSignedTokens = true
+                    };
                 })
-//                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
-//                {
-//                    opt.RequireHttpsMetadata = false;
-//                    opt.Authority = "http://localhost:5000";
-//                    opt.Audience = "hangman-api";
-////                    opt.TokenValidationParameters = new TokenValidationParameters()
-////                    {
-////
-////                        ValidIssuer = HangmanConstants.ISSUER_NAME,
-////                        ValidateIssuer = true,
-////                        ValidAudience = HangmanConstants.AUDIENCE_NAME,
-////                        ValidateAudience = true,
-////                        ValidateIssuerSigningKey = true,
-////                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(HangmanConstants.SECRET)),
-////                        ValidateLifetime = true,
-////                        RequireExpirationTime = true,
-////                        RequireSignedTokens = true
-////                    };
-//                })
                 .AddGoogle("Google", opt =>
                 {
                     opt.CallbackPath = new PathString("/api/google");
@@ -82,22 +71,7 @@ namespace EP.Hangman.Web
             services.AddAuthorization(opt => opt.AddPolicy("google", 
                 cfg => cfg.AddAuthenticationSchemes("Google").RequireAuthenticatedUser()));
             services.AddMemoryCache();
-
-            services.AddSwaggerDocument(cfg =>
-            {
-                cfg.SchemaType = SchemaType.OpenApi3;
-                cfg.AddSecurity("oauth", new[] {"hangman_api"}, new OpenApiSecurityScheme()
-                {
-                    Flow = OpenApiOAuth2Flow.Implicit,
-                    Type = OpenApiSecuritySchemeType.OAuth2,
-                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
-                    Scopes = new Dictionary<string, string>()
-                    {
-                        {"hangman_api", "Access to hangman game api" }
-                    }
-                });
-            });
-
+            services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.OpenApi3);
             services.AddMediatR(typeof(GetUserSession).Assembly);
             services.AddMediatR(typeof(CheckLetterCommand).Assembly);
             services.AddAutoMapper(typeof(MapperProfile).Assembly);
@@ -124,17 +98,9 @@ namespace EP.Hangman.Web
             app.UseCors(o =>
                 o.AllowAnyHeader()
                 .AllowAnyMethod()
-                .WithOrigins("http://localhost:4200")
-                .AllowCredentials()
-                );
+                .AllowAnyOrigin());
 
             app.UseAuthentication();
-
-            app.UseOpenApi().UseSwaggerUi3(opt => opt.OAuth2Client = new OAuth2ClientSettings()
-            {
-                AppName = "Hangman game",
-                ClientId = "swagger"
-            });
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseOpenApi();

@@ -10,8 +10,6 @@ import { HttpResponseBase } from '@angular/common/http';
   styleUrls: ['./game-field.component.sass']
 })
 export class GameFieldComponent implements OnInit {
-  public alphabet: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-   'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   gameFieldData: GameData = null;
   tmpGameData: GameData = null;
   endGameStatus: string = null;
@@ -55,8 +53,7 @@ export class GameFieldComponent implements OnInit {
   }
 
   deleteSession(id: number) {
-    this.gameService.deleteGame(id).subscribe( b => {
-      },
+    this.gameService.deleteGame(id).subscribe(
       (err: HttpResponseBase) => console.log(err.statusText)
     );
   }
