@@ -1,10 +1,7 @@
-import { CreateNewGame } from './../../models/createNewGame';
+import { Game } from './../../models/game';
 import { GameService } from './../../services/game.service';
 import { Router } from '@angular/router';
-import { Cell } from './../../models/cell';
-import { Component, OnInit } from '@angular/core';
-
-import { CellService } from '../../services/cell.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-map',
@@ -12,18 +9,12 @@ import { CellService } from '../../services/cell.service';
   styleUrls: ['./map.component.sass']
 })
 export class MapComponent implements OnInit {
-  cells: Cell[] = [];
+  game: Game;
 
-  constructor(private gameService: GameService, private cellService: CellService, private router: Router) {}
+  constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit() {
+    this.gameService.currentGame.subscribe(game => this.game = game);
+   }
 
-    this.gameService.createNewGame();
-
-    this.cellService.getCells().subscribe(
-      c => {
-        this.cells = c;
-      }
-    );
-  }
 }

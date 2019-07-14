@@ -61,6 +61,7 @@ namespace EP.Balda.Web.Controllers
             return result.Succeeded ? (IActionResult)Ok(userData) : BadRequest();
         }
 
+        [AllowAnonymous]
         [HttpPost("api/register")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User has been registered")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]

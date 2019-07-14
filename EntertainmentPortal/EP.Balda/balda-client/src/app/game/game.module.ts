@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { CellComponent } from './components/cell/cell.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,7 +8,8 @@ import { StartGameComponent } from './components/start-game/start-game.component
 @NgModule({
   declarations: [MapComponent, StartGameComponent, CellComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [MapComponent, StartGameComponent]
 })

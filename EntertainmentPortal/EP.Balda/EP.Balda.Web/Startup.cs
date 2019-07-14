@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NJsonSchema;
+using System;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Web
 {
@@ -89,6 +91,11 @@ namespace EP.Balda.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
                               IMediator mediator)
         {
+            //app.Use(async delegate (HttpContext context, Func<Task> next)
+            //{
+            //    await next.Invoke();
+            //});
+
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else

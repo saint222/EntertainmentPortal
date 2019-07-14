@@ -75,6 +75,7 @@ namespace EP.Balda.Logic.Handlers
 
             var game = await _context.Games
                 .Where(g => g.Id == gameDb.Id)
+                .Include(g => g.Map)
                 .SingleOrDefaultAsync(cancellationToken);
 
             try

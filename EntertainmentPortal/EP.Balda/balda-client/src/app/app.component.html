@@ -1,9 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="title">
   <h1>
-    Welcome to {{ title }}!
+    {{ title }}
   </h1>
-</div>
-
-<app-login></app-login>
-<app-start-game></app-start-game>
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6 offset-sm-3">
+              <router-outlet></router-outlet>
+          </div>
+      </div>
+  </div>
+<p class="mt-5 mb-3 text-muted text-center">&copy; BaldaGame by AngryBird, 2019</p>
