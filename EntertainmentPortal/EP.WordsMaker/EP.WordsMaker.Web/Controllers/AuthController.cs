@@ -68,7 +68,6 @@ namespace EP.WordsMaker.Web.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Player playerInfo)
         {
-
             var user = await _manager.FindByNameAsync(playerInfo.Name);
 
             if (user == null) return BadRequest("User does not exist");
@@ -88,7 +87,6 @@ namespace EP.WordsMaker.Web.Controllers
             }
 
             // check user logic
-
 
             return BadRequest("Username or password is incorrect");
         }

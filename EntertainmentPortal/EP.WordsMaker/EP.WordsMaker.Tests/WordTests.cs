@@ -22,5 +22,13 @@ namespace Tests
 			
 			Assert.Pass();
 		}
-	}
+
+        [Test]
+        public void Test2()
+        {
+            Rules rul = new Rules();
+            var fd = rul.HardScoring("Соковыжималка");
+
+        }
+    }
 }

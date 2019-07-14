@@ -31,6 +31,54 @@ namespace EP.WordsMaker.Logic.Models
 			return (word.Length);
 		}
 
+        public Dictionary<char, int> scoreFromLetter = new Dictionary<char, int> {
+            {'о', 1},
+            {'е', 1},
+            {'а', 2},
+            {'и', 2},
+            {'н', 2},
+            {'т', 2},
+            {'с', 3},
+            {'р', 3},
+            {'в', 3},
+            {'л', 3},
+            {'к', 3},
+            {'м', 3},
+            {'д', 4},
+            {'п', 4},
+            {'у', 4},
+            {'я', 4},
+            {'ы', 4},
+            {'ь', 4},
+            {'г', 4},
+            {'з', 4},
+            {'б', 4},
+            {'ч', 4},
+            {'й', 4},
+            {'ж', 5},
+            {'ш', 5},
+            {'ю', 5},
+            {'ц', 5},
+            {'щ', 5},
+            {'э', 5},
+            {'ф', 5},
+            {'ъ', 5},
+            {'ё', 5}
+            };
+
+        public int HardScoring(string word)
+        {
+            var lettersDict = new Dictionary<char, int>();
+
+            int score = 0;
+
+            foreach (var letter in word.ToLower())
+            {
+                score += scoreFromLetter[letter];
+            }
+
+            return score;
+        }
 
 	}
 }
