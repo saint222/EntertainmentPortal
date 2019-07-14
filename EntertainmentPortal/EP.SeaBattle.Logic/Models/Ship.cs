@@ -7,6 +7,7 @@ namespace EP.SeaBattle.Logic.Models
 {
     public class Ship
     {
+        public string Id { get; set; }
         /// <summary>
         /// Ship rank
         /// </summary>

@@ -31,7 +31,7 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Result<Shot>> Handle(AddShotCommand request, CancellationToken cancellationToken)
         {
-            var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddPlayerValidation", cancellationToken: cancellationToken);
+            var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddShotValidation", cancellationToken: cancellationToken);
             Result<Shot> result;
             if (validationResult.IsValid)
             {
@@ -61,7 +61,13 @@ namespace EP.SeaBattle.Logic.Handlers
                 Ship ship = shotsManager.TryShoot(request.X, request.Y);
                 if (ship != null)
                 {
-                    _context.Update(_mapper.Map<ShipDb>(ship));
+                    ShipDb shipDb = await _context.Ships.FindAsync(ship.Id).ConfigureAwait(false);
+                    shipDb.Rank = ship.Rank;
+                    shipDb.PlayerId = ship.PlayerId;
+                    foreach(Cell cell in ship.Cells)
+                    {
+                        shipDb.Cells.Add(_mapper.Map<CellDb>(cell));
+                    }
                     if (shotsManager.isFinishedGame)
                     {
                         gameDb.Finish = true;
@@ -95,7 +101,11 @@ namespace EP.SeaBattle.Logic.Handlers
             }
             try
             {
-                await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                if (result.IsSuccess)
+                {
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                }
+
             }
             catch (DbUpdateException ex)
             {

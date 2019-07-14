@@ -43,7 +43,7 @@ namespace EP.SeaBattle.Logic.Validators
                     .MustAsync((o, s, token) => IsReadyToTurn(o.PlayerId)).WithMessage(model => $"Player ID {model.PlayerId} does not have the turn");
 
                 RuleFor(x => x)
-                    .MustAsync((o, s, token) => IsThereShot(o.PlayerId, o.X, o.Y)).WithMessage(model => $"Shot with coordinates X {model.X}, Y{model.Y} is forbidden");
+                    .MustAsync((o, s, token) => IsThereShot(o.PlayerId, o.X, o.Y)).WithMessage(model => $"Shot with coordinates X {model.X}, Y {model.Y} is forbidden");
             });
         }
 
@@ -72,8 +72,8 @@ namespace EP.SeaBattle.Logic.Validators
 
         private async Task<bool> IsGameFinished(string playerId)
         {
-            GameDb gameDb = await _context.Games.FindAsync(playerId).ConfigureAwait(false);
-            if (!gameDb.Finish)
+            GameDb gameDb = await _context.Games.FirstOrDefaultAsync(g => g.Players.Where(p => p.Id == playerId) != null).ConfigureAwait(false);
+            if (gameDb.Finish)
             {
                 return false;
             }
@@ -82,7 +82,7 @@ namespace EP.SeaBattle.Logic.Validators
 
         private async Task<bool> IsReadyToTurn(string playerId)
         {
-            GameDb gameDb = await _context.Games.FindAsync(playerId).ConfigureAwait(false);
+            GameDb gameDb = await _context.Games.FirstOrDefaultAsync(g => g.Players.Where(p => p.Id == playerId) != null).ConfigureAwait(false);
             if (gameDb.PlayerAllowedToMove != playerId)
             {
                 return false;
