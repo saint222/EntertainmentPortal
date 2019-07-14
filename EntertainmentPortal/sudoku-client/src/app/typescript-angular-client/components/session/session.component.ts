@@ -47,4 +47,5 @@ export class SessionComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }

@@ -1,3 +1,5 @@
+import { DifficultyLevel } from './../../model/difficultyLevel';
+import { Player } from './../../model/player';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SessionsService } from './../../api/sessions.service';
@@ -11,6 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateSessionComponent implements OnInit {
   sessionGroup: FormGroup;
+  player: Player;
 
   constructor(private fb: FormBuilder, private sessionService: SessionsService, private router: Router, private route: ActivatedRoute) {
     this.sessionGroup = this.fb.group({
@@ -22,6 +25,8 @@ export class CreateSessionComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
+
+
     this.sessionService.sessionsCreateSession(form.value).subscribe(c => {
         console.log(c);
         this.router.navigate(['/registered/session', c.Id]);
