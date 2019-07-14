@@ -1,12 +1,11 @@
 ﻿using CSharpFunctionalExtensions;
-using EP.SeaBattle.Common.Enums;
 using EP.SeaBattle.Logic.Models;
-using MediatR;
 using System.Collections.Generic;
+using MediatR;
 
 namespace EP.SeaBattle.Logic.Queries
 {
-    public class GetShipsQuery : IRequest<Maybe<IEnumerable<Ship>>>
+    public class GetShotsQuery : IRequest<Maybe<IEnumerable<Shot>>>
     {
         public string PlayerId { get; set; }
     }

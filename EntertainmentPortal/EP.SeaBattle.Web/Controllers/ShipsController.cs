@@ -43,13 +43,12 @@ namespace EP.SeaBattle.Web.Controllers
         [HttpGet("api/GetShips")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Ship>), Description = "Get player ships collection")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't show player ships")]
-        public async Task<IActionResult> GetShipsAsync(string gameId, string playerId)
+        public async Task<IActionResult> GetShipsAsync(string playerId)
         {
-            var result = await _mediator.Send(new GetShipsQuery() { GameId = gameId, PlayerId = playerId });
+            var result = await _mediator.Send(new GetShipsQuery() {PlayerId = playerId });
             return result.HasValue 
                 ? Ok(result.Value)
                 : (IActionResult)Ok();
-
         }
 
 

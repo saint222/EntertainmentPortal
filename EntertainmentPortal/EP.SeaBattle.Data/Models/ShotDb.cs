@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using EP.SeaBattle.Common.Enums;
 
 namespace EP.SeaBattle.Data.Models
 {
@@ -11,7 +10,6 @@ namespace EP.SeaBattle.Data.Models
         public byte Y { get; set; }
         public string PlayerId { get; set; }
         public PlayerDb Player { get; set; }
-        public string GameId { get; set; }
-        public GameDb Game { get; set; }
+        public ShotStatus Status { get; set; }
     }
 }

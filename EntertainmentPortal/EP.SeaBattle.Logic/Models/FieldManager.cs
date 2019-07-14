@@ -37,12 +37,12 @@ namespace EP.SeaBattle.Logic.Models
             byte yMax;
             if (shipOrientation == ShipOrientation.Horizontal)
             {
-                xMax = (byte)(x + rank);
+                xMax = (byte)(x + rank - 1);
                 yMax = y;
             }
             else
             {
-                yMax = (byte)(y + rank);
+                yMax = (byte)(y + rank - 1);
                 xMax = x;
             }
 

@@ -9,6 +9,7 @@ namespace EP.SeaBattle.Data.Models
         public PlayerDb()
         {
             Ships = new List<ShipDb>();
+            Shots = new List<ShotDb>();
         }
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string NickName { get; set; }
@@ -16,5 +17,6 @@ namespace EP.SeaBattle.Data.Models
         public string GameId { get; set; }
         public GameDb Game { get; set; }
         public ICollection<ShipDb> Ships { get; set; }
+        public ICollection<ShotDb> Shots { get; set; }
     }
 }

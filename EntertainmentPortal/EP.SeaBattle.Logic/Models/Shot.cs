@@ -1,4 +1,4 @@
-﻿
+﻿using EP.SeaBattle.Common.Enums;
 
 namespace EP.SeaBattle.Logic.Models
 {
@@ -8,6 +8,6 @@ namespace EP.SeaBattle.Logic.Models
         public byte X { get; set; }
         public byte Y { get; set; }
         public Player Player { get; set; }
-        public Game Game { get; set; }
+        public ShotStatus Status { get; set; }
     }
 }

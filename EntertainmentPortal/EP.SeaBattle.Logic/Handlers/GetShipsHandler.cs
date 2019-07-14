@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using EP.SeaBattle.Data.Context;
-using EP.SeaBattle.Data.Models;
 using EP.SeaBattle.Logic.Queries;
 using EP.SeaBattle.Logic.Models;
 using CSharpFunctionalExtensions;
@@ -38,7 +37,7 @@ namespace EP.SeaBattle.Logic.Handlers
                     .Include(i => i.Player)
                     .ToArrayAsync(cancellationToken).ConfigureAwait(false);
 
-                _logger.LogInformation($"Send ship collection for game {request.GameId} player {request.PlayerId}");
+                _logger.LogInformation($"Send ship collection for player {request.PlayerId}");
                 return result.Any() ? Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(result))
                     : Maybe<IEnumerable<Ship>>.None;
             }

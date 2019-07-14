@@ -31,6 +31,11 @@ namespace EP.SeaBattle.Data.Context
                         .WithOne(s => s.Player)
                         .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<PlayerDb>()
+                        .HasMany(p => p.Shots)
+                        .WithOne(s => s.Player)
+                        .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<ShipDb>()
                         .HasMany(s => s.Cells)
                         .WithOne(c => c.Ship)
@@ -41,10 +46,6 @@ namespace EP.SeaBattle.Data.Context
                         .WithOne(p => p.Game)
                         .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<GameDb>()
-                        .HasMany(g => g.Shots)
-                        .WithOne(s => s.Game)
-                        .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using EP.SeaBattle.Data.Context;
 using EP.SeaBattle.Logic.Commands;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using EP.SeaBattle.Data.Models;
 
@@ -37,9 +34,6 @@ namespace EP.SeaBattle.Logic.Validators
             {
                 RuleFor(x => x.PlayerId)
                     .MustAsync((o, s, token) => CheckExistingPlayer(o)).WithMessage(model => $"Player ID {model.PlayerId} not found");
-
-                RuleFor(x => x.PlayerId)
-                    .MustAsync((o, s, token) => CheckExistingPlayer(o)).WithMessage(model => $"Player ID {model.PlayerId} not found");
             });
         }
 
@@ -56,14 +50,6 @@ namespace EP.SeaBattle.Logic.Validators
             return true;
         }
 
-        private async Task<bool> CheckExistingGameAndGameNotFinish(AddNewShipCommand model)
-        {
-            PlayerDb player = await _context.Players.FindAsync(model.PlayerId).ConfigureAwait(false);
-            GameDb game = player.Game;
-            if (game == null || game.Finish)
-                return false;
-            return true;
-        }
     }
 
     public class ShipDeleteValidation : AbstractValidator<DeleteShipCommand>
