@@ -17,7 +17,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
     public class GetMapHandler_Tests
     {
         IMapper _mapper;
-        
+
         [SetUp]
         public void Setup()
         {

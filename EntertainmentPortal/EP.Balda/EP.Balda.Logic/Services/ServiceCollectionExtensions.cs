@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace EP.Balda.Logic.Services
 {
     /// <summary>
-    ///     Service of forwarding mediator objects to the dl/pl layers.
+    /// Service of forwarding mediator objects to the data/presentation layers.
     /// </summary>
     public static class ServiceCollectionExtensions
     {
