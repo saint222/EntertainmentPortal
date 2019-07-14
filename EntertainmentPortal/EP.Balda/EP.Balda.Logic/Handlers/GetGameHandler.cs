@@ -1,13 +1,13 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Balda.Data.Context;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
@@ -22,8 +22,7 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Maybe<Game>> Handle(GetGame request,
-                                              CancellationToken cancellationToken)
+        public async Task<Maybe<Game>> Handle(GetGame request, CancellationToken cancellationToken)
         {
             var gameDb = await _context.Games
                 .Where(g => g.Id == request.Id)

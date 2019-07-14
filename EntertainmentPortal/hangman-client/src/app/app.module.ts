@@ -5,6 +5,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +15,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HangmanGameModule
+    HangmanGameModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
