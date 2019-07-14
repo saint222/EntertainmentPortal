@@ -7,7 +7,6 @@ using EP.Balda.Web.Validators;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,9 +14,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NJsonSchema;
-using NSwag;
-using NSwag.AspNetCore;
-using System.Collections.Generic;
 
 namespace EP.Balda.Web
 {
@@ -30,17 +26,10 @@ namespace EP.Balda.Web
             Configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddAuthenticationCore();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
-                .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
-                {
-                    opt.Authority = "https://localhost:44370";
-                    opt.RequireHttpsMetadata = false;
-                })
                 .AddGoogle("Google", opt =>
                  {
                      var googleAuthNSection =
@@ -75,16 +64,6 @@ namespace EP.Balda.Web
             services.AddSwaggerDocument(cfg =>
             {
                 cfg.SchemaType = SchemaType.OpenApi3;
-                cfg.AddSecurity("oauth", new[] { "baldagame_api" }, new OpenApiSecurityScheme()
-                {
-                    Flow = OpenApiOAuth2Flow.Implicit,
-                    Type = NSwag.OpenApiSecuritySchemeType.OAuth2,
-                    AuthorizationUrl = "http://localhost:44370/connect/authorize",
-                    Scopes = new Dictionary<string, string>()
-                    {
-                        { "baldagame_api", "Access to Balda Game api" }
-                    }
-                });
             });
 
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
@@ -93,7 +72,12 @@ namespace EP.Balda.Web
             services.AddBaldaGameServices();
 
             services.AddCors();
-            services.AddMvc(opt => opt.Filters.Add(typeof(ModelValidationFilter)))
+            services.AddMvc(opt =>
+            {
+                opt.Filters.Add(typeof(ModelValidationFilter));
+                opt.Filters.Add(typeof(GlobalExceptionFilter));
+            })
+
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
             .AddFluentValidation(cfg =>
             {
@@ -102,16 +86,12 @@ namespace EP.Balda.Web
             }); ;
         }
 
-        // This method gets called by the runtime. Use this method to
-        // configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
                               IMediator mediator)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
-                // The default HSTS value is 30 days. You may want to change this
-                // for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
 
             app.UseCors(opt =>
@@ -124,11 +104,7 @@ namespace EP.Balda.Web
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
 
-            app.UseOpenApi().UseSwaggerUi3(opt => opt.OAuth2Client = new OAuth2ClientSettings()
-            {
-                AppName = "Balda Game",
-                ClientId = "swagger"
-            });
+            app.UseOpenApi().UseSwaggerUi3();
 
             app.UseMvc();
 

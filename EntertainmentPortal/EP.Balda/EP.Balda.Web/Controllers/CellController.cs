@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace EP.Balda.Web.Controllers
 {
     [ApiController]
-    public class CellController : ControllerBase
+    public class CellController : BaseController
     {
         private readonly IMediator _mediator;
         private readonly ILogger<CellController> _logger;

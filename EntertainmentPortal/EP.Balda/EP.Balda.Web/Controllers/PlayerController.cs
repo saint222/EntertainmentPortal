@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace EP.Balda.Web.Controllers
 {
     [ApiController]
-    public class PlayerController : Controller
+    public class PlayerController : BaseController
     {
         private readonly IMediator _mediator;
         private readonly ILogger<PlayerController> _logger;
@@ -85,6 +85,7 @@ namespace EP.Balda.Web.Controllers
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                              $"Parameters: Id = {model.Id}, GameId = {model.GameId}");
 
+            model.Id = UserId;
             var result = await _mediator.Send(model);
 
             if (result.IsSuccess)

@@ -3,8 +3,6 @@ using EP.Balda.Web.Constants;
 using EP.Balda.Web.Filters;
 using EP.Balda.Web.Models;
 using EP.Balda.Web.Services;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +20,7 @@ using System.Threading.Tasks;
 namespace EP.Balda.Web.Controllers
 {
     [ApiController]
-    public class AuthenticationController : ControllerBase
+    public class AuthenticationController : BaseController
     {
         private readonly UserManager<PlayerDb> _userManager;
         private readonly SignInManager<PlayerDb> _signInManager;
@@ -35,32 +33,32 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         [HttpPost("api/simplelogin")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User has been registered")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
         [ModelValidationFilter]
         public async Task<IActionResult> SimpleLogin(UserLogin userData)
         {
-            var identity = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, userData.UserName),
-                    new Claim(ClaimTypes.Role, "user")
-                }, 
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                ClaimTypes.Name, ClaimTypes.Role);
+            var user = await _userManager.FindByNameAsync(userData.UserName);
 
-            var principal = new ClaimsPrincipal(identity);
-
-            try
+            if (user == null)
             {
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                return BadRequest("User with such login doesn't exist");
+            }
 
-                return Ok(identity);
-            }
-            catch (Exception)
+            var result = await _signInManager.PasswordSignInAsync(userData.UserName, userData.Password, true, false);
+
+            if (result.Succeeded)
             {
-                return BadRequest("Error");
+                _logger.LogInformation($"User {userData.UserName} signed in");
             }
+            else
+            {
+                _logger.LogWarning($"Unsuccessful login of user: {userData.UserName}");
+            }
+
+            return result.Succeeded ? (IActionResult)Ok(userData) : BadRequest();
         }
 
         [HttpPost("api/register")]
@@ -75,8 +73,6 @@ namespace EP.Balda.Web.Controllers
                 Email = userData.Email,
                 SecurityStamp = Guid.NewGuid().ToString()
             };
-
-            //newUser.PasswordHash = _userManager.PasswordHasher.HashPassword(newUser, userData.Password);
 
             var status = await _userManager.CreateAsync(newUser, userData.Password);
 
@@ -108,6 +104,7 @@ namespace EP.Balda.Web.Controllers
             return status.Succeeded ? (IActionResult)Ok() : BadRequest(status.Errors);
         }
 
+        [AllowAnonymous]
         [HttpPost("api/login")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged in")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User wasn't logged in")]
@@ -190,6 +187,7 @@ namespace EP.Balda.Web.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpGet("token")]
         public IActionResult GetToken(UserLogin userData)
         {

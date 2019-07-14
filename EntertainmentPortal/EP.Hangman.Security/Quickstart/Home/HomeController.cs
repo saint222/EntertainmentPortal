@@ -19,8 +19,7 @@ namespace IdentityServer4.Quickstart.UI
         private readonly IHostingEnvironment _environment;
         private readonly ILogger _logger;
 
-        public HomeController(IIdentityServerInteractionService interaction, IHostingEnvironment environment,
-            ILogger<HomeController> logger)
+        public HomeController(IIdentityServerInteractionService interaction, IHostingEnvironment environment, ILogger<HomeController> logger)
         {
             _interaction = interaction;
             _environment = environment;
