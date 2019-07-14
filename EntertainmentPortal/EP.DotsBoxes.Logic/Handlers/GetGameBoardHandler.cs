@@ -11,10 +11,12 @@ using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using EP.DotsBoxes.Data.Models;
+using CSharpFunctionalExtensions;
 
 namespace EP.DotsBoxes.Logic.Handlers
 {
-    public class GetGameBoardHandler : IRequestHandler<GetGameBoard, IEnumerable<GameBoard>>
+    public class GetGameBoardHandler : IRequestHandler<GetGameBoard, Maybe<IEnumerable<CellDb>>>
     {
         private readonly IMapper _mapper;
         private readonly GameBoardDbContext _context;
@@ -25,12 +27,17 @@ namespace EP.DotsBoxes.Logic.Handlers
             _context = context;
         }
 
-        public async Task<IEnumerable<GameBoard>> Handle(GetGameBoard request, CancellationToken cancellationToken)
+        public async Task<Maybe<IEnumerable<CellDb>>> Handle(GetGameBoard request, CancellationToken cancellationToken)
         {
-            return await _context.GameBoard
-                 .Select(b => _mapper.Map<GameBoard>(b))
-                 .ToArrayAsync(cancellationToken)
-                 .ConfigureAwait(false);
+            var result = await _context.Cells
+               .AsNoTracking()
+               .ToArrayAsync(cancellationToken)
+               .ConfigureAwait(false);
+
+           
+            return result.Any() ?
+                Maybe<IEnumerable<CellDb>>.From(result) :
+                Maybe<IEnumerable<CellDb>>.None;
         }
     }
 }

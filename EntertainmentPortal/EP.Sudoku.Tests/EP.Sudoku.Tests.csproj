@@ -8,13 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.1" />
+    <PackageReference Include="Moq" Version="4.12.0" />
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
     <PackageReference Include="Sudoku.Solver.Lite" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EP.DotsBoxes.Web\EP.DotsBoxes.Web.csproj" />
     <ProjectReference Include="..\EP.Sudoku.Logic\EP.Sudoku.Logic.csproj" />
+    <ProjectReference Include="..\EP.Sudoku.Web\EP.Sudoku.Web.csproj" />
   </ItemGroup>
 
 </Project>

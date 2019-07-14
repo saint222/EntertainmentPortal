@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using EP.SeaBattle.Data.Models;
 
 namespace EP.SeaBattle.Logic.Validators
 {
@@ -31,33 +32,35 @@ namespace EP.SeaBattle.Logic.Validators
 
                 RuleFor(ship => ship.PlayerId)
                     .NotNull().WithMessage("Player cannot be null");
-
-                RuleFor(ship => ship.GameId)
-                    .NotNull().WithMessage("Game cannot be null");
             });
             RuleSet("AddShipValidation", () =>
             {
                 RuleFor(x => x.PlayerId)
                     .MustAsync((o, s, token) => CheckExistingPlayer(o)).WithMessage(model => $"Player ID {model.PlayerId} not found");
-                RuleFor(x => x.GameId)
-                    .MustAsync((o, s, token) => CheckExistingGameAndGameNotFinish(o)).WithMessage(model => $"Game ID {model.GameId} not found or finished");
+
+                RuleFor(x => x.PlayerId)
+                    .MustAsync((o, s, token) => CheckExistingPlayer(o)).WithMessage(model => $"Player ID {model.PlayerId} not found");
             });
         }
+
+
 
         private async Task<bool> CheckExistingPlayer(AddNewShipCommand model)
         {
             var result = await _context.Players.FindAsync(model.PlayerId)
                 .ConfigureAwait(false);
             if (result == null)
+            {
                 return false;
+            }
             return true;
         }
 
         private async Task<bool> CheckExistingGameAndGameNotFinish(AddNewShipCommand model)
         {
-            var result = await _context.Games.FindAsync(model.GameId)
-                .ConfigureAwait(false);
-            if (result == null || result.Finish)
+            PlayerDb player = await _context.Players.FindAsync(model.PlayerId).ConfigureAwait(false);
+            GameDb game = player.Game;
+            if (game == null || game.Finish)
                 return false;
             return true;
         }
@@ -80,18 +83,20 @@ namespace EP.SeaBattle.Logic.Validators
             {
                 RuleFor(x => x)
                     .MustAsync(
-                        (o, s, token) => CheckExistingShip(o)
+                        (o, s, token) => CheckExistingShip(o.Id)
                            ).WithMessage("Ship not exists");
             });
         }
 
-        private async Task<bool> CheckExistingShip(DeleteShipCommand model)
+        private async Task<bool> CheckExistingShip(string id)
         {
-            var result = await _context.Ships.FindAsync(model.Id)
+            var result = await _context.Ships.FindAsync(id)
                 .ConfigureAwait(false);
 
             if (result == null)
+            {
                 return false;
+            }
             return true;
         }
     }

@@ -7,15 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using EP.Hangman.Logic.Queries;
 using EP.Hangman.Web.Filters;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.Hangman.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/playhangman")]
     [ApiController]
+    //[Authorize]
+
     public class PlayHangmanController : ControllerBase
     {
+
         private readonly IMediator _mediator;
         private readonly ILogger _logger;
 
@@ -24,9 +30,13 @@ namespace EP.Hangman.Web.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-
+        
         //GET: api/PlayHangman/{id}
-        [HttpGet("id")]
+        [HttpGet("{id}")]
+        //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = "Google")]
+        [Authorize(AuthenticationSchemes = "Facebook")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Red")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(ControllerData), Description = "Session not found")]
         public async Task<IActionResult> GetUserSessionAsync(string id)
@@ -39,9 +49,13 @@ namespace EP.Hangman.Web.Controllers
 
         //POST: api/PlayHangman
         [HttpPost]
+        //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = "Google")]
+        [Authorize(AuthenticationSchemes = "Facebook")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(ControllerData), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Object didn't create")]
-        public async Task<IActionResult> CreateNewGameAsync()
+        public async Task<IActionResult> CreateNewGameCookieAsync()
         {
             _logger.LogInformation("Received POST request");
             var result = await _mediator.Send(new CreateNewGameCommand());
@@ -51,6 +65,9 @@ namespace EP.Hangman.Web.Controllers
 
         //PUT: api/PlayHangman
         [HttpPut]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = "Google")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(ControllerData), Description = "Updated")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't update")]
         [ValidationFilter]
@@ -59,18 +76,21 @@ namespace EP.Hangman.Web.Controllers
             _logger.LogInformation("Received PUT request");
             var result = await _mediator.Send(new CheckLetterCommand(model));
             _logger.LogInformation("PUT request executed");
-            return result.IsSuccess ? (IActionResult)Ok(result) : BadRequest(result.Error);
+            return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
         }
 
-        //DELETE: api/PlayHangman
-        [HttpDelete]
+        //DELETE: api/PlayHangman/{id}
+        [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = "Google")]
         [SwaggerResponse(HttpStatusCode.NoContent, typeof(ControllerData), Description = "Deleted")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ControllerData), Description = "Data didn't delete")]
         [ValidationFilter]
-        public async Task<IActionResult> DeleteGameSessionAsync([FromBody]ControllerData model)
+        public async Task<IActionResult> DeleteGameSessionAsync(string id)
         {
             _logger.LogInformation("Received DELETE request");
-            var result = await _mediator.Send(new DeleteGameSessionCommand(model));
+            var result = await _mediator.Send(new DeleteGameSessionCommand(id));
             _logger.LogInformation("DELETE request executed");
             return result.IsSuccess ? (IActionResult) Ok(result.Value) : BadRequest(result.Error);
         }

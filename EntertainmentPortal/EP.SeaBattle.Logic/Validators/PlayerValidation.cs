@@ -2,9 +2,6 @@
 using EP.SeaBattle.Logic.Commands;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EP.SeaBattle.Logic.Validators
@@ -13,7 +10,6 @@ namespace EP.SeaBattle.Logic.Validators
     public class PlayerValidation : AbstractValidator<AddNewPlayerCommand>
     {
         private readonly SeaBattleDbContext _context;
-
         public PlayerValidation(SeaBattleDbContext context)
         {
             _context = context;
@@ -28,27 +24,26 @@ namespace EP.SeaBattle.Logic.Validators
             RuleSet("AddPlayerValidation", () =>
             {
                 RuleFor(x => x)
-                .MustAsync((o, s, token) => CheckExistingNickName(o)).WithMessage($"Player with such nickname arleady exists");
+                .MustAsync((o, s, token) => CheckExistingNickName(o.NickName))
+                .WithMessage($"Player with such nickname arleady exists");
             });
-            
         }
 
-        private async Task<bool> CheckExistingNickName(AddNewPlayerCommand model)
+        private async Task<bool> CheckExistingNickName(string nickName)
         {
-            var result = await _context.Players.FirstOrDefaultAsync(player => player.NickName == model.NickName)
+            var result = await _context.Players.FirstOrDefaultAsync(player => player.NickName == nickName)
                 .ConfigureAwait(false);
             if (result == null)
+            {
                 return true;
+            }
             return false;
         }
     }
 
-
-
     public class PlayerUpdateValidation : AbstractValidator<UpdatePlayerCommand>
     {
         private readonly SeaBattleDbContext _context;
-
         public PlayerUpdateValidation(SeaBattleDbContext context)
         {
             _context = context;
@@ -63,18 +58,19 @@ namespace EP.SeaBattle.Logic.Validators
             RuleSet("UpdatePlayerValidation", () =>
             {
                 RuleFor(x => x)
-                .MustAsync((o, s, token) => CheckExistingNickName(o)).WithMessage($"Player doesn't exists");
-
-
+                .MustAsync((o, s, token) => CheckExistingNickName(o.NickName))
+                .WithMessage($"Player doesn't exists");
             });
         }
 
-        private async Task<bool> CheckExistingNickName(UpdatePlayerCommand model)
+        private async Task<bool> CheckExistingNickName(string nickName)
         {
-            var result = await _context.Players.FirstOrDefaultAsync(player => player.NickName == model.NickName)
+            var result = await _context.Players.FirstOrDefaultAsync(player => player.NickName == nickName)
                 .ConfigureAwait(false);
             if (result == null)
+            {
                 return true;
+            }
             return false;
         }
     }

@@ -51,7 +51,7 @@ namespace EP.Sudoku.Tests
         [Test]
         public void Test_Solve_Method_Random()
         {
-            GenerationGridService generationGrid = new GenerationGridService();
+            GenerationSudokuService generationGrid = new GenerationSudokuService();
             int[,] grid = generationGrid.GetBaseGrid();
             int[,] gridTask = generationGrid.RemoveCells(grid, 50);
 

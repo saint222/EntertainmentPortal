@@ -1,13 +1,15 @@
 ﻿using AutoMapper;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Profiles;
-using EP.Balda.Logic.Queries;
 using EP.Balda.Logic.Services;
-using EP.Balda.Logic.Validators;
+using EP.Balda.Web.Filters;
+using EP.Balda.Web.Validators;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,36 +26,88 @@ namespace EP.Balda.Web
             Configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSwaggerDocument(cfg => cfg.SchemaType = SchemaType.OpenApi3);
-            services.AddMediatR(typeof(GetAllPlayers).Assembly);
-            services.AddAutoMapper(typeof(PlayerProfile).Assembly);
-            services.AddBaldaGameServices();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddFluentValidation(cfg =>
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie()
+                .AddGoogle("Google", opt =>
+                 {
+                     var googleAuthNSection =
+                         Configuration.GetSection("Authentication:Google");
+
+                     opt.ClientId = googleAuthNSection["ClientId"];
+                     opt.ClientSecret = googleAuthNSection["ClientSecret"];
+                     opt.CallbackPath = new PathString("/signin-google");
+                 })
+                .AddFacebook("Facebook", opt =>
                 {
-                    cfg.RegisterValidatorsFromAssemblyContaining<AddNewPlayerValidator>();
-                    cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                    var facebookAuthNSection =
+                        Configuration.GetSection("Authentication:Facebook");
+
+                    opt.ClientId = facebookAuthNSection["ClientId"];
+                    opt.ClientSecret = facebookAuthNSection["ClientSecret"];
+                    opt.CallbackPath = new PathString("/signin-google");
                 });
+
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("google",
+                      cfg => cfg.AddAuthenticationSchemes("Google")
+                          .RequireAuthenticatedUser());
+                opt.AddPolicy("facebook",
+                    cfg => cfg.AddAuthenticationSchemes("Facebook")
+                    .RequireAuthenticatedUser());
+            });
+
+            services.AddSession();
+
+            services.AddSwaggerDocument(cfg =>
+            {
+                cfg.SchemaType = SchemaType.OpenApi3;
+            });
+
+            services.AddAutoMapper(typeof(PlayerProfile).Assembly);
+            services.AddMediatR(typeof(CreateNewGameCommand).Assembly);
+            
+            services.AddBaldaGameServices();
+
+            services.AddCors();
+            services.AddMvc(opt =>
+            {
+                opt.Filters.Add(typeof(ModelValidationFilter));
+                opt.Filters.Add(typeof(GlobalExceptionFilter));
+            })
+
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddFluentValidation(cfg =>
+            {
+                cfg.RegisterValidatorsFromAssemblyContaining<UserLoginValidator>();
+                cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            }); ;
         }
 
-        // This method gets called by the runtime. Use this method to
-        // configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
                               IMediator mediator)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
-                // The default HSTS value is 30 days. You may want to change this
-                // for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
 
+            app.UseCors(opt =>
+                opt.AllowAnyHeader()
+                .AllowAnyMethod()
+                .WithOrigins("http://localhost:4200")
+                .AllowCredentials());
+
+            app.UseAuthentication();
+
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseSwagger().UseSwaggerUi3();
+
+            app.UseOpenApi().UseSwaggerUi3();
+
             app.UseMvc();
+
         }
     }
 }
