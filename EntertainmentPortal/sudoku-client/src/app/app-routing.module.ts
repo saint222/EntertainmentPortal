@@ -7,7 +7,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotExistsComponent } from './shared/not-exists/not-exists.component';
 import { SignInComponent } from './typescript-angular-client/components/sign-in/sign-in.component';
 import { RegisterComponent } from './typescript-angular-client/components/register/register.component';
-import { HomeComponent } from './typescript-angular-client/components/home/home.component';
 import { PrivacyComponent } from './typescript-angular-client/components/privacy/privacy.component';
 import { ReristeredComponent } from './typescript-angular-client/components/reristered/reristered.component';
 import {RegisteredDemoComponent} from './typescript-angular-client/components/registered-demo/registered-demo.component';

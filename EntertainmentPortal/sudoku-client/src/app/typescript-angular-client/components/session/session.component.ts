@@ -48,6 +48,7 @@ export class SessionComponent implements OnInit {
 
   ngOnInit() {
   }
+
   callServer() {
     this.sudokuHub.callServer();
   }

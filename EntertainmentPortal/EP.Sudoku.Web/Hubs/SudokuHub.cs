@@ -18,8 +18,9 @@ namespace EP.Sudoku.Web.Hubs
 
         public Task CalledFromClient(string msg)
         {
-            _logger.LogCritical($"Message: {msg}.");            
-            return Task.CompletedTask;
+            //_logger.LogCritical($"Message: {msg}.");            
+            return Clients.All.SendAsync("CalledFromClient", msg);
+                //Task.CompletedTask;
         }
     }
 }

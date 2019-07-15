@@ -16,12 +16,11 @@ import { Session } from './session';
 export interface Player {
   [key: string]: any | any;
 
-
-    id: number;
-    nickName: string;
-    experiencePoint: number;
-    level: number;
-    icon: AvatarIcon;
-    gameSession: Session;
-    userId: number;
+    id?: number;
+    nickName?: string;
+    experiencePoint?: number;
+    level?: number;
+    icon?: AvatarIcon;
+    gameSession?: Session;
+    userId?: number;
 }

@@ -9,7 +9,7 @@ import { SessionsService } from './api/sessions.service';
 import { SessionComponent } from './components/session/session.component';
 import { CommonModule } from '@angular/common';
 import { CreateSessionComponent } from './components/create-session/create-session.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PlayerComponent } from './components/player/player.component';
 import { PlayerInfoComponent } from './components/player-info/player-info.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -32,6 +32,7 @@ import { SudokuHubService } from './api/sudoku-hub.service';
     ConfirmEmailComponent, PrivacyComponent, UserComponent, PlayerFormComponent, RegisteredDemoComponent],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
@@ -43,12 +44,14 @@ import { SudokuHubService } from './api/sudoku-hub.service';
     CreateSessionComponent,
     PlayerComponent,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PlayerFormComponent
 ],
   providers: [
     AuthService,
     PlayersService,
-    SessionsService
+    SessionsService,
+    SudokuHubService
    ]
 })
 export class ApiModule {

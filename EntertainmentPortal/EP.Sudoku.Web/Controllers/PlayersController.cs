@@ -21,8 +21,8 @@ namespace EP.Sudoku.Web.Controllers
     [ApiController]
     //[Authorize]
     public class PlayersController : ControllerBase
-    {        
-        private readonly IMediator _mediator;       
+    {
+        private readonly IMediator _mediator;
         private readonly ILogger<PlayersController> _logger;
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace EP.Sudoku.Web.Controllers
         public PlayersController(IMediator mediator, ILogger<PlayersController> logger)
         {
             _mediator = mediator;
-            _logger = logger;           
+            _logger = logger;
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace EP.Sudoku.Web.Controllers
             var result = await _mediator.Send(new GetAllPlayers());
             return result.Any() ? (IActionResult)Ok(result) : NotFound();
         }
-        
+
         /// <summary>
         /// Fetches a player of the game from the Db by the unique Id.
         /// </summary>
@@ -56,13 +56,13 @@ namespace EP.Sudoku.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> GetPlayerByIdAsync(int id)
-        {            
+        {
             if (id <= 0)
             {
                 _logger.LogError($"Incorrect value for the player's Id was set. '{id}' - is <= 0...");
                 return BadRequest();
             }
-            var player = await _mediator.Send(new GetPlayerById(id));            
+            var player = await _mediator.Send(new GetPlayerById(id));
             return player != null ? (IActionResult)Ok(player) : NotFound();
         }
 
@@ -72,7 +72,7 @@ namespace EP.Sudoku.Web.Controllers
         [HttpPost("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> CreatePlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationPlayer")]CreatePlayerCommand model)
+        public async Task<IActionResult> CreatePlayer([FromBody, NotNull, /*CustomizeValidator(RuleSet = "PreValidationPlayer")]*/] CreatePlayerCommand model)
         {                   
             if (!ModelState.IsValid)
             {                

@@ -17,6 +17,6 @@ this.hub.on('getMessage', (msg: string) => {
 });
   }
   callServer() {
-    this.hub.send('CalledFromClient', 'Hello from Client');
+    this.hub.invoke('CalledFromClient', 'Hello from Client');
   }
 }
