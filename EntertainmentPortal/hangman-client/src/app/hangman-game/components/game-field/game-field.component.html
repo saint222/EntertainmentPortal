@@ -1,6 +1,6 @@
 <div *ngIf="gameFieldData">
-  <div>Hello, {{getName()}}</div>
-  <div>You are logged in as {{getMail()}}</div>
+  <div>Hello, {{getValueFromIdToken('name')}}</div>
+  <div>You are logged in as {{getValueFromIdToken('email')}}</div>
   <IMG src="assets/img/Hangman-{{gameFieldData.userErrors}}.png">
   <div>Id: {{gameFieldData.id}} </div>
   <div>

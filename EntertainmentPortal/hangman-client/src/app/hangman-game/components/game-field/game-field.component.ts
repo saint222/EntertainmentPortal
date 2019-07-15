@@ -62,21 +62,17 @@ export class GameFieldComponent implements OnInit {
     );
   }
 
-  getMail() {
+  getValueFromIdToken(claim: string) {
     const jwt = this.authService.getIdToken();
 
-    let jwtData = jwt.split('.')[1];
-    let decodedJwtJsonData = window.atob(jwtData);
-    let decodedJwtData = JSON.parse(decodedJwtJsonData);
-    return decodedJwtData.email;
-  }
-
-  getName() {
-    const jwt = this.authService.getIdToken();
-
-    let jwtData = jwt.split('.')[1];
-    let decodedJwtJsonData = window.atob(jwtData);
-    let decodedJwtData = JSON.parse(decodedJwtJsonData);
-    return decodedJwtData.name;
+    const jwtData = jwt.split('.')[1];
+    const decodedJwtJsonData = window.atob(jwtData);
+    let value: any;
+    JSON.parse(decodedJwtJsonData, function findKey(k, v) {
+      if (k === claim) {
+        value = v;
+      }
+    });
+    return value;
   }
 }
