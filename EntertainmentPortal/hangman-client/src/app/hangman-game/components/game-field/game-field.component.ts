@@ -3,6 +3,7 @@ import { GameData } from './../../models/game-data';
 import { GameService } from './../../services/game.service';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { HttpResponseBase } from '@angular/common/http';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-game-field',
@@ -16,7 +17,7 @@ export class GameFieldComponent implements OnInit {
   tmpGameData: GameData = null;
   endGameStatus: string = null;
 
-  constructor(private gameService: GameService, private router: Router) { }
+  constructor(private gameService: GameService, private router: Router, private authService: OAuthService) { }
 
   ngOnInit() {
     this.startNewGame();
@@ -59,5 +60,23 @@ export class GameFieldComponent implements OnInit {
       },
       (err: HttpResponseBase) => console.log(err.statusText)
     );
+  }
+
+  getMail() {
+    const jwt = this.authService.getIdToken();
+
+    let jwtData = jwt.split('.')[1];
+    let decodedJwtJsonData = window.atob(jwtData);
+    let decodedJwtData = JSON.parse(decodedJwtJsonData);
+    return decodedJwtData.email;
+  }
+
+  getName() {
+    const jwt = this.authService.getIdToken();
+
+    let jwtData = jwt.split('.')[1];
+    let decodedJwtJsonData = window.atob(jwtData);
+    let decodedJwtData = JSON.parse(decodedJwtJsonData);
+    return decodedJwtData.name;
   }
 }
