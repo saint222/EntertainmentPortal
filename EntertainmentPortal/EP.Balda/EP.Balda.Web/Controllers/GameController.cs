@@ -26,24 +26,24 @@ namespace EP.Balda.Web.Controllers
         [HttpGet("api/game")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game not found")]
-        public async Task<IActionResult> GetGameAsync([FromQuery] GetGame model)
+        public async Task<IActionResult> GetGameAsync([FromQuery] long id)
         {
             _logger.LogDebug(
-                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
 
-            var result = await _mediator.Send(model);
+            var result = await _mediator.Send(new GetGame() { Id = id });
 
             if (result.HasValue)
             {
                 _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameter: Id = {model.Id}");
+                $"Parameter: Id = {id}");
 
                 return Ok(result.Value);
             }
             else
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} : " +
-                    $"Id = {model.Id}, - game not found");
+                    $"Id = {id}, - game not found");
                 return NotFound();
             }
         }

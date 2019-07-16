@@ -1,8 +1,10 @@
-<p>Map</p>
-<tr>
-  <td>
-      <ul>
-        <li *ngFor="let element of [game.map.cells]">{{element.id}}, {{element.letter}}</li>
-      </ul>
-  </td>
-</tr>
+<p>Map {{ id }}</p>
+<table class="fixed">
+    <tbody>
+      <tr *ngFor="let row of cells">
+        <td *ngFor="let item of row">
+          {{ item.letter }}
+        </td>
+      </tr>
+    </tbody>
+  </table>

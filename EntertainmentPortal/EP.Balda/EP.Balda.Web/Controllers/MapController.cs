@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
@@ -24,27 +25,49 @@ namespace EP.Balda.Web.Controllers
         [HttpGet("api/map")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Map not found")]
-        public async Task<IActionResult> GetMapAsync([FromQuery] GetMap model)
+        public async Task<IActionResult> GetMapAsync([FromQuery] long id)
         {
             _logger.LogDebug(
-                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
 
-            var result = await _mediator.Send(model);
+            var result = await _mediator.Send(new GetMap() { Id = id });
 
             if(result.HasValue)
             {
                 _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameter: Id = {model.Id}");
+                $"Parameter: Id = {id}");
 
-                return Ok(result.Value);
+                //return Ok(result.Value);
+
+                var cells = Do2DimArray(result.Value);
+                return Ok(cells);
             }
             else
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"Id = {model.Id} - Map not found");
+                    $"Id = {id} - Map not found");
 
                 return NotFound();
             }
+        }
+
+        private Cell[,] Do2DimArray(Map map)
+        {
+            Cell[,] cells = new Cell[map.Size, map.Size];
+
+            for (int i = 0; i < map.Size; i++)     // lines
+                for (int j = map.Size - 1; j >= 0; j--) // columns
+                {
+                    foreach (var c in map.Cells)
+                    {
+                        if(j == c.X && i == c.Y)
+                        {
+                            cells[i, j] = c;
+                        }
+                    }
+                }
+
+            return cells;
         }
     }
 }

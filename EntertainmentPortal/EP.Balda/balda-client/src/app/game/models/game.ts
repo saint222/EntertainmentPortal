@@ -1,11 +1,11 @@
-import { Map } from './map';
+import { Playground } from './playground';
 import { Player } from './player';
 
 export class Game {
     id: number;
     initWord: string;
     mapId: number;
-    map: Map;
+    map: Playground;
     playerIdTurn: string;
     players: Player[];
 }

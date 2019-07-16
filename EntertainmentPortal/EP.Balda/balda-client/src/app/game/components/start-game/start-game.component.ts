@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Size } from '../../models/size';
 import { GameService } from '../../services/game.service';
 import { HttpResponseBase } from '@angular/common/http';
@@ -35,7 +35,8 @@ export class StartGameComponent implements OnInit {
         .subscribe(b => {
           console.log(b),
           this.gameService.changeGameSource(b),
-          this.router.navigate(['/playground']);
+          this.gameService.changeMapSource(b.map),
+          this.router.navigate(['/playground/:'], { queryParams: { id: this.game.id, mapid: this.game.mapId}});
         },
         (err: HttpResponseBase) => console.log(err.statusText));
       }
