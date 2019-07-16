@@ -9,7 +9,6 @@ import { BattlefieldService } from '../services/battlefield.service';
   styleUrls: ['./field.component.scss']
 })
 export class FieldComponent implements OnInit {
-  shipField: Cell[][];
   shootField: Cell[][];
   alphabet: String[];
   numbers: number[];
@@ -21,7 +20,6 @@ export class FieldComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.shipField = this.battleFieldService.createField();
     this.shootField = this.createField();
   }
 

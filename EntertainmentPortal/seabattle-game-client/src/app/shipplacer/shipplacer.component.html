@@ -2,10 +2,10 @@
   <div class="form-group col-md-6">
     <label for="rank">Выберите ранг корабля</label>
     <select class="form-control" name="rank" id="rank" formControlName="rank" size="4">
-      <option [value]="1">Однопалубный - ({{ oneLast }} осталось)</option>
-      <option [value]="2">Двупалубный - ({{ twoLast }} осталось)</option>
-      <option [value]="3">Трехпалубный  - ({{ threeLast }} осталось)</option>
-      <option [value]="4">Четырехпалубный - ({{ fourLast }} осталось)</option>
+      <option [value]="1">Однопалубный - ({{ this.battleFieldService.oneLast }} осталось)</option>
+      <option [value]="2">Двупалубный - ({{ this.battleFieldService.twoLast }} осталось)</option>
+      <option [value]="3">Трехпалубный  - ({{ this.battleFieldService.threeLast }} осталось)</option>
+      <option [value]="4">Четырехпалубный - ({{ this.battleFieldService.fourLast }} осталось)</option>
     </select>
     <div class="radio-inline" style="margin-top: 10px">
       <input type="radio" class="custom-control-input" id="Vertical" name="orientation" value="0" formControlName="orientation">

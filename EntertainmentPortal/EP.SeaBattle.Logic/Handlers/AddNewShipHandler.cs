@@ -36,8 +36,8 @@ namespace EP.SeaBattle.Logic.Handlers
             var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddShipValidation", cancellationToken: cancellationToken);
             if (validationResult.IsValid)
             {
-                var game = await _context.Games.FindAsync(request.GameId);
-                var player = await _context.Players.FindAsync(request.PlayerId);
+                var game = await _context.Games.FindAsync(request.GameId).ConfigureAwait(false);
+                var player = await _context.Players.FindAsync(request.PlayerId).ConfigureAwait(false);
                 //TODO Async?
                 var ships = _context.Ships.Where(w => w.Game.Id == request.GameId && w.Player.Id == request.PlayerId).Include(i => i.Cells);
                 ShipsManager shipsManager = new ShipsManager(_mapper.Map<Game>(game), _mapper.Map<Player>(player), _mapper.Map<IEnumerable<Ship>>(ships));
