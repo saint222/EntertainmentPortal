@@ -18,6 +18,7 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -224,7 +225,11 @@ namespace IdentityServer4.Quickstart.UI
                     };
 
                     var status = await _userManager.CreateAsync(newUser, model.Password);
-                    if (status.Succeeded)
+                    if (!status.Succeeded)
+                    {
+                        return View(new RegisterInputModel());
+                    }
+                    else
                     {
                         status = await _userManager.AddClaimsAsync(newUser, new Claim[]
                         {
@@ -236,17 +241,19 @@ namespace IdentityServer4.Quickstart.UI
                         {
                             throw new Exception(status.Errors.First().Description);
                         }
-                        return Redirect("~/account/login" + HttpContext.Request.QueryString);
-                    }
-                    else
-                    {
-                        return View(new RegisterInputModel());
                     }
                 }
-                else
+
+                string returnUrlDecoded = HttpUtility.UrlDecode(
+                    HttpContext.Request.QueryString.ToString().Replace("?ReturnUrl=", ""));
+
+                return await Login(new LoginInputModel()
                 {
-                    return Redirect("~/account/login" + HttpContext.Request.QueryString);
-                }
+                    Password = model.Password,
+                    RememberLogin = false,
+                    ReturnUrl = returnUrlDecoded,
+                    Username = model.UserName
+                }, "login");
             }
             else
             {
@@ -380,10 +387,5 @@ namespace IdentityServer4.Quickstart.UI
 
             return vm;
         }
-        
-        /*****************************************/
-        /* helper APIs for the Registration */
-        /*****************************************/
-        
     }
 }

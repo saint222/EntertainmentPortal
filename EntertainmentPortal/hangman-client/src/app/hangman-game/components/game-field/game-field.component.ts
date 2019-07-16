@@ -1,9 +1,9 @@
 import { Router } from '@angular/router';
 import { GameData } from './../../models/game-data';
 import { GameService } from './../../services/game.service';
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpResponseBase } from '@angular/common/http';
-import { OAuthService } from 'angular-oauth2-oidc';
+
 
 @Component({
   selector: 'app-game-field',
@@ -17,7 +17,10 @@ export class GameFieldComponent implements OnInit {
   tmpGameData: GameData = null;
   endGameStatus: string = null;
 
-  constructor(private gameService: GameService, private router: Router, private authService: OAuthService) { }
+  userName: string = this.getValueFromIdToken('name');
+  userEmail: string = this.getValueFromIdToken('email');
+
+  constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit() {
     this.startNewGame();
@@ -63,7 +66,10 @@ export class GameFieldComponent implements OnInit {
   }
 
   getValueFromIdToken(claim: string) {
-    const jwt = this.authService.getIdToken();
+    const jwt = sessionStorage.getItem('id_token');
+    if ( jwt == null) {
+      return null;
+    }
 
     const jwtData = jwt.split('.')[1];
     const decodedJwtJsonData = window.atob(jwtData);

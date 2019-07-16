@@ -19,8 +19,4 @@ export class StartScreenComponent implements OnInit {
   startGame() {
     this.router.navigateByUrl('/gameSession');
   }
-
-  loginUser() {
-    this.gameService.loginUser();
-  }
 }

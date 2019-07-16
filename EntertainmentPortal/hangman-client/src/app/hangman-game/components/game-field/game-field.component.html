@@ -1,8 +1,10 @@
 <div *ngIf="gameFieldData">
-  <div>Hello, {{getValueFromIdToken('name')}}</div>
-  <div>You are logged in as {{getValueFromIdToken('email')}}</div>
+  <div *ngIf="userName != null">Hello, {{userName}}!</div>
+  <div *ngIf="userEmail != null">You are logged in as {{userEmail}}</div>
+
   <IMG src="assets/img/Hangman-{{gameFieldData.userErrors}}.png">
-  <div>Id: {{gameFieldData.id}} </div>
+
+    <div>Id: {{gameFieldData.id}} </div>
   <div>
     <span *ngFor="let item of gameFieldData.correctLetters">
       <button class="btn btn-primary" disabled=true>{{item}}</button>
