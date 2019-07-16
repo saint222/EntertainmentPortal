@@ -16,7 +16,12 @@ using NSwag.Annotations;
 
 namespace EP.TicTacToe.Web.Controllers
 {
+    [Route("api/step")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = "Google")]
+    //[Authorize(AuthenticationSchemes = "Facebook")]
     public class StepController : ControllerBase
     {
         private readonly IMediator _mediator;

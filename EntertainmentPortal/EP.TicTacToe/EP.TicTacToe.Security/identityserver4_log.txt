@@ -1,0 +1,62 @@
+2019-07-16 17:56:18.307 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-16 17:56:18.644 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-16 17:56:18.666 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-16 17:56:18.666 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-16 17:56:18.667 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-16 17:56:18.668 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-16 17:56:18.668 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-16 17:56:21.933 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 18:13:11.017 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-16 18:13:11.222 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-16 18:13:11.241 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-16 18:13:11.241 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-16 18:13:11.242 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-16 18:13:11.242 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-16 18:13:11.242 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-16 18:13:12.556 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 18:46:05.683 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)

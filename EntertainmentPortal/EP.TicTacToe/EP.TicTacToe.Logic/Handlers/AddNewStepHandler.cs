@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.TicTacToe.Data.Context;
-using EP.TicTacToe.Data.Models;
+
 using EP.TicTacToe.Logic.Commands;
 using EP.TicTacToe.Logic.Models;
 using MediatR;
@@ -62,15 +62,15 @@ namespace EP.TicTacToe.Logic.Handlers
                 .Where(c => c.GameId == gameId)
                 .FirstOrDefaultAsync(cancellationToken);
 
-            var cel = IndexToCell(mapDb.Size, request.Index);
+            var cell = IndexToCell(mapDb.Size, request.Index);
 
             var cellDb = await _context.Cells
-                .Where(c => c.MapId == mapDb.Id).Where(x => x.X == cel.X)
-                .Where(y => y.Y == cel.Y)
+                .Where(c => c.MapId == mapDb.Id).Where(x => x.X == cell.X)
+                .Where(y => y.Y == cell.Y)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (cellDb == null)
-                return Result.Fail<StepResult>($"This Cell with X={cel.X} Y={cel.Y} " +
+                return Result.Fail<StepResult>($"This Cell with X={cell.X} Y={cell.Y} " +
                                                $"in the game with ID [{gameId}], " +
                                                $"on this map with ID [{mapDb.Id}] does not exist.");
 
