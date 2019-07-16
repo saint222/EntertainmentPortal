@@ -43,6 +43,9 @@ export class AccountService {
   getAuthorizationHeaderValue(): string {
     return `${this.user.token_type} ${this.user.access_token}`;
   }
+  getEmailnHeaderValue(): string {
+    return `${this.user.profile.email}`;
+  }
   startAuthentication(): Promise<void> {
     return this.mgr.signinRedirect();
   }

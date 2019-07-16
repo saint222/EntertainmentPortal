@@ -9,19 +9,19 @@ namespace EP._15Puzzle.Logic.Commands
         
         
         private int _tile;
-        private readonly string _sub;
-        public string Sub
+        private readonly string _email;
+        public string Email
         {
-            get { return _sub; }
+            get { return _email; }
         }
 
         public int Tile
         {
             get { return _tile; }
         }
-        public MoveTileCommand(string sub, int tile)
+        public MoveTileCommand(string email, int tile)
         {
-            _sub = sub;
+            _email = email;
             _tile = tile;
         }
     }

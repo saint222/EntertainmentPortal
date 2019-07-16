@@ -8,6 +8,7 @@ using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
+using IdentityServer4.Models;
 using JetBrains.Annotations;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -40,7 +41,7 @@ namespace EP._15Puzzle.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> Get()
         {
-            var result = await _mediator.Send(new GetDeckQuery(User.FindFirst(c => c.Type == "sub").Value));
+            var result = await _mediator.Send(new GetDeckQuery(HttpContext.Request.Headers["Email"]));
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound("Start page");
         }
 
@@ -51,7 +52,7 @@ namespace EP._15Puzzle.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> Post([FromBody] NewDeckCommand newDeckCommand)
         {
-            newDeckCommand.Sub = User.FindFirst(c => c.Type == "sub").Value;
+            newDeckCommand.Email = HttpContext.Request.Headers["Email"];
             var result = await _mediator.Send(newDeckCommand);
             if (result.IsSuccess)
             {
@@ -74,8 +75,8 @@ namespace EP._15Puzzle.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            var result = await _mediator.Send(new MoveTileCommand(User.FindFirst(c => c.Type == "sub").Value, tile));
+            
+            var result = await _mediator.Send(new MoveTileCommand(HttpContext.Request.Headers["Email"], tile));
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
 
         }

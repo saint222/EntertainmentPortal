@@ -34,7 +34,7 @@ namespace EP._15Puzzle.Logic.Handlers
                 .Include(d=>d.Deck.Tiles)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(
-                u => u.Sub == request.Sub, cancellationToken);
+                u => u.Email == request.Email, cancellationToken);
             if (user==null)
             {
                 //create user and deck
@@ -45,7 +45,6 @@ namespace EP._15Puzzle.Logic.Handlers
                     logicDeck.Unsort();
                 } while (!logicDeck.CheckWinIsPossible());
                 logicDeck.Tiles = logicDeck.Tiles.OrderBy(t => t.Pos).ToList();
-                logicDeck.User.Sub = request.Sub;
                 logicDeck.User.Email = request.Email;
                 logicDeck.User.UserName = request.UserName;
 

@@ -9,14 +9,14 @@ namespace EP._15Puzzle.Logic.Queries
 {
     public class GetDeckQuery : IRequest<Result<Deck>>
     {
-        private readonly string _sub;
-        public string Sub
+        private readonly string _email;
+        public string Email
         {
-            get { return _sub; }
+            get { return _email; }
         }
-        public GetDeckQuery(string sub)
+        public GetDeckQuery(string email)
         {
-            _sub = sub;
+            _email = email;
         }
     }
 }

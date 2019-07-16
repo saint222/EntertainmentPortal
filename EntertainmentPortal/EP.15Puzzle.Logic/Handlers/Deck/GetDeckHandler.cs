@@ -37,7 +37,7 @@ namespace EP._15Puzzle.Logic.Handlers
             {
                 var deckDb = _context.UserDbs
                     .Include(d => d.Deck.Tiles)
-                    .First(u => u.Sub==request.Sub).Deck;
+                    .First(u => u.Email==request.Email).Deck;
                 return await Task.FromResult(Result.Ok<Deck>(_mapper.Map<Deck>(deckDb)));
             }
             catch (DbException ex)

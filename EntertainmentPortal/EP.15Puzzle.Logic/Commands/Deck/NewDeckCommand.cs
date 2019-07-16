@@ -7,15 +7,8 @@ namespace EP._15Puzzle.Logic.Commands
 {
     public class NewDeckCommand : IRequest <Result<Deck>>
     {
-        private string _sub;
         private readonly string _userName;
-        private readonly string _email;
-
-        public string Sub
-        {
-            get {return _sub;}
-            set { _sub = value; }
-        }
+        private string _email;
 
         public string UserName
         {
@@ -25,11 +18,10 @@ namespace EP._15Puzzle.Logic.Commands
         public string Email
         {
             get { return _email; }
+            set { _email = value; }
         }
-        public NewDeckCommand(string sub, string userName, string email)
+        public NewDeckCommand(string userName, string email)
         {
-            _sub = sub;
-            _sub = sub;
             _userName = userName;
             _email = email;
         }

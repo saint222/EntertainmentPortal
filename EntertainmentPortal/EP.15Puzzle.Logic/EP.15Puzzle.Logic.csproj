@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\Auth\**" />
+    <Compile Remove="Handlers\Auth\**" />
+    <EmbeddedResource Remove="Commands\Auth\**" />
+    <EmbeddedResource Remove="Handlers\Auth\**" />
+    <None Remove="Commands\Auth\**" />
+    <None Remove="Handlers\Auth\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
     <PackageReference Include="CSharpFunctionalExtensions" Version="1.18.1" />
@@ -18,11 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EP.15Puzzle.Data\EP.15Puzzle.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Commands\Auth\" />
-    <Folder Include="Handlers\Auth\" />
   </ItemGroup>
 
 </Project>
