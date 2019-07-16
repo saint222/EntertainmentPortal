@@ -4,14 +4,35 @@ import { Injectable, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserData } from '../models/user-data';
 import { Router } from '@angular/router';
+import { OAuthService, AuthConfig, JwksValidationHandler } from 'angular-oauth2-oidc';
 
+export const authConfig: AuthConfig = {
+
+  // Url of the Identity Provider
+  issuer: 'http://localhost:5000',
+
+  // URL of the SPA to redirect the user to after login
+  redirectUri: window.location.origin + '/startScreen',
+
+  // The SPA's id. The SPA is registerd with this id at the auth-server
+  clientId: 'spa',
+
+  // set the scope for the permissions the client should request
+  // The first three are defined by OIDC. The 4th is a usecase-specific one
+  scope: 'openid profile hangman_api',
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private authService: OAuthService)
+  {
+    this.authService.configure(authConfig);
+    this.authService.tokenValidationHandler = new JwksValidationHandler();
+    this.authService.loadDiscoveryDocumentAndTryLogin();
+  }
 
   private url = `${environment.base_url}/api/PlayHangman`;
 
@@ -49,11 +70,11 @@ export class GameService {
   }
 
 
-  registerUser(userData: UserData) {
-    return this.http.post(`${environment.base_url}/api/cookiesauth/register`, userData);
+  registerUser() {
+    return this.http.get(`${authConfig.issuer}/registration`, {headers: {AccessControlAllowOrigin: 'true'}});
   }
 
-  loginUser(userData: UserData) {
-    return this.http.post(`${environment.base_url}/api/cookiesauth/login`, userData);
+  loginUser() {
+    return this.authService.initImplicitFlow();
   }
 }

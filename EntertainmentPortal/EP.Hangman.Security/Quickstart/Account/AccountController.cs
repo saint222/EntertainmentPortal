@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace IdentityServer4.Quickstart.UI
@@ -202,6 +203,58 @@ namespace IdentityServer4.Quickstart.UI
             return View("LoggedOut", vm);
         }
 
+        // Registration
+         
+        [HttpGet("registration")]
+        public IActionResult Registration()
+        {
+            return View(new RegisterInputModel());
+        }
+        
+        [HttpPost("registration")]
+        public async Task<IActionResult> Registration(RegisterInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByNameAsync(model.UserName);
+                if (user == null)
+                {
+                    var newUser = new ApplicationUser()
+                    {
+                        UserName = model.UserName
+                    };
+
+                    var status = await _userManager.CreateAsync(newUser, model.Password);
+                    if (status.Succeeded)
+                    {
+                        status = await _userManager.AddClaimsAsync(newUser, new Claim[]
+                        {
+                            new Claim(JwtClaimTypes.Name, model.UserName),
+                            //new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
+                            //new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                        });
+                        if (!status.Succeeded)
+                        {
+                            throw new Exception(status.Errors.First().Description);
+                        }
+                        return Ok();
+                    }
+                    else
+                    {
+                        return BadRequest(status.Errors);
+                    }
+                }
+                else
+                {
+                    return Ok();
+                }
+            }
+            else
+            {
+                return BadRequest("Invalid username or password");
+            }
+        }
+
 
 
         /*****************************************/
@@ -328,5 +381,10 @@ namespace IdentityServer4.Quickstart.UI
 
             return vm;
         }
+        
+        /*****************************************/
+        /* helper APIs for the Registration */
+        /*****************************************/
+        
     }
 }
