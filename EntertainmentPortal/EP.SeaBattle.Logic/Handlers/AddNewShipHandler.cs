@@ -11,6 +11,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace EP.SeaBattle.Logic.Handlers
 {
@@ -37,15 +38,18 @@ namespace EP.SeaBattle.Logic.Handlers
             {
                 var game = await _context.Games.FindAsync(request.GameId);
                 var player = await _context.Players.FindAsync(request.PlayerId);
-                ShipsManager shipsManager = new ShipsManager(_mapper.Map<Game>(game), _mapper.Map<Player>(player), new List<Ship>());
-                var wasAdded = shipsManager.AddShip(request.X, request.Y, request.Orientation, request.Rank);
+                //TODO Async?
+                var ships = _context.Ships.Where(w => w.Game.Id == request.GameId && w.Player.Id == request.PlayerId).Include(i => i.Cells);
+                ShipsManager shipsManager = new ShipsManager(_mapper.Map<Game>(game), _mapper.Map<Player>(player), _mapper.Map<IEnumerable<Ship>>(ships));
+                Ship ship;
+                var wasAdded = shipsManager.TryAddShip(request.X, request.Y, request.Orientation, request.Rank, out ship);
                 if (wasAdded)
                 {
-                    _context.Ships.AddRange(_mapper.Map<IEnumerable<ShipDb>>(shipsManager.Ships));
+                    _context.Ships.Add(_mapper.Map<ShipDb>(ship));
                     try
                     {
                         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                        return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
+                        return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(shipsManager.Ships));
                     }
                     catch (DbUpdateException ex)
                     {
@@ -58,13 +62,13 @@ namespace EP.SeaBattle.Logic.Handlers
                     _logger.LogInformation($"Ship was not added to the field. " +
                         $"Ship info X: {request.X} Y: {request.Y}, Orientation {request.Orientation}, Rank {request.Rank}, " +
                         $"Game: {request.GameId}, Player {request.PlayerId}");
-                    return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
+                    return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(shipsManager.Ships));
                 }
             }
             else
             {
                 _logger.LogInformation(string.Join(", ", validationResult.Errors));
-                return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
+                return Maybe<IEnumerable<Ship>>.None;
             }
         }
     }

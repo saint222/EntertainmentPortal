@@ -95,14 +95,16 @@ namespace EP.SeaBattle.Logic.Models
         /// <param name="shipOrientation">Orientation</param>
         /// <param name="rank">Rank</param>
         /// <returns></returns>
-        public bool AddShip(byte x, byte y, ShipOrientation shipOrientation, ShipRank rank)
+        public bool TryAddShip(byte x, byte y, ShipOrientation shipOrientation, ShipRank rank, out Ship _ship)
         {
             FieldManager fieldManager = new FieldManager(_ships);
             if (fieldManager.AddShip(x, y, shipOrientation, rank))
             {
                 var ship = new Ship(Game, Player, GenerateCell(x, y, shipOrientation, rank));
+                _ship = ship;
                 return AddShip(ship);
             }
+            _ship = null;
             return false;
         }
 

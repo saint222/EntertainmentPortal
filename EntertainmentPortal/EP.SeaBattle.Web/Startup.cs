@@ -31,6 +31,7 @@ namespace EP.SeaBattle.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddLogging(cfg => cfg.AddConsole().AddDebug());
             services.AddSeaBattleServices();
             services.AddMediatR(typeof(AddNewPlayerCommand).Assembly);
@@ -51,7 +52,12 @@ namespace EP.SeaBattle.Web
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger().UseSwaggerUi3();
             }
-
+            app.UseCors(builder => 
+            {
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+                builder.AllowAnyOrigin();
+            });
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
