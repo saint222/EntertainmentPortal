@@ -20,7 +20,7 @@ namespace EP.DotsBoxes.Tests
 
             Assert.IsNotNull(gameBoard);
             Assert.IsNotEmpty(gameBoard);
-            Assert.AreEqual(gameBoard.Count, rows + columns);
+            Assert.AreEqual(gameBoard.Count, rows * columns);
         }
 
         [Test]
@@ -100,7 +100,7 @@ namespace EP.DotsBoxes.Tests
             var columns = 5;
 
             game.CreateGameBoard(rows, columns);
-            var commonSide = game.AddCurrentSide(cell);
+            var commonSide = game.AddCommonSide(cell, rows, columns);
 
             Assert.IsTrue(commonSide.Row == cell.Row - 1);
             Assert.IsTrue(commonSide.Column == cell.Column);
@@ -116,7 +116,7 @@ namespace EP.DotsBoxes.Tests
             var columns = 5;
 
             game.CreateGameBoard(rows, columns);
-            var commonSide = game.AddCurrentSide(cell);
+            var commonSide = game.AddCommonSide(cell, rows, columns);
 
             Assert.IsTrue(commonSide.Row == cell.Row + 1);
             Assert.IsTrue(commonSide.Column == cell.Column);
@@ -132,7 +132,7 @@ namespace EP.DotsBoxes.Tests
             var columns = 5;
 
             game.CreateGameBoard(rows, columns);
-            var commonSide = game.AddCurrentSide(cell);
+            var commonSide = game.AddCommonSide(cell, rows, columns);
 
             Assert.IsTrue(commonSide.Row == cell.Row);
             Assert.IsTrue(commonSide.Column == cell.Column - 1);
@@ -148,7 +148,7 @@ namespace EP.DotsBoxes.Tests
             var columns = 5;
 
             game.CreateGameBoard(rows, columns);
-            var commonSide = game.AddCurrentSide(cell);
+            var commonSide = game.AddCommonSide(cell, rows, columns);
 
             Assert.IsTrue(commonSide.Row == cell.Row);
             Assert.IsTrue(commonSide.Column == cell.Column + 1);
