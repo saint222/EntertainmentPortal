@@ -23,14 +23,4 @@ export class StartScreenComponent implements OnInit {
   loginUser() {
     this.gameService.loginUser();
   }
-
-  registerUser() {
-    this.gameService.registerUser().subscribe(b => {
-      this.loginUser();
-    },
-    (err: HttpResponseBase) => {
-      console.log(err.statusText);
-      this.router.navigateByUrl('/');
-    });
-  }
 }

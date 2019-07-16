@@ -204,7 +204,6 @@ namespace IdentityServer4.Quickstart.UI
         }
 
         // Registration
-         
         [HttpGet("registration")]
         public IActionResult Registration()
         {
@@ -237,16 +236,16 @@ namespace IdentityServer4.Quickstart.UI
                         {
                             throw new Exception(status.Errors.First().Description);
                         }
-                        return Ok();
+                        return Redirect("~/account/login" + HttpContext.Request.QueryString);
                     }
                     else
                     {
-                        return BadRequest(status.Errors);
+                        return View(new RegisterInputModel());
                     }
                 }
                 else
                 {
-                    return Ok();
+                    return Redirect("~/account/login" + HttpContext.Request.QueryString);
                 }
             }
             else

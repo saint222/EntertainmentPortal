@@ -27,8 +27,7 @@ export const authConfig: AuthConfig = {
 })
 export class GameService {
 
-  constructor(private http: HttpClient, private router: Router, private authService: OAuthService)
-  {
+  constructor(private http: HttpClient, private router: Router, private authService: OAuthService) {
     this.authService.configure(authConfig);
     this.authService.tokenValidationHandler = new JwksValidationHandler();
     this.authService.loadDiscoveryDocumentAndTryLogin();
@@ -67,11 +66,6 @@ export class GameService {
   deleteGame(id: number) {
     this.checkAccessTokenExistance();
     return this.http.delete(this.url + `/${id}`, {headers: {Authorization: this.makeAccessTokenString()}});
-  }
-
-
-  registerUser() {
-    return this.http.get(`${authConfig.issuer}/registration`, {headers: {AccessControlAllowOrigin: 'true'}});
   }
 
   loginUser() {
