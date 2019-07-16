@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using EP.Sudoku.Data.Models;
 using EP.Sudoku.Logic.Models;
 using System;

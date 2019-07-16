@@ -6,10 +6,8 @@ namespace EP.Sudoku.Logic.Commands
 {
     public class CreatePlayerCommand : IRequest<Result<Player>>
     {
-        public Player player { get; set; }
-        public CreatePlayerCommand(Player player)
-        {
-            this.player = player;
-        }
+        public string NickName { get; set; }
+
+        public long IconId { get; set; }
     }
 }

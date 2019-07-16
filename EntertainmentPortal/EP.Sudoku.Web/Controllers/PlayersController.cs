@@ -72,7 +72,7 @@ namespace EP.Sudoku.Web.Controllers
         [HttpPost("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> CreatePlayer([FromBody, NotNull, /*CustomizeValidator(RuleSet = "PreValidationPlayer")]*/] CreatePlayerCommand model)
+        public async Task<IActionResult> CreatePlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationPlayer")] CreatePlayerCommand model)
         {                   
             if (!ModelState.IsValid)
             {                

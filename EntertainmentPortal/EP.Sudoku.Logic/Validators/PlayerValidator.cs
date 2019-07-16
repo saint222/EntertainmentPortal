@@ -18,7 +18,7 @@ namespace EP.Sudoku.Logic.Validators
 
             RuleSet("PreValidationPlayer", () =>
             {
-                RuleFor(x => x.player.NickName)
+                RuleFor(x => x.NickName)
                     .NotEmpty()                    
                     .WithMessage("NickName must be set up obligatory!")
                     .Length(1, 50)
@@ -35,7 +35,7 @@ namespace EP.Sudoku.Logic.Validators
         }
         private async Task<bool> CheckExistingPlayer(CreatePlayerCommand model)
         {
-            var result = await _context.Players.AnyAsync(c => c.NickName == model.player.NickName)
+            var result = await _context.Players.AnyAsync(c => c.NickName == model.NickName)
                 .ConfigureAwait(false);
             _logger.LogError("There was an attempt to create a player with the existing nickname.");
 

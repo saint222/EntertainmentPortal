@@ -54,7 +54,7 @@
             Fetches a gamesession from the Db by the unique Id.
             </summary>
         </member>
-        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.CreateSession(EP.Sudoku.Logic.Models.Session)">
+        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.CreateSession(EP.Sudoku.Logic.Commands.CreateSessionCommand)">
             <summary>
             Creates a new gamesession due to the set parametrs and saves it in the Db.
             </summary>

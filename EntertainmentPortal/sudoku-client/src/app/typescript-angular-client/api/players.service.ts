@@ -99,6 +99,8 @@ export class PlayersService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
+        console.log(model);
+
         return this.httpClient.post<Player>(`${this.basePath}/api/players`,
             model,
             {
