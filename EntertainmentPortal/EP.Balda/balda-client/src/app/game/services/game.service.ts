@@ -1,5 +1,5 @@
-import { MapComponent } from './../components/map/map.component';
-import { Playground } from './../models/playground';
+import { Player } from './../models/player';
+import { GameAndCells } from './../models/gameAndCells';
 import { Game } from './../models/game';
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -14,8 +14,6 @@ export class GameService {
 
   private gameSource = new BehaviorSubject<Game>(new Game());
   currentGame = this.gameSource.asObservable();
-  private mapSource = new BehaviorSubject<Playground>(new Playground());
-  currentMap = this.mapSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -40,13 +38,26 @@ export class GameService {
     this.gameSource.next(game);
   }
 
-  changeMapSource(playground: Playground) {
-    this.mapSource.next(playground);
-  }
-
   getMap(mapid: string) {
    const myParams = new HttpParams().set('id', mapid);
    const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
    return this.http.get<Cell[][]>('http://localhost:5001/api/map', { headers: myHeaders, params: myParams, withCredentials: true });
+  }
+
+  sendWord(gameAndCells: GameAndCells) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      withCredentials: true
+     };
+
+    return this.http.put('http://localhost:5001/api/game/word', gameAndCells, httpOptions);
+  }
+
+  getPlayer(id: string) {
+    const myParams = new HttpParams().set('id', id);
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get<Player>('http://localhost:5001/api/player', { headers: myHeaders, params: myParams, withCredentials: true });
   }
 }

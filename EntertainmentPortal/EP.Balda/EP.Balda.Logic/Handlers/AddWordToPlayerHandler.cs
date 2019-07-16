@@ -29,21 +29,21 @@ namespace EP.Balda.Logic.Handlers
         public async Task<Result<Player>> Handle(AddWordToPlayerCommand request, CancellationToken cancellationToken)
         {
             var player = await _context.Users
-                .Where(p => p.Id == request.Id)
+                .Where(p => p.Id == request.PlayerId)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (player == null)
                 return Result.Fail<Player>(
-                    $"There is no player's id {request.Id} in database");
+                    $"There is no player's id {request.PlayerId} in database");
 
             var playerGame = await _context.PlayerGames
                 .FirstOrDefaultAsync(
-                    p => (p.PlayerId == request.Id) & (p.GameId == request.GameId),
+                    p => (p.PlayerId == request.PlayerId) & (p.GameId == request.GameId),
                     cancellationToken);
 
             if (playerGame == null)
                 return Result.Fail<Player>(
-                    $"There is no relation of player's id {request.Id} with game's id {request.GameId} in database");
+                    $"There is no relation of player's id {request.PlayerId} with game's id {request.GameId} in database");
 
             var game = await _context.Games.Where(g => g.Id == request.GameId)
                 .FirstOrDefaultAsync(cancellationToken);
@@ -80,7 +80,7 @@ namespace EP.Balda.Logic.Handlers
 
             var playerWordDb = new PlayerWord
             {
-                PlayerId = request.Id,
+                PlayerId = request.PlayerId,
                 WordId = wordRu.Id,
                 GameId = request.GameId
             };

@@ -124,7 +124,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var request = new AddWordToPlayerCommand()
             {
-                Id = "1",
+                PlayerId = "1",
                 CellsIdFormWord = new List<long>() { 1, 2, 3 },
                 GameId = 1
             };
@@ -153,7 +153,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var request = new AddWordToPlayerCommand()
             {
-                Id = "1",
+                PlayerId = "1",
                 CellsIdFormWord = new List<long>() { 1, 2, 3 },
                 GameId = 1
             };
@@ -252,7 +252,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var request = new AddWordToPlayerCommand()
             {
-                Id = "1",
+                PlayerId = "1",
                 CellsIdFormWord = new List<long>() { 1, 2, 3 },
                 GameId = 1
             };

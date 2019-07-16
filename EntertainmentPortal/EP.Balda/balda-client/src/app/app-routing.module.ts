@@ -8,14 +8,10 @@ import { StartGameComponent } from './game/components/start-game/start-game.comp
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
-  {path: 'startGame', component: StartGameComponent},
-  { path: 'playground/:gameId', component: PlaygroundComponent,
-  children: [
-    { path: 'map/:mapid', component: MapComponent}
-  ]},
+  {path: 'startGame/:userId', component: StartGameComponent},
+  {path: 'playground/:userId:gameId:mapId', component: PlaygroundComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistrationComponent},
-  {path: 'playground/:gameId', component: PlaygroundComponent },
   {path: '', component: StartPageComponent}
 ];
 

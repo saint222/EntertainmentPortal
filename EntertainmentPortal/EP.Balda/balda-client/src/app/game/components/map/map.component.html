@@ -2,9 +2,16 @@
 <table class="fixed">
     <tbody>
       <tr *ngFor="let row of cells">
-        <td *ngFor="let item of row">
+        <td *ngFor="let item of row" (click)="this.selectCell(item)" [class.highlighted]="item.checked == true">
           {{ item.letter }}
         </td>
       </tr>
     </tbody>
   </table>
+  <p> {{ selectedLetters }} </p>
+  <button type="button-send" class="btn btn-primary" (click)="onSendClick()">
+      Send word
+  </button>
+  <button type="button-cancel" class="btn btn-primary" (click)="onCancelClick()">
+      Cancel
+  </button>

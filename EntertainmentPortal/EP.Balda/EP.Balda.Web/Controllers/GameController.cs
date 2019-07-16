@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using EP.Balda.Web.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -81,6 +83,44 @@ namespace EP.Balda.Web.Controllers
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
                 "Game can't be created");
+
+                return BadRequest(result.Error);
+            }
+        }
+
+        [HttpPut("api/game/word")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> AddWordAsync([FromBody] GameAndCells gameAndCells)
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                             $"Parameters: gameId = {gameAndCells.GameId}");
+
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+            if (!isAuthenticated)
+            {
+                return BadRequest("User is not authorized");
+            }
+
+            var model = new AddWordToPlayerCommand();
+            model.PlayerId = UserId;
+            model.GameId =  gameAndCells.GameId;
+            model.CellsIdFormWord = gameAndCells.CellsIdFormWord;
+
+            var result = await _mediator.Send(model);
+
+            if (result.IsSuccess)
+            {
+                _logger.LogInformation(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                    $"The word was written at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+
+                return Ok(result.Value);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                $"Id = {model.PlayerId} - Word can't be written");
 
                 return BadRequest(result.Error);
             }

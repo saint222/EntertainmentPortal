@@ -14,7 +14,7 @@ export class StartGameComponent implements OnInit {
 
   mapSize: number;
 
-  constructor(private router: Router, private gameService: GameService) {
+  constructor(private router: Router, private gameService: GameService, private route: ActivatedRoute) {
     this.mapSize = 5;
   }
 
@@ -35,8 +35,8 @@ export class StartGameComponent implements OnInit {
         .subscribe(b => {
           console.log(b),
           this.gameService.changeGameSource(b),
-          this.gameService.changeMapSource(b.map),
-          this.router.navigate(['/playground/:'], { queryParams: { id: this.game.id, mapid: this.game.mapId}});
+          this.router.navigate(['/playground/:'], { queryParams: { userId: this.route.snapshot.queryParamMap.get('userId'),
+          gameId: this.game.id, mapid: this.game.mapId}});
         },
         (err: HttpResponseBase) => console.log(err.statusText));
       }

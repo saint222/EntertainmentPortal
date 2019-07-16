@@ -26,11 +26,13 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     console.log(form.value);
-    this.authService.registerUser(form.value).subscribe(b => {
-      console.log(b),
-      this.router.navigate(['/startGame']);
+    this.authService.registerUser(form.value).subscribe(p => {
+      console.log(p),
+      this.router.navigate(['startGame/:'], { queryParams: { userId: p.id }});
     },
-    (err: HttpResponseBase) => console.log(err.statusText));
+    (err: HttpResponseBase) => {
+      console.log(err.statusText);
+    });
   }
 
 }

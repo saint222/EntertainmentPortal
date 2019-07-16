@@ -1,3 +1,4 @@
+import { Player } from './../../game/models/player';
 import { UserRegistration } from './../models/userRegistration';
 import { UserLogin } from './../models/userLogin';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -10,19 +11,26 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   registerUser(userRegistration: UserRegistration) {
-    return this.http.post('http://localhost:5001/api/register', userRegistration);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      withCredentials: true
+     };
+
+    return this.http.post<Player>('http://localhost:5001/api/simpleregister', userRegistration, httpOptions);
   }
 
   constructor(private http: HttpClient) {}
 
   login(userLogin: UserLogin) {
-    const httpOptions = {
-      // headers: new HttpHeaders({
-      //  Authorization: 'forms'
-      // }),
+     const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
       withCredentials: true
      };
 
-    return this.http.post('http://localhost:5001/api/simplelogin', userLogin, httpOptions);
+     return this.http.post<Player>('http://localhost:5001/api/simplelogin', userLogin, httpOptions);
   }
 }

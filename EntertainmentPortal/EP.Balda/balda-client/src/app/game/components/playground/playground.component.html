@@ -1,2 +1,13 @@
-<p>Game {{ id }}</p>
-<div><app-map></app-map></div>
+<div id="container">
+  <p>Game {{ id }}</p>
+<div id="left">
+  <b>Player Info:</b><br>
+  UserName: {{ player.userName }} <br>
+  First name: {{ player.firstName }} <br>
+  Last name: {{ player.lastName }} <br>
+</div>
+<div id="right"></div>
+<div id="center">
+  <app-map></app-map>
+</div>
+</div>
