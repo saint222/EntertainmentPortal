@@ -57,7 +57,7 @@ export class AccountService {
   }
 
   getUserInfo(): UserInfo {
-    let userInfo = new UserInfo(this.user.profile.name, this.user.profile.email);
+    let userInfo = new UserInfo(this.user.profile.name);
     return userInfo;
   }
 }
