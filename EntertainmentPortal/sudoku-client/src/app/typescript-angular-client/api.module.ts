@@ -22,7 +22,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { ReristeredComponent } from './components/reristered/reristered.component';
 import { PlayerFormComponent } from './components/player-form/player-form.component';
 import { RegisteredDemoComponent } from './components/registered-demo/registered-demo.component';
-import { SudokuHubService } from './api/sudoku-hub.service';
 
 @NgModule({
   declarations: [ReristeredComponent, SessionComponent, CellComponent,
@@ -50,8 +49,7 @@ import { SudokuHubService } from './api/sudoku-hub.service';
   providers: [
     AuthService,
     PlayersService,
-    SessionsService,
-    SudokuHubService
+    SessionsService
    ]
 })
 export class ApiModule {

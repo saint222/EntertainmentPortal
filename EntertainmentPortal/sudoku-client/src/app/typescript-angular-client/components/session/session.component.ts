@@ -1,11 +1,11 @@
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { Cell } from './../../model/cell';
 import { Component, OnInit } from '@angular/core';
-import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Session } from '../../model/models';
 import { SessionsService } from '../../api/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { SudokuHubService } from '../../api/sudoku-hub.service';
 
 @Component({
   selector: 'app-session',
@@ -17,8 +17,12 @@ export class SessionComponent implements OnInit {
   session?: Session;
   cells: Cell[] = [];
   cell: Cell;
+  message = '';
+  messages: string [] = [];
+  hubConnection: HubConnection;
 
-  constructor(private route: ActivatedRoute, private sessionService: SessionsService, public sudokuHub: SudokuHubService) {
+
+  constructor(private route: ActivatedRoute, private sessionService: SessionsService) {
 
     this.sessionService.UpdateSession.subscribe(s => {
       this.sessionService.sessionsGetSessionById(this.session.id).subscribe(x => {
@@ -47,9 +51,15 @@ export class SessionComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.hubConnection = new HubConnectionBuilder().withUrl('https://localhost:44332/sudoku').build();
+    this.hubConnection.on('SendMes', (msg) => {
+      this.messages.push(msg);
+    }); // 'Send' - is the method, defined in the "Clients.All.SendAsync" as an argument in SudokuHub
+    this.hubConnection.start()
+    .then(() => console.log('Connection started...'));
   }
 
-  callServer() {
-    this.sudokuHub.callServer();
+  sendMsg() {
+this.hubConnection.invoke('GetMes', this.message); // 'GetMes' - is the method, defined in SudokuHub
   }
 }

@@ -16,11 +16,10 @@ namespace EP.Sudoku.Web.Hubs
             _logger = logger;
         }
 
-        public Task CalledFromClient(string msg)
+        public Task GetMes(string message)
         {
-            //_logger.LogCritical($"Message: {msg}.");            
-            return Clients.All.SendAsync("CalledFromClient", msg);
-                //Task.CompletedTask;
+            _logger.LogCritical($"Message: {message}.");            
+            return Clients.All.SendAsync("SendMes", message);                
         }
     }
 }
