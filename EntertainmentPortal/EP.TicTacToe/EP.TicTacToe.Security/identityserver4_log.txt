@@ -60,3 +60,523 @@ Parameter name: ClientId
    at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 21:16:50.577 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-16 21:16:50.914 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-16 21:16:50.939 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-16 21:16:50.940 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-16 21:16:50.940 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-16 21:16:50.940 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-16 21:16:50.940 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-16 21:16:52.837 +03:00 [DBG] Login Url: /Account/Login
+2019-07-16 21:16:52.848 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-16 21:16:52.848 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-16 21:16:52.848 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-16 21:16:52.849 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-16 21:16:52.849 +03:00 [DBG] Error Url: /home/error
+2019-07-16 21:16:52.849 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-16 21:17:48.321 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-16 21:17:56.528 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-16 21:18:35.297 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-16 21:18:38.575 +03:00 [DBG] Augmenting SignInContext
+2019-07-16 21:18:38.586 +03:00 [DBG] Adding idp claim with value: local
+2019-07-16 21:18:38.586 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-16 21:18:38.588 +03:00 [DBG] Adding auth_time claim with value: 1563301118
+2019-07-16 21:18:38.652 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-16 21:18:38.733 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"4718e5c4-d984-4494-9e27-01baa63f6472","DisplayName":"alice","Endpoint":"UI","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOA373BL5E8:00000005","TimeStamp":"2019-07-16T18:18:38.0000000Z","ProcessId":23776,"LocalIpAddress":"127.0.0.1:40863","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-16 22:06:22.027 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-16 22:06:22.218 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-16 22:06:22.233 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-16 22:06:22.233 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-16 22:06:22.233 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-16 22:06:22.234 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-16 22:06:22.234 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-16 22:06:23.610 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 22:10:11.120 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 22:10:24.730 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 22:16:28.918 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-16 22:16:29.250 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-16 22:16:29.266 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-16 22:16:29.267 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-16 22:16:29.268 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-16 22:16:29.268 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-16 22:16:29.269 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-16 22:16:52.292 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 22:32:52.557 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-16 22:32:52.864 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-16 22:32:52.885 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-16 22:32:52.885 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-16 22:32:52.885 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-16 22:32:52.885 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-16 22:32:52.886 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-16 22:32:55.577 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 22:38:28.666 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-16 22:38:28.992 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-16 22:38:29.010 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-16 22:38:29.011 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-16 22:38:29.011 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-16 22:38:29.012 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-16 22:38:29.012 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-16 22:38:30.255 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 22:39:10.044 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-17 00:56:50.141 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 00:56:50.583 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 00:56:50.599 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 00:56:50.599 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 00:56:50.600 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 00:56:50.600 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 00:56:50.600 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 00:56:51.989 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-17 01:07:25.750 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 01:07:26.082 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 01:07:26.098 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 01:07:26.099 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 01:07:26.099 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 01:07:26.099 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 01:07:26.099 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 01:07:58.448 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-17 01:09:53.775 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-17 01:10:16.590 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-17 11:13:56.679 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 11:13:57.117 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 11:13:57.129 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 11:13:57.130 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 11:13:57.130 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 11:13:57.130 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 11:13:57.130 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 11:13:59.161 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at IdentityServer4.Hosting.FederatedSignOut.FederatedSignoutAuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme) in C:\local\identity\server4\IdentityServer4\src\Hosting\FederatedSignOut\FederatedSignoutAuthenticationHandlerProvider.cs:line 33
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-17 11:18:25.561 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 11:18:25.811 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 11:18:25.868 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 11:18:25.869 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 11:18:25.869 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 11:18:25.869 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 11:18:25.870 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 11:18:25.870 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 11:18:27.418 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 11:18:27.427 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 11:18:27.428 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 11:18:27.428 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 11:18:27.428 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 11:18:27.428 +03:00 [DBG] Error Url: /home/error
+2019-07-17 11:18:27.428 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 11:18:30.542 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-17 11:18:30.553 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-17 11:18:30.562 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-17 11:18:30.565 +03:00 [INF] Identity.Application was not authenticated. Failure message: No principal.
+2019-07-17 11:18:30.661 +03:00 [INF] Identity.Application was not authenticated. Failure message: No principal.
+2019-07-17 11:18:56.187 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 11:19:02.997 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 11:19:04.476 +03:00 [DBG] Augmenting SignInContext
+2019-07-17 11:19:04.490 +03:00 [DBG] Adding idp claim with value: local
+2019-07-17 11:19:04.491 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-17 11:19:04.491 +03:00 [DBG] Adding auth_time claim with value: 1563351544
+2019-07-17 11:19:04.564 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-17 11:19:04.655 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","DisplayName":"alice","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOAHTBSUA7L:00000004","TimeStamp":"2019-07-17T08:19:04.0000000Z","ProcessId":19956,"LocalIpAddress":"127.0.0.1:42885","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-17 12:06:59.764 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 12:06:59.971 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 12:07:00.030 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 12:07:00.043 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 12:07:00.043 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 12:07:00.043 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 12:07:00.043 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 12:07:00.044 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 12:07:01.174 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 12:07:01.182 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 12:07:01.183 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 12:07:01.183 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 12:07:01.183 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 12:07:01.183 +03:00 [DBG] Error Url: /home/error
+2019-07-17 12:07:01.183 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 12:12:16.924 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 12:12:17.465 +03:00 [FTL] Application startup exception
+System.ArgumentException: Clients must not contain duplicate ids
+   at IdentityServer4.Stores.InMemoryClientStore..ctor(IEnumerable`1 clients) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Stores\InMemory\InMemoryClientStore.cs:line 29
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitTransient(TransientCallSite transientCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitTransient(TransientCallSite transientCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.AspNetCore.Builder.IdentityServerApplicationBuilderExtensions.TestService(IServiceProvider serviceProvider, Type service, ILogger logger, String message, Boolean doThrow) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Configuration\IdentityServerApplicationBuilderExtensions.cs:line 151
+   at Microsoft.AspNetCore.Builder.IdentityServerApplicationBuilderExtensions.Validate(IApplicationBuilder app) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Configuration\IdentityServerApplicationBuilderExtensions.cs:line 62
+   at Microsoft.AspNetCore.Builder.IdentityServerApplicationBuilderExtensions.UseIdentityServer(IApplicationBuilder app, IdentityServerMiddlewareOptions options) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Configuration\IdentityServerApplicationBuilderExtensions.cs:line 30
+   at EP.TicTacToe.Security.Startup.Configure(IApplicationBuilder app) in C:\Users\Сергей\Documents\Academy\ASP.NET\IT_HTP\ReposLab\entertainment-portal\EntertainmentPortal\EP.TicTacToe\EP.TicTacToe.Security\Startup.cs:line 90
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Server.IISIntegration.IISSetupFilter.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2019-07-17 12:14:16.348 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 12:14:16.595 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 12:14:16.647 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 12:14:16.647 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 12:14:16.648 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 12:14:16.648 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 12:14:16.648 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 12:14:16.648 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 12:14:18.166 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 12:14:18.178 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 12:14:18.180 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 12:14:18.180 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 12:14:18.180 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 12:14:18.180 +03:00 [DBG] Error Url: /home/error
+2019-07-17 12:14:18.181 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 12:21:38.245 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 12:21:38.475 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 12:21:38.529 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 12:21:38.529 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 12:21:38.529 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 12:21:38.533 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 12:21:38.534 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 12:21:38.534 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 12:21:39.840 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 12:21:39.854 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 12:21:39.854 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 12:21:39.855 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 12:21:39.855 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 12:21:39.855 +03:00 [DBG] Error Url: /home/error
+2019-07-17 12:21:39.856 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 13:08:56.489 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 13:08:56.724 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 13:08:56.774 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 13:08:56.775 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 13:08:56.775 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 13:08:56.775 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 13:08:56.775 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 13:08:56.786 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 13:08:58.292 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 13:08:58.305 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 13:08:58.305 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 13:08:58.305 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 13:08:58.306 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 13:08:58.306 +03:00 [DBG] Error Url: /home/error
+2019-07-17 13:08:58.306 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 13:09:17.533 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 13:09:17.939 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-17 13:09:17.946 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-17 13:09:17.949 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-17 13:09:18.040 +03:00 [INF] {"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","DisplayName":"Alice Smith","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOAJR41ETL6:00000004","TimeStamp":"2019-07-17T10:09:17.0000000Z","ProcessId":20304,"LocalIpAddress":"127.0.0.1:30929","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-17 13:09:26.635 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 13:10:22.277 +03:00 [DBG] CORS request made for path: /registration from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 13:10:22.282 +03:00 [ERR] Request matched multiple actions resulting in ambiguity. Matching actions: EP.TicTacToe.Security.Quickstart.Account.AccountController.Registration (EP.TicTacToe.Security)
+EP.TicTacToe.Security.Quickstart.Account.RegistrationController.Register (EP.TicTacToe.Security)
+2019-07-17 13:10:22.296 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Mvc.Internal.AmbiguousActionException: Multiple actions matched. The following actions matched route data and had all constraints satisfied:
+
+EP.TicTacToe.Security.Quickstart.Account.AccountController.Registration (EP.TicTacToe.Security)
+EP.TicTacToe.Security.Quickstart.Account.RegistrationController.Register (EP.TicTacToe.Security)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionSelector.SelectBestCandidate(RouteContext context, IReadOnlyList`1 candidates)
+   at Microsoft.AspNetCore.Mvc.Internal.MvcAttributeRouteHandler.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Routing.Tree.TreeRouter.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Routing.RouteCollection.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 72
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\MtlsTokenEndpointMiddleware.cs:line 60
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-17 13:11:49.441 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-17 13:12:20.638 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 13:12:20.969 +03:00 [DBG] Augmenting SignInContext
+2019-07-17 13:12:20.976 +03:00 [DBG] Adding idp claim with value: local
+2019-07-17 13:12:20.977 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-17 13:12:20.977 +03:00 [DBG] Adding auth_time claim with value: 1563358340
+2019-07-17 13:12:21.003 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-17 13:12:21.016 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","DisplayName":"alice","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOAJR41ETL8:00000009","TimeStamp":"2019-07-17T10:12:21.0000000Z","ProcessId":20304,"LocalIpAddress":"127.0.0.1:30929","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-17 13:12:31.703 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 13:12:31.713 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-17 13:12:31.713 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-17 13:12:31.718 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-17 13:12:31.721 +03:00 [INF] {"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","DisplayName":"Alice Smith","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOAJR41ETL8:0000000C","TimeStamp":"2019-07-17T10:12:31.0000000Z","ProcessId":20304,"LocalIpAddress":"127.0.0.1:30929","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-17 13:12:47.338 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-17 13:28:06.778 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 13:28:08.386 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 13:28:08.709 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 13:28:08.710 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 13:28:08.710 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 13:28:08.711 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 13:28:08.711 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 13:28:08.712 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 13:28:17.402 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 13:28:17.486 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 13:28:17.487 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 13:28:17.487 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 13:28:17.487 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 13:28:17.488 +03:00 [DBG] Error Url: /home/error
+2019-07-17 13:28:17.488 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 13:28:26.282 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 13:29:03.112 +03:00 [DBG] CORS request made for path: /registration from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 13:44:11.457 +03:00 [DBG] Augmenting SignInContext
+2019-07-17 13:44:11.479 +03:00 [DBG] Adding idp claim with value: local
+2019-07-17 13:44:11.480 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-17 13:44:11.481 +03:00 [DBG] Adding auth_time claim with value: 1563360251
+2019-07-17 13:44:11.604 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-17 13:45:50.687 +03:00 [INF] {"Username":"alice1","Provider":null,"ProviderUserId":null,"SubjectId":"2f939de8-8186-4f23-83f3-86524c095786","DisplayName":"alice1","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOAK5SI646G:00000002","TimeStamp":"2019-07-17T10:45:50.0000000Z","ProcessId":26540,"LocalIpAddress":"127.0.0.1:12578","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-17 14:03:53.254 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 14:03:53.737 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 14:03:53.814 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 14:03:53.814 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 14:03:53.815 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 14:03:53.816 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 14:03:53.817 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 14:03:53.817 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 14:03:55.537 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 14:03:55.547 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 14:03:55.548 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 14:03:55.548 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 14:03:55.548 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 14:03:55.548 +03:00 [DBG] Error Url: /home/error
+2019-07-17 14:03:55.548 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 14:04:14.174 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 14:04:14.590 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-17 14:04:14.596 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-17 14:04:14.600 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-17 14:04:14.663 +03:00 [INF] {"SubjectId":"2f939de8-8186-4f23-83f3-86524c095786","DisplayName":"alice1","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOAKPQLR2JU:00000005","TimeStamp":"2019-07-17T11:04:14.0000000Z","ProcessId":28136,"LocalIpAddress":"127.0.0.1:32094","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-17 14:04:27.401 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 14:05:15.844 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 14:05:17.759 +03:00 [INF] {"Username":"nick","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLOAKPQLR2JU:00000009","TimeStamp":"2019-07-17T11:05:17.0000000Z","ProcessId":28136,"LocalIpAddress":"127.0.0.1:32094","RemoteIpAddress":"::1","$type":"UserLoginFailureEvent"}
+2019-07-17 14:05:56.539 +03:00 [DBG] CORS request made for path: /registration from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 14:05:58.562 +03:00 [DBG] Augmenting SignInContext
+2019-07-17 14:05:58.582 +03:00 [DBG] Adding idp claim with value: local
+2019-07-17 14:05:58.583 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-17 14:05:58.585 +03:00 [DBG] Adding auth_time claim with value: 1563361558
+2019-07-17 14:05:58.662 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-17 14:05:58.681 +03:00 [INF] {"Username":"Nick","Provider":null,"ProviderUserId":null,"SubjectId":"6676f4bd-3fb1-4df0-b466-cb330838209e","DisplayName":"Nick","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOAKPQLR2JU:0000000B","TimeStamp":"2019-07-17T11:05:58.0000000Z","ProcessId":28136,"LocalIpAddress":"127.0.0.1:32094","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-17 14:06:36.918 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 14:06:36.930 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-17 14:06:36.931 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-17 14:06:36.932 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-17 14:06:36.933 +03:00 [INF] {"SubjectId":"6676f4bd-3fb1-4df0-b466-cb330838209e","DisplayName":"Nick","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOAKPQLR2JU:0000000E","TimeStamp":"2019-07-17T11:06:36.0000000Z","ProcessId":28136,"LocalIpAddress":"127.0.0.1:32094","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-17 14:09:55.257 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 14:09:55.573 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 14:09:55.624 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 14:09:55.625 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 14:09:55.625 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 14:09:55.625 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 14:09:55.625 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 14:09:55.625 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 14:09:57.141 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 14:09:57.150 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 14:09:57.150 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 14:09:57.150 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 14:09:57.150 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 14:09:57.150 +03:00 [DBG] Error Url: /home/error
+2019-07-17 14:09:57.150 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 14:10:03.482 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 14:10:09.273 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 14:10:12.084 +03:00 [DBG] Augmenting SignInContext
+2019-07-17 14:10:12.096 +03:00 [DBG] Adding idp claim with value: local
+2019-07-17 14:10:12.097 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-17 14:10:12.099 +03:00 [DBG] Adding auth_time claim with value: 1563361812
+2019-07-17 14:10:12.164 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-17 14:10:12.241 +03:00 [INF] {"Username":"Nick","Provider":null,"ProviderUserId":null,"SubjectId":"6676f4bd-3fb1-4df0-b466-cb330838209e","DisplayName":"Nick","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOAKT6GLUS0:00000004","TimeStamp":"2019-07-17T11:10:12.0000000Z","ProcessId":28932,"LocalIpAddress":"127.0.0.1:9045","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-17 14:10:21.438 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 14:10:21.524 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-17 14:10:21.529 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-17 14:10:21.531 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-17 14:10:21.535 +03:00 [INF] {"SubjectId":"6676f4bd-3fb1-4df0-b466-cb330838209e","DisplayName":"Nick","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOAKT6GLUS0:00000007","TimeStamp":"2019-07-17T11:10:21.0000000Z","ProcessId":28932,"LocalIpAddress":"127.0.0.1:9045","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-17 14:10:29.180 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 14:11:08.117 +03:00 [DBG] CORS request made for path: /registration from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 14:11:09.692 +03:00 [DBG] Augmenting SignInContext
+2019-07-17 14:11:09.692 +03:00 [DBG] Adding idp claim with value: local
+2019-07-17 14:11:09.693 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-17 14:11:09.693 +03:00 [DBG] Adding auth_time claim with value: 1563361869
+2019-07-17 14:11:09.698 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-17 14:11:09.726 +03:00 [INF] {"Username":"John","Provider":null,"ProviderUserId":null,"SubjectId":"8792d08d-5b40-46c5-a0d7-2e534b987a81","DisplayName":"John","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOAKT6GLUS0:0000000C","TimeStamp":"2019-07-17T11:11:09.0000000Z","ProcessId":28932,"LocalIpAddress":"127.0.0.1:9045","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-17 14:11:56.018 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 14:11:56.031 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-17 14:11:56.032 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-17 14:11:56.032 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-17 14:11:56.034 +03:00 [INF] {"SubjectId":"8792d08d-5b40-46c5-a0d7-2e534b987a81","DisplayName":"John","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOAKT6GLUS0:0000000F","TimeStamp":"2019-07-17T11:11:56.0000000Z","ProcessId":28932,"LocalIpAddress":"127.0.0.1:9045","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}

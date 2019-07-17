@@ -268,3 +268,21 @@ Parameter name: ClientId
    at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 21:15:39.632 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-16 21:15:48.181 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)

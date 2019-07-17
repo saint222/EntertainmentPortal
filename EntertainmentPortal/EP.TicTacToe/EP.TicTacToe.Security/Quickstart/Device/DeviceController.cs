@@ -1,10 +1,11 @@
 // Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer4;
+using EP.TicTacToe.Security.Quickstart.Consent;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
@@ -102,7 +103,7 @@ namespace EP.TicTacToe.Security.Quickstart.Device
                     var scopes = model.ScopesConsented;
                     if (ConsentOptions.EnableOfflineAccess == false)
                     {
-                        scopes = scopes.Where(x => x != IdentityServerConstants.StandardScopes.OfflineAccess);
+                        scopes = scopes.Where(x => x != IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess);
                     }
 
                     grantedConsent = new ConsentResponse
@@ -190,7 +191,7 @@ namespace EP.TicTacToe.Security.Quickstart.Device
             {
                 vm.ResourceScopes = vm.ResourceScopes.Union(new[]
                 {
-                    GetOfflineAccessScope(vm.ScopesConsented.Contains(IdentityServerConstants.StandardScopes.OfflineAccess) || model == null)
+                    GetOfflineAccessScope(vm.ScopesConsented.Contains(IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null)
                 });
             }
 
@@ -226,7 +227,7 @@ namespace EP.TicTacToe.Security.Quickstart.Device
         {
             return new ScopeViewModel
             {
-                Name = IdentityServerConstants.StandardScopes.OfflineAccess,
+                Name = IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess,
                 DisplayName = ConsentOptions.OfflineAccessDisplayName,
                 Description = ConsentOptions.OfflineAccessDescription,
                 Emphasize = true,

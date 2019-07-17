@@ -59,15 +59,16 @@ namespace EP.TicTacToe.Security
                     AllowedScopes = { "openid", "profile", "api1" }
                 },
 
-                // SPA client using implicit flow
+                // SPA client using code flow + pkce
                 new Client
                 {
                     ClientId = "spa",
                     ClientName = "SPA Client",
                     ClientUri = "http://identityserver.io",
 
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowAccessTokensViaBrowser = true,
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
 
                     RedirectUris =
                     {
@@ -81,6 +82,48 @@ namespace EP.TicTacToe.Security
                     AllowedCorsOrigins = { "http://localhost:5002" },
 
                     AllowedScopes = { "openid", "profile", "api1" }
+                },
+
+                // SPA client using implicit flow
+                //new Client
+                //{
+                //    ClientId = "spa",
+                //    ClientName = "SPA Client",
+                //    ClientUri = "http://identityserver.io",
+
+                //    AllowedGrantTypes = GrantTypes.Implicit,
+                //    AllowAccessTokensViaBrowser = true,
+
+                //    RedirectUris =
+                //    {
+                //        "http://localhost:5002/index.html",
+                //        "http://localhost:5002/callback.html",
+                //        "http://localhost:5002/silent.html",
+                //        "http://localhost:5002/popup.html",
+                //    },
+
+                //    PostLogoutRedirectUris = {"http://localhost:5002/index.html"},
+                //    AllowedCorsOrigins = {"http://localhost:5002"},
+
+                //    AllowedScopes = {"openid", "profile", "api1"}
+                //},
+
+
+                new Client
+                {
+                    ClientId = "swagger",
+                    ClientName = "Swagger Client",
+
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowedScopes = {"tictactoe_api"},
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris =
+                    {
+                        "https://localhost:44350/swagger/oauth2-redirect.html",
+                        "http://localhost:33224/swagger/oauth2-redirect.html"
+                    },
+                    AllowedCorsOrigins = {"https://localhost:44350"}
                 }
             };
         }

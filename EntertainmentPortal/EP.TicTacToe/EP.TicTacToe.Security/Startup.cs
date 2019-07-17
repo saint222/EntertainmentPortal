@@ -30,7 +30,6 @@ namespace EP.TicTacToe.Security
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
-
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -50,16 +49,9 @@ namespace EP.TicTacToe.Security
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
-                
-//                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-//                .AddInMemoryApiResources(Config.GetApis())
-//                .AddInMemoryClients(Config.GetClients())
-
-                // in-memory, json config
-                .AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"))
-                .AddInMemoryApiResources(Configuration.GetSection("ApiResources"))
-                .AddInMemoryClients(Configuration.GetSection("clients"))
-                
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApis())
+                .AddInMemoryClients(Config.GetClients())
                 .AddAspNetIdentity<ApplicationUser>();
 
             if (Environment.IsDevelopment())
@@ -72,18 +64,13 @@ namespace EP.TicTacToe.Security
             }
 
             services.AddAuthentication()
-                .AddGoogle(opt =>
+                .AddGoogle(options =>
                 {
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
                     // set the redirect URI to http://localhost:5000/signin-google
-                    opt.ClientId = Configuration["Google:ClientId"];
-                    opt.ClientSecret = Configuration["Google:ClientSecret"];
-                })
-                .AddFacebook(opt =>
-                {
-                    opt.AppId = Configuration["Facebook:AppId"];
-                    opt.AppSecret = Configuration["Facebook:AppSecret"];
+                    options.ClientId = "copy client ID from Google here";
+                    options.ClientSecret = "copy client secret from Google here";
                 });
         }
 

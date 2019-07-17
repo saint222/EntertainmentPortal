@@ -23,6 +23,6 @@ namespace EP.TicTacToe.Security.Data
 }
 
 // ***********************************
-// * Add-Migration CreateIdentitySchema -OutputDir Migrations -Context ApplicationDbContext -Project EP.TicTacToe.Security -StartupProject EP.TicTacToe.Security
+// * Add-Migration CreateIdentitySchema -OutputDir Data/Migrations -Context ApplicationDbContext -Project EP.TicTacToe.Security -StartupProject EP.TicTacToe.Security
 // * Update-Database CreateIdentitySchema -Context ApplicationDbContext -Project EP.TicTacToe.Security -StartupProject EP.TicTacToe.Security
 // ***********************************

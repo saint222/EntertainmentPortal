@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 using EP.TicTacToe.Security.Models;
 using IdentityModel;
 using IdentityServer4.Events;
@@ -213,49 +214,46 @@ namespace EP.TicTacToe.Security.Quickstart.Account
         [HttpPost("registration")]
         public async Task<IActionResult> Registration(RegisterInputModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.FindByNameAsync(model.UserName);
-                if (user == null)
-                {
-                    var newUser = new ApplicationUser()
-                    {
-                        UserName = model.UserName
-                    };
+            if (!ModelState.IsValid) return BadRequest("Invalid username or password");
 
-                    var status = await _userManager.CreateAsync(newUser, model.Password);
-                    if (status.Succeeded)
-                    {
-                        status = await _userManager.AddClaimsAsync(newUser, new Claim[]
-                        {
-                            new Claim(JwtClaimTypes.Name, model.UserName),
-                            //new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
-                            //new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        });
-                        if (!status.Succeeded)
-                        {
-                            throw new Exception(status.Errors.First().Description);
-                        }
-                        return Redirect("~/account/login" + HttpContext.Request.QueryString);
-                    }
-                    else
-                    {
-                        return View(new RegisterInputModel());
-                    }
-                }
-                else
-                {
-                    return Redirect("~/account/login" + HttpContext.Request.QueryString);
-                }
-            }
-            else
+            var user = await _userManager.FindByNameAsync(model.UserName);
+            if (user == null)
             {
-                return BadRequest("Invalid username or password");
+                var newUser = new ApplicationUser
+                {
+                    UserName = model.UserName
+                };
+
+                var status = await _userManager.CreateAsync(newUser, model.Password);
+                if (!status.Succeeded)
+                {
+                    return View(new RegisterInputModel());
+                }
+
+                status = await _userManager.AddClaimsAsync(newUser, new Claim[]
+                {
+                    new Claim(JwtClaimTypes.Name, model.UserName),
+
+                });
+                if (!status.Succeeded)
+                {
+                    throw new Exception(status.Errors.First().Description);
+                }
             }
+
+            var returnUrlDecoded = HttpUtility.UrlDecode(
+                HttpContext.Request.QueryString.ToString().Replace("?ReturnUrl=", ""));
+
+            return await Login(new LoginInputModel
+            {
+                Password = model.Password,
+                RememberLogin = false,
+                ReturnUrl = returnUrlDecoded,
+                Username = model.UserName
+            }, "login");
+
         }
-
-
-
+        
         /*****************************************/
         /* helper APIs for the AccountController */
         /*****************************************/
@@ -269,7 +267,7 @@ namespace EP.TicTacToe.Security.Quickstart.Account
                 {
                     EnableLocalLogin = false,
                     ReturnUrl = returnUrl,
-                    Username = context?.LoginHint,
+                    Username = context.LoginHint,
                     ExternalProviders = new ExternalProvider[] { new ExternalProvider { AuthenticationScheme = context.IdP } }
                 };
             }
@@ -380,10 +378,5 @@ namespace EP.TicTacToe.Security.Quickstart.Account
 
             return vm;
         }
-
-        /*****************************************/
-        /* helper APIs for the Registration */
-        /*****************************************/
-
     }
 }
