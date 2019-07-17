@@ -18,6 +18,7 @@ export class CreateSessionComponent implements OnInit {
   constructor(private fb: FormBuilder, private sessionService: SessionsService, private router: Router, private route: ActivatedRoute) {
     this.sessionGroup = this.fb.group({
       level: ['Easy', Validators.required]
+
     });
   }
 

@@ -2,35 +2,44 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using System;
-using IdentityServer4;
-using IdentityServer4.Quickstart.UI;
+using EP.Sudoku.Security.Data;
+using EP.Sudoku.Security.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace EP.Sudoku.Security
 {
     public class Startup
     {
-        public IHostingEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
-        public Startup(IHostingEnvironment environment, IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
-            Environment = environment;
             Configuration = configuration;
+            Environment = environment;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
-            services.Configure<IISOptions>(options =>
+            services.Configure<IISOptions>(iis =>
             {
-                options.AutomaticAuthentication = false;
-                options.AuthenticationDisplayName = "Windows";
+                iis.AuthenticationDisplayName = "Windows";
+                iis.AutomaticAuthentication = false;
             });
 
             var builder = services.AddIdentityServer(options =>
@@ -40,17 +49,10 @@ namespace EP.Sudoku.Security
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
-                .AddTestUsers(TestUsers.Users);
-
-            // in-memory, code config
-            //builder.AddInMemoryIdentityResources(Config.GetIdentityResources());
-            //builder.AddInMemoryApiResources(Config.GetApis());
-            //builder.AddInMemoryClients(Config.GetClients());
-
-            // in-memory, json config
-            builder.AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"));
-            builder.AddInMemoryApiResources(Configuration.GetSection("ApiResources"));
-            builder.AddInMemoryClients(Configuration.GetSection("clients"));
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApis())
+                .AddInMemoryClients(Config.GetClients())
+                .AddAspNetIdentity<ApplicationUser>();
 
             if (Environment.IsDevelopment())
             {
@@ -64,8 +66,6 @@ namespace EP.Sudoku.Security
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
                     // set the redirect URI to http://localhost:5000/signin-google
@@ -79,10 +79,15 @@ namespace EP.Sudoku.Security
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseIdentityServer();
             app.UseStaticFiles();
+            app.UseIdentityServer();
             app.UseMvcWithDefaultRoute();
         }
     }
