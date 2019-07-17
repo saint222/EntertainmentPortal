@@ -4,14 +4,18 @@
 
   <IMG src="assets/img/Hangman-{{gameFieldData.userErrors}}.png">
 
-    <div>Id: {{gameFieldData.id}} </div>
   <div>
     <span *ngFor="let item of gameFieldData.correctLetters">
-      <button class="btn btn-primary" disabled=true>{{item}}</button>
+      <button class="btn btn-link, wordLetter" disabled=false>{{item}}</button>
     </span>
   </div>
-  <div class="alphabet">
-    <span *ngFor="let item of alphabet" >
+  <div>
+    <span *ngFor="let item of alphabetRow1" >
+      <button class="btn btn-primary" (click)= "checkLetter(item)" *ngIf="gameFieldData.alphabet.includes(item)">{{item}}</button>
+      <button class="btn btn-primary" *ngIf="!gameFieldData.alphabet.includes(item)" [disabled]=true>{{item}}</button>
+    </span>
+    <br>
+    <span *ngFor="let item of alphabetRow2" >
       <button class="btn btn-primary" (click)= "checkLetter(item)" *ngIf="gameFieldData.alphabet.includes(item)">{{item}}</button>
       <button class="btn btn-primary" *ngIf="!gameFieldData.alphabet.includes(item)" [disabled]=true>{{item}}</button>
     </span>

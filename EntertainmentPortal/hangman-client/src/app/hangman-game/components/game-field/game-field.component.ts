@@ -11,8 +11,8 @@ import { HttpResponseBase } from '@angular/common/http';
   styleUrls: ['./game-field.component.sass']
 })
 export class GameFieldComponent implements OnInit {
-  public alphabet: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-   'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  public alphabetRow1: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
+  public alphabetRow2: string[] = ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   gameFieldData: GameData = null;
   tmpGameData: GameData = null;
   endGameStatus: string = null;
