@@ -18,12 +18,14 @@
 }
 
 
-
+.text{
+    text-align: center;
+}
 #btn-chat{
   background-color: rgb(41, 97, 227);
 }
 .container{
-  margin-top: 65px;
+  margin-top: 10%;
 }
 @import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 .chat

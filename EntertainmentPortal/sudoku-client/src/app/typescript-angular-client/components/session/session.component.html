@@ -6,17 +6,17 @@
               <div class="col-xs-12 col-md-offset-2 col-md-8 col-lg-8 col-lg-offset-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                          <span class="glyphicon glyphicon-comment"></span> Suduku global chat
+                          <span class="glyphicon glyphicon-comment" style = "font-size: 12px"></span> <p class = "text" style = "font-size: 15px">Suduku global chat</p>
                       </div>
                       <div class="panel-body body-panel">
                           <ul class="chat">
-                              <span class="badge badge-primary" *ngFor = "let mes of messages">Message: {{mes}}</span>
+                              <span class="badge badge-primary" *ngFor = "let mes of messages" style = "font-size: 12px">Message: {{mes}}</span>
                           </ul>
                       </div>
                       <div class="panel-footer clearfix">
-                          <textarea id="myInput" class="form-control" rows="3" type = "text" name = "message" [(ngModel)] = "message" placeholder = "Type your message here..."></textarea>
+                          <textarea id="myInput" class="form-control" rows="3" type = "text" name = "message" [(ngModel)] = "message" placeholder = "Type your message here..." style = "font-size: 12px"></textarea>
                           <span class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-12" style="margin-top: 10px">
-                              <button class="btn btn-warning btn-lg btn-block" id="btn-chat" (click)="sendMsg()" onclick = "document.getElementById('myInput').value = ''" title = "Send a message"> Send </button>
+                              <button class="btn btn-warning btn-lg btn-block" id="btn-chat" (click)="sendMsg()" onclick = "document.getElementById('myInput').value = ''" title = "Send a message" style = "font-size: 15px"> Send </button>
                           </span>
                       </div>
                   </div>
@@ -31,15 +31,15 @@
       <a
       class="card-title"
       [routerLink]="['/registered/create-session']"
-       title = "New game">New Game
+       title = "New game" style = "font-size: 15px">New Game
     </a>
     <div *ngIf="session?.isOver">
-        <h2>Congratulations, You Won!</h2>
+        <h2 style = "font-size: 15px">Congratulations, You Won!</h2>
         <p><img src="http://i.imgur.com/B5aTato.gif"></p>
     </div>
   </div>
   <div class="sudoku" *ngIf="!session?.isOver">
-    <p>Hint: {{session?.hint}}</p>
+    <p style = "font-size: 12px">Hints: {{session?.hint}}</p>
     <div class="gridCells" *ngFor="let cell of cells">
       <app-cell [cell]="cell"></app-cell>
     </div>

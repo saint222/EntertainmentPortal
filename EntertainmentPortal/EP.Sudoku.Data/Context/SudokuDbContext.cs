@@ -24,7 +24,7 @@ namespace EP.Sudoku.Data.Context
             modelBuilder.Entity<AvatarIconDb>().HasData(
                 new AvatarIconDb[]
                 {
-                new AvatarIconDb { Id=1, Uri = "http://icons.iconarchive.com/icons/chanut/role-playing/64/Villager-icon.png", IsBaseIcon = true},
+                new AvatarIconDb { Id=1, Uri = "http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/64/blue-user-icon.png", IsBaseIcon = true},
                 new AvatarIconDb { Id=2, Uri = "http://icons.iconarchive.com/icons/chanut/role-playing/64/Elf-icon.png", IsBaseIcon = false},
                 new AvatarIconDb { Id=3, Uri = "http://icons.iconarchive.com/icons/paomedia/small-n-flat/64/cat-icon.png", IsBaseIcon = false},
                 new AvatarIconDb { Id=4, Uri = "http://icons.iconarchive.com/icons/chanut/role-playing/64/Sorceress-Witch-icon.png", IsBaseIcon = false},
