@@ -1,0 +1,28 @@
+.square {
+  width: 40px;
+  height: 40px;
+  border: 3px solid black;
+  float: left;
+  margin: 0 3px 3px 0;
+  display: table;
+
+}
+.square div {
+  display: table-cell;
+
+}
+
+.letter{
+  vertical-align: middle;
+  text-align: center;
+  font: 20pt sans-serif;
+}
+
+.user_word{
+  //text-align: center;
+  //vertical-align: 50%;
+  //font: 16pt sans-serif;
+  //height: 50px;
+  margin: 50px 50px 50px 50px;
+  display: table-row;
+}

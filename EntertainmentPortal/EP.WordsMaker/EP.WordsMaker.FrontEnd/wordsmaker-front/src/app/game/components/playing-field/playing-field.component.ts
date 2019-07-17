@@ -29,9 +29,9 @@ export class PlayingFieldComponent implements OnInit {
   CellClick(index: number) {
     log(index.toString());
     if (this.keyWordLetters[index] === '_') {
-      this.keyWordLetters[index] = this.CuttedLetters[index];
-      this.CuttedLetters[index] = null;
-      this.resultWord.pop();
+      //this.keyWordLetters[index] = this.CuttedLetters[index];
+      //this.CuttedLetters[index] = null;
+      //this.resultWord.pop();
     }
     else
     {

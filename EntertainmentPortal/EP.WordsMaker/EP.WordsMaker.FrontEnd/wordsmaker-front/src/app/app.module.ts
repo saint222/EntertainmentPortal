@@ -8,13 +8,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { GetPlayerComponent } from './game/components/get-player/get-player.component';
 import { PlayingFieldComponent } from './game/components/playing-field/playing-field.component';
+import { DashboardComponent } from './game/components/dashboard/dashboard.component';
+import { GameFieldComponent } from './game/components/game-field/game-field.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     // GetPlayerComponent,
-    PlayingFieldComponent
+    PlayingFieldComponent,
+    DashboardComponent,
+    GameFieldComponent
   ],
   imports: [
     BrowserModule,

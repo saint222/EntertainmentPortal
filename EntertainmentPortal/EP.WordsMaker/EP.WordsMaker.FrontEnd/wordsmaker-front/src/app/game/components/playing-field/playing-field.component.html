@@ -1,23 +1,23 @@
-<div>
-  <table border='1' bordercolor="green" cellspacing="10">
-    <tr>
-      <td (click)="CellClick(i)" height='40' width='30' align='center'
-        *ngFor="let letter of keyWordLetters let i = index">
-        {{letter}}
-      </td>
-    </tr>
+<div class="container">
+  <div class="row">
+      <div class="square" (click)="CellClick(i)" *ngFor="let letter of keyWordLetters let i = index">
+          <div class="letter">
+            {{letter}}
+          </div>
+        </div>
+  </div>
+  <div class="row">
+      <div class="user_word">
+          <label>
+            Введенное слово >> {{resultWord.join('')}}
+          </label>
+        </div>
+  </div>
 
-  </table>
-  <table>
-      <label float=' center'>
-          {{resultWord.join('')}}
-        </label>
-  </table>
-</div>
-<div>
-
-</div>
-<div>
-  <button (click)="ClearBtnClick()" [disabled]="CheckResultWord()">Clear</button>
-  <button (click)="SubmitBtnClick()">Submit</button>
+  <div class="row">
+    <div>
+      <button (click)="ClearBtnClick()" [disabled]="CheckResultWord()">Clear</button>
+      <button (click)="SubmitBtnClick()">Submit</button>
+    </div>
+  </div>
 </div>

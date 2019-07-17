@@ -69,8 +69,8 @@ namespace Ep.WordsMaker.Security
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
                     // set the redirect URI to http://localhost:5000/signin-google
-                    options.ClientId = "copy client ID from Google here";
-                    options.ClientSecret = "copy client secret from Google here";
+                    options.ClientId = "445562339895-20etr500bnd7bsb5e2tprm2e6a8hp1o6.apps.googleusercontent.com";
+                    options.ClientSecret = "HY52KtIcpdgdaFjKJPqvNgp5";
                 })
                 .AddFacebook(options =>
                     {
