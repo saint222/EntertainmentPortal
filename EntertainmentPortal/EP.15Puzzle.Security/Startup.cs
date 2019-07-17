@@ -2,35 +2,53 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using System;
-using IdentityServer4;
-using IdentityServer4.Quickstart.UI;
+using EP._15Puzzle.Security.Data;
+using EP._15Puzzle.Security.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
-namespace ep._15puzzle.security
+namespace EP._15Puzzle.Security
 {
     public class Startup
     {
-        public IHostingEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
-        public Startup(IHostingEnvironment environment, IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
-            Environment = environment;
             Configuration = configuration;
+            Environment = environment;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
+                {
+                    opt.User.RequireUniqueEmail = true;
+                    opt.Password.RequiredLength = 1;
+                    opt.Password.RequireNonAlphanumeric = false;
+                    opt.Password.RequireLowercase = false;
+                    opt.Password.RequireUppercase = false;
+                    opt.Password.RequireDigit = false;
+
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
-            services.Configure<IISOptions>(options =>
+            services.Configure<IISOptions>(iis =>
             {
-                options.AutomaticAuthentication = false;
-                options.AuthenticationDisplayName = "Windows";
+                iis.AuthenticationDisplayName = "Windows";
+                iis.AutomaticAuthentication = false;
             });
 
             var builder = services.AddIdentityServer(options =>
@@ -40,17 +58,10 @@ namespace ep._15puzzle.security
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
-                .AddTestUsers(TestUsers.Users);
-
-            // in-memory, code config
-            //builder.AddInMemoryIdentityResources(Config.GetIdentityResources());
-            //builder.AddInMemoryApiResources(Config.GetApis());
-            //builder.AddInMemoryClients(Config.GetClients());
-
-            // in-memory, json config
-            builder.AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"));
-            builder.AddInMemoryApiResources(Configuration.GetSection("ApiResources"));
-            builder.AddInMemoryClients(Configuration.GetSection("clients"));
+                .AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"))
+                .AddInMemoryApiResources(Configuration.GetSection("ApiResources"))
+                .AddInMemoryClients(Configuration.GetSection("clients"))
+                .AddAspNetIdentity<ApplicationUser>();
 
             if (Environment.IsDevelopment())
             {
@@ -62,18 +73,16 @@ namespace ep._15puzzle.security
             }
 
             services.AddAuthentication()
-            .AddGoogle(options =>
-            {
-                options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                options.ClientId = "734768643870-2ls26lml1ifn9kdcfoppvfmagujj8nki.apps.googleusercontent.com";
-                options.ClientSecret = "KnuFajDb0Y-xTuaoodohxSEa";
-            })
-            .AddFacebook(options =>
-            {
-                options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                options.AppId = "1257326831111548";
-                options.AppSecret = "a0a9b3ced9bed2aae3cfb0b92a8e9d30";
-            });
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "734768643870-2ls26lml1ifn9kdcfoppvfmagujj8nki.apps.googleusercontent.com";
+                    options.ClientSecret = "KnuFajDb0Y-xTuaoodohxSEa";
+                })
+                .AddFacebook(options =>
+                {
+                    options.AppId = "1257326831111548";
+                    options.AppSecret = "a0a9b3ced9bed2aae3cfb0b92a8e9d30";
+                });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -81,10 +90,15 @@ namespace ep._15puzzle.security
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseIdentityServer();
             app.UseStaticFiles();
+            app.UseIdentityServer();
             app.UseMvcWithDefaultRoute();
         }
     }

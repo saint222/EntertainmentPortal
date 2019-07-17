@@ -5,7 +5,7 @@
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
-namespace ep._15puzzle.security
+namespace EP._15Puzzle.Security
 {
     public static class Config
     {
@@ -15,7 +15,6 @@ namespace ep._15puzzle.security
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email(), 
             };
         }
 
@@ -23,7 +22,7 @@ namespace ep._15puzzle.security
         {
             return new ApiResource[]
             {
-                new ApiResource("pyatnashki_api", "My API #1")
+                new ApiResource("api1", "My API #1")
             };
         }
 
@@ -31,6 +30,18 @@ namespace ep._15puzzle.security
         {
             return new[]
             {
+                // client credentials flow client
+                new Client
+                {
+                    ClientId = "client",
+                    ClientName = "Client Credentials Client",
+
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
+
+                    AllowedScopes = { "api1" }
+                },
+
                 // MVC client using hybrid flow
                 new Client
                 {

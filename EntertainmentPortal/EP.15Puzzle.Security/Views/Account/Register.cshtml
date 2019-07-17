@@ -1,8 +1,8 @@
-﻿@model LoginViewModel
+﻿@model RegisterViewModel
 
 <div class="login-page">
     <div class="page-header">
-        <h1>Login</h1>
+        <h1>Register</h1>
     </div>
 
     <partial name="_ValidationSummary" />
@@ -14,7 +14,7 @@
             <div class="col-sm-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Local Login</h3>
+                        <h3 class="panel-title">Register</h3>
                     </div>
                     <div class="panel-body">
 
@@ -23,6 +23,10 @@
 
                             <fieldset>
                                 <div class="form-group">
+                                    <label asp-for="UserName"></label>
+                                    <input class="form-control" placeholder="Username" asp-for="UserName" autofocus>
+                                </div>
+                                <div class="form-group">
                                     <label asp-for="Email"></label>
                                     <input class="form-control" placeholder="Email" asp-for="Email" autofocus>
                                 </div>
@@ -30,23 +34,9 @@
                                     <label asp-for="Password"></label>
                                     <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
                                 </div>
-                                @if (Model.AllowRememberLogin)
-                                {
-                                    <div class="form-group login-remember">
-                                        <label asp-for="RememberLogin">
-                                            <input asp-for="RememberLogin">
-                                            <strong>Remember My Login</strong>
-                                        </label>
-                                    </div>
-                                }
-
-                                <div>
-                                    <p>The default users are alice/bob, password: Pass123$</p>
-                                </div>
-
+                                
                                 <div class="form-group">
-                                    <button class="btn btn-primary" name="button" value="login">Login</button>
-                                    <button class="btn btn-default" name="button" value="cancel">Cancel</button>
+                                    <button class="btn btn-primary" name="button" value="register">Register</button>
                                 </div>
                             </fieldset>
                         </form>
