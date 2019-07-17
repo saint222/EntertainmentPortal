@@ -10,7 +10,7 @@
             <th class="cell no_border" *ngFor="let letter of alphabet" >{{ letter }}</th>
         </thead>
         <tr *ngFor="let row of this.battleFieldService.shipField; let i = index" >
-          <td class="cell no_border">{{ i + 1 }}</td>
+          <td class="cell no_border">{{ i }}</td>
           <td *ngFor="let cell of row">
               <app-cell [status]=cell.status [x]=cell.x [y]=cell.y></app-cell>
           </td>
@@ -23,8 +23,8 @@
           <thead>
               <th class="cell no_border" *ngFor="let letter of alphabet" >{{ letter }}</th>
           </thead>
-          <tr *ngFor="let row of shootField; let i = index">
-              <td class="cell no_border">{{ i + 1 }}</td>
+          <tr *ngFor="let row of this.shootService.shotField; let i = index">
+              <td class="cell no_border">{{ i }}</td>
               <td *ngFor="let cell of row">
                 <app-cell id="cell" [status]=cell.status [x]=cell.x [y]=cell.y (click)="shoot(cell)"></app-cell>
             </td>

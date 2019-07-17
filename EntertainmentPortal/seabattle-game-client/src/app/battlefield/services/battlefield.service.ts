@@ -1,9 +1,7 @@
-import { element } from 'protractor';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cell } from 'src/app/models/cell';
-import { Observable } from 'rxjs';
 import { Ship } from 'src/app/models/ship';
 import { CellStatus } from 'src/app/models/cellStatus';
 
@@ -42,7 +40,7 @@ export class BattlefieldService {
     for (let i = 0; i < this.N; i++) {
       field[i] = [];
       for (let j = 0; j < this.N; j++) {
-          field[i][j] = new Cell(i, j, CellStatus.None);
+          field[i][j] = new Cell(j, i, CellStatus.None);
       }
     }
     return field;

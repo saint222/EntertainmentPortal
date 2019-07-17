@@ -45,7 +45,7 @@ namespace EP.SeaBattle.Logic.Handlers
                 var wasAdded = shipsManager.TryAddShip(request.X, request.Y, request.Orientation, request.Rank, out ship);
                 if (wasAdded)
                 {
-                    _context.Ships.Add(_mapper.Map<ShipDb>(ship));
+                    await _context.Ships.AddAsync(_mapper.Map<ShipDb>(ship)).ConfigureAwait(false);
                     try
                     {
                         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);

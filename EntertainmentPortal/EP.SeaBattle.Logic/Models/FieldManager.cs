@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using EP.SeaBattle.Common.Enums;
 
@@ -17,7 +18,7 @@ namespace EP.SeaBattle.Logic.Models
         /// .ctor
         /// </summary>
         /// <param name="fieldSize">Size of playing field</param>
-        public FieldManager(IEnumerable<Ship> ships)
+        public FieldManager(IEnumerable<Ship> ships, IEnumerable<Shot> shots = null)
         {
             Cells = new Cell[SIZE, SIZE];
             for (byte x = 0; x < SIZE; x++)
@@ -28,6 +29,9 @@ namespace EP.SeaBattle.Logic.Models
                 }
             }
             SetShipsOnField(ships);
+            //TODO Change tests for fieldManager
+            if (shots != null && shots.Count() > 0)
+                SetShots(shots);
         }
 
         //TODO проверить необходимость данного поля
@@ -218,6 +222,18 @@ namespace EP.SeaBattle.Logic.Models
             foreach (var cell in cells)
             {
                 Cells[cell.X, cell.Y].Status = cell.Status;
+            }
+        }
+
+        /// <summary>
+        /// Mark cell with status ShotWithOutHit
+        /// </summary>
+        /// <param name="shots"></param>
+        private void SetShots(IEnumerable<Shot> shots)
+        {
+            foreach (var shot in shots)
+            {
+                Cells[shot.X, shot.Y].Status = shot.Status;
             }
         }
     }

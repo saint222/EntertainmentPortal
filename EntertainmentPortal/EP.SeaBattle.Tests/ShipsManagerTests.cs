@@ -59,14 +59,16 @@ namespace EP.SeaBattle.Tests
         [Test]
         public void Add_Third_Ship_Rank_Three()
         {
-            var actual = shipsManager.AddShip(0, 7, ShipOrientation.Horizontal, ShipRank.Three);
+            Ship ship;
+            var actual = shipsManager.TryAddShip(0, 7, ShipOrientation.Horizontal, ShipRank.Three, out ship);
             Assert.AreEqual(false, actual, "Third ship rank 3 was added");
         }
 
         [Test]
         public void Add_Ship_Rank_Two()
         {
-            var actual = shipsManager.AddShip(0, 7, ShipOrientation.Horizontal, ShipRank.Two);
+            Ship ship;
+            var actual = shipsManager.TryAddShip(0, 7, ShipOrientation.Horizontal, ShipRank.Two, out ship);
             Assert.AreEqual(true, actual, "Ship wasn't added");
         }
     }

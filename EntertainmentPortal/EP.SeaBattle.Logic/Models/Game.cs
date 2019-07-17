@@ -28,5 +28,7 @@ namespace EP.SeaBattle.Logic.Models
         /// The player who is allowed to move
         /// </summary>
         public Player PlayerAllowedToMove { get; set; }
+
+        public IEnumerable<Shot> Shots { get; set; }
     }
 }
