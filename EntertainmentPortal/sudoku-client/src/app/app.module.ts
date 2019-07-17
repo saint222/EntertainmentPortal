@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotExistsComponent } from './shared/not-exists/not-exists.component';
-
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { NotExistsComponent } from './shared/not-exists/not-exists.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ApiModule.forRoot(null)
+    ApiModule.forRoot(null),
+    OAuthModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

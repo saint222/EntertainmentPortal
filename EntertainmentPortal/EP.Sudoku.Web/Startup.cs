@@ -34,6 +34,10 @@ using Newtonsoft.Json;
 using NJsonSchema;
 using Serilog;
 using Serilog.Events;
+using NSwag;
+using NSwag.AspNetCore;
+
+
 
 namespace EP.Sudoku.Web
 {
@@ -55,22 +59,27 @@ namespace EP.Sudoku.Web
             });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+                .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.RequireHttpsMetadata = true;
-                    opt.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidIssuer = SudokuConstants.ISSUER_NAME,
-                        ValidateIssuer = true,
-                        ValidAudience = SudokuConstants.AUDIENCE_NAME,
-                        ValidateAudience = true,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SudokuConstants.SECRET)),
-                        ValidateLifetime = true,
-                        RequireExpirationTime = true,
-                        RequireSignedTokens = true
-                    };
+                    opt.Authority = "http://localhost:5000";
+                    opt.RequireHttpsMetadata = false;
                 })
+                //.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+                //{
+                //    opt.RequireHttpsMetadata = true;
+                //    opt.TokenValidationParameters = new TokenValidationParameters()
+                //    {
+                //        ValidIssuer = SudokuConstants.ISSUER_NAME,
+                //        ValidateIssuer = true,
+                //        ValidAudience = SudokuConstants.AUDIENCE_NAME,
+                //        ValidateAudience = true,
+                //        ValidateIssuerSigningKey = true,
+                //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SudokuConstants.SECRET)),
+                //        ValidateLifetime = true,
+                //        RequireExpirationTime = true,
+                //        RequireSignedTokens = true
+                //    };
+                //})
                 .AddFacebook("Facebook",
                 facebookOptions =>
                 {
@@ -92,19 +101,36 @@ namespace EP.Sudoku.Web
             services.AddAuthorization();
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
-            services.AddSwaggerDocument(conf => conf.SchemaType = SchemaType.Swagger2);
+            services.AddSwaggerDocument(cfg =>
+            {
+                //cfg.SchemaType = SchemaType.OpenApi3;
+                cfg.SchemaType = SchemaType.Swagger2;
+                cfg.AddSecurity("oauth", new[] { "sudoku_api" }, new OpenApiSecurityScheme()
+                {
+                    Flow = OpenApiOAuth2Flow.Implicit,
+                    Type = OpenApiSecuritySchemeType.OAuth2,
+                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                    Scopes = new Dictionary<string, string>()
+                    {
+                        {"sudoku_api", "Access to sudoku game api" }
+                    }
+                });
+            });
+
             services.AddSudokuServices();            
             services.AddLogging();
             services.AddMemoryCache();
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.AddSingleton<IEmailSenderService, EmailSenderService>();
-            services.AddCors(options => options.AddPolicy("CorsPolicy",
-            builder =>
-            {
-                builder.AllowAnyMethod().AllowAnyHeader()
-                       .WithOrigins("http://localhost:4200")
-                       .AllowCredentials();
-            }));
+            //services.AddCors(options => options.AddPolicy("CorsPolicy",
+            //builder =>
+            //{
+            //    builder.AllowAnyHeader()
+            //        .AllowAnyMethod()
+            //        .WithOrigins("http://localhost:4200")
+            //        .AllowCredentials();
+            //}));
+            services.AddCors();
             services.AddSignalR();
             services.AddMvc(opt =>
             {
@@ -132,11 +158,23 @@ namespace EP.Sudoku.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //app.UseCors("CorsPolicy");
+            app.UseCors(opt =>
+                opt.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .WithOrigins("http://localhost:4200")
+                    .AllowCredentials());
+
             app.UseAuthentication();
-            app.UseCors("CorsPolicy");
+
+            app.UseOpenApi().UseSwaggerUi3(opt => opt.OAuth2Client = new OAuth2ClientSettings()
+            {
+                AppName = "Sudoku game",
+                ClientId = "swagger"
+            });
+
             mediator.Send(new CreateDatabaseCommand()).Wait();
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
             app.UseSignalR(cfg =>
             {
                 cfg.MapHub<SudokuHub>("/sudoku");

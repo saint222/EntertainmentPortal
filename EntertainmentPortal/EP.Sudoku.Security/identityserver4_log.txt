@@ -1,0 +1,531 @@
+2019-07-17 17:40:56.979 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 17:40:57.094 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 17:40:57.163 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 17:40:57.163 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 17:40:57.163 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 17:40:57.164 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 17:40:57.164 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 17:40:57.164 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 17:40:58.807 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 17:40:58.809 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 17:40:58.809 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 17:40:58.809 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 17:40:58.809 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 17:40:58.809 +03:00 [DBG] Error Url: /home/error
+2019-07-17 17:40:58.810 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 17:41:03.500 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 17:41:17.660 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 17:41:18.849 +03:00 [DBG] Augmenting SignInContext
+2019-07-17 17:41:18.851 +03:00 [DBG] Adding idp claim with value: local
+2019-07-17 17:41:18.851 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-17 17:41:18.851 +03:00 [DBG] Adding auth_time claim with value: 1563374478
+2019-07-17 17:41:18.875 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-17 17:41:18.930 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"096fbb74-a03b-4daa-981a-3a65fff72934","DisplayName":"alice","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOAOJ3VD7E8:00000002","TimeStamp":"2019-07-17T14:41:18.0000000Z","ProcessId":15052,"LocalIpAddress":"127.0.0.1:4398","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-17 17:41:23.428 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 17:41:23.445 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-17 17:41:23.446 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-17 17:41:23.446 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-17 17:41:23.447 +03:00 [INF] {"SubjectId":"096fbb74-a03b-4daa-981a-3a65fff72934","DisplayName":"Alice Smith","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOAOJ3VD7E4:00000004","TimeStamp":"2019-07-17T14:41:23.0000000Z","ProcessId":15052,"LocalIpAddress":"127.0.0.1:4398","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-17 17:49:22.883 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 17:49:22.929 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 17:49:22.939 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 17:49:22.939 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 17:49:22.939 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 17:49:22.939 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 17:49:22.939 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 17:49:22.940 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 17:49:23.566 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 17:49:23.569 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 17:49:23.569 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 17:49:23.569 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 17:49:23.569 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 17:49:23.569 +03:00 [DBG] Error Url: /home/error
+2019-07-17 17:49:23.569 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 17:49:50.494 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 17:49:50.548 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 17:49:50.560 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 17:49:50.560 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 17:49:50.560 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 17:49:50.560 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 17:49:50.560 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 17:49:50.560 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 17:49:51.132 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 17:49:51.134 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 17:49:51.134 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 17:49:51.134 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 17:49:51.134 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 17:49:51.134 +03:00 [DBG] Error Url: /home/error
+2019-07-17 17:49:51.134 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 17:50:06.710 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 17:50:06.753 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 17:50:06.763 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 17:50:06.763 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 17:50:06.763 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 17:50:06.763 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 17:50:06.763 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 17:50:06.763 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 17:50:07.143 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 17:50:07.145 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 17:50:07.145 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 17:50:07.145 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 17:50:07.145 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 17:50:07.145 +03:00 [DBG] Error Url: /home/error
+2019-07-17 17:50:07.145 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 19:47:58.419 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 19:47:58.471 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 19:47:58.472 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 19:47:58.472 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 19:47:58.586 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 19:47:58.586 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 19:47:58.602 +03:00 [DBG] Start discovery request
+2019-07-17 19:49:54.097 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 19:49:54.097 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 19:49:54.097 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 19:49:54.097 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 19:49:54.098 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 19:49:54.098 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 19:49:54.098 +03:00 [DBG] Start discovery request
+2019-07-17 19:50:04.257 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 19:50:04.257 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 19:50:04.257 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 19:50:04.257 +03:00 [DBG] Start discovery request
+2019-07-17 19:52:47.792 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 19:52:47.859 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 19:52:47.876 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 19:52:47.876 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 19:52:47.877 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 19:52:47.877 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 19:52:47.877 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 19:52:47.877 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 19:52:48.314 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 19:52:48.316 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 19:52:48.317 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 19:52:48.317 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 19:52:48.317 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 19:52:48.317 +03:00 [DBG] Error Url: /home/error
+2019-07-17 19:52:48.317 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 19:52:53.255 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 19:52:53.294 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 19:52:53.303 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 19:52:53.303 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 19:52:53.303 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 19:52:53.304 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 19:52:53.304 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 19:52:53.304 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 19:52:53.743 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 19:52:53.744 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 19:52:53.745 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 19:52:53.745 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 19:52:53.745 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 19:52:53.745 +03:00 [DBG] Error Url: /home/error
+2019-07-17 19:52:53.745 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 19:52:59.792 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 19:52:59.796 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 19:52:59.796 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 19:52:59.797 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 19:52:59.936 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 19:52:59.937 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 19:52:59.941 +03:00 [DBG] Start discovery request
+2019-07-17 19:56:52.652 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 19:56:52.652 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 19:56:52.652 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 19:56:52.652 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 19:56:52.653 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 19:56:52.653 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 19:56:52.653 +03:00 [DBG] Start discovery request
+2019-07-17 19:57:10.709 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 19:57:10.709 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 19:57:10.709 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 19:57:10.712 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 19:57:10.712 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 19:57:10.712 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 19:57:10.712 +03:00 [DBG] Start discovery request
+2019-07-17 19:58:28.993 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 19:58:28.994 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 19:58:28.994 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 19:58:28.994 +03:00 [DBG] Start discovery request
+2019-07-17 19:59:46.747 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 19:59:46.791 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 19:59:46.801 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 19:59:46.801 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 19:59:46.801 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 19:59:46.801 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 19:59:46.801 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 19:59:46.801 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 19:59:47.354 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 19:59:47.356 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 19:59:47.356 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 19:59:47.356 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 19:59:47.356 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 19:59:47.356 +03:00 [DBG] Error Url: /home/error
+2019-07-17 19:59:47.356 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 20:00:07.918 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 20:00:07.957 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 20:00:07.966 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 20:00:07.966 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 20:00:07.966 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 20:00:07.966 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 20:00:07.966 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 20:00:07.966 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 20:00:08.304 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 20:00:08.310 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 20:00:08.310 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 20:00:08.335 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 20:00:08.335 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 20:00:08.335 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 20:00:08.335 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 20:00:08.335 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 20:00:08.335 +03:00 [DBG] Error Url: /home/error
+2019-07-17 20:00:08.335 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 20:00:08.359 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 20:00:08.423 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 20:00:08.423 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 20:00:08.426 +03:00 [DBG] Start discovery request
+2019-07-17 20:02:00.366 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 20:02:00.367 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 20:02:00.367 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 20:02:00.367 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 20:02:00.368 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 20:02:00.369 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 20:02:00.369 +03:00 [DBG] Start discovery request
+2019-07-17 20:11:09.781 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 20:11:09.781 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 20:11:09.781 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 20:11:09.781 +03:00 [DBG] Start discovery request
+2019-07-17 20:21:57.909 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 20:21:57.909 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 20:21:57.917 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 20:21:57.918 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 20:21:57.919 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 20:21:57.919 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 20:21:57.919 +03:00 [DBG] Start discovery request
+2019-07-17 20:40:41.689 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 20:40:41.756 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 20:40:41.766 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 20:40:41.766 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 20:40:41.766 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 20:40:41.766 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 20:40:41.766 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 20:40:41.766 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 20:40:42.665 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 20:40:42.671 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 20:40:42.672 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 20:40:42.672 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 20:40:42.672 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 20:40:42.672 +03:00 [DBG] Error Url: /home/error
+2019-07-17 20:40:42.672 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 20:44:40.419 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 20:44:40.471 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 20:44:40.484 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 20:44:40.485 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 20:44:40.485 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 20:44:40.485 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 20:44:40.485 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 20:44:40.485 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 20:44:41.054 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 20:44:41.057 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 20:44:41.057 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 20:44:41.057 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 20:44:41.057 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 20:44:41.057 +03:00 [DBG] Error Url: /home/error
+2019-07-17 20:44:41.057 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 20:44:59.497 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 20:44:59.623 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 20:44:59.623 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 20:44:59.628 +03:00 [DBG] Start authorize request
+2019-07-17 20:44:59.638 +03:00 [DBG] No user present in authorize request
+2019-07-17 20:44:59.668 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 20:44:59.698 +03:00 [ERR] Unknown client or not enabled: client_id
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"client_id","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIwOjQ0OjU5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 20:44:59.719 +03:00 [ERR] Request validation failed
+2019-07-17 20:44:59.719 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"client_id","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIwOjQ0OjU5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 20:44:59.735 +03:00 [INF] {"ClientId":"client_id","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOARPP0BI10:00000002","TimeStamp":"2019-07-17T17:44:59.0000000Z","ProcessId":25352,"LocalIpAddress":"127.0.0.1:45390","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 20:45:07.383 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 20:45:07.389 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 20:45:07.389 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 20:45:07.393 +03:00 [DBG] Start discovery request
+2019-07-17 20:45:10.269 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 20:49:14.593 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 20:49:14.640 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 20:49:14.650 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 20:49:14.650 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 20:49:14.650 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 20:49:14.650 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 20:49:14.650 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 20:49:14.650 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 20:49:14.932 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 20:49:14.935 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 20:49:14.935 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 20:49:14.935 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 20:49:14.935 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 20:49:14.935 +03:00 [DBG] Error Url: /home/error
+2019-07-17 20:49:14.935 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 20:49:14.962 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 20:49:15.043 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 20:49:15.043 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 20:49:15.048 +03:00 [DBG] Start authorize request
+2019-07-17 20:49:15.059 +03:00 [DBG] No user present in authorize request
+2019-07-17 20:49:15.064 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 20:49:15.090 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIwOjQ5OjEzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 20:49:15.103 +03:00 [ERR] Request validation failed
+2019-07-17 20:49:15.104 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIwOjQ5OjEzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 20:49:15.113 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOARSALAEJ0:00000001","TimeStamp":"2019-07-17T17:49:15.0000000Z","ProcessId":25096,"LocalIpAddress":"127.0.0.1:16250","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 20:50:09.289 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 20:50:09.291 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 20:50:09.291 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 20:50:09.291 +03:00 [DBG] Start authorize request
+2019-07-17 20:50:09.292 +03:00 [DBG] No user present in authorize request
+2019-07-17 20:50:09.292 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 20:50:09.292 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"book_api","state":"V2VkIEp1bCAxNyAyMDE5IDIwOjUwOjA5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 20:50:09.292 +03:00 [ERR] Request validation failed
+2019-07-17 20:50:09.292 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"book_api","state":"V2VkIEp1bCAxNyAyMDE5IDIwOjUwOjA5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 20:50:09.292 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOARSALAEJ0:00000003","TimeStamp":"2019-07-17T17:50:09.0000000Z","ProcessId":25096,"LocalIpAddress":"127.0.0.1:16250","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 20:50:22.039 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 21:00:22.794 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 21:00:22.843 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 21:00:22.855 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 21:00:22.855 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 21:00:22.855 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 21:00:22.855 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 21:00:22.855 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 21:00:22.855 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 21:00:23.438 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 21:00:23.440 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 21:00:23.440 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 21:00:23.440 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 21:00:23.441 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 21:00:23.441 +03:00 [DBG] Error Url: /home/error
+2019-07-17 21:00:23.441 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 21:00:47.800 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 21:00:47.949 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 21:00:47.956 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 21:00:47.962 +03:00 [DBG] Start authorize request
+2019-07-17 21:00:47.973 +03:00 [DBG] No user present in authorize request
+2019-07-17 21:00:47.981 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 21:00:48.011 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIxOjAwOjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:00:48.034 +03:00 [ERR] Request validation failed
+2019-07-17 21:00:48.034 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIxOjAwOjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:00:48.049 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOAS2HRSQ6O:00000002","TimeStamp":"2019-07-17T18:00:48.0000000Z","ProcessId":24768,"LocalIpAddress":"127.0.0.1:9824","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 21:02:23.933 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 21:02:23.935 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 21:02:23.936 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 21:02:23.936 +03:00 [DBG] Start authorize request
+2019-07-17 21:02:23.936 +03:00 [DBG] No user present in authorize request
+2019-07-17 21:02:23.936 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 21:02:23.936 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIxOjAyOjIzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:02:23.936 +03:00 [ERR] Request validation failed
+2019-07-17 21:02:23.936 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIxOjAyOjIzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:02:23.937 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOAS2HRSQ6Q:00000001","TimeStamp":"2019-07-17T18:02:23.0000000Z","ProcessId":24768,"LocalIpAddress":"127.0.0.1:9824","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 21:20:03.701 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 21:20:03.750 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 21:20:03.760 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 21:20:03.761 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 21:20:03.761 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 21:20:03.761 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 21:20:03.761 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 21:20:03.761 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 21:20:04.353 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 21:20:04.356 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 21:20:04.356 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 21:20:04.356 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 21:20:04.356 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 21:20:04.356 +03:00 [DBG] Error Url: /home/error
+2019-07-17 21:20:04.356 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 21:20:09.392 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-17 21:20:34.350 +03:00 [DBG] CORS request made for path: /registration from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 21:20:35.674 +03:00 [DBG] Augmenting SignInContext
+2019-07-17 21:20:35.676 +03:00 [DBG] Adding idp claim with value: local
+2019-07-17 21:20:35.676 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-17 21:20:35.676 +03:00 [DBG] Adding auth_time claim with value: 1563387635
+2019-07-17 21:20:35.691 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-17 21:20:35.715 +03:00 [INF] {"Username":"Alex","Provider":null,"ProviderUserId":null,"SubjectId":"0b04440e-4660-4d66-9ac9-0faf71c0e344","DisplayName":"Alex","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOASDHPTKIK:00000005","TimeStamp":"2019-07-17T18:20:35.0000000Z","ProcessId":21148,"LocalIpAddress":"127.0.0.1:41083","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-17 21:20:49.958 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-17 21:20:49.981 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-17 21:20:49.982 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-17 21:20:49.983 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-17 21:20:49.984 +03:00 [INF] {"SubjectId":"0b04440e-4660-4d66-9ac9-0faf71c0e344","DisplayName":"Alex","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOASDHPTKIJ:00000006","TimeStamp":"2019-07-17T18:20:49.0000000Z","ProcessId":21148,"LocalIpAddress":"127.0.0.1:41083","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-17 21:35:18.871 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 21:35:18.881 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 21:35:18.883 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 21:35:18.887 +03:00 [DBG] Start authorize request
+2019-07-17 21:35:18.892 +03:00 [DBG] No user present in authorize request
+2019-07-17 21:35:18.901 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 21:35:18.924 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-17 21:35:18.946 +03:00 [ERR] Invalid redirect_uri: http://localhost:4200/home
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":null,"AllowedRedirectUris":["http://localhost:5002/index.html","http://localhost:5002/callback.html","http://localhost:5002/silent.html","http://localhost:5002/popup.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"id_token token","client_id":"spa","state":"bsK15VGOtPnzxgIOFy5b5ZhzEWZC43lg3f1e5rP3","redirect_uri":"http://localhost:4200/home","scope":"openid profile sudoku_api","nonce":"bsK15VGOtPnzxgIOFy5b5ZhzEWZC43lg3f1e5rP3"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:35:18.952 +03:00 [ERR] Request validation failed
+2019-07-17 21:35:18.952 +03:00 [INF] {"ClientId":"spa","ClientName":"SPA Client","RedirectUri":null,"AllowedRedirectUris":["http://localhost:5002/index.html","http://localhost:5002/callback.html","http://localhost:5002/silent.html","http://localhost:5002/popup.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"id_token token","client_id":"spa","state":"bsK15VGOtPnzxgIOFy5b5ZhzEWZC43lg3f1e5rP3","redirect_uri":"http://localhost:4200/home","scope":"openid profile sudoku_api","nonce":"bsK15VGOtPnzxgIOFy5b5ZhzEWZC43lg3f1e5rP3"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:35:18.954 +03:00 [INF] {"ClientId":"spa","ClientName":"SPA Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOASDHPTKIM:00000001","TimeStamp":"2019-07-17T18:35:18.0000000Z","ProcessId":21148,"LocalIpAddress":"127.0.0.1:41083","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 21:35:29.794 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 21:35:29.794 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 21:35:29.795 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 21:35:29.795 +03:00 [DBG] Start authorize request
+2019-07-17 21:35:29.795 +03:00 [DBG] No user present in authorize request
+2019-07-17 21:35:29.795 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 21:35:29.795 +03:00 [DBG] client configuration validation for client spa succeeded.
+2019-07-17 21:35:29.795 +03:00 [ERR] Invalid redirect_uri: http://localhost:4200/home
+{"ClientId":"spa","ClientName":"SPA Client","RedirectUri":null,"AllowedRedirectUris":["http://localhost:5002/index.html","http://localhost:5002/callback.html","http://localhost:5002/silent.html","http://localhost:5002/popup.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"id_token token","client_id":"spa","state":"iXsoaNIG8n9zho1RWHHD5u81opP0NuQWnHslFMvz","redirect_uri":"http://localhost:4200/home","scope":"openid profile sudoku_api","nonce":"iXsoaNIG8n9zho1RWHHD5u81opP0NuQWnHslFMvz"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:35:29.795 +03:00 [ERR] Request validation failed
+2019-07-17 21:35:29.796 +03:00 [INF] {"ClientId":"spa","ClientName":"SPA Client","RedirectUri":null,"AllowedRedirectUris":["http://localhost:5002/index.html","http://localhost:5002/callback.html","http://localhost:5002/silent.html","http://localhost:5002/popup.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"id_token token","client_id":"spa","state":"iXsoaNIG8n9zho1RWHHD5u81opP0NuQWnHslFMvz","redirect_uri":"http://localhost:4200/home","scope":"openid profile sudoku_api","nonce":"iXsoaNIG8n9zho1RWHHD5u81opP0NuQWnHslFMvz"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:35:29.796 +03:00 [INF] {"ClientId":"spa","ClientName":"SPA Client","RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Invalid redirect_uri","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOASDHPTKIM:00000004","TimeStamp":"2019-07-17T18:35:29.0000000Z","ProcessId":21148,"LocalIpAddress":"127.0.0.1:41083","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 21:35:48.583 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 21:35:48.588 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 21:35:48.588 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 21:35:48.588 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 21:35:48.590 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 21:35:48.590 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 21:35:48.596 +03:00 [DBG] Start discovery request
+2019-07-17 21:36:06.155 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 21:36:06.155 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 21:36:06.156 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 21:36:06.156 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 21:36:06.156 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 21:36:06.156 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 21:36:06.156 +03:00 [DBG] Start discovery request
+2019-07-17 21:37:20.765 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 21:37:20.766 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 21:37:20.766 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 21:37:20.766 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 21:37:20.767 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 21:37:20.767 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 21:37:20.767 +03:00 [DBG] Start discovery request
+2019-07-17 21:39:15.317 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 21:39:15.364 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 21:39:15.376 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 21:39:15.376 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 21:39:15.376 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 21:39:15.376 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 21:39:15.376 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 21:39:15.377 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 21:39:15.835 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 21:39:15.837 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 21:39:15.837 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 21:39:15.837 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 21:39:15.837 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 21:39:15.837 +03:00 [DBG] Error Url: /home/error
+2019-07-17 21:39:15.838 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 21:39:33.530 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 21:39:33.685 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 21:39:33.685 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 21:39:33.689 +03:00 [DBG] Start authorize request
+2019-07-17 21:39:33.697 +03:00 [DBG] No user present in authorize request
+2019-07-17 21:39:33.704 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 21:39:33.728 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIxOjM5OjMzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:39:33.751 +03:00 [ERR] Request validation failed
+2019-07-17 21:39:33.751 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIxOjM5OjMzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:39:33.771 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOASO8UUQF1:00000002","TimeStamp":"2019-07-17T18:39:33.0000000Z","ProcessId":26060,"LocalIpAddress":"127.0.0.1:23737","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 21:39:41.071 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 21:39:41.080 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 21:39:41.080 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 21:39:41.081 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 21:39:41.087 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 21:39:41.088 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 21:39:41.092 +03:00 [DBG] Start discovery request
+2019-07-17 21:39:46.936 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 21:39:46.936 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 21:39:46.936 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 21:39:46.937 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 21:39:46.937 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 21:39:46.937 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 21:39:46.937 +03:00 [DBG] Start discovery request
+2019-07-17 21:43:24.570 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 21:43:24.611 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 21:43:24.620 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 21:43:24.620 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 21:43:24.620 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 21:43:24.620 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 21:43:24.620 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 21:43:24.620 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 21:43:24.961 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 21:43:24.969 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 21:43:24.969 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 21:43:24.997 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 21:43:24.997 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 21:43:24.997 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 21:43:24.997 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 21:43:24.997 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 21:43:24.997 +03:00 [DBG] Error Url: /home/error
+2019-07-17 21:43:24.997 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 21:43:25.020 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 21:43:25.083 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 21:43:25.083 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 21:43:25.086 +03:00 [DBG] Start discovery request
+2019-07-17 21:45:07.135 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 21:45:07.154 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 21:45:07.154 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 21:45:07.158 +03:00 [DBG] Start authorize request
+2019-07-17 21:45:07.168 +03:00 [DBG] No user present in authorize request
+2019-07-17 21:45:07.173 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 21:45:07.197 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIxOjQ1OjA3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:45:07.215 +03:00 [ERR] Request validation failed
+2019-07-17 21:45:07.215 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIxOjQ1OjA3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 21:45:07.226 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOASQJ8AOBM:00000001","TimeStamp":"2019-07-17T18:45:07.0000000Z","ProcessId":26692,"LocalIpAddress":"127.0.0.1:46478","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 22:05:50.098 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 22:05:50.138 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 22:05:50.147 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 22:05:50.147 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 22:05:50.147 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 22:05:50.147 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 22:05:50.147 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 22:05:50.147 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 22:05:50.625 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 22:05:50.627 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 22:05:50.627 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 22:05:50.627 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 22:05:50.627 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 22:05:50.627 +03:00 [DBG] Error Url: /home/error
+2019-07-17 22:05:50.627 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 22:06:04.959 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-17 22:06:05.120 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-17 22:06:05.120 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-17 22:06:05.125 +03:00 [DBG] Start authorize request
+2019-07-17 22:06:05.132 +03:00 [DBG] No user present in authorize request
+2019-07-17 22:06:05.141 +03:00 [DBG] Start authorize request protocol validation
+2019-07-17 22:06:05.171 +03:00 [ERR] Unknown client or not enabled: swagger
+{"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIyOjA2OjA0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 22:06:05.191 +03:00 [ERR] Request validation failed
+2019-07-17 22:06:05.192 +03:00 [INF] {"ClientId":null,"ClientName":null,"RedirectUri":null,"AllowedRedirectUris":null,"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44332/swagger/oauth2-redirect.html","scope":"sudoku_api","state":"V2VkIEp1bCAxNyAyMDE5IDIyOjA2OjA0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-17 22:06:05.209 +03:00 [INF] {"ClientId":"swagger","ClientName":null,"RedirectUri":null,"Endpoint":"Authorize","SubjectId":null,"Scopes":"","GrantType":null,"Error":"unauthorized_client","ErrorDescription":"Unknown client or client not enabled","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLOAT748FVA6:00000005","TimeStamp":"2019-07-17T19:06:05.0000000Z","ProcessId":27960,"LocalIpAddress":"127.0.0.1:45447","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-07-17 22:06:37.863 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 22:06:37.866 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 22:06:37.866 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 22:06:37.867 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 22:06:37.876 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 22:06:37.876 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 22:06:37.879 +03:00 [DBG] Start discovery request
+2019-07-17 22:06:39.441 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4200
+2019-07-17 22:06:39.441 +03:00 [DBG] Client list checked and origin: http://localhost:4200 is not allowed
+2019-07-17 22:06:39.442 +03:00 [WRN] CorsPolicyService did not allow origin: http://localhost:4200
+2019-07-17 22:06:39.442 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 22:06:39.442 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 22:06:39.442 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 22:06:39.442 +03:00 [DBG] Start discovery request
+2019-07-17 22:07:45.831 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 22:07:45.832 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 22:07:45.832 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 22:07:45.832 +03:00 [DBG] Start discovery request
+2019-07-17 22:18:16.271 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-17 22:18:16.317 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-17 22:18:16.326 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-17 22:18:16.326 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-17 22:18:16.326 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-17 22:18:16.327 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-17 22:18:16.327 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-17 22:18:16.327 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-17 22:18:16.903 +03:00 [DBG] Login Url: /Account/Login
+2019-07-17 22:18:16.906 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-17 22:18:16.906 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-17 22:18:16.906 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-17 22:18:16.906 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-17 22:18:16.906 +03:00 [DBG] Error Url: /home/error
+2019-07-17 22:18:16.906 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-17 22:18:22.135 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-17 22:18:22.256 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-17 22:18:22.256 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-17 22:18:22.259 +03:00 [DBG] Start discovery request
