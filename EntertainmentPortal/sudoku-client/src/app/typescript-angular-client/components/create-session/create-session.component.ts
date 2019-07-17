@@ -1,10 +1,11 @@
 import { DifficultyLevel } from './../../model/difficultyLevel';
-import { Player } from './../../model/player';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SessionsService } from './../../api/sessions.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PlayersService } from '../../api/players.service';
+
 
 @Component({
   selector: 'app-create-session',
@@ -13,12 +14,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateSessionComponent implements OnInit {
   sessionGroup: FormGroup;
-  player: Player;
 
-  constructor(private fb: FormBuilder, private sessionService: SessionsService, private router: Router, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private sessionService: SessionsService, private router: Router) {
     this.sessionGroup = this.fb.group({
       level: ['Easy', Validators.required]
-
     });
   }
 
