@@ -16,7 +16,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -200,6 +202,63 @@ namespace IdentityServer4.Quickstart.UI
             }
 
             return View("LoggedOut", vm);
+        }
+
+        // Registration
+        [HttpGet("registration")]
+        public IActionResult Registration()
+        {
+            return View(new RegisterInputModel());
+        }
+        
+        [HttpPost("registration")]
+        public async Task<IActionResult> Registration(RegisterInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByNameAsync(model.UserName);
+                if (user == null)
+                {
+                    var newUser = new ApplicationUser()
+                    {
+                        UserName = model.UserName
+                    };
+
+                    var status = await _userManager.CreateAsync(newUser, model.Password);
+                    if (!status.Succeeded)
+                    {
+                        return View(new RegisterInputModel());
+                    }
+                    else
+                    {
+                        status = await _userManager.AddClaimsAsync(newUser, new Claim[]
+                        {
+                            new Claim(JwtClaimTypes.Name, model.UserName),
+                            //new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
+                            //new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                        });
+                        if (!status.Succeeded)
+                        {
+                            throw new Exception(status.Errors.First().Description);
+                        }
+                    }
+                }
+
+                string returnUrlDecoded = HttpUtility.UrlDecode(
+                    HttpContext.Request.QueryString.ToString().Replace("?ReturnUrl=", ""));
+
+                return await Login(new LoginInputModel()
+                {
+                    Password = model.Password,
+                    RememberLogin = false,
+                    ReturnUrl = returnUrlDecoded,
+                    Username = model.UserName
+                }, "login");
+            }
+            else
+            {
+                return BadRequest("Invalid username or password");
+            }
         }
 
 

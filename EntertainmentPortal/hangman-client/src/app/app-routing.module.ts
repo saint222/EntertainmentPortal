@@ -1,6 +1,4 @@
 import { PageNotExistsComponent } from './hangman-game/components/page-not-exists/page-not-exists.component';
-import { LoginComponent } from './hangman-game/components/login/login.component';
-import { RegisterComponent } from './hangman-game/components/register/register.component';
 import { LooseGameComponent } from './hangman-game/components/loose-game/loose-game.component';
 import { WinGameComponent } from './hangman-game/components/win-game/win-game.component';
 import { GameFieldComponent } from './hangman-game/components/game-field/game-field.component';
@@ -13,8 +11,6 @@ const routes: Routes = [
   {path: 'gameSession', component: GameFieldComponent},
   {path: 'win', component: WinGameComponent},
   {path: 'loose', component: LooseGameComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
   {path: '', redirectTo: 'startScreen', pathMatch: 'full'},
   {path: '**', component: PageNotExistsComponent}
 ];
