@@ -73,9 +73,14 @@ namespace EP.Sudoku.Security
                 {
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
-                    // set the redirect URI to http://localhost:5000/signin-google
-                    options.ClientId = "copy client ID from Google here";
-                    options.ClientSecret = "copy client secret from Google here";
+                    // set the redirect URI to http://localhost:44366/signin-google
+                    options.ClientId = "274043152218-ud0e3mc8lv0lm4bdjn67kfsudv5j4p0h.apps.googleusercontent.com";
+                    options.ClientSecret = "qQMR0R_keZgQHPbhhe8Tirdq";
+                })
+                .AddFacebook(options =>
+                {
+                    options.ClientId = "692105217894763";
+                    options.ClientSecret = "82669c46d46a697d7c967d96bc2c7ceb";
                 });
         }
 

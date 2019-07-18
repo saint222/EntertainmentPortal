@@ -61,8 +61,8 @@ namespace EP.Sudoku.Web
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "http://localhost:5000";
-                    opt.RequireHttpsMetadata = false;
+                    opt.Authority = "https://localhost:44366";
+                    opt.RequireHttpsMetadata = true;
                 })
                 //.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 //{
@@ -92,9 +92,7 @@ namespace EP.Sudoku.Web
                 .AddGoogle("Google",
                 googleOptions =>
                 {
-                    googleOptions.CallbackPath = new PathString("/api/google");
-                    //facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                    //facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                    googleOptions.CallbackPath = new PathString("/api/google");                    
                     googleOptions.ClientId = "274043152218-ud0e3mc8lv0lm4bdjn67kfsudv5j4p0h.apps.googleusercontent.com";
                     googleOptions.ClientSecret = "qQMR0R_keZgQHPbhhe8Tirdq";
                 }); ;
@@ -109,7 +107,7 @@ namespace EP.Sudoku.Web
                 {
                     Flow = OpenApiOAuth2Flow.Implicit,
                     Type = OpenApiSecuritySchemeType.OAuth2,
-                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                    AuthorizationUrl = "https://localhost:44366/connect/authorize",
                     Scopes = new Dictionary<string, string>()
                     {
                         {"sudoku_api", "Access to sudoku game api" }
