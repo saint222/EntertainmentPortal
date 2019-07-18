@@ -35,7 +35,7 @@ export class StartGameComponent implements OnInit {
         .subscribe(b => {
           console.log(b),
           this.gameService.changeGameSource(b),
-          this.router.navigate(['playground/:'], { queryParams: { userId: this.route.snapshot.queryParamMap.get('userId'),
+          this.router.navigate(['/playground/:'], { queryParams: { userId: this.route.snapshot.queryParamMap.get('userId'),
           gameId: this.game.id, mapid: this.game.mapId}});
         },
         (err: HttpResponseBase) => console.log(err.statusText));
