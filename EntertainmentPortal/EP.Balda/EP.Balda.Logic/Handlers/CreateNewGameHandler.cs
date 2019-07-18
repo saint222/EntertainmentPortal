@@ -152,7 +152,7 @@ namespace EP.Balda.Logic.Handlers
 
             while (word.Length != mapDb.Size)
                 word = _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo))
-                    .FirstOrDefault().Word;
+                    .FirstOrDefault().Word.ToUpper();
 
             return word;
         }

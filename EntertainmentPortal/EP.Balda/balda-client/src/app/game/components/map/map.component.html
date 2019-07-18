@@ -15,3 +15,13 @@
   <button type="button-cancel" class="btn btn-primary" (click)="onCancelClick()">
       Cancel
   </button>
+  <div>
+<table class="alph">
+  <tbody>
+    <tr>
+      <td *ngFor="let letter of alphabet" (click)="this.selectLetter(letter)" [class.highlighted]="letter === currentLetter">
+        {{ letter }}
+      </td>
+    </tr>
+  </tbody>
+</table>

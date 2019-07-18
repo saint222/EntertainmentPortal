@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using EP.Balda.Web.Services;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -32,14 +32,14 @@ namespace EP.Balda.Web.Controllers
 
             var result = await _mediator.Send(new GetMap() { Id = id });
 
-            if(result.HasValue)
+            if (result.HasValue)
             {
                 _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameter: Id = {id}");
 
                 //return Ok(result.Value);
 
-                var cells = Do2DimArray(result.Value);
+                var cells = Helpers.Do2DimArray(result.Value);
                 return Ok(cells);
             }
             else
@@ -51,23 +51,18 @@ namespace EP.Balda.Web.Controllers
             }
         }
 
-        private Cell[,] Do2DimArray(Map map)
+        [HttpGet("api/map/alphabet")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Error")]
+        public IActionResult GetAlphabet()
         {
-            Cell[,] cells = new Cell[map.Size, map.Size];
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName}");
 
-            for (int i = 0; i < map.Size; i++)     // lines
-                for (int j = map.Size - 1; j >= 0; j--) // columns
-                {
-                    foreach (var c in map.Cells)
-                    {
-                        if(j == c.X && i == c.Y)
-                        {
-                            cells[i, j] = c;
-                        }
-                    }
-                }
+            var alphabet = Helpers.GetEnglishAlphabet();
 
-            return cells;
+            return alphabet != null ? (IActionResult)Ok(alphabet) : BadRequest();
+
         }
     }
 }
