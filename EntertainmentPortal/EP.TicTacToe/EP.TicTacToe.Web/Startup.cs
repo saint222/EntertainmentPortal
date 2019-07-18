@@ -20,6 +20,7 @@ using EP.TicTacToe.Web.Filters;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
@@ -43,7 +44,13 @@ namespace EP.TicTacToe.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            services
+                .AddAuthentication(o =>
+                {
+                    o.DefaultAuthenticateScheme =
+                        CookieAuthenticationDefaults.AuthenticationScheme;
+                    o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+                })
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme,
                     opt =>
@@ -51,45 +58,15 @@ namespace EP.TicTacToe.Web
                         opt.Authority = "http://localhost:5000";
                         opt.RequireHttpsMetadata = false;
                     })
-                //.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
-                //{
-                //    opt.RequireHttpsMetadata = false;
-                //    opt.Authority = "http://localhost:5000";
-                //    opt.Audience = "tictactoe-api";
-                //    //opt.TokenValidationParameters = new TokenValidationParameters()
-                //    //{
-
-                //    //    ValidIssuer = TicTacToeConstants.ISSUER_NAME,
-                //    //    ValidateIssuer = true,
-                //    //    ValidAudience = TicTacToeConstants.AUDIENCE_NAME,
-                //    //    ValidateAudience = true,
-                //    //    ValidateIssuerSigningKey = true,
-                //    //    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TicTacToeConstants.SECRET)),
-                //    //    ValidateLifetime = true,
-                //    //    RequireExpirationTime = true,
-                //    //    RequireSignedTokens = true
-                //    //};
-                //})
-                .AddGoogle("Google", opt =>
-                {
-                    opt.CallbackPath = new PathString("/api/google");
-                    opt.ClientId = Configuration["Google:ClientId"];
-                    opt.ClientSecret = Configuration["Google:ClientSecret"];
-                    opt.UserInformationEndpoint =
-                        "https://www.googleapis.com/oauth2/v2/userinfo";
-                })
-                .AddFacebook("Facebook", opt =>
-                {
-                    opt.CallbackPath = new PathString("/api/facebook");
-                    opt.AppId = Configuration["Facebook:AppId"];
-                    opt.AppSecret = Configuration["Facebook:AppSecret"];
-                });
+                .AddGoogle().Services
+                .Configure<GoogleOptions>(GoogleDefaults.AuthenticationScheme,
+                    Configuration.GetSection("Authentication:Google"));
 
             services.AddAuthorization(opt => opt.AddPolicy("google",
                 cfg => cfg.AddAuthenticationSchemes("Google")
                     .RequireAuthenticatedUser()));
 
-            services.AddMemoryCache();
+            //services.AddMemoryCache();
 
             services.AddSwaggerDocument(cfg =>
             {
@@ -109,8 +86,8 @@ namespace EP.TicTacToe.Web
                     });
             });
 
-            services.AddDistributedMemoryCache();
-            services.AddSession();
+            //services.AddDistributedMemoryCache();
+            //services.AddSession();
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddGameServices();
@@ -159,10 +136,10 @@ namespace EP.TicTacToe.Web
                 });
 
             mediator.Send(new CreateDatabaseCommand()).Wait();
+            app.UseOpenApi();
             app.UseSwagger().UseSwaggerUi3();
-            app.UseSession();
-            app.UseMvc(routes => routes.MapRoute("default",
-                "{controller = Game}/{action = Index}/{id?}"));
+            //app.UseSession();
+            app.UseMvcWithDefaultRoute();
 
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()

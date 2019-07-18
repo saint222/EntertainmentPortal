@@ -28,6 +28,7 @@
     {
         Continuation,
         Winning,
-        Draw
+        Draw,
+        Loss
     }
 }

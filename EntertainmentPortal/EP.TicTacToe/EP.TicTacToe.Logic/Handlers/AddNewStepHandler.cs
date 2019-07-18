@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.TicTacToe.Data.Context;
-
 using EP.TicTacToe.Logic.Commands;
 using EP.TicTacToe.Logic.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using State = EP.TicTacToe.Data.Models.State;
+
 
 namespace EP.TicTacToe.Logic.Handlers
 {
@@ -96,7 +95,7 @@ namespace EP.TicTacToe.Logic.Handlers
                     .FirstOrDefaultAsync(cancellationToken);
 
                 var status = GetStatus(mapDb.WinningChain, cellList, request.Index);
-                stepResultDb.Status = status;
+                stepResultDb.Status = (Data.Models.State) status;
 
                 //Determining the order of players for the next step
                 var gamePlayers = GetPlayers(_context, gameId);
@@ -113,7 +112,7 @@ namespace EP.TicTacToe.Logic.Handlers
                 {
                     GameId = stepResultDb.GameId,
                     NextPlayerId = stepResultDb.NextPlayerId,
-                    Status = (Models.State) status
+                    Status = status
                 };
 
                 return Result.Ok(_mapper.Map<StepResult>(stepResult));
@@ -148,11 +147,12 @@ namespace EP.TicTacToe.Logic.Handlers
         {
             var resGame = IsBingo(winChain, cellList, index);
 
-            var status = State.Continuation;
+            var status = State.Loss;
             if (resGame) status = State.Winning;
+            if (cellList.Contains(0)) status = State.Continuation;
             if (!resGame & !cellList.Contains(0)) status = State.Draw;
 
-            return (State) status;
+            return status;
         }
 
         private static (int X, int Y) IndexToCell(int det, int req)

@@ -49,8 +49,8 @@ namespace EP.TicTacToe.Security
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                .AddInMemoryApiResources(Config.GetApis())
+                .AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"))
+                .AddInMemoryApiResources(Configuration.GetSection("ApiResources"))
                 .AddInMemoryClients(Config.GetClients())
                 .AddAspNetIdentity<ApplicationUser>();
 
@@ -69,8 +69,8 @@ namespace EP.TicTacToe.Security
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
                     // set the redirect URI to http://localhost:5000/signin-google
-                    options.ClientId = "copy client ID from Google here";
-                    options.ClientSecret = "copy client secret from Google here";
+                    options.ClientId = "103590806820-6n74po90tukbucj0vsekasmu4lmmmk82.apps.googleusercontent.com";
+                    options.ClientSecret = "tMEt31_bX99XV3LZqk6uixzO";
                 });
         }
 

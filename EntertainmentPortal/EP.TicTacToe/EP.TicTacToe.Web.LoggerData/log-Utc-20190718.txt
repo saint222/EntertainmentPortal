@@ -1,0 +1,181 @@
+2019-07-18 00:00:37.386 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:04:28.904 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:04:37.465 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:04:37.492 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 00:04:37.801 +03:00 [Information] Authorization failed.
+2019-07-18 00:04:37.868 +03:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-07-18 00:04:38.128 +03:00 [Information] AuthenticationScheme: "BearerIdentityServerAuthenticationJwt" was challenged.
+2019-07-18 00:04:38.147 +03:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-07-18 00:04:38.153 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 00:04:50.872 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:05:08.511 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:05:08.565 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:05:08.827 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:05:08.831 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:05:08.839 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:05:09.020 +03:00 [Information] Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"'
+2019-07-18 00:05:09.020 +03:00 [Information] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"'
+2019-07-18 00:05:09.061 +03:00 [Information] Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"'
+2019-07-18 00:05:12.560 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:05:13.027 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 00:05:13.029 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+2019-07-18 00:26:47.943 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 00:26:47.948 +03:00 [Information] Authorization failed.
+2019-07-18 00:26:47.949 +03:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-07-18 00:26:47.955 +03:00 [Information] AuthenticationScheme: "BearerIdentityServerAuthenticationJwt" was challenged.
+2019-07-18 00:26:47.956 +03:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-07-18 00:26:47.958 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 00:41:13.507 +03:00 [Information] CORS policy execution failed.
+2019-07-18 00:41:13.853 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-18 00:41:14.218 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 00:41:14.659 +03:00 [Information] Authorization failed.
+2019-07-18 00:41:14.733 +03:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-07-18 00:41:14.918 +03:00 [Information] AuthenticationScheme: "BearerIdentityServerAuthenticationJwt" was challenged.
+2019-07-18 00:41:14.920 +03:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-07-18 00:41:14.928 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 12:23:56.639 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:24:20.262 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:24:20.304 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:24:21.504 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:40:07.159 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 12:40:09.235 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 12:40:20.421 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 12:40:21.170 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 12:41:40.222 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 12:41:43.549 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 12:41:54.164 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 12:41:54.704 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 12:50:19.522 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 12:50:23.676 +03:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The 'ClientId' option must be provided.
+Parameter name: ClientId
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-07-18 13:12:09.229 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:15:38.746 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:15:38.794 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:15:40.362 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:26:50.665 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:39:08.147 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:39:38.393 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:39:54.579 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:40:04.198 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:40:12.095 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:40:17.415 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:40:17.463 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:40:23.712 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 14:06:23.326 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 14:49:22.762 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 14:49:49.643 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 14:49:49.693 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 14:49:50.993 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 15:17:10.094 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 15:19:52.222 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 15:20:15.951 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 15:20:16.002 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 15:20:18.263 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 16:06:37.386 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 16:06:46.605 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 16:06:46.651 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 16:06:51.766 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 16:07:16.403 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 16:07:16.437 +03:00 [Information] Sending file. Request path: '"/oauth2-redirect.html"'. Physical path: '"N/A"'
+2019-07-18 16:07:43.628 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 16:07:43.666 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 16:07:45.537 +03:00 [Information] Successfully validated the token.
+2019-07-18 16:07:45.634 +03:00 [Information] Authorization was successful.
+2019-07-18 16:07:51.358 +03:00 [Information] Action: GetGameAsync Parameter: Id = 1
+2019-07-18 16:07:51.410 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-18 16:07:51.449 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 16:09:27.280 +03:00 [Information] CORS policy execution failed.
+2019-07-18 16:09:27.281 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-18 16:09:27.286 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 16:09:27.292 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 16:09:27.325 +03:00 [Information] Successfully validated the token.
+2019-07-18 16:09:27.330 +03:00 [Information] Authorization was successful.
+2019-07-18 16:09:30.284 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 18.07.2019 13:09:30 [Utc]
+2019-07-18 16:09:30.302 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-18 16:09:30.308 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 16:10:16.160 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 16:10:16.162 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-18 16:10:16.166 +03:00 [Information] Successfully validated the token.
+2019-07-18 16:10:16.167 +03:00 [Information] Authorization was successful.
+2019-07-18 16:10:16.349 +03:00 [Information] Action: GetGameAsync Parameter: Id = 2
+2019-07-18 16:10:16.356 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-18 16:10:16.362 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'

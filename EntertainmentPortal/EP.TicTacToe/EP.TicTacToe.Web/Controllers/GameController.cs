@@ -7,7 +7,7 @@ using EP.TicTacToe.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using EP.TicTacToe.Web.Filters;
-using Microsoft.AspNetCore.Authentication.Cookies;
+//using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
@@ -32,7 +32,7 @@ namespace EP.TicTacToe.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/game")]
+        [HttpGet("get")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Game not found")]
@@ -59,7 +59,7 @@ namespace EP.TicTacToe.Web.Controllers
             return NotFound();
         }
 
-        [HttpPost("api/game")]
+        [HttpPost("new")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Game can't be created")]

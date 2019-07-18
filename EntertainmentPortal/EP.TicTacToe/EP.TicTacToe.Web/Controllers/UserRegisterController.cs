@@ -14,7 +14,7 @@ namespace EP.TicTacToe.Web.Controllers
         private readonly ILogger _logger;
 
         public UserRegisterController(UserManager<IdentityUser> manager,
-                                      ILogger<UserRegisterController> logger)
+                                      ILogger logger)
         {
             _manager = manager;
             _logger = logger;

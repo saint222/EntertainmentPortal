@@ -9,23 +9,6 @@ namespace EP.TicTacToe.Security
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> GetIdentityResources()
-        {
-            return new IdentityResource[]
-            {
-                new IdentityResources.OpenId(),
-                new IdentityResources.Profile(),
-            };
-        }
-
-        public static IEnumerable<ApiResource> GetApis()
-        {
-            return new ApiResource[]
-            {
-                new ApiResource("api1", "My API #1")
-            };
-        }
-
         public static IEnumerable<Client> GetClients()
         {
             return new[]
@@ -39,7 +22,7 @@ namespace EP.TicTacToe.Security
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
 
-                    AllowedScopes = { "api1" }
+                    AllowedScopes = { "tictactoe_api" }
                 },
 
                 // MVC client using hybrid flow
@@ -56,58 +39,29 @@ namespace EP.TicTacToe.Security
                     PostLogoutRedirectUris = { "http://localhost:5001/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "api1" }
+                    AllowedScopes = { "openid", "profile", "tictactoe_api" }
                 },
 
-                // SPA client using code flow + pkce
+                // SPA client using implicit flow
                 new Client
                 {
                     ClientId = "spa",
                     ClientName = "SPA Client",
                     ClientUri = "http://identityserver.io",
 
-                    AllowedGrantTypes = GrantTypes.Code,
-                    RequirePkce = true,
-                    RequireClientSecret = false,
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowedScopes={"openid", "profile", "tictactoe_api"},
+                    AllowAccessTokensViaBrowser = true,
+                    AlwaysIncludeUserClaimsInIdToken= true,
 
                     RedirectUris =
                     {
-                        "http://localhost:5002/index.html",
-                        "http://localhost:5002/callback.html",
-                        "http://localhost:5002/silent.html",
-                        "http://localhost:5002/popup.html",
+                        "http://localhost:4200/home"
                     },
 
-                    PostLogoutRedirectUris = { "http://localhost:5002/index.html" },
-                    AllowedCorsOrigins = { "http://localhost:5002" },
-
-                    AllowedScopes = { "openid", "profile", "api1" }
+                    PostLogoutRedirectUris = {"http://localhost:44200/index.html"},
+                    AllowedCorsOrigins = {"https://localhost:44200"}
                 },
-
-                // SPA client using implicit flow
-                //new Client
-                //{
-                //    ClientId = "spa",
-                //    ClientName = "SPA Client",
-                //    ClientUri = "http://identityserver.io",
-
-                //    AllowedGrantTypes = GrantTypes.Implicit,
-                //    AllowAccessTokensViaBrowser = true,
-
-                //    RedirectUris =
-                //    {
-                //        "http://localhost:5002/index.html",
-                //        "http://localhost:5002/callback.html",
-                //        "http://localhost:5002/silent.html",
-                //        "http://localhost:5002/popup.html",
-                //    },
-
-                //    PostLogoutRedirectUris = {"http://localhost:5002/index.html"},
-                //    AllowedCorsOrigins = {"http://localhost:5002"},
-
-                //    AllowedScopes = {"openid", "profile", "api1"}
-                //},
-
 
                 new Client
                 {

@@ -34,7 +34,7 @@ namespace EP.TicTacToe.Web.Controllers
         }
 
 
-        [HttpPut("api/cell")]
+        [HttpPut("cell")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Invalid data")]
