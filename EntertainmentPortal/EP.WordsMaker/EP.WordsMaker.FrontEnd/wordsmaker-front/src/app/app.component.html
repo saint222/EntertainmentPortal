@@ -1,21 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
--->
-<body>
-
 <div class="container">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Always expand</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02"
-      aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExample02">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="get">Home</a>
         </li>
@@ -28,65 +15,63 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="game">Game</a>
         </li>
-        <li class="nav-item float-right">
-          <button type="button" class="btn btn-light">Login</button>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <p class="navbar-text">Already have an account?</p>
-        </li>
-        <li class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">HTML</a></li>
-                  <li><a href="#">CSS</a></li>
-                  <li><a href="#">JavaScript</a></li>
-                </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span></span></a>
-          <ul id="login-dp" class="dropdown-menu">
-            <li>
-              <div class="row">
-                <div class="col-md-12">
-                  Login via
-                  <div class="social-buttons">
-                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+      </ul>    
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">WordsMaker Game</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <span class="navbar-text" >
+                    Войдите
+                  </span>
+            </li>
+            <li class="dropdown">
+              <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">Login</button>
+              <ul class="dropdown-menu dropdown-menu-right" >
+                <li>
+                  <div class="row">
+                    <div class="col-md-12">
+                      Login via
+                      <div class="social-buttons">
+                        <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                        <a href="#" class="btn btn-google"><i class="fa fa-google"></i> Google</a>
+                      </div>
+                      or
+                      <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                        <div class="form-group">
+                          <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address"
+                            required>
+                        </div>
+                        <div class="form-group">
+                          <label class="sr-only" for="exampleInputPassword2">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password"
+                            required>
+                          <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> keep me logged-in
+                          </label>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="bottom text-center">
+                      New here ? <a href="#"><b>Join Us</b></a>
+                    </div>
                   </div>
-                  or
-                  <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                    <div class="form-group">
-                      <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address"
-                        required>
-                    </div>
-                    <div class="form-group">
-                      <label class="sr-only" for="exampleInputPassword2">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password"
-                        required>
-                      <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> keep me logged-in
-                      </label>
-                    </div>
-                  </form>
-                </div>
-                <div class="bottom text-center">
-                  New here ? <a href="#"><b>Join Us</b></a>
-                </div>
-              </div>
+                </li>
+              </ul>
             </li>
           </ul>
-        </li>
-      </ul>
     </div>
   </nav>
 
@@ -94,14 +79,6 @@
     <router-outlet></router-outlet>
   </main>
 </div>
-<!-- <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
-
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
-
-</body>
 <!--
  <div class="container  d-flex  flex-column " >
   <header class="masthead mb-auto">
