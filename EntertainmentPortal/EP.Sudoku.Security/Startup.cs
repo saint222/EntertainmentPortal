@@ -49,10 +49,15 @@ namespace EP.Sudoku.Security
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                .AddInMemoryApiResources(Config.GetApis())
-                .AddInMemoryClients(Config.GetClients())
+                //.AddInMemoryIdentityResources(Config.GetIdentityResources())
+                //.AddInMemoryApiResources(Config.GetApis())
+                //.AddInMemoryClients(Config.GetClients())
+
+                .AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"))
+                .AddInMemoryApiResources(Configuration.GetSection("ApiResources"))
+                .AddInMemoryClients(Configuration.GetSection("clients"))
                 .AddAspNetIdentity<ApplicationUser>();
+
 
             if (Environment.IsDevelopment())
             {

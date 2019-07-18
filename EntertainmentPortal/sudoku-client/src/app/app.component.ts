@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
 import { AuthConfig } from 'angular-oauth2-oidc';
@@ -26,15 +27,22 @@ export const authConfig: AuthConfig = {
 export class AppComponent {
   title = 'sudoku-client';
 
-  constructor(private authService: OAuthService) {
+  constructor(private authService: OAuthService, private router: Router) {
      this.authService.configure(authConfig);
      this.authService.tokenValidationHandler = new JwksValidationHandler();
      this.authService.loadDiscoveryDocumentAndTryLogin();
 
   }
 
-  Login() {
-    console.log('login');
+  login() {
     this.authService.initImplicitFlow();
   }
+
+  logout() {
+    // true - redirect user after logout
+    sessionStorage.clear();
+    this.router.navigateByUrl('/');
+
+  }
+
 }

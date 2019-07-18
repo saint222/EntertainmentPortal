@@ -62,7 +62,9 @@ namespace EP.Sudoku.Web.Controllers
             if (model == null)
             {
                 return BadRequest();
-            }            
+            }
+
+            string name = User.Identity.Name;
             var result = await _mediator.Send(model);
 
             return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
