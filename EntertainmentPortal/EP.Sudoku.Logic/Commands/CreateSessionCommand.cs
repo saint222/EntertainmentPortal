@@ -10,18 +10,12 @@ namespace EP.Sudoku.Logic.Commands
 {
     public class CreateSessionCommand : IRequest<Result<Session>>
     {
-        //public Session session { get; set; }
-        //public CreateSessionCommand(Session session)
-        //{
-        //    this.session = session;
-        //}
-
         public DifficultyLevel Level { get; set; }
 
         public int Hint { get; set; } = 3;
 
         public bool IsOver { get; set; }
 
-        public long PlayerId { get; set; }
+        public string UserId { get; set; }
     }
 }

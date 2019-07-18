@@ -12,6 +12,7 @@ using EP.Sudoku.Logic.Enums;
 using EP.Sudoku.Logic.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EP.Sudoku.Logic.Handlers
 {
@@ -19,28 +20,32 @@ namespace EP.Sudoku.Logic.Handlers
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogger<DeletePlayerHandler> _logger;
 
-        public CreateSessionHandler(SudokuDbContext context, IMapper mapper)
+        public CreateSessionHandler(SudokuDbContext context, IMapper mapper, ILogger<DeletePlayerHandler> logger)
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<Result<Session>> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
         {
             /*var sessionDb = _mapper.Map<SessionDb>(request);*/ //не работает в тестах, а так работает
+            var player = _context.Players.FirstOrDefault(x => x.UserId == request.UserId);
+            if (player == null)
+            {
+                _logger.LogError($"Player not found");
+                return Result.Fail<Session>("Player not found");
+            }
             var sessionDb = new SessionDb
             {
                 Level = (int)request.Level,
                 Hint = request.Hint,
                 IsOver = request.IsOver,
-                PlayerDbId = request.PlayerId
+                PlayerDbId = player.Id
             };
 
-            if (request.PlayerId == 0)
-            {
-                sessionDb.PlayerDbId = 1;
-            }
             RemoveSessionIfExists(sessionDb.PlayerDbId, cancellationToken);
             GenerationSudokuService sudokuService = new GenerationSudokuService();
             List<Cell> cells = sudokuService.GetSudoku((DifficultyLevel)sessionDb.Level);         

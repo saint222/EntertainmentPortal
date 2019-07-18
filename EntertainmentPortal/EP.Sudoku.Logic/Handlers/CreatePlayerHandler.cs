@@ -35,7 +35,8 @@ namespace EP.Sudoku.Logic.Handlers
 
             var playerDb = new PlayerDb()
             {
-                NickName = request.NickName
+                NickName = request.NickName,
+                UserId = request.UserId   
             };
             playerDb.IconDb = _context.Find<AvatarIconDb>(request.IconId);
             playerDb.GameSessionDb = null;

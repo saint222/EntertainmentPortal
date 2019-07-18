@@ -67,6 +67,12 @@ export class SessionsService {
 
         let headers = this.defaultHeaders;
 
+        // authentication (oauth) required
+        this.configuration.accessToken = this.getAccessToken();
+        if (this.configuration.accessToken) {
+            headers = headers.set('Authorization', 'Bearer ' + this.configuration.accessToken);
+        }
+
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
         ];
@@ -115,6 +121,12 @@ export class SessionsService {
         }
 
         let headers = this.defaultHeaders;
+
+        // authentication (oauth) required
+        this.configuration.accessToken = this.getAccessToken();
+        if (this.configuration.accessToken) {
+            headers = headers.set('Authorization', 'Bearer ' + this.configuration.accessToken);
+        }
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
@@ -165,6 +177,12 @@ export class SessionsService {
 
         let headers = this.defaultHeaders;
 
+        // authentication (oauth) required
+        this.configuration.accessToken = this.getAccessToken();
+        if (this.configuration.accessToken) {
+            headers = headers.set('Authorization', 'Bearer ' + this.configuration.accessToken);
+        }
+
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
         ];
@@ -214,6 +232,12 @@ export class SessionsService {
 
         let headers = this.defaultHeaders;
 
+        // authentication (oauth) required
+        this.configuration.accessToken = this.getAccessToken();
+        if (this.configuration.accessToken) {
+            headers = headers.set('Authorization', 'Bearer ' + this.configuration.accessToken);
+        }
+
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
         ];
@@ -254,6 +278,12 @@ export class SessionsService {
 
         let headers = this.defaultHeaders;
 
+        // authentication (oauth) required
+        this.configuration.accessToken = this.getAccessToken();
+        if (this.configuration.accessToken) {
+            headers = headers.set('Authorization', 'Bearer ' + this.configuration.accessToken);
+        }
+        
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
         ];
@@ -286,6 +316,10 @@ export class SessionsService {
     }
 
     get UpdateSession() {
-      return this.updateSession.asObservable();
+        return this.updateSession.asObservable();
+    }
+
+    getAccessToken() {
+        return sessionStorage.getItem('access_token');
     }
 }

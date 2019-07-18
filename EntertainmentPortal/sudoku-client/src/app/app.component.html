@@ -2,6 +2,7 @@
 <router-outlet></router-outlet>
 <button (click)="login()">Login</button>
 <button (click)="logout()">Logout</button>
+<div *ngIf="userName != null">Hello, {{userName}}!</div>
 
 
 

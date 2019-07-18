@@ -21,9 +21,7 @@ namespace EP.Sudoku.Logic.Profiles
 
 
             CreateMap<SessionDb, CreateSessionCommand>()
-                .ForMember(dest => dest.PlayerId, e => e.MapFrom(src => src.PlayerDbId))
-                .ReverseMap()
-                .ForMember(dest => dest.PlayerDbId, e => e.MapFrom(src => src.PlayerId));
+                .ReverseMap();
 
 
         }

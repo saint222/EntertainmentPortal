@@ -26,6 +26,7 @@ export const authConfig: AuthConfig = {
 })
 export class AppComponent {
   title = 'sudoku-client';
+  userName: string = this.getValueFromIdToken('sub');
 
   constructor(private authService: OAuthService, private router: Router) {
      this.authService.configure(authConfig);
@@ -40,9 +41,28 @@ export class AppComponent {
 
   logout() {
     // true - redirect user after logout
-    sessionStorage.clear();
+    console.log(sessionStorage);
+    this.authService.logOut();
+    console.log(sessionStorage);
     this.router.navigateByUrl('/');
 
   }
 
+  getValueFromIdToken(claim: string) {
+    const jwt = sessionStorage.getItem('id_token');
+    if ( jwt == null) {
+      return null;
+    }
+
+    const jwtData = jwt.split('.')[1];
+    const decodedJwtJsonData = window.atob(jwtData);
+    let value: any;
+    JSON.parse(decodedJwtJsonData, function findKey(k, v) {
+      if (k === claim) {
+        value = v;
+      }
+    });
+    console.log(value);
+    return value;
+  }
 }

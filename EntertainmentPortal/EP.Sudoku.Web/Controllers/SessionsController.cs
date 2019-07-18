@@ -5,6 +5,7 @@ using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,6 +18,7 @@ namespace EP.Sudoku.Web.Controllers
     /// Here are CRUD operations that touch upon the game itself.
     /// </summary>
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class SessionsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -64,7 +66,7 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest();
             }
 
-            string name = User.Identity.Name;
+            model.UserId = User.FindFirst("sub")?.Value;
             var result = await _mediator.Send(model);
 
             return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);

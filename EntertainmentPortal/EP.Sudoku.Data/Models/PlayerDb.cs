@@ -40,5 +40,7 @@ namespace EP.Sudoku.Data.Models
         /// Is used to provide a player with a possibility to have more than one unfinished game (DbInfo).
         /// </summary> 
         public SessionDb GameSessionDb { get; set; }
+
+        public string UserId { get; set; }
     }
 }

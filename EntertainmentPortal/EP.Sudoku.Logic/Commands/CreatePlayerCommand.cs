@@ -9,5 +9,7 @@ namespace EP.Sudoku.Logic.Commands
         public string NickName { get; set; }
 
         public long IconId { get; set; }
+
+        public string UserId { get; set; }
     }
 }

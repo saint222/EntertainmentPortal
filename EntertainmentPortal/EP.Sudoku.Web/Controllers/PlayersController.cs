@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,6 +22,7 @@ namespace EP.Sudoku.Web.Controllers
     /// </summary>
     [ApiController]
     //[Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PlayersController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -70,6 +73,7 @@ namespace EP.Sudoku.Web.Controllers
         /// Creates a new player and saves information about him/her in the Db.
         /// </summary>
         [HttpPost("api/players")]
+        //[Authorize]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> CreatePlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationPlayer")] CreatePlayerCommand model)
@@ -78,6 +82,8 @@ namespace EP.Sudoku.Web.Controllers
             {                
                 return BadRequest();                
             }
+
+            model.UserId = User.FindFirst("sub")?.Value;
             var result = await _mediator.Send(model);
             return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);           
         }
