@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
 
 import { AuthConfig } from 'angular-oauth2-oidc';
+import { ngModuleJitUrl } from '@angular/compiler';
 
 export const authConfig: AuthConfig = {
 
@@ -24,6 +27,7 @@ export const authConfig: AuthConfig = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
   title = 'wordsmaker-front';
 

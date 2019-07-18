@@ -6,6 +6,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 // import { GetPlayerComponent } from './game/components/get-player/get-player.component';
 import { PlayingFieldComponent } from './game/components/playing-field/playing-field.component';
 import { DashboardComponent } from './game/components/dashboard/dashboard.component';
@@ -24,7 +26,9 @@ import { GameFieldComponent } from './game/components/game-field/game-field.comp
     BrowserModule,
     AppRoutingModule,
     GameModule,
-    OAuthModule.forRoot()
+    OAuthModule.forRoot(),
+    //ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
