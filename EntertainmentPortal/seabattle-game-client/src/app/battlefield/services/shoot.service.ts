@@ -35,13 +35,13 @@ export class ShootService {
     for (let i = 0; i < this.N; i++) {
       field[i] = [];
       for (let j = 0; j < this.N; j++) {
-          field[i][j] = new Cell(j, i, CellStatus.None);
+          field[i][j] = new Cell(i, j, CellStatus.None);
       }
     }
     return field;
   }
 
   drawShot(shot: Cell) {
-    this.shotField[shot.x][shot.y].status = shot.status;
+    this.shotField[shot.y][shot.x].status = shot.status;
   }
 }

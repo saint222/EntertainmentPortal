@@ -57,7 +57,7 @@ namespace EP.SeaBattle.Logic.Validators
         {
             var result = await _context.Games.FindAsync(model.GameId)
                 .ConfigureAwait(false);
-            if (result == null || result.Finish)
+            if (result == null || result.Status == Common.Enums.GameStatus.Finished)
                 return false;
             return true;
         }

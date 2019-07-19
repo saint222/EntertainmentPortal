@@ -40,7 +40,7 @@ namespace EP.SeaBattle.Logic.Handlers
                     Player1 = await _context.Players.FindAsync(request.Player1Id),
                     Player2 = await _context.Players.FindAsync(request.Player2Id),
                     PlayerAllowedToMove = await _context.Players.FindAsync(request.PlayerAllowedToMoveId),
-                    Finish = request.Finish
+                    //Status = request.Finish
                 };
                 _context.Games.Add(_mapper.Map<GameDb>(request));
                 try

@@ -40,7 +40,7 @@ export class BattlefieldService {
     for (let i = 0; i < this.N; i++) {
       field[i] = [];
       for (let j = 0; j < this.N; j++) {
-          field[i][j] = new Cell(j, i, CellStatus.None);
+          field[i][j] = new Cell(i, j, CellStatus.None);
       }
     }
     return field;
@@ -52,7 +52,7 @@ export class BattlefieldService {
 
   private drawShip(ship: Ship) {
     ship.cells.forEach(cell => {
-      this.shipField[cell.x][cell.y].status = cell.status;
+      this.shipField[cell.y][cell.x].status = cell.status;
     });
   }
 

@@ -46,6 +46,11 @@ namespace EP.SeaBattle.Logic.Handlers
                 if (wasAdded)
                 {
                     await _context.Ships.AddAsync(_mapper.Map<ShipDb>(ship)).ConfigureAwait(false);
+                    if (shipsManager.IsFull)
+                    {
+                        //TODO generate gamebot and ships
+                        game.Status = Common.Enums.GameStatus.Started;
+                    }
                     try
                     {
                         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);

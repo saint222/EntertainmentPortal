@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EP.SeaBattle.Common.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,7 +13,7 @@ namespace EP.SeaBattle.Data.Models
 
         public PlayerDb Player2 { get; set; }
 
-        public bool Finish { get; set; }
+        public GameStatus Status { get; set; }
 
         public PlayerDb PlayerAllowedToMove { get; set; }
 

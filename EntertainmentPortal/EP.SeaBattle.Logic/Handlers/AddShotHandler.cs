@@ -47,22 +47,31 @@ namespace EP.SeaBattle.Logic.Handlers
                 {
                     //add shot
                     var shot = shotManager.Shoot(request.X, request.Y);
-                    await _context.AddAsync(_mapper.Map<ShotDb>(shot)).ConfigureAwait(false);
-                    //update cell
-                    var cell = ships.SelectMany(s => s.Cells).FirstOrDefault(f => f.X == request.X && f.Y == request.Y);
-                    if (cell != null)
-                        cell.Status = shot.Status;
-                    //TODO change player allow to move
-                    if (shot.Status != Common.Enums.CellStatus.Destroyed)
+                    
+                    if (shot.Status == Common.Enums.CellStatus.ShootWithoutHit)
                     {
-                        if (game.Player1 == player)
-                            game.PlayerAllowedToMove = game.Player2;
-                        else
-                            game.PlayerAllowedToMove = game.Player1;
+                        await _context.AddAsync(_mapper.Map<ShotDb>(shot)).ConfigureAwait(false);
                     }
+                    else
+                    {
+                        //update cell
+                        var cell = ships.SelectMany(s => s.Cells).FirstOrDefault(f => f.X == request.X && f.Y == request.Y);
+                        if (cell != null)
+                            cell.Status = shot.Status;
+                    }
+
+                    //TODO change player allow to move
+                    //if (shot.Status != Common.Enums.CellStatus.Destroyed)
+                    //{
+                    //    if (game.Player1 == player)
+                    //        game.PlayerAllowedToMove = game.Player2;
+                    //    else
+                    //        game.PlayerAllowedToMove = game.Player1;
+                    //}
                     //set game finish
-                    if (shot.Status == Common.Enums.CellStatus.Destroyed && ships.SelectMany(s => s.Cells).All(a => a.Status == Common.Enums.CellStatus.Destroyed))
-                        game.Finish = true;
+                    var shipManager = new ShipsManager(null, null, _mapper.Map<IEnumerable<Ship>>(ships));
+                    if (shot.Status == Common.Enums.CellStatus.Destroyed && shipManager.AllShipsDestroyed)
+                        game.Status = Common.Enums.GameStatus.Finished;
                     try
                     {
                         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);

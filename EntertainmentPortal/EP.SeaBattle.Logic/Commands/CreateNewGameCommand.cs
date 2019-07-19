@@ -10,7 +10,7 @@ namespace EP.SeaBattle.Logic.Commands
     {
         public string Player1Id { get; set; }
         public string Player2Id { get; set; }
-        public bool Finish { get; set; }
+        //public GameStatus Status { get; set; }
         public string PlayerAllowedToMoveId { get; set; }
     }
 }

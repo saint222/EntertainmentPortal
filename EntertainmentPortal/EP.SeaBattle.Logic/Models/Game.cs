@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EP.SeaBattle.Common.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -22,7 +23,7 @@ namespace EP.SeaBattle.Logic.Models
         /// <summary>
         /// Tells if the game is over
         /// </summary>
-        public bool Finish { get; set; }
+        public GameStatus Status { get; set; }
 
         /// <summary>
         /// The player who is allowed to move

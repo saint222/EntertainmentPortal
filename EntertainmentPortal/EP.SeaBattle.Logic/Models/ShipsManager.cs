@@ -69,7 +69,7 @@ namespace EP.SeaBattle.Logic.Models
         /// <summary>
         /// Inform is all ships destroyed
         /// </summary>
-        public bool AllShipsDestroyed { get => _ships.Any(a => a.IsAlive); }
+        public bool AllShipsDestroyed { get => !_ships.Any(a => a.IsAlive); }
 
         /// <summary>
         /// Add ship
@@ -82,6 +82,7 @@ namespace EP.SeaBattle.Logic.Models
             if (_shipsCount[rank] < shipsRuleCount[rank])
             {
                 _ships.Add(ship);
+                _shipsCount[rank] += 1;
                 return true;
             }
             return false;
