@@ -4,20 +4,33 @@
 
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
-using System;
+using System.Linq;
 
-namespace Ep.WordsMaker.Security
+namespace EP.WordsMaker.Security
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            Console.Title = "IdentityServer4";
+            var seed = args.Any(x => x == "/seed");
+            if (seed) args = args.Except(new[] { "/seed" }).ToArray();
 
-            CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args).Build();
+
+            if (seed)
+            {
+                var config = host.Services.GetRequiredService<IConfiguration>();
+                var connectionString = config.GetConnectionString("DefaultConnection");
+                SeedData.EnsureSeedData(connectionString);
+                return;
+            }
+
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)

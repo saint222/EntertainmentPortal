@@ -5,7 +5,7 @@
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
-namespace Ep.WordsMaker.Security
+namespace EP.WordsMaker.Security
 {
     public static class Config
     {
@@ -22,7 +22,8 @@ namespace Ep.WordsMaker.Security
         {
             return new ApiResource[]
             {
-                new ApiResource("api1", "My API #1")
+                new ApiResource("api1", "My API #1"),
+				new ApiResource("wordsmaker_api", "WordsMaker API")
             };
         }
 
@@ -59,30 +60,28 @@ namespace Ep.WordsMaker.Security
                     AllowedScopes = { "openid", "profile", "api1" }
                 },
 
-                // SPA client using implicit flow
+                // SPA client using code flow + pkce
                 new Client
-                {
-                    ClientId = "spa",
-                    ClientName = "SPA Client",
-                    ClientUri = "http://identityserver.io",
+				{
+					ClientId = "swagger",
+					ClientName = "Swagger Client",
+	                //ClientUri = "https://localhost:44350/swagger/oauth2-redirect.html",
 
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowAccessTokensViaBrowser = true,
+	                AllowedScopes = {"wordsmaker_api"},
 
-                    RedirectUris =
-                    {
-                        "http://localhost:5002/index.html",
-                        "http://localhost:5002/callback.html",
-                        "http://localhost:5002/silent.html",
-                        "http://localhost:5002/popup.html",
-                    },
+					AllowedGrantTypes = GrantTypes.Implicit,
+					AllowAccessTokensViaBrowser = true,
 
-                    PostLogoutRedirectUris = { "http://localhost:5002/index.html" },
-                    AllowedCorsOrigins = { "http://localhost:5002" },
+					RedirectUris =
+					{
+						"https://localhost:44350/swagger/oauth2-redirect.html"
+					},
 
-                    AllowedScopes = { "openid", "profile", "api1" }
-                }
-            };
+					AllowedCorsOrigins = {"http://localhost:44350"}
+
+				}
+
+			};
         }
     }
 }

@@ -2,35 +2,45 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using System;
-using IdentityServer4;
-using IdentityServer4.Quickstart.UI;
+using EP.WordsMaker.Security.Data;
+using EP.WordsMaker.Security.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using IdentityServer4;
 
-namespace Ep.WordsMaker.Security
+namespace EP.WordsMaker.Security
 {
     public class Startup
     {
-        public IHostingEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
-        public Startup(IHostingEnvironment environment, IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
-            Environment = environment;
             Configuration = configuration;
+            Environment = environment;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
-            services.Configure<IISOptions>(options =>
+            services.Configure<IISOptions>(iis =>
             {
-                options.AutomaticAuthentication = false;
-                options.AuthenticationDisplayName = "Windows";
+                iis.AuthenticationDisplayName = "Windows";
+                iis.AutomaticAuthentication = false;
             });
 
             var builder = services.AddIdentityServer(options =>
@@ -40,17 +50,10 @@ namespace Ep.WordsMaker.Security
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
-                .AddTestUsers(TestUsers.Users);
-
-            // in-memory, code config
-            //builder.AddInMemoryIdentityResources(Config.GetIdentityResources());
-            //builder.AddInMemoryApiResources(Config.GetApis());
-            //builder.AddInMemoryClients(Config.GetClients());
-
-            // in-memory, json config
-            builder.AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"));
-            builder.AddInMemoryApiResources(Configuration.GetSection("ApiResources"));
-            builder.AddInMemoryClients(Configuration.GetSection("clients"));
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApis())
+                .AddInMemoryClients(Config.GetClients())
+                .AddAspNetIdentity<ApplicationUser>();
 
             if (Environment.IsDevelopment())
             {
@@ -62,39 +65,44 @@ namespace Ep.WordsMaker.Security
             }
 
             services.AddAuthentication()
-                .AddGoogle(options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+			   .AddGoogle(options =>
+			   {
+				   options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
-                    // register your IdentityServer with Google at https://console.developers.google.com
-                    // enable the Google+ API
-                    // set the redirect URI to http://localhost:5000/signin-google
-                    options.ClientId = "445562339895-20etr500bnd7bsb5e2tprm2e6a8hp1o6.apps.googleusercontent.com";
-                    options.ClientSecret = "HY52KtIcpdgdaFjKJPqvNgp5";
-                })
-                .AddFacebook(options =>
-                    {
-                        options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+				   // register your IdentityServer with Google at https://console.developers.google.com
+				   // enable the Google+ API
+				   // set the redirect URI to http://localhost:5000/signin-google
+				   options.ClientId = "445562339895-20etr500bnd7bsb5e2tprm2e6a8hp1o6.apps.googleusercontent.com";
+				   options.ClientSecret = "HY52KtIcpdgdaFjKJPqvNgp5";
+			   })
+			   .AddFacebook(options =>
+				   {
+					   options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
-                        // register your IdentityServer with Google at https://console.developers.google.com
-                        // enable the Google+ API
-                        // set the redirect URI to http://localhost:5000/signin-google
-                        options.ClientId = "689466208162671";
-                        options.ClientSecret = "024b114f793bdbda75839893e4e6c612";
-                    }
-                );
+					   // register your IdentityServer with Google at https://console.developers.google.com
+					   // enable the Google+ API
+					   // set the redirect URI to http://localhost:5000/signin-google
+					   options.ClientId = "689466208162671";
+					   options.ClientSecret = "024b114f793bdbda75839893e4e6c612";
+				   }
+			   );
 
-        }
+		}
 
-        public void Configure(IApplicationBuilder app)
+		public void Configure(IApplicationBuilder app)
         {
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseIdentityServer();
             app.UseStaticFiles();
+            app.UseIdentityServer();
             app.UseMvcWithDefaultRoute();
         }
     }
