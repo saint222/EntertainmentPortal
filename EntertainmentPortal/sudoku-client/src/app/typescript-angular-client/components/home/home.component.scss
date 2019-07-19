@@ -5,8 +5,13 @@
 .text{
   padding-top: 3%;
   text-align: center;
-  // text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #fff, 5px 5px 0px rgba(0,0,0,0.15);
 }
-.text a{
-  color: #0abd32;
+.textNotLogged{
+  font-weight: bold;
+  padding-top: 3%;
+  text-align: center;
+  text-shadow: 2px 2px 2px #fff, 5px 5px 0px rgba(0,0,0,0.15);
 }
+

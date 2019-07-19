@@ -28,6 +28,7 @@ export const authConfig: AuthConfig = {
 export class AppComponent {
   title = 'sudoku-client';
   userName: string = this.getValueFromIdToken('name');
+  logged = true;
 
   constructor(private authService: OAuthService, private router: Router) {
      this.authService.configure(authConfig);
@@ -49,6 +50,7 @@ export class AppComponent {
   getValueFromIdToken(claim: string) {
     const jwt = sessionStorage.getItem('id_token');
     if ( jwt == null) {
+      this.logged = false;
       return null;
     }
 

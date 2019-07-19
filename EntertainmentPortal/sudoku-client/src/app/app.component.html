@@ -10,12 +10,11 @@
             <a class="p-2 text-dark" href="" title = "Contacts">Contacts</a>
             <a class="p-2 text-dark" routerLink="/registered/privacy" title = "Policy and privacy information">PrivacyPolicy</a>
         </nav>
-        <button *ngIf="!userName" class="btn btn-outline-primary" (click)="login()">Login</button>
-        <button *ngIf="userName" class="btn btn-outline-primary" (click)="logout()">Logout</button>
+        <button *ngIf="!userName" class="btn btn-outline-primary" (click)="login()" style = "font-size: 15px" title = "Login">Login</button>
+        <button *ngIf="userName" class="btn btn-outline-primary" (click)="logout()" style = "font-size: 15px" title = "Logout">Logout</button>
       </div>
     </div>
   </div>
-
 <router-outlet></router-outlet>
 
 
