@@ -1,5 +1,6 @@
 ﻿using EP.Balda.Data.Models;
 using EP.Balda.Logic.Models;
+using EP.Balda.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -104,6 +105,32 @@ namespace EP.Balda.Web.Controllers
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: Id = {id} - Player can't be deleted");
 
                 return BadRequest("Player can't be deleted");
+            }
+        }
+
+        [HttpGet("api/player/words")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Player successfully deleted")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description = "Player can't be deleted")]
+        public async Task<IActionResult> GetPlayersWordsAsync([FromQuery]long gameId)
+        {
+            _logger.LogDebug(
+                           $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: gameId = {gameId}");
+
+            var result = await _mediator.Send(new GetPlayersWords() { GameId = gameId, PlayerId = UserId });
+
+            if (result.Count() != 0)
+            {
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameters: gameId = {gameId}");
+
+                return Ok(result);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                    $"Parameters: gameId = {gameId}");
+
+                return BadRequest();
             }
         }
     }

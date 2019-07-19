@@ -16,6 +16,6 @@ namespace EP.Balda.Web.Models
         /// <summary>
         /// Property for cells' id that form a word.
         /// </summary>
-        public List<Cell> CellsIdFormWord { get; set; }
+        public List<Cell> CellsThatFormWord { get; set; }
     }
 }

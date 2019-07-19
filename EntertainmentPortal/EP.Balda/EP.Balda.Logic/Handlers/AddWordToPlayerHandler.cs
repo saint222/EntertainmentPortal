@@ -38,7 +38,7 @@ namespace EP.Balda.Logic.Handlers
 
             var playerGame = await _context.PlayerGames
                 .FirstOrDefaultAsync(
-                    p => (p.PlayerId == request.PlayerId) & (p.GameId == request.GameId),
+                    p => (p.PlayerId == request.PlayerId && p.GameId == request.GameId),
                     cancellationToken);
 
             if (playerGame == null)

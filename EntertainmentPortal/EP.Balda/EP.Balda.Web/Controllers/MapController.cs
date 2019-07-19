@@ -85,11 +85,11 @@ namespace EP.Balda.Web.Controllers
             var model = new AddWordToPlayerCommand();
             model.PlayerId = UserId;
             model.GameId = gameAndCells.GameId;
-            model.CellsThatFormWord = gameAndCells.CellsIdFormWord;
+            model.CellsThatFormWord = gameAndCells.CellsThatFormWord;
 
             var result = await _mediator.Send(model);
 
-            string word = Helpers.FormWordFromCells(gameAndCells.CellsIdFormWord);
+            string word = Helpers.FormWordFromCells(gameAndCells.CellsThatFormWord);
 
             
             if (result.IsSuccess)

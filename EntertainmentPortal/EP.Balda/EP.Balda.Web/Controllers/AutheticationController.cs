@@ -77,7 +77,7 @@ namespace EP.Balda.Web.Controllers
 
             var status = await _userManager.CreateAsync(newUser, userData.Password);
 
-            return status.Succeeded ? (IActionResult)Ok(newUser) : BadRequest(status.Errors);
+            return status.Succeeded ? (IActionResult)Ok(newUser) : BadRequest(status?.Errors);
         }
 
         [AllowAnonymous]

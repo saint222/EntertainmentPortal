@@ -65,4 +65,11 @@ export class GameService {
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get<string[]>('http://localhost:5001/api/map/alphabet', { headers: myHeaders, withCredentials: true });
   }
+
+  getPlayersWords(gameId: string) {
+    const myParams = new HttpParams().set('gameId', gameId);
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get<string[]>('http://localhost:5001/api/player/words',
+    { headers: myHeaders, params: myParams, withCredentials: true });
+  }
 }

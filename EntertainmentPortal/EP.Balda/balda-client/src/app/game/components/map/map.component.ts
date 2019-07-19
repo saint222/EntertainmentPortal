@@ -20,6 +20,7 @@ export class MapComponent implements OnInit {
   currentLetter: string;
   tempLetter: Cell = new Cell();
   errorText: string;
+  words: string[] = [];
 
   constructor(private gameService: GameService, private route: ActivatedRoute,  private router: Router) {
     this.route.params.subscribe( params => this.gameService.getGame(params.gameid));
@@ -28,8 +29,10 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.gameService.getMap(this.route.snapshot.queryParamMap.get('mapid')).subscribe(p => {
       this.cells = p;
+      this.getPlayersWord();
     },
-      (err: HttpResponseBase) => {
+      (err: HttpErrorResponse) => {
+        this.errorText = err.error;
         return console.log(err.statusText);
       });
     this.id = this.route.snapshot.queryParamMap.get('mapid');
@@ -64,9 +67,17 @@ export class MapComponent implements OnInit {
    onSendClick() {
     const gameAndCells = new GameAndCells();
     gameAndCells.gameId = this.route.snapshot.queryParamMap.get('gameId');
-    gameAndCells.CellsIdFormWord = this.selectedCells;
+    gameAndCells.CellsThatFormWord = this.selectedCells;
     this.gameService.sendWord(gameAndCells).subscribe(w => {
       this.cells = w;
+      if (this.isGameOver(this.cells)) {
+        this.router.navigateByUrl('gameover');
+      }
+      this.getPlayersWord();
+    },
+    (err: HttpErrorResponse) => {
+      this.errorText = err.error;
+      return console.log(err.statusText);
     });
 
     this.onCancelClick();
@@ -83,5 +94,24 @@ export class MapComponent implements OnInit {
 
    selectLetter(letter: string) {
       this.currentLetter = letter;
+   }
+
+   getPlayersWord() {
+     this.gameService.getPlayersWords(this.route.snapshot.queryParamMap.get('gameId'))
+     .subscribe(w => this.words = w);
+   }
+
+   isGameOver(cells: Cell[][]) {
+     let isOver = true;
+     for (let i = 0; i < cells.length; i++) {
+       for (let j = 0; j < cells.length; j++) {
+         if (cells[i][j].letter == null) {
+            isOver = false;
+            return isOver;
+         }
+         continue;
+       }
+     }
+     return isOver;
    }
  }
