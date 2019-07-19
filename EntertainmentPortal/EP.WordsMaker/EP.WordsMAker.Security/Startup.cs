@@ -65,9 +65,9 @@ namespace EP.WordsMaker.Security
             }
 
             services.AddAuthentication()
-			   .AddGoogle(options =>
+			   .AddGoogle("Google",options =>
 			   {
-				   options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+				   //options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
 				   // register your IdentityServer with Google at https://console.developers.google.com
 				   // enable the Google+ API
