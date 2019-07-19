@@ -12,3 +12,35 @@
 #gui{
   background-color: #6d2e02;
 }
+
+#notLogged{
+  position:fixed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  top:15%;
+  left:0px;
+  width:100%;
+  height:70vh;
+}
+
+#notLoggedBackground{
+  align-items:center;
+  justify-content:center;
+  background-color: #41321f;
+  opacity: 0.5;
+  width: 50vw;
+  height: 100%;
+  border-radius: 5vh;
+  color: #f3ead9;
+  h3{
+    position: relative;
+    margin-top: 33vh;
+    text-align: center;
+  }
+}
+
+p, h3, h1{
+  user-select: none;
+}
+

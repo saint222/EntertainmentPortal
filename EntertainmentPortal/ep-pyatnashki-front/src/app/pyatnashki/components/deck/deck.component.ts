@@ -1,5 +1,5 @@
+import { AccountService } from 'src/app/account/services/account.service';
 import { ConfigService } from './../../../shared/services/config.service';
-import { HttpResponseBase } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Deck } from '../../models/deck';
 import { DeckService } from '../../services/deck.service';
@@ -12,39 +12,68 @@ import { Tile } from '../../models/tile';
   providers: [DeckService, ConfigService]
 })
 export class DeckComponent implements OnInit {
-  deck: Deck = new Deck(0, 4, false, [
-    new Tile(1, 1),
-    new Tile(2, 2),
-    new Tile(3, 3),
-    new Tile(4, 4),
-    new Tile(5, 5),
-    new Tile(6, 6),
-    new Tile(7, 7),
-    new Tile(8, 8),
-    new Tile(9, 9),
-    new Tile(10, 10),
-    new Tile(11, 11),
-    new Tile(12, 12),
-    new Tile(13, 13),
-    new Tile(14, 14),
-    new Tile(15, 15),
-    new Tile(0, 16),
+  deck: Deck;
 
-  ]);
-  constructor(private deckService: DeckService) { }
+
+  // tslint:disable-next-line: no-inferrable-types
+  logged: boolean = true;
+  constructor(private deckService: DeckService, private accountService: AccountService) { }
 
   ngOnInit() {
-    this.deckService.getDeck().subscribe(d => this.deck = d);
+    if (this.accountService.IsLoggedIn()) {
+      const d = sessionStorage.getItem('deck');
+      if (d != null) {
+        this.deck = JSON.parse(d);
+      } else {
+        // tslint:disable-next-line: no-shadowed-variable
+        this.deckService.getDeck().subscribe(d => {this.deck = d; });
+      }
+    } else {
+      this.deck = this.getNewDeck();
+      this.logged = false;
+    }
   }
 
   getDeck() {
-    this.deckService.getDeck().subscribe(d => this.deck = d);
+    this.deckService.getDeck().subscribe(d => {
+      this.deck = d;
+      this.save('deck', d);
+    });
   }
   newDeck() {
-    this.deckService.newDeck().subscribe(d => this.deck = d);
+    this.deckService.newDeck().subscribe(d => {
+      this.deck = d;
+      this.save('deck', d);
+    });
   }
   moveTile(num: number) {
-    this.deckService.moveTile(num).subscribe(d => this.deck = d);
+    this.deckService.moveTile(num).subscribe(d => {
+      this.deck = d;
+      this.save('deck', d);
+    });
   }
 
+  private getNewDeck() {
+    return new Deck(0, 4, false, [
+      new Tile(1, 1),
+      new Tile(2, 2),
+      new Tile(3, 3),
+      new Tile(4, 4),
+      new Tile(5, 5),
+      new Tile(6, 6),
+      new Tile(7, 7),
+      new Tile(8, 8),
+      new Tile(9, 9),
+      new Tile(10, 10),
+      new Tile(11, 11),
+      new Tile(12, 12),
+      new Tile(13, 13),
+      new Tile(14, 14),
+      new Tile(15, 15),
+      new Tile(0, 16),
+    ]);
+  }
+  private save(name: string, item: Deck) {
+    sessionStorage.setItem(name, JSON.stringify(item));
+  }
 }

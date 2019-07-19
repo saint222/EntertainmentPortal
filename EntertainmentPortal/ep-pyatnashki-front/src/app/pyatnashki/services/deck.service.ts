@@ -1,6 +1,4 @@
 import { AccountService } from 'src/app/account/services/account.service';
-import { Jwt } from './../../account/models/jwt';
-import { ConfigService } from './../../shared/services/config.service';
 import { Deck } from './../models/deck';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -21,7 +19,8 @@ export class DeckService {
   // tslint:disable-next-line: max-line-length
     return this.http.post<Deck>(this.url, this.accountService.getUserInfo(), {headers: new HttpHeaders ({
       Authorization: this.accountService.getAuthorizationHeaderValue(),
-      "Email": this.accountService.getEmailnHeaderValue()
+      // tslint:disable-next-line: object-literal-key-quotes
+      'Email': this.accountService.getEmailnHeaderValue()
     }) , withCredentials: true});
   }
 
@@ -29,17 +28,17 @@ export class DeckService {
 // tslint:disable-next-line: max-line-length
     return this.http.put<Deck>(this.url, num, {headers: new HttpHeaders ({
       Authorization: this.accountService.getAuthorizationHeaderValue(),
-      "Email": this.accountService.getEmailnHeaderValue()
+      // tslint:disable-next-line: object-literal-key-quotes
+      'Email': this.accountService.getEmailnHeaderValue()
     }) , withCredentials: true});
   }
 
   getDeck() {
-// tslint:disable-next-line: max-line-length
     return this.http.get<Deck>(this.url, {headers: new HttpHeaders ({
       Authorization: this.accountService.getAuthorizationHeaderValue(),
-      "Email": this.accountService.getEmailnHeaderValue()
-    })
-      , withCredentials: true});
+      // tslint:disable-next-line: object-literal-key-quotes
+      'Email': this.accountService.getEmailnHeaderValue()
+  }), withCredentials: true});
   }
 
 }

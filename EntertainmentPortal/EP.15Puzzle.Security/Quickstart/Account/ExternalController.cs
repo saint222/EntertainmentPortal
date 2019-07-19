@@ -200,7 +200,8 @@ namespace Host.Quickstart.Account
             var providerUserId = userIdClaim.Value;
 
             // find external user
-            var user = await _userManager.FindByLoginAsync(provider, providerUserId);
+            var user = await _userManager.FindByEmailAsync(externalUser.FindFirst(ClaimTypes.Email).Value);
+            //var user = await _userManager.FindByLoginAsync(provider, providerUserId);
 
             return (user, provider, providerUserId, claims);
         }
@@ -248,6 +249,8 @@ namespace Host.Quickstart.Account
             var user = new ApplicationUser
             {
                 UserName = Guid.NewGuid().ToString(),
+                Email = email,
+                EmailConfirmed = true,
             };
             var identityResult = await _userManager.CreateAsync(user);
             if (!identityResult.Succeeded) throw new Exception(identityResult.Errors.First().Description);

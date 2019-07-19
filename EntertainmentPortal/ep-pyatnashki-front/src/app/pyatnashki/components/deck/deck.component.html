@@ -1,22 +1,32 @@
+<div *ngIf="deck!=null">
+    <button class="btn btn-primary" (click)="newDeck()">Reset</button>
+    <div class="gui">
 
+        <div class="row">
+            <div class="col-md-12">
+              <h5>Score: {{deck.score}}</h5>
+            </div>
+          <div class="col-md-8 offset-md-2" style="text-align: center;">
+            <div id="deck">
+              <div aria-disabled="deck.victory" *ngFor="let row of deck.tiles">
+                  <app-tile  class="tile" id="tile{{tile.num}}" (click)="moveTile(tile.num)" [num]=tile.num *ngFor="let tile of row"></app-tile>
+              </div>
 
-
-
-<button class="btn btn-primary" (click)="newDeck()">Reset</button>
-<button class="btn btn-primary" (click)="getDeck()">Get</button>
-<div class="gui">
-
-    <div class="row">
-        <div class="col-md-12">
-            <h5>Score: {{deck.score}}</h5>
+            </div>
           </div>
-      <div class="col-md-8 offset-md-2" style="text-align: center;">
-        <div id="deck">
-          <div *ngFor="let row of deck.tiles">
-              <app-tile id="tile{{tile.num}}" (click)="moveTile(tile.num)" [num]=tile.num *ngFor="let tile of row"></app-tile>
-          </div>
-
         </div>
       </div>
+</div>
+<div *ngIf="!logged" id="notLogged">
+    <div id="notLoggedBackground">
+        <h3>
+          To start the game you need to login
+        </h3>
     </div>
   </div>
+
+<div *ngIf="deck.victory" id="victory">
+  <h1>
+    Victory!!! Your score is {{deck.score}}
+  </h1>
+</div>
