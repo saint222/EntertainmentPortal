@@ -1,3 +1,4 @@
+import { Player } from './../../model/player';
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,6 +22,14 @@ export class PlayerFormComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.playerService.playersGetPlayerByUserId().subscribe(c => {
+      console.log(c);
+      this.router.navigate(['/registered/player']);
+    },
+    (err: HttpErrorResponse) => {
+      console.log(err);
+    }
+    );
   }
 
   onSubmit(form: FormGroup) {

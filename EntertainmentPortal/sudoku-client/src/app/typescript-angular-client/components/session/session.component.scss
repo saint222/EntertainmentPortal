@@ -2,10 +2,19 @@
 .header-sudoku {
   text-align: center;
 }
+.header-sudoku a{
+  font-size: 20px
+}
 
 .sudoku {
   margin: 10px;
   text-align: center;
+}
+
+.error {
+  color: #a20000;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .gridCells {

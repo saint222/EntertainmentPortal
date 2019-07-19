@@ -26,6 +26,7 @@ export class CellComponent implements OnInit {
       },
       (err: HttpErrorResponse) => {
         this.cell.value = 0;
+        this.sessionService.updateSession.next(err.error);
         return console.log(err.error);
       }
     );

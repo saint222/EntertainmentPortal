@@ -17,6 +17,7 @@ export class SessionComponent implements OnInit {
   session?: Session;
   cells: Cell[] = [];
   cell: Cell;
+  error: string;
   message = '';
   messages: string [] = [];
   hubConnection: HubConnection;
@@ -25,6 +26,7 @@ export class SessionComponent implements OnInit {
   constructor(private route: ActivatedRoute, private sessionService: SessionsService) {
 
     this.sessionService.UpdateSession.subscribe(s => {
+      this.error = s;
       this.sessionService.sessionsGetSessionById(this.session.id).subscribe(x => {
         this.session = x;
         this.cells = x.squares;

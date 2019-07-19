@@ -31,15 +31,16 @@
       <a
       class="card-title"
       [routerLink]="['/registered/create-session']"
-       title = "New game" style = "font-size: 15px">New Game
+       title = "New game">New Game
     </a>
     <div *ngIf="session?.isOver">
-        <h2 style = "font-size: 15px">Congratulations, You Won!</h2>
+        <h2 style = "font-size: 18px">Congratulations, You Won!</h2>
         <p><img src="http://i.imgur.com/B5aTato.gif"></p>
     </div>
   </div>
   <div class="sudoku" *ngIf="!session?.isOver">
-    <p style = "font-size: 12px">Hints: {{session?.hint}}</p>
+    <p style = "font-size: 14px">Hints: {{session?.hint}}</p>
+    <p *ngIf="error" class="error">Error: {{error}}</p>
     <div class="gridCells" *ngFor="let cell of cells">
       <app-cell [cell]="cell"></app-cell>
     </div>
