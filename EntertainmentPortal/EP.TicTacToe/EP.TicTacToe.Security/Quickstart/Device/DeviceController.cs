@@ -44,7 +44,8 @@ namespace EP.TicTacToe.Security.Quickstart.Device
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index([FromQuery(Name = "user_code")] string userCode)
+        public async Task<IActionResult> Index(
+            [FromQuery(Name = "user_code")] string userCode)
         {
             if (string.IsNullOrWhiteSpace(userCode)) return View("UserCodeCapture");
 
@@ -77,7 +78,8 @@ namespace EP.TicTacToe.Security.Quickstart.Device
             return View("Success");
         }
 
-        private async Task<ProcessConsentResult> ProcessConsent(DeviceAuthorizationInputModel model)
+        private async Task<ProcessConsentResult> ProcessConsent(
+            DeviceAuthorizationInputModel model)
         {
             var result = new ProcessConsentResult();
 
@@ -92,7 +94,8 @@ namespace EP.TicTacToe.Security.Quickstart.Device
                 grantedConsent = ConsentResponse.Denied;
 
                 // emit event
-                await _events.RaiseAsync(new ConsentDeniedEvent(User.GetSubjectId(), request.ClientId, request.ScopesRequested));
+                await _events.RaiseAsync(new ConsentDeniedEvent(User.GetSubjectId(),
+                    request.ClientId, request.ScopesRequested));
             }
             // user clicked 'yes' - validate the data
             else if (model.Button == "yes")
@@ -102,9 +105,9 @@ namespace EP.TicTacToe.Security.Quickstart.Device
                 {
                     var scopes = model.ScopesConsented;
                     if (ConsentOptions.EnableOfflineAccess == false)
-                    {
-                        scopes = scopes.Where(x => x != IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess);
-                    }
+                        scopes = scopes.Where(x =>
+                            x != IdentityServer4.IdentityServerConstants.StandardScopes
+                                .OfflineAccess);
 
                     grantedConsent = new ConsentResponse
                     {
@@ -113,7 +116,9 @@ namespace EP.TicTacToe.Security.Quickstart.Device
                     };
 
                     // emit event
-                    await _events.RaiseAsync(new ConsentGrantedEvent(User.GetSubjectId(), request.ClientId, request.ScopesRequested, grantedConsent.ScopesConsented, grantedConsent.RememberConsent));
+                    await _events.RaiseAsync(new ConsentGrantedEvent(User.GetSubjectId(),
+                        request.ClientId, request.ScopesRequested,
+                        grantedConsent.ScopesConsented, grantedConsent.RememberConsent));
                 }
                 else
                 {
@@ -143,23 +148,26 @@ namespace EP.TicTacToe.Security.Quickstart.Device
             return result;
         }
 
-        private async Task<DeviceAuthorizationViewModel> BuildViewModelAsync(string userCode, DeviceAuthorizationInputModel model = null)
+        private async Task<DeviceAuthorizationViewModel> BuildViewModelAsync(
+            string userCode, DeviceAuthorizationInputModel model = null)
         {
             var request = await _interaction.GetAuthorizationContextAsync(userCode);
             if (request != null)
             {
-                var client = await _clientStore.FindEnabledClientByIdAsync(request.ClientId);
+                var client =
+                    await _clientStore.FindEnabledClientByIdAsync(request.ClientId);
                 if (client != null)
                 {
-                    var resources = await _resourceStore.FindEnabledResourcesByScopeAsync(request.ScopesRequested);
-                    if (resources != null && (resources.IdentityResources.Any() || resources.ApiResources.Any()))
-                    {
+                    var resources =
+                        await _resourceStore.FindEnabledResourcesByScopeAsync(
+                            request.ScopesRequested);
+                    if (resources != null &&
+                        (resources.IdentityResources.Any() ||
+                         resources.ApiResources.Any()))
                         return CreateConsentViewModel(userCode, model, client, resources);
-                    }
                     else
-                    {
-                        _logger.LogError("No scopes matching: {0}", request.ScopesRequested.Aggregate((x, y) => x + ", " + y));
-                    }
+                        _logger.LogError("No scopes matching: {0}",
+                            request.ScopesRequested.Aggregate((x, y) => x + ", " + y));
                 }
                 else
                 {
@@ -170,7 +178,9 @@ namespace EP.TicTacToe.Security.Quickstart.Device
             return null;
         }
 
-        private DeviceAuthorizationViewModel CreateConsentViewModel(string userCode, DeviceAuthorizationInputModel model, Client client, Resources resources)
+        private DeviceAuthorizationViewModel CreateConsentViewModel(
+            string userCode, DeviceAuthorizationInputModel model, Client client,
+            Resources resources)
         {
             var vm = new DeviceAuthorizationViewModel
             {
@@ -178,22 +188,27 @@ namespace EP.TicTacToe.Security.Quickstart.Device
 
                 RememberConsent = model?.RememberConsent ?? true,
                 ScopesConsented = model?.ScopesConsented ?? Enumerable.Empty<string>(),
-                
+
                 ClientName = client.ClientName ?? client.ClientId,
                 ClientUrl = client.ClientUri,
                 ClientLogoUrl = client.LogoUri,
                 AllowRememberConsent = client.AllowRememberConsent
             };
 
-            vm.IdentityScopes = resources.IdentityResources.Select(x => CreateScopeViewModel(x, vm.ScopesConsented.Contains(x.Name) || model == null)).ToArray();
-            vm.ResourceScopes = resources.ApiResources.SelectMany(x => x.Scopes).Select(x => CreateScopeViewModel(x, vm.ScopesConsented.Contains(x.Name) || model == null)).ToArray();
+            vm.IdentityScopes = resources.IdentityResources.Select(x =>
+                CreateScopeViewModel(x,
+                    vm.ScopesConsented.Contains(x.Name) || model == null)).ToArray();
+            vm.ResourceScopes = resources.ApiResources.SelectMany(x => x.Scopes)
+                .Select(x => CreateScopeViewModel(x,
+                    vm.ScopesConsented.Contains(x.Name) || model == null)).ToArray();
             if (ConsentOptions.EnableOfflineAccess && resources.OfflineAccess)
-            {
                 vm.ResourceScopes = vm.ResourceScopes.Union(new[]
                 {
-                    GetOfflineAccessScope(vm.ScopesConsented.Contains(IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null)
+                    GetOfflineAccessScope(
+                        vm.ScopesConsented.Contains(IdentityServer4
+                            .IdentityServerConstants.StandardScopes.OfflineAccess) ||
+                        model == null)
                 });
-            }
 
             return vm;
         }
@@ -223,11 +238,13 @@ namespace EP.TicTacToe.Security.Quickstart.Device
                 Checked = check || scope.Required
             };
         }
+
         private ScopeViewModel GetOfflineAccessScope(bool check)
         {
             return new ScopeViewModel
             {
-                Name = IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess,
+                Name = IdentityServer4.IdentityServerConstants.StandardScopes
+                    .OfflineAccess,
                 DisplayName = ConsentOptions.OfflineAccessDisplayName,
                 Description = ConsentOptions.OfflineAccessDescription,
                 Emphasize = true,

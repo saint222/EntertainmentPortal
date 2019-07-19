@@ -1,0 +1,697 @@
+2019-07-19 00:10:54.794 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:10:55.253 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:10:57.462 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:15:19.360 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:15:19.465 +03:00 [Information] The file "/oauth2-redirect.html" was not modified
+2019-07-19 00:16:23.386 +03:00 [Information] CORS policy execution failed.
+2019-07-19 00:16:23.387 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 00:16:23.396 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:16:23.669 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:16:34.860 +03:00 [Information] Successfully validated the token.
+2019-07-19 00:16:34.925 +03:00 [Information] Authorization was successful.
+2019-07-19 00:16:35.650 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 00:16:35.675 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:33:48.736 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:33:49.072 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:33:50.479 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:34:12.114 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:34:12.179 +03:00 [Information] The file "/oauth2-redirect.html" was not modified
+2019-07-19 00:34:39.299 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:34:39.511 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:34:41.664 +03:00 [Information] Successfully validated the token.
+2019-07-19 00:34:41.759 +03:00 [Information] Authorization was successful.
+2019-07-19 00:34:42.351 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 00:34:42.448 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:34:51.548 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:34:51.572 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:34:51.582 +03:00 [Information] Successfully validated the token.
+2019-07-19 00:34:51.587 +03:00 [Information] Authorization was successful.
+2019-07-19 00:34:51.660 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 00:34:51.664 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:35:32.917 +03:00 [Information] CORS policy execution failed.
+2019-07-19 00:35:32.925 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 00:35:32.930 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:35:32.931 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:35:32.967 +03:00 [Information] Successfully validated the token.
+2019-07-19 00:35:32.969 +03:00 [Information] Authorization was successful.
+2019-07-19 00:35:33.222 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 00:35:33.225 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:37:07.492 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:37:07.857 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:37:09.377 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:37:56.682 +03:00 [Information] CORS policy execution failed.
+2019-07-19 00:37:56.684 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 00:37:56.691 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:37:57.024 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:37:58.295 +03:00 [Information] Successfully validated the token.
+2019-07-19 00:37:58.375 +03:00 [Information] Authorization was successful.
+2019-07-19 00:37:58.863 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 00:37:58.884 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:39:40.565 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:39:41.017 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:39:42.842 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:40:20.455 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:40:20.702 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:40:22.606 +03:00 [Information] Successfully validated the token.
+2019-07-19 00:40:22.672 +03:00 [Information] Authorization was successful.
+2019-07-19 00:40:23.211 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 00:40:23.233 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:40:52.399 +03:00 [Information] CORS policy execution failed.
+2019-07-19 00:40:52.401 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 00:40:52.414 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:40:52.430 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:40:52.469 +03:00 [Information] Successfully validated the token.
+2019-07-19 00:40:52.471 +03:00 [Information] Authorization was successful.
+2019-07-19 00:40:52.627 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 00:40:52.629 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 00:59:23.042 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:59:23.477 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:59:25.103 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:59:58.882 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 00:59:59.290 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:00:00.918 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:00:01.024 +03:00 [Information] Authorization was successful.
+2019-07-19 01:00:02.146 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:00:02.271 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:00:12.805 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:00:12.818 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:00:12.824 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:00:12.826 +03:00 [Information] Authorization was successful.
+2019-07-19 01:00:12.851 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:00:12.853 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:00:21.300 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:00:21.301 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:00:21.305 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:00:21.306 +03:00 [Information] Authorization was successful.
+2019-07-19 01:00:21.327 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 01:00:21.329 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:01:16.400 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:01:16.403 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:01:16.416 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:01:16.417 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:01:16.466 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:01:16.473 +03:00 [Information] Authorization was successful.
+2019-07-19 01:01:16.692 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:01:16.694 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:01:30.150 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:01:30.151 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:01:30.153 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:01:30.154 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:01:30.159 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:01:30.160 +03:00 [Information] Authorization was successful.
+2019-07-19 01:01:30.165 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:01:30.167 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:01:45.743 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:01:45.744 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:01:45.750 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:01:45.751 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:01:45.755 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:01:45.757 +03:00 [Information] Authorization was successful.
+2019-07-19 01:01:45.762 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 01:01:45.763 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:03:14.028 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:03:14.398 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:03:15.754 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:03:39.828 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:03:40.248 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:03:41.623 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:03:41.695 +03:00 [Information] Authorization was successful.
+2019-07-19 01:03:42.316 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:03:42.391 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:03:52.261 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:03:52.275 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:03:52.282 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:03:52.285 +03:00 [Information] Authorization was successful.
+2019-07-19 01:03:56.086 +03:00 [Error] An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
+2019-07-19 01:03:56.094 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-19 01:03:56.103 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:05:09.711 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:05:09.712 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:05:09.718 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:05:09.719 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:05:09.759 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:05:09.761 +03:00 [Information] Authorization was successful.
+2019-07-19 01:05:12.352 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 18.07.2019 22:05:12 [Utc]
+2019-07-19 01:05:12.356 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-19 01:05:12.376 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:06:11.953 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:06:11.955 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:06:11.958 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:06:11.959 +03:00 [Information] Authorization was successful.
+2019-07-19 01:06:12.153 +03:00 [Information] Action: GetGameAsync Parameter: Id = 16
+2019-07-19 01:06:12.155 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-19 01:06:12.158 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:07:18.808 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:07:18.810 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:07:18.815 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:07:18.851 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:07:18.902 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:07:18.903 +03:00 [Information] Authorization was successful.
+2019-07-19 01:07:18.994 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:07:18.998 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:14:10.681 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:14:10.970 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:14:12.316 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:14:48.089 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:14:48.412 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:14:50.255 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:14:50.381 +03:00 [Information] Authorization was successful.
+2019-07-19 01:14:51.362 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:14:51.458 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:15:02.255 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:15:02.273 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:15:02.280 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:15:02.282 +03:00 [Information] Authorization was successful.
+2019-07-19 01:15:05.372 +03:00 [Error] An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
+2019-07-19 01:15:05.380 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-19 01:15:05.383 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:15:17.768 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:15:17.769 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:15:17.773 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:15:17.774 +03:00 [Information] Authorization was successful.
+2019-07-19 01:15:18.135 +03:00 [Information] Action: GetGameAsync Parameter: Id = 16
+2019-07-19 01:15:18.138 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-19 01:15:18.149 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:15:52.262 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:15:52.263 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:15:52.266 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:15:52.275 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:15:52.350 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:15:52.352 +03:00 [Information] Authorization was successful.
+2019-07-19 01:15:52.609 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:15:52.612 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:22:51.838 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:22:52.528 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:22:54.611 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:23:36.351 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:23:36.471 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:23:36.505 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:23:37.145 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:23:44.369 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:23:44.685 +03:00 [Information] Authorization was successful.
+2019-07-19 01:23:46.483 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:23:46.823 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:25:30.629 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:25:30.937 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:25:32.262 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:29:39.706 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:29:39.712 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:29:39.717 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:29:40.197 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:29:41.629 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:29:41.691 +03:00 [Information] Authorization was successful.
+2019-07-19 01:29:42.331 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:29:42.397 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:36:43.655 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:36:44.328 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:36:47.073 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:37:33.081 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:37:33.091 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:37:33.106 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:37:33.601 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:37:39.345 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:37:39.507 +03:00 [Information] Authorization was successful.
+2019-07-19 01:38:03.504 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 01:38:03.695 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:45:09.892 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:45:10.286 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:45:11.657 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:45:54.869 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:45:54.877 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:45:54.882 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:45:55.172 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:45:56.581 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:45:56.646 +03:00 [Information] Authorization was successful.
+2019-07-19 01:46:02.306 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=11 GameId=16 was written at [18.07.2019 22:46:02]
+2019-07-19 01:46:02.384 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 01:46:02.443 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:46:31.761 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:46:31.763 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:46:31.769 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:46:31.779 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:46:31.792 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:46:31.794 +03:00 [Information] Authorization was successful.
+2019-07-19 01:46:31.958 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=1 GameId=16 can't be written
+2019-07-19 01:46:31.961 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-19 01:46:31.970 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:47:00.465 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:47:00.466 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:47:00.471 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:47:00.472 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:47:00.476 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:47:00.477 +03:00 [Information] Authorization was successful.
+2019-07-19 01:47:01.051 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=1 GameId=16 was written at [18.07.2019 22:47:01]
+2019-07-19 01:47:01.056 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 01:47:01.057 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:47:23.507 +03:00 [Information] CORS policy execution failed.
+2019-07-19 01:47:23.508 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 01:47:23.512 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 01:47:23.513 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 01:47:23.518 +03:00 [Information] Successfully validated the token.
+2019-07-19 01:47:23.520 +03:00 [Information] Authorization was successful.
+2019-07-19 01:47:23.947 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=11 GameId=16 was written at [18.07.2019 22:47:23]
+2019-07-19 01:47:23.948 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 01:47:23.970 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 12:16:56.252 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:16:56.558 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:16:56.940 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:16:56.950 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:16:56.953 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:16:57.014 +03:00 [Information] The file "/swagger-ui.css" was not modified
+2019-07-19 12:16:57.014 +03:00 [Information] The file "/swagger-ui-bundle.js" was not modified
+2019-07-19 12:16:57.014 +03:00 [Information] The file "/swagger-ui-standalone-preset.js" was not modified
+2019-07-19 12:16:58.396 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:17:38.536 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:17:38.790 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 12:17:40.208 +03:00 [Information] Successfully validated the token.
+2019-07-19 12:17:40.285 +03:00 [Information] Authorization was successful.
+2019-07-19 12:17:40.825 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 12:17:40.851 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 12:18:30.875 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:18:30.889 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 12:18:30.897 +03:00 [Information] Successfully validated the token.
+2019-07-19 12:18:30.901 +03:00 [Information] Authorization was successful.
+2019-07-19 12:18:30.911 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 12:18:30.914 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 12:19:24.353 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:19:24.716 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 12:19:27.189 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:21:15.258 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:21:15.542 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:21:17.832 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:21:36.371 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:21:36.683 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:21:36.912 +03:00 [Information] Authorization failed.
+2019-07-19 13:21:36.954 +03:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-07-19 13:21:37.088 +03:00 [Information] AuthenticationScheme: "BearerIdentityServerAuthenticationJwt" was challenged.
+2019-07-19 13:21:37.089 +03:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-07-19 13:21:37.093 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:22:04.501 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:22:04.512 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:22:04.521 +03:00 [Information] Authorization failed.
+2019-07-19 13:22:04.523 +03:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-07-19 13:22:04.525 +03:00 [Information] AuthenticationScheme: "BearerIdentityServerAuthenticationJwt" was challenged.
+2019-07-19 13:22:04.526 +03:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-07-19 13:22:04.527 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:22:38.786 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:22:38.787 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:22:39.922 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:22:39.946 +03:00 [Information] Authorization was successful.
+2019-07-19 13:22:42.850 +03:00 [Information] Action: GetGameAsync Parameter: Id = 16
+2019-07-19 13:22:42.882 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-19 13:22:42.924 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:23:42.750 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:23:43.005 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:23:44.271 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:24:04.930 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:24:05.195 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:24:06.572 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:24:06.623 +03:00 [Information] Authorization was successful.
+2019-07-19 13:24:07.053 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 13:24:07.103 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:24:18.184 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:24:18.198 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:24:18.215 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:24:18.217 +03:00 [Information] Authorization was successful.
+2019-07-19 13:24:18.293 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 13:24:18.298 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:24:53.106 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:24:53.107 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:24:53.112 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:24:53.113 +03:00 [Information] Authorization was successful.
+2019-07-19 13:24:53.116 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 13:24:53.118 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:28:07.642 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:28:08.003 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:28:09.652 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:28:35.345 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:28:35.614 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:28:37.104 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:28:37.190 +03:00 [Information] Authorization was successful.
+2019-07-19 13:28:37.765 +03:00 [Information] Executing ContentResult with HTTP Response ContentType of "text/plain; charset=utf-8"
+2019-07-19 13:28:37.799 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:29:25.602 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:29:25.936 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:29:27.255 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:29:48.742 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:29:49.024 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:29:50.376 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:29:50.451 +03:00 [Information] Authorization was successful.
+2019-07-19 13:29:51.080 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 13:29:51.147 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:29:58.199 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:29:58.215 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:29:58.226 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:29:58.228 +03:00 [Information] Authorization was successful.
+2019-07-19 13:30:01.350 +03:00 [Error] An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
+2019-07-19 13:30:01.357 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-19 13:30:01.359 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:30:08.452 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:30:08.453 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:30:08.456 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:30:08.457 +03:00 [Information] Authorization was successful.
+2019-07-19 13:30:08.725 +03:00 [Information] Action: GetGameAsync Parameter: Id = 16
+2019-07-19 13:30:08.729 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-19 13:30:08.741 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:30:22.980 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:30:22.982 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:30:22.989 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:30:22.991 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:30:23.024 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:30:23.026 +03:00 [Information] Authorization was successful.
+2019-07-19 13:30:23.178 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 13:30:23.182 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:30:53.696 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:30:53.697 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:30:53.700 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:30:53.702 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:30:53.727 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:30:53.728 +03:00 [Information] Authorization was successful.
+2019-07-19 13:30:53.832 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 13:30:53.833 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:31:16.000 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:31:16.001 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:31:16.003 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:31:16.004 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:31:16.008 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:31:16.009 +03:00 [Information] Authorization was successful.
+2019-07-19 13:31:16.014 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2019-07-19 13:31:16.017 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:33:03.559 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:33:03.865 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:33:05.213 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:33:33.455 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:33:33.457 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:33:33.462 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:33:33.694 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:33:34.940 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:33:35.014 +03:00 [Information] Authorization was successful.
+2019-07-19 13:33:38.271 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=1 GameId=16 can't be written
+2019-07-19 13:33:38.304 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-19 13:33:38.333 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:34:05.607 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:34:05.608 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:34:05.609 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:34:05.619 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:34:05.658 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:34:05.665 +03:00 [Information] Authorization was successful.
+2019-07-19 13:34:07.791 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 19.07.2019 10:34:07 [Utc]
+2019-07-19 13:34:07.810 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-19 13:34:07.828 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:34:30.071 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:34:30.071 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:34:30.073 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:34:30.074 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:34:30.077 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:34:30.078 +03:00 [Information] Authorization was successful.
+2019-07-19 13:34:30.922 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=17 was written at [19.07.2019 10:34:30]
+2019-07-19 13:34:30.924 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:34:30.937 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:35:14.364 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:35:14.366 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:35:14.368 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:35:14.369 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:35:14.373 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:35:14.374 +03:00 [Information] Authorization was successful.
+2019-07-19 13:35:14.716 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=17 was written at [19.07.2019 10:35:14]
+2019-07-19 13:35:14.717 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:35:14.719 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:35:46.460 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:35:46.461 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:35:46.463 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:35:46.464 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:35:46.467 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:35:46.468 +03:00 [Information] Authorization was successful.
+2019-07-19 13:35:46.551 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=22 GameId=17 can't be written
+2019-07-19 13:35:46.553 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-19 13:35:46.555 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:35:56.113 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:35:56.116 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:35:56.118 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:35:56.120 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:35:56.128 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:35:56.130 +03:00 [Information] Authorization was successful.
+2019-07-19 13:35:56.220 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=2 GameId=17 can't be written
+2019-07-19 13:35:56.221 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-19 13:35:56.223 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:36:12.499 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:36:12.500 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:36:12.503 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:36:12.504 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:36:12.507 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:36:12.508 +03:00 [Information] Authorization was successful.
+2019-07-19 13:36:12.815 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=17 was written at [19.07.2019 10:36:12]
+2019-07-19 13:36:12.817 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:36:12.818 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:01.021 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:37:01.022 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:37:01.024 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:37:01.025 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:01.029 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:37:01.030 +03:00 [Information] Authorization was successful.
+2019-07-19 13:37:01.469 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=17 was written at [19.07.2019 10:37:01]
+2019-07-19 13:37:01.475 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:37:01.477 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:13.144 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:37:13.145 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:37:13.147 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:37:13.150 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:13.154 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:37:13.156 +03:00 [Information] Authorization was successful.
+2019-07-19 13:37:13.397 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=17 was written at [19.07.2019 10:37:13]
+2019-07-19 13:37:13.400 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:37:13.402 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:30.560 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:37:30.561 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:37:30.563 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:37:30.564 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:30.567 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:37:30.568 +03:00 [Information] Authorization was successful.
+2019-07-19 13:37:30.802 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=17 was written at [19.07.2019 10:37:30]
+2019-07-19 13:37:30.803 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:37:30.805 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:42.111 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:37:42.112 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:37:42.114 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:37:42.114 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:42.117 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:37:42.121 +03:00 [Information] Authorization was successful.
+2019-07-19 13:37:42.327 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=17 was written at [19.07.2019 10:37:42]
+2019-07-19 13:37:42.328 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:37:42.333 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:54.339 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:37:54.340 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:37:54.344 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:37:54.345 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:37:54.348 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:37:54.349 +03:00 [Information] Authorization was successful.
+2019-07-19 13:37:54.571 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=17 was written at [19.07.2019 10:37:54]
+2019-07-19 13:37:54.573 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:37:54.574 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:38:24.162 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:38:24.163 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:38:24.165 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:38:24.166 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:38:24.171 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:38:24.172 +03:00 [Information] Authorization was successful.
+2019-07-19 13:38:24.272 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=2 GameId=17 can't be written
+2019-07-19 13:38:24.273 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-19 13:38:24.279 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:49:19.268 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:49:19.270 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:49:19.272 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:49:19.273 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:49:19.277 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:49:19.279 +03:00 [Information] Authorization was successful.
+2019-07-19 13:49:19.456 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=17 was written at [19.07.2019 10:49:19]
+2019-07-19 13:49:19.457 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:49:19.460 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:55:36.826 +03:00 [Information] CORS policy execution failed.
+2019-07-19 13:55:36.827 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 13:55:36.829 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 13:55:36.830 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 13:55:36.835 +03:00 [Information] Successfully validated the token.
+2019-07-19 13:55:36.836 +03:00 [Information] Authorization was successful.
+2019-07-19 13:55:37.098 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=17 was written at [19.07.2019 10:55:37]
+2019-07-19 13:55:37.100 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 13:55:37.101 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:02:57.613 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:02:57.614 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:02:57.616 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:02:57.617 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:02:57.620 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:02:57.621 +03:00 [Information] Authorization was successful.
+2019-07-19 14:02:57.793 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=17 was written at [19.07.2019 11:02:57]
+2019-07-19 14:02:57.794 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:02:57.795 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:03:48.338 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:03:48.340 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:03:48.343 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:03:48.344 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:03:48.347 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:03:48.348 +03:00 [Information] Authorization was successful.
+2019-07-19 14:03:48.638 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=17 was written at [19.07.2019 11:03:48]
+2019-07-19 14:03:48.639 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:03:48.652 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:06:02.510 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:06:02.512 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:06:02.514 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:06:02.519 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:06:02.523 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:06:02.524 +03:00 [Information] Authorization was successful.
+2019-07-19 14:06:02.795 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 19.07.2019 11:06:02 [Utc]
+2019-07-19 14:06:02.797 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-19 14:06:02.800 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:07:04.179 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:07:04.180 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:07:04.182 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:07:04.183 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:07:04.187 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:07:04.188 +03:00 [Information] Authorization was successful.
+2019-07-19 14:07:04.461 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=18 was written at [19.07.2019 11:07:04]
+2019-07-19 14:07:04.463 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:07:04.465 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:07:34.020 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:07:34.021 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:07:34.023 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:07:34.024 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:07:34.028 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:07:34.030 +03:00 [Information] Authorization was successful.
+2019-07-19 14:07:34.444 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=18 was written at [19.07.2019 11:07:34]
+2019-07-19 14:07:34.447 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:07:34.450 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:07:46.699 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:07:46.700 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:07:46.704 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:07:46.705 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:07:46.709 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:07:46.710 +03:00 [Information] Authorization was successful.
+2019-07-19 14:07:46.942 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=18 was written at [19.07.2019 11:07:46]
+2019-07-19 14:07:46.947 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:07:46.952 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:08:12.779 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:08:12.780 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:08:12.782 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:08:12.784 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:08:12.787 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:08:12.788 +03:00 [Information] Authorization was successful.
+2019-07-19 14:08:13.160 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=18 was written at [19.07.2019 11:08:13]
+2019-07-19 14:08:13.162 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:08:13.163 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:08:33.685 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:08:33.687 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:08:33.689 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:08:33.690 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:08:33.693 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:08:33.695 +03:00 [Information] Authorization was successful.
+2019-07-19 14:08:34.078 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=18 was written at [19.07.2019 11:08:34]
+2019-07-19 14:08:34.079 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:08:34.080 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:08:49.320 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:08:49.321 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:08:49.323 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:08:49.324 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:08:49.327 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:08:49.331 +03:00 [Information] Authorization was successful.
+2019-07-19 14:08:49.678 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=18 was written at [19.07.2019 11:08:49]
+2019-07-19 14:08:49.683 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:08:49.685 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:09:12.785 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:09:12.787 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:09:12.789 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:09:12.790 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:09:12.795 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:09:12.796 +03:00 [Information] Authorization was successful.
+2019-07-19 14:09:13.064 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=18 was written at [19.07.2019 11:09:13]
+2019-07-19 14:09:13.065 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:09:13.067 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:09:27.622 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:09:27.626 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:09:27.631 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:09:27.634 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:09:27.650 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:09:27.651 +03:00 [Information] Authorization was successful.
+2019-07-19 14:09:27.978 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=18 was written at [19.07.2019 11:09:27]
+2019-07-19 14:09:27.979 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:09:27.981 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:16:27.017 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:16:27.018 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:16:27.021 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:16:27.022 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:16:27.025 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:16:27.026 +03:00 [Information] Authorization was successful.
+2019-07-19 14:16:27.267 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=18 was written at [19.07.2019 11:16:27]
+2019-07-19 14:16:27.268 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:16:27.270 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:17:59.596 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:17:59.599 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:17:59.601 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:17:59.602 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:17:59.607 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:17:59.609 +03:00 [Information] Authorization was successful.
+2019-07-19 14:17:59.923 +03:00 [Information] Action: CreateNewGameAsync : - Game was created at 19.07.2019 11:17:59 [Utc]
+2019-07-19 14:17:59.924 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-19 14:17:59.925 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.CreateNewGameAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:18:41.169 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:18:41.170 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:18:41.172 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:18:41.173 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:18:41.176 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:18:41.177 +03:00 [Information] Authorization was successful.
+2019-07-19 14:18:41.592 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=19 was written at [19.07.2019 11:18:41]
+2019-07-19 14:18:41.593 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:18:41.595 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:18:51.847 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:18:51.848 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:18:51.850 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:18:51.851 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:18:51.854 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:18:51.855 +03:00 [Information] Authorization was successful.
+2019-07-19 14:18:52.163 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=19 was written at [19.07.2019 11:18:52]
+2019-07-19 14:18:52.164 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:18:52.166 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:19:24.230 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:19:24.231 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:19:24.233 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:19:24.234 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:19:24.238 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:19:24.239 +03:00 [Information] Authorization was successful.
+2019-07-19 14:19:24.561 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=19 was written at [19.07.2019 11:19:24]
+2019-07-19 14:19:24.565 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:19:24.567 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:19:52.318 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:19:52.319 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:19:52.321 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:19:52.322 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:19:52.326 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:19:52.328 +03:00 [Information] Authorization was successful.
+2019-07-19 14:19:52.387 +03:00 [Warning] Action: AddNewStepAsync: step from PlayerId=2 GameId=19 can't be written
+2019-07-19 14:19:52.389 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-19 14:19:52.391 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:20:15.257 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:20:15.258 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:20:15.260 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:20:15.261 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:20:15.267 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:20:15.268 +03:00 [Information] Authorization was successful.
+2019-07-19 14:20:15.476 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=19 was written at [19.07.2019 11:20:15]
+2019-07-19 14:20:15.478 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:20:15.479 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:24:10.822 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:24:10.823 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:24:10.825 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:24:10.827 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:24:10.831 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:24:10.832 +03:00 [Information] Authorization was successful.
+2019-07-19 14:24:11.122 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=2 GameId=19 was written at [19.07.2019 11:24:11]
+2019-07-19 14:24:11.123 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:24:11.128 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:25:29.363 +03:00 [Information] CORS policy execution failed.
+2019-07-19 14:25:29.364 +03:00 [Information] Request origin "https://localhost:44350" does not have permission to access the resource.
+2019-07-19 14:25:29.365 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-19 14:25:29.366 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'
+2019-07-19 14:25:29.368 +03:00 [Information] Successfully validated the token.
+2019-07-19 14:25:29.369 +03:00 [Information] Authorization was successful.
+2019-07-19 14:25:29.609 +03:00 [Information] Action: AddNewStepAsync : step from PlayerId=22 GameId=19 was written at [19.07.2019 11:25:29]
+2019-07-19 14:25:29.610 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.StepResult"'.
+2019-07-19 14:25:29.611 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.StepController.AddNewStepAsync (EP.TicTacToe.Web)"'

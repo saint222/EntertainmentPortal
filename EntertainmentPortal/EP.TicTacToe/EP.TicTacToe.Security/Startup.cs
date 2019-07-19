@@ -28,13 +28,16 @@ namespace EP.TicTacToe.Security
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(
+                    Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion
+                    .Version_2_1);
 
             services.Configure<IISOptions>(iis =>
             {
@@ -43,25 +46,22 @@ namespace EP.TicTacToe.Security
             });
 
             var builder = services.AddIdentityServer(options =>
-            {
-                options.Events.RaiseErrorEvents = true;
-                options.Events.RaiseInformationEvents = true;
-                options.Events.RaiseFailureEvents = true;
-                options.Events.RaiseSuccessEvents = true;
-            })
-                .AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"))
+                {
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+                })
+                .AddInMemoryIdentityResources(
+                    Configuration.GetSection("IdentityResources"))
                 .AddInMemoryApiResources(Configuration.GetSection("ApiResources"))
                 .AddInMemoryClients(Config.GetClients())
                 .AddAspNetIdentity<ApplicationUser>();
 
             if (Environment.IsDevelopment())
-            {
                 builder.AddDeveloperSigningCredential();
-            }
             else
-            {
                 throw new Exception("need to configure key material");
-            }
 
             services.AddAuthentication()
                 .AddGoogle(options =>
@@ -69,7 +69,8 @@ namespace EP.TicTacToe.Security
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
                     // set the redirect URI to http://localhost:5000/signin-google
-                    options.ClientId = "103590806820-6n74po90tukbucj0vsekasmu4lmmmk82.apps.googleusercontent.com";
+                    options.ClientId =
+                        "103590806820-6n74po90tukbucj0vsekasmu4lmmmk82.apps.googleusercontent.com";
                     options.ClientSecret = "tMEt31_bX99XV3LZqk6uixzO";
                 });
         }

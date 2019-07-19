@@ -22,19 +22,23 @@ namespace EP.TicTacToe.Web.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger _logger;
 
-        public CookiesAuthController(UserManager<IdentityUser> manager, SignInManager<IdentityUser> signInManager, ILogger<CookiesAuthController> logger)
+        public CookiesAuthController(UserManager<IdentityUser> manager,
+                                     SignInManager<IdentityUser> signInManager,
+                                     ILogger<CookiesAuthController> logger)
         {
             _manager = manager;
             _signInManager = signInManager;
             _logger = logger;
         }
-        
-        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was registered")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
-        [HttpPost("register")]
-        public async Task<IActionResult> RegisterWithCookies([FromBody] UserAuthData userAuthData)
-        {
 
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description =
+            "User was registered")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>),
+            Description = "User wasn't registered")]
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterWithCookies(
+            [FromBody] UserAuthData userAuthData)
+        {
             var user = await _manager.FindByEmailAsync(userAuthData.Email);
             if (user == null)
             {
@@ -54,7 +58,10 @@ namespace EP.TicTacToe.Web.Controllers
                 {
                     _logger.LogWarning($"Register failed.\n{status.Errors}");
                 }
-                return status.Succeeded ? (IActionResult) Ok() : BadRequest(status.Errors);
+
+                return status.Succeeded
+                    ? (IActionResult) Ok()
+                    : BadRequest(status.Errors);
             }
             else
             {
@@ -63,30 +70,33 @@ namespace EP.TicTacToe.Web.Controllers
             }
         }
 
-        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged in")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User wasn't logged in")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description =
+            "User was logged in")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
+            "User wasn't logged in")]
         [HttpPost("login")]
-        public async Task<IActionResult> LoginWithCookies([FromBody] UserAuthData userAuthData)
+        public async Task<IActionResult> LoginWithCookies(
+            [FromBody] UserAuthData userAuthData)
         {
-            var result = await _signInManager.PasswordSignInAsync(userAuthData.UserName, userAuthData.Password, true, false);
+            var result = await _signInManager.PasswordSignInAsync(userAuthData.UserName,
+                userAuthData.Password, true, false);
             if (result.Succeeded)
-            {
                 _logger.LogInformation($"User {userAuthData.UserName} signed in");
-            }
             else
-            {
-                _logger.LogWarning($"Unsuccessful login of user: {userAuthData.UserName}");
-            }
-            return result.Succeeded ? (IActionResult)Ok() : BadRequest();
+                _logger.LogWarning(
+                    $"Unsuccessful login of user: {userAuthData.UserName}");
+            return result.Succeeded ? (IActionResult) Ok() : BadRequest();
         }
 
-        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description =
+            "User was logged out")]
         [HttpPost("logout")]
         public async Task<IActionResult> LogoutWithCookies()
         {
             await _signInManager.SignOutAsync();
-            
-            _logger.LogInformation($"User: {_signInManager.Context.User.Identity.Name} logged out ");
+
+            _logger.LogInformation(
+                $"User: {_signInManager.Context.User.Identity.Name} logged out ");
             return Ok();
         }
     }

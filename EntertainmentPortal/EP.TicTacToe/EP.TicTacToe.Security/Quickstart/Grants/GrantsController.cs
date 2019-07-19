@@ -28,9 +28,9 @@ namespace EP.TicTacToe.Security.Quickstart.Grants
         private readonly IEventService _events;
 
         public GrantsController(IIdentityServerInteractionService interaction,
-            IClientStore clients,
-            IResourceStore resources,
-            IEventService events)
+                                IClientStore clients,
+                                IResourceStore resources,
+                                IEventService events)
         {
             _interaction = interaction;
             _clients = clients;
@@ -55,7 +55,8 @@ namespace EP.TicTacToe.Security.Quickstart.Grants
         public async Task<IActionResult> Revoke(string clientId)
         {
             await _interaction.RevokeUserConsentAsync(clientId);
-            await _events.RaiseAsync(new GrantsRevokedEvent(User.GetSubjectId(), clientId));
+            await _events.RaiseAsync(
+                new GrantsRevokedEvent(User.GetSubjectId(), clientId));
 
             return RedirectToAction("Index");
         }
@@ -65,12 +66,13 @@ namespace EP.TicTacToe.Security.Quickstart.Grants
             var grants = await _interaction.GetAllUserConsentsAsync();
 
             var list = new List<GrantViewModel>();
-            foreach(var grant in grants)
+            foreach (var grant in grants)
             {
                 var client = await _clients.FindClientByIdAsync(grant.ClientId);
                 if (client != null)
                 {
-                    var resources = await _resources.FindResourcesByScopeAsync(grant.Scopes);
+                    var resources =
+                        await _resources.FindResourcesByScopeAsync(grant.Scopes);
 
                     var item = new GrantViewModel()
                     {
@@ -80,8 +82,10 @@ namespace EP.TicTacToe.Security.Quickstart.Grants
                         ClientUrl = client.ClientUri,
                         Created = grant.CreationTime,
                         Expires = grant.Expiration,
-                        IdentityGrantNames = resources.IdentityResources.Select(x => x.DisplayName ?? x.Name).ToArray(),
-                        ApiGrantNames = resources.ApiResources.Select(x => x.DisplayName ?? x.Name).ToArray()
+                        IdentityGrantNames = resources.IdentityResources
+                            .Select(x => x.DisplayName ?? x.Name).ToArray(),
+                        ApiGrantNames = resources.ApiResources
+                            .Select(x => x.DisplayName ?? x.Name).ToArray()
                     };
 
                     list.Add(item);

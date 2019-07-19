@@ -59,10 +59,9 @@ namespace EP.TicTacToe.Security.Quickstart.Account
             var vm = await BuildLoginViewModelAsync(returnUrl);
 
             if (vm.IsExternalLoginOnly)
-            {
                 // we only have one option for logging in and it's an external provider
-                return RedirectToAction("Challenge", "External", new { provider = vm.ExternalLoginScheme, returnUrl });
-            }
+                return RedirectToAction("Challenge", "External",
+                    new {provider = vm.ExternalLoginScheme, returnUrl});
 
             return View(vm);
         }
@@ -75,7 +74,8 @@ namespace EP.TicTacToe.Security.Quickstart.Account
         public async Task<IActionResult> Login(LoginInputModel model, string button)
         {
             // check if we are in the context of an authorization request
-            var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
+            var context =
+                await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
 
             // the user clicked the "cancel" button
             if (button != "login")
@@ -89,11 +89,10 @@ namespace EP.TicTacToe.Security.Quickstart.Account
 
                     // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
                     if (await _clientStore.IsPkceClientAsync(context.ClientId))
-                    {
                         // if the client is PKCE then we assume it's native, so this change in how to
                         // return the response is for better UX for the end user.
-                        return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
-                    }
+                        return View("Redirect",
+                            new RedirectViewModel {RedirectUrl = model.ReturnUrl});
 
                     return Redirect(model.ReturnUrl);
                 }
@@ -106,20 +105,21 @@ namespace EP.TicTacToe.Security.Quickstart.Account
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberLogin, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(model.Username,
+                    model.Password, model.RememberLogin, true);
                 if (result.Succeeded)
                 {
                     var user = await _userManager.FindByNameAsync(model.Username);
-                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName));
+                    await _events.RaiseAsync(
+                        new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName));
 
                     if (context != null)
                     {
                         if (await _clientStore.IsPkceClientAsync(context.ClientId))
-                        {
                             // if the client is PKCE then we assume it's native, so this change in how to
                             // return the response is for better UX for the end user.
-                            return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
-                        }
+                            return View("Redirect",
+                                new RedirectViewModel {RedirectUrl = model.ReturnUrl});
 
                         // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
                         return Redirect(model.ReturnUrl);
@@ -127,22 +127,18 @@ namespace EP.TicTacToe.Security.Quickstart.Account
 
                     // request for a local page
                     if (Url.IsLocalUrl(model.ReturnUrl))
-                    {
                         return Redirect(model.ReturnUrl);
-                    }
                     else if (string.IsNullOrEmpty(model.ReturnUrl))
-                    {
                         return Redirect("~/");
-                    }
                     else
-                    {
                         // user might have clicked on a malicious link - should be logged
                         throw new Exception("invalid return URL");
-                    }
                 }
 
-                await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials"));
-                ModelState.AddModelError(string.Empty, AccountOptions.InvalidCredentialsErrorMessage);
+                await _events.RaiseAsync(
+                    new UserLoginFailureEvent(model.Username, "invalid credentials"));
+                ModelState.AddModelError(string.Empty,
+                    AccountOptions.InvalidCredentialsErrorMessage);
             }
 
             // something went wrong, show form with error
@@ -161,11 +157,9 @@ namespace EP.TicTacToe.Security.Quickstart.Account
             var vm = await BuildLogoutViewModelAsync(logoutId);
 
             if (vm.ShowLogoutPrompt == false)
-            {
                 // if the request for logout was properly authenticated from IdentityServer, then
                 // we don't need to show the prompt and can just log the user out directly.
                 return await Logout(vm);
-            }
 
             return View(vm);
         }
@@ -186,7 +180,8 @@ namespace EP.TicTacToe.Security.Quickstart.Account
                 await _signInManager.SignOutAsync();
 
                 // raise the logout event
-                await _events.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(), User.GetDisplayName()));
+                await _events.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(),
+                    User.GetDisplayName()));
             }
 
             // check if we need to trigger sign-out at an upstream identity provider
@@ -195,10 +190,11 @@ namespace EP.TicTacToe.Security.Quickstart.Account
                 // build a return URL so the upstream provider will redirect back
                 // to us after the user has logged out. this allows us to then
                 // complete our single sign-out processing.
-                string url = Url.Action("Logout", new { logoutId = vm.LogoutId });
+                var url = Url.Action("Logout", new {logoutId = vm.LogoutId});
 
                 // this triggers a redirect to the external provider for sign-out
-                return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
+                return SignOut(new AuthenticationProperties {RedirectUri = url},
+                    vm.ExternalAuthenticationScheme);
             }
 
             return View("LoggedOut", vm);
@@ -225,20 +221,14 @@ namespace EP.TicTacToe.Security.Quickstart.Account
                 };
 
                 var status = await _userManager.CreateAsync(newUser, model.Password);
-                if (!status.Succeeded)
-                {
-                    return View(new RegisterInputModel());
-                }
+                if (!status.Succeeded) return View(new RegisterInputModel());
 
                 status = await _userManager.AddClaimsAsync(newUser, new Claim[]
                 {
                     new Claim(JwtClaimTypes.Name, model.UserName),
-
                 });
                 if (!status.Succeeded)
-                {
                     throw new Exception(status.Errors.First().Description);
-                }
             }
 
             var returnUrlDecoded = HttpUtility.UrlDecode(
@@ -251,9 +241,8 @@ namespace EP.TicTacToe.Security.Quickstart.Account
                 ReturnUrl = returnUrlDecoded,
                 Username = model.UserName
             }, "login");
-
         }
-        
+
         /*****************************************/
         /* helper APIs for the AccountController */
         /*****************************************/
@@ -261,22 +250,22 @@ namespace EP.TicTacToe.Security.Quickstart.Account
         {
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
             if (context?.IdP != null)
-            {
                 // this is meant to short circuit the UI and only trigger the one external IdP
                 return new LoginViewModel
                 {
                     EnableLocalLogin = false,
                     ReturnUrl = returnUrl,
                     Username = context.LoginHint,
-                    ExternalProviders = new ExternalProvider[] { new ExternalProvider { AuthenticationScheme = context.IdP } }
+                    ExternalProviders = new ExternalProvider[]
+                        {new ExternalProvider {AuthenticationScheme = context.IdP}}
                 };
-            }
 
             var schemes = await _schemeProvider.GetAllSchemesAsync();
 
             var providers = schemes
                 .Where(x => x.DisplayName != null ||
-                            (x.Name.Equals(AccountOptions.WindowsAuthenticationSchemeName, StringComparison.OrdinalIgnoreCase))
+                            x.Name.Equals(AccountOptions.WindowsAuthenticationSchemeName,
+                                StringComparison.OrdinalIgnoreCase)
                 )
                 .Select(x => new ExternalProvider
                 {
@@ -287,15 +276,17 @@ namespace EP.TicTacToe.Security.Quickstart.Account
             var allowLocal = true;
             if (context?.ClientId != null)
             {
-                var client = await _clientStore.FindEnabledClientByIdAsync(context.ClientId);
+                var client =
+                    await _clientStore.FindEnabledClientByIdAsync(context.ClientId);
                 if (client != null)
                 {
                     allowLocal = client.EnableLocalLogin;
 
-                    if (client.IdentityProviderRestrictions != null && client.IdentityProviderRestrictions.Any())
-                    {
-                        providers = providers.Where(provider => client.IdentityProviderRestrictions.Contains(provider.AuthenticationScheme)).ToList();
-                    }
+                    if (client.IdentityProviderRestrictions != null &&
+                        client.IdentityProviderRestrictions.Any())
+                        providers = providers.Where(provider =>
+                            client.IdentityProviderRestrictions.Contains(
+                                provider.AuthenticationScheme)).ToList();
                 }
             }
 
@@ -319,7 +310,8 @@ namespace EP.TicTacToe.Security.Quickstart.Account
 
         private async Task<LogoutViewModel> BuildLogoutViewModelAsync(string logoutId)
         {
-            var vm = new LogoutViewModel { LogoutId = logoutId, ShowLogoutPrompt = AccountOptions.ShowLogoutPrompt };
+            var vm = new LogoutViewModel
+                {LogoutId = logoutId, ShowLogoutPrompt = AccountOptions.ShowLogoutPrompt};
 
             if (User?.Identity.IsAuthenticated != true)
             {
@@ -341,16 +333,20 @@ namespace EP.TicTacToe.Security.Quickstart.Account
             return vm;
         }
 
-        private async Task<LoggedOutViewModel> BuildLoggedOutViewModelAsync(string logoutId)
+        private async Task<LoggedOutViewModel> BuildLoggedOutViewModelAsync(
+            string logoutId)
         {
             // get context information (client name, post logout redirect URI and iframe for federated signout)
             var logout = await _interaction.GetLogoutContextAsync(logoutId);
 
             var vm = new LoggedOutViewModel
             {
-                AutomaticRedirectAfterSignOut = AccountOptions.AutomaticRedirectAfterSignOut,
+                AutomaticRedirectAfterSignOut =
+                    AccountOptions.AutomaticRedirectAfterSignOut,
                 PostLogoutRedirectUri = logout?.PostLogoutRedirectUri,
-                ClientName = string.IsNullOrEmpty(logout?.ClientName) ? logout?.ClientId : logout?.ClientName,
+                ClientName = string.IsNullOrEmpty(logout?.ClientName)
+                    ? logout?.ClientId
+                    : logout?.ClientName,
                 SignOutIframeUrl = logout?.SignOutIFrameUrl,
                 LogoutId = logoutId
             };
@@ -358,18 +354,18 @@ namespace EP.TicTacToe.Security.Quickstart.Account
             if (User?.Identity.IsAuthenticated == true)
             {
                 var idp = User.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
-                if (idp != null && idp != IdentityServer4.IdentityServerConstants.LocalIdentityProvider)
+                if (idp != null && idp != IdentityServer4.IdentityServerConstants
+                        .LocalIdentityProvider)
                 {
-                    var providerSupportsSignout = await HttpContext.GetSchemeSupportsSignOutAsync(idp);
+                    var providerSupportsSignout =
+                        await HttpContext.GetSchemeSupportsSignOutAsync(idp);
                     if (providerSupportsSignout)
                     {
                         if (vm.LogoutId == null)
-                        {
                             // if there's no current logout context, we need to create one
                             // this captures necessary info from the current logged in user
                             // before we signout and redirect away to the external IdP for signout
                             vm.LogoutId = await _interaction.CreateLogoutContextAsync();
-                        }
 
                         vm.ExternalAuthenticationScheme = idp;
                     }

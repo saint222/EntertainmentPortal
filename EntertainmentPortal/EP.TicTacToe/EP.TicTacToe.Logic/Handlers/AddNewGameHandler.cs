@@ -12,7 +12,7 @@ using EP.TicTacToe.Logic.Commands;
 using EP.TicTacToe.Logic.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using State = EP.TicTacToe.Logic.Models.State;
+
 
 namespace EP.TicTacToe.Logic.Handlers
 {
@@ -77,17 +77,29 @@ namespace EP.TicTacToe.Logic.Handlers
 
             //  Creating new map cells
             var cells = CreateCellsForMap(mapDb);
-            await _context.AddRangeAsync(cells, cancellationToken);
+            var cellDbs = cells as CellDb[] ?? cells.ToArray();
+            await _context.AddRangeAsync(cellDbs, cancellationToken);
 
             var game = await _context.Games
                 .Where(g => g.Id == gameDb.Id)
                 .SingleOrDefaultAsync(cancellationToken);
 
+            var cellList = cellDbs.Select(item => 0).ToList();
+
+            var gameDto = new Game
+            {
+                Id = game.Id,
+                MapId = request.MapSize,
+                PlayerOne = Convert.ToInt32(request.PlayerOne),
+                PlayerTwo = Convert.ToInt32(request.PlayerTwo),
+                TicTacList = cellList
+            };
+
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return Result.Ok(_mapper.Map<Game>(game));
+                return Result.Ok(_mapper.Map<Game>(gameDto));
             }
             catch (DbUpdateException ex)
             {

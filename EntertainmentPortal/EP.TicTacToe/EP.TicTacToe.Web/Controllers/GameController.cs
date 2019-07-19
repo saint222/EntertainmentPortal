@@ -36,7 +36,7 @@ namespace EP.TicTacToe.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Game not found")]
-        [ValidationFilter]
+        [LocalValidationFilter]
         public async Task<IActionResult> GetGameAsync([FromQuery] GetGame model)
         {
             _logger.LogDebug(
@@ -60,6 +60,7 @@ namespace EP.TicTacToe.Web.Controllers
         }
 
         [HttpPost("new")]
+        [LocalValidationFilter]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Game can't be created")]

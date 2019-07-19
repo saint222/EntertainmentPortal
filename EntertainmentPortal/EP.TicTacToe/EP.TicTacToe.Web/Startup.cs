@@ -66,10 +66,10 @@ namespace EP.TicTacToe.Web
                 cfg => cfg.AddAuthenticationSchemes("Google")
                     .RequireAuthenticatedUser()));
 
-            //services.AddMemoryCache();
-
             services.AddSwaggerDocument(cfg =>
             {
+                cfg.Title = "TicTacToe game API";
+                cfg.DocumentName = "API";
                 cfg.SchemaType = SchemaType.OpenApi3;
                 cfg.AddSecurity("oauth", new[] {"tictactoe_api"},
                     new OpenApiSecurityScheme()
@@ -86,18 +86,17 @@ namespace EP.TicTacToe.Web
                     });
             });
 
-            //services.AddDistributedMemoryCache();
-            //services.AddSession();
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddGameServices();
-
             services.AddCors();
 
             services.AddMvc(opt =>
                 {
                     opt.Filters.Clear();
                     opt.Filters.Add(typeof(GlobalExceptionFilter));
+                    //opt.Filters.Add(typeof(GlobalActionFilter));
+                    //opt.Filters.Add(typeof(LocalActionFilterAttribute));
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(cfg =>
@@ -114,10 +113,7 @@ namespace EP.TicTacToe.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
                               IMediator mediator)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseCors(o =>
                 o.AllowAnyHeader()
@@ -138,7 +134,6 @@ namespace EP.TicTacToe.Web
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseOpenApi();
             app.UseSwagger().UseSwaggerUi3();
-            //app.UseSession();
             app.UseMvcWithDefaultRoute();
 
             Log.Logger = new LoggerConfiguration()

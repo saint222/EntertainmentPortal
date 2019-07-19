@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/game",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "EP.TicTacToe.Web": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/game",
+      "launchUrl": "api/game/get",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

@@ -21,14 +21,15 @@ namespace EP.TicTacToe.Web.Filters
         public Task OnActionExecutionAsync(ActionExecutingContext context,
                                            ActionExecutionDelegate next)
         {
-            if (context.Controller is GameController)
-            {
-            }
-
             if (!context.ModelState.IsValid)
                 context.Result = new BadRequestObjectResult(context.ModelState);
 
-            context.Result = new ContentResult {Content = "Filter Executed"};
+            context.Result = new ContentResult
+            {
+                Content =
+                    $"Filter Executed. Source of the problem: {context.Controller}"
+            };
+
             return Task.CompletedTask;
         }
     }
