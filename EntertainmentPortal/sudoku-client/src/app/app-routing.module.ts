@@ -1,3 +1,4 @@
+import { HomeComponent } from './typescript-angular-client/components/home/home.component';
 import { PlayerInfoComponent } from './typescript-angular-client/components/player-info/player-info.component';
 import { PlayerComponent } from './typescript-angular-client/components/player/player.component';
 import { CreateSessionComponent } from './typescript-angular-client/components/create-session/create-session.component';
@@ -23,7 +24,7 @@ const registeredRoutes: Routes = [
 ];
 
 const routes: Routes = [
-  {path: 'home', component: RegisteredDemoComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'registered', component: ReristeredComponent},
   {path: 'registered', component: ReristeredComponent, children: registeredRoutes},
   {path: 'signIn', component: SignInComponent},

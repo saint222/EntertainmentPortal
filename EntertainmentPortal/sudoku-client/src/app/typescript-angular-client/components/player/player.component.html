@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngFor="let player of players">
+  <div *ngIf="player">
     <app-player-info [player]="player"></app-player-info>
   </div>
 </div>

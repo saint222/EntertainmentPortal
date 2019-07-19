@@ -51,6 +51,28 @@ namespace EP.Sudoku.Web.Controllers
         }
 
         /// <summary>
+        /// Fetches a player of the game from the Db by the unique UserId.
+        /// </summary>
+        [HttpGet("api/player")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> GetPlayerByUserIdAsync(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                id = User.FindFirst("sub")?.Value;
+                if (string.IsNullOrEmpty(id))
+                {
+                    _logger.LogError($"Incorrect value for the player's Id was set. '{id}' - is == null...");
+                    return BadRequest();
+                }
+            }
+            var player = await _mediator.Send(new GetPlayerByUserId(id));
+            return player.HasValue ? (IActionResult)Ok(player.Value) : NotFound();
+        }
+
+        /// <summary>
         /// Fetches a player of the game from the Db by the unique Id.
         /// </summary>
         [HttpGet("api/players/{id}")]

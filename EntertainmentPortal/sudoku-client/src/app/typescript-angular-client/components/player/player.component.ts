@@ -13,15 +13,15 @@ import { SessionsService } from '../../api/api';
 })
 export class PlayerComponent implements OnInit {
 
-  players?: Player[] = [];
+  player?: Player;
 
   constructor(private playersService: PlayersService) {
   }
 
   ngOnInit() {
-    this.playersService.playersGetAllPlayer().subscribe(
+    this.playersService.playersGetPlayerByUserId().subscribe(
       b => {
-          this.players = b;
+          this.player = b;
       },
       (err: HttpErrorResponse) => {
         return console.log(err.error);

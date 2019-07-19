@@ -1,44 +1,3 @@
-<!--
-<div class="signup-form">
-		<h2>Register</h2>
-    <p class="hint-text">Create your account. It's free and takes just a minute.</p>
-    <form [formGroup]="registerGroup" autocomplete="off" (ngSubmit)="onSubmit(form)" #form="ngForm">
-        <div class="form-group required">
-            <label>Name</label>
-            <input class="form-control" formControlName="name" placeholder="Name">
-            <label class="text-danger" *ngIf="registerGroup.get('name') && registerGroup.get('name').errors?.required">This field is mandatory.</label>
-        </div>
-        <div class="form-group required">
-          <label>Email</label>
-          <input class="form-control" formControlName="email" placeholder="Email">
-          <label class="text-danger" *ngIf="registerGroup.get('email')?.touched && registerGroup.get('email').errors?.required">This field is put incorrectly.</label>
-         </div>
-         <div formGroupName="passwords">
-            <div class="form-group required">
-                <label>Password</label>
-                <input class="form-control" formControlName="password" placeholder="Password">
-                <label class="text-danger" *ngIf="registerGroup.get('password')?.touched && registerGroup.get('password').errors?.required">This field is mandatory.</label>
-               </div>
-               <div class="form-group required">
-                <label>Confirm Password</label>
-                <input class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
-                <label class="text-danger" *ngIf="registerGroup.get('confirmPassword')?.touched && registerGroup.get('confirmPassword').errors?.required">This field is mandatory.</label>
-                <label class="text-danger" *ngIf="registerGroup.get('passwords.confirmPassword').touched && registerGroup.get('passwords.confirmPassword').errors?.passwordMismatch">Confirm Password does not match.</label>
-               </div>
-         </div>
-         <label *ngIf=error>{{error}}</label>
-         <div class="form-row">
-           <div class="form-group col-md8 offset-md">
-             <button type="submit" class="btn btn-success btn-lg btn-block">Register</button>
-           </div>
-         </div>
-      </form>
-      <div class="text-center">Already have an account? <a routerLink="/signIn">Sign in</a></div>
-</div>
--->
-
-
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <div class="container">
     <h2 class = "text">Register and join the incredible world of sudoku!</h2>
@@ -65,7 +24,8 @@
           <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
        </div>
           <input class="form-control" formControlName="email" placeholder="Email address" type="email">
-          <label class="text-danger" *ngIf="registerGroup.get('email')?.touched && registerGroup.get('email').errors?.required">This field is put incorrectly!</label>
+          <!-- registerGroup.get('email').errors?.required -->
+          <label class="text-danger" *ngIf="registerGroup.get('email')?.touched">This field is put incorrectly!</label>
       </div>
       <div formGroupName="passwords">
       <div class="form-group input-group">
@@ -73,15 +33,15 @@
           <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
       </div>
           <input class="form-control" formControlName="password" placeholder="Password" type = "password">
-          <label class="text-danger" *ngIf="registerGroup.get('password')?.touched && registerGroup.get('password').errors?.required">This field is mandatory!</label>
+          <label class="text-danger" *ngIf="registerGroup.get('password')?.touched">This field is mandatory!</label>
         </div>
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
       </div>
           <input class="form-control" formControlName="confirmPassword" placeholder="Confirm password" type = "password">
-          <label class="text-danger" *ngIf="registerGroup.get('confirmPassword')?.touched && registerGroup.get('confirmPassword').errors?.required">This field is mandatory!</label>
-          <label class="text-danger" *ngIf="registerGroup.get('passwords.confirmPassword').touched && registerGroup.get('passwords.confirmPassword').errors?.passwordMismatch">Confirm Password does not match!</label>
+          <label class="text-danger" *ngIf="registerGroup.get('confirmPassword')?.touched">This field is mandatory!</label>
+          <label class="text-danger" *ngIf="registerGroup.get('passwords.confirmPassword').touched">Confirm Password does not match!</label>
         </div>
     </div>
     <label *ngIf="error">Attention! {{error}}</label>

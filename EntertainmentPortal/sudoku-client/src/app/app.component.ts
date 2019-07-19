@@ -6,13 +6,14 @@ import { AuthConfig } from 'angular-oauth2-oidc';
 export const authConfig: AuthConfig = {
 
   // Url of the Identity Provider
-  issuer: 'http://localhost:5000',
+  issuer: 'https://localhost:44366',
+  // issuer: 'http://localhost:5000/',
 
   // URL of the SPA to redirect the user to after login
   redirectUri: window.location.origin + '/home',
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
-  clientId: 'spa',
+  clientId: 'angular',
 
   // set the scope for the permissions the client should request
   // The first three are defined by OIDC. The 4th is a usecase-specific one
@@ -26,7 +27,7 @@ export const authConfig: AuthConfig = {
 })
 export class AppComponent {
   title = 'sudoku-client';
-  userName: string = this.getValueFromIdToken('sub');
+  userName: string = this.getValueFromIdToken('name');
 
   constructor(private authService: OAuthService, private router: Router) {
      this.authService.configure(authConfig);
@@ -40,10 +41,7 @@ export class AppComponent {
   }
 
   logout() {
-    // true - redirect user after logout
-    console.log(sessionStorage);
     this.authService.logOut();
-    console.log(sessionStorage);
     this.router.navigateByUrl('/');
 
   }

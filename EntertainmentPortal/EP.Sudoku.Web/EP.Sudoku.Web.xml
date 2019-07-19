@@ -19,6 +19,11 @@
             Fetches all registered players from the Db.
             </summary>  
         </member>
+        <member name="M:EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByUserIdAsync(System.String)">
+            <summary>
+            Fetches a player of the game from the Db by the unique UserId.
+            </summary>
+        </member>
         <member name="M:EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync(System.Int32)">
             <summary>
             Fetches a player of the game from the Db by the unique Id.

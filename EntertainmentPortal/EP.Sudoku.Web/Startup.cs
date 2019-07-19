@@ -61,7 +61,7 @@ namespace EP.Sudoku.Web
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "https://localhost:44366";
+                    opt.Authority = "https://localhost:44366/";
                     opt.RequireHttpsMetadata = true;
                 })
                 //.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
