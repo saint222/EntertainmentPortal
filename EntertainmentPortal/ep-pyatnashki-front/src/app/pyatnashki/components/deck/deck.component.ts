@@ -27,6 +27,10 @@ export class DeckComponent implements OnInit {
       } else {
         // tslint:disable-next-line: no-shadowed-variable
         this.deckService.getDeck().subscribe(d => {this.deck = d; });
+        if (this.deck == null) {
+          this.deck = this.getNewDeck();
+        }
+
       }
     } else {
       this.deck = this.getNewDeck();
