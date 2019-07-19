@@ -1,0 +1,16 @@
+<h3 *ngIf="gameStatus == 0">Current player: {{ currentPlayer.name }}</h3>
+<h3 *ngIf="gameStatus == 1 && lastWinner == Player1">You win</h3>
+<h3 *ngIf="gameStatus == 1 && lastWinner == Player2">Your opponent wins</h3>
+<h3 *ngIf="gameStatus == 2">It's a draw</h3>
+
+<div id="board" [class.locked]="boardLocked || gameStatus == 1">
+  <div *ngFor="let square of board" 
+    class="square" 
+    [class.checked]="square.value != ''" 
+    [class.winner]="square.winner"
+    (click)="square_click(this.square)">
+    {{ square.value }}
+  </div>
+</div>
+
+<input type="button" value="Play again" *ngIf="gameStatus !== 0" (click)="newGame()" />

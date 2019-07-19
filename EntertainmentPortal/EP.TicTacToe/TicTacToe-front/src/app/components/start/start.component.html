@@ -1,0 +1,19 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+ 
+    <div>
+      <label for="name">
+        Enter Your Name Id
+      </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+   
+    <div>
+      <label for="address">
+        Chose Your Opponent Id
+      </label>
+      <input id="opponent" type="text" formControlName="opponent">
+    </div>
+   
+    <button class="button" type="submit">Submit</button>
+   
+  </form>
