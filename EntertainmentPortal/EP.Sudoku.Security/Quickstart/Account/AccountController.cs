@@ -202,7 +202,9 @@ namespace IdentityServer4.Quickstart.UI
                 return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
             }
 
-            return View("LoggedOut", vm);
+            //return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
+            return View("Redirect", new RedirectViewModel { RedirectUrl = "http://localhost:4200/home" });
+            //return View("LoggedOut", vm);
         }
 
         [HttpGet]

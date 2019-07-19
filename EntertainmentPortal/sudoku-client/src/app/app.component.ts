@@ -33,6 +33,8 @@ export class AppComponent {
      this.authService.configure(authConfig);
      this.authService.tokenValidationHandler = new JwksValidationHandler();
      this.authService.loadDiscoveryDocumentAndTryLogin();
+     this.authService.logoutUrl = 'http://localhost:4200/home';
+     this.authService.postLogoutRedirectUri = 'http://localhost:4200/home';
 
   }
 
@@ -41,9 +43,7 @@ export class AppComponent {
   }
 
   logout() {
-    this.authService.logOut();
-    this.router.navigateByUrl('/');
-
+    this.authService.logOut(false);
   }
 
   getValueFromIdToken(claim: string) {
