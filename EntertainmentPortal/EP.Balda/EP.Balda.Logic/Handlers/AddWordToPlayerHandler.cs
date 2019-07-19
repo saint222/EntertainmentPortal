@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace EP.Balda.Logic.Handlers
 {
     public class
-        AddWordToPlayerHandler : IRequestHandler<AddWordToPlayerCommand, Result<Player>>
+        AddWordToPlayerHandler : IRequestHandler<AddWordToPlayerCommand, Result<Map>>
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
@@ -26,14 +26,14 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Result<Player>> Handle(AddWordToPlayerCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Map>> Handle(AddWordToPlayerCommand request, CancellationToken cancellationToken)
         {
             var player = await _context.Users
                 .Where(p => p.Id == request.PlayerId)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (player == null)
-                return Result.Fail<Player>(
+                return Result.Fail<Map>(
                     $"There is no player's id {request.PlayerId} in database");
 
             var playerGame = await _context.PlayerGames
@@ -42,7 +42,7 @@ namespace EP.Balda.Logic.Handlers
                     cancellationToken);
 
             if (playerGame == null)
-                return Result.Fail<Player>(
+                return Result.Fail<Map>(
                     $"There is no relation of player's id {request.PlayerId} with game's id {request.GameId} in database");
 
             var game = await _context.Games.Where(g => g.Id == request.GameId)
@@ -53,30 +53,30 @@ namespace EP.Balda.Logic.Handlers
 
             var cellsFormWord = new List<CellDb>();
 
-            foreach (long id in request.CellsIdFormWord)
+            foreach (var cellFormWord in request.CellsThatFormWord)
             {
-                var cell = map.Cells.FirstOrDefault(c => c.Id == id);
+                var cell = map.Cells.FirstOrDefault(c => c.Id == cellFormWord.Id);
 
                 if (cell == null)
-                    return Result.Fail<Player>(
-                        $"There is no cell with id {id} in map's id {map.Id} in database");
+                    return Result.Fail<Map>(
+                        $"There is no cell with id {cellFormWord} in map's id {map.Id} in database");
 
                 cellsFormWord.Add(cell);
             }
 
-            if (!IsWordCorrect(cellsFormWord))
-                return Result.Fail<Player>("Some empty cells are chosen");
+            if (!IsWordCorrect(request.CellsThatFormWord))
+                return Result.Fail<Map>("Some empty cells are chosen");
 
-            string word = GetSelectedWord(cellsFormWord);
+            string word = GetSelectedWord(request.CellsThatFormWord);
 
             if (word == game.InitWord)
-                return Result.Fail<Player>("It is initial word");
+                return Result.Fail<Map>("It is initial word");
 
             var wordRu = _context.WordsRu
-                .SingleOrDefault(w => w.Word == word);
+                .SingleOrDefault(w => w.Word == word.ToLower());
 
             if (wordRu == null)
-                return Result.Fail<Player>($"There is no word {word} in word database");
+                return Result.Fail<Map>($"There is no word {word} in word database");
 
             var playerWordDb = new PlayerWord
             {
@@ -91,7 +91,7 @@ namespace EP.Balda.Logic.Handlers
                     cancellationToken);
 
             if (playerWord != null)
-                return Result.Fail<Player>("Word has already been used");
+                return Result.Fail<Map>("Word has already been used");
 
             //TODO Add when create player
 
@@ -100,15 +100,26 @@ namespace EP.Balda.Logic.Handlers
 
             player.PlayerWords.Add(playerWordDb);
 
+            foreach (var cellDb in cellsFormWord)
+            {
+                foreach (var cellRequest in request.CellsThatFormWord)
+                {
+                    if(cellDb.Id == cellRequest.Id && cellDb.Letter != cellRequest.Letter)
+                    {
+                        cellDb.Letter = cellRequest.Letter;
+                    }
+                }
+            }
+
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return Result.Ok(_mapper.Map<Player>(player));
+                return Result.Ok(_mapper.Map<Map>(map));
             }
             catch (DbUpdateException ex)
             {
-                return Result.Fail<Player>(ex.Message);
+                return Result.Fail<Map>(ex.Message);
             }
         }
 
@@ -118,7 +129,7 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="word">Parameter requires List of Cell argument.</param>
         /// <returns>returns true if this is the correct word</returns>
-        public bool IsWordCorrect(List<CellDb> word)
+        public bool IsWordCorrect(List<Cell> word)
         {
             bool areLettersCorrect = false;
 
@@ -132,7 +143,7 @@ namespace EP.Balda.Logic.Handlers
                     return false;
 
                 //next cell in the word
-                CellDb nextCell;
+                Cell nextCell;
 
                 if (letterPosition < word.Count - 1)
                     nextCell = word[letterPosition + 1];
@@ -169,11 +180,32 @@ namespace EP.Balda.Logic.Handlers
         /// <summary>
         /// The method returns the word from the game map according to the entered cells.
         /// </summary>
-        /// <param name="words">Parameter requires &lt;IEnumerable&lt;Cell&gt;&gt; argument.</param>
+        /// <param name="cells">Parameter requires &lt;IEnumerable&lt;Cell&gt;&gt; argument.</param>
         /// <returns>The method returns word from the game map.</returns>
-        public string GetSelectedWord(List<CellDb> words)
+        public string GetSelectedWord(List<Cell> cells)
         {
-            return words.Aggregate("", (current, cell) => current + cell.Letter);
+            return cells.Aggregate("", (current, cell) => current + cell.Letter);
+        }
+
+        /// <summary>
+        /// The method checks if game is over.
+        /// </summary>
+        /// <param name="cells">Parameter requires &lt;IEnumerable&lt;Cell&gt;&gt; argument.</param>
+        /// <returns>The method returns word from the game map.</returns>
+        public bool IsGameOver(List<Cell> cells)
+        {
+            bool isGameOver = true;
+
+            foreach (var cell in cells)
+            {
+                if(cell.Letter == null)
+                {
+                    isGameOver = false;
+                    continue;
+                }
+            }
+
+            return isGameOver;
         }
     }
 }

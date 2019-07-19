@@ -52,7 +52,7 @@ export class GameService {
       withCredentials: true
      };
 
-    return this.http.put('http://localhost:5001/api/game/word', gameAndCells, httpOptions);
+    return this.http.put<Cell[][]>('http://localhost:5001/api/map/word', gameAndCells, httpOptions);
   }
 
   getPlayer(id: string) {

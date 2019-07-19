@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Commands
 {
-    public class AddWordToPlayerCommand : IRequest<Result<Player>>
+    public class AddWordToPlayerCommand : IRequest<Result<Map>>
     {
         public string PlayerId { get; set; }
 
         public long GameId { get; set; }
 
-        public List<long> CellsIdFormWord { get; set; }
+        public List<Cell> CellsThatFormWord { get; set; }
     }
 }

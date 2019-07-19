@@ -1,4 +1,5 @@
 ﻿using EP.Balda.Logic.Models;
+using System.Collections.Generic;
 
 namespace EP.Balda.Web.Services
 {
@@ -36,6 +37,18 @@ namespace EP.Balda.Web.Services
             }
 
             return alphabet;
+        }
+
+        public static string FormWordFromCells(List<Cell> cells)
+        {
+            string word = "";
+
+            foreach (var cell in cells)
+            {
+                word += cell.Letter;
+            }
+
+            return word;
         }
     }
 }

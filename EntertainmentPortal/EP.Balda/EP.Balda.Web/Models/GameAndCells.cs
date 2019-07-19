@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EP.Balda.Logic.Models;
+using System.Collections.Generic;
 
 namespace EP.Balda.Web.Models
 {
@@ -15,6 +16,6 @@ namespace EP.Balda.Web.Models
         /// <summary>
         /// Property for cells' id that form a word.
         /// </summary>
-        public List<long> CellsIdFormWord { get; set; }
+        public List<Cell> CellsIdFormWord { get; set; }
     }
 }

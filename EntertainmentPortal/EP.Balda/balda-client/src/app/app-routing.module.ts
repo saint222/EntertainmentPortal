@@ -1,5 +1,5 @@
+import { GameOverComponent } from './game/components/game-over/game-over.component';
 import { PlaygroundComponent } from './game/components/playground/playground.component';
-import { MapComponent } from './game/components/map/map.component';
 import { StartPageComponent } from './authorization/components/start-page/start-page.component';
 import { RegistrationComponent } from './authorization/components/registration/registration.component';
 import { LoginComponent } from './authorization/components/login/login.component';
@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'playground/:userId:gameId:mapId', component: PlaygroundComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistrationComponent},
+  {path: 'gameover', component: GameOverComponent},
   {path: '', component: StartPageComponent}
 ];
 

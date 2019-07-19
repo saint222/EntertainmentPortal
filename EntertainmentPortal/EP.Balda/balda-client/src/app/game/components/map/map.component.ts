@@ -3,7 +3,7 @@ import { GameService } from './../../services/game.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Cell } from '../../models/cell';
-import { HttpResponseBase } from '@angular/common/http';
+import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-map',
@@ -19,6 +19,7 @@ export class MapComponent implements OnInit {
   alphabet: string[] = [];
   currentLetter: string;
   tempLetter: Cell = new Cell();
+  errorText: string;
 
   constructor(private gameService: GameService, private route: ActivatedRoute,  private router: Router) {
     this.route.params.subscribe( params => this.gameService.getGame(params.gameid));
@@ -40,36 +41,33 @@ export class MapComponent implements OnInit {
     });
    }
 
-   selectCell(cell: Cell) {
-     if (this.currentLetter != null && cell.letter == null && this.tempLetter.letter == null) {
-       cell.letter = this.currentLetter;
-       this.tempLetter = cell;
+   selectCell(chosenCell: Cell) {
+    if (this.currentLetter != null && chosenCell.letter == null && this.tempLetter.letter == null) {
+       chosenCell.letter = this.currentLetter;
+       this.tempLetter = chosenCell;
        return;
      }
-     if (this.currentLetter != null && cell.letter == null && this.tempLetter.letter != null) {
+    if (this.currentLetter != null && chosenCell.letter == null && this.tempLetter.letter != null) {
        this.tempLetter.letter = null;
-       cell.letter = this.currentLetter;
+       chosenCell.letter = this.currentLetter;
        return;
      }
-     if (cell.checked === true || cell.letter === null) {
+    if (chosenCell.checked === true || chosenCell.letter === null) {
        return;
      }
-     this.selectedCellsId.push(cell.id);
-     this.selectedCells.push(cell);
-     this.selectedLetters += cell.letter;
-     cell.checked = true;
+    this.selectedCellsId.push(chosenCell.id);
+    this.selectedCells.push(chosenCell);
+    this.selectedLetters += chosenCell.letter;
+    chosenCell.checked = true;
    }
 
    onSendClick() {
     const gameAndCells = new GameAndCells();
-    gameAndCells.gameId = this.route.snapshot.queryParamMap.get('id');
-    gameAndCells.CellsIdFormWord = this.selectedCellsId;
+    gameAndCells.gameId = this.route.snapshot.queryParamMap.get('gameId');
+    gameAndCells.CellsIdFormWord = this.selectedCells;
     this.gameService.sendWord(gameAndCells).subscribe(w => {
-      console.log(w);
-    },
-      (err: HttpResponseBase) => {
-        return console.log(err.statusText);
-      });
+      this.cells = w;
+    });
 
     this.onCancelClick();
    }
@@ -79,6 +77,7 @@ export class MapComponent implements OnInit {
       element.checked = false;
     });
     this.selectedCellsId = [];
+    this.selectedCells = [];
     this.selectedLetters = 'Your word: ';
    }
 
