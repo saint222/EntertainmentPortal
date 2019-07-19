@@ -87,7 +87,7 @@ namespace EP.Balda.Logic.Handlers
 
             var playerWord = await _context.PlayerWords
                 .FirstOrDefaultAsync(
-                    pw => (pw.GameId == request.GameId) & (pw.WordId == wordRu.Id),
+                    pw => (pw.GameId == request.GameId && pw.WordId == wordRu.Id),
                     cancellationToken);
 
             if (playerWord != null)
