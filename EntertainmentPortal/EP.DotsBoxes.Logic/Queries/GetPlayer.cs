@@ -1,5 +1,4 @@
 ﻿using CSharpFunctionalExtensions;
-using EP.DotsBoxes.Data.Models;
 using EP.DotsBoxes.Logic.Models;
 using MediatR;
 

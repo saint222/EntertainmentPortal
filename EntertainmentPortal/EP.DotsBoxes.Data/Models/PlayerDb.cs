@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EP.DotsBoxes.Data.Models
 {
@@ -13,9 +11,11 @@ namespace EP.DotsBoxes.Data.Models
         /// <summary>
         /// Id property. Stores unique player's Id.
         /// </summary>
-
         public int Id { get; set; }
 
+        /// <summary>
+        /// GameBoardId property. Stores the unique ID of the gameboard of the player.
+        /// </summary>
         public int GameBoardId { get; set; }
 
         /// <summary>
@@ -33,6 +33,9 @@ namespace EP.DotsBoxes.Data.Models
         /// </summary>
         public int Score { get; set; }
 
+        /// <summary>
+        /// GameBoard property. Stores the player's game board.
+        /// </summary>
         public virtual GameBoardDb GameBoard { get; set; }
 
         /// <summary>

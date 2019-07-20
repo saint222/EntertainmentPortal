@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.DotsBoxes.Data.Context;
-using EP.DotsBoxes.Data.Models;
 using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using MediatR;

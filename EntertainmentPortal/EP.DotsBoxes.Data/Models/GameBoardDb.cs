@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EP.DotsBoxes.Data.Models
 {
@@ -30,6 +29,9 @@ namespace EP.DotsBoxes.Data.Models
         /// </summary>
         public List<CellDb> Cells { get; set; }
 
+        /// <summary>
+        /// Players property. Stores a list of players of the game.
+        /// </summary>
         public List<PlayerDb> Players { get; set; }
 
         /// <summary>

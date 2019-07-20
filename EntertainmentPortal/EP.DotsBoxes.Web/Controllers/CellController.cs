@@ -13,19 +13,28 @@ using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.DotsBoxes.Web.Controllers
-{    
+{
+    /// <summary>
+    /// This is CellController.
+    /// </summary>
     [ApiController]
     public class CellController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly ILogger<CellController> _logger;
 
+        /// <summary>
+        /// CellController сonstructor. Is used for DI.
+        /// </summary>
         public CellController(IMediator mediator, ILogger<CellController> logger)
         {
             _mediator = mediator;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Select a cells from the database.
+        /// </summary>
         // GET api/cell
         [HttpGet("api/cell")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -40,6 +49,9 @@ namespace EP.DotsBoxes.Web.Controllers
             return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
 
+        /// <summary>
+        /// Changes the cell after the player’s move and saves to the database.
+        /// </summary>
         //PUT api/cell
         [HttpPut("api/cell")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Add line to cell")]

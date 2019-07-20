@@ -7,11 +7,8 @@ using EP.DotsBoxes.Logic.Validators;
 using EP.DotsBoxes.Web.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,8 +32,10 @@ namespace EP.DotsBoxes.Web
         public void ConfigureServices(IServiceCollection services)
         {         
             services.AddSwaggerDocument(cfg =>
-            {
-                cfg.Title = "Dots and Boxes Game API";
+            {                
+                cfg.Version = "v1";
+                cfg.Title = "Dots and Boxes game";
+                cfg.Description = "ASP.NET Core Web API";
                 cfg.SchemaType = SchemaType.OpenApi3;
                 cfg.AddSecurity("oauth", new[] { "dotsboxes_api" }, new OpenApiSecurityScheme()
                 {

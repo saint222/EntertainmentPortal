@@ -6,8 +6,6 @@ using EP.DotsBoxes.Logic.Models;
 using EP.DotsBoxes.Logic.Queries;
 using JetBrains.Annotations;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -34,7 +32,7 @@ namespace EP.DotsBoxes.Web.Controllers
         }
 
         /// <summary>
-        /// Select a gameboard from the Db.
+        /// Select a gameboard from the database.
         /// </summary>
         // GET api/gameboard
         [HttpGet("api/gameboard")]
@@ -51,7 +49,7 @@ namespace EP.DotsBoxes.Web.Controllers
         }
 
         /// <summary>
-        /// Сreates a new gameboard according to specified parameters and saves it to the database.
+        /// Сreates a new gameboard according to specified parameters and saves it in the database.
         /// </summary>
         // POST api/gameboard
         [HttpPost("api/gameboard")]

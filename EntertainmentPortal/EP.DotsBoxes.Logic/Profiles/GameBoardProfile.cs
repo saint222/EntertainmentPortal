@@ -14,9 +14,7 @@ namespace EP.DotsBoxes.Logic.Profiles
                 .ForMember(b => b.Columns, opt => opt.MapFrom(b => b.Columns))
                 .ForMember(b => b.Cells, opt => opt.MapFrom(b => b.Cells))
                 .ForMember(b => b.Players, opt => opt.MapFrom(b => b.Players))
-                .ReverseMap();
-
-          
+                .ReverseMap();          
         }
     }
 }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
-using Bogus.Extensions;
-using EP.DotsBoxes.Data.Context;
-using JetBrains.Annotations;
 
 namespace EP.DotsBoxes.Logic.Models
 {

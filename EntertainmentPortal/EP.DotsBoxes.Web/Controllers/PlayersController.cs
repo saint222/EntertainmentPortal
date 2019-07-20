@@ -9,10 +9,12 @@ using EP.DotsBoxes.Logic.Queries;
 using NSwag.Annotations;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Authorization;
 
 namespace EP.DotsBoxes.Web.Controllers
 {
+    /// <summary>
+    /// This is PlayersController.
+    /// </summary>
     [ApiController]    
     public class PlayersController : ControllerBase
     {
@@ -29,7 +31,7 @@ namespace EP.DotsBoxes.Web.Controllers
         }
 
         /// <summary>
-        /// Select a player of the game from the Db by the unique Id.
+        /// Select a player of the game from the database by the unique Id.
         /// </summary>
         // GET api/player/{id}
         [HttpGet("api/player/{id}")]
@@ -45,7 +47,7 @@ namespace EP.DotsBoxes.Web.Controllers
         }
 
         /// <summary>
-        /// Select all registered players from the Db.
+        /// Select all registered players from the database.
         /// </summary>
         // GET api/players
         [HttpGet("api/players")]
@@ -61,7 +63,7 @@ namespace EP.DotsBoxes.Web.Controllers
         }
 
         /// <summary>
-        /// Creates a new player and saves data in the Db.
+        /// Creates a new player and saves data to the database.
         /// </summary>
         // POST api/player
         [HttpPost("api/player")]

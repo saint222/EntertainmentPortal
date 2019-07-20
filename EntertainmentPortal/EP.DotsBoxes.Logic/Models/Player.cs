@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 
 namespace EP.DotsBoxes.Logic.Models
 {
@@ -9,6 +8,9 @@ namespace EP.DotsBoxes.Logic.Models
     /// </summary>
     public class Player
     {
+        /// <summary>
+        /// The class Player constructor.
+        /// </summary>
         public Player()
         {
             Color = CreateRandomColor();
@@ -34,7 +36,9 @@ namespace EP.DotsBoxes.Logic.Models
         /// </summary>
         public int Score { get; set; }
 
-
+        /// <summary>
+        /// CreateRandomColor method. Аllows to randomly create a color for a player.
+        /// </summary>
         private string CreateRandomColor()
         {
             Random randon = new Random();

@@ -24,8 +24,7 @@ namespace EP.DotsBoxes.Data.Context
             gameBoardEntity.HasMany(g => g.Cells)
                 .WithOne(c => c.GameBoard);
             gameBoardEntity.HasMany(g => g.Players)
-               .WithOne(c => c.GameBoard);
-         
+               .WithOne(c => c.GameBoard);         
         }
     }
 }
