@@ -12,9 +12,10 @@ import { PrivacyComponent } from './typescript-angular-client/components/privacy
 import { ReristeredComponent } from './typescript-angular-client/components/reristered/reristered.component';
 import {RegisteredDemoComponent} from './typescript-angular-client/components/registered-demo/registered-demo.component';
 import { PlayerFormComponent } from './typescript-angular-client/components/player-form/player-form.component';
+import { ContactsComponent } from './typescript-angular-client/components/contacts/contacts.component';
 
 const registeredRoutes: Routes = [
-
+  {path: 'contacts', component: ContactsComponent},
     {path: 'privacy', component: PrivacyComponent},
     {path: 'create-session', component: CreateSessionComponent},
     {path: 'session/:id', component: SessionComponent},

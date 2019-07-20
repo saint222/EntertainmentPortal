@@ -22,13 +22,14 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { ReristeredComponent } from './components/reristered/reristered.component';
 import { PlayerFormComponent } from './components/player-form/player-form.component';
 import { RegisteredDemoComponent } from './components/registered-demo/registered-demo.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 
 @NgModule({
   declarations: [ReristeredComponent, SessionComponent, CellComponent,
     CreateSessionComponent, PlayerComponent,
     PlayerInfoComponent, SignInComponent,
     RegisterComponent, HomeComponent,
-    ConfirmEmailComponent, PrivacyComponent, UserComponent, PlayerFormComponent, RegisteredDemoComponent],
+    ConfirmEmailComponent, PrivacyComponent, UserComponent, PlayerFormComponent, RegisteredDemoComponent, ContactsComponent],
   imports: [
     CommonModule,
     FormsModule,
