@@ -81,7 +81,7 @@ namespace EP.DotsBoxes.Security
                     AllowedCorsOrigins = { "http://localhost:5002" },
 
                     AllowedScopes = { "openid", "profile", "api1" }
-                }              
+                }
             };
         }
     }

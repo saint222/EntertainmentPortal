@@ -4,10 +4,12 @@
 
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
-using System;
+using System.Linq;
 
 namespace EP.DotsBoxes.Security
 {
@@ -15,9 +17,20 @@ namespace EP.DotsBoxes.Security
     {
         public static void Main(string[] args)
         {
-            Console.Title = "IdentityServer4";
+            var seed = args.Any(x => x == "/seed");
+            if (seed) args = args.Except(new[] { "/seed" }).ToArray();
 
-            CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args).Build();
+
+            if (seed)
+            {
+                var config = host.Services.GetRequiredService<IConfiguration>();
+                var connectionString = config.GetConnectionString("DefaultConnection");
+                SeedData.EnsureSeedData(connectionString);
+                return;
+            }
+
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
@@ -33,8 +46,7 @@ namespace EP.DotsBoxes.Security
                             .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
                             .Enrich.FromLogContext()
                             .WriteTo.File(@"identityserver4_log.txt")
-                            .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}",
-                            theme: AnsiConsoleTheme.Literate);
+                            .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Literate);
                     });
         }
     }
