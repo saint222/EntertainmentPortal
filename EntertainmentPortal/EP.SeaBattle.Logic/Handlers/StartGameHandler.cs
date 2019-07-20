@@ -35,7 +35,6 @@ namespace EP.SeaBattle.Logic.Handlers
             if (validationResult.IsValid)
             {
                 GameDb game = await _context.Games
-                    .Include(g => g.Players)
                     .FirstOrDefaultAsync(g => g.EnemySearch == true).ConfigureAwait(false);
                 if (game == null)
                 {

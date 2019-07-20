@@ -15,5 +15,7 @@ namespace EP.SeaBattle.Data.Models
         public bool Finish { get; set; }
         public string PlayerAllowedToMove { get; set; }
         public ICollection<PlayerDb> Players { get; set; }
+        public string Winner { get; set; }
+        public string Loser { get; set; }
     }
 }

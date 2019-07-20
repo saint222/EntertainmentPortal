@@ -12,6 +12,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using EP.SeaBattle.Common.Enums;
+using System.Collections.Generic;
 
 namespace EP.SeaBattle.Logic.Handlers
 {
@@ -45,16 +46,17 @@ namespace EP.SeaBattle.Logic.Handlers
                 };
 
                 _context.Shots.Add(shotDb);
+
                 PlayerDb playerDb = await _context.Players.FindAsync(request.PlayerId).ConfigureAwait(false);
 
-                GameDb gameDb = await _context.Games.FirstOrDefaultAsync(g => g.Players.Where(p => p.Id == request.PlayerId) != null).ConfigureAwait(false);
+                GameDb gameDb = await _context.Games.Where(g => g.Players.Where(p => p.Id == playerDb.Id).Count() > 0).FirstOrDefaultAsync().ConfigureAwait(false);
 
-                Player enemyPlayer = _mapper.Map<Player>(await _context.Players
+                Player enemyPlayerDb = _mapper.Map<Player>(await _context.Players
                                                                        .Include(p => p.Ships)
                                                                        .ThenInclude(s => s.Cells)
                                                                        .FirstOrDefaultAsync(p => p.GameId == gameDb.Id && p.Id != request.PlayerId)
                                                                        .ConfigureAwait(false));
-                ShotsManager shotsManager = new ShotsManager(enemyPlayer);
+                ShotsManager shotsManager = new ShotsManager(enemyPlayerDb);
 
 
                 
@@ -64,14 +66,20 @@ namespace EP.SeaBattle.Logic.Handlers
                     ShipDb shipDb = await _context.Ships.FindAsync(ship.Id).ConfigureAwait(false);
                     shipDb.Rank = ship.Rank;
                     shipDb.PlayerId = ship.PlayerId;
-                    foreach(Cell cell in ship.Cells)
-                    {
-                        shipDb.Cells.Add(_mapper.Map<CellDb>(cell));
-                    }
+                    shipDb.Cells = _mapper.Map<ICollection<CellDb>>(ship.Cells);
+
                     if (shotsManager.isFinishedGame)
                     {
                         gameDb.Finish = true;
                         gameDb.PlayerAllowedToMove = null;
+                        gameDb.Winner = playerDb.NickName;
+                        gameDb.Loser = enemyPlayerDb.NickName;
+                        playerDb.GameId = null;
+                        IEnumerable<ShotDb> shotsDb = _context.Shots.Where(s => s.PlayerId == playerDb.Id || s.PlayerId == enemyPlayerDb.Id);
+                        _context.RemoveRange(shotsDb);
+                        IEnumerable<ShipDb> shipsDb = _context.Ships.Where(s => s.PlayerId == playerDb.Id || s.PlayerId == enemyPlayerDb.Id);
+                        _context.RemoveRange(shipsDb);
+
                     }
 
                     if (ship.IsAlive)
@@ -90,7 +98,7 @@ namespace EP.SeaBattle.Logic.Handlers
                 {
                     _logger.LogInformation($"Missed the ship with cordinates X{request.X}, Y{request.Y}");
                     shotDb.Status = ShotStatus.Missed;
-                    gameDb.PlayerAllowedToMove = enemyPlayer.Id;
+                    gameDb.PlayerAllowedToMove = enemyPlayerDb.Id;
                     result = Result.Ok(_mapper.Map<Shot>(shotDb));
                 }
             }

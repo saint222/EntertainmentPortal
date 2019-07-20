@@ -17,6 +17,7 @@ namespace EP.SeaBattle.Logic.Validators
             {
                 RuleFor(x => x.NickName.Trim())
                 .NotEmpty().WithMessage("NickName cannot be empty")
+                .NotNull().WithMessage("NickName cannot be null")
                 .MinimumLength(3).WithMessage("NickName must have 3 characters")
                 .MaximumLength(20).WithMessage("NickName must have less 20 characters");
             });

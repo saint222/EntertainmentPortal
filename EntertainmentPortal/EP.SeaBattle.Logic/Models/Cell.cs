@@ -18,7 +18,5 @@ namespace EP.SeaBattle.Logic.Models
         /// Status
         /// </summary>
         public bool IsAlive { get; set; }
-
-        public Ship Ship { get; }
     }
 }
