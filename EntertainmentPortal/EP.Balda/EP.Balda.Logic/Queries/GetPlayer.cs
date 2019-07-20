@@ -6,6 +6,6 @@ namespace EP.Balda.Logic.Queries
 {
     public class GetPlayer : IRequest<Maybe<Player>>
     {
-        public long Id { get; set; }
+        public string Id { get; set; }
     }
 }

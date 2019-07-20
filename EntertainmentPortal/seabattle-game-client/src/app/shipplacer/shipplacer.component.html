@@ -1,0 +1,29 @@
+<form [formGroup]="placerForm" (ngSubmit)="onSubmit(form)" #form="ngForm" class="container">
+
+  <div class="form-group col-md-6">
+    <label for=""></label>
+    <select multiple class="form-control" name="rank" id="rank" formControlName="rank">
+      <option [value]="1">Однопалубный - ({{ oneLast }} осталось)</option>
+      <option [value]="2">Двупалубный - ({{ twoLast }} осталось)</option>
+      <option [value]="3">Трехпалубный  - ({{ threeLast }} осталось)</option>
+      <option [value]="4">Четырехпалубный - ({{ fourLast }} осталось)</option>
+    </select>
+    <div class="radio-inline" style="margin-top: 10px">
+      <input type="radio" class="custom-control-input" id="Vertical" name="orientation" value="0" formControlName="orientation">
+      <label class="custom-control-label" for="Vertical">Вертикально</label>
+    </div>
+    <div class="radio-inline" style="margin-top: 10px">
+      <input type="radio" class="custom-control-input" id="Horizontal" name="orientation" value="1" formControlName="orientation">
+      <label class="custom-control-label" for="Horizontal">Горизонтально</label>
+    </div>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="X">Координата X</label>
+    <input type="number" class="form-control" name="x" id="x" placeholder="от 0 до 9" formControlName="x">
+
+    <label for="Y">Координата Y</label>
+    <input type="number" class="form-control" name="y" id="y" placeholder="от 0 до 9" formControlName="y">
+    <button type="submit" class="btn btn-primary" style="margin-top: 10px">Поставить корабль</button>
+  </div>
+
+</form>

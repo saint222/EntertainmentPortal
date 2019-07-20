@@ -1,4 +1,4 @@
-@model LoginViewModel
+﻿@model LoginViewModel
 
 <div class="login-page">
     <div class="page-header">
@@ -39,9 +39,18 @@
                                         </label>
                                     </div>
                                 }
+
+                                <div>
+                                    <p>The default users are alice/bob, password: Pass123$</p>
+                                </div>
+
                                 <div class="form-group">
                                     <button class="btn btn-primary" name="button" value="login">Login</button>
                                     <button class="btn btn-default" name="button" value="cancel">Cancel</button>
+                                </div>
+
+                                <div>
+                                    <p>Don't you have an account yet? <a href=@($"../registration{Context.Request.QueryString}")>Register now!</a></p>
                                 </div>
                             </fieldset>
                         </form>

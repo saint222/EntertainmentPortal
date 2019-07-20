@@ -3,22 +3,22 @@
 namespace EP.Balda.Data.Models
 {
     /// <summary>
-    ///     Entity of Maps.
+    /// Entity of Maps.
     /// </summary>
     public class MapDb
     {
         /// <summary>
-        ///     Id property. Represents Id of Game.
+        /// Id property. Represents Id of Game.
         /// </summary>
         public long Id { get; set; }
 
         /// <summary>
-        ///     Size property. Represents size of playing field.
+        /// Size property. Represents size of playing field.
         /// </summary>
         public int Size { get; set; }
 
         /// <summary>
-        ///     Cells property. Represents Cells of map.
+        /// Cells property. Represents Cells of map.
         /// </summary>
         public IList<CellDb> Cells { get; set; }
     }

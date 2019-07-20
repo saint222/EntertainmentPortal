@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
 import { GameData } from './../../models/game-data';
 import { GameService } from './../../services/game.service';
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpResponseBase } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-game-field',
@@ -10,9 +11,14 @@ import { HttpResponseBase } from '@angular/common/http';
   styleUrls: ['./game-field.component.sass']
 })
 export class GameFieldComponent implements OnInit {
+  public alphabetRow1: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
+  public alphabetRow2: string[] = ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   gameFieldData: GameData = null;
   tmpGameData: GameData = null;
   endGameStatus: string = null;
+
+  userName: string = this.getValueFromIdToken('name');
+  userEmail: string = this.getValueFromIdToken('email');
 
   constructor(private gameService: GameService, private router: Router) { }
 
@@ -53,8 +59,26 @@ export class GameFieldComponent implements OnInit {
   }
 
   deleteSession(id: number) {
-    this.gameService.deleteGame(id).subscribe(
+    this.gameService.deleteGame(id).subscribe( b => {
+      },
       (err: HttpResponseBase) => console.log(err.statusText)
     );
+  }
+
+  getValueFromIdToken(claim: string) {
+    const jwt = sessionStorage.getItem('id_token');
+    if ( jwt == null) {
+      return null;
+    }
+
+    const jwtData = jwt.split('.')[1];
+    const decodedJwtJsonData = window.atob(jwtData);
+    let value: any;
+    JSON.parse(decodedJwtJsonData, function findKey(k, v) {
+      if (k === claim) {
+        value = v;
+      }
+    });
+    return value;
   }
 }
