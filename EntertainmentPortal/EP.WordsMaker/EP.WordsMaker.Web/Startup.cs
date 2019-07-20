@@ -91,12 +91,15 @@ namespace EP.WordsMaker.Web
 
             services.AddSwaggerDocument(cfg =>
             {
+	            cfg.Title = "WordsMaker Game API";
+	            cfg.Description = "SharpCode Team";
                 cfg.SchemaType = SchemaType.OpenApi3;
                 cfg.AddSecurity("oauth", new[] { "wordsmaker_api" }, new OpenApiSecurityScheme()
                 {
                     Flow = OpenApiOAuth2Flow.Implicit,
                     Type = OpenApiSecuritySchemeType.OAuth2,
                     AuthorizationUrl = "http://localhost:5000/connect/authorize",
+					
                     Scopes = new Dictionary<string, string>()
                     {
                         {"wordsmaker_api", "Access to wordsmaker api"}
@@ -143,6 +146,7 @@ namespace EP.WordsMaker.Web
             {
                 AppName = "WordsMaker",
                 ClientId = "swagger"
+				
             });
             app.UseSession();
             app.UseMvc();

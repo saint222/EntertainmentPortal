@@ -13,16 +13,16 @@ export class PlayerService {
 
 
   getPlayers() {
-    return this.http.get<Player[]>('http://localhost:56657/api/player');
+    return this.http.get<Player[]>('http://localhost:44350/api/player');
   }
 
   getPlayer(id: number) {
     const params = new HttpParams().set('number', id.toString());
-    return this.http.get('http://localhost:56657/api/player', {params});
+    return this.http.get('http://localhost:44350/api/player', {params});
   }
 
   addPlayer(player: Player) {
-      return this.http.post('http://localhost:56657/api/player', player);
+      return this.http.post('http://localhost:44350/api/player', player);
   }
 
 }

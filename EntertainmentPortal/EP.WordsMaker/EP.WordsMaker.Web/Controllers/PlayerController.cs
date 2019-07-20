@@ -25,7 +25,7 @@ namespace EP.WordsMaker.Web.Controllers
         }
   
 		[HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player collection is empty")]
         public async Task<IActionResult> GetAllPlayersAsync()
