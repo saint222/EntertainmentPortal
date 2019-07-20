@@ -10,9 +10,9 @@ namespace EP.Sudoku.Logic.Commands
     public class CreateSessionCommand : IRequest<Session>
     {
         public Session session { get; set; }
-        public CreateSessionCommand(Session s)
+        public CreateSessionCommand(Session session)
         {
-            session = s;
+            this.session = session;
         }
     }
 }

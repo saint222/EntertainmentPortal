@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+body {
+  background-image: url('https://wallpapertag.com/wallpaper/full/7/6/7/598590-most-popular-win7-background-1920x1200-notebook.jpg');
+  background-size: auto;
+  background-attachment: fixed;
+}
+
+#footer {
+  text-align: center;
+  margin-top: 30px;
+  color: black;
+ }
+ .facebookButtons{
+  position: absolute;
+  right: 0;
+ }

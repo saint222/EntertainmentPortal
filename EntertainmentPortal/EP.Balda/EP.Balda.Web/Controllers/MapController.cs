@@ -10,7 +10,7 @@ using NSwag.Annotations;
 namespace EP.Balda.Web.Controllers
 {
     [ApiController]
-    public class MapController : ControllerBase
+    public class MapController : BaseController
     {
         private readonly IMediator _mediator;
         private readonly ILogger<MapController> _logger;
@@ -21,16 +21,30 @@ namespace EP.Balda.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/map/{id}")]
+        [HttpGet("api/map")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
-            "Map not found")]
-        public async Task<IActionResult> GetMapAsync([FromRoute]long id)
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Map not found")]
+        public async Task<IActionResult> GetMapAsync([FromQuery] GetMap model)
         {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
 
-            var result = await _mediator.Send(new GetMap(id)).ConfigureAwait(false);
-            return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
+            var result = await _mediator.Send(model);
+
+            if(result.HasValue)
+            {
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameter: Id = {model.Id}");
+
+                return Ok(result.Value);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                    $"Id = {model.Id} - Map not found");
+
+                return NotFound();
+            }
         }
     }
 }

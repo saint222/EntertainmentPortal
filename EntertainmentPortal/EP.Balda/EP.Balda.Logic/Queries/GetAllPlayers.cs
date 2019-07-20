@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using CSharpFunctionalExtensions;
-using EP.Balda.Data.Models;
+﻿using CSharpFunctionalExtensions;
+using EP.Balda.Logic.Models;
 using MediatR;
+using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Queries
 {
-    public class GetAllPlayers : IRequest<Maybe<IEnumerable<PlayerDb>>>
+    public class GetAllPlayers : IRequest<Maybe<IEnumerable<Player>>>
     {
     }
 }

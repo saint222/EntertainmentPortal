@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EP.DotsBoxes.Web\EP.DotsBoxes.Web.csproj" />
+    <ProjectReference Include="..\EP.DotsBoxes.Logic\EP.DotsBoxes.Logic.csproj" />
   </ItemGroup>
 
 </Project>

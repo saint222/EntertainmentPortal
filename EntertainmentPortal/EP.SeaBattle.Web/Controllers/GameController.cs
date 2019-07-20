@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using EP.SeaBattle.Logic.Commands;
+using EP.SeaBattle.Logic.Queries;
 using EP.SeaBattle.Logic.Models;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -14,7 +15,7 @@ using NSwag.Annotations;
 
 namespace EP.SeaBattle.Web.Controllers
 {
-    [Route("api/[controller]")]
+
     [ApiController]
     public class GameController : ControllerBase
     {
@@ -25,10 +26,28 @@ namespace EP.SeaBattle.Web.Controllers
             _mediator = mediator;
         }
 
+        [Route("api/StartGame")]
         [HttpPost]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Create new game")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't create a new game")]
-        public async Task<IActionResult> CreateGame([FromBody, NotNull, CustomizeValidator(RuleSet = "GamePreValidation")] CreateNewGameCommand model)
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Start the game")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't start the game")]
+        public async Task<IActionResult> StartGame([FromBody, NotNull, CustomizeValidator(RuleSet = "GamePreValidation")] StartGameCommand model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await _mediator.Send(model);
+            return result.IsFailure
+                ? (IActionResult)BadRequest(result.Error)
+                : Ok(result.Value);
+        }
+
+        [Route("api/FinishGame")]
+        [HttpPut]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Finish the game")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't finish the game")]
+        public async Task<IActionResult> FinishGame([FromBody, NotNull, CustomizeValidator(RuleSet = "GamePreValidation")] FinishGameCommand model)
         {
             if (!ModelState.IsValid)
             {
@@ -38,6 +57,15 @@ namespace EP.SeaBattle.Web.Controllers
             var result = await _mediator.Send(model);
             return result.IsSuccess ? Ok(result.Value)
                 : (IActionResult)Ok();
+        }
+
+        [HttpGet("api/GetAllGames")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Game>), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game collection is empty")]
+        public async Task<IActionResult> GetAllGamesAsync()
+        {
+            var result = await _mediator.Send(new GetAllGamesQuery());
+            return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
         }
     }
 }
