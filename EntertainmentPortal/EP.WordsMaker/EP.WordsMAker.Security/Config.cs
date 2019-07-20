@@ -79,9 +79,34 @@ namespace EP.WordsMaker.Security
 
 					AllowedCorsOrigins = {"http://localhost:44350"}
 
-				}
+				},
 
-			};
+                new Client
+                {
+                    ClientId = "angular",
+                    ClientName = "Angular Client",
+
+                    AllowedScopes = {"openid", "profile", "wordsmaker_api"},
+
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
+
+                    RedirectUris =
+                    {
+                        "http://localhost:4200/home"
+                    },
+                    PostLogoutRedirectUris =
+                    {
+                        "http://localhost:4200/home"
+                    },
+
+                    FrontChannelLogoutUri = "http://localhost:4200/home",
+
+                    AllowedCorsOrigins =  {"http://localhost:4200"}
+                }
+
+            };
         }
     }
 }

@@ -21,5 +21,8 @@ namespace IdentityServer4.Quickstart.UI
         public static bool IncludeWindowsGroups = false;
 
         public static string InvalidCredentialsErrorMessage = "Invalid username or password";
+        public static string UsernameAlreadyInUseMessage { get; set; }
+        public static string EmailAlreadyInUseMessage { get; set; }
+        public static string AccountIsNotActivatedByEmailMessage { get; set; }
     }
 }
