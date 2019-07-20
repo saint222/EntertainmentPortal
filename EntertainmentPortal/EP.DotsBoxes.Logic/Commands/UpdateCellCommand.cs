@@ -4,7 +4,7 @@ using MediatR;
 
 namespace EP.DotsBoxes.Logic.Commands
 {
-    public class UpdateGameBoardCommand : IRequest<Result<GameBoard>>
+    public class UpdateCellCommand : IRequest<Result<Cell>>
     {
         public int GameBoardId { get; set; }
 

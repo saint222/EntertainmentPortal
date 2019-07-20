@@ -16,22 +16,22 @@ using Microsoft.Extensions.Logging;
 
 namespace EP.DotsBoxes.Logic.Handlers
 {
-    public class UpdateGameBoardHandler : IRequestHandler<UpdateGameBoardCommand, Result<GameBoard>>
+    public class UpdateGameBoardHandler : IRequestHandler<UpdateCellCommand, Result<Cell>>
     {
         private readonly IMapper _mapper;
         private readonly GameBoardDbContext _context;
-        private readonly ILogger<UpdateGameBoardCommand> _logger;
+        private readonly ILogger<UpdateCellCommand> _logger;
 
-        public UpdateGameBoardHandler(IMapper mapper, GameBoardDbContext context, ILogger<UpdateGameBoardCommand> logger)
+        public UpdateGameBoardHandler(IMapper mapper, GameBoardDbContext context, ILogger<UpdateCellCommand> logger)
         {
             _mapper = mapper;
             _context = context;
             _logger = logger;
         }
 
-        public async Task<Result<GameBoard>> Handle(UpdateGameBoardCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Cell>> Handle(UpdateCellCommand request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Updating the game board.");
+            _logger.LogInformation("Updating the cells.");
 
             var cell = new Cell()
             {
@@ -76,14 +76,14 @@ namespace EP.DotsBoxes.Logic.Handlers
                                     
             try
             {
-                _logger.LogInformation("Updating database the game board.");
+                _logger.LogInformation("Updating database the cells.");
                 await _context.SaveChangesAsync(cancellationToken);
-                return Result.Ok<GameBoard>(_mapper.Map<GameBoard>(context));
+                return Result.Ok<Cell>(_mapper.Map<Cell>(context.Cells));
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError(ex.Message, "Unsuccessful database update the game board!");
-                return Result.Ok<GameBoard>(gameBoard);
+                _logger.LogError(ex.Message, "Unsuccessful database update the cells!");
+                return Result.Ok<Cell>(_mapper.Map<Cell>(context.Cells));
             }
         }
     }

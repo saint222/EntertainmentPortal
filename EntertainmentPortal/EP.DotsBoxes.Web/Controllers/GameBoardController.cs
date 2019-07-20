@@ -60,27 +60,6 @@ namespace EP.DotsBoxes.Web.Controllers
             _logger.LogWarning($"Exit from method: {ControllerContext.ActionDescriptor.ActionName}");
 
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
-        }
-
-        //PUT api/gameboard
-       [HttpPut("api/gameboard")]
-       [SwaggerResponse(HttpStatusCode.OK, typeof(GameBoard), Description = "Update game board")]
-       [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> UpdateGameBoardAsync([FromBody][NotNull]UpdateGameBoardCommand model)
-        {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: GameBoard (Row = {model.Row}," +
-                $" Column = {model.Column}) with cell: Side left = {model.Left}, Side Right = {model.Right}, Side Top = {model.Top}, Side Bottom = {model.Bottom}");
-
-            if (!ModelState.IsValid)
-            {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: Invalid data");
-                return BadRequest(ModelState);
-            }
-
-            var result = await _mediator.Send(model);
-            _logger.LogWarning($"Exit from method: {ControllerContext.ActionDescriptor.ActionName}");
-
-            return result.IsSuccess ? (IActionResult)Ok(result) : BadRequest(result.Error);
-        }
+        }       
     }
 }

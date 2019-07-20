@@ -13,8 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EP.DotsBoxes.Web.Controllers
 {
-    [ApiController]
-    [Authorize]
+    [ApiController]    
     public class PlayersController : ControllerBase
     {
         private readonly IMediator _mediator;

@@ -33,30 +33,10 @@ namespace EP.DotsBoxes.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie()
-                .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
-                {
-                    opt.Authority = "http://localhost:5000";
-                    opt.RequireHttpsMetadata = false;
-                })
-                .AddGoogle("Google", opt =>
-                {
-                    opt.CallbackPath = new PathString("/api/google");
-                    opt.ClientId = "1097896526158-k9dr1a3jppmunnu0ehg88l9ve5jibrdm.apps.googleusercontent.com";
-                    opt.ClientSecret = "xTjiJQXW9xmqLfwQtF_IfzgA";
-                });
-
-            services.AddAuthorization(opt =>
-            {
-                opt.AddPolicy("google",
-                cfg => cfg.AddAuthenticationSchemes("Google")
-                .RequireAuthenticatedUser());
-            });
-
+        {         
             services.AddSwaggerDocument(cfg =>
             {
+                cfg.Title = "Dots and Boxes Game API";
                 cfg.SchemaType = SchemaType.OpenApi3;
                 cfg.AddSecurity("oauth", new[] { "dotsboxes_api" }, new OpenApiSecurityScheme()
                 {
@@ -97,14 +77,9 @@ namespace EP.DotsBoxes.Web
                 app.UseDeveloperExceptionPage();
             }
 
-            // CORS configuration.
-            app.UseCors(opt =>
-                opt.AllowAnyHeader()
-                .AllowAnyMethod()
-                .WithOrigins("http://localhost:4200")
-                .AllowAnyOrigin());
-
-            app.UseAuthentication();
+            // The default HSTS value is 30 days. You may want to change this
+            // for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();            
 
             app.UseOpenApi().UseSwaggerUi3(opt => opt.OAuth2Client = new OAuth2ClientSettings()
             {
@@ -112,7 +87,7 @@ namespace EP.DotsBoxes.Web
                 ClientId = "swagger"
             });
 
-            //mediator.Send(new CreateDatabaseCommand()).Wait();           
+            mediator.Send(new CreateDatabaseCommand()).Wait();           
             app.UseMvc();
         }
     }
