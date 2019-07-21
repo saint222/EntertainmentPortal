@@ -20,6 +20,10 @@ namespace IdentityServer4.Quickstart.UI
         // if user uses windows auth, should we load the groups from windows
         public static bool IncludeWindowsGroups = false;
 
-        public static string InvalidCredentialsErrorMessage = "Invalid username or password";
+        //public static string InvalidCredentialsErrorMessage = "Invalid username or password";
+        public static string InvalidCredentialsErrorMessage = "Invalid email or password";
+        public static string EmailAlreadyInUseMessage = "This email already in use";
+        public static string UsernameAlreadyInUseMessage = "This username already in use";
+        public static string AccountIsNotActivatedByEmailMessage = "This account is not activated. Please check your email to activate";
     }
 }

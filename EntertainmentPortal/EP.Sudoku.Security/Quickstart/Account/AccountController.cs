@@ -19,7 +19,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using System.Web;
-using EP.Sudoku.Security.Quickstart.Account;
+
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -50,6 +50,73 @@ namespace IdentityServer4.Quickstart.UI
             _events = events;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Register(string returnUrl)
+        {
+            return View(new RegisterViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterInputModel model, string button)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user == null)
+                {
+                    var newUser = new ApplicationUser()
+                    {
+                        UserName = model.UserName,
+                        Email = model.Email
+                    };
+
+                    var status = await _userManager.CreateAsync(newUser, model.Password);
+                    if (!status.Succeeded)
+                    {
+                        ModelState.AddModelError(string.Empty, AccountOptions.UsernameAlreadyInUseMessage);
+                        return View(await BuildRegisterViewModelAsync(model));
+                    }
+                    else
+                    {
+                        status = await _userManager.AddClaimsAsync(newUser, new Claim[]
+                        {
+                            new Claim(JwtClaimTypes.Name, model.UserName),
+                            new Claim(JwtClaimTypes.Email, model.Email)
+                        });
+                        if (!status.Succeeded)
+                        {
+                            throw new Exception(status.Errors.First().Description);
+                        }
+
+                        //sending email
+                        var confirmationCode = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
+                        var callbackUrl = Url.Action(
+                            "ConfirmEmail",
+                            "Account",
+                            new { userId = newUser.Id, code = confirmationCode },
+                            protocol: HttpContext.Request.Scheme);
+                        var emailService = new EmailService();
+
+                        await emailService.SendEmailAsync(model.Email, "Confirm your account in SudokuApp",
+                            $"To activate your account follow the link: <a href='{callbackUrl}'>Click me!</a>");
+
+
+                        return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
+                    }
+                }
+
+                ModelState.AddModelError(string.Empty, AccountOptions.EmailAlreadyInUseMessage);
+                var vm = await BuildRegisterViewModelAsync(model);
+                return View(vm);
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, AccountOptions.InvalidCredentialsErrorMessage);
+                var vm = await BuildRegisterViewModelAsync(model);
+                return View(vm);
+            }
+        }
+
         /// <summary>
         /// Entry point into the login workflow
         /// </summary>
@@ -78,6 +145,12 @@ namespace IdentityServer4.Quickstart.UI
             // check if we are in the context of an authorization request
             var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
 
+            // the user clicked the "register" button
+            if (button == "register")
+            {
+                return RedirectToAction("Register", model);
+            }
+
             // the user clicked the "cancel" button
             if (button != "login")
             {
@@ -105,44 +178,56 @@ namespace IdentityServer4.Quickstart.UI
                 }
             }
 
+
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberLogin, lockoutOnFailure: true);
-                if (result.Succeeded)
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
                 {
-                    var user = await _userManager.FindByNameAsync(model.Username);
-                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.ClientId));
-
-                    if (context != null)
+                    if (user.EmailConfirmed)
                     {
-                        if (await _clientStore.IsPkceClientAsync(context.ClientId))
+                        var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberLogin, lockoutOnFailure: true);
+                        if (result.Succeeded)
                         {
-                            // if the client is PKCE then we assume it's native, so this change in how to
-                            // return the response is for better UX for the end user.
-                            return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
+                            await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName));
+
+                            if (context != null)
+                            {
+                                if (await _clientStore.IsPkceClientAsync(context.ClientId))
+                                {
+                                    // if the client is PKCE then we assume it's native, so this change in how to
+                                    // return the response is for better UX for the end user.
+                                    return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
+                                }
+
+                                // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
+                                return Redirect(model.ReturnUrl);
+                            }
+
+                            // request for a local page
+                            if (Url.IsLocalUrl(model.ReturnUrl))
+                            {
+                                return Redirect(model.ReturnUrl);
+                            }
+                            else if (string.IsNullOrEmpty(model.ReturnUrl))
+                            {
+                                return Redirect("~/");
+                            }
+                            else
+                            {
+                                // user might have clicked on a malicious link - should be logged
+                                throw new Exception("invalid return URL");
+                            }
                         }
-
-                        // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                        return Redirect(model.ReturnUrl);
-                    }
-
-                    // request for a local page
-                    if (Url.IsLocalUrl(model.ReturnUrl))
-                    {
-                        return Redirect(model.ReturnUrl);
-                    }
-                    else if (string.IsNullOrEmpty(model.ReturnUrl))
-                    {
-                        return Redirect("~/");
                     }
                     else
                     {
-                        // user might have clicked on a malicious link - should be logged
-                        throw new Exception("invalid return URL");
+                        ModelState.AddModelError(string.Empty, AccountOptions.AccountIsNotActivatedByEmailMessage);
                     }
                 }
 
-                await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials", clientId:context?.ClientId));
+
+                await _events.RaiseAsync(new UserLoginFailureEvent(model.Email, "invalid credentials"));
                 ModelState.AddModelError(string.Empty, AccountOptions.InvalidCredentialsErrorMessage);
             }
 
@@ -151,7 +236,7 @@ namespace IdentityServer4.Quickstart.UI
             return View(vm);
         }
 
-        
+
         /// <summary>
         /// Show logout page
         /// </summary>
@@ -202,74 +287,29 @@ namespace IdentityServer4.Quickstart.UI
                 return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
             }
 
-            //return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
-            return View("Redirect", new RedirectViewModel { RedirectUrl = "http://localhost:4200/home" });
-            //return View("LoggedOut", vm);
+            return View("LoggedOut", vm);
         }
+
 
         [HttpGet]
-        public IActionResult AccessDenied()
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
-            return View();
-        }
-
-        // Registration
-        [HttpGet("registration")]
-        public IActionResult Registration()
-        {
-            return View(new RegisterInputModel());
-        }
-
-        [HttpPost("registration")]
-        public async Task<IActionResult> Registration(RegisterInputModel model)
-        {
-            if (ModelState.IsValid)
+            if (userId == null || code == null)
             {
-                var user = await _userManager.FindByNameAsync(model.UserName);
-                if (user == null)
-                {
-                    var newUser = new ApplicationUser()
-                    {
-                        UserName = model.UserName
-                    };
-
-                    var status = await _userManager.CreateAsync(newUser, model.Password);
-                    if (!status.Succeeded)
-                    {
-                        return View(new RegisterInputModel());
-                    }
-                    else
-                    {
-                        status = await _userManager.AddClaimsAsync(newUser, new Claim[]
-                        {
-                            new Claim(JwtClaimTypes.Name, model.UserName),
-                            //new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
-                            //new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        });
-                        if (!status.Succeeded)
-                        {
-                            throw new Exception(status.Errors.First().Description);
-                        }
-                    }
-                }
-
-                string returnUrlDecoded = HttpUtility.UrlDecode(
-                    HttpContext.Request.QueryString.ToString().Replace("?ReturnUrl=", ""));
-
-                return await Login(new LoginInputModel()
-                {
-                    Password = model.Password,
-                    RememberLogin = false,
-                    ReturnUrl = returnUrlDecoded,
-                    Username = model.UserName
-                }, "login");
+                return View("Error");
             }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return View("Error");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            if (result.Succeeded)
+                return View(new ConfirmEmailViewModel() { Username = user.UserName });
             else
-            {
-                return BadRequest("Invalid username or password");
-            }
+                return View("Error");
         }
-
 
         /*****************************************/
         /* helper APIs for the AccountController */
@@ -277,24 +317,16 @@ namespace IdentityServer4.Quickstart.UI
         private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
         {
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
-            if (context?.IdP != null && await _schemeProvider.GetSchemeAsync(context.IdP) != null)
+            if (context?.IdP != null)
             {
-                var local = context.IdP == IdentityServer4.IdentityServerConstants.LocalIdentityProvider;
-
                 // this is meant to short circuit the UI and only trigger the one external IdP
-                var vm = new LoginViewModel
+                return new LoginViewModel
                 {
-                    EnableLocalLogin = local,
+                    EnableLocalLogin = false,
                     ReturnUrl = returnUrl,
-                    Username = context?.LoginHint,
+                    Email = context?.LoginHint,
+                    ExternalProviders = new ExternalProvider[] { new ExternalProvider { AuthenticationScheme = context.IdP } }
                 };
-
-                if (!local)
-                {
-                    vm.ExternalProviders = new[] { new ExternalProvider { AuthenticationScheme = context.IdP } };
-                }
-
-                return vm;
             }
 
             var schemes = await _schemeProvider.GetAllSchemesAsync();
@@ -329,7 +361,7 @@ namespace IdentityServer4.Quickstart.UI
                 AllowRememberLogin = AccountOptions.AllowRememberLogin,
                 EnableLocalLogin = allowLocal && AccountOptions.AllowLocalLogin,
                 ReturnUrl = returnUrl,
-                Username = context?.LoginHint,
+                Email = context?.LoginHint,
                 ExternalProviders = providers.ToArray()
             };
         }
@@ -337,7 +369,25 @@ namespace IdentityServer4.Quickstart.UI
         private async Task<LoginViewModel> BuildLoginViewModelAsync(LoginInputModel model)
         {
             var vm = await BuildLoginViewModelAsync(model.ReturnUrl);
-            vm.Username = model.Username;
+            vm.Email = model.Email;
+            vm.RememberLogin = model.RememberLogin;
+            return vm;
+        }
+
+        private async Task<RegisterViewModel> BuildRegisterViewModelAsync(string returnUrl)
+        {
+            return new RegisterViewModel
+            {
+                AllowRememberLogin = AccountOptions.AllowRememberLogin,
+                EnableLocalLogin = AccountOptions.AllowLocalLogin,
+                ReturnUrl = returnUrl
+            };
+        }
+
+        private async Task<RegisterViewModel> BuildRegisterViewModelAsync(RegisterInputModel model)
+        {
+            var vm = await BuildRegisterViewModelAsync(model.ReturnUrl);
+            vm.Email = model.Email;
             vm.RememberLogin = model.RememberLogin;
             return vm;
         }
@@ -403,5 +453,6 @@ namespace IdentityServer4.Quickstart.UI
 
             return vm;
         }
+
     }
 }
