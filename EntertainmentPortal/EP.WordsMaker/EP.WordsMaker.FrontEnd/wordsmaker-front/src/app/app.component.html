@@ -4,18 +4,15 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="get">Home</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="players">Players</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="edit">Reg</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="recordBoard">RecordBoard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="game">Game</a>
         </li>
-      </ul>    
+      </ul>
     </div>
     <div class="mx-auto order-0">
         <a class="navbar-brand mx-auto" href="#">WordsMaker Game</a>
@@ -68,7 +65,7 @@
                       <div class="help-block text-left">
                           New here ? <a href="#">Join Us</a>
                       </div>
-                      
+
                     </div>
                   </div>
                 </li>
@@ -80,4 +77,10 @@
   <main role="main" class="inner cover  mt-5">
     <router-outlet></router-outlet>
   </main>
+
+  <div class="container" id="footer">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div > <p>SharpCodeTeam 2019</p> </div>
+    </nav>
+  </div>
 </div>

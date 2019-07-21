@@ -3,11 +3,11 @@ import { Player } from '../../models/player';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
-  selector: 'app-player-list',
-  templateUrl: './player-list.component.html',
-  styleUrls: ['./player-list.component.scss']
+  selector: 'app-record-board',
+  templateUrl: './record-board.component.html',
+  styleUrls: ['./record-board.component.scss']
 })
-export class PlayerListComponent implements OnInit {
+export class RecordBoardComponent implements OnInit {
 
   players: Player[] = [];
 

@@ -10,8 +10,6 @@ export class PlayerService {
 
   constructor(private http: HttpClient) { }
 
-
-
   getPlayers() {
     console.log("GetPlayersExecute");
     return this.http.get<Player[]>('https://localhost:44350/api/player');
@@ -26,7 +24,7 @@ export class PlayerService {
 
   addPlayer(player: Player) {
     console.log("AddPlayersExecute");
-      return this.http.post('https://localhost:44350/api/player', player);
+    return this.http.post('https://localhost:44350/api/player', player);
   }
 
 }
