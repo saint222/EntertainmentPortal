@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from './layout/layout.module';
-import { WelcomeComponent } from './additionalinfo/additional-info/welcome/welcome.component';
 
 @NgModule({
   declarations: [

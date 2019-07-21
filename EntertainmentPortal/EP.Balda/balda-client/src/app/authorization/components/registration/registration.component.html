@@ -1,3 +1,4 @@
+<div class="col-md-6 col-sm-12">
 <div class="registrationForm">
   <h2>Registration</h2>
 <form [formGroup]="registerGroup" (ngSubmit)="onSubmit(form)" #form="ngForm">
@@ -39,9 +40,10 @@
       placeholder="Password confirmation"
       formControlName="passwordConfirm"
     />
-    <button type="submit" class="btn btn-primary" >
+    <button type="submit" class="btn btn-secondary">
       Register
     </button>
   </div>
 </form>
+</div>
 </div>

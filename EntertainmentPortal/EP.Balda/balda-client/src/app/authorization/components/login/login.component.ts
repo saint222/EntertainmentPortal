@@ -35,6 +35,14 @@ export class LoginComponent implements OnInit {
       return console.log(err.statusText);
     });
   }
+
+  onFacebookClick() {
+
+  }
+
+  onGoogleClick() {
+
+  }
 }
 
 

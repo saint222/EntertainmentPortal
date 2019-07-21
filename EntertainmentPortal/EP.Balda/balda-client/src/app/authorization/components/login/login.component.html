@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="col-md-6 col-sm-12">
 <div class="loginForm">
   <h2>Sign in</h2>
 <form [formGroup]="loginGroup" (ngSubmit)="onSubmit(form)" #form="ngForm">
@@ -26,10 +28,15 @@
       />
     </div>
     <div class="errorText">{{ errorText }}</div>
+    Sign in with:
+    <button class="fa fa-facebook-square" aria-hidden="true" (click)="onFacebookClick()"></button>
+    <button class="fa fa-google" aria-hidden="true" (click)="onGoogleClick()"></button><br>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary" >
-        Sign In
+      <button type="submit" class="btn btn-black">
+        Login
       </button>
+      <button type="button" class="btn btn-secondary" routerLink="register">Register</button>
     </div>
   </form>
+</div>
 </div>

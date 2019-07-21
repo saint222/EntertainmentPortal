@@ -33,4 +33,12 @@ export class AuthService {
 
      return this.http.post<Player>('http://localhost:5001/api/simplelogin', userLogin, httpOptions);
   }
+
+  facebookSignIn() {
+
+  }
+
+  googleSignIn() {
+
+  }
 }

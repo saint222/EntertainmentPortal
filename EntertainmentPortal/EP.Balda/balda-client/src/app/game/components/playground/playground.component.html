@@ -34,14 +34,15 @@
     </tbody>
   </table>
   <p> Your word: {{ selectedLetters }} </p>
-  <button type="button-send" class="btn btn-primary" (click)="onSendClick()">
+  <button type="button-send" class="btn btn-secondary" (click)="onSendClick()">
     Send word
 </button>
-<button type="button-cancel" class="btn btn-primary" (click)="onCancelClick()">
+<button type="button-cancel" class="btn btn-secondary" (click)="onCancelClick()">
     Cancel
 </button>
 <div class="errorText">
-  <span>{{ errorText }}</span></div>
+  <p>{{ errorText }}</p>
+</div>
     <table class="alph table-bordered table-dark">
       <tbody>
         <tr>

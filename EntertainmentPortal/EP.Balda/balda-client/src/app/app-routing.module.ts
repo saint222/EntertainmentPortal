@@ -37,14 +37,19 @@ const routes: Routes = [
     { path: '', component:
     PlaygroundComponent}
   ]},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegistrationComponent},
   {path: 'gameOver', component: LayoutComponent,
   children: [
     { path: '', component:
     GameOverComponent}
   ]},
-  {path: '', component: StartPageComponent}
+  {path: '', component: StartPageComponent,
+  children: [
+    { path: '', component: LoginComponent}
+  ]},
+  {path: 'register', component: StartPageComponent,
+  children: [
+    { path: '', component: RegistrationComponent}
+  ]}
 ];
 
 @NgModule({
