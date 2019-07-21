@@ -10,7 +10,7 @@
                       </div>
                       <div class="panel-body body-panel">
                           <ul class="chat">
-                              <span class="badge badge-primary" *ngFor = "let mes of messages" style = "font-size: 12px">Message: {{mes}}</span>
+                              <span class="badge badge-primary" *ngFor = "let mes of messages" style = "font-size: 12px">{{mes.name}}: {{mes.message}}</span>
                           </ul>
                       </div>
                       <div class="panel-footer clearfix">
@@ -39,7 +39,9 @@
     </div>
   </div>
   <div class="sudoku" *ngIf="!session?.isOver">
-    <p style = "font-size: 14px">Hints: {{session?.hint}}</p>
+    <p class="info-line">Hints: {{session?.hint}}</p>
+    <p class="info-line">Score: {{session?.score}}</p>
+    <p class="info-line">Count error: {{session?.error}}</p>
     <p *ngIf="error" class="error">Error: {{error}}</p>
     <div class="gridCells" *ngFor="let cell of cells">
       <app-cell [cell]="cell"></app-cell>

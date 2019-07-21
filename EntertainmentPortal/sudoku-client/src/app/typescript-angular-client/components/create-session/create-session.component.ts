@@ -25,6 +25,7 @@ export class CreateSessionComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
+    console.log(form.value);
     this.sessionService.sessionsCreateSession(form.value).subscribe(c => {
         console.log(c);
         this.router.navigate(['/registered/session', c.id]);

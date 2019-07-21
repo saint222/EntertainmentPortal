@@ -11,22 +11,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class HomeComponent implements OnInit {
   player?: Player;
   logged = true;
-  hasProfile = true;
+  hasProfile: boolean;
   userName: string = this.getValueFromIdToken('name');
 
   constructor(private playersService: PlayersService) { }
 
   ngOnInit() {
     this.playersService.playersGetPlayerByUserId().subscribe(
-      b => {
-          this.player = b;
-          if (b.gameSession == null)
-          {
-            this.hasProfile = false;
-          }
+      () => {
+        this.hasProfile = true;
       },
-      (err: HttpErrorResponse) => {
-        return console.log(err.error);
+      () => {
+        this.hasProfile = false;
       }
     );
     }

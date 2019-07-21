@@ -20,9 +20,14 @@ namespace EP.Sudoku.Logic.Models
         public string NickName { get; set; }
 
         /// <summary>
-        /// Is used to denote convertation of gamesessions duration.
+        /// Is used to denote best result.
         /// </summary>
-        public int ExperiencePoint { get; set; }
+        public int BestResult { get; set; }
+
+        /// <summary>
+        /// Is used to denote number of games won.
+        /// </summary>
+        public int WonGames { get; set; }
 
         /// <summary>
         /// Is used to denote player's progression feature due to his/her sum of experience points.

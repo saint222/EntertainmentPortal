@@ -1,10 +1,6 @@
 ﻿using EP.Sudoku.Data.Context;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EP.Sudoku.Data
 {
@@ -14,11 +10,6 @@ namespace EP.Sudoku.Data
         {
             services.AddDbContext<SudokuDbContext>(
                 opt => opt.UseSqlite(@"Data Source=..\EP.Sudoku.Data\sudoku.db"));
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<SudokuDbContext>()
-                .AddUserManager<UserManager<IdentityUser>>()
-                .AddRoleManager<RoleManager<IdentityRole>>()
-                .AddDefaultTokenProviders();
             return services;
         }
     }

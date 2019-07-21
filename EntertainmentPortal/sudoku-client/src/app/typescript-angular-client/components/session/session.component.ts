@@ -1,3 +1,4 @@
+import { ChatMessage } from './../../model/chatMessage';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { Cell } from './../../model/cell';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +20,8 @@ export class SessionComponent implements OnInit {
   cell: Cell;
   error: string;
   message = '';
-  messages: string [] = [];
+  chatMessage: ChatMessage = { name:"", message:"" };
+  messages: ChatMessage [] = [];
   hubConnection: HubConnection;
 
 
@@ -62,6 +64,25 @@ export class SessionComponent implements OnInit {
   }
 
   sendMsg() {
-this.hubConnection.invoke('GetMes', this.message); // 'GetMes' - is the method, defined in SudokuHub
+    this.chatMessage.name = this.getValueFromIdToken('name');
+    this.chatMessage.message = this.message;
+    this.hubConnection.invoke('GetMes', this.chatMessage); // 'GetMes' - is the method, defined in SudokuHub
+  }
+
+  getValueFromIdToken(claim: string) {
+    const jwt = sessionStorage.getItem('id_token');
+    if ( jwt == null) {
+      return null;
+    }
+
+    const jwtData = jwt.split('.')[1];
+    const decodedJwtJsonData = window.atob(jwtData);
+    let value: any;
+    JSON.parse(decodedJwtJsonData, function findKey(k, v) {
+      if (k === claim) {
+        value = v;
+      }
+    });
+    return value;
   }
 }

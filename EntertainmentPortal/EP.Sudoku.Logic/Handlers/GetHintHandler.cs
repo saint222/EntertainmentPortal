@@ -38,15 +38,40 @@ namespace EP.Sudoku.Logic.Handlers
                 return Result.Fail<Session>(result.Errors.First().ErrorMessage);
             }
 
+            await AddScore(request, cancellationToken);
+
             var session = _context.Sessions
                 .Include(d => d.SquaresDb)
                 .First(d => d.Id == request.SessionId);
             session.SquaresDb.First(x => x.Id == request.Id).Value = GetHint(session, request.Id);
             session.Hint--;
             session.IsOver = IsOver(session.SquaresDb);
+
+            if (session.IsOver)
+            {
+                var playerDb = _context.Players
+                    .Include(d => d.GameSessionDb)
+                    .First(d => d.GameSessionDb.Id == request.SessionId);
+                playerDb.WonGames++;
+                if (playerDb.BestResult > session.Score || playerDb.BestResult == 0)
+                {
+                    playerDb.BestResult = session.Score;
+                }
+            }
+
             await _context.SaveChangesAsync(cancellationToken);
 
             return Result.Ok<Session>(_mapper.Map<Session>(session));
+        }
+
+        public async Task<bool> AddScore(GetHintCommand request, CancellationToken cancellationToken)
+        {
+            var sessionDbScore = _context.Sessions
+                .First(d => d.Id == request.SessionId);
+            sessionDbScore.Score++;
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return true;
         }
 
         private int GetHint(SessionDb session, int cellId)

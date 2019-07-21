@@ -267,6 +267,10 @@ namespace EP.Sudoku.Logic.Services
                 case DifficultyLevel.Hard:
                     count = rand.Next(55, 58); //filled in cells (24-26)
                     break;
+
+                case DifficultyLevel.VeryEasy:
+                    count = 3; //filled in cells (78)
+                    break;
             }
 
             for (int index = 0; index < count; index++)

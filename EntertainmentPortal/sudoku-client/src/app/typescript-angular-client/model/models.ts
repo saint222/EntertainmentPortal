@@ -10,3 +10,4 @@ export * from './setCellValueCommand';
 export * from './updatePlayerCommand';
 export * from './updateSessionCommand';
 export * from './user';
+export * from './chatMessage';

@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
 import { AuthConfig } from 'angular-oauth2-oidc';
+import { Subject } from 'rxjs';
 
 export const authConfig: AuthConfig = {
 
@@ -30,13 +31,10 @@ export class AppComponent {
   userName: string = this.getValueFromIdToken('name');
   logged = true;
 
-  constructor(private authService: OAuthService, private router: Router) {
+  constructor(private authService: OAuthService) {
      this.authService.configure(authConfig);
      this.authService.tokenValidationHandler = new JwksValidationHandler();
      this.authService.loadDiscoveryDocumentAndTryLogin();
-     this.authService.logoutUrl = 'http://localhost:4200/home';
-     this.authService.postLogoutRedirectUri = 'http://localhost:4200/home';
-
   }
 
   login() {
@@ -62,7 +60,6 @@ export class AppComponent {
         value = v;
       }
     });
-    console.log(value);
     return value;
   }
 }

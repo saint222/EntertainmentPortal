@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using EP.Sudoku.Logic;
 using EP.Sudoku.Logic.Commands;
@@ -12,7 +9,6 @@ using EP.Sudoku.Logic.Profiles;
 using EP.Sudoku.Logic.Queries;
 using EP.Sudoku.Logic.Services;
 using EP.Sudoku.Logic.Validators;
-using EP.Sudoku.Web.Controllers;
 using EP.Sudoku.Web.Filters;
 using EP.Sudoku.Web.Hubs;
 using FluentValidation.AspNetCore;
@@ -20,43 +16,41 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
 using NJsonSchema;
 using Serilog;
-using Serilog.Events;
 using NSwag;
 using NSwag.AspNetCore;
 
-
-
 namespace EP.Sudoku.Web
 {
+    /// <summary>
+    /// This class uses by the runtime. Used to configure services.
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Used to configure services.
+        /// </summary>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Represents a set of key/value application configuration properties.
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<IdentityOptions>(opt => 
-            {
-                opt.Password.RequireNonAlphanumeric = false;                
-            });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
@@ -103,6 +97,7 @@ namespace EP.Sudoku.Web
             {
                 //cfg.SchemaType = SchemaType.OpenApi3;
                 cfg.SchemaType = SchemaType.Swagger2;
+                cfg.Title = "Sudoku game";
                 cfg.AddSecurity("oauth", new[] { "sudoku_api" }, new OpenApiSecurityScheme()
                 {
                     Flow = OpenApiOAuth2Flow.Implicit,
@@ -143,7 +138,9 @@ namespace EP.Sudoku.Web
                 });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
         {
             if (env.IsDevelopment())

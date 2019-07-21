@@ -23,6 +23,16 @@ namespace EP.Sudoku.Data.Models
         public int Level { get; set; }
 
         /// <summary>    
+        /// Is used to denote the number points of a game session (DbInfo).
+        /// </summary>
+        public int Score { get; set; }
+
+        /// <summary>    
+        /// Is used to denote the number error of a game session (DbInfo).
+        /// </summary>
+        public int Error { get; set; }
+
+        /// <summary>    
         /// Represents the possibility to get three automatically set values durring the game as prompts (DbInfo).
         /// </summary>
         public int Hint { get; set; } = 3;

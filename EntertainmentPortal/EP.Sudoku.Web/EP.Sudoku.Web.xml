@@ -79,5 +79,30 @@
             Changes the value of a cell after each of three possibilies to get automatically set values durring the game as prompts and saves it in the Db.
             </summary>
         </member>
+        <member name="T:EP.Sudoku.Web.Startup">
+            <summary>
+            This class uses by the runtime. Used to configure services.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Used to configure services.
+            </summary>
+        </member>
+        <member name="P:EP.Sudoku.Web.Startup.Configuration">
+            <summary>
+            Represents a set of key/value application configuration properties.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,MediatR.IMediator)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+        </member>
     </members>
 </doc>

@@ -18,7 +18,8 @@ export interface Player {
 
     id?: number;
     nickName?: string;
-    experiencePoint?: number;
+    bestResult?: number;
+    wonGames?: number;
     level?: number;
     icon?: AvatarIcon;
     gameSession?: Session;

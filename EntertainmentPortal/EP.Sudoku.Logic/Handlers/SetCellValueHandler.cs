@@ -29,10 +29,13 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<Result<Session>> Handle(SetCellValueCommand request, CancellationToken cancellationToken)
         {
+            await AddScore(request, cancellationToken);
+
             var result = _validator.Validate(request, ruleSet: "IsValidSudokuGameSet");
 
             if (result.Errors.Count > 0)
             {
+                await AddError(request, cancellationToken);
                 return Result.Fail<Session>(result.Errors.First().ErrorMessage);
             }
 
@@ -42,9 +45,41 @@ namespace EP.Sudoku.Logic.Handlers
             sessionDb.SquaresDb.First(x => x.Id == request.Id).Value = request.Value;
             sessionDb.IsOver = IsOver(sessionDb.SquaresDb);
 
+            if (sessionDb.IsOver)
+            {
+                var playerDb = _context.Players
+                    .Include(d => d.GameSessionDb)
+                    .First(d => d.GameSessionDb.Id == request.SessionId);
+                playerDb.WonGames++;
+                if (playerDb.BestResult > sessionDb.Score || playerDb.BestResult == 0)
+                {
+                    playerDb.BestResult = sessionDb.Score;
+                }
+            }
+
             await _context.SaveChangesAsync(cancellationToken);
 
             return Result.Ok<Session>(_mapper.Map<Session>(sessionDb));
+        }
+
+        public async Task<bool> AddScore(SetCellValueCommand request, CancellationToken cancellationToken)
+        {
+            var sessionDbScore = _context.Sessions
+                .First(d => d.Id == request.SessionId);
+            sessionDbScore.Score++;
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return true;
+        }
+
+        public async Task<bool> AddError(SetCellValueCommand request, CancellationToken cancellationToken)
+        {
+            var sessionDbScore = _context.Sessions
+                .First(d => d.Id == request.SessionId);
+            sessionDbScore.Error++;
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return true;
         }
 
         public bool IsOver(List<CellDb> cells)

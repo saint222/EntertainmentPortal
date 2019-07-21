@@ -9,6 +9,7 @@ namespace EP.Sudoku.Logic.Enums
     {
         Easy,
         Normal,
-        Hard
+        Hard,
+        VeryEasy
     }
 }

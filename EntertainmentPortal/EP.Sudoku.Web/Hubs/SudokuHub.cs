@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using EP.Sudoku.Logic.Models;
 
 namespace EP.Sudoku.Web.Hubs
 {
@@ -16,10 +14,10 @@ namespace EP.Sudoku.Web.Hubs
             _logger = logger;
         }
 
-        public Task GetMes(string message)
+        public Task GetMes(ChatMessage chat)
         {
-            _logger.LogCritical($"Message: {message}.");            
-            return Clients.All.SendAsync("SendMes", message);                
+            _logger.LogCritical($"Message: {chat.Name}: {chat.Message}.");            
+            return Clients.All.SendAsync("SendMes", chat);                
         }
     }
 }
