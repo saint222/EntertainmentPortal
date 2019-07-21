@@ -18,7 +18,7 @@ namespace EP.Hangman.Logic.Handlers
         private readonly GameDbContext _context;
         private readonly IMapper _mapper;
         private readonly ILogger<CreateDatabaseHandler> _logger;
-
+        
         public CreateNewGameHandler(GameDbContext context, IMapper mapper, ILogger<CreateDatabaseHandler> logger)
         {
             _context = context;
