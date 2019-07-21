@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { PlayingFieldComponent } from './game/components/playing-field/playing-field.component';
 import { DashboardComponent } from './game/components/dashboard/dashboard.component';
 import { GameFieldComponent } from './game/components/game-field/game-field.component';
+import { LoginComponent } from './game/components/login/login.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { GameFieldComponent } from './game/components/game-field/game-field.comp
     // GetPlayerComponent,
     PlayingFieldComponent,
     DashboardComponent,
-    GameFieldComponent
+    GameFieldComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
