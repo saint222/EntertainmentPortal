@@ -1,3 +1,4 @@
+import { AdditionalInfoModule } from './additionalinfo/additional-info/additional-info.module';
 import { AuthModule } from './authorization/auth.module';
 import { HttpClientModule  } from '@angular/common/http';
 import { GameModule } from './game/game.module';
@@ -7,6 +8,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from './layout/layout.module';
+import { WelcomeComponent } from './additionalinfo/additional-info/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AuthModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule,
+    AdditionalInfoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

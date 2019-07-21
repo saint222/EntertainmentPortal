@@ -1,3 +1,5 @@
+<div class="loginForm">
+  <h2>Sign in</h2>
 <form [formGroup]="loginGroup" (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div class="form-group">
       <label for="userName">Username</label>
@@ -11,6 +13,7 @@
         autofocus
       />
     </div>
+    <br>
     <div class="form-group">
     <label for="password">Password</label>
       <input
@@ -29,3 +32,4 @@
       </button>
     </div>
   </form>
+</div>

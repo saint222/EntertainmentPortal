@@ -1,5 +1,6 @@
 <div class="container-fluid">
-<div id="left">
+<div id="left" class="row">
+    <div class="col">
   <b>Player Info:</b><br>
   UserName: {{ player.userName }} <br>
   First name: {{ player.firstName }} <br>
@@ -13,8 +14,16 @@
   </ul>
   <p>Total: {{ total }} </p>
 </div>
-<div id="right"></div>
+</div>
+
+<div id="right">
+    <div class="col">
+      <p>RIGHT</p>
+      </div>
+</div>
+
 <div id="center">
+    <div class="col">
   <table class="fixed table-bordered table-dark">
     <tbody>
       <tr *ngFor="let row of cells">
@@ -31,21 +40,22 @@
 <button type="button-cancel" class="btn btn-primary" (click)="onCancelClick()">
     Cancel
 </button>
-<div class="errorText">{{ errorText }}</div>
-<div>
-  <table class="alph table-bordered table-dark">
-    <tbody>
-      <tr>
-        <td *ngFor="let letter of alphabetP1" (click)="this.selectLetter(letter)" [class.highlighted]="letter === currentLetter">
-          {{ letter }}
-        </td>
-      </tr>
-      <tr>
-        <td *ngFor="let letter of alphabetP2" (click)="this.selectLetter(letter)" [class.highlighted]="letter === currentLetter">
-          {{ letter }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="errorText">
+  <span>{{ errorText }}</span></div>
+    <table class="alph table-bordered table-dark">
+      <tbody>
+        <tr>
+          <td *ngFor="let letter of alphabetP1" (click)="this.selectLetter(letter)" [class.highlighted]="letter === currentLetter">
+            {{ letter }}
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let letter of alphabetP2" (click)="this.selectLetter(letter)" [class.highlighted]="letter === currentLetter">
+            {{ letter }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
 </div>
 </div>

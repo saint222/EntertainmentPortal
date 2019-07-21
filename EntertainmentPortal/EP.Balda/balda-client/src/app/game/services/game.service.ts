@@ -14,6 +14,8 @@ export class GameService {
 
   private gameSource = new BehaviorSubject<Game>(new Game());
   currentGame = this.gameSource.asObservable();
+  private userSource = new BehaviorSubject<Player>(new Player());
+  currentUser = this.userSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -36,6 +38,10 @@ export class GameService {
 
   changeGameSource(game: Game) {
     this.gameSource.next(game);
+  }
+
+  changeUserSource(user: Player) {
+    this.userSource.next(user);
   }
 
   getMap(mapid: string) {

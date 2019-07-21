@@ -1,10 +1,14 @@
-<div align="center" class="dropdown">
-  <select calss="dropdown" [(ngModel)]="mapSize"  >
+<div class="startGame">
+<div class="form-group">
+  <label for="dropdown">Select size:</label>
+  <br>
+  <select class="form-control" [(ngModel)]="mapSize"  >
     <option *ngFor="let size of sizes" value= {{size.num}}  >
       {{ size.desciption }}
     </option>
   </select>
 </div>
-<div align="center">
+<div>
   <button class="btn btn-primary" (click)="onStartClick()">Start Game</button>
+</div>
 </div>
