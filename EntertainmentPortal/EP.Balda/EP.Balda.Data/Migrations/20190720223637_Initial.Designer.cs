@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EP.Balda.Data.Migrations
 {
     [DbContext(typeof(BaldaGameDbContext))]
-    [Migration("20190703152131_Initial")]
+    [Migration("20190720223637_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,7 +146,7 @@ namespace EP.Balda.Data.Migrations
 
                     b.Property<long>("GameId");
 
-                    b.HasKey("PlayerId", "WordId");
+                    b.HasKey("PlayerId", "WordId", "GameId");
 
                     b.HasIndex("GameId");
 

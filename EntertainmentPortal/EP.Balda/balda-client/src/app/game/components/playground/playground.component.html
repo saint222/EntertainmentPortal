@@ -1,13 +1,51 @@
-<div id="container">
-  <p>Game {{ id }}</p>
+<div class="container-fluid">
 <div id="left">
   <b>Player Info:</b><br>
   UserName: {{ player.userName }} <br>
   First name: {{ player.firstName }} <br>
   Last name: {{ player.lastName }} <br>
+  <br>
+    <b>Words:</b><br>
+    <ul class="listWords">
+      <li *ngFor="let word of words">
+          {{ word }}
+      </li>
+  </ul>
+  <p>Total: {{ total }} </p>
 </div>
 <div id="right"></div>
 <div id="center">
-  <app-map></app-map>
+  <table class="fixed table-bordered table-dark">
+    <tbody>
+      <tr *ngFor="let row of cells">
+        <td *ngFor="let item of row" (click)="this.selectCell(item)" [class.highlighted]="item.checked == true">
+          {{ item.letter }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> Your word: {{ selectedLetters }} </p>
+  <button type="button-send" class="btn btn-primary" (click)="onSendClick()">
+    Send word
+</button>
+<button type="button-cancel" class="btn btn-primary" (click)="onCancelClick()">
+    Cancel
+</button>
+<div class="errorText">{{ errorText }}</div>
+<div>
+  <table class="alph table-bordered table-dark">
+    <tbody>
+      <tr>
+        <td *ngFor="let letter of alphabetP1" (click)="this.selectLetter(letter)" [class.highlighted]="letter === currentLetter">
+          {{ letter }}
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let letter of alphabetP2" (click)="this.selectLetter(letter)" [class.highlighted]="letter === currentLetter">
+          {{ letter }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 </div>

@@ -144,7 +144,7 @@ namespace EP.Balda.Data.Migrations
 
                     b.Property<long>("GameId");
 
-                    b.HasKey("PlayerId", "WordId");
+                    b.HasKey("PlayerId", "WordId", "GameId");
 
                     b.HasIndex("GameId");
 

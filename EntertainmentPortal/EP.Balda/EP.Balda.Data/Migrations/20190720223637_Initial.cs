@@ -258,7 +258,7 @@ namespace EP.Balda.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlayerWords", x => new { x.PlayerId, x.WordId });
+                    table.PrimaryKey("PK_PlayerWords", x => new { x.PlayerId, x.WordId, x.GameId });
                     table.ForeignKey(
                         name: "FK_PlayerWords_Games_GameId",
                         column: x => x.GameId,

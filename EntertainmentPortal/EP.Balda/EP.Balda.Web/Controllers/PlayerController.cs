@@ -118,7 +118,7 @@ namespace EP.Balda.Web.Controllers
 
             var result = await _mediator.Send(new GetPlayersWords() { GameId = gameId, PlayerId = UserId });
 
-            if (result.Count() != 0)
+            if (result.Count() >= 0)
             {
                 _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameters: gameId = {gameId}");
