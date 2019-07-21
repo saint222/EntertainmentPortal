@@ -1,4 +1,7 @@
 <div>
-    {{userName}}
-  <button (click)="loginBtnClick()" type="button" class="btn btn-light" >Login</button>
+  <div class="navbar-text navbar-item" *ngIf="userName">{{userName}}</div>
+  <div class="navbar-text navbar-item" *ngIf="!userName">Войдите</div>
+
+  <button  class="navbar-text" *ngIf="!loginStatus" (click)="loginBtnClick()" type="button" class="btn btn-light" >Login</button>
+  <button  class="navbar-text" *ngIf="loginStatus" (click)="logoutBtnClick()" type="button" class="btn btn-light" >Logout</button>
 </div>

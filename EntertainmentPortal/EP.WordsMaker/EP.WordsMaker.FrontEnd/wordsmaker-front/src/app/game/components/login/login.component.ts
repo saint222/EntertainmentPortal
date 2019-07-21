@@ -1,3 +1,4 @@
+import { log } from 'util';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
@@ -11,26 +12,35 @@ import { GameService } from './../../services/game.service';
 })
 export class LoginComponent implements OnInit {
 
+  loginBtnMsg: string;
   userName: string = this.getValueFromIdToken('name');
   userEmail: string = this.getValueFromIdToken('email');
 
+  loginStatus = false;
+
   constructor(private authService: AuthService, private router: Router) { }
 
-  private loginStatus = false;
   ngOnInit() {
+    if (this.userName) {
+      this.loginStatus = true;
+      log('User login');
+    }
+    else {
+      this.loginStatus = false;
+      log('User not login');
+    }
   }
-
-  loginBtnClick(){
-    if(!this.loginStatus)
-    {
-      this.loginStatus = !this.loginStatus;
-      this.authService.loginUser();
-    }
-    else
-    {
-      this.loginStatus = !this.loginStatus;
-      this.authService.logoutUser();
-    }
+  loginBtnClick() {
+    log('Pressed btn to login user');
+    this.loginStatus = true;
+    this.authService.loginUser();
+  }
+  logoutBtnClick() {
+    log('Pressed btn to logout user');
+    this.loginStatus = false;
+    this.authService.logoutUser();
+    this.userName = null;
+    this.userEmail = null;
   }
   getValueFromIdToken(claim: string) {
     const jwt = sessionStorage.getItem('id_token');
