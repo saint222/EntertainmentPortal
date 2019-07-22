@@ -47,8 +47,8 @@ namespace EP.SeaBattle.Web.Controllers
         {
             var result = await _mediator.Send(new GetShotsQuery() {PlayerId = playerId });
             return result.HasValue
-                ? Ok(result.Value)
-                : (IActionResult)Ok();
+                            ? (IActionResult)Ok(result.Value)
+                            : NotFound();
         }
 
     }

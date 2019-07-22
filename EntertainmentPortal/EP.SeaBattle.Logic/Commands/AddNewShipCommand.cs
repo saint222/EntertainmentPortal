@@ -7,7 +7,7 @@ using MediatR;
 
 namespace EP.SeaBattle.Logic.Commands
 {
-    public class AddNewShipCommand : IRequest<Maybe<IEnumerable<Ship>>>
+    public class AddNewShipCommand : IRequest<Result<IEnumerable<Ship>>>
     {
         public byte X { get; set; }
         public byte Y { get; set; }

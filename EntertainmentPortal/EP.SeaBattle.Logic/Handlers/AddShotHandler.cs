@@ -75,6 +75,7 @@ namespace EP.SeaBattle.Logic.Handlers
                         gameDb.Winner = playerDb.NickName;
                         gameDb.Loser = enemyPlayerDb.NickName;
                         playerDb.GameId = null;
+                        enemyPlayerDb.GameId = null;
                         IEnumerable<ShotDb> shotsDb = _context.Shots.Where(s => s.PlayerId == playerDb.Id || s.PlayerId == enemyPlayerDb.Id);
                         _context.RemoveRange(shotsDb);
                         IEnumerable<ShipDb> shipsDb = _context.Ships.Where(s => s.PlayerId == playerDb.Id || s.PlayerId == enemyPlayerDb.Id);

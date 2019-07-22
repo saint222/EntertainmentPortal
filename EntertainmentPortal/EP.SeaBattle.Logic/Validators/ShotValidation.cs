@@ -42,6 +42,9 @@ namespace EP.SeaBattle.Logic.Validators
                             .MustAsync((o, s, token) => DoesPlayerHaveGame(o.PlayerId)).WithMessage(model => $"Player ID {model.PlayerId} does not have a game");
 
                         RuleFor(x => x.PlayerId)
+                            .MustAsync((o, s, token) => DoesEnemyPlayerExist(o.PlayerId)).WithMessage(model => $"Player ID {model.PlayerId} does not have an enemy player");
+
+                        RuleFor(x => x.PlayerId)
                             .MustAsync((o, s, token) => IsGameFinished(o.PlayerId)).WithMessage(model => $"Game is finished");
 
                         RuleFor(x => x.PlayerId)
@@ -64,6 +67,22 @@ namespace EP.SeaBattle.Logic.Validators
             }
             return true;
         }
+
+        private async Task<bool> DoesEnemyPlayerExist(string playerId)
+        {
+            GameDb gameDb = await _context.Games.Where(g => g.Players.Where(p => p.Id == playerId).Count() > 0).FirstOrDefaultAsync().ConfigureAwait(false);
+            var result = await _context.Players
+                                       .Include(p => p.Ships)
+                                       .ThenInclude(s => s.Cells)
+                                       .FirstOrDefaultAsync(p => p.GameId == gameDb.Id && p.Id != playerId)
+                                       .ConfigureAwait(false);
+            if (result == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
 
         private async Task<bool> DoesPlayerHaveGame(string playerId)
         {

@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace EP.SeaBattle.Logic.Handlers
 {
-    public class AddNewShipHandler : IRequestHandler<AddNewShipCommand, Maybe<IEnumerable<Ship>>>
+    public class AddNewShipHandler : IRequestHandler<AddNewShipCommand, Result<IEnumerable<Ship>>>
     {
         private readonly SeaBattleDbContext _context;
         private readonly IMapper _mapper;
@@ -30,7 +30,7 @@ namespace EP.SeaBattle.Logic.Handlers
             _logger = logger;
         }
 
-        public async Task<Maybe<IEnumerable<Ship>>> Handle(AddNewShipCommand request, CancellationToken cancellationToken)
+        public async Task<Result<IEnumerable<Ship>>> Handle(AddNewShipCommand request, CancellationToken cancellationToken)
         {
             var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddShipValidation", cancellationToken: cancellationToken);
             if (validationResult.IsValid)
@@ -51,12 +51,12 @@ namespace EP.SeaBattle.Logic.Handlers
                     try
                     {
                         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                        return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(playerDb.Ships));
+                        return Result.Ok(_mapper.Map<IEnumerable<Ship>>(playerDb.Ships));
                     }
                     catch (DbUpdateException ex)
                     {
                         _logger.LogError(ex.Message);
-                        return Maybe<IEnumerable<Ship>>.None;
+                        return Result.Fail<IEnumerable<Ship>>("Cannot add ship");
                     }
                 }
                 else
@@ -64,13 +64,13 @@ namespace EP.SeaBattle.Logic.Handlers
                     _logger.LogInformation($"Ship was not added to the field. " +
                         $"Ship info X: {request.X} Y: {request.Y}, Orientation {request.Orientation}, Rank {request.Rank}, " +
                         $" Player {request.PlayerId}");
-                    return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(playerDb.Ships));
+                    return Result.Fail<IEnumerable<Ship>>("Ship was not added to the field");
                 }
             }
             else
             {
                 _logger.LogInformation(string.Join(", ", validationResult.Errors));
-                return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
+                return Result.Fail<IEnumerable<Ship>>(validationResult.Errors.First().ErrorMessage);
             }
         }
     }

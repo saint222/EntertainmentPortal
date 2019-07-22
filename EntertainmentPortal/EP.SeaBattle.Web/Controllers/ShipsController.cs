@@ -34,9 +34,9 @@ namespace EP.SeaBattle.Web.Controllers
             }
 
             var result = await _mediator.Send(model);
-            return result.HasValue 
-                ? Ok(result.Value)
-                : (IActionResult)Ok();
+            return result.IsFailure
+                ? (IActionResult)BadRequest(result.Error)
+                : Ok(result.Value);
         }
 
 
@@ -46,9 +46,9 @@ namespace EP.SeaBattle.Web.Controllers
         public async Task<IActionResult> GetShipsAsync(string playerId)
         {
             var result = await _mediator.Send(new GetShipsQuery() {PlayerId = playerId });
-            return result.HasValue 
-                ? Ok(result.Value)
-                : (IActionResult)Ok();
+            return result.HasValue
+                ? (IActionResult)Ok(result.Value)
+                : NotFound();
         }
 
 

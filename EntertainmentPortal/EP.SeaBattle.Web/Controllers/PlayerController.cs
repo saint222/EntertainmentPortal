@@ -60,8 +60,9 @@ namespace EP.SeaBattle.Web.Controllers
                 return BadRequest(ModelState);
             }
             var result = await _mediator.Send(new GetPlayerQuery() { Id = id });
-            return result.IsSuccess ? Ok(result.Value)
-                : (IActionResult)NotFound(result.Error);
+            return result.IsFailure
+                ? (IActionResult)BadRequest(result.Error)
+                : Ok(result.Value);
         }
 
 
