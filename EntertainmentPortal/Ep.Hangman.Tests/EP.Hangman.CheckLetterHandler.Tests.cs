@@ -111,7 +111,9 @@ namespace EP.Hangman.Logic.Tests
                     });
                 context.SaveChanges();
             }
+            
             _controllerData.Letter = "B";
+            
             using (var context = new GameDbContext(_options))
             {
                 var service = new CheckLetterHandler(context, _mapper, _validator, _logger);
