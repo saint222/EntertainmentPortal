@@ -64,9 +64,9 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<bool> AddScore(SetCellValueCommand request, CancellationToken cancellationToken)
         {
-            var sessionDbScore = _context.Sessions
+            var sessionDb = _context.Sessions
                 .First(d => d.Id == request.SessionId);
-            sessionDbScore.Score++;
+            sessionDb.Score++;
             await _context.SaveChangesAsync(cancellationToken);
 
             return true;
@@ -74,9 +74,11 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<bool> AddError(SetCellValueCommand request, CancellationToken cancellationToken)
         {
-            var sessionDbScore = _context.Sessions
+            var sessionDb = _context.Sessions
+                .Include(d => d.SquaresDb)
                 .First(d => d.Id == request.SessionId);
-            sessionDbScore.Error++;
+            sessionDb.SquaresDb.First(x => x.Id == request.Id).Value = 0;
+            sessionDb.Error++;
             await _context.SaveChangesAsync(cancellationToken);
 
             return true;

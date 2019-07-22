@@ -41,9 +41,26 @@
   margin-top: 10%;
 }
 @import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+.new-line {
+  display: block;
+}
+
+.badge {
+  display: block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 .chat
 {
-    list-style: none;
+    // list-style: none;
     margin: 0;
     padding: 0;
 }
