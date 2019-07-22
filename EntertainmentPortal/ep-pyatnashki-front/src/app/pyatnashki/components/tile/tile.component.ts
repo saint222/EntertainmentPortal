@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TileComponent implements OnInit {
 
   @Input() num: number;
+  @Input() disabled: boolean;
+
   constructor() { }
 
   ngOnInit() {

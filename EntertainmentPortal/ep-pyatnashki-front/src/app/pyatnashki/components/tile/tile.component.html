@@ -1,3 +1,7 @@
-<button class="btn btn-outline-secondary btn-lg tile">
+<button *ngIf="!disabled" class="btn btn-outline-secondary btn-lg tile">
     <h4>{{num}}</h4>
+</button>
+
+<button *ngIf="disabled" [disabled]="disabled" class="btn btn-outline-secondary btn-lg tile">
+  <h4>{{num}}</h4>
 </button>

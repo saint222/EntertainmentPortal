@@ -18,7 +18,6 @@ export class AccountService {
     redirect_uri: 'http://localhost:4200/auth-callback',
     response_type: 'id_token token',
     scope: 'openid email profile pyatnashki_api',
-    //post_logout_redirect_uri : 'http://localhost:4200/auth-callback',
   };
   private mgr = new UserManager(this.config);
   private user: User = null;

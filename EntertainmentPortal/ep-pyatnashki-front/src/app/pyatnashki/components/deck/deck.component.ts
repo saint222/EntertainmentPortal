@@ -17,7 +17,7 @@ export class DeckComponent implements OnInit {
 
   // tslint:disable-next-line: no-inferrable-types
   logged: boolean = true;
-  constructor(private deckService: DeckService, private accountService: AccountService) { }
+  constructor(private deckService: DeckService, public accountService: AccountService) { }
 
   ngOnInit() {
     if (this.accountService.IsLoggedIn()) {
@@ -37,7 +37,9 @@ export class DeckComponent implements OnInit {
       this.logged = false;
     }
   }
-
+  isLoggedIn() {
+    return this.accountService.IsLoggedIn();
+  }
   getDeck() {
     this.deckService.getDeck().subscribe(d => {
       this.deck = d;
@@ -51,10 +53,12 @@ export class DeckComponent implements OnInit {
     });
   }
   moveTile(num: number) {
-    this.deckService.moveTile(num).subscribe(d => {
-      this.deck = d;
-      this.save('deck', d);
-    });
+    if (!this.deck.victory) {
+      this.deckService.moveTile(num).subscribe(d => {
+        this.deck = d;
+        this.save('deck', d);
+      });
+    }
   }
 
   private getNewDeck() {
