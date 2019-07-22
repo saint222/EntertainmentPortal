@@ -107,9 +107,14 @@ namespace EP.TicTacToe.Web
 
             services.AddLogging();
         }
-
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
+        
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
+        /// <param name="mediator"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
                               IMediator mediator)
         {

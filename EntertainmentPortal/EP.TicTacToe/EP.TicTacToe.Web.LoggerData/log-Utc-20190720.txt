@@ -1,0 +1,2 @@
+2019-07-20 23:43:02.033 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-20 23:43:02.255 +03:00 [Information] The file "/oauth2-redirect.html" was not modified

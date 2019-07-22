@@ -101,7 +101,7 @@ namespace EP.TicTacToe.Logic.Handlers
                 var gamePlayers = GetPlayers(_context, gameId);
                 var nextPlayer = currentPlayerId == gamePlayers.One
                     ? gamePlayers.Two
-                    : currentPlayerId;
+                    : gamePlayers.One;
 
                 stepResultDb.NextPlayerId = Convert.ToInt32(nextPlayer);
                 _context.StepResults.Update(stepResultDb);
