@@ -12,13 +12,13 @@ export class AccountService {
 
   private url = 'https://localhost:44380/api/auth/';
 
-  private config = {
+  private config: UserManagerSettings = {
     authority: 'http://localhost:5000',
     client_id: 'spa',
     redirect_uri: 'http://localhost:4200/auth-callback',
     response_type: 'id_token token',
     scope: 'openid email profile pyatnashki_api',
-    post_logout_redirect_uri : 'http://localhost:4200/auth-callback',
+    //post_logout_redirect_uri : 'http://localhost:4200/auth-callback',
   };
   private mgr = new UserManager(this.config);
   private user: User = null;

@@ -248,7 +248,7 @@ namespace IdentityServer4.Quickstart.UI
         {
             // build a model so the logout page knows what to display
             var vm = await BuildLogoutViewModelAsync(logoutId);
-
+            vm.ReturnUrl = _interaction.GetLogoutContextAsync(logoutId).Result.PostLogoutRedirectUri;
             return await Logout(vm);
         }
 
@@ -283,7 +283,7 @@ namespace IdentityServer4.Quickstart.UI
                 return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
             }
             //return View("LoggedOut", vm);
-            return Redirect("http://localhost:4200");
+            return Redirect(model.ReturnUrl);
         }
 
 
