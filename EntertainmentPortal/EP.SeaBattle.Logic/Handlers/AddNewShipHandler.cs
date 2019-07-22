@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using System;
 
 namespace EP.SeaBattle.Logic.Handlers
 {
@@ -38,9 +39,10 @@ namespace EP.SeaBattle.Logic.Handlers
             {
                 var game = await _context.Games.FindAsync(request.GameId).ConfigureAwait(false);
                 var player = await _context.Players.FindAsync(request.PlayerId).ConfigureAwait(false);
-                //TODO Async?
-                var ships = _context.Ships.Where(w => w.Game.Id == request.GameId && w.Player.Id == request.PlayerId).Include(i => i.Cells);
-                ShipsManager shipsManager = new ShipsManager(_mapper.Map<Game>(game), _mapper.Map<Player>(player), _mapper.Map<IEnumerable<Ship>>(ships));
+                var ships = await _context.Ships.Where(w => w.Game.Id == request.GameId && w.Player.Id == request.PlayerId)
+                    .Include(i => i.Cells).ToArrayAsync().ConfigureAwait(false);
+                ShipsManager shipsManager = new ShipsManager(_mapper.Map<Game>(game), _mapper.Map<Player>(player), 
+                    _mapper.Map<IEnumerable<Ship>>(ships));
                 Ship ship;
                 var wasAdded = shipsManager.TryAddShip(request.X, request.Y, request.Orientation, request.Rank, out ship);
                 if (wasAdded)
@@ -49,7 +51,24 @@ namespace EP.SeaBattle.Logic.Handlers
                     if (shipsManager.IsFull)
                     {
                         //TODO generate gamebot and ships
-                        game.Status = Common.Enums.GameStatus.Started;
+                        Player playerAI = new Player();
+                        var guid = Guid.NewGuid().ToString();
+                        playerAI.Id = guid;
+                        playerAI.NickName = "AIBot";
+                        AIManager aiManager = new AIManager(_mapper.Map<Game>(game), _mapper.Map<Player>(playerAI), 
+                            Enumerable.Empty<Ship>(), Enumerable.Empty<Shot>());
+                        if (aiManager.GenerateShips())
+                        {
+                            game.Player2 = _mapper.Map<PlayerDb>(playerAI);
+                            game.Status = Common.Enums.GameStatus.Started;
+                            //TODO Исправить костыль с двойным сохранением
+                            await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                            await _context.Ships.AddRangeAsync(_mapper.Map<IEnumerable<ShipDb>>(aiManager.ShipsManager.Ships)).ConfigureAwait(false);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Can't generate AI ships for AIPlayer with ID=" + playerAI.Id);
+                        }                     
                     }
                     try
                     {

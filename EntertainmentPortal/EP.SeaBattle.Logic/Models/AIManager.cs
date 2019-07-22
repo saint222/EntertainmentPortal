@@ -14,7 +14,13 @@ namespace EP.SeaBattle.Logic.Models
         private readonly IEnumerable<Ship> _ships;
         private readonly IEnumerable<Shot> _shots;
 
-        ShipsManager ShipsManager { get; }
+        public ShipsManager ShipsManager { get; }
+
+        public AIManager()
+        {
+
+        }
+
         public AIManager(Game game, Player player, IEnumerable<Ship> ships, IEnumerable<Shot> prevShots)
         {
             _game = game;
@@ -34,7 +40,7 @@ namespace EP.SeaBattle.Logic.Models
             while (!ShipsManager.IsFull && count < MAX_ITERATION)
             {
                 Ship ship;
-                ShipsManager.TryAddShip((byte)rand.Next(0, 9), (byte)rand.Next(0, 9), (ShipOrientation)rand.Next(0, 1), (ShipRank) rand.Next(1, 5), out ship);
+                ShipsManager.TryAddShip((byte)rand.Next(0, 9), (byte)rand.Next(0, 9), (ShipOrientation)rand.Next(0, 2), (ShipRank) rand.Next(1, 5), out ship);
                 count++;
             }
             return ShipsManager.IsFull;

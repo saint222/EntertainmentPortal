@@ -35,13 +35,16 @@ namespace EP.SeaBattle.Logic.Handlers
             //TODO Add shot validation
             if(true) 
             {
-                var game = await _context.Games.FindAsync(request.GameId).ConfigureAwait(false);
+                var game = await _context.Games.Include(i => i.Player1).Include(i => i.Player2)
+                    .FirstOrDefaultAsync(f => f.Id == request.GameId).ConfigureAwait(false);
                 var player = await _context.Players.FindAsync(request.PlayerId).ConfigureAwait(false);
-                //TODO Async?
-                var ships = _context.Ships.Where(w => w.Game.Id == request.GameId && w.Player.Id != request.PlayerId).Include(i => i.Cells); //get enemy ships
-                var shots = _context.Shots.Where(w => w.GameId == request.GameId && w.PlayerId == request.PlayerId);
+                //get enemy ships
+                var enemyShips = await _context.Ships.Where(w => w.Game.Id == request.GameId && w.Player.Id != request.PlayerId)
+                    .Include(i => i.Cells).ToArrayAsync().ConfigureAwait(false); 
+                var playerShots = await _context.Shots.Where(w => w.GameId == request.GameId && w.PlayerId == request.PlayerId)
+                    .ToArrayAsync().ConfigureAwait(false);
                 var shotManager = new ShotManager(_mapper.Map<Game>(game), _mapper.Map<Player>(player), 
-                    _mapper.Map<IEnumerable<Ship>>(ships), _mapper.Map<IEnumerable<Shot>>(shots));
+                    _mapper.Map<IEnumerable<Ship>>(enemyShips), _mapper.Map<IEnumerable<Shot>>(playerShots));
 
                 if(shotManager.TryShoot(request.X, request.Y))
                 {
@@ -51,25 +54,48 @@ namespace EP.SeaBattle.Logic.Handlers
                     if (shot.Status == Common.Enums.CellStatus.ShootWithoutHit)
                     {
                         await _context.AddAsync(_mapper.Map<ShotDb>(shot)).ConfigureAwait(false);
+                        //AI do shots
+                        game.PlayerAllowedToMove = game.Player2;
+                        var playerShips = await _context.Ships.Where(ship => ship.Game.Id == request.GameId && ship.Player.Id == request.PlayerId)
+                            .Include(i => i.Cells).ToArrayAsync().ConfigureAwait(false);
+                        var enemyShots = await _context.Shots.Where(s => s.GameId == request.GameId && s.PlayerId != request.PlayerId)
+                            .ToArrayAsync().ConfigureAwait(false);
+                        AIManager aiManager = new AIManager(_mapper.Map<Game>(game), _mapper.Map<Player>(game.Player2),
+                            _mapper.Map<IEnumerable<Ship>>(playerShips), _mapper.Map<IEnumerable<Shot>>(enemyShots));
+                        Shot outerShot = new Shot();
+                        bool flag = true;
+                        int count = 0;
+                        while(flag && count < 1000)
+                        {
+                            if (aiManager.TryShoot(out outerShot))
+                            {
+                                if (outerShot.Status == Common.Enums.CellStatus.ShootWithoutHit)
+                                {
+                                    flag = false;
+                                }
+                                else
+                                {
+                                    var playerCell = playerShips.SelectMany(s => s.Cells)
+                                        .FirstOrDefault(c => c.X == outerShot.X && c.Y == outerShot.Y);
+                                    if (playerCell != null)
+                                        playerCell.Status = outerShot.Status;
+                                }
+                                await _context.Shots.AddAsync(_mapper.Map<ShotDb>(outerShot));
+                            }
+                            count++;
+                        }
+                        game.PlayerAllowedToMove = game.Player1;
                     }
                     else
                     {
                         //update cell
-                        var cell = ships.SelectMany(s => s.Cells).FirstOrDefault(f => f.X == request.X && f.Y == request.Y);
+                        var cell = enemyShips.SelectMany(s => s.Cells).FirstOrDefault(f => f.X == request.X && f.Y == request.Y);
                         if (cell != null)
                             cell.Status = shot.Status;
                     }
 
-                    //TODO change player allow to move
-                    //if (shot.Status != Common.Enums.CellStatus.Destroyed)
-                    //{
-                    //    if (game.Player1 == player)
-                    //        game.PlayerAllowedToMove = game.Player2;
-                    //    else
-                    //        game.PlayerAllowedToMove = game.Player1;
-                    //}
                     //set game finish
-                    var shipManager = new ShipsManager(null, null, _mapper.Map<IEnumerable<Ship>>(ships));
+                    var shipManager = new ShipsManager(null, null, _mapper.Map<IEnumerable<Ship>>(enemyShips));
                     if (shot.Status == Common.Enums.CellStatus.Destroyed && shipManager.AllShipsDestroyed)
                         game.Status = Common.Enums.GameStatus.Finished;
                     try

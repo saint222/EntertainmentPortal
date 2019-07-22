@@ -16,6 +16,7 @@ using EP.SeaBattle.Logic.Profiles;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using EP.SeaBattle.Logic.Validators;
+using EP.SeaBattle.Data.Models;
 
 namespace EP.SeaBattle.Web
 {
@@ -32,6 +33,7 @@ namespace EP.SeaBattle.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            services.AddSignalR();
             services.AddLogging(cfg => cfg.AddConsole().AddDebug());
             services.AddSeaBattleServices();
             services.AddMediatR(typeof(AddNewPlayerCommand).Assembly);
@@ -54,9 +56,13 @@ namespace EP.SeaBattle.Web
             }
             app.UseCors(builder => 
             {
-                builder.AllowAnyHeader();
-                builder.AllowAnyMethod();
-                builder.AllowAnyOrigin();
+                builder.AllowAnyHeader()
+                .AllowAnyMethod()
+                .WithOrigins("http://localhost:4200");
+            });
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ShotsHub>("/shothub");
             });
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseStaticFiles();

@@ -62,7 +62,7 @@ namespace EP.SeaBattle.Logic.Models
         {
             get
             {
-                return _game.Status == GameStatus.Started && _game.PlayerAllowedToMove.Equals(_player);
+                return _game.Status == GameStatus.Started && _game.PlayerAllowedToMove != null && _game.PlayerAllowedToMove.Equals(_player);
             }
         }
     }
