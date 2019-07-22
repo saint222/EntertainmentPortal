@@ -3,8 +3,14 @@ using FluentValidation;
 
 namespace EP.TicTacToe.Logic.Validators
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CheckStepValidator : AbstractValidator<AddNewStepCommand>
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public CheckStepValidator()
         {
             RuleFor(x => x.PlayerId)

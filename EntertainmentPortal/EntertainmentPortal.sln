@@ -90,7 +90,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.TicTacToe.Logic", "EP.Ti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.TicTacToe.Web", "EP.TicTacToe\EP.TicTacToe.Web\EP.TicTacToe.Web.csproj", "{A9EE9AE8-1023-4DDA-BC65-D4FF57B3F204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.TicTacToe.Security", "EP.TicTacToe\EP.TicTacToe.Security\EP.TicTacToe.Security.csproj", "{C90E7159-9EEC-40CA-9B5A-17ED2D0B14B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.TicTacToe.Security", "EP.TicTacToe\EP.TicTacToe.Security\EP.TicTacToe.Security.csproj", "{C90E7159-9EEC-40CA-9B5A-17ED2D0B14B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
