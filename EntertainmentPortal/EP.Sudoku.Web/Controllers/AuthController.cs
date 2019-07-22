@@ -24,6 +24,9 @@ using NSwag.Annotations;
 
 namespace EP.Sudoku.Web.Controllers
 {
+    /// <summary>
+    ///Here are operations with local server authentication and registration.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -33,6 +36,9 @@ namespace EP.Sudoku.Web.Controllers
         private readonly IEmailSenderService _emailSenderSenderService;
         private readonly ILogger<AuthController> _logger;
 
+        /// <summary>
+        ///AuthController constructor.
+        /// </summary>
         public AuthController(UserManager<IdentityUser> manager, SignInManager<IdentityUser> signInManager, 
             IEmailSenderService emailSenderSenderService, ILogger<AuthController> logger)
         {
@@ -42,6 +48,9 @@ namespace EP.Sudoku.Web.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        ///Creates JWT.
+        /// </summary>
         private string GetToken(IdentityUser userInfo)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SudokuConstants.SECRET));
@@ -64,6 +73,9 @@ namespace EP.Sudoku.Web.Controllers
             return handler.WriteToken(token);
         }
 
+        /// <summary>
+        ///Registration with JWT.
+        /// </summary>
         [HttpPost("registerWithToken")]
         public async Task<IActionResult> RegisterWithToken([FromBody]User userInfo)
         {
@@ -96,6 +108,10 @@ namespace EP.Sudoku.Web.Controllers
             }
         }
 
+
+        /// <summary>
+        ///Login with JWT.
+        /// </summary>
         [HttpPost("loginWithToken")]
         public async Task<IActionResult> LoginWithToken([FromBody]User userInfo)
         {
@@ -121,6 +137,10 @@ namespace EP.Sudoku.Web.Controllers
             }
         }
 
+
+        /// <summary>
+        ///Registration without JWT.
+        /// </summary>
         [HttpPost("register")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was registered")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(IEnumerable<IdentityError>), Description = "User wasn't registered")]
@@ -154,6 +174,10 @@ namespace EP.Sudoku.Web.Controllers
             }
         }
 
+
+        /// <summary>
+        ///Login without JWT.
+        /// </summary>
         [HttpPost("login")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged in")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "User wasn't logged in")]
@@ -172,6 +196,9 @@ namespace EP.Sudoku.Web.Controllers
         }
 
 
+        /// <summary>
+        ///Logout with JWT.
+        /// </summary>
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
         [HttpGet("logout")]
         public async Task<IActionResult> Logout()
@@ -181,6 +208,10 @@ namespace EP.Sudoku.Web.Controllers
             return Ok();
         }
 
+
+        /// <summary>
+        ///Registration by Email without MailKit.
+        /// </summary>
         [HttpPost("registerByEmail")]
         public async Task<IActionResult> RegisterByEmail([FromBody]User user)
         {
@@ -203,7 +234,7 @@ namespace EP.Sudoku.Web.Controllers
                     var callbackUrl = Url.Page(
                         "/ConfirmEmail",
                         pageHandler: null,
-                        values: new { userId = newUser.Id, code = code },
+                        values: new { userId = newUser.Id, userCode = code },
                         protocol: Request.Scheme);
 
                     await _emailSenderSenderService.SendEmailAsync(user.Email, "Confirm your email",
@@ -223,28 +254,6 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest("User already exists...");
             }
         }
-
-        [HttpGet("token")]
-        public IActionResult GetToken()
-        {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SudokuConstants.SECRET));
-            var handler = new JwtSecurityTokenHandler();
-            var tokenDescr = new SecurityTokenDescriptor()
-            {
-                Issuer = SudokuConstants.ISSUER_NAME,
-                Audience = SudokuConstants.AUDIENCE_NAME,
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, $"{User.Identity.Name}")                    
-                }),
-                IssuedAt = DateTime.Now,
-                NotBefore = DateTime.Now,
-                Expires = DateTime.Now.AddSeconds(15),
-                SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512)
-            };
-
-            var token = handler.CreateJwtSecurityToken(tokenDescr);
-            return Ok(handler.WriteToken(token));
-        }
+        
     }
 }

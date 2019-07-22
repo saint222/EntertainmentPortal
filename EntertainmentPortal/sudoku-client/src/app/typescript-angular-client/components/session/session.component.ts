@@ -20,7 +20,7 @@ export class SessionComponent implements OnInit {
   cell: Cell;
   error: string;
   message = '';
-  chatMessage: ChatMessage = { name:"", message:"" };
+  chatMessage: ChatMessage = { name: '', message: ''};
   messages: ChatMessage [] = [];
   hubConnection: HubConnection;
 

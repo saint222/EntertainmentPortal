@@ -58,7 +58,8 @@ namespace EP.Sudoku.Web
                     opt.Authority = "https://localhost:44366/";
                     opt.RequireHttpsMetadata = true;
                 })
-                //.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+                // Here are the oprions for JWT's local creating.
+                //.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt => 
                 //{
                 //    opt.RequireHttpsMetadata = true;
                 //    opt.TokenValidationParameters = new TokenValidationParameters()
@@ -78,24 +79,21 @@ namespace EP.Sudoku.Web
                 facebookOptions =>
                 {
                     facebookOptions.CallbackPath = new PathString("/api/signInFacebook");
-                    //facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                    //facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
                     facebookOptions.ClientId = "692105217894763";
                     facebookOptions.ClientSecret = "82669c46d46a697d7c967d96bc2c7ceb";
                 })
                 .AddGoogle("Google",
                 googleOptions =>
                 {
-                    googleOptions.CallbackPath = new PathString("/api/google");                    
+                    googleOptions.CallbackPath = new PathString("/api/google");
                     googleOptions.ClientId = "274043152218-ud0e3mc8lv0lm4bdjn67kfsudv5j4p0h.apps.googleusercontent.com";
                     googleOptions.ClientSecret = "qQMR0R_keZgQHPbhhe8Tirdq";
-                }); ;
+                });
             services.AddAuthorization();
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddSwaggerDocument(cfg =>
             {
-                //cfg.SchemaType = SchemaType.OpenApi3;
                 cfg.SchemaType = SchemaType.Swagger2;
                 cfg.Title = "Sudoku game";
                 cfg.AddSecurity("oauth", new[] { "sudoku_api" }, new OpenApiSecurityScheme()
@@ -110,19 +108,11 @@ namespace EP.Sudoku.Web
                 });
             });
 
-            services.AddSudokuServices();            
+            services.AddSudokuServices();
             services.AddLogging();
             services.AddMemoryCache();
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.AddSingleton<IEmailSenderService, EmailSenderService>();
-            //services.AddCors(options => options.AddPolicy("CorsPolicy",
-            //builder =>
-            //{
-            //    builder.AllowAnyHeader()
-            //        .AllowAnyMethod()
-            //        .WithOrigins("http://localhost:4200")
-            //        .AllowCredentials();
-            //}));
             services.AddCors();
             services.AddSignalR();
             services.AddMvc(opt =>
@@ -154,7 +144,6 @@ namespace EP.Sudoku.Web
                 app.UseHsts();
             }
 
-            //app.UseCors("CorsPolicy");
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                     .AllowAnyMethod()
@@ -181,7 +170,7 @@ namespace EP.Sudoku.Web
                 .WriteTo.Console()
                 .WriteTo.Debug()
                 .WriteTo.RollingFile("SudokuLogData/log-{Date}.txt", shared: true)
-                .WriteTo.SQLite(Path.Combine(Environment.CurrentDirectory, @"..\EP.Sudoku.Data\sudoku.db"))                
+                .WriteTo.SQLite(Path.Combine(Environment.CurrentDirectory, @"..\EP.Sudoku.Data\sudoku.db"))
                 .CreateLogger();
         }
     }

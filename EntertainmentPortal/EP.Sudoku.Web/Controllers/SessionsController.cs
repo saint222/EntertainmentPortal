@@ -33,7 +33,6 @@ namespace EP.Sudoku.Web.Controllers
             _logger = logger;
         }
 
-
         /// <summary>
         /// Fetches a gamesession from the Db by the unique Id.
         /// </summary>
@@ -85,6 +84,7 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest();
             }
             var session = await _mediator.Send(model);
+
             return session != null ? (IActionResult)Ok(session) : BadRequest();
         }
 
@@ -104,6 +104,7 @@ namespace EP.Sudoku.Web.Controllers
             }
 
             var result = await _mediator.Send(model);
+
             return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
         }
 
@@ -123,6 +124,7 @@ namespace EP.Sudoku.Web.Controllers
             }
 
             var result = await _mediator.Send(model);
+
             return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
         }
     }

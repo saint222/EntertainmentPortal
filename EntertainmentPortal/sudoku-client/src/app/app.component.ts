@@ -8,7 +8,6 @@ export const authConfig: AuthConfig = {
 
   // Url of the Identity Provider
   issuer: 'https://localhost:44366',
-  // issuer: 'http://localhost:5000/',
 
   // URL of the SPA to redirect the user to after login
   redirectUri: window.location.origin + '/home',

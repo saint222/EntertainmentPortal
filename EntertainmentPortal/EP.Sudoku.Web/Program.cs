@@ -11,13 +11,22 @@ using Serilog;
 
 namespace EP.Sudoku.Web
 {
+    /// <summary>
+    /// Class Program
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Method Main
+        /// </summary>
         public static void Main(string[] args)
         {            
             CreateWebHostBuilder(args).Build().Run();
         }
 
+        /// <summary>
+        /// Method CreateWebHostBuilder
+        /// </summary>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
             .UseSerilog()

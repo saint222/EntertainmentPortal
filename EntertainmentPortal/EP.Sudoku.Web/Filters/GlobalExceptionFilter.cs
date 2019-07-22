@@ -9,14 +9,24 @@ using System.Threading.Tasks;
 
 namespace EP.Sudoku.Web.Filters
 {
+    /// <summary>
+    /// Class GlobalExceptionFilter.
+    /// </summary>
     public class GlobalExceptionFilter : IExceptionFilter
     {
         private readonly ILogger<GlobalExceptionFilter> _logger;
 
+        /// <summary>
+        /// GlobalExceptionFilter constructor.
+        /// </summary>
         public GlobalExceptionFilter(ILogger<GlobalExceptionFilter> logger)
         {            
             _logger = logger;
         }
+
+        /// <summary>
+        /// Method OnException (GEF options).
+        /// </summary>
         public void OnException(ExceptionContext context)
         {
             context.ExceptionHandled = true;
