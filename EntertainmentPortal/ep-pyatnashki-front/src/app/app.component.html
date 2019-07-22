@@ -4,7 +4,8 @@
       <div class="inner">
         <h3 class="masthead-brand">15Puzzle</h3>
         <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/login" *ngIf="!IsLoggedIn()">Login</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/logout" *ngIf="IsLoggedIn()">Logout</a>
           <a class="nav-link" routerLinkActive="active" routerLink="/deck">Deck</a>
           <a class="nav-link" routerLinkActive="active" routerLink="/leaderboard">Leaderboard</a>
         </nav>

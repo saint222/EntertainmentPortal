@@ -1,3 +1,4 @@
+import { AccountService } from './account/services/account.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pyatnashki';
-  constructor() {}
 
+  constructor(private accountService: AccountService) {}
+  public IsLoggedIn() {
+    return this.accountService.IsLoggedIn();
+  }
 }

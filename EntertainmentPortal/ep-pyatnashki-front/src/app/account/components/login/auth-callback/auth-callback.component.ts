@@ -16,9 +16,10 @@ export class AuthCallbackComponent implements OnInit {
       this.error = true;
       return;
     }
-
     await this.accountService.completeAuthentication();
-    this.router.navigate(['/login']);
+
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    this.router.navigate(['/deck']);
   }
 
 }

@@ -20,6 +20,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using IdentityServer4.Quickstart.UI;
+#pragma warning disable 1998
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -55,8 +56,6 @@ namespace IdentityServer4.Quickstart.UI
         [HttpGet]
         public async Task<IActionResult> Register(string returnUrl)
         {
-
-
             return View(new RegisterViewModel());
         }
         [HttpPost]
@@ -238,7 +237,6 @@ namespace IdentityServer4.Quickstart.UI
             var vm = await BuildLoginViewModelAsync(model);
             return View(vm);
         }
-
         
 
 
@@ -251,14 +249,7 @@ namespace IdentityServer4.Quickstart.UI
             // build a model so the logout page knows what to display
             var vm = await BuildLogoutViewModelAsync(logoutId);
 
-            if (vm.ShowLogoutPrompt == false)
-            {
-                // if the request for logout was properly authenticated from IdentityServer, then
-                // we don't need to show the prompt and can just log the user out directly.
-                return await Logout(vm);
-            }
-
-            return View(vm);
+            return await Logout(vm);
         }
 
         /// <summary>
@@ -291,8 +282,8 @@ namespace IdentityServer4.Quickstart.UI
                 // this triggers a redirect to the external provider for sign-out
                 return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
             }
-
-            return View("LoggedOut", vm);
+            //return View("LoggedOut", vm);
+            return Redirect("http://localhost:4200");
         }
 
 
@@ -388,6 +379,8 @@ namespace IdentityServer4.Quickstart.UI
                 ReturnUrl = returnUrl
             };
         }
+
+      
 
         private async Task<RegisterViewModel> BuildRegisterViewModelAsync(RegisterInputModel model)
         {

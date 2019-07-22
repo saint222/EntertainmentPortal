@@ -1,3 +1,4 @@
+import { LogoutService } from './account/services/logout.service';
 import { AuthCallbackComponent } from './account/components/login/auth-callback/auth-callback.component';
 import { AuthguardService } from './account/services/authguard.service';
 import { UserinfoComponent } from './pyatnashki/components/userinfo/userinfo.component';
@@ -10,7 +11,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './account/components/login/login.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent, canActivate: [AuthguardService]},
+  {path: 'login', component: DeckComponent, canActivate: [AuthguardService]},
+  {path: 'logout', component: DeckComponent, canActivate: [LogoutService]},
   {path: 'auth-callback', component: AuthCallbackComponent},
   {path: 'deck', component: DeckComponent},
   {path: 'leaderboard', component: LeaderboardComponent},
