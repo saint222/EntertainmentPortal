@@ -16,6 +16,7 @@ using EP.SeaBattle.Logic.Profiles;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using EP.SeaBattle.Logic.Validators;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace EP.SeaBattle.Web
 {
@@ -31,6 +32,27 @@ namespace EP.SeaBattle.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthenticationCore();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("hobby",
+                    cfg => cfg.RequireAuthenticatedUser()
+                        .RequireClaim("hobby"));
+                opt.AddPolicy("google",
+                    cfg => cfg.AddAuthenticationSchemes("Google")
+                        .RequireAuthenticatedUser());
+            });
+
+            services.AddMemoryCache();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
+
+
             services.AddLogging(cfg => cfg.AddConsole().AddDebug());
             services.AddSeaBattleServices();
             services.AddMediatR(typeof(AddNewPlayerCommand).Assembly);
@@ -52,9 +74,11 @@ namespace EP.SeaBattle.Web
                 app.UseSwagger().UseSwaggerUi3();
             }
 
+            app.UseAuthentication();
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
+            app.UseSession();
             app.UseMvc();
         }
     }

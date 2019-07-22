@@ -1,15 +1,14 @@
 ﻿using EP.SeaBattle.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace EP.SeaBattle.Data.Context
 {
-    public class SeaBattleDbContext : DbContext
+    public class SeaBattleDbContext : IdentityDbContext
     {
         public SeaBattleDbContext(DbContextOptions<SeaBattleDbContext> options)
-     : base(options: options)
+            : base(options: options)
         {
-
         }
 
         public DbSet<PlayerDb> Players { get; set; }
