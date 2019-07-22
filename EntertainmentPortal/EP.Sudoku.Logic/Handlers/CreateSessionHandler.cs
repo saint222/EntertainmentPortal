@@ -20,9 +20,9 @@ namespace EP.Sudoku.Logic.Handlers
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
-        private readonly ILogger<DeletePlayerHandler> _logger;
+        private readonly ILogger<CreateSessionHandler> _logger;
 
-        public CreateSessionHandler(SudokuDbContext context, IMapper mapper, ILogger<DeletePlayerHandler> logger)
+        public CreateSessionHandler(SudokuDbContext context, IMapper mapper, ILogger<CreateSessionHandler> logger)
         {
             _context = context;
             _mapper = mapper;
@@ -31,20 +31,15 @@ namespace EP.Sudoku.Logic.Handlers
 
         public async Task<Result<Session>> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
         {
-            /*var sessionDb = _mapper.Map<SessionDb>(request);*/ //не работает в тестах, а так работает
+            var sessionDb = _mapper.Map <SessionDb>(request); //не работает в тестах, а так работает
             var player = _context.Players.FirstOrDefault(x => x.UserId == request.UserId);
             if (player == null)
             {
                 _logger.LogError($"Player not found");
                 return Result.Fail<Session>("Player not found");
             }
-            var sessionDb = new SessionDb
-            {
-                Level = (int)request.Level,
-                Hint = request.Hint,
-                IsOver = request.IsOver,
-                PlayerDbId = player.Id
-            };
+
+            sessionDb.PlayerDbId = player.Id;
 
             RemoveSessionIfExists(sessionDb.PlayerDbId, cancellationToken);
             GenerationSudokuService sudokuService = new GenerationSudokuService();

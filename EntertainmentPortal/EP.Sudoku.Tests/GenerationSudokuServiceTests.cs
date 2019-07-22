@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using EP.Sudoku.Logic.Services;
 
@@ -32,7 +33,8 @@ namespace EP.Sudoku.Tests
         [Test]
         public void Test_SwapRowsSmall_Method()
         {
-            int[,] grid = _baseGrid;;
+            int[,] grid = new int[9, 9];
+            Array.Copy(_baseGrid, grid, 81);
             _generation.SwapRowsSmall(grid);
 
             Assert.AreNotEqual(_baseGrid, grid);
@@ -41,7 +43,8 @@ namespace EP.Sudoku.Tests
         [Test]
         public void Test_SwapColumnsSmall_Method()
         {
-            int[,] grid = _baseGrid;
+            int[,] grid = new int[9, 9];
+            Array.Copy(_baseGrid, grid, 81);
             _generation.SwapColumnsSmall(grid);
 
             Assert.AreNotEqual(_baseGrid, grid);
@@ -50,7 +53,8 @@ namespace EP.Sudoku.Tests
         [Test]
         public void Test_SwapRowsArea_Method()
         {
-            int[,] grid = _baseGrid;
+            int[,] grid = new int[9, 9];
+            Array.Copy(_baseGrid, grid, 81);
             _generation.SwapRowsArea(grid);
 
             Assert.AreNotEqual(_baseGrid, grid);
@@ -59,7 +63,8 @@ namespace EP.Sudoku.Tests
         [Test]
         public void Test_SwapColumnsArea_Method()
         {
-            int[,] grid = _baseGrid;
+            int[,] grid = new int[9,9];
+            Array.Copy(_baseGrid, grid, 81);
             _generation.SwapColumnsArea(grid);
 
             Assert.AreNotEqual(_baseGrid, grid);
@@ -68,7 +73,8 @@ namespace EP.Sudoku.Tests
         [Test]
         public void Test_RemoveCells_Method()
         {
-            int[,] initGrid = _baseGrid;
+            int[,] initGrid = new int[9, 9];
+            Array.Copy(_baseGrid, initGrid, 81);
             int[,] grid = _generation.RemoveCells(initGrid, 50);
 
             Assert.AreNotEqual(initGrid, grid);
@@ -77,7 +83,8 @@ namespace EP.Sudoku.Tests
         [Test]
         public void Test_GetRandomGrid_Method()
         {
-            int[,] initGrid = _baseGrid;
+            int[,] initGrid = new int[9, 9];
+            Array.Copy(_baseGrid, initGrid, 81);
             int[,] grid = _generation.GetRandomGrid();
 
             Assert.AreNotEqual(initGrid, grid);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,7 +11,10 @@ using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Enums;
 using EP.Sudoku.Logic.Handlers;
 using EP.Sudoku.Logic.Models;
+using EP.Sudoku.Logic.Profiles;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -20,11 +24,15 @@ namespace EP.Sudoku.Tests.Handlers
     public class CreateSessionHandlerTest
     {
         IMapper _mapper;
+        ILogger<CreateSessionHandler> _logger;
 
         [SetUp]
         public void Setup()
         {
-            _mapper = new Mock<IMapper>().Object;
+            var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile(new MapperProfile()));
+            _mapper = mapperConfig.CreateMapper();
+            _logger = new Mock<ILogger<CreateSessionHandler>>().Object;
+
         }
 
         [Test]
@@ -43,24 +51,28 @@ namespace EP.Sudoku.Tests.Handlers
                 PlayerDbId = 1
             };
 
+            var userId = Guid.NewGuid().ToString();
+
             var playerDb = new PlayerDb()
             {
                 Id = 1,
                 NickName = "Name",
-                ExperiencePoint = 100,
+                BestResult = 50,
+                WonGames = 2,
                 Level = 1,
                 IconDb = new AvatarIconDb()
                 {
                     Id = 1,
                     Uri = "http://icons.iconarchive.com/icons/chanut/role-playing/64/Villager-icon.png",
                     IsBaseIcon = true
-                }
+                },
+                UserId = userId
             };
 
 
             using (var context = new SudokuDbContext(options))
             {
-                var service = new CreateSessionHandler(context, _mapper);
+                var service = new CreateSessionHandler(context, _mapper, _logger);
                 await context.Players.AddAsync(playerDb);
                 await context.Sessions.AddAsync(sessionDb);
                 await context.SaveChangesAsync();
@@ -80,19 +92,21 @@ namespace EP.Sudoku.Tests.Handlers
                 .UseInMemoryDatabase(databaseName: "TestCreateNewSession_Handle_PlayerDoesNotExist")
                 .Options;
 
+            var userId = Guid.NewGuid().ToString();
+
             var request = new CreateSessionCommand()
             {
                 Level = DifficultyLevel.Easy,
                 Hint = 3,
                 IsOver = false,
-                PlayerId = 1
+                UserId = userId
             };
 
             Result<Session> result;
 
             using (var context = new SudokuDbContext(options))
             {
-                var service = new CreateSessionHandler(context, _mapper);
+                var service = new CreateSessionHandler(context, _mapper, _logger);
                 result = await service.Handle(request, CancellationToken.None);
             }
 
@@ -109,19 +123,22 @@ namespace EP.Sudoku.Tests.Handlers
                 .UseInMemoryDatabase(databaseName: "TestCreateNewSession_Handle_NormalData")
                 .Options;
 
+            var userId = Guid.NewGuid().ToString();
+
             var request = new CreateSessionCommand()
             {
-                Level = DifficultyLevel.Easy,
+                Level = DifficultyLevel.Normal,
                 Hint = 3,
                 IsOver = false,
-                PlayerId = 1
+                UserId = userId
             };
 
             var playerDb = new PlayerDb()
             {
                 Id = 1,
                 NickName = "Name",
-                ExperiencePoint = 100,
+                BestResult = 50,
+                WonGames = 2,
                 Level = 1,
                 IconDb = new AvatarIconDb()
                 {
@@ -129,13 +146,14 @@ namespace EP.Sudoku.Tests.Handlers
                     Uri = "http://icons.iconarchive.com/icons/chanut/role-playing/64/Villager-icon.png",
                     IsBaseIcon = true
                 },
+                UserId = userId
             };
 
             Result<Session> result;
 
             using (var context = new SudokuDbContext(options))
             {
-                var service = new CreateSessionHandler(context, _mapper);
+                var service = new CreateSessionHandler(context, _mapper, _logger);
                 await context.Players.AddAsync(playerDb);
                 await context.SaveChangesAsync();
                 result = await service.Handle(request, CancellationToken.None);
