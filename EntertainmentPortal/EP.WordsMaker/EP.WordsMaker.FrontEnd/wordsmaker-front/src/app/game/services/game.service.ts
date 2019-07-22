@@ -49,4 +49,11 @@ export class GameService {
       return this.http.delete(this.url + `/${id}`, {headers: {Authorization: this.makeAccessTokenString()}});
     }
   }
+
+  SubmitWord() {
+    if (this.IsAccessTokenExists()) {
+      return this.http.post<Game>(this.url, null, {headers: {Authorization: this.makeAccessTokenString()}});
+    }
+  }
+
 }

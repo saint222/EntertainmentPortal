@@ -1,10 +1,14 @@
-<div>
+<div *ngIf="login">
+    <button  class="navbar-text" type="button" class="btn btn-light" >Начать игру</button>
+</div>
+<div *ngIf="!login">
   <div>Добро пожаловать в игру "Наборщик"</div>
   <div>Для начала игры необходимо Войти или Зарегистрироваться</div>
   <div>Правила игры</div>
   <div>Суть игры состоит в том, чтобы составить как можно больше слов из букв предоставляемого ключевого слова</div>
   <div>Игра заканчивается по истечении выделенного времени</div>
 </div>
+
 
 <!-- <form [formGroup]="playerGroup" (ngSubmit)="onSubmit(form)" #form="ngForm">
   <div class="form-group">

@@ -1,9 +1,10 @@
 import { log } from 'util';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { HttpResponseBase } from '@angular/common/http';
 import { GameService } from './../../services/game.service';
+import { filter } from 'rxjs/operators';
+import { AuthService } from './../../services/auth.service';
+// ...
 
 @Component({
   selector: 'app-login',
@@ -12,52 +13,41 @@ import { GameService } from './../../services/game.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginBtnMsg: string;
-  userName: string = this.getValueFromIdToken('name');
-  userEmail: string = this.getValueFromIdToken('email');
+  userName: string ;
+  userEmail: string ;
+  userId: string;
+  login:boolean = false;
 
-  loginStatus = false;
-
-  constructor(private authService: AuthService, private router: Router) { }
-
-  ngOnInit() {
-    if (this.userName) {
-      this.loginStatus = true;
-      log('User login');
-    }
-    else {
-      this.loginStatus = false;
-      log('User not login');
-    }
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.tokenValidState.subscribe(e=>{
+      log("Token event reseived in HOME Component");
+      this.updateComponent();
+    })
   }
+
+  ngOnInit()
+  {
+    this.updateComponent();
+  }
+
   loginBtnClick() {
     log('Pressed btn to login user');
-    this.loginStatus = true;
     this.authService.loginUser();
   }
+
   logoutBtnClick() {
     log('Pressed btn to logout user');
-    this.loginStatus = false;
     this.authService.logoutUser();
     this.userName = null;
     this.userEmail = null;
   }
-  getValueFromIdToken(claim: string) {
-    const jwt = sessionStorage.getItem('id_token');
-    if ( jwt == null) {
-      return null;
+  updateComponent()
+  {
+    if(this.authService.isTokenValid())
+    {
+      this.login = true;
+      this.userName = this.authService.getValueFromIdToken("name");
+      this.userEmail = this.authService.getValueFromIdToken("email");
     }
-
-    const jwtData = jwt.split('.')[1];
-    const decodedJwtJsonData = window.atob(jwtData);
-    let value: any;
-    JSON.parse(decodedJwtJsonData, function findKey(k, v) {
-      if (k === claim) {
-        value = v;
-      }
-    });
-    return value;
   }
-
-
 }

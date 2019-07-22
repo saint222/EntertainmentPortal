@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { AuthConfig, OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
+import { log } from 'util';
+import { filter } from 'rxjs/operators';
 
 export const authConfig: AuthConfig = {
 
@@ -26,21 +28,57 @@ export const authConfig: AuthConfig = {
 })
 export class AuthService {
 
-  constructor(private authService: OAuthService, private router: Router) {
-    this.authService.configure(authConfig);
-    this.authService.tokenValidationHandler = new JwksValidationHandler();
-    this.authService.loadDiscoveryDocumentAndTryLogin();
-   }
+  @Output() tokenValidState = new EventEmitter<boolean>();
+
+  constructor(private oauthService: OAuthService, private router: Router) {
+    this.configureImplicitFlow();
+    this.oauthService.events
+      .pipe(filter(e => e.type === 'token_received'))
+      .subscribe(_ => { this.updateToken(); });
+  }
+
+  isTokenValid() {
+    const jwt = sessionStorage.getItem('id_token');
+    if (jwt == null) { return false; }
+    else { return true; }
+  }
+
+  getValueFromIdToken(claim: string) {
+    const jwt = sessionStorage.getItem('id_token');
+    if (jwt == null) {
+      return null;
+    }
+    const jwtData = jwt.split('.')[1];
+    const decodedJwtJsonData = window.atob(jwtData);
+    let value: any;
+    JSON.parse(decodedJwtJsonData, function findKey(k, v) {
+      if (k === claim) {
+        value = v;
+      }
+    });
+    return value;
+  }
+
+  private configureImplicitFlow() {
+    this.oauthService.configure(authConfig);
+    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  }
 
   loginUser() {
-    return this.authService.initImplicitFlow();
+    this.oauthService.initImplicitFlow();
   }
 
   logoutUser() {
     // true - redirect user after logout
+    this.oauthService.logOut(false);
     sessionStorage.clear();
     this.router.navigateByUrl('/');
-
   }
-}
 
+  updateToken() {
+    log("token_received in auth service");
+    this.tokenValidState.emit(true);
+  }
+
+};

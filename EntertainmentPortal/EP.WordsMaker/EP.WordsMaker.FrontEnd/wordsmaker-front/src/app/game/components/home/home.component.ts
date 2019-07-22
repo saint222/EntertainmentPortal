@@ -1,29 +1,35 @@
+import { log } from 'util';
+import { LoginComponent } from './../login/login.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
 
-  playerGroup: FormGroup;
-  input_class: 'something';
+  login:boolean = false;
 
-  constructor(private playerService: PlayerService, private fb: FormBuilder) {
-    this.playerGroup = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]]
+  constructor(private playerService: PlayerService, private authService: AuthService ) {
+    this.authService.tokenValidState.subscribe(e=>{
+      log("Token event reseived in HOME Component");
+      this.updateComponent();
     });
-  }
-
+    }
   ngOnInit() {
+    this.updateComponent();
   }
 
-  onSubmit(form: FormGroup) {
-    this.playerService.addPlayer(form.value).
-    subscribe( r => console.log(r));
+  updateComponent()
+  {
+    if(this.authService.isTokenValid())
+    {
+      this.login = true;
+    }
   }
-
 }

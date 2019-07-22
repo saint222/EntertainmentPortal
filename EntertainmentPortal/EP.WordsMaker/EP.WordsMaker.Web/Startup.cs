@@ -136,7 +136,7 @@ namespace EP.WordsMaker.Web
 
             app.UseCors(opt => opt.AllowAnyHeader() // CORS configuration.
                 .AllowAnyMethod()
-                .WithOrigins("http://localhost:4200")
+                .WithOrigins("http://localhost:4200", "http://wordsmaker-front")
                 .AllowCredentials());
 
             app.UseAuthentication();
