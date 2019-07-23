@@ -44,5 +44,14 @@ namespace EP.SeaBattle.Web.Controllers
             return result.HasValue ? Ok(result.Value)
                 : (IActionResult)Ok();
         }
+
+        [HttpGet]
+        [Route("get")]
+        public async Task<IActionResult> GetOponentShotsAsync(string gameId, string answeredPlayerId)
+        {
+            var result = await _mediator.Send(new GetShotsQuery() { GameId = gameId, AnsweredPlayerID = answeredPlayerId });
+            return result.HasValue ? Ok(result.Value)
+                : (IActionResult)Ok();
+        }
     }
 }

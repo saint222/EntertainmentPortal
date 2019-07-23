@@ -12,6 +12,7 @@ export class BattlefieldService {
 
   shipField: Cell[][];
   ships: Ship[];
+  shots: Cell[];
   oneLast: number;
   twoLast: number;
   threeLast: number;
@@ -24,14 +25,25 @@ export class BattlefieldService {
     this.threeLast = 2;
     this.fourLast = 1;
     this.ships = new Array<Ship>();
+    this.shots = new Array<Cell>();
    }
 
   addShip(form: FormGroup) {
     const rank = form.value.rank;
     this.http.post<Ship[]>('http://localhost:54708/api/Ships/add', form.value).subscribe(data => {
-      this.ships = data;
-      this.ships.forEach(ship => this.drawShip(ship)); // тут рисуем корабли
-      this.calculateShipCountByRank(); // тут считаем количество кораблей
+      if (data != null && data !== undefined) {
+        this.ships = data;
+        this.ships.forEach(ship => this.drawShip(ship)); // тут рисуем корабли
+        this.calculateShipCountByRank(); // тут считаем количество кораблей
+      }
+    });
+    // ------------gogno-------------
+    let json = { gameId: '1', answeredPlayerId: '1'};
+    this.http.get<Cell[]>('http://localhost:54708/api/Shot/get', { params: json }). subscribe(data => {
+      if (data != null && data !== undefined) {
+        this.shots = data;
+        this.shots.forEach(shot => this.drawShot(shot));
+      }
     });
   }
 
@@ -54,6 +66,10 @@ export class BattlefieldService {
     ship.cells.forEach(cell => {
       this.shipField[cell.y][cell.x].status = cell.status;
     });
+  }
+
+  private drawShot(shot: Cell) {
+    this.shipField[shot.y][shot.x].status = shot.status;
   }
 
   private calculateShipCountByRank() {

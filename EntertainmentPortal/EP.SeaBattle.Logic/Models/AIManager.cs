@@ -40,7 +40,7 @@ namespace EP.SeaBattle.Logic.Models
             while (!ShipsManager.IsFull && count < MAX_ITERATION)
             {
                 Ship ship;
-                ShipsManager.TryAddShip((byte)rand.Next(0, 9), (byte)rand.Next(0, 9), (ShipOrientation)rand.Next(0, 2), (ShipRank) rand.Next(1, 5), out ship);
+                ShipsManager.TryAddShip((byte)rand.Next(0, 10), (byte)rand.Next(0, 10), (ShipOrientation)rand.Next(0, 2), (ShipRank) rand.Next(1, 5), out ship);
                 count++;
             }
             return ShipsManager.IsFull;
@@ -53,8 +53,8 @@ namespace EP.SeaBattle.Logic.Models
             int count = 0;
             while(count < MAX_ITERATION)
             {
-                byte x = (byte)random.Next(0, 9);
-                byte y = (byte)random.Next(0, 9);
+                byte x = (byte)random.Next(0, 10);
+                byte y = (byte)random.Next(0, 10);
                 if (shotManager.TryShoot(x, y))
                 {
                     shot = shotManager.Shoot(x, y);
