@@ -2,9 +2,15 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 body {
-  background-image: url('https://wallpapertag.com/wallpaper/full/7/6/7/598590-most-popular-win7-background-1920x1200-notebook.jpg');
-  background-size: auto;
-  background-attachment: fixed;
+  // background-image: url('https://wallpapertag.com/wallpaper/full/7/6/7/598590-most-popular-win7-background-1920x1200-notebook.jpg');
+  // background-size: auto;
+  // background-attachment: fixed;
+
+  background: #4CCEB2; /* Для браузеров, которые не поддерживают градиенты */
+  background: -webkit-radial-gradient(#4CCEB2, #2F8FD8); /* Для Opera 11.1 - 12.0 */
+  background: -o-radial-gradient(#4CCEB2, #2F8FD8); /* Для Opera 11.1 - 12.0 */
+  background: -moz-radial-gradient(#4CCEB2, #2F8FD8); /* Для Firefox 3.6 - 15 */
+  background: radial-gradient(#4CCEB2, #2F8FD8); /* Стандартный синтаксис */
 }
 
 #footer {

@@ -1,3 +1,4 @@
+import { AuthService } from './../../api/auth.service';
 import { Component, OnInit} from '@angular/core';
 import { PlayersService } from '../../api/players.service';
 import { Player } from '../../model/player';
@@ -10,28 +11,28 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   player?: Player;
-  logged = true;
+  logged: boolean;
   hasProfile: boolean;
-  userName: string = this.getValueFromIdToken('name');
 
-  constructor(private playersService: PlayersService) { }
+  constructor(private playersService: PlayersService, private authService: AuthService) {
+    this.updateComponent();
 
-  ngOnInit() {
-    this.playersService.playersGetPlayerByUserId().subscribe(
-      () => {
+    this.authService.tokenValidState.subscribe(e => {
+      this.updateComponent();
+    });
+  }
+
+  ngOnInit() {}
+
+  updateComponent() {
+    if (this.authService.isTokenValid()) {
+      this.logged = this.authService.isTokenValid();
+
+      this.playersService.playersGetPlayerByUserId().subscribe( () => {
         this.hasProfile = true;
-      },
-      () => {
+      }, () => {
         this.hasProfile = false;
-      }
-    );
+      });
     }
-
-  getValueFromIdToken(claim: string) {
-    const jwt = sessionStorage.getItem('id_token');
-    if ( jwt == null) {
-      this.logged = false;
-      return null;
-    }
-}
+  }
 }

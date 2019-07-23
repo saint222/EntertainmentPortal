@@ -48,16 +48,16 @@ export class RegisterComponent {
       Password: form.value.passwords.password
     };
 
-    this.authService.authRegister(body).subscribe(c => {
-      console.log(c);
-      this.router.navigate(['/home']);
-    },
-    (err: HttpErrorResponse) => {
-      this.error = err.error[0].description;
-      console.log(this.error);
-      return console.log(err.error);
+  //   this.authService.authRegister(body).subscribe(c => {
+  //     console.log(c);
+  //     this.router.navigate(['/home']);
+  //   },
+  //   (err: HttpErrorResponse) => {
+  //     this.error = err.error[0].description;
+  //     console.log(this.error);
+  //     return console.log(err.error);
 
-    }
-  );
+  //   }
+  // );
   }
 }

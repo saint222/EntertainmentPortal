@@ -4,6 +4,71 @@
         <name>EP.Sudoku.Web</name>
     </assembly>
     <members>
+        <member name="T:EP.Sudoku.Web.Controllers.AuthController">
+             <summary>
+            Here are operations with local server authentication and registration.
+             </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.AuthController.#ctor(Microsoft.AspNetCore.Identity.UserManager{Microsoft.AspNetCore.Identity.IdentityUser},Microsoft.AspNetCore.Identity.SignInManager{Microsoft.AspNetCore.Identity.IdentityUser},EP.Sudoku.Logic.Services.IEmailSenderService,Microsoft.Extensions.Logging.ILogger{EP.Sudoku.Web.Controllers.AuthController})">
+             <summary>
+            AuthController constructor.
+             </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.AuthController.GetToken(Microsoft.AspNetCore.Identity.IdentityUser)">
+             <summary>
+            Creates JWT.
+             </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.AuthController.RegisterWithToken(EP.Sudoku.Logic.Models.User)">
+             <summary>
+            Registration with JWT.
+             </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.AuthController.LoginWithToken(EP.Sudoku.Logic.Models.User)">
+             <summary>
+            Login with JWT.
+             </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.AuthController.Register(EP.Sudoku.Logic.Models.User)">
+             <summary>
+            Registration without JWT.
+             </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.AuthController.Login(EP.Sudoku.Logic.Models.User)">
+             <summary>
+            Login without JWT.
+             </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.AuthController.Logout">
+             <summary>
+            Logout with JWT.
+             </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.AuthController.RegisterByEmail(EP.Sudoku.Logic.Models.User)">
+             <summary>
+            Registration by Email without MailKit.
+             </summary>
+        </member>
+        <member name="T:EP.Sudoku.Web.Controllers.FacebookController">
+            <summary>
+            (OAuth) Facebook controller.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.FacebookController.Index">
+            <summary>
+            Method Index of (OAuth) Facebook controller (CallbackPath).
+            </summary>
+        </member>
+        <member name="T:EP.Sudoku.Web.Controllers.GoogleController">
+            <summary>
+            (OAuth) Google controller.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Controllers.GoogleController.Index">
+            <summary>
+            Method Index of (OAuth) Google controller (CallbackPath).
+            </summary>
+        </member>
         <member name="T:EP.Sudoku.Web.Controllers.PlayersController">
             <summary>
             Here are CRUD operations that touch upon players of the game.
@@ -31,7 +96,7 @@
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer(EP.Sudoku.Logic.Commands.CreatePlayerCommand)">
             <summary>
-            Creates a new player and saves information about him/her in the Db.
+            Creates a new player and saves information in the Db.
             </summary>
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.PlayersController.EditPlayer(EP.Sudoku.Logic.Commands.UpdatePlayerCommand)">
@@ -79,6 +144,51 @@
             Changes the value of a cell after each of three possibilies to get automatically set values durring the game as prompts and saves it in the Db.
             </summary>
         </member>
+        <member name="T:EP.Sudoku.Web.Filters.GlobalExceptionFilter">
+            <summary>
+            Class GlobalExceptionFilter.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Filters.GlobalExceptionFilter.#ctor(Microsoft.Extensions.Logging.ILogger{EP.Sudoku.Web.Filters.GlobalExceptionFilter})">
+            <summary>
+            GlobalExceptionFilter constructor.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Filters.GlobalExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            Method OnException (GEF options).
+            </summary>
+        </member>
+        <member name="T:EP.Sudoku.Web.Hubs.SudokuHub">
+            <summary>
+            Class SudokuHub for SingleR usage.
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Hubs.SudokuHub.#ctor(Microsoft.Extensions.Logging.ILogger{EP.Sudoku.Web.Hubs.SudokuHub})">
+             <summary>
+            SudokuHub constructor.
+             </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Hubs.SudokuHub.GetMes(EP.Sudoku.Logic.Models.ChatMessage)">
+            <summary>
+            Catches messages fron UI 
+            </summary>
+        </member>
+        <member name="T:EP.Sudoku.Web.Program">
+            <summary>
+            Class Program
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Program.Main(System.String[])">
+            <summary>
+            Method Main
+            </summary>
+        </member>
+        <member name="M:EP.Sudoku.Web.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Method CreateWebHostBuilder
+            </summary>
+        </member>
         <member name="T:EP.Sudoku.Web.Startup">
             <summary>
             This class uses by the runtime. Used to configure services.
@@ -102,6 +212,26 @@
         <member name="M:EP.Sudoku.Web.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,MediatR.IMediator)">
             <summary>
             This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+        </member>
+        <member name="T:EP.Sudoku.Web.SudokuConstants">
+            <summary>
+            Here are the values of TVP (Token Validation Parameters) constants for it's (JWT's) local creating.
+            </summary>
+        </member>
+        <member name="F:EP.Sudoku.Web.SudokuConstants.ISSUER_NAME">
+            <summary>
+            Here is the values of ISSUER_NAME.
+            </summary>
+        </member>
+        <member name="F:EP.Sudoku.Web.SudokuConstants.AUDIENCE_NAME">
+            <summary>
+            Here is the values of AUDIENCE_NAME.
+            </summary>
+        </member>
+        <member name="F:EP.Sudoku.Web.SudokuConstants.SECRET">
+            <summary>
+            Here is the values of SECRET.
             </summary>
         </member>
     </members>
