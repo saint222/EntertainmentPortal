@@ -8,7 +8,7 @@ namespace EP.Sudoku.Logic.Commands
     {
         public string NickName { get; set; }
 
-        public long IconId { get; set; }
+        public long IconId { get; set; } = 1;
 
         public string UserId { get; set; }
     }

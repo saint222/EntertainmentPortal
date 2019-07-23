@@ -33,11 +33,8 @@ namespace EP.Sudoku.Logic.Handlers
                 return Result.Fail<Player>(result.Errors.First().ErrorMessage);
             }
 
-            var playerDb = new PlayerDb()
-            {
-                NickName = request.NickName,
-                UserId = request.UserId   
-            };
+            var playerDb = _mapper.Map<PlayerDb>(request);
+            
             playerDb.IconDb = _context.Find<AvatarIconDb>(request.IconId);
             playerDb.GameSessionDb = null;
             _context.Add(playerDb);

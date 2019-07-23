@@ -35,13 +35,12 @@ namespace EP.Sudoku.Web.Controllers
 
         /// <summary>
         /// Fetches a gamesession from the Db by the unique Id.
-        /// </summary>
-        //[Authorize(AuthenticationSchemes = "Google")]
+        /// </summary>        
         [HttpGet("api/sessions/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Session not found")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> GetSessionByIdAsync(int id)
+        public async Task<IActionResult> GetSessionByIdAsync(long id)
         {
             if (id <= 0)
             {
@@ -49,6 +48,7 @@ namespace EP.Sudoku.Web.Controllers
                 return BadRequest();
             }
             var result = await _mediator.Send(new GetSessionById(id));
+
             return result != null ? (IActionResult)Ok(result.Value) : NotFound();
         }
 

@@ -17,20 +17,27 @@ namespace EP.Sudoku.Logic.Handlers
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IMemoryCache _memoryCache;
+        //private readonly IMemoryCache _memoryCache;
         private readonly ILogger<GetPlayerByIdHandler> _logger;
 
-        public GetPlayerByIdHandler(SudokuDbContext context, IMapper mapper, IMemoryCache memoryCache, ILogger<GetPlayerByIdHandler> logger)
+        public GetPlayerByIdHandler(SudokuDbContext context, IMapper mapper, /*IMemoryCache memoryCache,*/ ILogger<GetPlayerByIdHandler> logger)
         {
             _context = context;
             _mapper = mapper;
-            _memoryCache = memoryCache;
+           // _memoryCache = memoryCache;
             _logger = logger;
         }
 
         public async Task<Player> Handle(GetPlayerById request, CancellationToken cancellationToken)
         {
-            if (!_memoryCache.TryGetValue(request.Id, out Player chosenPlayer)) //caching "One"
+            var chosenPlayer = _context.Players
+                    .Include(p => p.IconDb)
+                    .Include(p => p.GameSessionDb)
+                    .Where(x => x.Id == request.Id)
+                    .Select(b => _mapper.Map<Player>(b)).FirstOrDefault();
+
+            //THIS PART OF THE CODE IS RUNNABLE, COMMENTED BECAUSE OF CACHE OPTINS IN TESTS 
+            /*if (!_memoryCache.TryGetValue(request.Id, out Player chosenPlayer)) //caching "One"
             {
                 chosenPlayer = _context.Players
                     .Include(p => p.IconDb)
@@ -47,7 +54,7 @@ namespace EP.Sudoku.Logic.Handlers
                 {
                     _logger.LogError($"There is not a player with the Id '{request.Id}'...");
                 }
-            }
+            }*/
 
             return await Task.FromResult(chosenPlayer);
         }
