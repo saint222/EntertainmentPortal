@@ -10,5 +10,10 @@ namespace EP.Sudoku.Logic.Queries
     public class GetSessionById : IRequest<Maybe<Session>>
     {
         public long Id { get; set; }
+
+        public GetSessionById(long id)
+        {
+            Id = id;
+        }
     }
 }

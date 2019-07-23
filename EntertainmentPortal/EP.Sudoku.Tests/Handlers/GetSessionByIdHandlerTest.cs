@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using CSharpFunctionalExtensions;
 using EP.Sudoku.Data.Context;
 using EP.Sudoku.Data.Models;
-using EP.Sudoku.Logic.Commands;
-using EP.Sudoku.Logic.Enums;
 using EP.Sudoku.Logic.Handlers;
-using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Profiles;
 using EP.Sudoku.Logic.Queries;
-using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -77,21 +70,29 @@ namespace EP.Sudoku.Tests.Handlers
                 await context.Players.AddAsync(playerDb);
                 await context.Sessions.AddAsync(sessionDb);
                 await context.SaveChangesAsync();
-                await service.Handle(new GetSessionById() { Id = 1 }, CancellationToken.None);
-            }
-
-            using (var context = new SudokuDbContext(options))
-            {
-                var session = await context.Sessions.FirstAsync();
+                var session =  await service.Handle(new GetSessionById(1), CancellationToken.None);
 
                 Assert.AreEqual(1, await context.Sessions.CountAsync());
-                Assert.AreEqual(1, session.Level);
-                Assert.AreEqual(3, session.Hint);
-                Assert.AreEqual(1, session.PlayerDbId);
+                Assert.AreEqual(1, (int) session.Value.Level);
+                Assert.AreEqual(3, session.Value.Hint);
+                Assert.AreEqual(1, session.Value.PlayerId);
             }
         }
 
-        
+        [Test]
+        public async Task TestGetSessionByIdHandler_Handle_NotFound()
+        {
+            var options = new DbContextOptionsBuilder<SudokuDbContext>()
+                .UseInMemoryDatabase(databaseName: "TestGetSessionByIdHandler_Handle_NotFound")
+                .Options;
+
+            using (var context = new SudokuDbContext(options))
+            {
+                var service = new GetSessionByIdHandler(context, _mapper, _logger);
+                var session = await service.Handle(new GetSessionById(1), CancellationToken.None);
+                Assert.True(!session.HasValue);
+            }
+        }
 
     }
 }

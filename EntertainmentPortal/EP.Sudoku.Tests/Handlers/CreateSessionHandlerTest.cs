@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -12,7 +10,6 @@ using EP.Sudoku.Logic.Enums;
 using EP.Sudoku.Logic.Handlers;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Profiles;
-using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Moq;
