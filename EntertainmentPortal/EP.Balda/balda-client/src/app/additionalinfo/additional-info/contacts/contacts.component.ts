@@ -1,3 +1,4 @@
+import { GameService } from './../../../game/services/game.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contacts.component.sass']
 })
 export class ContactsComponent implements OnInit {
+  http: any;
 
-  constructor() { }
+  constructor(private gameService: GameService) { }
 
   ngOnInit() {
   }
-
 }

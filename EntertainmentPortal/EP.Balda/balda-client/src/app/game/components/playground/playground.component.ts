@@ -26,11 +26,17 @@ export class PlaygroundComponent implements OnInit {
   errorText: string;
   words: string[] = [];
   total = 0;
+  currPl: string;
 
   constructor(private gameService: GameService, private route: ActivatedRoute,  private router: Router) {
    }
 
   ngOnInit() {
+    this.gameService.getCurrentPlayer().subscribe(p => {
+      this.currPl = p;
+      console.log(p);
+    });
+
     this.gameService.getPlayer(this.route.snapshot.queryParamMap.get('userId')).subscribe(p => { this.player = p; },
       (err: HttpResponseBase) => {
         return console.log(err.statusText);

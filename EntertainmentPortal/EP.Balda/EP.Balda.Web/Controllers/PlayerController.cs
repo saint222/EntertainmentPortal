@@ -55,6 +55,28 @@ namespace EP.Balda.Web.Controllers
             }
         }
 
+        [HttpGet("api/currentplayer")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(string), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
+        public IActionResult GetCurrentPlayer()
+        {
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+            if (UserId != null)
+            {
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+                return Ok(UserId);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+                return NotFound();
+            }
+        }
+
         [HttpGet("api/players")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "List of players is empty")]

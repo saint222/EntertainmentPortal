@@ -67,6 +67,10 @@ export class GameService {
     return this.http.get<Player>('http://localhost:5001/api/player', { headers: myHeaders, params: myParams, withCredentials: true });
   }
 
+  getCurrentPlayer() {
+    return this.http.get<string>('http://localhost:5001/api/currentplayer', { withCredentials: true });
+  }
+
   getAlphabet() {
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get<string[]>('http://localhost:5001/api/map/alphabet', { headers: myHeaders, withCredentials: true });
