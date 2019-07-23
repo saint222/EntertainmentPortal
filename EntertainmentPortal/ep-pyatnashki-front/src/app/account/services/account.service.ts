@@ -1,21 +1,17 @@
 import { UserInfo } from './../models/userinfo';
-import { Jwt } from './../models/jwt';
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { UserManager, UserManagerSettings, User } from 'oidc-client';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  private url = 'https://localhost:44380/api/auth/';
-
   private config: UserManagerSettings = {
-    authority: 'http://localhost:5000',
+    authority: `${environment.is_url}`,
     client_id: 'spa',
-    redirect_uri: 'http://localhost:4200/auth-callback',
+    redirect_uri: `${environment.front_url}/auth-callback`,
     response_type: 'id_token token',
     scope: 'openid email profile pyatnashki_api',
   };

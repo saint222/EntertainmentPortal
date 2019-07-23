@@ -6,10 +6,9 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TileComponent } from './components/tile/tile.component';
-import { UserinfoComponent } from './components/userinfo/userinfo.component';
 
 @NgModule({
-  declarations: [DeckComponent, LeaderboardComponent, TileComponent, UserinfoComponent],
+  declarations: [DeckComponent, LeaderboardComponent, TileComponent],
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   exports: [DeckComponent, LeaderboardComponent, TileComponent, RouterModule, ReactiveFormsModule]
 })

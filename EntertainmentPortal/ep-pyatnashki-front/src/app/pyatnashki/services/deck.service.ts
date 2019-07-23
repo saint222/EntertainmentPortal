@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment.prod';
 import { AccountService } from 'src/app/account/services/account.service';
 import { Deck } from './../models/deck';
 import { Injectable } from '@angular/core';
@@ -8,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class DeckService {
 
-  private url = 'https://localhost:44380/api/deck';
+  private url = `${environment.api_url}/deck`;
   constructor(private http: HttpClient, private accountService: AccountService) {
    }
 

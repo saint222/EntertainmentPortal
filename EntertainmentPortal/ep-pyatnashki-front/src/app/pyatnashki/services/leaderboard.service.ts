@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment.prod';
 import { Champion } from './../models/champion';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LeaderboardService {
 
-  private url = 'https://localhost:44380/api/record';
+  private url = `${environment.api_url}/record`;
   constructor(private http: HttpClient) { }
 
   getRecords() {

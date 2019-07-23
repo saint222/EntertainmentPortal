@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api_url: 'https://pyatnashki-api/api',  // 44380
+  is_url: 'http://identityserver', // 5000
+  front_url: 'http://pyatnashki-front' // 4200
 };
 
 /*
