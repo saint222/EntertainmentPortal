@@ -3,6 +3,7 @@ import { UserRegistration } from './../models/userRegistration';
 import { UserLogin } from './../models/userLogin';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class AuthService {
       withCredentials: true
      };
 
-    return this.http.post<Player>('http://localhost:5001/api/simpleregister', userRegistration, httpOptions);
+    return this.http.post<Player>(`${environment.base_url}api/simpleregister`, userRegistration, httpOptions);
   }
 
   constructor(private http: HttpClient) {}
@@ -31,7 +32,7 @@ export class AuthService {
       withCredentials: true
      };
 
-     return this.http.post<Player>('http://localhost:5001/api/simplelogin', userLogin, httpOptions);
+     return this.http.post<Player>(`${environment.base_url}api/simplelogin`, userLogin, httpOptions);
   }
 
   facebookSignIn() {
