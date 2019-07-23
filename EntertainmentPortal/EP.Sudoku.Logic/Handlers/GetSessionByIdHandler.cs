@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using CSharpFunctionalExtensions;
 using EP.Sudoku.Data.Context;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Remotion.Linq.Clauses;
 
 namespace EP.Sudoku.Logic.Handlers
 {
-    public class GetSessionByIdHandler : IRequestHandler<GetSessionById, Session>
+    public class GetSessionByIdHandler : IRequestHandler<GetSessionById, Maybe<Session>>
     {
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
@@ -28,12 +26,12 @@ namespace EP.Sudoku.Logic.Handlers
             _logger = logger;
         }
 
-        public async Task<Session> Handle(GetSessionById request, CancellationToken cancellationToken)
+        public async Task<Maybe<Session>> Handle(GetSessionById request, CancellationToken cancellationToken)
         {
-            var chosenSession = _context.Sessions                
+            var chosenSession = await _context.Sessions                
                 .Include(c => c.SquaresDb)               
                 .Where(x => x.Id == request.Id)
-                .Select(d => _mapper.Map<Session>(d)).FirstOrDefault();
+                .Select(d => _mapper.Map<Session>(d)).FirstOrDefaultAsync();
 
             if (chosenSession != null)
             {
@@ -44,7 +42,9 @@ namespace EP.Sudoku.Logic.Handlers
                 _logger.LogError($"There is not a gamesession with the Id '{request.Id}'...");
             }
 
-            return await Task.FromResult(chosenSession);
+            return chosenSession != null ?
+                Maybe<Session>.From(chosenSession) :
+                Maybe<Session>.None;
         }
     }
 }

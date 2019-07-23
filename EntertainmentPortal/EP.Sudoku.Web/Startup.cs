@@ -91,7 +91,7 @@ namespace EP.Sudoku.Web
                 });
             services.AddAuthorization();
             services.AddMediatR(typeof(GetAllPlayers).Assembly);
-            services.AddAutoMapper(typeof(PlayerProfile).Assembly);
+            services.AddAutoMapper(typeof(MapperProfile).Assembly);
             services.AddSwaggerDocument(cfg =>
             {
                 cfg.SchemaType = SchemaType.Swagger2;

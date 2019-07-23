@@ -48,7 +48,7 @@ namespace EP.Sudoku.Web.Controllers
                 _logger.LogError($"Incorrect value for the sessions's Id was set. '{id}' - is <= 0...");
                 return BadRequest();
             }
-            var session = await _mediator.Send(new GetSessionById(id));
+            var session = await _mediator.Send(new GetSessionById(){Id = id});
             return session != null ? (IActionResult)Ok(session) : NotFound();
         }
 
