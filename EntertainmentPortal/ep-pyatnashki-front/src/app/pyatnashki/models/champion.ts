@@ -1,14 +1,12 @@
 
 export class Champion {
-  name: string;
-  country: string;
+  username: string;
   score: number;
 
 
 
-  constructor(name: string, country: string, score: number) {
-    this.name = name;
-    this.country = country;
+  constructor(username: string, score: number) {
+    this.username = username;
     this.score = score;
   }
 }

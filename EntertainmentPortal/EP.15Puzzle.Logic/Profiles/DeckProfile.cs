@@ -22,7 +22,8 @@ namespace EP._15Puzzle.Logic.Profiles
             CreateMap<TileDb, LogicTile>()
                 .ForMember(t => t.NearbyTiles, opt => opt.Ignore());
             CreateMap<RecordDb, Record>()
-                .ForMember(r=>r.Score, opt => opt.MapFrom(c => c.Score));
+                .ForMember(r=>r.Score, opt => opt.MapFrom(c => c.Score))
+                .ForMember(r=>r.Username, opt=>opt.MapFrom( r=>r.User.UserName));
 
             
 

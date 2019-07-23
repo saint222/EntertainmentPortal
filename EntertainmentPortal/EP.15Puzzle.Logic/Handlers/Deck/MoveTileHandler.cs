@@ -71,9 +71,11 @@ namespace EP._15Puzzle.Logic.Handlers
                     if (logicDeck.CheckWin())
                     {
                         logicDeck.Victory = true;
-
-                        var recordDb = new RecordDb() {Score = logicDeck.Score, User = user};
-                        logicDeck.User.Records.Add(recordDb);
+                        var recordDb =logicDeck.User.Records.FirstOrDefault(r => r.UserId == logicDeck.UserId);
+                        if (recordDb!=null)
+                        {
+                            recordDb.Score = logicDeck.Score;
+                        }else logicDeck.User.Records.Add(new RecordDb() { Score = logicDeck.Score, User = user });
                     }
                     _context.Update(_mapper.Map<DeckDb>(logicDeck));
                     await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);

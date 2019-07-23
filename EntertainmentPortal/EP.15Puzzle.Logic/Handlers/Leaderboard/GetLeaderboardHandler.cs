@@ -29,11 +29,16 @@ namespace EP._15Puzzle.Logic.Handlers
             try
             {
                 var records = await _context.RecordDbs
-                    .Include(d => d.User).OrderByDescending(r=>r.Score).Take(10).AsNoTracking()
+                    .Include(d => d.User).OrderBy(r => r.Score).Take(10).AsNoTracking()
                     .ToArrayAsync(cancellationToken)
                     .ConfigureAwait(false);
-                var deckRecords = records.Select(d => _mapper.Map<Record>(d));
-                return await Task.FromResult(Result.Ok<IEnumerable<Record>>(deckRecords));
+                var rec = records.ToList();
+                if (request.Email!=null)
+                {
+                   var my_records = records.FirstOrDefault(r => r.User.Email == request.Email);
+                   rec.Add(my_records);
+                }
+                return await Task.FromResult(Result.Ok<IEnumerable<Record>>(rec.Select(d => _mapper.Map<Record>(d))));
             }
             catch (DbException ex)
             {
