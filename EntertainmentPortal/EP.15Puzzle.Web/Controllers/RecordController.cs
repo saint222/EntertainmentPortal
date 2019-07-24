@@ -31,7 +31,7 @@ namespace EP._15Puzzle.Web.Controllers
         public async Task<IActionResult> Get()
         {
 
-            var result = await _mediator.Send(new GetLeaderboardCommand());
+            var result = await _mediator.Send(new GetLeaderboardCommand(HttpContext.Request.Headers["Email"]));
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : NotFound(result.Error);
 
         }

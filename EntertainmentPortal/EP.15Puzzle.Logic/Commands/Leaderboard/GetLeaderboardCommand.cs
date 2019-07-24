@@ -6,10 +6,18 @@ using MediatR;
 
 namespace EP._15Puzzle.Logic.Commands
 {
-    public class GetLeaderboardCommand : IRequest <Result<IEnumerable<Record>>>
+    public class GetLeaderboardCommand : IRequest<Result<IEnumerable<Record>>>
     {
-        public GetLeaderboardCommand()
+        private readonly string _email;
+        public string Email
         {
+            get { return _email; }
+        }
+        public GetLeaderboardCommand(string email)
+        {
+            _email = email;
         }
     }
 }
+    
+

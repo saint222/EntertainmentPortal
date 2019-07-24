@@ -1,8 +1,19 @@
-<div style="padding: 0.5ch;">
-
-  <p>name - score    - country</p>
-</div>
-<div *ngFor="let record of records" style="padding: 0.5ch;">
-
-  <p>{{record.name}} - {{record.score}}    - {{record.country}}</p>
+<div>
+<table class="table table-hover recordtable">
+  <thead>
+    <tr>
+      <th class="first" scope="col">№</th>
+      <th class="second" scope="col">Username</th>
+      <th class="thirt" scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody class="hover-text">
+    <tr *ngFor="let record of records let i = index">
+      <th *ngIf="i!==10; else elseBlock" scope="row" >{{i+1}}</th>
+      <ng-template #elseBlock><th scope="row" >...</th> </ng-template>
+      <td>{{record.username}}</td>
+      <td>{{record.score}}</td>
+    </tr>
+  </tbody>
+</table>
 </div>
