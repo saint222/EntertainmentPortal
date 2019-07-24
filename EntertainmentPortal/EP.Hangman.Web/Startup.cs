@@ -69,15 +69,15 @@ namespace EP.Hangman.Web
                 .AddGoogle("Google", opt =>
                 {
                     opt.CallbackPath = new PathString("/api/google");
-                    opt.ClientId = Configuration["Google:ClientId"];
-                    opt.ClientSecret = Configuration["Google:ClientSecret"];
+                    opt.ClientId = "989223055328-e62itaec1uvah9nmupbia4tcknc7mhcs.apps.googleusercontent.com";
+                    opt.ClientSecret = "WvH2nOhEfFSnMZaovmLr_2sS";
                     opt.UserInformationEndpoint = "https://www.googleapis.com/oauth2/v2/userinfo";
                 })
                 .AddFacebook("Facebook", opt =>
                 {
                     opt.CallbackPath = new PathString("/api/facebook");
-                    opt.AppId = Configuration["Facebook:AppId"];
-                    opt.AppSecret = Configuration["Facebook:AppSecret"];
+                    opt.AppId = "1457803857684622";
+                    opt.AppSecret = "f03c47bcbffa666f79877e98dcac4557";
                 });
             services.AddAuthorization(opt => opt.AddPolicy("google", 
                 cfg => cfg.AddAuthenticationSchemes("Google").RequireAuthenticatedUser()));
@@ -116,10 +116,10 @@ namespace EP.Hangman.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+//            if (env.IsDevelopment())
+//            {
+//                app.UseDeveloperExceptionPage();
+//            }
 
             app.UseCors(o =>
                 o.AllowAnyHeader()

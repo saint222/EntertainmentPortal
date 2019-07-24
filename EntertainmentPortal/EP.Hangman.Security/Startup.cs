@@ -61,28 +61,28 @@ namespace EP.Hangman.Security
                 
                 .AddAspNetIdentity<ApplicationUser>();
 
-            if (Environment.IsDevelopment())
+            /*if (Environment.IsDevelopment())
             {
                 builder.AddDeveloperSigningCredential();
             }
             else
             {
                 throw new Exception("need to configure key material");
-            }
-
+            }*/
+            builder.AddDeveloperSigningCredential();
             services.AddAuthentication()
                 .AddGoogle(opt =>
                 {
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
                     // set the redirect URI to http://localhost:5000/signin-google
-                    opt.ClientId = Configuration["Google:ClientId"];
-                    opt.ClientSecret = Configuration["Google:ClientSecret"];
+                    opt.ClientId = "989223055328-e62itaec1uvah9nmupbia4tcknc7mhcs.apps.googleusercontent.com";
+                    opt.ClientSecret = "WvH2nOhEfFSnMZaovmLr_2sS";
                 })
                 .AddFacebook(opt =>
                 {
-                    opt.AppId = Configuration["Facebook:AppId"];
-                    opt.AppSecret = Configuration["Facebook:AppSecret"];
+                    opt.AppId = "1457803857684622";
+                    opt.AppSecret = "f03c47bcbffa666f79877e98dcac4557";
                 });
         }
 
