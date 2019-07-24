@@ -4,5 +4,8 @@
   width: 7.5ch;
   height: 7.5ch;
   padding: 0px;
+  :focus{
+    box-shadow: none;
+  }
 }
 

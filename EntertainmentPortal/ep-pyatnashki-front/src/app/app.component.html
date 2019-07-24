@@ -10,7 +10,7 @@
 
 
         <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" style="margin-right: 1rem; cursor: pointer;" routerLinkActive="active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{User()}}</a>
+            <a class="nav-link" style="margin-right: 1rem; cursor: pointer;" routerLinkActive="active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="IsLoggedIn()">{{User()}}</a>
             <div class="dropdown-menu" id="ddm">
                 <a  routerLinkActive="active" routerLink="/logout">Logout</a>
             </div>
