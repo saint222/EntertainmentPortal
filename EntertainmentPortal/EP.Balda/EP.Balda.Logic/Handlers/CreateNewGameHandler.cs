@@ -148,10 +148,10 @@ namespace EP.Balda.Logic.Handlers
         private string GetStartingWord(MapDb mapDb)
         {
             string word = "";
-            int sizeRepo = _context.WordsRu.Count();
+            int sizeRepo = _context.Words.Count();
 
             while (word.Length != mapDb.Size)
-                word = _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo))
+                word = _context.Words.Where(w => w.Id == RandomWord(sizeRepo))
                     .FirstOrDefault().Word.ToUpper();
 
             return word;

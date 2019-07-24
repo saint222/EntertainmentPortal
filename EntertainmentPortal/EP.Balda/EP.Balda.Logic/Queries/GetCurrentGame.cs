@@ -4,7 +4,7 @@ using MediatR;
 
 namespace EP.Balda.Logic.Queries
 {
-    public class GetPlayer : IRequest<Maybe<Player>>
+    public class GetCurrentGame : IRequest<Maybe<Game>>
     {
         public string Id { get; set; }
     }

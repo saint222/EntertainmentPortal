@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EP.Balda.Data.Migrations
 {
     [DbContext(typeof(BaldaGameDbContext))]
-    [Migration("20190720223637_Initial")]
+    [Migration("20190723204050_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,6 +44,8 @@ namespace EP.Balda.Data.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("InitWord");
+
+                    b.Property<bool>("IsGameOver");
 
                     b.Property<long>("MapId");
 
@@ -155,7 +157,7 @@ namespace EP.Balda.Data.Migrations
                     b.ToTable("PlayerWords");
                 });
 
-            modelBuilder.Entity("EP.Balda.Data.Models.WordRuDb", b =>
+            modelBuilder.Entity("EP.Balda.Data.Models.WordDb", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -165,7 +167,7 @@ namespace EP.Balda.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WordsRu");
+                    b.ToTable("Words");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -316,7 +318,7 @@ namespace EP.Balda.Data.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("EP.Balda.Data.Models.WordRuDb", "Word")
+                    b.HasOne("EP.Balda.Data.Models.WordDb", "Word")
                         .WithMany("PlayerWords")
                         .HasForeignKey("WordId")
                         .OnDelete(DeleteBehavior.Cascade);

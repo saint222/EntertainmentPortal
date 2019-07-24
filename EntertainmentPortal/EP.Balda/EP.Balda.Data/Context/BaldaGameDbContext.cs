@@ -18,7 +18,7 @@ namespace EP.Balda.Data.Context
 
         public DbSet<CellDb> Cells { get; set; }
 
-        public DbSet<WordRuDb> WordsRu { get; set; }
+        public DbSet<WordDb> Words { get; set; }
 
         public DbSet<PlayerGame> PlayerGames { get; set; }
 
@@ -70,9 +70,9 @@ namespace EP.Balda.Data.Context
             cellEntity.Property(c => c.Y).IsRequired();
             cellEntity.HasOne(c => c.Map).WithMany(c => c.Cells).HasForeignKey(c => c.MapId);
 
-            var wordRuEntity = modelBuilder.Entity<WordRuDb>();
-            wordRuEntity.HasKey(w => w.Id);
-            wordRuEntity.Property(w => w.Word).IsRequired();
+            var wordEntity = modelBuilder.Entity<WordDb>();
+            wordEntity.HasKey(w => w.Id);
+            wordEntity.Property(w => w.Word).IsRequired();
         }
     }
 }

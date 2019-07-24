@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   onSubmit(form: FormGroup) {
     this.authService.login(form.value).subscribe(p => {
       console.log(p),
-      this.router.navigate(['startGame/:'], { queryParams: { userId: p.id }});
+      this.router.navigateByUrl('welcome');
     },
     (err: HttpErrorResponse) => {
       this.errorText = err.error;

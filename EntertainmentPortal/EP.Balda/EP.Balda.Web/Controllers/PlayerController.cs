@@ -1,14 +1,14 @@
 ﻿using EP.Balda.Data.Models;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using EP.Balda.Web.Models;
+using EP.Balda.Web.Services;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -55,10 +55,10 @@ namespace EP.Balda.Web.Controllers
             }
         }
 
-        [HttpGet("api/currentplayer")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(string), Description = "Success")]
+        [HttpGet("api/currentgame")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(MapWithStatus), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
-        public IActionResult GetCurrentPlayer()
+        public async Task<IActionResult> GetCurrentGame()
         {
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName}");
@@ -67,33 +67,20 @@ namespace EP.Balda.Web.Controllers
             {
                 _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName}");
 
-                return Ok(UserId);
+                var result = await _mediator.Send(new GetCurrentGame() { Id = UserId });
+
+                var cells = Helpers.Do2DimArray(result.Value.Map);
+                var mapWithStatus = new MapWithStatus()
+                {
+                    Cells = cells,
+                    IsGameOver = result.Value.IsGameOver
+                };
+
+                return Ok(mapWithStatus);
             }
             else
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}");
-
-                return NotFound();
-            }
-        }
-
-        [HttpGet("api/players")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "List of players is empty")]
-        public async Task<IActionResult> GetAllPlayersAsync()
-        {
-            var users = await _manager.Users.ToArrayAsync();
-            
-            if (users.Any())
-            {
-                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName}");
-
-                return Ok(users);
-            }
-            else
-            {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"- List of players is empty");
 
                 return NotFound();
             }

@@ -1,3 +1,4 @@
+import { MapWithStatus } from './../../models/mapWithStatus';
 import { Player } from './../../models/player';
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
@@ -26,15 +27,15 @@ export class PlaygroundComponent implements OnInit {
   errorText: string;
   words: string[] = [];
   total = 0;
-  currPl: string;
+  mapWithStatus: MapWithStatus = new MapWithStatus();
 
   constructor(private gameService: GameService, private route: ActivatedRoute,  private router: Router) {
    }
 
   ngOnInit() {
-    this.gameService.getCurrentPlayer().subscribe(p => {
-      this.currPl = p;
-      console.log(p);
+    this.gameService.getCurrentGame().subscribe(m => {
+      this.cells = m.cells;
+      console.log(m);
     });
 
     this.gameService.getPlayer(this.route.snapshot.queryParamMap.get('userId')).subscribe(p => { this.player = p; },

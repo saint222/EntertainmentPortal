@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
     console.log(form.value);
     this.authService.registerUser(form.value).subscribe(p => {
       console.log(p),
-      this.router.navigate(['startGame/:'], { queryParams: { userId: p.id }});
+      this.router.navigateByUrl('welcome');
     },
     (err: HttpResponseBase) => {
       console.log(err.statusText);

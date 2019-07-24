@@ -40,8 +40,6 @@ namespace EP.Balda.Web.Controllers
                 _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                 $"Parameter: Id = {id}");
 
-                //return Ok(result.Value);
-
                 var cells = Helpers.Do2DimArray(result.Value);
                 return Ok(cells);
             }

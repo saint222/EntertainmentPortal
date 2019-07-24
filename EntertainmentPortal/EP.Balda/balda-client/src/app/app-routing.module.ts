@@ -17,6 +17,11 @@ const routes: Routes = [
       { path: '', component:
       StartGameComponent}
     ]},
+    {path: 'startGame', component: LayoutComponent,
+    children: [
+      { path: '', component:
+      StartGameComponent}
+    ]},
     {path: 'rules', component: LayoutComponent,
     children: [
       { path: '', component:
@@ -33,6 +38,11 @@ const routes: Routes = [
       WelcomeComponent}
     ]},
   {path: 'playground/:userId:gameId:mapId', component: LayoutComponent,
+  children: [
+    { path: '', component:
+    PlaygroundComponent}
+  ]},
+  {path: 'playground', component: LayoutComponent,
   children: [
     { path: '', component:
     PlaygroundComponent}

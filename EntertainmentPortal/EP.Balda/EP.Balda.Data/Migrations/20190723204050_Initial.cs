@@ -64,7 +64,7 @@ namespace EP.Balda.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "WordsRu",
+                name: "Words",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -73,7 +73,7 @@ namespace EP.Balda.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WordsRu", x => x.Id);
+                    table.PrimaryKey("PK_Words", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -211,7 +211,8 @@ namespace EP.Balda.Data.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     MapId = table.Column<long>(nullable: false),
-                    InitWord = table.Column<string>(nullable: true)
+                    InitWord = table.Column<string>(nullable: true),
+                    IsGameOver = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -272,9 +273,9 @@ namespace EP.Balda.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PlayerWords_WordsRu_WordId",
+                        name: "FK_PlayerWords_Words_WordId",
                         column: x => x.WordId,
-                        principalTable: "WordsRu",
+                        principalTable: "Words",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -379,7 +380,7 @@ namespace EP.Balda.Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "WordsRu");
+                name: "Words");
 
             migrationBuilder.DropTable(
                 name: "Maps");

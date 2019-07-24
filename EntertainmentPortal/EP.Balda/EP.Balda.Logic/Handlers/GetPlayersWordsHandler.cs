@@ -26,6 +26,7 @@ namespace EP.Balda.Logic.Handlers
             
         var words = await _context.PlayerWords
                 .Where(m => m.GameId == request.GameId && m.PlayerId == request.PlayerId)
+                .OrderBy(w => w.Word.Id)
                 .Select(w => w.Word.Word)
                 .ToListAsync();
 

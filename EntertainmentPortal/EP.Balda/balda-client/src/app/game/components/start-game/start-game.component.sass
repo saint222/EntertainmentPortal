@@ -1,7 +1,37 @@
 .startGame
-  text-align: center
-  margin-top: 300px
+  width: 500px
+  height: 500px
+  margin: 200px auto
 .form-group
-  display: inline-block
+  z-index: 1
 .btn
-  display: inline-block
+  z-index: 2
+  background-color: black
+.container
+  text-align: center
+.box
+    background: grey
+    color: white
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 2em
+.box:hover::after, .box:hover::before
+    transform: scale(1, 1)
+.box::after, .box::before
+    content: ''
+    position: absolute
+    top: 30px
+    right: 30px
+    bottom: 30px
+    left: 30px
+    transition: all 0.5s
+.box::after
+    border-right: 1px solid yellow
+    border-left: 1px solid yellow
+    transform: scale(1, 0)
+.box::before
+    border-top: 1px solid yellow
+    border-bottom: 1px solid yellow
+    transform: scale(0, 1)

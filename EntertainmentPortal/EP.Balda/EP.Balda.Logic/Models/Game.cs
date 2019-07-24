@@ -29,6 +29,11 @@ namespace EP.Balda.Logic.Models
         public Map Map { get; set; }
 
         /// <summary>
+        /// IsGameOver property. Represents boolean if game is over.
+        /// </summary>
+        public bool IsGameOver { get; set; }
+
+        /// <summary>
         /// The field represents player's turn in the game.
         /// </summary>
         public string PlayerIdTurn { get; set; }

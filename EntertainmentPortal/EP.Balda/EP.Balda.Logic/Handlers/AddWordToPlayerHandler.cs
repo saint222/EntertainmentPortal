@@ -67,27 +67,27 @@ namespace EP.Balda.Logic.Handlers
             if (!IsWordCorrect(request.CellsThatFormWord))
                 return Result.Fail<Map>("Some empty cells are chosen");
 
-            string word = GetSelectedWord(request.CellsThatFormWord);
+            string wordFormed = GetSelectedWord(request.CellsThatFormWord);
 
-            if (word == game.InitWord)
+            if (wordFormed == game.InitWord)
                 return Result.Fail<Map>("It is initial word");
 
-            var wordRu = _context.WordsRu
-                .SingleOrDefault(w => w.Word == word.ToLower());
+            var word = _context.Words
+                .SingleOrDefault(w => w.Word == wordFormed.ToLower());
 
-            if (wordRu == null)
-                return Result.Fail<Map>($"There is no word {word} in word database");
+            if (word == null)
+                return Result.Fail<Map>($"There is no word {wordFormed} in word database");
 
             var playerWordDb = new PlayerWord
             {
                 PlayerId = request.PlayerId,
-                WordId = wordRu.Id,
+                WordId = word.Id,
                 GameId = request.GameId
             };
 
             var playerWord = await _context.PlayerWords
                 .FirstOrDefaultAsync(
-                    pw => (pw.GameId == request.GameId && pw.WordId == wordRu.Id),
+                    pw => (pw.GameId == request.GameId && pw.WordId == word.Id),
                     cancellationToken);
 
             if (playerWord != null)
@@ -99,6 +99,12 @@ namespace EP.Balda.Logic.Handlers
                 player.PlayerWords = new List<PlayerWord>();
 
             player.PlayerWords.Add(playerWordDb);
+
+            if(IsGameOver(map.Cells.ToList()))
+            {
+                game.IsGameOver = true;
+                _context.Entry(game).State = EntityState.Deleted;
+            }
 
             foreach (var cellDb in cellsFormWord)
             {
@@ -192,7 +198,7 @@ namespace EP.Balda.Logic.Handlers
         /// </summary>
         /// <param name="cells">Parameter requires &lt;IEnumerable&lt;Cell&gt;&gt; argument.</param>
         /// <returns>The method returns word from the game map.</returns>
-        public bool IsGameOver(List<Cell> cells)
+        public bool IsGameOver(List<CellDb> cells)
         {
             bool isGameOver = true;
 

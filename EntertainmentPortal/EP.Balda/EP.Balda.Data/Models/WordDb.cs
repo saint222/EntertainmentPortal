@@ -5,7 +5,7 @@ namespace EP.Balda.Data.Models
     /// <summary>
     /// Entity of WordsSource.
     /// </summary>
-    public class WordRuDb
+    public class WordDb
     {
         /// <summary>
         /// Id property. Represents Id of Word.

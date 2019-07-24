@@ -1,3 +1,4 @@
+import { MapWithStatus } from './../models/mapWithStatus';
 import { Player } from './../models/player';
 import { GameAndCells } from './../models/gameAndCells';
 import { Game } from './../models/game';
@@ -68,8 +69,8 @@ export class GameService {
     return this.http.get<Player>(`${environment.base_url}api/player`, { headers: myHeaders, params: myParams, withCredentials: true });
   }
 
-  getCurrentPlayer() {
-    return this.http.get<string>(`${environment.base_url}api/currentplayer`, { withCredentials: true });
+  getCurrentGame() {
+    return this.http.get<MapWithStatus>(`${environment.base_url}api/currentgame`, { withCredentials: true });
   }
 
   getAlphabet() {

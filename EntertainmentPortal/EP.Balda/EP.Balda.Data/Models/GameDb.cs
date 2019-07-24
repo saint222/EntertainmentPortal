@@ -28,6 +28,11 @@ namespace EP.Balda.Data.Models
         public string InitWord { get; set; }
 
         /// <summary>
+        /// IsGameOver property. Represents boolean if game is over.
+        /// </summary>
+        public bool IsGameOver { get; set; }
+
+        /// <summary>
         /// PlayerGames property. Used for many-to-many relationships.
         /// </summary>
         public IList<PlayerGame> PlayerGames { get; set; }

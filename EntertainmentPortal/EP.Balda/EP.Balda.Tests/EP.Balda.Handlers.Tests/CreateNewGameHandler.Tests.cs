@@ -121,7 +121,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
                 UserName = "Login"
             };
 
-            var wordRuDb = new WordRuDb()
+            var wordDb = new WordDb()
             {
                 Id = 1,
                 Word = "dog"
@@ -132,7 +132,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
             using (var context = new BaldaGameDbContext(options))
             {
                 var service = new CreateNewGameHandler(context, _mapper);
-                await context.WordsRu.AddAsync(wordRuDb);
+                await context.Words.AddAsync(wordDb);
                 await context.Users.AddAsync(playerDb);
                 await context.SaveChangesAsync();
                 result = await service.Handle(request, CancellationToken.None);
