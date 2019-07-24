@@ -1,11 +1,9 @@
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using EP.Hangman.Data.Context;
 using EP.Hangman.Data.Models;
-using EP.Hangman.Logic.Commands;
 using EP.Hangman.Logic.Handlers;
 using EP.Hangman.Logic.Models;
 using EP.Hangman.Logic.Profiles;
