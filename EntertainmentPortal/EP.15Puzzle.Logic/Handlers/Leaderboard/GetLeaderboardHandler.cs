@@ -33,10 +33,14 @@ namespace EP._15Puzzle.Logic.Handlers
                     .ToArrayAsync(cancellationToken)
                     .ConfigureAwait(false);
                 var rec = records.ToList();
-                if (request.Email!=null)
+                if (request.Email!=null && records.FirstOrDefault(r => r.User.Email == request.Email)==null)
                 {
-                   var my_records = records.FirstOrDefault(r => r.User.Email == request.Email);
-                   rec.Add(my_records);
+                    var my_records = await _context.RecordDbs
+                        .Include(d => d.User).FirstOrDefaultAsync(r => r.User.Email == request.Email);
+                    if (my_records!=null)
+                    {
+                        rec.Add(my_records);
+                    }
                 }
                 return await Task.FromResult(Result.Ok<IEnumerable<Record>>(rec.Select(d => _mapper.Map<Record>(d))));
             }

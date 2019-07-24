@@ -60,7 +60,10 @@ namespace EP._15Puzzle.Logic.Handlers
             try
             {
                 var deckDb = user.Deck;
-
+                if (deckDb.Victory)
+                {
+                    return Result.Fail<Deck>("Already won");
+                }
                 var logicDeck = _mapper.Map<LogicDeck>(deckDb);
                 logicDeck.SetNearbyTiles();
                 if (logicDeck.TileCanMove(request.Tile))

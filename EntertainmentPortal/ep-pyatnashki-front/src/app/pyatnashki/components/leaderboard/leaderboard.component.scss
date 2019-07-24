@@ -1,3 +1,23 @@
 .recordtable{
-  color: #ebe9dc
+  color: #ffffff;
+  margin-top: 5vh;
 }
+.first{
+  width: 0.1%;
+
+}
+.second{
+  width: 80%;
+  text-align: center;
+}
+.thirt{
+  width: 19.9%;
+}
+.table-hover tbody tr:hover{
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.075);
+    :hover{
+    background-color: transparent;
+  }
+}
+
