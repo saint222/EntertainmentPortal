@@ -19,14 +19,14 @@ namespace EP.Sudoku.Tests.Handlers
     [TestFixture]
     public class DeletePlayerHandlerTest
     {
-        IMapper _mapper;
+       
         ILogger<DeletePlayerHandler> _logger;
 
         [SetUp]
         public void Setup()
         {
             var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile(new MapperProfile()));
-            _mapper = mapperConfig.CreateMapper();            
+                       
             _logger = new Mock<ILogger<DeletePlayerHandler>>().Object;
         }
 

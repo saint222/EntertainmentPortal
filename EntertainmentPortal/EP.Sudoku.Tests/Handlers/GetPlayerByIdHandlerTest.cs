@@ -19,15 +19,13 @@ namespace EP.Sudoku.Tests.Handlers
     public class GetPlayerByIdHandlerTest
     {
         IMapper _mapper;
-        ILogger<GetPlayerByIdHandler> _logger;
-        //IMemoryCache _memoryCache;
+        ILogger<GetPlayerByIdHandler> _logger;        
 
         [SetUp]
         public void Setup()
         {
             var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile(new MapperProfile()));
-            _mapper = mapperConfig.CreateMapper();
-            //_memoryCache = new Mock<IMemoryCache>().Object;
+            _mapper = mapperConfig.CreateMapper();            
             _logger = new Mock<ILogger<GetPlayerByIdHandler>>().Object;            
         }
 
@@ -58,7 +56,7 @@ namespace EP.Sudoku.Tests.Handlers
 
             using (var context = new SudokuDbContext(options))
             {
-                var service = new GetPlayerByIdHandler(context, _mapper, /*_memoryCache,*/ _logger); //here the argumens' order is fundamental                
+                var service = new GetPlayerByIdHandler(context, _mapper, _logger); //here the argumens' order is fundamental                
                 await context.Players.AddAsync(playerDb);                
                 await context.SaveChangesAsync();
                 var player = await service.Handle(new GetPlayerById(1), CancellationToken.None);
@@ -98,7 +96,7 @@ namespace EP.Sudoku.Tests.Handlers
 
             using (var context = new SudokuDbContext(options))
             {
-                var service = new GetPlayerByIdHandler(context, _mapper, /*_memoryCache,*/ _logger); //here the argumens' order is fundamental                
+                var service = new GetPlayerByIdHandler(context, _mapper, _logger); //here the argumens' order is fundamental                
                 await context.Players.AddAsync(playerDb);
                 await context.SaveChangesAsync();
                 var player = await service.Handle(new GetPlayerById(1), CancellationToken.None);
@@ -118,12 +116,12 @@ namespace EP.Sudoku.Tests.Handlers
                 .UseInMemoryDatabase(databaseName: "TestGetPlayerByIdHandler_Handle_NotFound")
                 .Options;
 
-            // there are no players in the database
+            // there is no a player with the Id == 1 in the database
             using (var context = new SudokuDbContext(options))
             {
                 var service = new GetPlayerByIdHandler(context, _mapper, _logger);
                 var player = await service.Handle(new GetPlayerById(1), CancellationToken.None);
-                Assert.IsNull(player); // if the player == null, the result of the test is "true"
+                Assert.IsNull(player); // if the player == null, the result of the test is "ok"
             }
         }
     }

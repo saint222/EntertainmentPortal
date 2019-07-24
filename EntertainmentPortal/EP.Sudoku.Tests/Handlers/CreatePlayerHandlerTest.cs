@@ -29,8 +29,10 @@ namespace EP.Sudoku.Tests.Handlers
         public void Setup()
         {
             var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile(new MapperProfile()));
-            _mapper = mapperConfig.CreateMapper();           
-            _validator = new Mock<IValidator<CreatePlayerCommand>>().Object;
+            _mapper = mapperConfig.CreateMapper();            
+            var validMock = new Mock<IValidator<CreatePlayerCommand>>();
+            validMock.Setup(x => x.Validate(It.IsAny<CreatePlayerCommand>()).IsValid);
+            _validator = validMock.Object;
         }
 
         [Test]

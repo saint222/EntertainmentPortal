@@ -36,7 +36,7 @@ namespace EP.Sudoku.Logic.Handlers
                     .Where(x => x.Id == request.Id)
                     .Select(b => _mapper.Map<Player>(b)).FirstOrDefault();
 
-            //THIS PART OF THE CODE IS RUNNABLE, COMMENTED BECAUSE OF CACHE OPTINS IN TESTS 
+            //THIS PART OF THE CODE IS RUNNABLE, COMMENTED BECAUSE OF IT'S USELESNESS 
             /*if (!_memoryCache.TryGetValue(request.Id, out Player chosenPlayer)) //caching "One"
             {
                 chosenPlayer = _context.Players

@@ -44,9 +44,9 @@ namespace EP.Sudoku.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> GetAllPlayerAsync()
         {
-            var result = await _mediator.Send(new GetAllPlayers());
+            var players = await _mediator.Send(new GetAllPlayers());
 
-            return result.Any() ? (IActionResult)Ok(result) : NotFound();
+            return players.Any() ? (IActionResult)Ok(players) : NotFound();
         }
 
         /// <summary>
@@ -100,14 +100,15 @@ namespace EP.Sudoku.Web.Controllers
         public async Task<IActionResult> CreatePlayer([FromBody, NotNull, CustomizeValidator(RuleSet = "PreValidationPlayer")] CreatePlayerCommand model)
         {                   
             if (!ModelState.IsValid)
-            {                
+            {
+                _logger.LogError($"Invalid model for createint a new player was used.");
                 return BadRequest();                
             }
 
             model.UserId = User.FindFirst("sub")?.Value; //takes UserID from requests
             var result = await _mediator.Send(model);
 
-            return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);           
+            return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value); //FP is here           
         }
 
         /// <summary>
@@ -124,7 +125,7 @@ namespace EP.Sudoku.Web.Controllers
             }
             var result = await _mediator.Send(model);
 
-            return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
+            return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value); //FP is here
         }
 
         /// <summary>
