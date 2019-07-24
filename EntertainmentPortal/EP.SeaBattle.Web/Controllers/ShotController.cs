@@ -14,6 +14,7 @@ using FluentValidation;
 using NJsonSchema.Annotations;
 using FluentValidation.AspNetCore;
 using System.ComponentModel;
+using Microsoft.AspNetCore.SignalR;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -22,10 +23,12 @@ namespace EP.SeaBattle.Web.Controllers
     public class ShotController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IHubContext<ShotsHub> _hubContext;
 
-        public ShotController(IMediator mediator)
+        public ShotController(IMediator mediator, IHubContext<ShotsHub> hubContext)
         {
             _mediator = mediator;
+            _hubContext = hubContext;
         }
 
         [HttpPost]
@@ -39,7 +42,6 @@ namespace EP.SeaBattle.Web.Controllers
             //{
             //    return BadRequest(ModelState);
             //}
-
             var result = await _mediator.Send(model);
             return result.HasValue ? Ok(result.Value)
                 : (IActionResult)Ok();

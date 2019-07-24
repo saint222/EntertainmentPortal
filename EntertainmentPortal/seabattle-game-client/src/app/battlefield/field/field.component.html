@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row">
-      <h2 class="text-center col-md-6">Корабли</h2>
-      <h2 class="text-center col-md-6">Выстрелы</h2>
-  </div>
-  <div class="row">
     <div class="col-md-6">
       <table class="table" id="shipField">
-        <thead>
+          <thead>
+            <tr>
+              <th style="text-align: center !important; font-size: 32px; padding-left: 50px" colspan="11" class="cell no_border">Корабли</th>
+            </tr>
             <th class="cell no_border" *ngFor="let letter of alphabet" >{{ letter }}</th>
-        </thead>
+          </thead>
         <tr *ngFor="let row of this.battleFieldService.shipField; let i = index" >
           <td class="cell no_border">{{ i }}</td>
           <td *ngFor="let cell of row">
@@ -20,9 +19,12 @@
 
     <div class="col-md-6">
         <table class="table" id="shootField">
-          <thead>
-              <th class="cell no_border" *ngFor="let letter of alphabet" >{{ letter }}</th>
-          </thead>
+            <thead>
+                <tr>
+                  <th style="text-align: center !important; font-size: 32px; padding-left: 50px" colspan="11" class="cell no_border">Выстрелы</th>
+                </tr>
+                <th class="cell no_border" *ngFor="let letter of alphabet" >{{ letter }}</th>
+              </thead>
           <tr *ngFor="let row of this.shootService.shotField; let i = index">
               <td class="cell no_border">{{ i }}</td>
               <td *ngFor="let cell of row">

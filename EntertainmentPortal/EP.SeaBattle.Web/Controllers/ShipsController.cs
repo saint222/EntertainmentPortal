@@ -14,6 +14,11 @@ using FluentValidation;
 using NJsonSchema.Annotations;
 using FluentValidation.AspNetCore;
 using System.ComponentModel;
+using EP.SeaBattle.Data.Context;
+using AutoMapper;
+using EP.SeaBattle.Data.Models;
+using Microsoft.EntityFrameworkCore;
+using CSharpFunctionalExtensions;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -22,10 +27,14 @@ namespace EP.SeaBattle.Web.Controllers
     public class ShipsController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
+        private readonly SeaBattleDbContext _context;
 
-        public ShipsController(IMediator mediator)
+        public ShipsController(IMediator mediator, SeaBattleDbContext seaBattleDbContext, IMapper mapper)
         {
             _mediator = mediator;
+            _context = seaBattleDbContext;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -48,11 +57,38 @@ namespace EP.SeaBattle.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't add ship")]
         public async Task<IActionResult> AddShipAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "AddShipPreValidation")] AddNewShipCommand model)
         {
+
+            if (!HttpContext.Session.Keys.Contains("player"))
+            {
+                var playerId = Guid.NewGuid().ToString();
+                var player = new Player() { Id = playerId, NickName = "Name " + playerId };
+                await _context.Players.AddAsync(_mapper.Map<PlayerDb>(player));
+                HttpContext.Session.SetString("player", playerId);
+
+                if (!HttpContext.Session.Keys.Contains("game"))
+                {
+                    var gameId = Guid.NewGuid().ToString();
+                    var game = new Game() { Id = gameId, Player1 = player, Status = Common.Enums.GameStatus.NotReady, PlayerAllowedToMove = player };
+                    await _context.Games.AddAsync(_mapper.Map<GameDb>(game));
+                    HttpContext.Session.SetString("game", gameId);
+                }
+            }
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            model.GameId = HttpContext.Session.GetString("game");
+            model.PlayerId = HttpContext.Session.GetString("player");
             var result = await _mediator.Send(model);
             return result.HasValue ? Ok(result.Value)
                 :(IActionResult) Ok();

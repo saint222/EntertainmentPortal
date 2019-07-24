@@ -1,9 +1,12 @@
+import { ShotHubService } from './shot-hub.service';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cell } from 'src/app/models/cell';
 import { Ship } from 'src/app/models/ship';
 import { CellStatus } from 'src/app/models/cellStatus';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +16,13 @@ export class BattlefieldService {
   shipField: Cell[][];
   ships: Ship[];
   shots: Cell[];
+  subscription: Subscription;
   oneLast: number;
   twoLast: number;
   threeLast: number;
   fourLast: number;
   N = 10;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public shotHub: ShotHubService) {
     this.shipField = this.createField();
     this.oneLast = 4;
     this.twoLast = 3;
@@ -38,13 +42,13 @@ export class BattlefieldService {
       }
     });
     // ------------gogno-------------
-    let json = { gameId: '1', answeredPlayerId: '1'};
-    this.http.get<Cell[]>('http://localhost:54708/api/Shot/get', { params: json }). subscribe(data => {
-      if (data != null && data !== undefined) {
-        this.shots = data;
-        this.shots.forEach(shot => this.drawShot(shot));
-      }
-    });
+    //let json = { gameId: '1', answeredPlayerId: '1'};
+    //this.http.get<Cell[]>('http://localhost:54708/api/Shot/get', { params: json }). subscribe(data => {
+    //  if (data != null && data !== undefined) {
+    //    this.shots = data;
+    //    this.shots.forEach(shot => this.drawShot(shot));
+    //  }
+    //});
   }
 
   private createField(): Cell[][] {

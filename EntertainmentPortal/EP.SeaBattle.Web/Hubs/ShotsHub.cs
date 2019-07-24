@@ -28,10 +28,15 @@ namespace EP.SeaBattle.Web
             await Clients.Caller.SendAsync("receiveShots", sendShots(gameId, playerId));
         }
 
-        private async Task<IEnumerable<Shot>> sendShots(string gameId, string playerId)
+        private async Task<IEnumerable<Shot>> sendShots(string gameId, string answerPlayerId)
         {
-            var shots = await _context.Shots.Where(shot => shot.GameId == gameId && shot.PlayerId == playerId).ToArrayAsync();
+            var shots = await _context.Shots.Where(shot => shot.GameId == gameId && shot.PlayerId == answerPlayerId).ToArrayAsync();
             return _mapper.Map<IEnumerable<Shot>>(shots);
         }
+    }
+
+    public interface IShotHub
+    {
+        Task SendShots();
     }
 }
