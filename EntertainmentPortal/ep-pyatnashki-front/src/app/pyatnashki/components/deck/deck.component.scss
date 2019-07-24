@@ -10,7 +10,7 @@
 }
 
 #gui{
-  background-color: #6d2e02;
+  padding-left: 1.5vw;
 }
 
 #notLogged{
@@ -45,4 +45,21 @@
 p, h3, h1{
   user-select: none;
 }
+
+#reset{
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+#score{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
 

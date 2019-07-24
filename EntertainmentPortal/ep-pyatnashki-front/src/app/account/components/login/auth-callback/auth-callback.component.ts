@@ -1,3 +1,4 @@
+import { DeckService } from './../../../../pyatnashki/services/deck.service';
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/account/services/account.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,7 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AuthCallbackComponent implements OnInit {
   error: boolean;
-  constructor( private accountService: AccountService, private router: Router, private route: ActivatedRoute) { }
+  // tslint:disable-next-line: max-line-length
+  constructor( private accountService: AccountService, private deckService: DeckService, private router: Router, private route: ActivatedRoute) { }
 
   async ngOnInit() {
     if (this.route.snapshot.fragment.indexOf('error') >= 0) {
@@ -17,8 +19,10 @@ export class AuthCallbackComponent implements OnInit {
       return;
     }
     await this.accountService.completeAuthentication();
-
-    await new Promise(resolve => setTimeout(resolve, 1200));
+    this.deckService.getDeck().subscribe(d => {
+      sessionStorage.setItem('deck', JSON.stringify(d));
+    });
+    await new Promise(resolve => setTimeout(resolve, 1000));
     this.router.navigate(['/deck']);
   }
 

@@ -13,4 +13,7 @@ export class AppComponent {
   public IsLoggedIn() {
     return this.accountService.IsLoggedIn();
   }
+  public User() {
+    return this.accountService.getUserInfo().userName;
+  }
 }

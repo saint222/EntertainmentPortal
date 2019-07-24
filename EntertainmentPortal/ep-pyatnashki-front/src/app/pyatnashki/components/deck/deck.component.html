@@ -1,9 +1,11 @@
 <div *ngIf="deck!=null">
-    <button *ngIf="logged" class="btn btn-primary" (click)="newDeck()">Reset</button>
-    <div class="gui">
+    <div id="gui">
       <div class="row">
-        <div *ngIf="logged" class="col-md-12">
-          <h5>Score: {{deck.score}}</h5>
+        <div *ngIf="logged" class="col-md-3 offset-md-2">
+          <h5 id="score">Score: {{deck.score}}</h5>
+        </div>
+        <div *ngIf="logged" class="col-md-3 offset-md-2">
+          <button id="reset" *ngIf="logged" class="btn btn-primary pull-right" (click)="newDeck()">Reset</button>
         </div>
         <div class="col-md-8 offset-md-2" style="text-align: center;">
           <div id="deck">

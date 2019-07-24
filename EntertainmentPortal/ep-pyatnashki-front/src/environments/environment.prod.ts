@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  api_url: 'https://pyatnashki-api/api',  //44380
-  is_url: 'http://identityserver', //5000
-  front_url: 'http://pyatnashki-front' //4200
+  api_url: 'https://localhost:44380/api',
+  is_url: 'http://localhost:5000',
+  front_url: 'http://localhost:4200'
 };
