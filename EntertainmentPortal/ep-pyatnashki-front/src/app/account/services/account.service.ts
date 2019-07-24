@@ -28,7 +28,10 @@ export class AccountService {
 
 
   startLogout() {
+
+    sessionStorage.removeItem('deck');
     this.mgr.signoutRedirect();
+
   }
   completeLogout(): Promise<void> {
     return this.mgr.signoutRedirectCallback().then(user => {

@@ -37,7 +37,7 @@
   color: #f3ead9;
   h3{
     position: relative;
-    margin-top: 33vh;
+    margin-top: 30vh;
     text-align: center;
   }
 }
@@ -66,3 +66,32 @@ p, h3, h1{
 }
 
 
+#victory{
+  position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 49.2vh;
+    left: 0px;
+    width: 100%;
+    height: 10vh;
+}
+
+#victoryBackground{
+  align-items: center;
+  justify-content: center;
+  background-color: #41321f;
+  opacity: 0.5;
+  width: 50vw;
+  min-width: 600px;
+  min-height: 360px;
+  height: 100%;
+  border-radius: 5vh;
+  color: #f3ead9;
+  h1{
+    position: relative;
+    margin-top: 21vh;
+    text-align: center;
+    color: #fff;
+  }
+}

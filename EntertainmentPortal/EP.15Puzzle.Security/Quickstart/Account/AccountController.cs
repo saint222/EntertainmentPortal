@@ -58,10 +58,23 @@ namespace IdentityServer4.Quickstart.UI
         {
             return View(new RegisterViewModel());
         }
+
+
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterInputModel model, string button)
         {
-            if (ModelState.IsValid)
+            if (button == "login")
+            {
+                return RedirectToAction("Login", model);
+            }
+
+            if (button != "register")
+            {
+                return Redirect(model.ReturnUrl);
+            }
+
+        if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null)
@@ -150,7 +163,7 @@ namespace IdentityServer4.Quickstart.UI
             // the user clicked the "register" button
             if (button == "register")
             {
-                return RedirectToAction("Register",model);
+                return RedirectToAction("Register", model);
             }
 
             // the user clicked the "cancel" button

@@ -16,13 +16,15 @@ export class AuthCallbackComponent implements OnInit {
   async ngOnInit() {
     if (this.route.snapshot.fragment.indexOf('error') >= 0) {
       this.error = true;
-      return;
     }
-    await this.accountService.completeAuthentication();
-    this.deckService.getDeck().subscribe(d => {
-      sessionStorage.setItem('deck', JSON.stringify(d));
-    });
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    if (!this.error) {
+      await this.accountService.completeAuthentication();
+      this.deckService.getDeck().subscribe(d => {
+        sessionStorage.setItem('deck', JSON.stringify(d));
+      });
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+
     this.router.navigate(['/deck']);
   }
 
