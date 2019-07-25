@@ -295,8 +295,13 @@ namespace IdentityServer4.Quickstart.UI
                 // this triggers a redirect to the external provider for sign-out
                 return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
             }
-            //return View("LoggedOut", vm);
-            return Redirect(model.ReturnUrl);
+
+            if (model.ReturnUrl!=null)
+            {
+                return Redirect(model.ReturnUrl);
+            }
+            return View("LoggedOut", vm);
+            
         }
 
 

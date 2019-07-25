@@ -46,7 +46,7 @@ namespace EP._15Puzzle.Web
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "http://localhost:5000";
+                    opt.Authority = Configuration.GetSection("Urls:Is4").Value;
                     opt.RequireHttpsMetadata = false;
                 });
 
@@ -76,7 +76,7 @@ namespace EP._15Puzzle.Web
                 {
                     Flow = OpenApiOAuth2Flow.Implicit,
                     Type = OpenApiSecuritySchemeType.OAuth2,
-                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                    AuthorizationUrl = $"{Configuration.GetSection("Urls:Is4").Value}/connect/authorize",
                     Scopes = new Dictionary<string, string>()
                     {
                         {"pyatnashki_api", "Access to 15Puzzle application." }
@@ -110,7 +110,7 @@ namespace EP._15Puzzle.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                     .AllowAnyMethod()
-                    .WithOrigins("http://localhost:4200", "https://localhost:44380", "http://localhost:5000")
+                    .WithOrigins(Configuration.GetSection("Urls:Api").Value, Configuration.GetSection("Urls:Is4").Value, Configuration.GetSection("Urls:Front").Value)
                     .AllowCredentials());
             app.UseAuthentication();
             //app.UseIdentityServer();
