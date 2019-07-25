@@ -33,8 +33,12 @@ namespace EP.SeaBattle.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDistributedMemoryCache();
+            services.AddSession(option =>
+            {
+                option.Cookie.HttpOnly = false;
+                option.Cookie.Name = "_seabattle.Session";
+            });
             services.AddCors();
-            //services.AddSignalR();
             services.AddLogging(cfg => cfg.AddConsole().AddDebug());
             services.AddSeaBattleServices();
             services.AddMediatR(typeof(AddNewPlayerCommand).Assembly);
@@ -63,13 +67,10 @@ namespace EP.SeaBattle.Web
                 .AllowCredentials();
             });
             app.UseCookiePolicy(new CookiePolicyOptions() { HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.None, Secure = Microsoft.AspNetCore.Http.CookieSecurePolicy.None });
-            //app.UseSignalR(routes =>
-            //{
-            //    routes.MapHub<ShotsHub>("/shothub");
-            //});
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
+            app.UseSession();
             app.UseMvc();
         }
     }

@@ -1,3 +1,4 @@
+import { ShootService } from './shoot.service';
 import { ShotHubService } from './shot-hub.service';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
@@ -15,21 +16,20 @@ export class BattlefieldService {
 
   shipField: Cell[][];
   ships: Ship[];
-  shots: Cell[];
   subscription: Subscription;
   oneLast: number;
   twoLast: number;
   threeLast: number;
   fourLast: number;
   N = 10;
-  constructor(private http: HttpClient, public shotHub: ShotHubService) {
+  constructor(private http: HttpClient, public shotService: ShootService) {
     this.shipField = this.createField();
     this.oneLast = 4;
     this.twoLast = 3;
     this.threeLast = 2;
     this.fourLast = 1;
     this.ships = new Array<Ship>();
-    this.shots = new Array<Cell>();
+    this.subscription = shotService.enemyShots.subscribe(s => s.forEach(shot => this.drawShot(shot)));
    }
 
   addShip(form: FormGroup) {
