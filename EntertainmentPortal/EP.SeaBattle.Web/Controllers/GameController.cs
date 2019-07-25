@@ -26,8 +26,7 @@ namespace EP.SeaBattle.Web.Controllers
             _mediator = mediator;
         }
 
-        [Route("api/StartGame")]
-        [HttpPost]
+        [HttpPost("api/StartGame")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Start the game")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't start the game")]
         public async Task<IActionResult> StartGame([FromBody, NotNull, CustomizeValidator(RuleSet = "GamePreValidation")] StartGameCommand model)
@@ -42,9 +41,8 @@ namespace EP.SeaBattle.Web.Controllers
                 ? (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);
         }
-
-        [Route("api/FinishGame")]
-        [HttpPut]
+        
+        [HttpPut("api/FinishGame")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Finish the game")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't finish the game")]
         public async Task<IActionResult> FinishGame([FromBody, NotNull, CustomizeValidator(RuleSet = "GamePreValidation")] FinishGameCommand model)

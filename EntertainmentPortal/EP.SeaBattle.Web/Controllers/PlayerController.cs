@@ -9,9 +9,19 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NJsonSchema.Annotations;
 using NSwag.Annotations;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using System;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace EP.SeaBattle.Web.Controllers
 {
+
+    //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    // [Authorize(AuthenticationSchemes = "Bearer")]
+    //[Authorize(AuthenticationSchemes = "Google")]
+    //[Authorize(AuthenticationSchemes = "Facebook")]
     [ApiController]
     public class PlayerController : ControllerBase
     {
@@ -37,8 +47,7 @@ namespace EP.SeaBattle.Web.Controllers
                 ? (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);
         }
-
-
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("api/GetAllPlayers")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Players collection is empty")]
@@ -81,5 +90,6 @@ namespace EP.SeaBattle.Web.Controllers
                 (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);
         }
+
     }
 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using log4net.Extensions.AspNetCore;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace EP.SeaBattle.Web
@@ -19,6 +14,10 @@ namespace EP.SeaBattle.Web
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+               .ConfigureLogging(builder => builder.ClearProviders()
+                    .AddDebug()
+                    .AddProvider(new log4netLogProvider(true))
+                    )
                 .UseStartup<Startup>();
     }
 }

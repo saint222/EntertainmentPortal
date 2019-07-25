@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using EP.SeaBattle.Data;
 
+
 namespace EP.SeaBattle.Logic
 {
     public static class ServiceCollectionExtensions

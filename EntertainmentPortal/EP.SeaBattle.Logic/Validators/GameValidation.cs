@@ -31,15 +31,17 @@ namespace EP.SeaBattle.Logic.Validators
             {
                 RuleFor(x => x)
                         .MustAsync((x, s, token) => CheckExistingPlayer(x.PlayerId))
-                        .WithMessage(player => $"Player with id {player.PlayerId} doesn't exists!!!");
+                        .WithMessage(player => $"Player with id {player.PlayerId} doesn't exists!!!").DependentRules(()=> {
+                            RuleFor(command => command)
+                                      .MustAsync((o, s, token) => IsFullShipsSet(o.PlayerId))
+                                      .WithMessage(player => $"Player with id {player.PlayerId} does not have enough ships.");
 
-                RuleFor(command => command)
-                        .MustAsync((o, s, token) => IsFullShipsSet(o.PlayerId))
-                        .WithMessage(player => $"Player with id {player.PlayerId} does not have enough ships.");
+                            RuleFor(command => command)
+                                    .MustAsync((o, s, token) => IsNotInGame(o.PlayerId))
+                                    .WithMessage(player => $"Player with id {player.PlayerId} in the game.");
+                        });
 
-                RuleFor(command => command)
-                        .MustAsync((o, s, token) => IsNotInGame(o.PlayerId))
-                        .WithMessage(player => $"Player with id {player.PlayerId} in the game.");
+
             });
 
         }
