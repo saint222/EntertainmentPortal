@@ -14,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.DotsBoxes.Web", "EP.Dots
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "15Puzzle", "15Puzzle", "{CF70DE2D-E045-4606-A0F6-50368013D188}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Web", "EP.15Puzzle.Web\EP.15Puzzle.Web.csproj", "{16AEBD06-E4D2-4C88-8002-B21E565F989C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Web", "EP.15Puzzle\EP.15Puzzle.Web\EP.15Puzzle.Web.csproj", "{16AEBD06-E4D2-4C88-8002-B21E565F989C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hangman.Logic", "EP.Hangman.Logic\EP.Hangman.Logic.csproj", "{F14E90B6-64E3-4654-BDCF-953E8D98E4D0}"
 EndProject
@@ -55,9 +55,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.WordsMaker.Logic", "EP.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.WordsMaker.Web", "EP.WordsMaker\EP.WordsMaker.Web\EP.WordsMaker.Web.csproj", "{49E0A55F-7193-4B26-909D-890348686949}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Logic", "EP.15Puzzle.Logic\EP.15Puzzle.Logic.csproj", "{737A14A9-BCA5-42B7-8121-9FC0F6955889}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Logic", "EP.15Puzzle\EP.15Puzzle.Logic\EP.15Puzzle.Logic.csproj", "{737A14A9-BCA5-42B7-8121-9FC0F6955889}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Data", "EP.15Puzzle.Data\EP.15Puzzle.Data.csproj", "{0495F8E2-3A60-4A02-829A-1070D95FFD86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Data", "EP.15Puzzle\EP.15Puzzle.Data\EP.15Puzzle.Data.csproj", "{0495F8E2-3A60-4A02-829A-1070D95FFD86}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.DotsBoxes.Tests", "EP.DotsBoxes.Tests\EP.DotsBoxes.Tests.csproj", "{1432441B-ED51-450D-9BB9-2410E7B24C2E}"
 EndProject
@@ -65,7 +65,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeaBattle", "SeaBattle", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Web", "EP.SeaBattle.Web\EP.SeaBattle.Web.csproj", "{8445ACFD-7E93-4946-858F-C7274F0D5F24}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Tests", "EP.15Puzzle.Tests\EP.15Puzzle.Tests.csproj", "{905D5442-7D0F-4BB1-843E-39831A75C5EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Tests", "EP.15Puzzle\EP.15Puzzle.Tests\EP.15Puzzle.Tests.csproj", "{905D5442-7D0F-4BB1-843E-39831A75C5EC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hangman.Logic.Tests", "Ep.Hangman.Tests\EP.Hangman.Logic.Tests.csproj", "{A03685DA-122E-4919-9424-705F415F6B80}"
 EndProject
@@ -85,7 +85,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.TicTacToe.Logic", "EP.Ti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.TicTacToe.Data", "EP.TicTacToe.Data\EP.TicTacToe.Data.csproj", "{ACF396B1-2567-4AF0-9F39-D1E02C7FDA70}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Security", "EP.15Puzzle.Security\EP.15Puzzle.Security.csproj", "{2D2B5C4B-8C0B-417C-9D88-2FC88E244F59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Security", "EP.15Puzzle\EP.15Puzzle.Security\EP.15Puzzle.Security.csproj", "{2D2B5C4B-8C0B-417C-9D88-2FC88E244F59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
