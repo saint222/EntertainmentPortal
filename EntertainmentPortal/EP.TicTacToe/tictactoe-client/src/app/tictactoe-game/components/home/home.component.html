@@ -1,14 +1,21 @@
-<app-layout>
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav role="navigation">
-      <!--this is a place for us to add side-nav code-->
-      <app-menu></app-menu>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <!--in here all the content must reside. We will add a navigation header as well-->
-      <main>
-        <router-outlet></router-outlet>
-      </main>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</app-layout>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+    <!--this is a place for us to add side-nav code-->
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!--in here all the content must reside. We will add a navigation header as well-->
+    <app-menu></app-menu>
+    <main>
+      <!--      <router-outlet></router-outlet>-->
+      <app-layout>
+        <span style="color:darkblue"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto corporis dignissimos eligendi hic inventore ipsam iste magnam minus necessitatibus possimus praesentium, quasi qui quod recusandae sit voluptate. Architecto, maxime. </span>
+      </app-layout>
+
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!--<main>&lt;!&ndash;  <router-outlet></router-outlet>&ndash;&gt;-->
+<!--  <app-menu></app-menu>-->
+<!--    <span style="color:wheat"> ddddddddddddd </span>-->
+<!--</main>-->
+
