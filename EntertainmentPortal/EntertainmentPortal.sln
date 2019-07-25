@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29001.49
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Gateway", "EP.Gateway\EP.Gateway.csproj", "{59516105-73D4-44C5-8FD2-58B7D2690FDE}"
 EndProject
@@ -89,6 +89,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hangman.Security", "EP.Hangman.Security\EP.Hangman.Security.csproj", "{CF7D3117-800E-4BE4-B9AD-B027E05D394C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Balda.Security", "EP.Balda\EP.Balda.Security\EP.Balda.Security.csproj", "{A4497F0A-CEAC-425A-8D8C-83944BD7DA4B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Security", "EP.SeaBattle.Security\EP.SeaBattle.Security.csproj", "{EB19C8CE-879E-496D-AD0E-B1FC10335A9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -231,6 +233,10 @@ Global
 		{A4497F0A-CEAC-425A-8D8C-83944BD7DA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4497F0A-CEAC-425A-8D8C-83944BD7DA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4497F0A-CEAC-425A-8D8C-83944BD7DA4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB19C8CE-879E-496D-AD0E-B1FC10335A9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB19C8CE-879E-496D-AD0E-B1FC10335A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB19C8CE-879E-496D-AD0E-B1FC10335A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB19C8CE-879E-496D-AD0E-B1FC10335A9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -269,6 +275,7 @@ Global
 		{ACF396B1-2567-4AF0-9F39-D1E02C7FDA70} = {D3139C70-21FB-4CAD-9C92-412DDA0EAE4D}
 		{CF7D3117-800E-4BE4-B9AD-B027E05D394C} = {0C78D074-14D2-40FC-9CC7-AE75065C4DF0}
 		{A4497F0A-CEAC-425A-8D8C-83944BD7DA4B} = {A81D02C5-352A-4851-8071-1470853A4F5B}
+		{EB19C8CE-879E-496D-AD0E-B1FC10335A9C} = {A513A8FF-5554-409E-A816-76649A467B2F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0F67030-0B27-4A47-884D-0155BC42C38C}
