@@ -34,7 +34,7 @@ namespace EP.SeaBattle.Logic.Handlers
         public async Task<Maybe<IEnumerable<Ship>>> Handle(AddNewShipCommand request, CancellationToken cancellationToken)
         {
             //TODO УЗнать как прокинуть ошибки валидации в таком случае
-            var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddShipValidation", cancellationToken: cancellationToken);
+            var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddShipValidation", cancellationToken: cancellationToken).ConfigureAwait(false);
             if (validationResult.IsValid)
             {
                 var game = await _context.Games.FindAsync(request.GameId).ConfigureAwait(false);
@@ -50,7 +50,6 @@ namespace EP.SeaBattle.Logic.Handlers
                     await _context.Ships.AddAsync(_mapper.Map<ShipDb>(ship)).ConfigureAwait(false);
                     if (shipsManager.IsFull)
                     {
-                        //TODO generate gamebot and ships
                         Player playerAI = new Player();
                         var guid = Guid.NewGuid().ToString();
                         playerAI.Id = guid;

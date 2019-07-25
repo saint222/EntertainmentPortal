@@ -23,12 +23,12 @@ namespace EP.SeaBattle.Web.Controllers
     public class ShotController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IHubContext<ShotsHub> _hubContext;
+        //private readonly IHubContext<ShotsHub> _hubContext;
 
-        public ShotController(IMediator mediator, IHubContext<ShotsHub> hubContext)
+        public ShotController(IMediator mediator)//, IHubContext<ShotsHub> hubContext)
         {
             _mediator = mediator;
-            _hubContext = hubContext;
+            //_hubContext = hubContext;
         }
 
         [HttpPost]
@@ -36,12 +36,12 @@ namespace EP.SeaBattle.Web.Controllers
         [Description("Add shot")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Shot>), Description = "Add ship to player collection")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't add ship")]
-        public async Task<IActionResult> AddShotAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "AddShipPreValidation")] AddShotCommand model)
+        public async Task<IActionResult> AddShotAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "AddShotPreValidation")] AddShotCommand model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var result = await _mediator.Send(model);
             return result.HasValue ? Ok(result.Value)
                 : (IActionResult)Ok();

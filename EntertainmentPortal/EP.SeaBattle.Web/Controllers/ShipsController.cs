@@ -57,38 +57,37 @@ namespace EP.SeaBattle.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't add ship")]
         public async Task<IActionResult> AddShipAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "AddShipPreValidation")] AddNewShipCommand model)
         {
+            //if (!HttpContext.Request.Cookies.ContainsKey("player"))
+            //{
+            //    var playerId = Guid.NewGuid().ToString();
+            //    var player = new Player() { Id = playerId, NickName = "Name " + playerId };
+            //    await _context.Players.AddAsync(_mapper.Map<PlayerDb>(player));
+            //    HttpContext.Response.Cookies.Append("player", playerId);
 
-            if (!HttpContext.Session.Keys.Contains("player"))
-            {
-                var playerId = Guid.NewGuid().ToString();
-                var player = new Player() { Id = playerId, NickName = "Name " + playerId };
-                await _context.Players.AddAsync(_mapper.Map<PlayerDb>(player));
-                HttpContext.Session.SetString("player", playerId);
+            //    if (!HttpContext.Request.Cookies.ContainsKey("game"))
+            //    {
+            //        var gameId = Guid.NewGuid().ToString();
+            //        var game = new Game() { Id = gameId, Player1 = player, Status = Common.Enums.GameStatus.NotReady, PlayerAllowedToMove = player };
+            //        await _context.Games.AddAsync(_mapper.Map<GameDb>(game));
+            //        HttpContext.Response.Cookies.Append("game", gameId);
+            //    }
+            //}
 
-                if (!HttpContext.Session.Keys.Contains("game"))
-                {
-                    var gameId = Guid.NewGuid().ToString();
-                    var game = new Game() { Id = gameId, Player1 = player, Status = Common.Enums.GameStatus.NotReady, PlayerAllowedToMove = player };
-                    await _context.Games.AddAsync(_mapper.Map<GameDb>(game));
-                    HttpContext.Session.SetString("game", gameId);
-                }
-            }
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                return BadRequest();
-            }
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException ex)
+            //{
+            //    return BadRequest();
+            //}
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            model.GameId = HttpContext.Session.GetString("game");
-            model.PlayerId = HttpContext.Session.GetString("player");
+            //model.GameId = HttpContext.Session.GetString("game");
+            //model.PlayerId = HttpContext.Session.GetString("player");
             var result = await _mediator.Send(model);
             return result.HasValue ? Ok(result.Value)
                 :(IActionResult) Ok();

@@ -9,7 +9,7 @@ import { CellStatus } from 'src/app/models/cellStatus';
 })
 export class ShootService {
 
-  shots: Cell[];
+  shots: Cell[]; // коллекция, которая передается в сервис
   shotField: Cell[][];
   N = 10;
   constructor(private http: HttpClient) {

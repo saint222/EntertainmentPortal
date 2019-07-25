@@ -9,7 +9,7 @@
 .squareAlive {
   height: 40px;
   width: 40px;
-  background-color: rgb(17, 17, 17);
+  background-color: rgb(51, 51, 51);
   vertical-align: middle;
   align-self: center;
 }
@@ -17,7 +17,7 @@
 .squareDestroyed {
   height: 40px;
   width: 40px;
-  background-color: rgb(129, 24, 24);
+  background-color: rgb(232, 92, 51);
   vertical-align: middle;
   align-self: center;
 }
@@ -25,7 +25,7 @@
 .squareForbidden {
   height: 40px;
   width: 40px;
-  background-color: rgb(194, 182, 12);
+  background-color: rgb(255, 184, 56);
   vertical-align: middle;
   align-self: center;
 }
@@ -33,7 +33,7 @@
 .squareMiss {
   height: 40px;
   width: 40px;
-  background-color: rgb(59, 23, 219);
+  background-color: rgb(117, 61, 235);
   vertical-align: middle;
   align-self: center;
 }

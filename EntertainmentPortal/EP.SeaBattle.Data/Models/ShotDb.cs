@@ -9,6 +9,8 @@ namespace EP.SeaBattle.Data.Models
         public byte Y { get; set; }
         public CellStatus Status { get; set; }
         public string PlayerId { get; set; }
+        public PlayerDb Player { get; set; }
         public string GameId { get; set; }
+        public GameDb Game { get; set; }
     }
 }

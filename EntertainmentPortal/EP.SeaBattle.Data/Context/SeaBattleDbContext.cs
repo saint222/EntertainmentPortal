@@ -32,7 +32,9 @@ namespace EP.SeaBattle.Data.Context
             modelBuilder.Entity<ShipDb>()
                 .HasMany(i => i.Cells)
                 .WithOne(c => c.Ship)
-                .OnDelete(DeleteBehavior.Cascade);   
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<GameDb>()
+                .HasMany(i => i.Shots);
         }
     }
 }
