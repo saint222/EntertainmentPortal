@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EP.DotsBoxes.Web\EP.DotsBoxes.Web.csproj" />
     <ProjectReference Include="..\EP.Sudoku.Logic\EP.Sudoku.Logic.csproj" />
     <ProjectReference Include="..\EP.Sudoku.Web\EP.Sudoku.Web.csproj" />
   </ItemGroup>
