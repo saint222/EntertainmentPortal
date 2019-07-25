@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  ep.sudoku.web:
+    image: ${DOCKER_REGISTRY-}epsudokuweb
+    build:
+      context: .
+      dockerfile: EP.Sudoku.Web/Dockerfile
+    ports:
+    - 8887:80
+    - 8888:443
+
+  ep.sudoku.security:
+    image: ${DOCKER_REGISTRY-}epsudokusecurity
+    build:
+      context: .
+      dockerfile: EP.Sudoku.Security/Dockerfile
+    ports:
+    - 9998:80
+    - 9999:443
+
+  sudoku-client:
+    image: ${DOCKER_REGISTRY-}sudokuclient
+    build:
+      context: .
+      dockerfile: sudoku-client/Dockerfile
+    ports:
+    - 8080:80
+
