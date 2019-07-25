@@ -30,10 +30,10 @@ namespace EP.Sudoku.Tests.Handlers
         }
 
         [Test]
-        public async Task TestGetSessionByIdHandler_Handle_NormalData()
+        public async Task Test_GetSessionByIdHandler_Handle_NormalData()
         {
             var options = new DbContextOptionsBuilder<SudokuDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestGetSessionByIdHandler_Handle_NormalData")
+                .UseInMemoryDatabase(databaseName: "Test_GetSessionByIdHandler_Handle_NormalData")
                 .Options;
 
             var sessionDb = new SessionDb()
@@ -80,10 +80,10 @@ namespace EP.Sudoku.Tests.Handlers
         }
 
         [Test]
-        public async Task TestGetSessionByIdHandler_Handle_NotFound()
+        public async Task Test_GetSessionByIdHandler_Handle_NotFound()
         {
             var options = new DbContextOptionsBuilder<SudokuDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestGetSessionByIdHandler_Handle_NotFound")
+                .UseInMemoryDatabase(databaseName: "Test_GetSessionByIdHandler_Handle_NotFound")
                 .Options;
 
             using (var context = new SudokuDbContext(options))

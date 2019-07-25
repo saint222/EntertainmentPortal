@@ -11,6 +11,7 @@ using EP.Sudoku.Logic.Models;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EP.Sudoku.Logic.Handlers
 {
@@ -19,12 +20,15 @@ namespace EP.Sudoku.Logic.Handlers
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
         private readonly IValidator<SetCellValueCommand> _validator;
+        private readonly ILogger<SetCellValueHandler> _logger;
 
-        public SetCellValueHandler(SudokuDbContext context, IMapper mapper, IValidator<SetCellValueCommand> validator)
+        public SetCellValueHandler(SudokuDbContext context, IMapper mapper, IValidator<SetCellValueCommand> validator, 
+            ILogger<SetCellValueHandler> logger)
         {
             _context = context;
             _mapper = mapper;
             _validator = validator;
+            _logger = logger;
         }
 
         public async Task<Result<Session>> Handle(SetCellValueCommand request, CancellationToken cancellationToken)
@@ -33,9 +37,10 @@ namespace EP.Sudoku.Logic.Handlers
 
             var result = _validator.Validate(request, ruleSet: "IsValidSudokuGameSet");
 
-            if (result.Errors.Count > 0)
+            if (!result.IsValid)
             {
                 await AddError(request, cancellationToken);
+                _logger.LogError(result.Errors.First().ErrorMessage);
                 return Result.Fail<Session>(result.Errors.First().ErrorMessage);
             }
 

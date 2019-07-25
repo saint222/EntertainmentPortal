@@ -55,13 +55,9 @@ namespace EP.Sudoku.Tests.Handlers
 
             using (var context = new SudokuDbContext(options))
             {
-                var service = new CreatePlayerHandler(context, _mapper, _validator);                
-                await context.SaveChangesAsync();
+                var service = new CreatePlayerHandler(context, _mapper, _validator);
                 result = await service.Handle(playerDb, CancellationToken.None);
-            }
 
-            using (var context = new SudokuDbContext(options))
-            {
                 Assert.AreEqual(1, await context.Players.CountAsync());                
                 Assert.IsTrue(result.IsSuccess);
             }

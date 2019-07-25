@@ -72,23 +72,6 @@ namespace EP.Sudoku.Web.Controllers
         }
 
         /// <summary>
-        /// Changes the known information about a gamesession and saves it in the Db.
-        /// </summary>
-        [HttpPut("api/sessions")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Session), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> EditSession([FromBody]UpdateSessionCommand model)
-        {
-            if (model == null)
-            {
-                return BadRequest();
-            }
-            var session = await _mediator.Send(model);
-
-            return session != null ? (IActionResult)Ok(session) : BadRequest();
-        }
-
-        /// <summary>
         /// Changes the value of a cell durring a gamesession and saves it in the Db.
         /// </summary>
         [HttpPut("api/setCellValue")]

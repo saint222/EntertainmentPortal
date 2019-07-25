@@ -11,6 +11,7 @@ using EP.Sudoku.Logic.Models;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Solver = SudokuSolver.SudokuSolver;
 
 namespace EP.Sudoku.Logic.Handlers
@@ -20,22 +21,25 @@ namespace EP.Sudoku.Logic.Handlers
         private readonly SudokuDbContext _context;
         private readonly IMapper _mapper;
         private readonly IValidator<GetHintCommand> _validator;
+        private readonly ILogger<GetHintHandler> _logger;
         private const int GRID_DIMENSION = 9;
 
-        public GetHintHandler(SudokuDbContext context, IMapper mapper, IValidator<GetHintCommand> validator)
+        public GetHintHandler(SudokuDbContext context, IMapper mapper, IValidator<GetHintCommand> validator, ILogger<GetHintHandler> logger)
         {
             _context = context;
             _mapper = mapper;
             _validator = validator;
+            _logger = logger;
         }
 
         public async Task<Result<Session>> Handle(GetHintCommand request, CancellationToken cancellationToken)
         {
-            var result = _validator.Validate(request, ruleSet: "IsValidGetHint");
+            var validator = _validator.Validate(request, ruleSet: "IsValidGetHint");
 
-            if (result.Errors.Count > 0)
+            if (!validator.IsValid)
             {
-                return Result.Fail<Session>(result.Errors.First().ErrorMessage);
+                _logger.LogError(validator.Errors.First().ErrorMessage);
+                return Result.Fail<Session>(validator.Errors.First().ErrorMessage);
             }
 
             await AddScore(request, cancellationToken);
@@ -74,7 +78,7 @@ namespace EP.Sudoku.Logic.Handlers
             return true;
         }
 
-        private int GetHint(SessionDb session, int cellId)
+        public int GetHint(SessionDb session, int cellId)
         {
             for (int i = 1; i <= GRID_DIMENSION; i++)
             {
@@ -87,18 +91,7 @@ namespace EP.Sudoku.Logic.Handlers
             return 0;
         }
 
-        private int[,] CellsToGrid(List<CellDb> cells)
-        {
-            int[,] grid = new int[GRID_DIMENSION, GRID_DIMENSION];
-            foreach (var cell in cells)
-            {
-                grid[cell.X - 1, cell.Y - 1] = (int)cell.Value;
-            }
-
-            return grid;
-        }
-
-        private bool IsOver(List<CellDb> cells)
+        public bool IsOver(List<CellDb> cells)
         {
             foreach (CellDb cell in cells)
             {
@@ -109,6 +102,17 @@ namespace EP.Sudoku.Logic.Handlers
             }
 
             return true;
+        }
+
+        private int[,] CellsToGrid(List<CellDb> cells)
+        {
+            int[,] grid = new int[GRID_DIMENSION, GRID_DIMENSION];
+            foreach (var cell in cells)
+            {
+                grid[cell.X - 1, cell.Y - 1] = (int)cell.Value;
+            }
+
+            return grid;
         }
     }
 }

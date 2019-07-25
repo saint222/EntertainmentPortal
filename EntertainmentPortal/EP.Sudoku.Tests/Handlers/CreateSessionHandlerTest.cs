@@ -33,10 +33,10 @@ namespace EP.Sudoku.Tests.Handlers
         }
 
         [Test]
-        public async Task TestRemoveSessionIfExists()
+        public async Task Test_CreateNewSession_RemoveSessionIfExists()
         {
             var options = new DbContextOptionsBuilder<SudokuDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestRemoveSessionIfExists")
+                .UseInMemoryDatabase(databaseName: "Test_CreateNewSession_RemoveSessionIfExists")
                 .Options;
 
             var sessionDb = new SessionDb()
@@ -74,19 +74,16 @@ namespace EP.Sudoku.Tests.Handlers
                 await context.Sessions.AddAsync(sessionDb);
                 await context.SaveChangesAsync();
                 service.RemoveSessionIfExists(1, CancellationToken.None);
-            }
 
-            using (var context = new SudokuDbContext(options))
-            {
                 Assert.AreEqual(0, await context.Sessions.CountAsync());
             }
         }
 
         [Test]
-        public async Task TestCreateNewSession_Handle_PlayerDoesNotExist()
+        public async Task Test_CreateNewSession_Handle_PlayerDoesNotExist()
         {
             var options = new DbContextOptionsBuilder<SudokuDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestCreateNewSession_Handle_PlayerDoesNotExist")
+                .UseInMemoryDatabase(databaseName: "Test_CreateNewSession_Handle_PlayerDoesNotExist")
                 .Options;
 
             var userId = Guid.NewGuid().ToString();
@@ -105,19 +102,16 @@ namespace EP.Sudoku.Tests.Handlers
             {
                 var service = new CreateSessionHandler(context, _mapper, _logger);
                 result = await service.Handle(request, CancellationToken.None);
-            }
 
-            using (var context = new SudokuDbContext(options))
-            {
                 Assert.IsTrue(result.IsFailure);
             }
         }
 
         [Test]
-        public async Task TestCreateNewSession_Handle_NormalData()
+        public async Task Test_CreateNewSession_Handle_NormalData()
         {
             var options = new DbContextOptionsBuilder<SudokuDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestCreateNewSession_Handle_NormalData")
+                .UseInMemoryDatabase(databaseName: "Test_CreateNewSession_Handle_NormalData")
                 .Options;
 
             var userId = Guid.NewGuid().ToString();
@@ -146,18 +140,13 @@ namespace EP.Sudoku.Tests.Handlers
                 UserId = userId
             };
 
-            Result<Session> result;
-
             using (var context = new SudokuDbContext(options))
             {
                 var service = new CreateSessionHandler(context, _mapper, _logger);
                 await context.Players.AddAsync(playerDb);
                 await context.SaveChangesAsync();
-                result = await service.Handle(request, CancellationToken.None);
-            }
+                var result = await service.Handle(request, CancellationToken.None);
 
-            using (var context = new SudokuDbContext(options))
-            {
                 Assert.AreEqual(1, await context.Sessions.CountAsync());
                 Assert.AreEqual(81, await context.Cells.CountAsync());
                 Assert.IsTrue(result.IsSuccess);

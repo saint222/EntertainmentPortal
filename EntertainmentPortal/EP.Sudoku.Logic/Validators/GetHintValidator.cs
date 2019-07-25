@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using EP.Sudoku.Data.Context;
 using EP.Sudoku.Data.Models;
 using EP.Sudoku.Logic.Commands;
@@ -25,6 +26,13 @@ namespace EP.Sudoku.Logic.Validators
             RuleSet("IsValidGetHint", () =>
             {
                 RuleFor(x => x)
+                    .Must((o, token) =>
+                    {
+                        var session = GetSession(o);
+                        var value = session.Result.SquaresDb.First(x => x.Id == o.Id).Value;
+                        return value == 0 ? true : false;
+                    })
+                    .WithMessage($"The value is already there")
                     .Must((o, token) =>
                     {
                         var session = GetSession(o);

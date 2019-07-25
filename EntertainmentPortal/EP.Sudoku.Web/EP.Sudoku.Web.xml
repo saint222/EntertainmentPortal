@@ -119,19 +119,14 @@
             Is used for DI usage.
             </summary>
         </member>
-        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync(System.Int32)">
+        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync(System.Int64)">
             <summary>
             Fetches a gamesession from the Db by the unique Id.
-            </summary>
+            </summary>        
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.SessionsController.CreateSession(EP.Sudoku.Logic.Commands.CreateSessionCommand)">
             <summary>
             Creates a new gamesession due to the set parametrs and saves it in the Db.
-            </summary>
-        </member>
-        <member name="M:EP.Sudoku.Web.Controllers.SessionsController.EditSession(EP.Sudoku.Logic.Commands.UpdateSessionCommand)">
-            <summary>
-            Changes the known information about a gamesession and saves it in the Db.
             </summary>
         </member>
         <member name="M:EP.Sudoku.Web.Controllers.SessionsController.SetCellValue(EP.Sudoku.Logic.Commands.SetCellValueCommand)">
