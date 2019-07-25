@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body{
+  background-image: url(./assets/images/scoolboard.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+  height: 100vh;
+  width: 100vw;
+}
+
+h1{
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+footer {
+  height: auto;
+  background-color: #eae5c7;
+  opacity: 0.5;
+  filter: alpha(Opacity=60);
+  border-radius: 5px;
+  flex: 0 0 auto;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.content {
+  flex: 1 0 auto;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  flex-direction: row;
+  display: flex;
+}
+
+.flex-item {
+  border: 1px solid #59534c;
+  color: #0d0b10;
+  font-size: 1em;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.flex1 {
+  flex: 1
+}
+
+.flex2 {
+  width: 16px
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

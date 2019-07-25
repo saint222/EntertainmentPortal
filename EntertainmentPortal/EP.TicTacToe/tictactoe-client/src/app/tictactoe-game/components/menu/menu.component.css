@@ -1,0 +1,16 @@
+.body{
+  background-image: url(../../../../assets/images/menuboard.jpg);
+  background-repeat: repeat-x;
+  text-shadow: 1px 1px 2px black, 0 0 1em #6914ba;
+  color: #e0e9c8;
+  font-size: 2em;
+  background-color: #413846;
+}
+
+.mrg{
+  margin: 0 0.5rem;
+}
+
+h1 {
+  color: pink;
+}

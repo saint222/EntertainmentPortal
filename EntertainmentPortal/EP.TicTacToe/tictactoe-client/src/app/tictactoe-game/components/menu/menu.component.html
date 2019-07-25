@@ -1,0 +1,52 @@
+<mat-toolbar class="body">
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+    <button [matMenuTriggerFor]="menu" color="primary" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Tic Tac Toe game</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a [routerLink]="'/matrixOrder3'" class="mrg" mat-raised-button> 3 x 3 </a>
+      <a [routerLink]="'/matrixOrder4'" class="mrg" mat-raised-button> 4 x 4 </a>
+      <a [routerLink]="'/matrixOrder5'" class="mrg" mat-raised-button> 5 x 5 </a>
+      <a [routerLink]="'/matrixOrder6'" class="mrg" mat-raised-button> 6 x 6 </a>
+      <a [routerLink]="'/matrixOrder7'" class="mrg" mat-raised-button> 7 x 7 </a>
+      <a [routerLink]="'/matrixOrder8'" class="mrg" mat-raised-button> 8 x 8 </a>
+      <a [routerLink]="'/matrixOrder9'" class="mrg" mat-raised-button> 9 x 9 </a>
+      <a [routerLink]="'/matrixOrder10'" class="mrg" mat-raised-button> 10 x 10 </a>
+    </div>
+    <div>
+      <!--      <button mat-raised-button style="background-color:#857c71">About</button>-->
+      <!--      <button class="mrg" mat-raised-button style="background-color:#857c71">Contact</button>-->
+<!--      <div>-->
+<!--        <span *ngIf="userName">{{userName}}</span>-->
+<!--        <span *ngIf="!userName">Войдите</span>-->
+
+<!--        <button (click)="loginBtnClick()" *ngIf="!login" mat-raised-button style="background-color:#857c71"-->
+<!--                type="button">Login-->
+<!--        </button>-->
+<!--        <button (click)="logoutBtnClick()" *ngIf="login" mat-raised-button style="background-color:#857c71"-->
+<!--                type="button">Logout-->
+<!--        </button>-->
+<!--      </div>-->
+
+      <button [matMenuTriggerFor]="menu" color="accent" mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>person</mat-icon>
+        <span>Login</span>
+      </button>
+      <button disabled mat-menu-item>
+        <mat-icon>gamepad</mat-icon>
+        <span>Begin game</span>
+      </button>
+      <button disabled mat-menu-item>
+        <mat-icon>person_outline</mat-icon>
+        <span>Log out</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
