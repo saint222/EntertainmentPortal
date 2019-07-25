@@ -34,8 +34,8 @@ namespace EP.TicTacToe.Web.Controllers
         }
 
 
-        [HttpPut("cell")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Success")]
+        [HttpPut("move")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(StepResult), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description =
             "Invalid data")]
         public async Task<IActionResult> AddNewStepAsync(
