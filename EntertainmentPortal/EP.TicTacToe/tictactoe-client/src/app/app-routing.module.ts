@@ -1,18 +1,21 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { MenuComponent } from './tictactoe-game/components/menu/menu.component';
-import { HomeComponent } from './tictactoe-game/components/home/home.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+import {MenuComponent} from './tictactoe-game/components/menu/menu.component';
+import {HomeComponent} from './tictactoe-game/components/home/home.component';
 // import {UserComponent} from './tictactoe-game/components/user/user.component';
 
 const routes: Routes = [
-  // { path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'menu', component: MenuComponent},
-  // { path: 'user', component: UserComponent },
-  {path: '', redirectTo: 'menu', pathMatch: 'full'}
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
-  exports: [RouterModule]
+  imports: [CommonModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  declarations: []
 })
-export class AppRoutingModule { }
+
+export class AppRoutingModule {
+}

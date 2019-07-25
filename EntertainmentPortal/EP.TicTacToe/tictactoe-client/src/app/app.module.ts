@@ -8,11 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './core/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BoardComponent } from './tictactoe-game/components/board/board.component';
-import {LoginComponent} from './tictactoe-game/components/login/login.component';
 import {UserComponent} from './tictactoe-game/components/user/user.component';
 import {FormsModule} from '@angular/forms';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {AuthService} from './core/services/auth.service';
+import {MatSidenavModule} from '@angular/material';
+import {TictactoeGameModule} from './tictactoe-game/tictactoe-game.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,6 @@ import {AuthService} from './core/services/auth.service';
     HomeComponent,
     MenuComponent,
     BoardComponent,
-    LoginComponent,
     UserComponent
   ],
   imports: [
@@ -29,7 +29,9 @@ import {AuthService} from './core/services/auth.service';
     CustomMaterialModule,
     FormsModule,
     AppRoutingModule,
-    OAuthModule.forRoot()
+    OAuthModule.forRoot(),
+    MatSidenavModule,
+    TictactoeGameModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
