@@ -1,0 +1,87 @@
+2019-07-18 12:52:16.379 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:16.676 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-07-18 12:52:18.659 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-07-18 12:52:18.711 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-07-18 12:52:44.716 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:44.725 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:44.730 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-18 12:52:45.159 +03:00 [Error] There was an attempt to create a player with the existing nickname.
+2019-07-18 12:52:45.614 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-07-18 12:52:45.616 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-18 12:52:45.635 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:45.645 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:52:45.820 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-07-18 12:52:45.824 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:52:49.898 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:49.906 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:49.909 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-07-18 12:52:50.279 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-18 12:52:50.284 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-07-18 12:52:50.316 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:50.327 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:50.329 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:52:50.374 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:50.462 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:52:50.466 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-18 12:52:50.468 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:52:50.584 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:52:50.615 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:52:50.808 +03:00 [Information] Completed connection handshake. Using HubProtocol '"json"'.
+2019-07-18 12:56:46.249 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:56:46.251 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:56:46.257 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-18 12:56:46.259 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:56:46.269 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:56:46.344 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:56:46.370 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:56:46.517 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:56:46.541 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:56:46.553 +03:00 [Information] Completed connection handshake. Using HubProtocol '"json"'.
+2019-07-18 12:57:42.842 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:57:42.851 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:57:42.854 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-07-18 12:58:54.266 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:58:54.372 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:58:54.666 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:58:58.974 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:58:58.988 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:58:59.063 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-07-18 12:59:07.857 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-18 12:59:07.877 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-07-18 12:59:07.905 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:59:07.909 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:59:07.918 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:59:07.928 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:59:07.958 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:59:07.986 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:59:08.010 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:59:08.090 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-18 12:59:08.092 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:59:08.120 +03:00 [Information] Completed connection handshake. Using HubProtocol '"json"'.
+2019-07-18 12:59:50.270 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:59:50.295 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:59:50.296 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:59:50.310 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-18 12:59:50.320 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 12:59:50.414 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:59:50.445 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:59:50.602 +03:00 [Information] CORS policy execution successful.
+2019-07-18 12:59:50.645 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 12:59:50.673 +03:00 [Information] Completed connection handshake. Using HubProtocol '"json"'.
+2019-07-18 13:00:02.061 +03:00 [Information] CORS policy execution successful.
+2019-07-18 13:00:02.063 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-07-18 13:00:02.277 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-07-18 13:00:02.285 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-07-18 13:00:06.465 +03:00 [Information] CORS policy execution successful.
+2019-07-18 13:00:06.469 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 13:00:06.472 +03:00 [Information] CORS policy execution successful.
+2019-07-18 13:00:06.498 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-18 13:00:06.503 +03:00 [Information] CORS policy execution successful.
+2019-07-18 13:00:06.503 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-18 13:00:06.531 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:00:06.605 +03:00 [Information] CORS policy execution successful.
+2019-07-18 13:00:06.633 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-18 13:00:06.651 +03:00 [Information] Completed connection handshake. Using HubProtocol '"json"'.
+2019-07-18 13:00:10.023 +03:00 [Information] CORS policy execution successful.
+2019-07-18 13:00:10.030 +03:00 [Information] CORS policy execution successful.
+2019-07-18 13:00:10.033 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'

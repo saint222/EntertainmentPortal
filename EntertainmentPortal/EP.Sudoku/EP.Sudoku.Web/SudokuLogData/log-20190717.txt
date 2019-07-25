@@ -1,0 +1,73 @@
+2019-07-17 12:15:47.964 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:15:48.356 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-07-17 12:15:55.012 +03:00 [Information] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[EP.Sudoku.Logic.Models.Player, EP.Sudoku.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+2019-07-17 12:15:55.117 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetAllPlayerAsync (EP.Sudoku.Web)"'
+2019-07-17 12:15:58.901 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:15:58.912 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:15:58.922 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-17 12:15:59.501 +03:00 [Error] There was an attempt to create a player with the existing nickname.
+2019-07-17 12:15:59.541 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-17 12:15:59.547 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-17 12:16:19.633 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:16:19.645 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:16:19.646 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-17 12:16:19.655 +03:00 [Error] There was an attempt to create a player with the existing nickname.
+2019-07-17 12:16:20.345 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-07-17 12:16:20.347 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-17 12:16:20.388 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:16:20.392 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 12:16:20.580 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-07-17 12:16:20.582 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 12:16:24.770 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:16:24.783 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:16:24.785 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-07-17 12:16:26.121 +03:00 [Error] An error occurred while updating the entries. See the inner exception for details.
+2019-07-17 12:16:26.124 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-17 12:16:26.130 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-07-17 12:32:24.406 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:24.480 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:24.647 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-17 12:32:25.505 +03:00 [Error] There was an attempt to create a player with the existing nickname.
+2019-07-17 12:32:25.887 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-07-17 12:32:25.899 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-17 12:32:25.945 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:25.954 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 12:32:26.380 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-07-17 12:32:26.382 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 12:32:28.971 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:28.987 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:28.989 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-07-17 12:32:29.279 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-17 12:32:29.285 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.CreateSession (EP.Sudoku.Web)"'
+2019-07-17 12:32:29.348 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:29.348 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:29.352 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 12:32:29.426 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:29.588 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-17 12:32:29.590 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 12:32:29.598 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:29.936 +03:00 [Information] Completed connection handshake. Using HubProtocol '"json"'.
+2019-07-17 12:32:45.919 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:45.922 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 12:32:45.929 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:45.935 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Session"'.
+2019-07-17 12:32:45.942 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.SessionsController.GetSessionByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 12:32:46.064 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:46.150 +03:00 [Information] CORS policy execution successful.
+2019-07-17 12:32:46.176 +03:00 [Information] Completed connection handshake. Using HubProtocol '"json"'.
+2019-07-17 12:32:54.552 +03:00 [Fatal] Message: Hello!.
+2019-07-17 12:33:14.618 +03:00 [Fatal] Message: How are you?.
+2019-07-17 17:42:46.884 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+2019-07-17 19:49:37.755 +03:00 [Information] CORS policy execution successful.
+2019-07-17 19:49:37.807 +03:00 [Information] CORS policy execution successful.
+2019-07-17 19:49:37.911 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-17 19:49:39.171 +03:00 [Error] There was an attempt to create a player with the existing nickname.
+2019-07-17 19:49:39.758 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-07-17 19:49:39.794 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.CreatePlayer (EP.Sudoku.Web)"'
+2019-07-17 19:49:39.827 +03:00 [Information] CORS policy execution successful.
+2019-07-17 19:49:39.841 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 19:49:40.247 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.Sudoku.Logic.Models.Player"'.
+2019-07-17 19:49:40.250 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.PlayersController.GetPlayerByIdAsync (EP.Sudoku.Web)"'
+2019-07-17 19:57:45.654 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+2019-07-17 21:04:44.010 +03:00 [Information] Sending file. Request path: '"/oauth2-redirect.html"'. Physical path: '"N/A"'
+2019-07-17 21:05:08.940 +03:00 [Information] The file "/oauth2-redirect.html" was not modified
