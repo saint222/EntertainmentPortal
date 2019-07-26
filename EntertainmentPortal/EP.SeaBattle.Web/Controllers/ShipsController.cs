@@ -9,10 +9,15 @@ using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using NJsonSchema.Annotations;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using System.Linq;
 
 namespace EP.SeaBattle.Web.Controllers
 {
-
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class ShipsController : ControllerBase
     {
@@ -32,7 +37,13 @@ namespace EP.SeaBattle.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            //var accessToken = await HttpContext.GetTokenAsync("access_token"); //Authentication.GetTokenAsync("access_token");
+            //var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
+            //var claims = result.Principal.Claims.Select(c => $"{c.Type}: {c.Value}");
+            
+            var UserID = User.FindFirst("sub")?.Value;
+            var UserName = User.FindFirst("name")?.Value;
+            var UserEmail = User.FindFirst("email")?.Value;
             var result = await _mediator.Send(model);
             return result.IsFailure
                 ? (IActionResult)BadRequest(result.Error)

@@ -17,11 +17,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace EP.SeaBattle.Web.Controllers
 {
 
-    //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    // [Authorize(AuthenticationSchemes = "Bearer")]
-    //[Authorize(AuthenticationSchemes = "Google")]
-    //[Authorize(AuthenticationSchemes = "Facebook")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class PlayerController : ControllerBase
     {
@@ -47,7 +43,7 @@ namespace EP.SeaBattle.Web.Controllers
                 ? (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);
         }
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        
         [HttpGet("api/GetAllPlayers")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Players collection is empty")]

@@ -18,5 +18,6 @@ namespace EP.SeaBattle.Data.Models
         public GameDb Game { get; set; }
         public ICollection<ShipDb> Ships { get; set; }
         public ICollection<ShotDb> Shots { get; set; }
+        public string UserId { get; set; }
     }
 }

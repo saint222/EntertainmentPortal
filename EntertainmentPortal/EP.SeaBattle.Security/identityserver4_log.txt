@@ -587,3 +587,452 @@ Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such tab
 2019-07-25 19:09:49.492 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
 2019-07-25 19:09:49.492 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
 2019-07-25 19:09:49.499 +03:00 [DBG] Start key discovery request
+2019-07-25 22:53:12.039 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-25 22:53:12.333 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-25 22:53:12.459 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-25 22:53:12.460 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-25 22:53:12.460 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-25 22:53:12.460 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-25 22:53:12.460 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-25 22:53:12.460 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-25 22:53:16.010 +03:00 [DBG] Login Url: /Account/Login
+2019-07-25 22:53:16.024 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-25 22:53:16.024 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-25 22:53:16.024 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-25 22:53:16.024 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-25 22:53:16.024 +03:00 [DBG] Error Url: /home/error
+2019-07-25 22:53:16.025 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-25 23:17:16.957 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-25 23:17:19.360 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-25 23:17:19.361 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-25 23:17:19.451 +03:00 [DBG] Start authorize request
+2019-07-25 23:17:19.592 +03:00 [DBG] No user present in authorize request
+2019-07-25 23:17:19.634 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 23:17:19.693 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:19.897 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 23:17:19.946 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"anonymous","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"VGh1IEp1bCAyNSAyMDE5IDIzOjE3OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"VGh1IEp1bCAyNSAyMDE5IDIzOjE3OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-25 23:17:20.142 +03:00 [INF] Showing login: User is not authenticated
+2019-07-25 23:17:20.861 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 23:17:20.861 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:20.862 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 23:17:20.867 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:27.564 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-25 23:17:30.197 +03:00 [INF] AuthenticationScheme: Identity.External signed in.
+2019-07-25 23:17:30.268 +03:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 109266222916341253781","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Евгений Л","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Евгений","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: Л","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: yauheni.lankevich@gmail.com"]
+2019-07-25 23:17:33.998 +03:00 [DBG] Augmenting SignInContext
+2019-07-25 23:17:34.005 +03:00 [DBG] Adding amr claim with value: external
+2019-07-25 23:17:34.040 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-25 23:17:34.052 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-25 23:17:34.053 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 23:17:34.053 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:34.053 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 23:17:34.466 +03:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"109266222916341253781","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","DisplayName":"Евгений Л","Endpoint":"UI","ClientId":"swagger","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOH76TITEBN:00000002","TimeStamp":"2019-07-25T20:17:34.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-25 23:17:34.469 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:34.493 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-25 23:17:34.495 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-25 23:17:34.495 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-25 23:17:34.508 +03:00 [DBG] Start authorize callback request
+2019-07-25 23:17:34.669 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-25 23:17:34.669 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 23:17:34.669 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:34.670 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 23:17:34.670 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"VGh1IEp1bCAyNSAyMDE5IDIzOjE3OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"fde37a38096d398d68c91b8cf28455f9","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"VGh1IEp1bCAyNSAyMDE5IDIzOjE3OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-25 23:17:34.810 +03:00 [DBG] user_consent grant with value: swagger|b92c2466-ff2b-4c60-8138-97258d57b504 not found in store.
+2019-07-25 23:17:34.810 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-25 23:17:34.810 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-25 23:17:34.928 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 23:17:34.929 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:34.929 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 23:17:34.929 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:58.894 +03:00 [DBG] CORS request made for path: /consent from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-25 23:17:59.142 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 23:17:59.143 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:59.143 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 23:17:59.146 +03:00 [INF] {"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RequestedScopes":["sea-battle-2019"],"GrantedScopes":["sea-battle-2019"],"ConsentRemembered":true,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLOH76TITEBL:00000003","TimeStamp":"2019-07-25T20:17:59.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-25 23:17:59.309 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:59.345 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-25 23:17:59.345 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-25 23:17:59.345 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-25 23:17:59.346 +03:00 [DBG] Start authorize callback request
+2019-07-25 23:17:59.353 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-25 23:17:59.353 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 23:17:59.353 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:17:59.354 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 23:17:59.354 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"VGh1IEp1bCAyNSAyMDE5IDIzOjE3OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"fde37a38096d398d68c91b8cf28455f9","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"VGh1IEp1bCAyNSAyMDE5IDIzOjE3OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-25 23:17:59.359 +03:00 [DBG] user_consent grant with value: swagger|b92c2466-ff2b-4c60-8138-97258d57b504 not found in store.
+2019-07-25 23:17:59.359 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-25 23:17:59.368 +03:00 [INF] User consented to scopes: ["sea-battle-2019"]
+2019-07-25 23:17:59.371 +03:00 [DBG] User indicated to remember consent for scopes: ["sea-battle-2019"]
+2019-07-25 23:17:59.376 +03:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-25 23:17:59.421 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-25 23:17:59.455 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-25 23:17:59.456 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-25 23:18:00.024 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****9CGA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITEBN:00000003","TimeStamp":"2019-07-25T20:18:00.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-25 23:18:00.030 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"VGh1IEp1bCAyNSAyMDE5IDIzOjE3OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-25 23:18:00.106 +03:00 [DBG] Augmenting SignInContext
+2019-07-25 23:18:00.107 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-25 23:18:11.180 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-25 23:18:11.192 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-25 23:18:11.193 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-25 23:18:11.199 +03:00 [DBG] Start discovery request
+2019-07-25 23:18:11.506 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-25 23:18:11.507 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-25 23:18:11.507 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-25 23:18:11.513 +03:00 [DBG] Start key discovery request
+2019-07-25 23:36:08.653 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-25 23:36:08.654 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-25 23:36:08.654 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-25 23:36:08.654 +03:00 [DBG] Start authorize request
+2019-07-25 23:36:08.655 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-25 23:36:08.655 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 23:36:08.655 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 23:36:08.657 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 23:36:08.658 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"VGh1IEp1bCAyNSAyMDE5IDIzOjM2OjA4IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"fde37a38096d398d68c91b8cf28455f9","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"VGh1IEp1bCAyNSAyMDE5IDIzOjM2OjA4IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-25 23:36:08.815 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-25 23:36:08.815 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-25 23:36:08.816 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-25 23:36:08.816 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-25 23:36:08.829 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****l1Pw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITEBV:00000001","TimeStamp":"2019-07-25T20:36:08.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-25 23:36:08.914 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"VGh1IEp1bCAyNSAyMDE5IDIzOjM2OjA4IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-25 23:37:29.817 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-25 23:37:29.819 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-25 23:37:29.819 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-25 23:37:29.819 +03:00 [DBG] Start discovery request
+2019-07-25 23:37:29.992 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-25 23:37:29.997 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-25 23:37:29.998 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-25 23:37:29.998 +03:00 [DBG] Start key discovery request
+2019-07-25 23:38:00.298 +03:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://jwt.io
+2019-07-25 23:38:00.303 +03:00 [DBG] Client list checked and origin: https://jwt.io is not allowed
+2019-07-25 23:38:00.304 +03:00 [WRN] CorsPolicyService did not allow origin: https://jwt.io
+2019-07-25 23:38:00.304 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-25 23:38:00.304 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-25 23:38:00.305 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-25 23:38:00.305 +03:00 [DBG] Start discovery request
+2019-07-26 00:13:24.851 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 00:13:24.895 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 00:13:49.718 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-26 00:13:50.599 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-26 00:13:50.600 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-26 00:13:50.637 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-26 00:13:50.663 +03:00 [INF] {"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","DisplayName":"Евгений Л","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOH76TITEC2:00000003","TimeStamp":"2019-07-25T21:13:50.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-26 00:13:51.477 +03:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2019-07-26 00:13:51.610 +03:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2019-07-26 00:13:51.610 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2019-07-26 00:13:51.650 +03:00 [DBG] Processing signout callback request
+2019-07-26 00:13:52.011 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 00:13:52.012 +03:00 [DBG] No client front-channel logout URLs
+2019-07-26 00:13:52.012 +03:00 [DBG] No client back-channel logout URLs
+2019-07-26 00:13:52.012 +03:00 [INF] Successful signout callback.
+2019-07-26 00:13:52.012 +03:00 [DBG] No client front-channel iframe urls
+2019-07-26 00:13:52.012 +03:00 [DBG] No client back-channel iframe urls
+2019-07-26 00:13:58.023 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-26 00:14:10.843 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-26 00:14:13.607 +03:00 [INF] AuthenticationScheme: Identity.External signed in.
+2019-07-26 00:14:13.868 +03:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 109266222916341253781","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Евгений Л","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Евгений","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: Л","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: yauheni.lankevich@gmail.com"]
+2019-07-26 00:14:14.599 +03:00 [DBG] Augmenting SignInContext
+2019-07-26 00:14:14.600 +03:00 [DBG] Adding amr claim with value: external
+2019-07-26 00:14:14.600 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-26 00:14:14.616 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-26 00:14:14.617 +03:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"109266222916341253781","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","DisplayName":"Евгений Л","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOH76TITEC4:00000006","TimeStamp":"2019-07-25T21:14:14.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-26 00:14:15.170 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 00:41:46.805 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 00:41:47.014 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 00:41:47.064 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 00:41:47.064 +03:00 [DBG] Start authorize request
+2019-07-26 00:41:47.105 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 00:41:47.106 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 00:41:47.106 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 00:41:47.329 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 00:41:47.495 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAwOjQxOjQ2IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"b412bb68edeebd36503de71ce26fcfd7","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAwOjQxOjQ2IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 00:41:49.462 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-26 00:41:49.487 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 00:41:49.488 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 00:41:49.488 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 00:41:49.816 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****jI4g","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITEC7:00000001","TimeStamp":"2019-07-25T21:41:49.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 00:41:49.817 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDAwOjQxOjQ2IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 00:41:49.818 +03:00 [DBG] Augmenting SignInContext
+2019-07-26 00:41:49.819 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-26 00:42:37.579 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-26 00:42:37.636 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-26 00:42:37.636 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-26 00:42:37.645 +03:00 [DBG] Start discovery request
+2019-07-26 00:42:37.953 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-26 00:42:37.967 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-26 00:42:37.968 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-26 00:42:37.968 +03:00 [DBG] Start key discovery request
+2019-07-26 00:49:34.158 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 00:49:34.185 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 00:49:34.185 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 00:49:34.185 +03:00 [DBG] Start authorize request
+2019-07-26 00:49:34.185 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 00:49:34.185 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 00:49:34.185 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 00:49:34.186 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 00:49:34.186 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAwOjQ5OjMyIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"b412bb68edeebd36503de71ce26fcfd7","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAwOjQ5OjMyIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 00:49:34.354 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-26 00:49:34.354 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 00:49:34.354 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 00:49:34.354 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 00:49:34.570 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****xf8g","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITECE:00000001","TimeStamp":"2019-07-25T21:49:34.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 00:49:34.570 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDAwOjQ5OjMyIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 00:49:50.054 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-26 00:49:50.082 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-26 00:49:50.082 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-26 00:49:50.082 +03:00 [DBG] Start discovery request
+2019-07-26 00:49:50.524 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-26 00:49:50.525 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-26 00:49:50.525 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-26 00:49:50.525 +03:00 [DBG] Start key discovery request
+2019-07-26 01:10:22.609 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 01:10:22.610 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 01:10:22.611 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 01:10:22.611 +03:00 [DBG] Start authorize request
+2019-07-26 01:10:22.611 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:10:22.611 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 01:10:22.611 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 01:10:22.612 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 01:10:22.613 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjEwOjIxIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"b412bb68edeebd36503de71ce26fcfd7","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAxOjEwOjIxIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 01:10:22.850 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-26 01:10:22.850 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 01:10:22.850 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 01:10:22.850 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:10:22.983 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****VU9w","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITECF:00000001","TimeStamp":"2019-07-25T22:10:22.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 01:10:22.983 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjEwOjIxIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 01:11:32.716 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 01:11:32.717 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 01:11:32.717 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 01:11:32.717 +03:00 [DBG] Start authorize request
+2019-07-26 01:11:32.718 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:11:32.718 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 01:11:32.745 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 01:11:32.746 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 01:11:32.746 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjExOjMyIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"b412bb68edeebd36503de71ce26fcfd7","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAxOjExOjMyIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 01:11:32.750 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-26 01:11:32.772 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 01:11:32.773 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 01:11:32.781 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:11:32.802 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****3WaQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITECG:00000001","TimeStamp":"2019-07-25T22:11:32.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 01:11:32.802 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjExOjMyIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 01:16:14.288 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 01:16:14.312 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 01:16:14.312 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 01:16:14.312 +03:00 [DBG] Start authorize request
+2019-07-26 01:16:14.312 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:16:14.312 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 01:16:14.312 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 01:16:14.313 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 01:16:14.313 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjE2OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"b412bb68edeebd36503de71ce26fcfd7","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAxOjE2OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 01:16:14.560 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-26 01:16:14.561 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 01:16:14.561 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 01:16:14.561 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:16:14.632 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****Ac5g","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITECH:00000001","TimeStamp":"2019-07-25T22:16:14.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 01:16:14.633 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjE2OjEzIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 01:16:27.180 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-26 01:16:27.216 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-26 01:16:27.217 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-26 01:16:27.217 +03:00 [DBG] Start discovery request
+2019-07-26 01:16:27.451 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-26 01:16:27.452 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-26 01:16:27.454 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-26 01:16:27.455 +03:00 [DBG] Start key discovery request
+2019-07-26 01:28:39.796 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 01:28:40.255 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 01:28:40.255 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 01:28:40.255 +03:00 [DBG] Start authorize request
+2019-07-26 01:28:40.255 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:28:40.255 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 01:28:40.255 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 01:28:40.256 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 01:28:40.588 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjI4OjM3IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"b412bb68edeebd36503de71ce26fcfd7","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAxOjI4OjM3IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 01:28:40.588 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-26 01:28:40.588 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 01:28:40.588 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 01:28:40.588 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:28:40.792 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****gaZg","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITECI:00000001","TimeStamp":"2019-07-25T22:28:40.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 01:28:40.803 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjI4OjM3IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 01:28:53.059 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-26 01:28:53.063 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-26 01:28:53.063 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-26 01:28:53.064 +03:00 [DBG] Start discovery request
+2019-07-26 01:28:53.238 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-26 01:28:53.239 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-26 01:28:53.240 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-26 01:28:53.240 +03:00 [DBG] Start key discovery request
+2019-07-26 01:50:03.233 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 01:50:03.326 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 01:50:03.346 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 01:50:03.347 +03:00 [DBG] Start authorize request
+2019-07-26 01:50:03.454 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:50:03.455 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 01:50:03.455 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 01:50:03.464 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 01:50:03.479 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjUwOjAwIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"b412bb68edeebd36503de71ce26fcfd7","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAxOjUwOjAwIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 01:50:04.155 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-26 01:50:04.156 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 01:50:04.156 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 01:50:04.156 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:50:04.377 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****jFdw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITECJ:00000001","TimeStamp":"2019-07-25T22:50:04.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 01:50:04.377 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjUwOjAwIEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 01:50:28.091 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-26 01:50:28.093 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-26 01:50:28.093 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-26 01:50:28.093 +03:00 [DBG] Start discovery request
+2019-07-26 01:50:28.592 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-26 01:50:28.593 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-26 01:50:28.593 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-26 01:50:28.593 +03:00 [DBG] Start key discovery request
+2019-07-26 01:54:48.239 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 01:54:48.240 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 01:54:48.240 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 01:54:48.240 +03:00 [DBG] Start authorize request
+2019-07-26 01:54:48.269 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:54:48.270 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 01:54:48.270 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 01:54:48.282 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 01:54:48.282 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjU0OjQ4IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"b412bb68edeebd36503de71ce26fcfd7","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAxOjU0OjQ4IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 01:54:48.303 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-26 01:54:48.304 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 01:54:48.338 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 01:54:48.339 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 01:54:48.403 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****BhHQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH76TITECL:00000003","TimeStamp":"2019-07-25T22:54:48.0000000Z","ProcessId":12948,"LocalIpAddress":"127.0.0.1:22567","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 01:54:48.403 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDAxOjU0OjQ4IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 01:54:57.452 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-26 01:54:57.453 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-26 01:54:57.459 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-26 01:54:57.460 +03:00 [DBG] Start discovery request
+2019-07-26 01:54:57.813 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-26 01:54:57.814 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-26 01:54:57.814 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-26 01:54:57.818 +03:00 [DBG] Start key discovery request
+2019-07-26 02:25:59.006 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-26 02:25:59.255 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-26 02:25:59.375 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-26 02:25:59.376 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-26 02:25:59.376 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-26 02:25:59.376 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-26 02:25:59.376 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-26 02:25:59.376 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-26 02:26:03.668 +03:00 [DBG] Login Url: /Account/Login
+2019-07-26 02:26:03.675 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-26 02:26:03.676 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-26 02:26:03.676 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-26 02:26:03.676 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-26 02:26:03.676 +03:00 [DBG] Error Url: /home/error
+2019-07-26 02:26:03.676 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-26 02:27:12.824 +03:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-26 02:27:13.274 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-07-26 02:27:13.278 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-26 02:27:13.284 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-07-26 02:27:13.454 +03:00 [INF] {"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","DisplayName":"Евгений Л","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOHATQIRFMR:00000004","TimeStamp":"2019-07-25T23:27:13.0000000Z","ProcessId":4992,"LocalIpAddress":"127.0.0.1:29114","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-07-26 02:27:13.994 +03:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2019-07-26 02:27:14.010 +03:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2019-07-26 02:27:14.010 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2019-07-26 02:27:14.049 +03:00 [DBG] Processing signout callback request
+2019-07-26 02:27:14.199 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 02:27:14.199 +03:00 [DBG] No client front-channel logout URLs
+2019-07-26 02:27:14.199 +03:00 [DBG] No client back-channel logout URLs
+2019-07-26 02:27:14.199 +03:00 [INF] Successful signout callback.
+2019-07-26 02:27:14.199 +03:00 [DBG] No client front-channel iframe urls
+2019-07-26 02:27:14.199 +03:00 [DBG] No client back-channel iframe urls
+2019-07-26 02:27:16.457 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-26 02:27:18.791 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2019-07-26 02:27:21.355 +03:00 [INF] AuthenticationScheme: Identity.External signed in.
+2019-07-26 02:27:21.520 +03:00 [DBG] External claims: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: 109266222916341253781","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: Евгений Л","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: Евгений","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: Л","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress: yauheni.lankevich@gmail.com"]
+2019-07-26 02:27:21.729 +03:00 [DBG] Augmenting SignInContext
+2019-07-26 02:27:21.734 +03:00 [DBG] Adding amr claim with value: external
+2019-07-26 02:27:21.741 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-26 02:27:21.741 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-07-26 02:27:21.743 +03:00 [INF] {"Username":null,"Provider":"Google","ProviderUserId":"109266222916341253781","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","DisplayName":"Евгений Л","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOHATQIRFMU:00000004","TimeStamp":"2019-07-25T23:27:21.0000000Z","ProcessId":4992,"LocalIpAddress":"127.0.0.1:29114","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-26 02:31:30.932 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-26 02:31:31.040 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-26 02:31:31.060 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-26 02:31:31.060 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-26 02:31:31.060 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-26 02:31:31.060 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-26 02:31:31.061 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-26 02:31:31.061 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-26 02:31:31.719 +03:00 [DBG] Login Url: /Account/Login
+2019-07-26 02:31:31.722 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-26 02:31:31.722 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-26 02:31:31.723 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-26 02:31:31.723 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-26 02:31:31.723 +03:00 [DBG] Error Url: /home/error
+2019-07-26 02:31:31.723 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-26 02:34:18.419 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 02:34:18.444 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 02:34:18.444 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 02:34:18.466 +03:00 [DBG] Start authorize request
+2019-07-26 02:34:18.817 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 02:34:19.031 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 02:34:19.339 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 02:34:19.592 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 02:34:19.673 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAyOjM0OjE3IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"0b8bfab06c8b88aed5a29a8f4ba3a5a8","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAyOjM0OjE3IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 02:34:23.990 +03:00 [DBG] user_consent grant with value: swagger|b92c2466-ff2b-4c60-8138-97258d57b504 not found in store.
+2019-07-26 02:34:23.994 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-26 02:34:23.994 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-26 02:34:24.437 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 02:34:24.437 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 02:34:24.438 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 02:34:24.441 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 02:34:30.676 +03:00 [DBG] CORS request made for path: /consent from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-26 02:34:31.126 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 02:34:31.127 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 02:34:31.128 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 02:34:31.185 +03:00 [INF] {"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RequestedScopes":["sea-battle-2019"],"GrantedScopes":["sea-battle-2019"],"ConsentRemembered":true,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLOHB0SN9039:00000004","TimeStamp":"2019-07-25T23:34:31.0000000Z","ProcessId":10852,"LocalIpAddress":"127.0.0.1:27644","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-26 02:34:31.306 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 02:34:31.421 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-26 02:34:31.423 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-26 02:34:31.423 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-26 02:34:31.436 +03:00 [DBG] Start authorize callback request
+2019-07-26 02:34:31.448 +03:00 [DBG] User in authorize request: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 02:34:31.448 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 02:34:31.448 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 02:34:31.449 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 02:34:31.449 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44362/swagger/oauth2-redirect.html"],"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"sea-battle-2019","State":"RnJpIEp1bCAyNiAyMDE5IDAyOjM0OjE3IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"0b8bfab06c8b88aed5a29a8f4ba3a5a8","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44362/swagger/oauth2-redirect.html","scope":"sea-battle-2019","state":"RnJpIEp1bCAyNiAyMDE5IDAyOjM0OjE3IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 02:34:31.461 +03:00 [DBG] user_consent grant with value: swagger|b92c2466-ff2b-4c60-8138-97258d57b504 not found in store.
+2019-07-26 02:34:31.461 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-26 02:34:31.496 +03:00 [INF] User consented to scopes: ["sea-battle-2019"]
+2019-07-26 02:34:31.499 +03:00 [DBG] User indicated to remember consent for scopes: ["sea-battle-2019"]
+2019-07-26 02:34:31.508 +03:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 02:34:31.576 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 02:34:31.598 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 02:34:31.600 +03:00 [DBG] Getting claims for access token for subject: b92c2466-ff2b-4c60-8138-97258d57b504
+2019-07-26 02:34:32.617 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","Scopes":"sea-battle-2019","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****VFkw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOHB0SN9039:00000005","TimeStamp":"2019-07-25T23:34:32.0000000Z","ProcessId":10852,"LocalIpAddress":"127.0.0.1:27644","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 02:34:32.637 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"b92c2466-ff2b-4c60-8138-97258d57b504","ClientId":"swagger","RedirectUri":"https://localhost:44362/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDAyOjM0OjE3IEdNVCswMzAwIChNb3Njb3cgU3RhbmRhcmQgVGltZSk=","Scope":"sea-battle-2019","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 02:34:32.896 +03:00 [DBG] Augmenting SignInContext
+2019-07-26 02:34:32.960 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-26 02:34:50.448 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-26 02:34:50.451 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-26 02:34:50.451 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-26 02:34:50.467 +03:00 [DBG] Start discovery request
+2019-07-26 02:34:51.185 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-07-26 02:34:51.187 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-07-26 02:34:51.187 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-07-26 02:34:51.212 +03:00 [DBG] Start key discovery request
