@@ -1,0 +1,17 @@
+.cell {
+  height: 41px;
+  width: 41px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.no_border {
+  border: none !important;
+}
+
+.table {
+  min-width: 450px;
+  min-height: 450px;
+  max-width: 450px;
+  max-height: 450px;
+}
