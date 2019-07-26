@@ -1,4 +1,4 @@
-<form [formGroup]="sessionGroup" (ngSubmit)="onSubmit(form)" #form="ngForm">
+<form [formGroup]="sessionGroup" (ngSubmit)="onSubmit(form)" #form="ngForm" class = "forM">
     <div class="form-group difficylty-level">
       <label for="">Difficilty level</label>
       <select class="form-control" name="" id="" formControlName="level">
@@ -9,7 +9,7 @@
       </select>
     </div>
     <div class="form-group button-new-game">
-      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid" style = "font-size: 20px">
         Create
       </button>
     </div>
