@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 
 namespace EP.Balda.Logic.Handlers
 {
-    public class GetPlayersWordsHandler : IRequestHandler<GetPlayersWords, List<string>>
+    public class GetPlayersOpponentWordsHandler : IRequestHandler<GetPlayersOpponentWords, List<string>>
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetPlayersWordsHandler(BaldaGameDbContext context, IMapper mapper)
+        public GetPlayersOpponentWordsHandler(BaldaGameDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public async Task<List<string>> Handle(GetPlayersWords request, CancellationToken cancellationToken)
+        public async Task<List<string>> Handle(GetPlayersOpponentWords request, CancellationToken cancellationToken)
         {
 
             var words = await _context.PlayerWords
-                .Where(m => m.GameId == request.GameId && m.PlayerId == request.PlayerId && m.IsChosenByOpponnent == false)
+                .Where(m => m.GameId == request.GameId && m.PlayerId == request.PlayerId && m.IsChosenByOpponnent == true)
                 .OrderBy(w => w.Id)
                 .Select(w => w.Word.Word)
                 .ToListAsync();

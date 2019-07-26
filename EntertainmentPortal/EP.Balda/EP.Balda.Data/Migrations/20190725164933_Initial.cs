@@ -42,7 +42,6 @@ namespace EP.Balda.Data.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Score = table.Column<int>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -212,7 +211,10 @@ namespace EP.Balda.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     MapId = table.Column<long>(nullable: false),
                     InitWord = table.Column<string>(nullable: true),
-                    IsGameOver = table.Column<bool>(nullable: false)
+                    IsGameOver = table.Column<bool>(nullable: false),
+                    IsPlayersTurn = table.Column<bool>(nullable: false),
+                    PlayerScore = table.Column<int>(nullable: false),
+                    OpponentScore = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -253,13 +255,15 @@ namespace EP.Balda.Data.Migrations
                 name: "PlayerWords",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false),
                     PlayerId = table.Column<string>(nullable: false),
                     WordId = table.Column<int>(nullable: false),
-                    GameId = table.Column<long>(nullable: false)
+                    GameId = table.Column<long>(nullable: false),
+                    IsChosenByOpponnent = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlayerWords", x => new { x.PlayerId, x.WordId, x.GameId });
+                    table.PrimaryKey("PK_PlayerWords", x => new { x.Id, x.PlayerId, x.WordId, x.GameId });
                     table.ForeignKey(
                         name: "FK_PlayerWords_Games_GameId",
                         column: x => x.GameId,
@@ -337,6 +341,11 @@ namespace EP.Balda.Data.Migrations
                 name: "IX_PlayerWords_GameId",
                 table: "PlayerWords",
                 column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PlayerWords_PlayerId",
+                table: "PlayerWords",
+                column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerWords_WordId",

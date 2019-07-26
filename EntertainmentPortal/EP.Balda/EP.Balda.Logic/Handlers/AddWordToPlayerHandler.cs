@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace EP.Balda.Logic.Handlers
 {
     public class
-        AddWordToPlayerHandler : IRequestHandler<AddWordToPlayerCommand, Result<Map>>
+        AddWordToPlayerHandler : IRequestHandler<AddWordToPlayerCommand, Result<Game>>
     {
         private readonly BaldaGameDbContext _context;
         private readonly IMapper _mapper;
@@ -26,14 +26,14 @@ namespace EP.Balda.Logic.Handlers
             _mapper = mapper;
         }
 
-        public async Task<Result<Map>> Handle(AddWordToPlayerCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Game>> Handle(AddWordToPlayerCommand request, CancellationToken cancellationToken)
         {
             var player = await _context.Users
                 .Where(p => p.Id == request.PlayerId)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (player == null)
-                return Result.Fail<Map>(
+                return Result.Fail<Game>(
                     $"There is no player's id {request.PlayerId} in database");
 
             var playerGame = await _context.PlayerGames
@@ -42,7 +42,7 @@ namespace EP.Balda.Logic.Handlers
                     cancellationToken);
 
             if (playerGame == null)
-                return Result.Fail<Map>(
+                return Result.Fail<Game>(
                     $"There is no relation of player's id {request.PlayerId} with game's id {request.GameId} in database");
 
             var game = await _context.Games.Where(g => g.Id == request.GameId)
@@ -58,32 +58,25 @@ namespace EP.Balda.Logic.Handlers
                 var cell = map.Cells.FirstOrDefault(c => c.Id == cellFormWord.Id);
 
                 if (cell == null)
-                    return Result.Fail<Map>(
+                    return Result.Fail<Game>(
                         $"There is no cell with id {cellFormWord} in map's id {map.Id} in database");
 
                 cellsFormWord.Add(cell);
             }
 
             if (!IsWordCorrect(request.CellsThatFormWord))
-                return Result.Fail<Map>("Some empty cells are chosen");
+                return Result.Fail<Game>("Some empty cells are chosen");
 
             string wordFormed = GetSelectedWord(request.CellsThatFormWord);
 
             if (wordFormed == game.InitWord)
-                return Result.Fail<Map>("It is initial word");
+                return Result.Fail<Game>("It is initial word");
 
             var word = _context.Words
                 .SingleOrDefault(w => w.Word == wordFormed.ToLower());
 
             if (word == null)
-                return Result.Fail<Map>($"There is no word {wordFormed} in word database");
-
-            var playerWordDb = new PlayerWord
-            {
-                PlayerId = request.PlayerId,
-                WordId = word.Id,
-                GameId = request.GameId
-            };
+                return Result.Fail<Game>($"There is no word {wordFormed} in word database");
 
             var playerWord = await _context.PlayerWords
                 .FirstOrDefaultAsync(
@@ -91,21 +84,33 @@ namespace EP.Balda.Logic.Handlers
                     cancellationToken);
 
             if (playerWord != null)
-                return Result.Fail<Map>("Word has already been used");
+                return Result.Fail<Game>("Word has already been used");
 
-            //TODO Add when create player
+            var playerWordDb = new PlayerWord
+            {
+                PlayerId = request.PlayerId,
+                WordId = word.Id,
+                GameId = request.GameId,
+            };
+
+            if (game.IsPlayersTurn)
+            {
+                playerWordDb.IsChosenByOpponnent = false;
+                game.PlayerScore += CountWordLetters(word.Word);
+                game.IsPlayersTurn = false;
+            }
+            else
+            {
+                playerWordDb.IsChosenByOpponnent = true;
+                game.OpponentScore += CountWordLetters(word.Word);
+                game.IsPlayersTurn = true;
+            }
 
             if (player.PlayerWords == null)
                 player.PlayerWords = new List<PlayerWord>();
 
             player.PlayerWords.Add(playerWordDb);
-
-            if(IsGameOver(map.Cells.ToList()))
-            {
-                game.IsGameOver = true;
-                _context.Entry(game).State = EntityState.Deleted;
-            }
-
+            
             foreach (var cellDb in cellsFormWord)
             {
                 foreach (var cellRequest in request.CellsThatFormWord)
@@ -117,15 +122,21 @@ namespace EP.Balda.Logic.Handlers
                 }
             }
 
+            if (IsGameOver(map.Cells.ToList()))
+            {
+                game.IsGameOver = true;
+                _context.Entry(game).State = EntityState.Deleted;
+            }
+
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return Result.Ok(_mapper.Map<Map>(map));
+                return Result.Ok(_mapper.Map<Game>(game));
             }
             catch (DbUpdateException ex)
             {
-                return Result.Fail<Map>(ex.Message);
+                return Result.Fail<Game>(ex.Message);
             }
         }
 
@@ -212,6 +223,21 @@ namespace EP.Balda.Logic.Handlers
             }
 
             return isGameOver;
+        }
+
+        /// <summary>
+        /// The method counts letters in word.
+        /// </summary>
+        public int CountWordLetters(string word)
+        {
+            int count = 0;
+
+            foreach (var ch in word)
+            {
+                count++;
+            }
+
+            return count;
         }
     }
 }

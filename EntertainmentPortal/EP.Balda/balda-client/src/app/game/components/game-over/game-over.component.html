@@ -1,1 +1,46 @@
-<p>GAME OVER</p>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  </head>
+  <div class="container-gameover">
+    <h1 id="gameover">Game Over</h1>
+  </div>
+     <div>
+        <button class="btn btn-secondary continue" (click)="onPlayClick()">Play Again</button>
+    </div>
+    <div class="container-fluid">
+        <div id="left" class="row">
+            <div class="col">
+          <b>Player {{ player.userName }} </b>
+          <br>
+          <br>
+            <b>Words:</b><br>
+            <ul class="listWords">
+              <li *ngFor="let word of playerWords">
+                  {{ word }}
+              </li>
+          </ul>
+          <p>Total: {{ playerScore }} </p>
+        </div>
+        </div>
+
+        <div id="right">
+            <div class="col">
+              <p><b>Opponent</b></p>
+              <br>
+            <b>Words:</b>
+            <ul class="listWords">
+                <li *ngFor="let word of opponentWords">
+                    {{ word }}
+                </li>
+            </ul>
+            <p>Total: {{ opponentScore }} </p>
+              </div>
+        </div>
+
+        <div id="center">
+            <div class="col">
+
+        </div>
+        </div>
+        </div>
+

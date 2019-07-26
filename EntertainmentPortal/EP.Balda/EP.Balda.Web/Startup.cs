@@ -66,6 +66,8 @@ namespace EP.Balda.Web
             services.AddSwaggerDocument(cfg =>
             {
                 cfg.SchemaType = SchemaType.OpenApi3;
+                cfg.Title = "Balda Game";
+                cfg.Description = "Balda - linguistic board game in which it is necessary to make up words by means of the letters added in the certain way on the square game board.";
             });
 
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);

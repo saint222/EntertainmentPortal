@@ -1,4 +1,4 @@
-import { MapWithStatus } from './../../models/mapWithStatus';
+import { CurrentGame } from '../../models/currentGame';
 import { Player } from './../../models/player';
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
@@ -19,52 +19,56 @@ export class PlaygroundComponent implements OnInit {
   selectedLetters = '';
   mapid: string;
   gameid: string;
+  playerId: string;
   alphabet: string[] = [];
   alphabetP1: string[] = [];
   alphabetP2: string[] = [];
   currentLetter: string;
   tempLetter: Cell = new Cell();
   errorText: string;
-  words: string[] = [];
-  total = 0;
-  mapWithStatus: MapWithStatus = new MapWithStatus();
+  playerWords: string[] = [];
+  opponentWords: string[] = [];
+  isPlayerTurn: boolean;
+  isGameOver: boolean;
+  playerScore: number;
+  opponentScore: number;
+  mapWithStatus: CurrentGame = new CurrentGame();
 
   constructor(private gameService: GameService, private route: ActivatedRoute,  private router: Router) {
    }
 
   ngOnInit() {
     this.gameService.getCurrentGame().subscribe(m => {
-      this.cells = m.cells;
       console.log(m);
-    });
-
-    this.gameService.getPlayer(this.route.snapshot.queryParamMap.get('userId')).subscribe(p => { this.player = p; },
-      (err: HttpResponseBase) => {
-        return console.log(err.statusText);
-      });
-    this.gameService.getMap(this.route.snapshot.queryParamMap.get('mapId')).subscribe(p => {
-        this.cells = p;
-        this.getPlayersWord();
-      },
-        (err: HttpErrorResponse) => {
-          this.errorText = err.error;
+      this.cells = m.cells;
+      this.gameid = m.gameId;
+      this.playerId = m.userId;
+      this.gameService.changeGameSource(m);
+      this.gameService.getPlayer(this.playerId).subscribe(p => { this.player = p; },
+        (err: HttpResponseBase) => {
           return console.log(err.statusText);
         });
-    this.mapid = this.route.snapshot.queryParamMap.get('mapId');
-    this.gameService.getAlphabet().subscribe(a => {
-        this.alphabet = a;
-        this.divideAlphabetInParts(this.alphabet);
-      },
-      (err: HttpResponseBase) => {
-        return console.log(err.statusText);
-      });
-    this.gameid = this.route.snapshot.queryParamMap.get('gameId');
-    this.gameService.getPlayersWords(this.gameid).subscribe(w => {
-        this.words = w;
-      },
-      (err: HttpResponseBase) => {
-        return console.log(err.statusText);
-      });
+      this.gameService.getAlphabet().subscribe(a => {
+          this.alphabet = a;
+          this.divideAlphabetInParts(this.alphabet);
+        },
+        (err: HttpResponseBase) => {
+          return console.log(err.statusText);
+        });
+      this.gameService.getPlayersWords(this.gameid).subscribe(w => {
+          this.playerWords = w;
+        },
+        (err: HttpResponseBase) => {
+          return console.log(err.statusText);
+        });
+      this.gameService.getPlayersOpponentWords(this.gameid).subscribe(w => {
+          this.opponentWords = w;
+        },
+        (err: HttpResponseBase) => {
+          return console.log(err.statusText);
+        });
+    },
+    (err => this.router.navigateByUrl('startGame')));
   }
 
   selectCell(chosenCell: Cell) {
@@ -88,17 +92,41 @@ export class PlaygroundComponent implements OnInit {
 
    onSendClick() {
     const gameAndCells = new GameAndCells();
-    gameAndCells.gameId = this.route.snapshot.queryParamMap.get('gameId');
     gameAndCells.CellsThatFormWord = this.selectedCells;
+    gameAndCells.gameId = this.gameid;
     this.gameService.sendWord(gameAndCells).subscribe(w => {
-      this.cells = w;
-      if (this.isGameOver(this.cells)) {
-        this.router.navigateByUrl('gameover');
+      console.log(w);
+      this.isGameOver = w.isGameOver;
+      this.opponentScore = w.opponentScore;
+      this.playerScore = w.playerScore;
+      this.isPlayerTurn = w.isPlayersTurn;
+      this.gameService.getCurrentGame().subscribe(m => {
+        this.cells = m.cells;
+      });
+      if (this.isGameOver) {
+        this.router.navigateByUrl('gameOver');
       }
-      this.getPlayersWord();
+      if (this.isPlayerTurn) {
+        this.gameService.getPlayersOpponentWords(this.gameid).subscribe(p => {
+          this.opponentWords = p;
+        },
+        (err: HttpResponseBase) => {
+          return console.log(err.statusText);
+        });
+      } else {
+        this.gameService.getPlayersWords(this.gameid).subscribe(w2 => {
+          this.playerWords = w2;
+        },
+        (err: HttpResponseBase) => {
+          return console.log(err.statusText);
+        });
+      }
     },
     (err: HttpErrorResponse) => {
       this.errorText = err.error;
+      setTimeout(() => {
+        this.errorText = '';
+    }, 5000);
       return console.log(err.statusText);
     });
 
@@ -107,6 +135,7 @@ export class PlaygroundComponent implements OnInit {
 
    onCancelClick() {
     this.currentLetter = '';
+    this.tempLetter.letter = '';
     this.selectedCells.forEach(element => {
       element.checked = false;
     });
@@ -118,32 +147,6 @@ export class PlaygroundComponent implements OnInit {
       this.currentLetter = letter;
    }
 
-   getPlayersWord() {
-     this.gameService.getPlayersWords(this.route.snapshot.queryParamMap.get('gameId'))
-     .subscribe(w => {
-      this.words = w;
-      this.total = 0;
-      this.words.forEach(word => {
-        this.total += word.length;
-      });
-     });
-   }
-
-   isGameOver(cells: Cell[][]) {
-     let isOver = true;
-     // tslint:disable-next-line: prefer-for-of
-     for (let i = 0; i < cells.length; i++) {
-       for (let j = 0; j < cells.length; j++) {
-         if (cells[i][j].letter == null) {
-            isOver = false;
-            return isOver;
-         }
-         continue;
-       }
-     }
-     return isOver;
-   }
-
    divideAlphabetInParts(alph: string[]) {
     for (let i = 0; i < 13; i++) {
       this.alphabetP1.push(alph[i]);
@@ -151,5 +154,12 @@ export class PlaygroundComponent implements OnInit {
     for (let i = 13; i < 26; i++) {
       this.alphabetP2.push(alph[i]);
     }
+   }
+
+   onLeaveButton() {
+      this.gameService.leaveGame(this.gameid).subscribe(g => {
+          console.log(g);
+          this.router.navigateByUrl('startGame');
+        });
    }
 }

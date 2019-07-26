@@ -6,6 +6,11 @@
     public class PlayerWord
     {
         /// <summary>
+        /// Id property. Represents Id of the entry.
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// PlayerId property. Represents Id of Player.
         /// </summary>
         public string PlayerId { get; set; }
@@ -35,5 +40,10 @@
         /// GameId property. Represents Id of game.
         /// </summary>
         public long GameId { get; set; }
+
+        /// <summary>
+        /// IsChosenByOpponnent property. Shows if word was chosen by opponent in single game.
+        /// </summary>
+        public bool IsChosenByOpponnent { get; set; }
     }
 }

@@ -1,29 +1,36 @@
 <div class="container-fluid">
 <div id="left" class="row">
     <div class="col">
-  <b>Player Info:</b><br>
-  UserName: {{ player.userName }} <br>
-  First name: {{ player.firstName }} <br>
-  Last name: {{ player.lastName }} <br>
+  <b>Player {{ player.userName }} </b>
+  <br>
   <br>
     <b>Words:</b><br>
     <ul class="listWords">
-      <li *ngFor="let word of words">
+      <li *ngFor="let word of playerWords">
           {{ word }}
       </li>
   </ul>
-  <p>Total: {{ total }} </p>
+  <p>Total: {{ playerScore }} </p>
 </div>
 </div>
 
 <div id="right">
     <div class="col">
-      <p>RIGHT</p>
-      {{ currPl }}
+      <p><b>Opponent</b></p>
+      <br>
+    <b>Words:</b>
+    <ul class="listWords">
+        <li *ngFor="let word of opponentWords">
+            {{ word }}
+        </li>
+    </ul>
+    <p>Total: {{ opponentScore }} </p>
       </div>
 </div>
 
 <div id="center">
+  <p *ngIf="isPlayerTurn">Player's Turn</p>
+  <p *ngIf="!isPlayerTurn">Opponent's Turn</p>
     <div class="col">
   <table class="fixed table-bordered table-dark">
     <tbody>
@@ -59,5 +66,8 @@
       </tbody>
     </table>
 </div>
+<div class="leave">
+    <button type="button" class="btn btn-secondary" (click)="onLeaveButton()">Leave Game</button>
+    </div>
 </div>
 </div>

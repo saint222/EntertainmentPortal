@@ -1,9 +1,9 @@
+import { CurrentGame } from './../../models/currentGame';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Size } from '../../models/size';
 import { GameService } from '../../services/game.service';
-import { HttpResponseBase } from '@angular/common/http';
-import { Game } from '../../models/game';
+import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-start-game',
@@ -18,7 +18,7 @@ export class StartGameComponent implements OnInit {
     this.mapSize = 5;
   }
 
-  game: Game;
+  game: CurrentGame;
 
   sizes = [
      new Size(3, '3x3' ),
@@ -26,9 +26,7 @@ export class StartGameComponent implements OnInit {
      new Size(7, '7x7' ),
   ];
 
-  ngOnInit() {
-    this.gameService.currentGame.subscribe(game => this.game = game);
-  }
+  ngOnInit() { }
 
   onStartClick() {
       this.gameService.createNewGame(this.mapSize)
@@ -37,6 +35,6 @@ export class StartGameComponent implements OnInit {
           this.gameService.changeGameSource(b),
           this.router.navigateByUrl('playground');
         },
-        (err: HttpResponseBase) => console.log(err.statusText));
+        (err: HttpErrorResponse) => console.log(err.error));
       }
 }

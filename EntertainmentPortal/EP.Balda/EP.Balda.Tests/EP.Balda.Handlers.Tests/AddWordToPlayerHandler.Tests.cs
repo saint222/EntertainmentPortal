@@ -130,7 +130,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
                 GameId = 1
             };
 
-            Result<Map> result;
+            Result<Game> result;
 
             using (var context = new BaldaGameDbContext(options))
             {
@@ -169,7 +169,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
                 UserName = "Login"
             };
 
-            Result<Map> result;
+            Result<Game> result;
 
             using (var context = new BaldaGameDbContext(options))
             {
@@ -224,7 +224,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
                 MapId = 1
             };
 
-            Result<Map> result;
+            Result<Game> result;
 
             using (var context = new BaldaGameDbContext(options))
             {
@@ -308,7 +308,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var cells = new List<CellDb>() { cell1, cell2, cell3 };
 
-            Result<Map> result;
+            Result<Game> result;
 
             using (var context = new BaldaGameDbContext(options))
             {

@@ -1,8 +1,6 @@
 ﻿using EP.Balda.Data.Models;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
-using EP.Balda.Web.Models;
-using EP.Balda.Web.Services;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -55,37 +53,6 @@ namespace EP.Balda.Web.Controllers
             }
         }
 
-        [HttpGet("api/currentgame")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(MapWithStatus), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
-        public async Task<IActionResult> GetCurrentGame()
-        {
-            _logger.LogDebug(
-                $"Action: {ControllerContext.ActionDescriptor.ActionName}");
-
-            if (UserId != null)
-            {
-                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName}");
-
-                var result = await _mediator.Send(new GetCurrentGame() { Id = UserId });
-
-                var cells = Helpers.Do2DimArray(result.Value.Map);
-                var mapWithStatus = new MapWithStatus()
-                {
-                    Cells = cells,
-                    IsGameOver = result.Value.IsGameOver
-                };
-
-                return Ok(mapWithStatus);
-            }
-            else
-            {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}");
-
-                return NotFound();
-            }
-        }
-
         [HttpDelete("api/player/delete")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Player successfully deleted")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description = "Player can't be deleted")]
@@ -118,14 +85,40 @@ namespace EP.Balda.Web.Controllers
         }
 
         [HttpGet("api/player/words")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Player successfully deleted")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description = "Player can't be deleted")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description = "Words not found")]
         public async Task<IActionResult> GetPlayersWordsAsync([FromQuery]long gameId)
         {
             _logger.LogDebug(
                            $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: gameId = {gameId}");
 
             var result = await _mediator.Send(new GetPlayersWords() { GameId = gameId, PlayerId = UserId });
+
+            if (result.Count() >= 0)
+            {
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                $"Parameters: gameId = {gameId}");
+
+                return Ok(result);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                    $"Parameters: gameId = {gameId}");
+
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("api/playerOpponent/words")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description = "Words not found")]
+        public async Task<IActionResult> GetPlayersOpponentWordsAsync([FromQuery]long gameId)
+        {
+            _logger.LogDebug(
+                           $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: gameId = {gameId}");
+
+            var result = await _mediator.Send(new GetPlayersOpponentWords() { GameId = gameId, PlayerId = UserId });
 
             if (result.Count() >= 0)
             {

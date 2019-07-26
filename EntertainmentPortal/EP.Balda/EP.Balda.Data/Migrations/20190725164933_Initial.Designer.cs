@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EP.Balda.Data.Migrations
 {
     [DbContext(typeof(BaldaGameDbContext))]
-    [Migration("20190723204050_Initial")]
+    [Migration("20190725164933_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,13 @@ namespace EP.Balda.Data.Migrations
 
                     b.Property<bool>("IsGameOver");
 
+                    b.Property<bool>("IsPlayersTurn");
+
                     b.Property<long>("MapId");
+
+                    b.Property<int>("OpponentScore");
+
+                    b.Property<int>("PlayerScore");
 
                     b.HasKey("Id");
 
@@ -106,8 +112,6 @@ namespace EP.Balda.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<int>("Score");
-
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
@@ -142,15 +146,21 @@ namespace EP.Balda.Data.Migrations
 
             modelBuilder.Entity("EP.Balda.Data.Models.PlayerWord", b =>
                 {
+                    b.Property<int>("Id");
+
                     b.Property<string>("PlayerId");
 
                     b.Property<int>("WordId");
 
                     b.Property<long>("GameId");
 
-                    b.HasKey("PlayerId", "WordId", "GameId");
+                    b.Property<bool>("IsChosenByOpponnent");
+
+                    b.HasKey("Id", "PlayerId", "WordId", "GameId");
 
                     b.HasIndex("GameId");
+
+                    b.HasIndex("PlayerId");
 
                     b.HasIndex("WordId");
 

@@ -12,35 +12,25 @@ import { StartGameComponent } from './game/components/start-game/start-game.comp
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
-  {path: 'startGame/:userId', component: LayoutComponent,
+  {path: 'startGame', component: LayoutComponent,
     children: [
       { path: '', component:
       StartGameComponent}
-    ]},
-    {path: 'startGame', component: LayoutComponent,
-    children: [
-      { path: '', component:
-      StartGameComponent}
-    ]},
-    {path: 'rules', component: LayoutComponent,
+  ]},
+  {path: 'rules', component: LayoutComponent,
     children: [
       { path: '', component:
       RulesComponent}
-    ]},
-    {path: 'contacts', component: LayoutComponent,
+  ]},
+  {path: 'contacts', component: LayoutComponent,
     children: [
       { path: '', component:
       ContactsComponent}
-    ]},
-    {path: 'welcome', component: LayoutComponent,
+  ]},
+  {path: 'welcome', component: LayoutComponent,
     children: [
       { path: '', component:
       WelcomeComponent}
-    ]},
-  {path: 'playground/:userId:gameId:mapId', component: LayoutComponent,
-  children: [
-    { path: '', component:
-    PlaygroundComponent}
   ]},
   {path: 'playground', component: LayoutComponent,
   children: [

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EP.Balda.Logic.Models
+﻿namespace EP.Balda.Logic.Models
 {
     /// <summary>
     /// <c>Game</c> model class.
@@ -34,13 +32,18 @@ namespace EP.Balda.Logic.Models
         public bool IsGameOver { get; set; }
 
         /// <summary>
-        /// The field represents player's turn in the game.
+        /// The field represents if it's player's turn in the game.
         /// </summary>
-        public string PlayerIdTurn { get; set; }
+        public bool IsPlayersTurn { get; set; }
 
         /// <summary>
-        /// The field represents players in the game.
+        /// Score property. Represents player's Score.
         /// </summary>
-        public List<Player> Players { get; set; }
+        public int PlayerScore { get; set; }
+
+        /// <summary>
+        /// Score property. Represents player's opponent Score.
+        /// </summary>
+        public int OpponentScore { get; set; }
     }
 }

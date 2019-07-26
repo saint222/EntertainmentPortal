@@ -1,7 +1,11 @@
 import { Cell } from './cell';
 
-export class MapWithStatus {
+export class CurrentGame {
         IsGameOver: boolean;
 
         cells: Cell[][];
+
+        gameId: string;
+
+        userId: string;
       }

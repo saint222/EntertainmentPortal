@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using EP.Balda.Web.Models;
+using EP.Balda.Web.Services;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -48,6 +51,41 @@ namespace EP.Balda.Web.Controllers
             }
         }
 
+        [HttpGet("api/currentGame")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(CurrentGame), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
+        public async Task<IActionResult> GetCurrentGame()
+        {
+            string UserId = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+            if (UserId != null)
+            {
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+                var result = await _mediator.Send(new GetCurrentGame() { Id = UserId });
+
+                var cells = Helpers.Do2DimArray(result.Value.Map);
+                var currentGame = new CurrentGame()
+                {
+                    Cells = cells,
+                    IsGameOver = result.Value.IsGameOver,
+                    GameId = result.Value.Id,
+                    UserId = UserId
+                };
+
+                return Ok(currentGame);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+                return NotFound();
+            }
+        }
+
         [HttpPost("api/game")]
         [SwaggerResponse(HttpStatusCode.Created, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Game can't be created")]
@@ -74,7 +112,6 @@ namespace EP.Balda.Web.Controllers
                     $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
                     $"Game was created at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
 
-                //return Created("api/game", result.Value);
                 return Created("api/game", result.Value);
             }
             else
@@ -83,6 +120,83 @@ namespace EP.Balda.Web.Controllers
                 "Game can't be created");
 
                 return BadRequest(result.Error);
+            }
+        }
+
+        [HttpDelete("api/leaveGame")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(string), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Game can't be stopped")]
+        public async Task<IActionResult> LeaveGameAsync([FromQuery]long gameID)
+        {
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+            if (!isAuthenticated)
+            {
+                return BadRequest("User is not authorized");
+            }
+
+            var model = new LeaveGameCommand();
+            model.GameId = gameID;
+
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+            var result = await _mediator.Send(model);
+
+            if (result.IsSuccess)
+            {
+                _logger.LogInformation(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                    $"Game was created at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+
+                return Ok(result);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                "Game can't be created");
+
+                return BadRequest(result.Error);
+            }
+        }
+
+        [HttpPut("api/game/word")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> AddWordAsync([FromBody] GameAndCells gameAndCells)
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+                             $"Parameters: gameId = {gameAndCells.GameId}");
+
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+            if (!isAuthenticated)
+            {
+                return BadRequest("User is not authorized");
+            }
+
+            var model = new AddWordToPlayerCommand();
+            model.PlayerId = UserId;
+            model.GameId = gameAndCells.GameId;
+            model.CellsThatFormWord = gameAndCells.CellsThatFormWord;
+
+            var result = await _mediator.Send(model);
+
+            string word = Helpers.FormWordFromCells(gameAndCells.CellsThatFormWord);
+
+
+            if (result.IsSuccess)
+            {
+                _logger.LogInformation(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
+                    $"The word {word} was written at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+
+                return Ok(result.Value);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
+                $"Id = {model.PlayerId} - Word can't be written");
+
+                return BadRequest("Word " + word + ": " + result.Error);
             }
         }
     }

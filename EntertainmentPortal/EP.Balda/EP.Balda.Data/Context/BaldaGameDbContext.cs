@@ -45,7 +45,7 @@ namespace EP.Balda.Data.Context
 
             var playerWordEntry = modelBuilder.Entity<PlayerWord>();
             playerWordEntry
-            .HasKey(pw => new { pw.PlayerId, pw.WordId, pw.GameId });
+            .HasKey(pw => new { pw.Id, pw.PlayerId, pw.WordId, pw.GameId });
             modelBuilder.Entity<PlayerWord>()
                 .HasOne(pw => pw.Player)
                 .WithMany(pw => pw.PlayerWords)

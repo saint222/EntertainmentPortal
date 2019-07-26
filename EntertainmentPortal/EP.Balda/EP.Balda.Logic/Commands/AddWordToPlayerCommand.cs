@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace EP.Balda.Logic.Commands
 {
-    public class AddWordToPlayerCommand : IRequest<Result<Map>>
+    public class AddWordToPlayerCommand : IRequest<Result<Game>>
     {
         public string PlayerId { get; set; }
 

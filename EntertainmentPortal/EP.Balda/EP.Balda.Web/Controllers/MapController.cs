@@ -65,48 +65,5 @@ namespace EP.Balda.Web.Controllers
             return alphabet != null ? (IActionResult)Ok(alphabet) : BadRequest();
 
         }
-
-        [HttpPut("api/map/word")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> AddWordAsync([FromBody] GameAndCells gameAndCells)
-        {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                             $"Parameters: gameId = {gameAndCells.GameId}");
-
-            bool isAuthenticated = User.Identity.IsAuthenticated;
-            if (!isAuthenticated)
-            {
-                return BadRequest("User is not authorized");
-            }
-
-            var model = new AddWordToPlayerCommand();
-            model.PlayerId = UserId;
-            model.GameId = gameAndCells.GameId;
-            model.CellsThatFormWord = gameAndCells.CellsThatFormWord;
-
-            var result = await _mediator.Send(model);
-
-            string word = Helpers.FormWordFromCells(gameAndCells.CellsThatFormWord);
-
-            
-            if (result.IsSuccess)
-            {
-                _logger.LogInformation(
-                    $"Action: {ControllerContext.ActionDescriptor.ActionName} : - " +
-                    $"The word {word} was written at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
-
-                var array = Helpers.Do2DimArray(result.Value);
-
-                return Ok(array);
-            }
-            else
-            {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                $"Id = {model.PlayerId} - Word can't be written");
-
-                return BadRequest("Word " + word + ": " + result.Error);
-            }
-        }
     }
 }
