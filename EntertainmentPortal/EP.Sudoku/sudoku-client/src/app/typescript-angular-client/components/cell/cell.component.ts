@@ -1,5 +1,5 @@
 import { Cell } from './../../model/cell';
-import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { SessionsService } from '../../api/api';
 
@@ -16,15 +16,23 @@ export class CellComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateCell(value: number) {
-
-    this.cell.value = value;
+  updateCell(value: string) {
+    if ( !isNaN(+value) && typeof +value === 'number') {
+      this.cell.value = +value;
+    } else {
+      this.cell.value = 0;
+      this.sessionService.updateSession.next('A letter is entered, you must enter a number!');
+      console.log('A letter is entered, you must enter a number!');
+      return false;
+    }
 
     this.sessionService.sessionsSetCellValue(this.cell).subscribe(
       s => {
+        console.log('subscribe');
         this.sessionService.updateSession.next();
       },
       (err: HttpErrorResponse) => {
+        console.log('subscribe Error');
         this.cell.value = 0;
         this.sessionService.updateSession.next(err.error);
         return console.log(err.error);

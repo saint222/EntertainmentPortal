@@ -341,10 +341,10 @@ EntertainmentPortal/\.idea/\.idea\.EntertainmentPortal/\.idea/
 EntertainmentPortal/\.idea/\.idea\.EntertainmentPortal/
 
 
-EntertainmentPortal/EP.Sudoku.Web/SudokuLogData/
-EntertainmentPortal/EP.Sudoku.Data/sudoku.db
-EntertainmentPortal/EP.Sudoku.Security/AspIdUsers.db
-EntertainmentPortal/EP.Sudoku.Security/identityserver4_log.txt
+EntertainmentPortal/EP.Sudoku/EP.Sudoku.Web/SudokuLogData/
+EntertainmentPortal/EP.Sudoku/EP.Sudoku.Data/sudoku.db
+EntertainmentPortal/EP.Sudoku/EP.Sudoku.Security/AspIdUsers.db
+EntertainmentPortal/EP.Sudoku/EP.Sudoku.Security/identityserver4_log.txt
 
 EntertainmentPortal/EP\.Hangman\.Web/Logs/
 
