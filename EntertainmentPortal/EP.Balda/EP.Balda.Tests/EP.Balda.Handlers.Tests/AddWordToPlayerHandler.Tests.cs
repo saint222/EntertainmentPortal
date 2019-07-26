@@ -35,14 +35,15 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             bool isCorrect;
 
+            var cell1 = new Cell() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
+            var cell2 = new Cell() { Id = 2, MapId = 1, X = 0, Y = 1, Letter = 'o' };
+            var cell3 = new Cell() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = 'g' };
+
+            var cells = new List<Cell>() { cell1, cell2, cell3 };
+
             using (var context = new BaldaGameDbContext(options))
             {
                 var service = new AddWordToPlayerHandler(context, _mapper);
-                var cell1 = new Cell() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
-                var cell2 = new Cell() { Id = 2, MapId = 1, X = 0, Y = 1, Letter = 'o' };
-                var cell3 = new Cell() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = 'g' };
-
-                var cells = new List<Cell>() { cell1, cell2, cell3 };
 
                 context.Words.Add(new WordDb() { Word = "dog" });
                 context.SaveChanges();
@@ -64,15 +65,16 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             bool isCorrect;
 
+            var cell1 = new Cell() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
+            var cell2 = new Cell() { Id = 2, MapId = 1, X = 0, Y = 2, Letter = 'o' };
+            var cell3 = new Cell() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = 'g' };
+
+            var cells = new List<Cell>() { cell1, cell2, cell3 };
+
             using (var context = new BaldaGameDbContext(options))
             {
                 var service = new AddWordToPlayerHandler(context, _mapper);
-                var cell1 = new Cell() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
-                var cell2 = new Cell() { Id = 2, MapId = 1, X = 0, Y = 2, Letter = 'o' };
-                var cell3 = new Cell() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = 'g' };
-
-                var cells = new List<Cell>() { cell1, cell2, cell3 };
-
+                
                 context.Words.Add(new WordDb() { Id = 1, Word = "dog" });
                 context.SaveChanges();
                 isCorrect = service.IsWordCorrect(cells);
@@ -93,15 +95,16 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             string word;
 
+            var cell1 = new Cell() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
+            var cell2 = new Cell() { Id = 2, MapId = 1, X = 0, Y = 2, Letter = 'o' };
+            var cell3 = new Cell() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = 'g' };
+
+            var cells = new List<Cell>() { cell1, cell2, cell3 };
+
             using (var context = new BaldaGameDbContext(options))
             {
                 var service = new AddWordToPlayerHandler(context, _mapper);
-                var cell1 = new Cell() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
-                var cell2 = new Cell() { Id = 2, MapId = 1, X = 0, Y = 2, Letter = 'o' };
-                var cell3 = new Cell() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = 'g' };
-
-                var cells = new List<Cell>() { cell1, cell2, cell3 };
-
+                
                 context.SaveChanges();
                 word = service.GetSelectedWord(cells);
             }
@@ -341,15 +344,15 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             bool isOver;
 
+            var cell1 = new CellDb() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
+            var cell2 = new CellDb() { Id = 2, MapId = 1, X = 0, Y = 2, Letter = 'o' };
+            var cell3 = new CellDb() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = 'g' };
+
+            var cells = new List<CellDb>() { cell1, cell2, cell3 };
+
             using (var context = new BaldaGameDbContext(options))
             {
                 var service = new AddWordToPlayerHandler(context, _mapper);
-                var cell1 = new CellDb() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
-                var cell2 = new CellDb() { Id = 2, MapId = 1, X = 0, Y = 2, Letter = 'o' };
-                var cell3 = new CellDb() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = 'g' };
-
-                var cells = new List<CellDb>() { cell1, cell2, cell3 };
-
                 isOver = service.IsGameOver(cells);
             }
 
@@ -368,21 +371,42 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             bool isOver;
 
+            var cell1 = new CellDb() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
+            var cell2 = new CellDb() { Id = 2, MapId = 1, X = 0, Y = 2, Letter = 'o' };
+            var cell3 = new CellDb() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = null };
+
+            var cells = new List<CellDb>() { cell1, cell2, cell3 };
+
             using (var context = new BaldaGameDbContext(options))
             {
                 var service = new AddWordToPlayerHandler(context, _mapper);
-                var cell1 = new CellDb() { Id = 1, MapId = 1, X = 0, Y = 0, Letter = 'd' };
-                var cell2 = new CellDb() { Id = 2, MapId = 1, X = 0, Y = 2, Letter = 'o' };
-                var cell3 = new CellDb() { Id = 3, MapId = 1, X = 1, Y = 1, Letter = null };
-
-                var cells = new List<CellDb>() { cell1, cell2, cell3 };
-
                 isOver = service.IsGameOver(cells);
             }
 
             using (var context = new BaldaGameDbContext(options))
             {
                 Assert.IsFalse(isOver);
+            }
+        }
+
+        [Test]
+        public void TestCountWordLetters()
+        {
+            var options = new DbContextOptionsBuilder<BaldaGameDbContext>()
+               .UseInMemoryDatabase(databaseName: "TestCountWordLetters")
+               .Options;
+
+            int result;
+
+            using (var context = new BaldaGameDbContext(options))
+            {
+                var service = new AddWordToPlayerHandler(context, _mapper);
+                result = service.CountWordLetters("12345");
+            }
+
+            using (var context = new BaldaGameDbContext(options))
+            {
+                Assert.IsTrue(result == 5);
             }
         }
     }

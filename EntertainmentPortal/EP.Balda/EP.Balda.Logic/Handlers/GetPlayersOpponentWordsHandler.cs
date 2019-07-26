@@ -13,12 +13,10 @@ namespace EP.Balda.Logic.Handlers
     public class GetPlayersOpponentWordsHandler : IRequestHandler<GetPlayersOpponentWords, List<string>>
     {
         private readonly BaldaGameDbContext _context;
-        private readonly IMapper _mapper;
 
-        public GetPlayersOpponentWordsHandler(BaldaGameDbContext context, IMapper mapper)
+        public GetPlayersOpponentWordsHandler(BaldaGameDbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<List<string>> Handle(GetPlayersOpponentWords request, CancellationToken cancellationToken)

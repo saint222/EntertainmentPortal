@@ -27,6 +27,11 @@ namespace EP.Balda.Logic.Handlers
             var game = await _context.Games.Where(g => g.Id == request.GameId)
                .FirstOrDefaultAsync(cancellationToken);
 
+            if(game == null)
+            {
+                return Result.Fail<Game>($"Game with id {request.GameId} doesn't exist");
+            }
+
             game.IsGameOver = true;
             _context.Entry(game).State = EntityState.Deleted;
 
