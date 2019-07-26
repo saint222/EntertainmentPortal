@@ -2701,3 +2701,184 @@ System.IO.IOException: Failed to bind to address http://localhost:5000. ---> Sys
 2019-07-25 15:09:41.420 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","Scopes":"tictactoe_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****-uBQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOGV2P86M5V:00000002","TimeStamp":"2019-07-25T12:09:41.0000000Z","ProcessId":3904,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
 2019-07-25 15:09:41.437 +03:00 [DBG] Authorize endpoint response
 {"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ClientId":"swagger","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","State":"VGh1IEp1bCAyNSAyMDE5IDE1OjA5OjM0IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"tictactoe_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-25 21:40:32.738 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-25 21:40:32.982 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-25 21:40:33.039 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-25 21:40:33.042 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-25 21:40:33.056 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-25 21:40:33.059 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-25 21:40:33.060 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-25 21:40:33.062 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-25 21:40:55.565 +03:00 [DBG] Login Url: /Account/Login
+2019-07-25 21:40:55.576 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-25 21:40:55.580 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-25 21:40:55.582 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-25 21:40:55.583 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-25 21:40:55.585 +03:00 [DBG] Error Url: /home/error
+2019-07-25 21:40:55.587 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-25 21:54:50.137 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-25 21:54:50.237 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-25 21:54:50.277 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-25 21:54:50.371 +03:00 [DBG] Start authorize request
+2019-07-25 21:54:50.463 +03:00 [DBG] User in authorize request: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-25 21:54:50.507 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 21:54:50.626 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 21:54:50.939 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 21:54:51.020 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html","http://localhost:33224/swagger/oauth2-redirect.html"],"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"tictactoe_api","State":"VGh1IEp1bCAyNSAyMDE5IDIxOjU0OjQ5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"bfb43a3dbf29319795d732fc3c646147","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"tictactoe_api","state":"VGh1IEp1bCAyNSAyMDE5IDIxOjU0OjQ5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-25 21:54:51.281 +03:00 [DBG] user_consent grant with value: swagger|2e58ed03-ff02-4f5d-aa7a-6c0f0216b885 not found in store.
+2019-07-25 21:54:51.285 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-25 21:54:51.287 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-25 21:54:51.571 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 21:54:51.575 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 21:54:51.583 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 21:54:51.596 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 21:54:55.166 +03:00 [DBG] CORS request made for path: /consent from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-25 21:54:55.522 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 21:54:55.523 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 21:54:55.530 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 21:54:55.600 +03:00 [INF] {"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ClientId":"swagger","RequestedScopes":["tictactoe_api"],"GrantedScopes":["tictactoe_api"],"ConsentRemembered":true,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLOH5UG4C065:00000004","TimeStamp":"2019-07-25T18:54:55.0000000Z","ProcessId":19924,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-25 21:54:55.759 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 21:54:55.879 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-25 21:54:55.922 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-25 21:54:55.925 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-25 21:54:55.985 +03:00 [DBG] Start authorize callback request
+2019-07-25 21:54:56.023 +03:00 [DBG] User in authorize request: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-25 21:54:56.041 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 21:54:56.049 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 21:54:56.057 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 21:54:56.064 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html","http://localhost:33224/swagger/oauth2-redirect.html"],"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"tictactoe_api","State":"VGh1IEp1bCAyNSAyMDE5IDIxOjU0OjQ5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"bfb43a3dbf29319795d732fc3c646147","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"tictactoe_api","state":"VGh1IEp1bCAyNSAyMDE5IDIxOjU0OjQ5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-25 21:54:56.134 +03:00 [DBG] user_consent grant with value: swagger|2e58ed03-ff02-4f5d-aa7a-6c0f0216b885 not found in store.
+2019-07-25 21:54:56.155 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-25 21:54:56.210 +03:00 [INF] User consented to scopes: ["tictactoe_api"]
+2019-07-25 21:54:56.223 +03:00 [DBG] User indicated to remember consent for scopes: ["tictactoe_api"]
+2019-07-25 21:54:56.263 +03:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-25 21:54:56.522 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-25 21:54:56.732 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-25 21:54:56.742 +03:00 [DBG] Getting claims for access token for subject: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-25 21:54:57.436 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","Scopes":"tictactoe_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****fpFA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH5UG4C065:00000005","TimeStamp":"2019-07-25T18:54:57.0000000Z","ProcessId":19924,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-25 21:54:57.532 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ClientId":"swagger","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","State":"VGh1IEp1bCAyNSAyMDE5IDIxOjU0OjQ5IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"tictactoe_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-25 21:55:03.601 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-25 21:55:03.734 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-25 21:55:03.844 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-25 21:55:03.890 +03:00 [DBG] Start authorize request
+2019-07-25 21:55:03.913 +03:00 [DBG] User in authorize request: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-25 21:55:04.027 +03:00 [DBG] Start authorize request protocol validation
+2019-07-25 21:55:04.090 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-25 21:55:04.160 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-25 21:55:04.227 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html","http://localhost:33224/swagger/oauth2-redirect.html"],"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"tictactoe_api","State":"VGh1IEp1bCAyNSAyMDE5IDIxOjU1OjAzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"bfb43a3dbf29319795d732fc3c646147","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"tictactoe_api","state":"VGh1IEp1bCAyNSAyMDE5IDIxOjU1OjAzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-25 21:55:04.314 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-25 21:55:04.335 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-25 21:55:04.354 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-25 21:55:04.366 +03:00 [DBG] Getting claims for access token for subject: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-25 21:55:04.431 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","Scopes":"tictactoe_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****2JdA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH5UG4C068:00000001","TimeStamp":"2019-07-25T18:55:04.0000000Z","ProcessId":19924,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-25 21:55:04.450 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ClientId":"swagger","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","State":"VGh1IEp1bCAyNSAyMDE5IDIxOjU1OjAzIEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"tictactoe_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-25 22:19:25.713 +03:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-25 22:19:25.971 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-25 22:19:26.030 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-07-25 22:19:26.030 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-07-25 22:19:26.030 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-07-25 22:19:26.030 +03:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-07-25 22:19:26.031 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-07-25 22:19:26.031 +03:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-07-25 22:19:27.650 +03:00 [DBG] Login Url: /Account/Login
+2019-07-25 22:19:27.670 +03:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-25 22:19:27.673 +03:00 [DBG] Logout Url: /Account/Logout
+2019-07-25 22:19:27.673 +03:00 [DBG] ConsentUrl Url: /consent
+2019-07-25 22:19:27.674 +03:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-25 22:19:27.674 +03:00 [DBG] Error Url: /home/error
+2019-07-25 22:19:27.674 +03:00 [DBG] Error Id Parameter: errorId
+2019-07-25 22:19:27.736 +03:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-07-25 22:19:27.832 +03:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-07-25 22:19:32.634 +03:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-07-25 22:19:32.637 +03:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-07-25 22:19:32.786 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2019-07-25 22:19:32.815 +03:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-07-25 22:19:32.815 +03:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-07-25 22:19:33.509 +03:00 [ERR] An exception was thrown while deserializing the token.
+Microsoft.AspNetCore.Antiforgery.AntiforgeryValidationException: The antiforgery token could not be decrypted. ---> System.Security.Cryptography.CryptographicException: The key {452fef3a-c33c-4f6d-8f91-629b45286dc8} was not found in the key ring.
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.UnprotectCore(Byte[] protectedData, Boolean allowOperationsOnRevokedKeys, UnprotectStatus& status)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.DangerousUnprotect(Byte[] protectedData, Boolean ignoreRevocationErrors, Boolean& requiresMigration, Boolean& wasRevoked)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.Unprotect(Byte[] protectedData)
+   at Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgeryTokenSerializer.Deserialize(String serializedToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgeryTokenSerializer.Deserialize(String serializedToken)
+   at Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgery.GetCookieTokenDoesNotThrow(HttpContext httpContext)
+2019-07-25 22:19:41.248 +03:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-25 22:19:41.254 +03:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-07-25 22:19:41.256 +03:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-07-25 22:19:44.024 +03:00 [DBG] Augmenting SignInContext
+2019-07-25 22:19:44.034 +03:00 [DBG] Adding idp claim with value: local
+2019-07-25 22:19:44.035 +03:00 [DBG] Adding amr claim with value: pwd
+2019-07-25 22:19:44.035 +03:00 [DBG] Adding auth_time claim with value: 1564082384
+2019-07-25 22:19:44.054 +03:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-07-25 22:19:44.084 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-25 22:19:44.160 +03:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","DisplayName":"alice","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOH6K18945E:00000004","TimeStamp":"2019-07-25T19:19:44.0000000Z","ProcessId":8908,"LocalIpAddress":"127.0.0.1:42832","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-07-26 12:17:16.152 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 12:17:16.214 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 12:17:16.215 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 12:17:16.246 +03:00 [DBG] Start authorize request
+2019-07-26 12:17:16.321 +03:00 [DBG] User in authorize request: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-26 12:17:16.363 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 12:17:16.470 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 12:17:16.834 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 12:17:16.900 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html","http://localhost:33224/swagger/oauth2-redirect.html"],"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"tictactoe_api","State":"RnJpIEp1bCAyNiAyMDE5IDEyOjE3OjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"4cfb28d4c03b0fb90b3e8c6960870b37","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"tictactoe_api","state":"RnJpIEp1bCAyNiAyMDE5IDEyOjE3OjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 12:17:17.071 +03:00 [DBG] user_consent grant with value: swagger|2e58ed03-ff02-4f5d-aa7a-6c0f0216b885 not found in store.
+2019-07-26 12:17:17.072 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-26 12:17:17.072 +03:00 [INF] Showing consent: User has not yet consented
+2019-07-26 12:17:17.192 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 12:17:17.193 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 12:17:17.195 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 12:17:17.201 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 12:17:19.917 +03:00 [DBG] CORS request made for path: /consent from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-07-26 12:17:20.060 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 12:17:20.060 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 12:17:20.061 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 12:17:20.069 +03:00 [INF] {"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ClientId":"swagger","RequestedScopes":["tictactoe_api"],"GrantedScopes":["tictactoe_api"],"ConsentRemembered":true,"Category":"Grants","Name":"Consent granted","EventType":"Information","Id":4000,"Message":null,"ActivityId":"0HLOH6K18945H:00000003","TimeStamp":"2019-07-26T09:17:20.0000000Z","ProcessId":8908,"LocalIpAddress":"127.0.0.1:42832","RemoteIpAddress":"::1","$type":"ConsentGrantedEvent"}
+2019-07-26 12:17:20.230 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 12:17:20.254 +03:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-07-26 12:17:20.262 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-07-26 12:17:20.262 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-07-26 12:17:20.296 +03:00 [DBG] Start authorize callback request
+2019-07-26 12:17:20.319 +03:00 [DBG] User in authorize request: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-26 12:17:20.319 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 12:17:20.320 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 12:17:20.322 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 12:17:20.324 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html","http://localhost:33224/swagger/oauth2-redirect.html"],"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"tictactoe_api","State":"RnJpIEp1bCAyNiAyMDE5IDEyOjE3OjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"4cfb28d4c03b0fb90b3e8c6960870b37","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"tictactoe_api","state":"RnJpIEp1bCAyNiAyMDE5IDEyOjE3OjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 12:17:20.340 +03:00 [DBG] user_consent grant with value: swagger|2e58ed03-ff02-4f5d-aa7a-6c0f0216b885 not found in store.
+2019-07-26 12:17:20.340 +03:00 [DBG] Found no prior consent from consent store, consent is required
+2019-07-26 12:17:20.374 +03:00 [INF] User consented to scopes: ["tictactoe_api"]
+2019-07-26 12:17:20.380 +03:00 [DBG] User indicated to remember consent for scopes: ["tictactoe_api"]
+2019-07-26 12:17:20.399 +03:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-26 12:17:20.473 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 12:17:20.520 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 12:17:20.524 +03:00 [DBG] Getting claims for access token for subject: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-26 12:17:20.966 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","Scopes":"tictactoe_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****RTSQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH6K18945G:00000003","TimeStamp":"2019-07-26T09:17:20.0000000Z","ProcessId":8908,"LocalIpAddress":"127.0.0.1:42832","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 12:17:20.975 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ClientId":"swagger","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDEyOjE3OjE1IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"tictactoe_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2019-07-26 12:17:21.053 +03:00 [DBG] Augmenting SignInContext
+2019-07-26 12:17:21.055 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-07-26 12:17:31.189 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 12:17:48.139 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-26 12:17:48.142 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-26 12:17:48.142 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-26 12:17:48.142 +03:00 [DBG] Start authorize request
+2019-07-26 12:17:48.158 +03:00 [DBG] User in authorize request: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-26 12:17:48.158 +03:00 [DBG] Start authorize request protocol validation
+2019-07-26 12:17:48.158 +03:00 [DBG] client configuration validation for client swagger succeeded.
+2019-07-26 12:17:48.160 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-07-26 12:17:48.161 +03:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","AllowedRedirectUris":["https://localhost:44350/swagger/oauth2-redirect.html","http://localhost:33224/swagger/oauth2-redirect.html"],"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ResponseType":"token","ResponseMode":"fragment","GrantType":"implicit","RequestedScopes":"tictactoe_api","State":"RnJpIEp1bCAyNiAyMDE5IDEyOjE3OjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"4cfb28d4c03b0fb90b3e8c6960870b37","Raw":{"response_type":"token","client_id":"swagger","redirect_uri":"https://localhost:44350/swagger/oauth2-redirect.html","scope":"tictactoe_api","state":"RnJpIEp1bCAyNiAyMDE5IDEyOjE3OjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","realm":"realm"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-26 12:17:48.176 +03:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-07-26 12:17:48.177 +03:00 [DBG] Creating Implicit Flow response.
+2019-07-26 12:17:48.177 +03:00 [DBG] Getting claims for access token for client: swagger
+2019-07-26 12:17:48.177 +03:00 [DBG] Getting claims for access token for subject: 2e58ed03-ff02-4f5d-aa7a-6c0f0216b885
+2019-07-26 12:17:48.229 +03:00 [INF] {"ClientId":"swagger","ClientName":"Swagger Client","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","Endpoint":"Authorize","SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","Scopes":"tictactoe_api","GrantType":"implicit","Tokens":[{"TokenType":"access_token","TokenValue":"****Bm9A","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HLOH6K18945H:00000004","TimeStamp":"2019-07-26T09:17:48.0000000Z","ProcessId":8908,"LocalIpAddress":"127.0.0.1:42832","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2019-07-26 12:17:48.230 +03:00 [DBG] Authorize endpoint response
+{"SubjectId":"2e58ed03-ff02-4f5d-aa7a-6c0f0216b885","ClientId":"swagger","RedirectUri":"https://localhost:44350/swagger/oauth2-redirect.html","State":"RnJpIEp1bCAyNiAyMDE5IDEyOjE3OjQ3IEdNVCswMzAwICjQnNC+0YHQutCy0LAsINGB0YLQsNC90LTQsNGA0YLQvdC+0LUg0LLRgNC10LzRjyk=","Scope":"tictactoe_api","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}

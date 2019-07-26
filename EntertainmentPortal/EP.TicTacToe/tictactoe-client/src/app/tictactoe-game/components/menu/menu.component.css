@@ -1,4 +1,4 @@
-.body{
+.body {
   background-image: url(../../../../assets/images/menuboard.jpg);
   background-repeat: repeat-x;
   text-shadow: 1px 1px 2px black, 0 0 1em #6914ba;
@@ -7,8 +7,28 @@
   background-color: #413846;
 }
 
-.mrg{
+.mrg {
   margin: 0 0.5rem;
+}
+
+.usr{
+  margin: 0 1rem;
+  padding: 5px 2rem;
+  color: #983c56;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #ebdbc7;
+  font-size: large;
+  font-weight: bold;
+}
+
+.grd {
+  background-image: url(../../../../assets/images/grid.jpg);
+  color: black;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: large;
+  font-weight: bold;
+  background-size: 100%;
+  margin: 3px;
 }
 
 h1 {
