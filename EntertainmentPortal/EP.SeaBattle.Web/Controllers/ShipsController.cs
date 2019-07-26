@@ -86,8 +86,8 @@ namespace EP.SeaBattle.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-            //model.GameId = HttpContext.Session.GetString("game");
-            //model.PlayerId = HttpContext.Session.GetString("player");
+            model.GameId = HttpContext.Session.GetString("game");
+            model.PlayerId = HttpContext.Session.GetString("player");
             var result = await _mediator.Send(model);
             return result.HasValue ? Ok(result.Value)
                 :(IActionResult) Ok();

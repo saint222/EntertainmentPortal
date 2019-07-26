@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BattlefieldService } from './battlefield/services/battlefield.service';
 import { StorageServiceModule} from 'angular-webstorage-service';
+import { InfoComponent } from './info/info.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     AppComponent,
     CellComponent,
     FieldComponent,
-    ShipplacerComponent
+    ShipplacerComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

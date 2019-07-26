@@ -2,7 +2,7 @@ import { environment } from './../../../environments/environment.prod';
 import { ShootService } from './shoot.service';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cell } from 'src/app/models/cell';
 import { Ship } from 'src/app/models/ship';
 import { CellStatus } from 'src/app/models/cellStatus';
@@ -33,7 +33,7 @@ export class BattlefieldService {
 
   addShip(form: FormGroup) {
     const rank = form.value.rank;
-    this.http.post<Ship[]>(`${environment.base_url}api/Ships/add`, form.value).subscribe(data => {
+    this.http.post<Ship[]>(`${environment.base_url}api/Ships/add`, form.value, {withCredentials: true}).subscribe(data => {
       if (data != null && data !== undefined) {
         this.ships = data;
         this.ships.forEach(ship => this.drawShip(ship)); // тут рисуем корабли

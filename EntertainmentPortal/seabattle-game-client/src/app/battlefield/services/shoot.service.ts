@@ -5,6 +5,7 @@ import { Cell } from 'src/app/models/cell';
 import { CellStatus } from 'src/app/models/cellStatus';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { filter } from 'minimatch';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class ShootService {
   shots: Cell[]; // коллекция, которая передается в сервис
   shotField: Cell[][];
   enemyShots: Subject<Cell[]>;
+  endgameMessage: string;
   N = 10;
   constructor(private http: HttpClient) {
     this.shotField = this.createField();
@@ -23,14 +25,19 @@ export class ShootService {
 
   addShot(x: number, y: number, gameId: string, playerId: string) {
     const json = { x, y, gameId, playerId };
-    this.http.post<Cell[]>(`${environment.base_url}api/Shot/add`, json).subscribe(data => {
+    this.http.post<Cell[]>(`${environment.base_url}api/Shot/add`, json, {withCredentials: true}).subscribe(data => {
         this.shots = data;
         this.shots.forEach(shot => this.drawShot(shot)); // тут рисуем выстрелы
-
+        if (this.shots.filter(shot => shot.status === CellStatus.Destroyed).length >= 20) {
+          this.endgameMessage = 'ВЫ ПОБЕДИЛИ';
+        }
         const jsonGet = { gameId: '1', answeredPlayerId: '1'};
-        this.http.get<Cell[]>(`${environment.base_url}api/Shot/get`, { params: jsonGet }). subscribe(dataGet => {
+        this.http.get<Cell[]>(`${environment.base_url}api/Shot/get`, { params: jsonGet, withCredentials: true }). subscribe(dataGet => {
            if (dataGet != null && dataGet !== undefined) {
              this.enemyShots.next(dataGet);
+           }
+           if (dataGet.filter(shot => shot.status === CellStatus.Destroyed).length >= 20) {
+             this.endgameMessage = 'ВЫ ПРОИГРАЛИ';
            }
          });
     });

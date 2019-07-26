@@ -15,6 +15,9 @@ using NJsonSchema.Annotations;
 using FluentValidation.AspNetCore;
 using System.ComponentModel;
 using Microsoft.AspNetCore.SignalR;
+using EP.SeaBattle.Data.Context;
+using AutoMapper;
+using EP.SeaBattle.Data.Models;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -23,12 +26,14 @@ namespace EP.SeaBattle.Web.Controllers
     public class ShotController : ControllerBase
     {
         private readonly IMediator _mediator;
-        //private readonly IHubContext<ShotsHub> _hubContext;
+        private readonly SeaBattleDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ShotController(IMediator mediator)//, IHubContext<ShotsHub> hubContext)
+        public ShotController(IMediator mediator, SeaBattleDbContext seaBattleDbContext, IMapper mapper)
         {
             _mediator = mediator;
-            //_hubContext = hubContext;
+            _context = seaBattleDbContext;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -42,6 +47,9 @@ namespace EP.SeaBattle.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            model.GameId = HttpContext.Session.GetString("game");
+            model.PlayerId = HttpContext.Session.GetString("player");
             var result = await _mediator.Send(model);
             return result.HasValue ? Ok(result.Value)
                 : (IActionResult)Ok();
@@ -51,6 +59,8 @@ namespace EP.SeaBattle.Web.Controllers
         [Route("get")]
         public async Task<IActionResult> GetOponentShotsAsync(string gameId, string answeredPlayerId)
         {
+            gameId = HttpContext.Session.GetString("game");
+            answeredPlayerId = HttpContext.Session.GetString("player");
             var result = await _mediator.Send(new GetShotsQuery() { GameId = gameId, AnsweredPlayerID = answeredPlayerId });
             return result.HasValue ? Ok(result.Value)
                 : (IActionResult)Ok();

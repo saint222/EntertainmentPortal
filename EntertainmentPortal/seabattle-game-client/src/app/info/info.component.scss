@@ -1,0 +1,39 @@
+.squareNone {
+  height: 40px;
+  width: 40px;
+  background-color: rgb(132, 182, 247);
+  vertical-align: middle;
+  align-self: center;
+}
+
+.squareAlive {
+  height: 40px;
+  width: 40px;
+  background-color: rgb(51, 51, 51);
+  vertical-align: middle;
+  align-self: center;
+}
+
+.squareDestroyed {
+  height: 40px;
+  width: 40px;
+  background-color: rgb(232, 92, 51);
+  vertical-align: middle;
+  align-self: center;
+}
+
+.squareForbidden {
+  height: 40px;
+  width: 40px;
+  background-color: rgb(255, 184, 56);
+  vertical-align: middle;
+  align-self: center;
+}
+
+.squareMiss {
+  height: 40px;
+  width: 40px;
+  background-color: rgb(117, 61, 235);
+  vertical-align: middle;
+  align-self: center;
+}

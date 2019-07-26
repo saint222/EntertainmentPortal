@@ -17,6 +17,7 @@ using AutoMapper;
 using FluentValidation.AspNetCore;
 using EP.SeaBattle.Logic.Validators;
 using EP.SeaBattle.Data.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace EP.SeaBattle.Web
 {
@@ -32,8 +33,11 @@ namespace EP.SeaBattle.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMemoryCache();
             services.AddDistributedMemoryCache();
+            services.AddSession(opt =>
+            {
+                opt.IdleTimeout = TimeSpan.FromDays(1);
+            });
             services.AddCors();
             services.AddLogging(cfg => cfg.AddConsole().AddDebug());
             services.AddSeaBattleServices();
@@ -44,19 +48,20 @@ namespace EP.SeaBattle.Web
             {
                 cfg.RegisterValidatorsFromAssemblyContaining<ShipAddValidation>();
                 cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-            })
-            .AddSessionStateTempDataProvider();
-            services.AddSession();
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger().UseSwaggerUi3();
             }
+
             app.UseCors(builder => 
             {
                 builder.AllowAnyHeader()
@@ -64,9 +69,9 @@ namespace EP.SeaBattle.Web
                 .WithOrigins("http://localhost:4200")
                 .AllowCredentials();
             });
+
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseStaticFiles();
-            app.UseHttpsRedirection();
             app.UseSession();
             app.UseMvc();
         }
