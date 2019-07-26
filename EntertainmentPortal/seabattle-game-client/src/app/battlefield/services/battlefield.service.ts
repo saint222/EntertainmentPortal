@@ -1,5 +1,5 @@
+import { environment } from './../../../environments/environment.prod';
 import { ShootService } from './shoot.service';
-import { ShotHubService } from './shot-hub.service';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -7,7 +7,6 @@ import { Cell } from 'src/app/models/cell';
 import { Ship } from 'src/app/models/ship';
 import { CellStatus } from 'src/app/models/cellStatus';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,21 +33,13 @@ export class BattlefieldService {
 
   addShip(form: FormGroup) {
     const rank = form.value.rank;
-    this.http.post<Ship[]>('http://localhost:54708/api/Ships/add', form.value).subscribe(data => {
+    this.http.post<Ship[]>(`${environment.base_url}api/Ships/add`, form.value).subscribe(data => {
       if (data != null && data !== undefined) {
         this.ships = data;
         this.ships.forEach(ship => this.drawShip(ship)); // тут рисуем корабли
         this.calculateShipCountByRank(); // тут считаем количество кораблей
       }
     });
-    // ------------gogno-------------
-    //let json = { gameId: '1', answeredPlayerId: '1'};
-    //this.http.get<Cell[]>('http://localhost:54708/api/Shot/get', { params: json }). subscribe(data => {
-    //  if (data != null && data !== undefined) {
-    //    this.shots = data;
-    //    this.shots.forEach(shot => this.drawShot(shot));
-    //  }
-    //});
   }
 
   private createField(): Cell[][] {

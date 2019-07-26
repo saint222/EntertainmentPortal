@@ -18,7 +18,7 @@
   </div>
   <div class="form-group col-md-6">
     <label for="X">Координата X</label>
-    <input type="number" class="form-control" name="x" id="x" placeholder="от 0 до 9" formControlName="x">
+    <input type="number" class="form-control" name="x" id="x" placeholder="от 0 до 9" formControlName="x" [min]=0 [max]=9 >
 
     <label for="Y">Координата Y</label>
     <input type="number" class="form-control" name="y" id="y" placeholder="от 0 до 9" formControlName="y">

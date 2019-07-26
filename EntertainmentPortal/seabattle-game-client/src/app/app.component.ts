@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'seabattle-game-client';
   constructor() {
-    // window.sessionStorage.clear();
+    window.sessionStorage.setItem('test', 'allo');
   }
 }

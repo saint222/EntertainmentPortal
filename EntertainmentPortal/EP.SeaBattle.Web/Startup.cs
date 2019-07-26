@@ -32,12 +32,8 @@ namespace EP.SeaBattle.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
             services.AddDistributedMemoryCache();
-            services.AddSession(option =>
-            {
-                option.Cookie.HttpOnly = false;
-                option.Cookie.Name = "_seabattle.Session";
-            });
             services.AddCors();
             services.AddLogging(cfg => cfg.AddConsole().AddDebug());
             services.AddSeaBattleServices();
@@ -48,7 +44,9 @@ namespace EP.SeaBattle.Web
             {
                 cfg.RegisterValidatorsFromAssemblyContaining<ShipAddValidation>();
                 cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-            });
+            })
+            .AddSessionStateTempDataProvider();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +64,6 @@ namespace EP.SeaBattle.Web
                 .WithOrigins("http://localhost:4200")
                 .AllowCredentials();
             });
-            app.UseCookiePolicy(new CookiePolicyOptions() { HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.None, Secure = Microsoft.AspNetCore.Http.CookieSecurePolicy.None });
             mediator.Send(new CreateDatabaseCommand()).Wait();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
