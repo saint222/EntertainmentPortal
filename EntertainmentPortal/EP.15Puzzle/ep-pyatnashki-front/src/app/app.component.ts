@@ -1,3 +1,4 @@
+import { NotifyHubService } from './pyatnashki/services/notify-hub.service';
 import { AccountService } from './account/services/account.service';
 import { Component } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'pyatnashki';
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService, public notifyHubService: NotifyHubService) {}
   public IsLoggedIn() {
     return this.accountService.IsLoggedIn();
   }

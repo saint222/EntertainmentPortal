@@ -15,6 +15,7 @@ using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Validators;
 using EP._15Puzzle.Web.Filters;
+using EP._15Puzzle.Web.Hubs;
 using FluentValidation.AspNetCore;
 using IdentityModel;
 using IdentityServer4;
@@ -41,6 +42,8 @@ namespace EP._15Puzzle.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
+            services.AddSingleton(typeof(NoticeHub).Assembly);
             services.AddAuthenticationCore();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
@@ -56,16 +59,7 @@ namespace EP._15Puzzle.Web
                     cfg => cfg.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                         .RequireAuthenticatedUser());
             });
-
-
-            //services.Configure<IdentityOptions>(opt =>
-            //{
-            //    opt.Password.RequireDigit = false;
-            //    opt.Password.RequiredLength = 6;
-            //    opt.Password.RequireLowercase = false;
-            //    opt.Password.RequireNonAlphanumeric = false;
-            //    opt.Password.RequireUppercase = false;
-            //});
+            
 
             services.AddMediatR(typeof(NewDeckCommand).Assembly);
             services.AddMediatR(typeof(GetDeckQuery).Assembly);
@@ -86,7 +80,6 @@ namespace EP._15Puzzle.Web
             });
             services.AddAutoMapper(cfg=>cfg.AllowNullCollections=true,typeof(DeckProfile).Assembly);
             services.AddDeckServices();
-            //SetupSecurity(services);
 
             services.AddMvc(opt =>
                 {
@@ -107,11 +100,15 @@ namespace EP._15Puzzle.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                     .AllowAnyMethod()
                     .WithOrigins(Configuration.GetSection("Urls:Api").Value, Configuration.GetSection("Urls:Is4").Value, Configuration.GetSection("Urls:Front").Value)
                     .AllowCredentials());
+            app.UseSignalR(routes => { routes.MapHub<NoticeHub>("/notice");});
+            
             app.UseAuthentication();
             //app.UseIdentityServer();
             mediator.Send(new CreateDatabaseCommand()).Wait();
@@ -126,111 +123,5 @@ namespace EP._15Puzzle.Web
             });
             app.UseMvc();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //private IServiceCollection SetupSecurity(IServiceCollection services)
-        //{
-        //    var builder = services.AddIdentityServer(opt =>
-        //    {
-        //        opt.IssuerUri = "https://localhost:44380";
-        //        opt.Events.RaiseErrorEvents = true;
-        //        opt.Events.RaiseFailureEvents = true;
-        //        opt.Events.RaiseInformationEvents = true;
-        //        opt.Events.RaiseSuccessEvents = true;
-        //    });
-
-        //    builder.AddInMemoryClients(LoadClients())
-        //        .AddInMemoryApiResources(LoadResources())
-        //        .AddInMemoryPersistedGrants()
-        //        .AddInMemoryIdentityResources(LoadIdentity())
-        //        .AddTestUsers(LoadUsers())
-        //        .AddDeveloperSigningCredential();
-
-        //    return services;
-        //}
-
-
-
-
-        //private List<IdentityResource> LoadIdentity()
-        //{
-        //    return new List<IdentityResource>()
-        //    {
-        //        new IdentityResources.OpenId(),
-        //        new IdentityResources.Profile(),
-        //        new IdentityResources.Email()
-        //    };
-        //}
-
-
-        //private List<TestUser> LoadUsers()
-        //{
-        //    return new List<TestUser>()
-        //    {
-        //        new TestUser()
-        //        {
-        //            SubjectId = "1234-1234-1234-1234",
-        //            Username = "admin",
-        //            Password = "admin",
-        //            IsActive = true,
-        //            Claims = new List<Claim>()
-        //            {
-        //                new Claim(JwtClaimTypes.Name, "tester"),
-        //                new Claim(JwtClaimTypes.Email, "jupitel1993trash@gmail.com")
-        //            }
-        //        }
-        //    };
-        //}
-
-        //private IEnumerable<ApiResource> LoadResources()
-        //{
-        //    return new[]
-        //    {
-        //        new ApiResource("api")
-        //        {
-        //            Scopes = new List<Scope>()
-        //            {
-        //                new Scope("pyatnashki_api")
-        //            }
-        //        },
-        //    };
-        //}
-
-
-        //private IEnumerable<Client> LoadClients()
-        //{
-        //    return new[]
-        //    {
-        //        new Client()
-        //        {
-        //            ClientId = "swagger",
-        //            ClientSecrets = new List<Secret>() {new Secret("secret".Sha256())},
-        //        },
-        //        new Client()
-        //        {
-        //            ClientId = "pyatnashki-front",
-        //            ClientSecrets = new List<Secret>() {new Secret("secret".Sha256())},
-        //            AllowedScopes = new List<string>(){
-        //                IdentityServerConstants.StandardScopes.OpenId,
-        //                IdentityServerConstants.StandardScopes.Profile,
-        //                IdentityServerConstants.StandardScopes.Email,
-        //                "deck_api"
-        //            },
-        //            AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-        //            AlwaysIncludeUserClaimsInIdToken = true
-        //        },
-        //    };
-        //}
     }
 }

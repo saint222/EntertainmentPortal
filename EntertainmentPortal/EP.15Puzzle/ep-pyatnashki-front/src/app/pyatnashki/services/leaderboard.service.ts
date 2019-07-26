@@ -9,7 +9,7 @@ import { AccountService } from 'src/app/account/services/account.service';
 })
 export class LeaderboardService {
 
-  private url = `${environment.api_url}/record`;
+  private url = `${environment.api_url}/api/record`;
   constructor(private http: HttpClient, private accountService: AccountService) { }
 
   getRecordsWithEmail() {

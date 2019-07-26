@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class DeckService {
 
-  private url = `${environment.api_url}/deck`;
+  private url = `${environment.api_url}/api/deck`;
   constructor(private http: HttpClient, private accountService: AccountService) {
    }
 

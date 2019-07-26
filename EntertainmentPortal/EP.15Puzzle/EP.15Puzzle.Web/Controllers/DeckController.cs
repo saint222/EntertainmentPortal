@@ -8,6 +8,7 @@ using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
+using EP._15Puzzle.Web.Hubs;
 using IdentityServer4.Models;
 using JetBrains.Annotations;
 using MediatR;
@@ -17,6 +18,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
@@ -28,11 +30,13 @@ namespace EP._15Puzzle.Web.Controllers
     public class DeckController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IHubContext<NoticeHub> _hubContext;
 
 
-        public DeckController(IMediator mediator)
+        public DeckController(IMediator mediator, IHubContext<NoticeHub> hubContext)
         {
             _mediator = mediator;
+            _hubContext = hubContext;
         }
         // GET: api/Deck
         [Authorize(AuthenticationSchemes = "Bearer")]
@@ -77,6 +81,10 @@ namespace EP._15Puzzle.Web.Controllers
             }
             
             var result = await _mediator.Send(new MoveTileCommand(HttpContext.Request.Headers["Email"], tile));
+            if (result.IsFailure && result.Error.StartsWith("Selected"))
+            {
+                await _hubContext.Clients.All.SendAsync("notice", result.Error);
+            }
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
 
         }

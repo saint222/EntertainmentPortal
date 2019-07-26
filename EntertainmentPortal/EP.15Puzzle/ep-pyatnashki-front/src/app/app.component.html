@@ -32,3 +32,9 @@
       </div>
     </footer>
   </div>
+
+  <div *ngIf="this.notifyHubService.notification!=null"  style="position: fixed; right: 1vh; bottom: 1vh; background-color: rgba(58, 27, 10, 0.781); border-radius: 1vh;">
+    <p style="width: 15vw; height:20vh; padding: 20px;">
+      {{this.notifyHubService.notification}}
+    </p>
+  </div>
