@@ -1,15 +1,14 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <script src="game-over.js"></script>
   </head>
   <div class="container-gameover">
     <h1 id="gameover">Game Over</h1>
   </div>
-     <div>
-        <button class="btn btn-secondary continue" (click)="onPlayClick()">Play Again</button>
-    </div>
+
     <div class="container-fluid">
-        <div id="left" class="row">
-            <div class="col">
+      <div class="row">
+            <div id="left" class="col-sm-4">
           <b>Player {{ player.userName }} </b>
           <br>
           <br>
@@ -21,10 +20,11 @@
           </ul>
           <p>Total: {{ playerScore }} </p>
         </div>
-        </div>
-
-        <div id="right">
-            <div class="col">
+        <div id="center" class="col-sm-4">
+            <button class="btn btn-secondary continue" (click)="onPlayClick()">Play Again</button>
+            <img id="gif" [src]="gif">
+      </div>
+            <div id="right" class="col-sm-4">
               <p><b>Opponent</b></p>
               <br>
             <b>Words:</b>
@@ -35,12 +35,6 @@
             </ul>
             <p>Total: {{ opponentScore }} </p>
               </div>
-        </div>
-
-        <div id="center">
-            <div class="col">
-
-        </div>
         </div>
         </div>
 

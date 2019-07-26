@@ -12,7 +12,7 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.router.navigateByUrl('startGame');
+      this.router.navigateByUrl('playground');
   }, 5000);
   }
 

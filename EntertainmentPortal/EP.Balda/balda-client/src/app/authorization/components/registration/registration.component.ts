@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { HttpResponseBase } from '@angular/common/http';
+import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './../../services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
   registerGroup: FormGroup;
+  errotText: string;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerGroup = this.fb.group({
@@ -30,8 +31,9 @@ export class RegistrationComponent implements OnInit {
       console.log(p),
       this.router.navigateByUrl('welcome');
     },
-    (err: HttpResponseBase) => {
+    (err: HttpErrorResponse) => {
       console.log(err.statusText);
+      this.errotText = err.error;
     });
   }
 

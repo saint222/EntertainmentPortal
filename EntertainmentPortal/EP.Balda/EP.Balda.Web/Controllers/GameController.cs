@@ -58,15 +58,22 @@ namespace EP.Balda.Web.Controllers
         {
             string UserId = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-        _logger.LogDebug(
-                $"Action: {ControllerContext.ActionDescriptor.ActionName}");
+            _logger.LogDebug(
+                    $"Action: {ControllerContext.ActionDescriptor.ActionName}");
 
-            if (UserId != null)
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+
+            if (!isAuthenticated)
             {
-                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName}");
+                return BadRequest("User is not authorized");
+            }
+            
+            _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName}");
 
-                var result = await _mediator.Send(new GetCurrentGame() { Id = UserId });
+            var result = await _mediator.Send(new GetCurrentGame() { Id = UserId });
 
+            if (result.HasValue)
+            {
                 var cells = Helpers.Do2DimArray(result.Value.Map);
                 var currentGame = new CurrentGame()
                 {
