@@ -44,12 +44,14 @@ export class AuthService {
   }
 
   getValueFromIdToken(claim: string) {
-    const jwt = sessionStorage.getItem('id_token');
+    /* const jwt = sessionStorage.getItem('id_token');
     if (jwt == null) {
       return null;
     }
     const jwtData = jwt.split('.')[1];
-    const decodedJwtJsonData = window.atob(jwtData);
+    const decodedJwtJsonData = window.atob(jwtData); */
+    const decodedJwtJsonData = sessionStorage.getItem('id_token_claims_obj');
+
     let value: any;
     JSON.parse(decodedJwtJsonData, function findKey(k, v) {
       if (k === claim) {

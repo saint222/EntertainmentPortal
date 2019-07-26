@@ -39,6 +39,8 @@ namespace EP.WordsMaker.Logic.Handlers
             var model = new PlayerDb
             {
                 Name = request.Name,
+				Id = request.Id,
+				Email = request.Email,
 				BestScore = 0
             };
 

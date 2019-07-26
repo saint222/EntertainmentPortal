@@ -1,0 +1,56 @@
+/* .nameLabel{
+  margin: 10px;
+  align-content: center;
+} */
+.helpText{
+  margin: 10px;
+}
+.h1{
+  margin: 20px;
+}
+.h2{
+  vertical-align: 100px;
+  margin: 20px;
+}
+.h3{
+  vertical-align: 100px;
+  margin: 20px;
+}
+/* .form-group{
+  margin: auto;
+  justify-content: center;
+} */
+.name{
+  margin: 10px;
+}
+.row{
+  align-content: center;
+  align-items: center;
+}
+.label{
+  margin: 10px;
+}
+
+//===============================
+.flex-container {
+  display: flex;
+  margin: 40px;
+}
+.flex-end {
+  justify-content: flex-end;
+}
+.center {
+  justify-content: center;
+}
+.space-between {
+  justify-content: space-between;
+}
+.space-around {
+  justify-content: space-around;
+}
+.flex-item {
+  margin: 10px;
+  text-align: center;
+  font-size: 1em;
+  color: white;
+}

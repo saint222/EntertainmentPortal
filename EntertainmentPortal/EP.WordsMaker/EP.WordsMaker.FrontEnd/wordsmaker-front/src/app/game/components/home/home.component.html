@@ -1,14 +1,52 @@
-<div *ngIf="login">
-    <button  class="navbar-text" type="button" class="btn btn-light" >Начать игру</button>
-</div>
-<div *ngIf="!login">
-  <div>Добро пожаловать в игру "Наборщик"</div>
-  <div>Для начала игры необходимо Войти или Зарегистрироваться</div>
-  <div>Правила игры</div>
-  <div>Суть игры состоит в том, чтобы составить как можно больше слов из букв предоставляемого ключевого слова</div>
-  <div>Игра заканчивается по истечении выделенного времени</div>
+<div *ngIf="login && !playerCreated">
+    <div class="flex-container center"><h1>Добавление игрока</h1></div>
+
+    <form class="container" [formGroup]="userGroup" (ngSubmit)="createPlayer(titleInput.value)" #form="ngForm" >
+      <div class="flex-container center">
+          <div class="flex-item">
+              <label class="name" for="">Player Name</label>
+              <input
+            id=""
+            type="text"
+            name=""
+            [ngClass]=""
+            placeholder="Введите имя игорка"
+            formControlName="name"
+            #titleInput
+            />
+          </div>
+      </div>
+      <div class="flex-container center">
+          <small *ngIf="!form.valid" id="helpId" class="text-muted helpText">Player name must be longer than three characters</small>
+      </div>
+      <div class="flex-container center">
+          <Button type="submit" [disabled]="!form.valid"  class="btn btn-light">Создать игрока</Button>
+      </div>
+    </form>
 </div>
 
+<div *ngIf="login && playerCreated">
+    <div class="flex-container center"><h1>Начать игру</h1></div>
+
+    <form class="container" [formGroup]="userGroup" (ngSubmit)="createGame()" #form="ngForm" >
+      <div class="flex-container center">
+          <Button type="submit"  class="btn btn-light">Начать игру</Button>
+      </div>
+    </form>
+</div>
+
+<div *ngIf="!login">
+  <div  class="flex-container center"><h1>Добро пожаловать в игру "Наборщик"</h1></div>
+  <div  class="flex-container center"><h3>Для начала игры необходимо Войти или Зарегистрироваться</h3></div>
+</div>
+
+
+<div>
+    <div  class="flex-container center"><h1>Правила игры</h1></div>
+    <div  class="flex-item">Необходимо составить как можно больше слов из букв предоставляемого ключевого слова</div>
+    <div  class="flex-item">Количество зарабатываемых очков зависит от длины введенного слова</div>
+    <div  class="flex-item">Игра заканчивается по истечении выделенного времени</div>
+</div>
 
 <!-- <form [formGroup]="playerGroup" (ngSubmit)="onSubmit(form)" #form="ngForm">
   <div class="form-group">

@@ -10,7 +10,7 @@ namespace EP.WordsMaker.Data.Models
 		/// ID property
 		/// </summary>
 		/// <value> Represents unique id of game </value>
-		public int Id { get; set; }
+		public string Id { get; set; }
 
 		/// <summary>
 		/// 
@@ -25,12 +25,18 @@ namespace EP.WordsMaker.Data.Models
 		/// <summary>
 		/// 
 		/// </summary>
+		public string KeyWord { get; set; }
+
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public DateTime EndTime { get; set; }
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public int PlayerId { get; set; }
+		public string PlayerId { get; set; }
 
 		/// <summary>
 		/// 

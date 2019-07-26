@@ -17,7 +17,7 @@ namespace EP.WordsMaker.Logic.Models
         /// ID property
         /// </summary>
         /// <value>Represents unique id of game</value>
-        public int Id { get; set; }
+        public string Id { get; set; }
 
 		public DateTime Duration { get; set; }
 
@@ -29,7 +29,7 @@ namespace EP.WordsMaker.Logic.Models
         public string KeyWord { get; set; }
 
         public Player Player { get; set; }
-		public int PlayerId { get; set; }
+		public string PlayerId { get; set; }
 
 
 		private const int PLAYER_COUNT = 1;

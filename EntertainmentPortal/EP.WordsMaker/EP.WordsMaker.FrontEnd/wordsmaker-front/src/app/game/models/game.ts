@@ -1,5 +1,5 @@
 export class Game {
-  id: number;
+  id: string;
   duration: string;
   starTime: string;
   endTime: string;

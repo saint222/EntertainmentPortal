@@ -1,5 +1,6 @@
 export class Player {
-  id: number;
+  id: string;
+  email: string;
   name: string;
   score: number;
   bestScore: number;

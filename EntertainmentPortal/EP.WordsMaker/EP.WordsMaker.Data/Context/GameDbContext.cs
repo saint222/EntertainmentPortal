@@ -10,5 +10,6 @@ namespace EP.WordsMaker.Data.Context
 		{ }
 		public DbSet<PlayerDb> Players { get; set; }
 		public DbSet<GameDb> Games { get; set; }
+		public DbSet<WordDb> Words { get; set; }
 	}
 }

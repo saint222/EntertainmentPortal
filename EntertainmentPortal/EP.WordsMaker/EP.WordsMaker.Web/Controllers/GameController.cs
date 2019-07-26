@@ -16,7 +16,7 @@ namespace EP.WordsMaker.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+   //[Authorize]
     public class GameController : ControllerBase
     {
 	    private readonly IMediator _mediator;
@@ -35,12 +35,12 @@ namespace EP.WordsMaker.Web.Controllers
 		    return result.HasValue ? (IActionResult)Ok(result.Value) : NotFound();
 	    }
 
-		[HttpGet("{id}")]
+		[HttpGet("{PlayerId}")]
 		[SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Game>), Description = "Success")]
 		[SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Game not found")]
-		public async Task<IActionResult> GetGameAsync(int id)
+		public async Task<IActionResult> GetGameAsync(string playerId)
         {
-			var result = await _mediator.Send(new GetGameCommand(){Id = id});
+			var result = await _mediator.Send(new GetGameCommand(){PlayerId = playerId });
 			return result.IsSuccess ? Ok(result.Value) : (IActionResult)NotFound(result.Error);
 		}
 

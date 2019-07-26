@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
@@ -6,6 +7,7 @@ using EP.WordsMaker.Data.Context;
 using EP.WordsMaker.Logic.Commands;
 using EP.WordsMaker.Logic.Models;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.WordsMaker.Logic.Handlers
 {
@@ -22,13 +24,12 @@ namespace EP.WordsMaker.Logic.Handlers
 
 		public async Task<Result<Game>> Handle(GetGameCommand request, CancellationToken cancellationToken)
 		{
-			var result = await _context.Players.FindAsync(request.Id);
-			if (result == null)
+			var game = _context.Games.Where(x => x.PlayerId == request.PlayerId).FirstOrDefault();
+			if (game == null)
 			{
-				return (Result.Fail<Game>("Game not found(handler)"));
+				return (Result.Fail<Game>("Game not found (Game handler)"));
 			}
-
-			return (Result.Ok(_mapper.Map<Game>(result)));
+			return (Result.Ok(_mapper.Map<Game>(game)));
 		}
 	}
 }

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using EP.WordsMaker.Logic.Commands;
 using EP.WordsMaker.Logic.Models;
+using EP.WordsMaker.Logic.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
@@ -14,12 +17,22 @@ namespace EP.WordsMaker.Web.Controllers
     [ApiController]
     public class WordController : ControllerBase
     {
-        // GET: api/Action
-        [HttpGet("AllWords/{id}")]
-        public async Task<IActionResult> GetAllWords(int id)
+	    private readonly IMediator _mediator;
+
+		public WordController(IMediator mediator)
+	    {
+		    _mediator = mediator;
+	    }
+
+		// GET: api/Action
+		[SwaggerResponse(HttpStatusCode.OK, typeof(Word), Description = "Success. Get all words")]
+		[SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "The words does not exist")]
+		[HttpGet("AllWords/{Id}")]
+        public async Task<IActionResult> GetAllWords(string Id)
         {
-	        return null;
-        }
+			var result = await _mediator.Send(new GetAllWordsCommand() { GameId = Id });
+			return result.IsSuccess ? Ok(result.Value) : (IActionResult)NotFound(result.Error);
+		}
 
         // GET: api/Action
         [HttpGet("KeyWord")]
@@ -28,13 +41,21 @@ namespace EP.WordsMaker.Web.Controllers
 	        return null;
         }
 
-        [HttpPost("SubmitWord/{value}")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success. Game created")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-		public void NewWord([FromBody] string[] value)
-        {
+        [HttpPost("SubmitWord")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Word), Description = "Success. Word added")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Еhe word does not exist")]
+		public async Task<IActionResult> AddNewWordAsyncNewWord([FromBody] AddNewWordCommand model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-        }
+			var result = await _mediator.Send(model);
+			return result.IsFailure ?
+				(IActionResult)BadRequest(result.Error)
+				: Ok(result.Value);
+		}
 
         //// GET: api/Action/5
 		//[HttpGet("{id}")]

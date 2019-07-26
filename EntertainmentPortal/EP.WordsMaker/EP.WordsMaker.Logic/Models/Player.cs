@@ -14,13 +14,19 @@ namespace EP.WordsMaker.Logic.Models
         /// ID property
         /// </summary>
         /// <value>Represents unique id of player</value>
-        public int Id { get; set; }
+        public string Id { get; set; }
        
         /// <summary>
         /// Name property
         /// </summary>
         /// <value>Represents nickname of player</value>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Email property
+        /// </summary>
+        /// <value>Represents email adress of player</value>
+		public string Email { get; set; }
 
         /// <summary>
         /// Score property

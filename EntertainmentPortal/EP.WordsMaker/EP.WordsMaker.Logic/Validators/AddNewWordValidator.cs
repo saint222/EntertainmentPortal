@@ -3,12 +3,12 @@ using FluentValidation;
 
 namespace EP.WordsMaker.Logic.Validators
 {
-	public class AddNewGameValidator  :AbstractValidator<AddNewGameCommand>
+	public class AddNewWordValidator  :AbstractValidator<AddNewWordCommand>
 	{
 
-		public AddNewGameValidator()
+		public AddNewWordValidator()
 		{
-			RuleFor(x => x.PlayerId)
+			RuleFor(x => x.GameId)
 				.NotEmpty()
 				.WithMessage("Title cannot be null");
 		}

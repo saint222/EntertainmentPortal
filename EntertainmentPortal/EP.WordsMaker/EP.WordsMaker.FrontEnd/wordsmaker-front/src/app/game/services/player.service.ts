@@ -8,23 +8,30 @@ import {Observable} from 'rxjs';
 })
 export class PlayerService {
 
+  getAccessToken() {
+    return sessionStorage.getItem('access_token');
+  }
+
+  makeAccessTokenString() {
+    return `Bearer ${this.getAccessToken()}`;
+  }
+
   constructor(private http: HttpClient) { }
 
   getPlayers() {
     console.log("GetPlayersExecute");
     return this.http.get<Player[]>('https://localhost:44350/api/player');
-
   }
 
-  getPlayer(id: number) {
-    const params = new HttpParams().set('number', id.toString());
+  getPlayer(id: string) {
+    //const params = new HttpParams().set('id', id);
     console.log("GetPlayerExecute");
-    return this.http.get('https://localhost:44350/api/player', {params});
+    return this.http.get<Player>('https://localhost:44350/api/player'+ `/${id}`);
   }
 
-  addPlayer(player: Player) {
+  addPlayer(name: string, id: string, email: string) {
     console.log("AddPlayersExecute");
-    return this.http.post('https://localhost:44350/api/player', player);
+    return this.http.post<Player>('https://localhost:44350/api/player', {name, id, email});
   }
 
 }

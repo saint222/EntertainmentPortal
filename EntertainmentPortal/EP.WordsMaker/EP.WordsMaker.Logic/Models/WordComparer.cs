@@ -14,8 +14,8 @@ namespace EP.WordsMaker.Logic.Models
 	{
 		public bool CompareWord(string keyWord, string playerWord)
 		{
-			Word _keyWord = new Word(keyWord);
-			Word _playerWord = new Word(playerWord);
+			WordObj _keyWord = new WordObj(keyWord);
+			WordObj _playerWord = new WordObj(playerWord);
 
 			if(_keyWord.Length >= _playerWord.Length)
 			{

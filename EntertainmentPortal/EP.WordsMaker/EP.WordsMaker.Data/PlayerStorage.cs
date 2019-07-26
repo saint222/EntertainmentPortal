@@ -12,7 +12,7 @@ namespace EP.WordsMaker.Data
 
         static PlayerStorage()
         {
-            _faker.RuleFor(p => p.Id, f => f.IndexFaker).
+            _faker.RuleFor(p => p.Id, f => f.IndexFaker.ToString()).
                 RuleFor(p => p.Name, f => f.Random.Word()).
                 RuleFor(p => p.BestScore, f => f.Random.Int(100, 1000)).
                 RuleFor(p => p.LastGame, f => f.Date.Past(1));

@@ -38,7 +38,7 @@ namespace EP.WordsMaker.Web.Controllers
 
 		[SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
 		[SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
-		public async Task<IActionResult> GetPlayerAsync(int id)
+		public async Task<IActionResult> GetPlayerAsync(string id)
 		{
 			var result = await _mediator.Send(new GetPlayerCommand(){Id = id});
 			return result.IsSuccess ? Ok(result.Value): (IActionResult)NotFound(result.Error);
@@ -48,7 +48,7 @@ namespace EP.WordsMaker.Web.Controllers
 		[HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> AddNewPlayerASync([FromBody] AddNewPlayerCommand model)
+        public async Task<IActionResult> AddNewPlayerAsync([FromBody] AddNewPlayerCommand model)
         {
             if (!ModelState.IsValid)
             {
