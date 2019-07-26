@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  identityserver:
+    image: is4
+    build:
+      context: .
+      dockerfile: EP.15Puzzle/EP.15Puzzle.Security/Dockerfile
+    ports:
+    - "8080:80"
+
+  apiservice:
+    image: api
+    build:
+      context: .
+      dockerfile: EP.15Puzzle/EP.15Puzzle.Web/Dockerfile
+    ports:
+    - "8081:80"
+
+  frontend:
+    image: front
+    build:
+      context: .
+      dockerfile: EP.15Puzzle/ep-pyatnashki-front/Dockerfile
+    ports:
+    - "8082:80"
+    volumes:
+        - .:/root
+        - /usr/src/app
