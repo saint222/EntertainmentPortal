@@ -1,11 +1,9 @@
-import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cell } from 'src/app/models/cell';
 import { CellStatus } from 'src/app/models/cellStatus';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import { filter } from 'minimatch';
 
 @Injectable({
   providedIn: 'root'
@@ -56,5 +54,11 @@ export class ShootService {
 
   drawShot(shot: Cell) {
     this.shotField[shot.y][shot.x].status = shot.status;
+  }
+
+  reset() {
+    this.shotField = this.createField();
+    this.shots = new Array<Cell>();
+    this.endgameMessage = '';
   }
 }

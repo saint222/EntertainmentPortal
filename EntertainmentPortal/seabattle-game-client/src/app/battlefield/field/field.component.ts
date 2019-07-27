@@ -10,7 +10,7 @@ import { BattlefieldService } from '../services/battlefield.service';
   styleUrls: ['./field.component.scss']
 })
 export class FieldComponent implements OnInit {
-  alphabet: String[];
+  alphabet: string[];
   numbers: number[];
   N = 10;
 
@@ -24,5 +24,10 @@ export class FieldComponent implements OnInit {
 
   shoot(cell: Cell) {
     this.shootService.addShot(cell.y, cell.x, '1', '1');
+  }
+
+  reset() {
+    this.battleFieldService.reset();
+    this.shootService.reset();
   }
 }

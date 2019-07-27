@@ -93,4 +93,14 @@ export class BattlefieldService {
     this.threeLast = 2 - three;
     this.fourLast = 1 - four;
   }
+
+  reset() {
+    this.shipField = this.createField();
+    this.oneLast = 4;
+    this.twoLast = 3;
+    this.threeLast = 2;
+    this.fourLast = 1;
+    this.ships = new Array<Ship>();
+    this.http.get<any>(`${environment.base_url}api/game/new`, {params: {playerId : '1', gameId: '1'}, withCredentials: true}).subscribe();
+  }
 }

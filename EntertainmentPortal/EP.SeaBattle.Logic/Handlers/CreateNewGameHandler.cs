@@ -37,16 +37,15 @@ namespace EP.SeaBattle.Logic.Handlers
                 //TODO спросить, не костыль ли так добавлять в БД запись
                 var game = new GameDb()
                 {
-                    Player1 = await _context.Players.FindAsync(request.Player1Id),
-                    Player2 = await _context.Players.FindAsync(request.Player2Id),
-                    PlayerAllowedToMove = await _context.Players.FindAsync(request.PlayerAllowedToMoveId),
-                    //Status = request.Finish
+                    Id = request.GameId,
+                    Player1 = await _context.Players.FindAsync(request.PlayerId).ConfigureAwait(false),
+                    Status = Common.Enums.GameStatus.NotReady
                 };
                 _context.Games.Add(_mapper.Map<GameDb>(request));
                 try
                 {
                     await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                    _logger.LogInformation($"Game created. Player1Id {request.Player1Id}, Player2Id {request.Player2Id}");
+                    _logger.LogInformation($"New game created. Player1Id {request.PlayerId}");
                     return Result.Ok<Game>(_mapper.Map<Game>(request));
                 }
                 catch (DbUpdateException ex)

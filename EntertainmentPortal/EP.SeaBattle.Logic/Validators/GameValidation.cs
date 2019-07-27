@@ -14,31 +14,16 @@ namespace EP.SeaBattle.Logic.Validators
             _context = context;
             RuleSet("GamePreValidation", () =>
             {
-                RuleFor(o => o.Player1Id)
+                RuleFor(o => o.PlayerId)
                     .NotEmpty().WithMessage("Player 1 cannot be null");
-                RuleFor(o => o.Player2Id)
-                    .NotEmpty().WithMessage("Player 2 cannot be null");
-                RuleFor(o => o.Player1Id)
-                    .NotEqual(p => p.Player2Id).WithMessage("Player 1 cannot be equal Player 2");
-                RuleFor(o => o.PlayerAllowedToMoveId)
-                    .NotEmpty().WithMessage("Player allow to move not set");
             });
 
             RuleSet("GameValidation", () =>
             {
                 RuleFor(x => x)
-                    .MustAsync((o, s, token) => CheckExistingPlayer(o.Player1Id))
-                        .WithMessage(player => $"Player1 with id {player.Player1Id} doesn't exists");
+                    .MustAsync((o, s, token) => CheckExistingPlayer(o.PlayerId))
+                        .WithMessage(player => $"Player1 with id {player.PlayerId} doesn't exists");
 
-                RuleFor(x => x)
-                    .MustAsync((o, s, token) => CheckExistingPlayer(o.Player1Id))
-                        .WithMessage(player => $"Player2 with id {player.Player2Id} doesn't exists");
-
-                RuleFor(x => x)
-                    .MustAsync((o, s, token) => CheckExistingPlayer(o.PlayerAllowedToMoveId))
-                        .WithMessage(player => $"Player1 with id {player.PlayerAllowedToMoveId} doesn't exists");
-
-                //TODO Id ходящего игрока должен быть равен id первого или второго игрока
             });
         }
 
