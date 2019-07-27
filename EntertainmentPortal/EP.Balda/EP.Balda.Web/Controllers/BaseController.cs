@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EP.Balda.Web.Controllers
 {
     [GlobalExceptionFilter]
-    [Authorize]
+    //[Authorize]
     public class BaseController : ControllerBase
     {
         protected string UserId => ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.NameIdentifier)?.Value;

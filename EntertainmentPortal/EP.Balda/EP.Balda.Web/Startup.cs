@@ -106,7 +106,7 @@ namespace EP.Balda.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                 .AllowAnyMethod()
-                .WithOrigins("http://localhost:4200", "http://balda-client", "http://localhost:8080")
+                .WithOrigins("http://localhost:4200", "http://balda-client", "http://localhost:8080", "http://localhost:8084")
                 .AllowCredentials());
 
             app.UseAuthentication();
