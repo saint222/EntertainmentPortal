@@ -72,6 +72,8 @@ namespace EP.Hangman.Web
                         {"hangman_api", "Access to hangman game api" }
                     }
                 });
+                cfg.Title = "Hangman API";
+                cfg.Description = "AlMak 2019";
             });
 
             services.AddMediatR(typeof(GetUserSession).Assembly);
