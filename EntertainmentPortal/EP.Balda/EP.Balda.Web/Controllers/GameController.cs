@@ -33,14 +33,7 @@ namespace EP.Balda.Web.Controllers
         {
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
-
-            bool isAuthenticated = User.Identity.IsAuthenticated;
-
-            if (!isAuthenticated)
-            {
-                return BadRequest("User is not authorized");
-            }
-
+           
             var result = await _mediator.Send(new GetGame() { Id = id });
 
             if (result.HasValue)
@@ -65,13 +58,6 @@ namespace EP.Balda.Web.Controllers
         {
             _logger.LogDebug(
                     $"Action: {ControllerContext.ActionDescriptor.ActionName}");
-
-            bool isAuthenticated = User.Identity.IsAuthenticated;
-
-            if (!isAuthenticated)
-            {
-                return BadRequest("User is not authorized");
-            }
             
             _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName}");
 
@@ -108,12 +94,6 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Game can't be created")]
         public async Task<IActionResult> CreateNewGameAsync([FromBody] int mapSize)
         {
-            bool isAuthenticated = User.Identity.IsAuthenticated;
-            if(!isAuthenticated)
-            {
-                return BadRequest("User is not authorized");
-            }
-
             var model = new CreateNewGameCommand
             {
                 MapSize = mapSize,
@@ -147,12 +127,6 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Game can't be stopped")]
         public async Task<IActionResult> LeaveGameAsync([FromQuery]long gameID)
         {
-            bool isAuthenticated = User.Identity.IsAuthenticated;
-            if (!isAuthenticated)
-            {
-                return BadRequest("User is not authorized");
-            }
-
             var model = new LeaveGameCommand();
             model.GameId = gameID;
 
@@ -185,12 +159,6 @@ namespace EP.Balda.Web.Controllers
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName}");
 
-            bool isAuthenticated = User.Identity.IsAuthenticated;
-            if (!isAuthenticated)
-            {
-                return BadRequest("User is not authorized");
-            }
-
             var model = new GetGameResults() { PlayerId = UserId };
             var result = await _mediator.Send(model);
 
@@ -222,12 +190,6 @@ namespace EP.Balda.Web.Controllers
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
                              $"Parameters: gameId = {gameAndCells.GameId}");
-
-            bool isAuthenticated = User.Identity.IsAuthenticated;
-            if (!isAuthenticated)
-            {
-                return BadRequest("User is not authorized");
-            }
 
             var model = new AddWordToPlayerCommand();
             model.PlayerId = UserId;

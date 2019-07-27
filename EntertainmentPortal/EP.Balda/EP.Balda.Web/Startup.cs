@@ -93,11 +93,6 @@ namespace EP.Balda.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
                               IMediator mediator)
         {
-            //app.Use(async delegate (HttpContext context, Func<Task> next)
-            //{
-            //    await next.Invoke();
-            //});
-
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
@@ -106,7 +101,7 @@ namespace EP.Balda.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                 .AllowAnyMethod()
-                .WithOrigins("http://localhost:4200", "http://balda-client", "http://localhost:8080", "http://localhost:8084")
+                .WithOrigins("http://localhost:4200", "http://localhost:8084")
                 .AllowCredentials());
 
             app.UseAuthentication();
