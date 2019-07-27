@@ -5,10 +5,10 @@ import { AuthConfig, OAuthService, JwksValidationHandler } from 'angular-oauth2-
 export const authConfig: AuthConfig = {
 
   // Url of the Identity Provider
-  issuer: 'http://localhost:5000',
+  issuer: 'http://security:8088',
 
   // URL of the SPA to redirect the user to after login
-  redirectUri: window.location.origin + '/startScreen',
+  redirectUri: window.location.origin,
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
   clientId: 'spa',
@@ -19,6 +19,7 @@ export const authConfig: AuthConfig = {
 
   // URL that user is routed after logout
   logoutUrl: '/',
+  requireHttps: false
 };
 
 @Injectable({
