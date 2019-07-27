@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text;
 using EP.Hangman.Logic.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,14 +12,11 @@ using EP.Hangman.Logic;
 using EP.Hangman.Logic.Commands;
 using EP.Hangman.Logic.Profiles;
 using EP.Hangman.Logic.Validators;
-using EP.Hangman.Web.Constants;
 using EP.Hangman.Web.Filters;
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
-using Microsoft.IdentityModel.Tokens;
 using NSwag;
 using NSwag.AspNetCore;
 using Serilog;
@@ -44,28 +39,9 @@ namespace EP.Hangman.Web
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "http://localhost:5000";
+                    opt.Authority = "http://security:8088";
                     opt.RequireHttpsMetadata = false;
                 })
-//                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
-//                {
-//                    opt.RequireHttpsMetadata = false;
-//                    opt.Authority = "http://localhost:5000";
-//                    opt.Audience = "hangman-api";
-////                    opt.TokenValidationParameters = new TokenValidationParameters()
-////                    {
-////
-////                        ValidIssuer = HangmanConstants.ISSUER_NAME,
-////                        ValidateIssuer = true,
-////                        ValidAudience = HangmanConstants.AUDIENCE_NAME,
-////                        ValidateAudience = true,
-////                        ValidateIssuerSigningKey = true,
-////                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(HangmanConstants.SECRET)),
-////                        ValidateLifetime = true,
-////                        RequireExpirationTime = true,
-////                        RequireSignedTokens = true
-////                    };
-//                })
                 .AddGoogle("Google", opt =>
                 {
                     opt.CallbackPath = new PathString("/api/google");
@@ -90,7 +66,7 @@ namespace EP.Hangman.Web
                 {
                     Flow = OpenApiOAuth2Flow.Implicit,
                     Type = OpenApiSecuritySchemeType.OAuth2,
-                    AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                    AuthorizationUrl = "http://security:8088/connect/authorize",
                     Scopes = new Dictionary<string, string>()
                     {
                         {"hangman_api", "Access to hangman game api" }
@@ -118,15 +94,10 @@ namespace EP.Hangman.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
         {
-//            if (env.IsDevelopment())
-//            {
-//                app.UseDeveloperExceptionPage();
-//            }
-
             app.UseCors(o =>
                 o.AllowAnyHeader()
-                .AllowAnyMethod()
-                .WithOrigins("http://localhost:4200")
+                .WithMethods("GET","POST","PUT", "DELETE", "OPTIONS")
+                .WithOrigins("http://localhost:4200", "http://frontend:8084")
                 .AllowCredentials()
                 );
 
@@ -144,10 +115,11 @@ namespace EP.Hangman.Web
             app.UseMvc(routes => routes.MapRoute("default", "{controller = PlayHangman}/{action = Index}/{id?}"));
 
             Log.Logger = new LoggerConfiguration()
-                //By default we have up to 31 latest log files with file size limited up to 1GB
+               //By default we have up to 31 latest log files with file size limited up to 1GB
                 //Shared parameter means that several processes can log simultaneously
-                .WriteTo.RollingFile("Logs/hangman_log_{Date}.txt", shared:true)
-                .CreateLogger();
+               .WriteTo.RollingFile("Logs/hangman_log_{Date}.txt", shared:true)
+               .WriteTo.Console()
+               .CreateLogger();
         }
     }
 }

@@ -10,6 +10,7 @@ using EP.Hangman.Web.Filters;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
@@ -18,7 +19,7 @@ namespace EP.Hangman.Web.Controllers
     [Route("api/playhangman")]
     [ApiController]
     //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     //[Authorize(AuthenticationSchemes = "Google")]
     //[Authorize(AuthenticationSchemes = "Facebook")]
     public class PlayHangmanController : ControllerBase
