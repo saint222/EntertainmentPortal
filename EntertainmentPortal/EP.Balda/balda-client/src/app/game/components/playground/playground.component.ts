@@ -17,14 +17,14 @@ export class PlaygroundComponent implements OnInit {
   cells: Cell[][] = [];
   selectedCells: Cell[] = [];
   selectedLetters = '';
+  prevAddedLetterCell: Cell = new Cell();
   mapId: string;
   gameId: string;
   playerId: string;
   alphabet: string[] = [];
   alphabetP1: string[] = [];
   alphabetP2: string[] = [];
-  currentLetter: string;
-  tempLetter: Cell = new Cell();
+  alphabetLetter: string;
   errorText: string;
   playerWords: string[] = [];
   opponentWords: string[] = [];
@@ -75,14 +75,17 @@ export class PlaygroundComponent implements OnInit {
   }
 
   selectCell(chosenCell: Cell) {
-    if (this.currentLetter != null && chosenCell.letter == null && this.tempLetter.letter == null) {
-       chosenCell.letter = this.currentLetter;
-       this.tempLetter = chosenCell;
-       return;
-     }
-    if (this.currentLetter != null && chosenCell.letter == null && this.tempLetter.letter != null) {
-       this.tempLetter.letter = null;
-       chosenCell.letter = this.currentLetter;
+    if (this.alphabetLetter !== '' && chosenCell.letter == null && this.prevAddedLetterCell.letter != null) {
+      chosenCell.letter = this.alphabetLetter;
+      this.prevAddedLetterCell.letter = null;
+      this.prevAddedLetterCell = chosenCell;
+      this.alphabetLetter = null;
+      return;
+    }
+    if (this.alphabetLetter !== '' && chosenCell.letter == null && this.prevAddedLetterCell.letter == null) {
+       chosenCell.letter = this.alphabetLetter;
+       this.prevAddedLetterCell = chosenCell;
+       this.alphabetLetter = null;
        return;
      }
     if (chosenCell.checked === true || chosenCell.letter === null) {
@@ -127,6 +130,9 @@ export class PlaygroundComponent implements OnInit {
     },
     (err: HttpErrorResponse) => {
       this.errorText = err.error;
+      this.gameService.getMap(this.mapId).subscribe(m => {
+        this.cells = m;
+      });
       setTimeout(() => {
         this.errorText = '';
     }, 5000);
@@ -137,17 +143,21 @@ export class PlaygroundComponent implements OnInit {
    }
 
    onCancelClick() {
-    this.currentLetter = '';
-    this.tempLetter.letter = '';
+    this.alphabetLetter = '';
     this.selectedCells.forEach(element => {
       element.checked = false;
     });
     this.selectedCells = [];
     this.selectedLetters = '';
+    this.gameService.getMap(this.mapId).subscribe(m => this.cells = m);
    }
 
-   selectLetter(letter: string) {
-      this.currentLetter = letter;
+   selectAlphabetLetter(letter: string) {
+     if (this.alphabetLetter === letter) {
+      this.alphabetLetter = '';
+     } else {
+      this.alphabetLetter = letter;
+     }
    }
 
    divideAlphabetInParts(alph: string[]) {

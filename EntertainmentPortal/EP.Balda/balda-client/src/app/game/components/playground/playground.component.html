@@ -35,7 +35,7 @@
   <table class="fixed table-bordered table-dark">
     <tbody>
       <tr *ngFor="let row of cells">
-        <td *ngFor="let item of row" (click)="this.selectCell(item)" [class.highlighted]="item.checked == true">
+        <td *ngFor="let item of row" (click)="this.selectCell(item)" [class.highlighted]="item.checked === true">
           {{ item.letter }}
         </td>
       </tr>
@@ -54,12 +54,12 @@
     <table class="alph table-bordered table-dark">
       <tbody>
         <tr>
-          <td *ngFor="let letter of alphabetP1" (click)="this.selectLetter(letter)" [class.highlighted]="letter === currentLetter">
+          <td *ngFor="let letter of alphabetP1" (click)="this.selectAlphabetLetter(letter)" [class.highlighted]="letter === alphabetLetter">
             {{ letter }}
           </td>
         </tr>
         <tr>
-          <td *ngFor="let letter of alphabetP2" (click)="this.selectLetter(letter)" [class.highlighted]="letter === currentLetter">
+          <td *ngFor="let letter of alphabetP2" (click)="this.selectAlphabetLetter(letter)" [class.highlighted]="letter === alphabetLetter">
             {{ letter }}
           </td>
         </tr>

@@ -52,6 +52,7 @@ namespace EP.Balda.Logic.Handlers
                 .Include(m => m.Cells).FirstOrDefaultAsync(cancellationToken);
 
             var cellsFormWord = new List<CellDb>();
+            var previoslyEmptyCells = new List<CellDb>();
 
             foreach (var cellFormWord in request.CellsThatFormWord)
             {
@@ -61,7 +62,20 @@ namespace EP.Balda.Logic.Handlers
                     return Result.Fail<Game>(
                         $"There is no cell with id {cellFormWord} in map's id {map.Id} in database");
 
+                if (cell.Letter == null)
+                    previoslyEmptyCells.Add(cell);
+
                 cellsFormWord.Add(cell);
+            }
+
+            if(previoslyEmptyCells.Count == 0)
+            {
+                return Result.Fail<Game>("New letter wasn't added to playing field");
+            }
+
+            if(previoslyEmptyCells.Count > 1)
+            {
+                return Result.Fail<Game>("More than one new letter was added to playing field");
             }
 
             if (!IsWordCorrect(request.CellsThatFormWord))
