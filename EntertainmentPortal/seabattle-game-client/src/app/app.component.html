@@ -1,29 +1,28 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
 
 
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
 
     <header class="masthead mb-auto">
-      <div class="inner">
-        <h3 class="masthead-brand">Морской бой</h3>
-        <!--<nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link" routerLinkActive="active" routerLink="/">Home</a>
-          <a class="nav-link" routerLinkActive="active" routerLink="/deck">Deck</a>
-          <a class="nav-link" routerLinkActive="active" routerLink="/leaderboard">Leaderboard</a>
-        </nav>-->
-      </div>
-    </header>
+        <div class="inner">
+          <nav class="nav nav-masthead justify-content-center">
+            <!-- <a class="nav-link" routerLinkActive="active" routerLink="/">Home</a> -->
+            <h3>SeaBattle-2019</h3>
+            <button (click)="Login()">Login</button>
+          </nav>
+        </div>
+      </header>
 
 
-    <main role="main" class="inner cover">
+    <main role="main" class="inner cover" >
       <app-shipplacer></app-shipplacer>
       <app-field></app-field>
       <app-buttons style="margin: 10px"></app-buttons>
     </main>
 
     <footer class="mastfoot mt-auto">
-      <div class="inner">
-        <p></p>
-      </div>
-    </footer>
+        <div class="inner">
+          <p></p>
+        </div>
+      </footer>
   </div>

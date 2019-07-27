@@ -8,11 +8,14 @@ import { FieldComponent } from './battlefield/field/field.component';
 import { ButtonsComponent } from './game/buttons/buttons.component';
 import { ShipplacerComponent } from './shipplacer/shipplacer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    //HomeComponent,
     CellComponent,
     FieldComponent,
     ButtonsComponent,
@@ -21,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    OAuthModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
