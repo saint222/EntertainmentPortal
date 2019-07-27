@@ -13,9 +13,6 @@ namespace EP.SeaBattle.Logic.Models
 
         public Ship(Game game, Player player, IEnumerable<Cell> cells)
         {
-            //TODO проверку на ранк (не может быть больше 4)
-            //TODO проверку корабля на целостность
-            //TODO проверку на статус ячеек
             Cells = cells;
             Rank = (ShipRank)cells.Count();
             Game = game;

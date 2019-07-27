@@ -5,7 +5,6 @@ namespace EP.SeaBattle.Logic.Models
 {
     public class Game
     {
-        //TODO Change to Guid
         public string Id { get; set; }
 
         /// <summary>

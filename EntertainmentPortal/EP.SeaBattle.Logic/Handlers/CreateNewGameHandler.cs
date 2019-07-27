@@ -33,7 +33,6 @@ namespace EP.SeaBattle.Logic.Handlers
             var validationResult = await _validator.ValidateAsync(request, ruleSet: "GameValidation", cancellationToken: cancellationToken);
             if (validationResult.IsValid)
             {
-                //TODO спросить, не костыль ли так добавлять в БД запись
                 var game = new GameDb()
                 {
                     Id = request.GameId,

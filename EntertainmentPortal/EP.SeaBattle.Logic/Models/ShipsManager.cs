@@ -16,17 +16,17 @@ namespace EP.SeaBattle.Logic.Models
             { ShipRank.Four, SHIP_RANK_FOUR_MAX_COUNT },
         };
         
-        //TODO обдумать а нужны ли они в public?
-        public const byte SHIP_RANK_FOUR_MAX_COUNT = 1;
-        public const byte SHIP_RANK_THREE_MAX_COUNT = 2;
-        public const byte SHIP_RANK_TWO_MAX_COUNT = 3;
-        public const byte SHIP_RANK_ONE_MAX_COUNT = 4;
+        private const byte SHIP_RANK_FOUR_MAX_COUNT = 1;
+        private const byte SHIP_RANK_THREE_MAX_COUNT = 2;
+        private const byte SHIP_RANK_TWO_MAX_COUNT = 3;
+        private const byte SHIP_RANK_ONE_MAX_COUNT = 4;
 
         public const byte MAX_SHIPS_COUNT = 10;
 
         List<Ship> _ships;
         readonly Game Game;
         readonly Player Player;
+
         /// <summary>
         /// .ctor
         /// </summary>
@@ -50,7 +50,6 @@ namespace EP.SeaBattle.Logic.Models
             _ships = new List<Ship>(ships);
         }
 
-        //TODO обсудить необходимость наличия поля
         public ICollection<Ship> Ships { get => _ships; }
 
         /// <summary>

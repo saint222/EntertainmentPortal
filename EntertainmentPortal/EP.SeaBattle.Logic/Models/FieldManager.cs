@@ -28,12 +28,10 @@ namespace EP.SeaBattle.Logic.Models
                 }
             }
             SetShipsOnField(ships);
-            //TODO Change tests for fieldManager
+
             if (shots != null && shots.Count() > 0)
                 SetShots(shots);
         }
-
-        //TODO проверить необходимость данного поля
 
         /// <summary>
         /// Cells collection

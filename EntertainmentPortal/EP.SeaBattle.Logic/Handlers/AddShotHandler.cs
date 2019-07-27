@@ -34,7 +34,6 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Maybe<IEnumerable<Shot>>> Handle(AddShotCommand request, CancellationToken cancellationToken)
         {
-            //TODO Add shot validation
             var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddShotValidation", cancellationToken: cancellationToken).ConfigureAwait(false);
             if(validationResult.IsValid) 
             {
