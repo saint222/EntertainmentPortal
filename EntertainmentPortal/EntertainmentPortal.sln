@@ -18,11 +18,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Web", "EP.15Puz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hangman.Logic", "EP.Hangman.Logic\EP.Hangman.Logic.csproj", "{F14E90B6-64E3-4654-BDCF-953E8D98E4D0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Data", "EP.SeaBattle.Data\EP.SeaBattle.Data.csproj", "{1A1F3F97-D0EC-479A-9BAC-66166D846863}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattleAI.Data", "EP.SeaBattleAI.Data\EP.SeaBattleAI.Data.csproj", "{1A1F3F97-D0EC-479A-9BAC-66166D846863}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Logic", "EP.SeaBattle.Logic\EP.SeaBattle.Logic.csproj", "{2F4549B4-8E4E-4A2F-9AEE-28D80B1D1E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattleAI.Logic", "EP.SeaBattleAI.Logic\EP.SeaBattleAI.Logic.csproj", "{2F4549B4-8E4E-4A2F-9AEE-28D80B1D1E2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Tests", "EP.SeaBattle.Tests\EP.SeaBattle.Tests.csproj", "{D49FBF6A-BD56-4A5E-B580-18BF8001AF6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattleAI.Tests", "EP.SeaBattleAI.Tests\EP.SeaBattleAI.Tests.csproj", "{D49FBF6A-BD56-4A5E-B580-18BF8001AF6E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Hangman.Data", "EP.Hangman.Data\EP.Hangman.Data.csproj", "{09DCCDD9-5E72-403F-9B24-DEB6B053F683}"
 EndProject
@@ -61,9 +61,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Data", "EP.15Pu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.DotsBoxes.Tests", "EP.DotsBoxes.Tests\EP.DotsBoxes.Tests.csproj", "{1432441B-ED51-450D-9BB9-2410E7B24C2E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeaBattle", "SeaBattle", "{A513A8FF-5554-409E-A816-76649A467B2F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeaBattleAI", "SeaBattleAI", "{A513A8FF-5554-409E-A816-76649A467B2F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Web", "EP.SeaBattle.Web\EP.SeaBattle.Web.csproj", "{8445ACFD-7E93-4946-858F-C7274F0D5F24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattleAI.Web", "EP.SeaBattleAI.Web\EP.SeaBattleAI.Web.csproj", "{8445ACFD-7E93-4946-858F-C7274F0D5F24}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.15Puzzle.Tests", "EP.15Puzzle.Tests\EP.15Puzzle.Tests.csproj", "{905D5442-7D0F-4BB1-843E-39831A75C5EC}"
 EndProject
@@ -75,9 +75,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Balda", "Balda", "{A81D02C5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.Balda.Data", "EP.Balda\EP.Balda.Data\EP.Balda.Data.csproj", "{434FACCF-C01A-405E-87BC-F95A4ED3F14F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattle.Common", "EP.SeaBattle.Common\EP.SeaBattle.Common.csproj", "{AE53F63B-0786-4F70-BF56-ED9FA710F6D9}"
-EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{38CF1E0E-736C-4973-B907-24251334F156}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EP.SeaBattleAI.Common", "EP.SeaBattleAI.Common\EP.SeaBattleAI.Common.csproj", "{AE53F63B-0786-4F70-BF56-ED9FA710F6D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -200,10 +198,6 @@ Global
 		{AE53F63B-0786-4F70-BF56-ED9FA710F6D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE53F63B-0786-4F70-BF56-ED9FA710F6D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE53F63B-0786-4F70-BF56-ED9FA710F6D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38CF1E0E-736C-4973-B907-24251334F156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38CF1E0E-736C-4973-B907-24251334F156}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38CF1E0E-736C-4973-B907-24251334F156}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38CF1E0E-736C-4973-B907-24251334F156}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

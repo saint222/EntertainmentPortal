@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EP.SeaBattle.Logic\EP.SeaBattle.Logic.csproj" />
+    <ProjectReference Include="..\EP.SeaBattleAI.Logic\EP.SeaBattleAI.Logic.csproj" />
   </ItemGroup>
 
 </Project>

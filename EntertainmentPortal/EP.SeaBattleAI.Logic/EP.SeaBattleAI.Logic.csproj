@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EP.SeaBattle.Common\EP.SeaBattle.Common.csproj" />
-    <ProjectReference Include="..\EP.SeaBattle.Data\EP.SeaBattle.Data.csproj" />
+    <ProjectReference Include="..\EP.SeaBattleAI.Common\EP.SeaBattleAI.Common.csproj" />
+    <ProjectReference Include="..\EP.SeaBattleAI.Data\EP.SeaBattleAI.Data.csproj" />
   </ItemGroup>
 
 </Project>
