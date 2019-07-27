@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EP.SeaBattle.Logic.Commands;
@@ -10,14 +8,10 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
-using FluentValidation;
-using NJsonSchema.Annotations;
 using FluentValidation.AspNetCore;
 using System.ComponentModel;
-using Microsoft.AspNetCore.SignalR;
 using EP.SeaBattle.Data.Context;
 using AutoMapper;
-using EP.SeaBattle.Data.Models;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -41,7 +35,7 @@ namespace EP.SeaBattle.Web.Controllers
         [Description("Add shot")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Shot>), Description = "Add ship to player collection")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't add ship")]
-        public async Task<IActionResult> AddShotAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "AddShotPreValidation")] AddShotCommand model)
+        public async Task<IActionResult> AddShotAsync([FromBody, CustomizeValidator(RuleSet = "AddShotPreValidation")] AddShotCommand model)
         {
             if (!ModelState.IsValid)
             {

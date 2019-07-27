@@ -1,7 +1,6 @@
 ﻿using EP.SeaBattle.Common.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EP.SeaBattle.Data.Models
 {

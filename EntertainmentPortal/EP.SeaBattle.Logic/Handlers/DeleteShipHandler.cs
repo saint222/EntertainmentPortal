@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using EP.SeaBattle.Data.Context;
-using EP.SeaBattle.Data.Models;
 using EP.SeaBattle.Logic.Commands;
 using EP.SeaBattle.Logic.Models;
 using CSharpFunctionalExtensions;
@@ -32,11 +31,14 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Maybe<IEnumerable<Ship>>> Handle(DeleteShipCommand request, CancellationToken cancellationToken)
         {
-            var validationResult = await _validator.ValidateAsync(request, ruleSet: "DeleteShipValidation", cancellationToken: cancellationToken);
+            var validationResult = await _validator.ValidateAsync(request, ruleSet: "DeleteShipValidation", cancellationToken: cancellationToken).ConfigureAwait(false);
             if (validationResult.IsValid)
             {
-                var cell = _context.Ships.SelectMany(c => c.Cells).Include(i => i.Ship).FirstOrDefault(s => s.X == request.X && s.Y == request.Y);
-                if (cell != null)
+                var game = await _context.Games.FindAsync(request.GameId).ConfigureAwait(false);
+                var cell = await _context.Ships.SelectMany(c => c.Cells).Include(i => i.Ship)
+                    .FirstOrDefaultAsync(s => s.X == request.X && s.Y == request.Y 
+                                         && s.Ship.Game.Id == request.GameId && s.Ship.Player.Id == request.PlayerId).ConfigureAwait(false);
+                if (cell != null && game.Status == Common.Enums.GameStatus.NotReady)
                 {
                     var ship = cell.Ship;
                     if (ship == null)
@@ -61,7 +63,7 @@ namespace EP.SeaBattle.Logic.Handlers
                     }
                 }
             }
-            return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships.Where(s => s.Player.Id == request.PlayerId && s.Game.Id == request.GameId).Include(i => i.Cells)));
+            return Maybe<IEnumerable<Ship>>.None;
         }
     }
 }

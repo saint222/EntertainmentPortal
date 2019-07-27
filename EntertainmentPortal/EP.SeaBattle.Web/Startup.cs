@@ -41,9 +41,15 @@ namespace EP.SeaBattle.Web
             services.AddCors();
             services.AddLogging(cfg => cfg.AddConsole().AddDebug());
             services.AddSeaBattleServices();
-            services.AddMediatR(typeof(AddNewPlayerCommand).Assembly);
+            services.AddMediatR(typeof(AddNewShipCommand).Assembly);
             services.AddAutoMapper(typeof(CellProfile).Assembly);
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(opt => 
+            {
+                opt.Title = "SeaBattleAI";
+                opt.Version = "1.0";
+                opt.Description = "API fo Sea battle game";
+                opt.DocumentName = "seaBattle";
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(cfg =>
             {
                 cfg.RegisterValidatorsFromAssemblyContaining<ShipAddValidation>();

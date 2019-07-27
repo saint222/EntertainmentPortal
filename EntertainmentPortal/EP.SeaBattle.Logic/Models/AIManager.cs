@@ -1,8 +1,6 @@
 ﻿using EP.SeaBattle.Common.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EP.SeaBattle.Logic.Models
 {
@@ -32,8 +30,6 @@ namespace EP.SeaBattle.Logic.Models
 
         public bool GenerateShips()
         {
-            //Ship shipTemp;
-            //ShipsManager.TryAddShip(0, 0, ShipOrientation.Verctical, ShipRank.Four, out shipTemp);
             Random rand = new Random();
             int count = 0;
            

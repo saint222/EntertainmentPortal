@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using EP.SeaBattle.Data.Context;
-using EP.SeaBattle.Data.Models;
 using EP.SeaBattle.Logic.Queries;
 using EP.SeaBattle.Logic.Models;
 using CSharpFunctionalExtensions;

@@ -23,8 +23,6 @@ export class ShipplacerComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    form.value.playerId = '1';
-    form.value.gameId = '1';
     this.battleFieldService.addShip(form);
   }
 

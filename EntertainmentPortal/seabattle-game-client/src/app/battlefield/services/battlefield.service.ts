@@ -2,12 +2,11 @@ import { environment } from './../../../environments/environment.prod';
 import { ShootService } from './shoot.service';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Cell } from 'src/app/models/cell';
 import { Ship } from 'src/app/models/ship';
 import { CellStatus } from 'src/app/models/cellStatus';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { format } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +21,7 @@ export class BattlefieldService {
   threeLast: number;
   fourLast: number;
   N = 10;
+  allowDelete: boolean;
   constructor(private http: HttpClient, public shotService: ShootService) {
     this.shipField = this.createField();
     this.oneLast = 4;
@@ -30,6 +30,7 @@ export class BattlefieldService {
     this.fourLast = 1;
     this.ships = new Array<Ship>();
     this.subscription = shotService.enemyShots.subscribe(s => s.forEach(shot => this.drawShot(shot)));
+    this.allowDelete = false;
    }
 
   addShip(form: FormGroup) {
@@ -39,12 +40,15 @@ export class BattlefieldService {
         this.ships = data;
         this.ships.forEach(ship => this.drawShip(ship)); // тут рисуем корабли
         this.calculateShipCountByRank(); // тут считаем количество кораблей
+        if (this.ships.length < 10 && this.ships.length > 0) {
+          this.allowDelete = true;
+        }
       }
     });
   }
 
   deleteShip(x: number, y: number) {
-    let json = { x: x.toString(), y: y.toString() };
+    let json = { x: x.toString(),  y: y.toString() };
     this.http.delete<Ship[]>(`${environment.base_url}api/Ships/delete`, { params: json, withCredentials: true}).subscribe(data => {
       this.shipField = this.createField();
       this.ships = data;
@@ -112,6 +116,7 @@ export class BattlefieldService {
     this.threeLast = 2;
     this.fourLast = 1;
     this.ships = new Array<Ship>();
-    this.http.get<any>(`${environment.base_url}api/game/new`, {params: {playerId : '1', gameId: '1'}, withCredentials: true}).subscribe();
+    this.http.get<any>(`${environment.base_url}api/game/new`, {withCredentials: true}).subscribe();
+    this.allowDelete = false;
   }
 }

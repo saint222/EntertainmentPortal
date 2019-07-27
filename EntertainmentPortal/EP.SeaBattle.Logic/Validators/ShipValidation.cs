@@ -28,12 +28,6 @@ namespace EP.SeaBattle.Logic.Validators
 
                 RuleFor(ship => ship.Rank)
                     .IsInEnum().WithMessage("Rank incorrect");
-
-                RuleFor(ship => ship.PlayerId)
-                    .NotNull().WithMessage("Player cannot be null");
-
-                RuleFor(ship => ship.GameId)
-                    .NotNull().WithMessage("Game cannot be null");
             });
             RuleSet("AddShipValidation", () =>
             {
@@ -80,21 +74,8 @@ namespace EP.SeaBattle.Logic.Validators
 
             RuleSet("DeleteShipValidation", () =>
             {
-                //RuleFor(x => x)
-                //    .MustAsync(
-                //        (o, s, token) => CheckExistingShip(o)
-                //           ).WithMessage("Ship not exists");
+
             });
         }
-
-        //private async Task<bool> CheckExistingShip(DeleteShipCommand model)
-        //{
-        //    var result = await _context.Ships.FindAsync(model.Id)
-        //        .ConfigureAwait(false);
-
-        //    if (result == null)
-        //        return false;
-        //    return true;
-        //}
     }
 }

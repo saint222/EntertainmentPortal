@@ -23,7 +23,7 @@ export class FieldComponent implements OnInit {
   }
 
   shoot(cell: Cell) {
-    this.shootService.addShot(cell.y, cell.x, '1', '1');
+    this.shootService.addShot(cell.y, cell.x);
   }
 
   reset() {

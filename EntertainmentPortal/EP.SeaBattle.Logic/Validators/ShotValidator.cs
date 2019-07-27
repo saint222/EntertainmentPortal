@@ -21,13 +21,6 @@ namespace EP.SeaBattle.Logic.Validators
 
                 RuleFor(shot => shot.Y)
                     .InclusiveBetween((byte)0, (byte)9).WithMessage("Y must be from 0 to 9");
-
-                // --------------???--------------------
-                RuleFor(shot => shot.GameId)
-                    .NotEmpty().WithMessage("GameId can not be empty");
-
-                RuleFor(shot => shot.PlayerId)
-                    .NotEmpty().WithMessage("PlayerId can not be empty");
             });
 
             RuleSet("AddShotValidation", () =>

@@ -10,15 +10,12 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
-using FluentValidation;
-using NJsonSchema.Annotations;
 using FluentValidation.AspNetCore;
 using System.ComponentModel;
 using EP.SeaBattle.Data.Context;
 using AutoMapper;
 using EP.SeaBattle.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using CSharpFunctionalExtensions;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -55,7 +52,7 @@ namespace EP.SeaBattle.Web.Controllers
         [Description("Add ship")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Ship>), Description = "Add ship to player collection")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't add ship")]
-        public async Task<IActionResult> AddShipAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "AddShipPreValidation")] AddNewShipCommand model)
+        public async Task<IActionResult> AddShipAsync([FromBody, CustomizeValidator(RuleSet = "AddShipPreValidation")] AddNewShipCommand model)
         {
             if (!HttpContext.Session.Keys.Contains("player"))
             {
@@ -79,7 +76,7 @@ namespace EP.SeaBattle.Web.Controllers
             }
             catch (DbUpdateException ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
 
             if (!ModelState.IsValid)

@@ -1,7 +1,7 @@
-FROM nginx
+FROM nginx:alpine
 
 EXPOSE 80
 
-WORKDIR usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
 COPY ./dist/seabattle-game-client/ .

@@ -9,7 +9,6 @@ using CSharpFunctionalExtensions;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 
 namespace EP.SeaBattle.Logic.Handlers

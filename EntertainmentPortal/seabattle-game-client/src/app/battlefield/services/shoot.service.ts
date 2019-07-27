@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Cell } from 'src/app/models/cell';
 import { CellStatus } from 'src/app/models/cellStatus';
 import { Subject } from 'rxjs';
@@ -21,16 +21,15 @@ export class ShootService {
     this.enemyShots = new Subject();
    }
 
-  addShot(x: number, y: number, gameId: string, playerId: string) {
-    const json = { x, y, gameId, playerId };
+  addShot(x: number, y: number) {
+    const json = { x, y };
     this.http.post<Cell[]>(`${environment.base_url}api/Shot/add`, json, {withCredentials: true}).subscribe(data => {
         this.shots = data;
         this.shots.forEach(shot => this.drawShot(shot)); // тут рисуем выстрелы
         if (this.shots.filter(shot => shot.status === CellStatus.Destroyed).length >= 20) {
           this.endgameMessage = 'ВЫ ПОБЕДИЛИ';
         }
-        const jsonGet = { gameId: '1', answeredPlayerId: '1'};
-        this.http.get<Cell[]>(`${environment.base_url}api/Shot/get`, { params: jsonGet, withCredentials: true }). subscribe(dataGet => {
+        this.http.get<Cell[]>(`${environment.base_url}api/Shot/get`, { withCredentials: true }). subscribe(dataGet => {
            if (dataGet != null && dataGet !== undefined) {
              this.enemyShots.next(dataGet);
            }
