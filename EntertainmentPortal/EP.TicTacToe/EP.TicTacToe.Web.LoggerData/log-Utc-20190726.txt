@@ -1,0 +1,15 @@
+2019-07-26 19:17:49.805 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 19:17:50.257 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 19:17:52.116 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 19:18:10.025 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 19:18:10.077 +03:00 [Information] The file "/oauth2-redirect.html" was not modified
+2019-07-26 20:22:03.852 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 20:22:04.414 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 20:22:06.185 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 20:32:26.229 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 20:32:26.362 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 20:32:28.105 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 20:32:41.384 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 20:32:41.439 +03:00 [Information] The file "/oauth2-redirect.html" was not modified
+2019-07-26 20:46:46.664 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-26 20:46:46.666 +03:00 [Information] The file "/oauth2-redirect.html" was not modified

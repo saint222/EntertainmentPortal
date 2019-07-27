@@ -11,12 +11,19 @@
   margin: 0 0.5rem;
 }
 
+.butt{
+  font-size: 1rem;
+  width: 5rem;
+}
+
 .usr{
   margin: 0 1rem;
   padding: 5px 2rem;
-  color: #983c56;
+  background-image: url(../../../../assets/images/scoolboard.jpg);
+  background-size: 300%;
+  color: #e9e3c1;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #ebdbc7;
+  background-color: #191919;
   font-size: large;
   font-weight: bold;
 }
@@ -32,5 +39,8 @@
 }
 
 h1 {
-  color: pink;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff48f;
 }

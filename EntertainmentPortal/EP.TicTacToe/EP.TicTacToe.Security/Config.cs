@@ -7,8 +7,15 @@ using System.Collections.Generic;
 
 namespace EP.TicTacToe.Security
 {
+    /// <summary>
+    /// Configuring the Identity Security Server file
+    /// </summary>
     public static class Config
     {
+        /// <summary>
+        /// Getting clients from Identity Security
+        /// </summary>
+        /// <returns></returns>
         public static IEnumerable<Client> GetClients()
         {
             return new[]
@@ -48,8 +55,8 @@ namespace EP.TicTacToe.Security
                 // SPA client using implicit flow
                 new Client
                 {
-                    ClientId = "spa",
-                    ClientName = "SPA Client",
+                    ClientId = "angular",
+                    ClientName = "Angular Client",
                     ClientUri = "http://identityserver.io",
 
                     AllowedGrantTypes = GrantTypes.Implicit,
@@ -62,8 +69,8 @@ namespace EP.TicTacToe.Security
                         "http://localhost:4200/home"
                     },
 
-                    PostLogoutRedirectUris = {"http://localhost:44200/index.html"},
-                    AllowedCorsOrigins = {"https://localhost:44200"}
+                    PostLogoutRedirectUris = {"http://localhost:4200/home"},
+                    AllowedCorsOrigins = {"http://localhost:4200"}
                 },
 
                 new Client

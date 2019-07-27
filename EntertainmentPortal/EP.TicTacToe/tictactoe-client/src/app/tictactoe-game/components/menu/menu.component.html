@@ -7,15 +7,18 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="homeBtnClick()">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+          <a routerLink="/home"></a>
+        </button>
         <button [matMenuTriggerFor]="menuGrid" mat-menu-item>
           <mat-icon>casino</mat-icon>
-          <span class="grd">Grid cards</span>
+          <span>Grid cards</span>
         </button>
         <mat-menu #menuGrid="matMenu">
           <button (click)="ord_3_BtnClick()" class="grd" mat-raised-button>
-            <a routerLink="/board">
-              <span class="label">3 x 3</span>
-            </a>
+            <a routerLink="/board"> <span class="label">3 x 3</span></a>
           </button>
           <button class="grd" mat-raised-button> 4 x 4</button>
           <button class="grd" mat-raised-button> 5 x 5</button>
@@ -43,12 +46,12 @@
         <span *ngIf="login" class="usr">{{userName}}</span>
         <span *ngIf="!login" class="usr">User</span>
 
-        <button (click)="loginBtnClick()" *ngIf="!login" color="primary"
-                mat-raised-button style="width: 6rem"
+        <button (click)="loginBtnClick()" *ngIf="!login" class="butt"
+                color="primary" mat-raised-button
                 type="button">Login
         </button>
-        <button (click)="logoutBtnClick()" *ngIf="login" mat-raised-button
-                style="background-color:#4c9da8; width: 6rem"
+        <button (click)="logoutBtnClick()" *ngIf="login" class="butt"
+                color="accent" mat-raised-button
                 type="button">Logout
         </button>
       </div>

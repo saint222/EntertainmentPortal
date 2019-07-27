@@ -8,11 +8,11 @@ import {ShareService} from '../../../core/services/share.service';
 })
 
 export class BoardComponent implements OnInit {
-  mapSize: number;
-  userId = '1';
+  private mapSize: number;
+  private userId: string;
 
   constructor(private share: ShareService) {
-    this.mapSize = 3;
+    this.share.onMapClick.subscribe(size => this.mapSize = size);
   }
 
   ngOnInit() {

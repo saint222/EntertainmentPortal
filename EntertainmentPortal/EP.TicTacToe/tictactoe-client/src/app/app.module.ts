@@ -14,6 +14,8 @@ import {AuthService} from './core/services/auth.service';
 import {MatSidenavModule} from '@angular/material';
 import {TictactoeGameModule} from './tictactoe-game/tictactoe-game.module';
 import {ShareService} from './core/services/share.service';
+import {HttpClientModule} from '@angular/common/http';
+import {ApiModule} from './core/api.module';
 
 
 @NgModule({
@@ -29,10 +31,11 @@ import {ShareService} from './core/services/share.service';
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     OAuthModule.forRoot(),
     MatSidenavModule,
-    TictactoeGameModule
+    TictactoeGameModule, ApiModule.forRoot(null)
   ],
   providers: [AuthService, ShareService],
   bootstrap: [AppComponent]

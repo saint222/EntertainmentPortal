@@ -1,22 +1,16 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ShareService {
-  private gm: number;
+  onMapClick: EventEmitter<number> = new EventEmitter<number>();
+  private clickSize = 0;
 
-  constructor(gm: number) {
-    this.gm = gm;
-  }
-
-  get(): number {
-    return this.gm;
-  }
-
-  set(gm: number) {
-    this.gm = gm;
+  public doMapClick(sz: number) {
+    this.clickSize = sz;
+    this.onMapClick.emit(this.clickSize);
   }
 
 }
