@@ -11,7 +11,7 @@ import {UserComponent} from './tictactoe-game/components/user/user.component';
 import {FormsModule} from '@angular/forms';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {AuthService} from './core/services/auth.service';
-import {MatSidenavModule} from '@angular/material';
+import {MatGridListModule, MatSidenavModule} from '@angular/material';
 import {TictactoeGameModule} from './tictactoe-game/tictactoe-game.module';
 import {ShareService} from './core/services/share.service';
 import {HttpClientModule} from '@angular/common/http';
@@ -35,7 +35,7 @@ import {ApiModule} from './core/api.module';
     AppRoutingModule,
     OAuthModule.forRoot(),
     MatSidenavModule,
-    TictactoeGameModule, ApiModule.forRoot(null)
+    TictactoeGameModule, ApiModule.forRoot(null), MatGridListModule
   ],
   providers: [AuthService, ShareService],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,11 +7,21 @@ import {EventEmitter, Injectable} from '@angular/core';
 
 export class ShareService {
   onMapClick: EventEmitter<number> = new EventEmitter<number>();
-  private clickSize = 0;
+  private clicker = 0;
 
-  public doMapClick(sz: number) {
-    this.clickSize = sz;
-    this.onMapClick.emit(this.clickSize);
+  private messageSource = new BehaviorSubject(0);
+  currentMessage = this.messageSource.asObservable();
+
+  constructor() {
+  }
+
+  public doClick(n: number) {
+    this.clicker = n;
+    this.onMapClick.emit(this.clicker);
+  }
+
+  changeMessage(message: number) {
+    this.messageSource.next(message);
   }
 
 }

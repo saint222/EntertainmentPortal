@@ -4,3 +4,13 @@
 2019-07-27 00:18:12.949 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
 2019-07-27 00:18:26.328 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
 2019-07-27 00:18:26.331 +03:00 [Information] The file "/oauth2-redirect.html" was not modified
+2019-07-27 12:37:48.348 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-27 12:37:48.534 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-27 12:37:48.535 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-27 12:37:48.536 +03:00 [Information] The file "/swagger-ui-standalone-preset.js" was not modified
+2019-07-27 12:37:48.541 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-27 12:37:48.543 +03:00 [Information] The file "/swagger-ui.css" was not modified
+2019-07-27 12:37:48.546 +03:00 [Information] The file "/swagger-ui-bundle.js" was not modified
+2019-07-27 12:37:50.655 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-27 12:37:50.693 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-27 12:37:50.697 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'

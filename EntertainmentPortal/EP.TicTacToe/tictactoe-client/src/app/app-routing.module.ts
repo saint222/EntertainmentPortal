@@ -6,7 +6,7 @@ import {MenuComponent} from './tictactoe-game/components/menu/menu.component';
 
 
 const routes: Routes = [
-  // {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'menu', component: MenuComponent},

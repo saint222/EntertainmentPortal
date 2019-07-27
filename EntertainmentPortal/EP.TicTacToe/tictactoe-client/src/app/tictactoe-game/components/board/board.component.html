@@ -1,12 +1,18 @@
 <app-menu></app-menu>
 
 <app-layout>
-  <div>
+  <div class="board_context">
     <h2 style="color:#e9e3c1">map size = {{mapSize}} </h2>
     <br>
-    <h2 style="color:#e9e3c1">user id: {{userId}}</h2>
+    <h2 style="color:#e9e3c1">user id: {{cells}}</h2>
     <br>
     ***************************
+    <mat-grid-list cols="{{mapSize}}" gutterSize="2px" style="margin: 3px">
+      <div *ngIf="isMap">
+        <mat-grid-tile *ngFor="let item of cells" class="cell_context">
+          {{item}}</mat-grid-tile>
+      </div>
+    </mat-grid-list>
   </div>
 </app-layout>
 

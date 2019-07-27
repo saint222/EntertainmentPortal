@@ -7,10 +7,9 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="homeBtnClick()">
+        <button (click)="homeBtnClick()" mat-menu-item>
           <mat-icon>home</mat-icon>
           <span>Home</span>
-          <a routerLink="/home"></a>
         </button>
         <button [matMenuTriggerFor]="menuGrid" mat-menu-item>
           <mat-icon>casino</mat-icon>
@@ -18,7 +17,7 @@
         </button>
         <mat-menu #menuGrid="matMenu">
           <button (click)="ord_3_BtnClick()" class="grd" mat-raised-button>
-            <a routerLink="/board"> <span class="label">3 x 3</span></a>
+              <span class="label">3 x 3</span>
           </button>
           <button class="grd" mat-raised-button> 4 x 4</button>
           <button class="grd" mat-raised-button> 5 x 5</button>

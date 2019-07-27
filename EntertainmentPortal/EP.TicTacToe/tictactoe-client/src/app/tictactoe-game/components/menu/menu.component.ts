@@ -2,7 +2,7 @@ import {log} from 'util';
 import {Component, OnInit} from '@angular/core';
 import {ShareService} from '../../../core/services/share.service';
 import {AuthService} from 'src/app/core/services/auth.service';
-import {HomeComponent} from '../home/home.component';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -13,6 +13,7 @@ import {HomeComponent} from '../home/home.component';
 
 export class MenuComponent implements OnInit {
 
+  stringMessage: string;
   userName: string;
   userEmail: string;
   userId: string;
@@ -21,9 +22,9 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    public router: Router,
     private share: ShareService
   ) {
-    this.share.onMapClick.subscribe(cnt => this.mapSize = cnt);
     this.authService.tokenValidState.subscribe(e => {
       log('Token event received in HOME Component');
       this.updateComponent();
@@ -31,26 +32,30 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.share.onMapClick.subscribe(cnt => this.mapSize = cnt);
+    // this.share.currentMessage.subscribe(message => this.stringMessage = message);
+    this.share.currentMessage.subscribe(message => this.mapSize = message);
     this.updateComponent();
   }
 
-
-  homeBtnClick() {
-
+  newSender() {
+    // this.share.changeMessage('Hello from Sibling');
+    this.share.changeMessage(this.mapSize);
   }
 
+  homeBtnClick() {
+    const navigate = this.router.navigate(['/menu']);
+  }
 
   ord_3_BtnClick() {
-    this.mapSize = 3;
-    this.share.doMapClick(this.mapSize);
+    this.mapSize = 10;
+    // this.share.doClick(this.mapSize);
+    this.newSender();
+    const navigate = this.router.navigate(['/board']);
   }
 
   loginBtnClick() {
     this.login = true;
-    // this.userName = 'Allison Hauck';
-    // this.userEmail = 'Allison50@google.com';
-    // this.userId = '1';
-
     log('Pressed btn to login user');
     this.authService.loginUser();
   }
@@ -70,13 +75,7 @@ export class MenuComponent implements OnInit {
       this.login = true;
       this.userName = this.authService.getValueFromIdToken('name');
       this.userEmail = this.authService.getValueFromIdToken('email');
+      this.userId = this.authService.getValueFromIdToken('id');
     }
-    // if (this.login) {
-    //   this.userName = 'Allison Hauck';
-    //   this.userEmail = 'Allison50@google.com';
-    //   this.userId = '1';
-    //   this.login = true;
-    // }
-
   }
 }
