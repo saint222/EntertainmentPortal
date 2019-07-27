@@ -1,23 +1,42 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="col-md-6 col-sm-12">
+<div class="loginForm">
+  <h2>Sign in</h2>
 <form [formGroup]="loginGroup" (ngSubmit)="onSubmit(form)" #form="ngForm">
-  <div class="form-group">
-    <label for="userName">Login</label>
-    <input
-    id="login"
-    type="text"
-    name=""
-    placeholder="userName"
-    formControlName="userName"/>
+    <div class="form-group">
+      <label for="userName">Username</label>
+      <input
+        type="text"
+        name="userName"
+        id="userNameLog"
+        class="form-control"
+        placeholder="Username"
+        formControlName="userName"
+        autofocus
+      />
+    </div>
     <br>
+    <div class="form-group">
     <label for="password">Password</label>
-    <input
-    type="password"
-    name=""
-    id="password"
-    placeholder="password"
-    formControlName="password"/>
-    <br>
-    <button type="submit" class="btn btn-primary"> <!----[disabled]="!form.valid"--->
-      Login
-    </button>
-  </div>
-</form>
+      <input
+        type="password"
+        name="password"
+        id="passwordLog"
+        class="form-control"
+        placeholder="Password"
+        formControlName="password"
+      />
+    </div>
+    <div class="errorText">{{ errorText }}</div>
+    Sign in with:
+    <button class="fa fa-facebook-square" aria-hidden="true" (click)="onFacebookClick()"></button>
+    <button class="fa fa-google" aria-hidden="true" (click)="onGoogleClick()"></button><br>
+    <div class="form-group">
+      <button type="submit" class="btn btn-black">
+        Login
+      </button>
+      <button type="button" class="btn btn-secondary" routerLink="register">Register</button>
+    </div>
+  </form>
+</div>
+</div>

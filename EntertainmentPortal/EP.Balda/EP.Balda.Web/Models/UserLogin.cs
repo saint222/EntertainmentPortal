@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// Represents the user to login.
-    /// </summary>UserLogin model class.
+    /// </summary>
     public class UserLogin
     {
         /// <summary>

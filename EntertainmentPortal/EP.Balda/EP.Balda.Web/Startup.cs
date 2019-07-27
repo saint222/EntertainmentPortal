@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NJsonSchema;
+using System;
+using System.Threading.Tasks;
 
 namespace EP.Balda.Web
 {
@@ -64,6 +66,8 @@ namespace EP.Balda.Web
             services.AddSwaggerDocument(cfg =>
             {
                 cfg.SchemaType = SchemaType.OpenApi3;
+                cfg.Title = "Balda Game";
+                cfg.Description = "Balda - linguistic board game in which it is necessary to make up words by means of the letters added in the certain way on the square game board.";
             });
 
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
@@ -89,6 +93,11 @@ namespace EP.Balda.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
                               IMediator mediator)
         {
+            //app.Use(async delegate (HttpContext context, Func<Task> next)
+            //{
+            //    await next.Invoke();
+            //});
+
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
@@ -97,7 +106,7 @@ namespace EP.Balda.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                 .AllowAnyMethod()
-                .WithOrigins("http://localhost:4200")
+                .WithOrigins("http://localhost:4200", "http://balda-client", "http://localhost:8080")
                 .AllowCredentials());
 
             app.UseAuthentication();

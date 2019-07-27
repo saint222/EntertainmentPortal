@@ -75,6 +75,7 @@ namespace EP.Balda.Logic.Handlers
 
             var game = await _context.Games
                 .Where(g => g.Id == gameDb.Id)
+                .Include(g => g.Map)
                 .SingleOrDefaultAsync(cancellationToken);
 
             try
@@ -147,11 +148,11 @@ namespace EP.Balda.Logic.Handlers
         private string GetStartingWord(MapDb mapDb)
         {
             string word = "";
-            int sizeRepo = _context.WordsRu.Count();
+            int sizeRepo = _context.Words.Count();
 
             while (word.Length != mapDb.Size)
-                word = _context.WordsRu.Where(w => w.Id == RandomWord(sizeRepo))
-                    .FirstOrDefault().Word;
+                word = _context.Words.Where(w => w.Id == RandomWord(sizeRepo))
+                    .FirstOrDefault().Word.ToUpper();
 
             return word;
         }

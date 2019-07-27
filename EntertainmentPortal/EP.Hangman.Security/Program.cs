@@ -22,12 +22,12 @@ namespace EP.Hangman.Security
 
             var host = CreateWebHostBuilder(args).Build();
 
-            if (true)
+            if (seed)
             {
                 var config = host.Services.GetRequiredService<IConfiguration>();
                 var connectionString = config.GetConnectionString("DefaultConnection");
                 SeedData.EnsureSeedData(connectionString);
-                //return;
+                return;
             }
 
             host.Run();
