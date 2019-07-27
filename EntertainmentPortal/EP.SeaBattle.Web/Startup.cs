@@ -36,7 +36,7 @@ namespace EP.SeaBattle.Web
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "http://seabattle.me:5000";
+                    opt.Authority = "https://seabattle.me:44360";
                     opt.RequireHttpsMetadata = false;
                 })
                 //.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
@@ -81,7 +81,7 @@ namespace EP.SeaBattle.Web
                     Flow = OpenApiOAuth2Flow.Implicit,
                     Type = OpenApiSecuritySchemeType.OAuth2,
                     //AuthorizationUrl = "http://localhost:5000/connect/authorize",
-                    AuthorizationUrl = "http://seabattle.me:5000/connect/authorize",
+                    AuthorizationUrl = "https://seabattle.me:44360/connect/authorize",
                     Scopes = new Dictionary<string, string>()
                     {
                         {"sea-battle-2019", "Access to sea-battle-2019 game api" }
