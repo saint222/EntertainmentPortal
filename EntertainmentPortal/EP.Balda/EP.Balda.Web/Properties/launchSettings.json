@@ -16,7 +16,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "nativeDebugging": true
+      "nativeDebugging": false
     },
     "BaldaTest": {
       "commandName": "Project",

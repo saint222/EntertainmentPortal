@@ -43,7 +43,15 @@ namespace EP.Balda.Data.Migrations
 
                     b.Property<string>("InitWord");
 
+                    b.Property<bool>("IsGameOver");
+
+                    b.Property<bool>("IsPlayersTurn");
+
                     b.Property<long>("MapId");
+
+                    b.Property<int>("OpponentScore");
+
+                    b.Property<int>("PlayerScore");
 
                     b.HasKey("Id");
 
@@ -102,8 +110,6 @@ namespace EP.Balda.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<int>("Score");
-
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
@@ -138,22 +144,28 @@ namespace EP.Balda.Data.Migrations
 
             modelBuilder.Entity("EP.Balda.Data.Models.PlayerWord", b =>
                 {
+                    b.Property<int>("Id");
+
                     b.Property<string>("PlayerId");
 
                     b.Property<int>("WordId");
 
                     b.Property<long>("GameId");
 
-                    b.HasKey("PlayerId", "WordId");
+                    b.Property<bool>("IsChosenByOpponnent");
+
+                    b.HasKey("Id", "PlayerId", "WordId", "GameId");
 
                     b.HasIndex("GameId");
+
+                    b.HasIndex("PlayerId");
 
                     b.HasIndex("WordId");
 
                     b.ToTable("PlayerWords");
                 });
 
-            modelBuilder.Entity("EP.Balda.Data.Models.WordRuDb", b =>
+            modelBuilder.Entity("EP.Balda.Data.Models.WordDb", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -163,7 +175,7 @@ namespace EP.Balda.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WordsRu");
+                    b.ToTable("Words");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -314,7 +326,7 @@ namespace EP.Balda.Data.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("EP.Balda.Data.Models.WordRuDb", "Word")
+                    b.HasOne("EP.Balda.Data.Models.WordDb", "Word")
                         .WithMany("PlayerWords")
                         .HasForeignKey("WordId")
                         .OnDelete(DeleteBehavior.Cascade);

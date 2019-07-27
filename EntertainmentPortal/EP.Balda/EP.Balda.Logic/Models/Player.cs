@@ -20,11 +20,6 @@ namespace EP.Balda.Logic.Models
         public string LastName { get; set; }
 
         /// <summary>
-        /// Score property. Represents player's score.
-        /// </summary>
-        public int Score { get; set; }
-
-        /// <summary>
         /// Created property. Represents the data when player profile was created.
         /// </summary>
         public DateTime Created { get; set; }

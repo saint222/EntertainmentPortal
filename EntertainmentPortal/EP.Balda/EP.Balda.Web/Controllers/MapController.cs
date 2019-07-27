@@ -1,7 +1,11 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
+using EP.Balda.Logic.Commands;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using EP.Balda.Web.Models;
+using EP.Balda.Web.Services;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -24,27 +28,42 @@ namespace EP.Balda.Web.Controllers
         [HttpGet("api/map")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Map not found")]
-        public async Task<IActionResult> GetMapAsync([FromQuery] GetMap model)
+        public async Task<IActionResult> GetMapAsync([FromQuery] long id)
         {
             _logger.LogDebug(
-                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {model.Id}");
+                $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
 
-            var result = await _mediator.Send(model);
+            var result = await _mediator.Send(new GetMap() { Id = id });
 
-            if(result.HasValue)
+            if (result.HasValue)
             {
                 _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameter: Id = {model.Id}");
+                $"Parameter: Id = {id}");
 
-                return Ok(result.Value);
+                var cells = Helpers.Do2DimArray(result.Value);
+                return Ok(cells);
             }
             else
             {
                 _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"Id = {model.Id} - Map not found");
+                    $"Id = {id} - Map not found");
 
                 return NotFound();
             }
+        }
+
+        [HttpGet("api/map/alphabet")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Error")]
+        public IActionResult GetAlphabet()
+        {
+            _logger.LogDebug(
+                $"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+            var alphabet = Helpers.GetEnglishAlphabet();
+
+            return alphabet != null ? (IActionResult)Ok(alphabet) : BadRequest();
+
         }
     }
 }

@@ -18,11 +18,6 @@ namespace EP.Balda.Data.Models
         /// LastName property. Represents player's last name.
         /// </summary>
         public string LastName { get; set; }
-        
-        /// <summary>
-        /// Score property. Represents player's Score.
-        /// </summary>
-        public int Score { get; set; }
 
         /// <summary>
         /// PlayerGames property. Used for many-to-many relationships.

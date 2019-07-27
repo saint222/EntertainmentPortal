@@ -1,0 +1,73 @@
+<div class="container-fluid">
+<div id="left" class="row">
+    <div class="col">
+  <b>Player {{ player.userName }} </b>
+  <br>
+  <br>
+    <b>Words:</b><br>
+    <ul class="listWords">
+      <li *ngFor="let word of playerWords">
+          {{ word }}
+      </li>
+  </ul>
+  <p>Total: {{ playerScore }} </p>
+</div>
+</div>
+
+<div id="right">
+    <div class="col">
+      <p><b>Opponent</b></p>
+      <br>
+    <b>Words:</b>
+    <ul class="listWords">
+        <li *ngFor="let word of opponentWords">
+            {{ word }}
+        </li>
+    </ul>
+    <p>Total: {{ opponentScore }} </p>
+      </div>
+</div>
+
+<div id="center">
+  <p *ngIf="isPlayerTurn">Player's Turn</p>
+  <p *ngIf="!isPlayerTurn">Opponent's Turn</p>
+    <div class="col">
+  <table class="fixed table-bordered table-dark">
+    <tbody>
+      <tr *ngFor="let row of cells">
+        <td *ngFor="let item of row" (click)="this.selectCell(item)" [class.highlighted]="item.checked === true">
+          {{ item.letter }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> Your word: {{ selectedLetters }} </p>
+  <button type="button-send" class="btn btn-secondary" (click)="onSendClick()">
+    Send word
+</button>
+<button type="button-cancel" class="btn btn-secondary" (click)="onCancelClick()">
+    Cancel
+</button>
+<div class="errorText">
+  <p>{{ errorText }}</p>
+</div>
+    <table class="alph table-bordered table-dark">
+      <tbody>
+        <tr>
+          <td *ngFor="let letter of alphabetP1" (click)="this.selectAlphabetLetter(letter)" [class.highlighted]="letter === alphabetLetter">
+            {{ letter }}
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let letter of alphabetP2" (click)="this.selectAlphabetLetter(letter)" [class.highlighted]="letter === alphabetLetter">
+            {{ letter }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="leave">
+    <button type="button" class="btn btn-secondary" (click)="onLeaveButton()">Leave Game</button>
+    </div>
+</div>
+</div>
