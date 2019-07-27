@@ -32,7 +32,6 @@ export class StartGameComponent implements OnInit {
       this.gameService.createNewGame(this.mapSize)
         .subscribe(b => {
           console.log(b),
-          this.gameService.changeGameSource(b),
           this.router.navigateByUrl('playground');
         },
         (err: HttpErrorResponse) => console.log(err.error));

@@ -125,7 +125,6 @@ namespace EP.Balda.Logic.Handlers
             if (IsGameOver(map.Cells.ToList()))
             {
                 game.IsGameOver = true;
-                _context.Entry(game).State = EntityState.Deleted;
             }
 
             try

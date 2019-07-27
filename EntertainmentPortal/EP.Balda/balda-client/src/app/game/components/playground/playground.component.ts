@@ -17,8 +17,8 @@ export class PlaygroundComponent implements OnInit {
   cells: Cell[][] = [];
   selectedCells: Cell[] = [];
   selectedLetters = '';
-  mapid: string;
-  gameid: string;
+  mapId: string;
+  gameId: string;
   playerId: string;
   alphabet: string[] = [];
   alphabetP1: string[] = [];
@@ -41,9 +41,12 @@ export class PlaygroundComponent implements OnInit {
     this.gameService.getCurrentGame().subscribe(m => {
       console.log(m);
       this.cells = m.cells;
-      this.gameid = m.gameId;
+      this.gameId = m.gameId;
       this.playerId = m.userId;
-      this.gameService.changeGameSource(m);
+      this.opponentScore = m.opponentScore;
+      this.playerScore = m.playerScore;
+      this.mapId = m.mapId;
+      this.isPlayerTurn = m.isPlayersTurn;
       this.gameService.getPlayer(this.playerId).subscribe(p => { this.player = p; },
         (err: HttpResponseBase) => {
           return console.log(err.statusText);
@@ -55,13 +58,13 @@ export class PlaygroundComponent implements OnInit {
         (err: HttpResponseBase) => {
           return console.log(err.statusText);
         });
-      this.gameService.getPlayersWords(this.gameid).subscribe(w => {
+      this.gameService.getPlayersWords(this.gameId).subscribe(w => {
           this.playerWords = w;
         },
         (err: HttpResponseBase) => {
           return console.log(err.statusText);
         });
-      this.gameService.getPlayersOpponentWords(this.gameid).subscribe(w => {
+      this.gameService.getPlayersOpponentWords(this.gameId).subscribe(w => {
           this.opponentWords = w;
         },
         (err: HttpResponseBase) => {
@@ -93,28 +96,28 @@ export class PlaygroundComponent implements OnInit {
    onSendClick() {
     const gameAndCells = new GameAndCells();
     gameAndCells.CellsThatFormWord = this.selectedCells;
-    gameAndCells.gameId = this.gameid;
+    gameAndCells.gameId = this.gameId;
     this.gameService.sendWord(gameAndCells).subscribe(w => {
       console.log(w);
       this.isGameOver = w.isGameOver;
       this.opponentScore = w.opponentScore;
       this.playerScore = w.playerScore;
       this.isPlayerTurn = w.isPlayersTurn;
-      this.gameService.getCurrentGame().subscribe(m => {
-        this.cells = m.cells;
+      this.gameService.getMap(this.mapId).subscribe(m => {
+        this.cells = m;
       });
       if (this.isGameOver) {
         this.router.navigateByUrl('gameOver');
       }
       if (this.isPlayerTurn) {
-        this.gameService.getPlayersOpponentWords(this.gameid).subscribe(p => {
+        this.gameService.getPlayersOpponentWords(this.gameId).subscribe(p => {
           this.opponentWords = p;
         },
         (err: HttpResponseBase) => {
           return console.log(err.statusText);
         });
       } else {
-        this.gameService.getPlayersWords(this.gameid).subscribe(w2 => {
+        this.gameService.getPlayersWords(this.gameId).subscribe(w2 => {
           this.playerWords = w2;
         },
         (err: HttpResponseBase) => {
@@ -157,7 +160,7 @@ export class PlaygroundComponent implements OnInit {
    }
 
    onLeaveButton() {
-      this.gameService.leaveGame(this.gameid).subscribe(g => {
+      this.gameService.leaveGame(this.gameId).subscribe(g => {
           console.log(g);
           this.router.navigateByUrl('startGame');
         });

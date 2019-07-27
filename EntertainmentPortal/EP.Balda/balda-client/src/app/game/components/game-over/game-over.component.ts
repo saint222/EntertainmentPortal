@@ -1,10 +1,6 @@
 import { GameService } from './../../services/game.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Cell } from '../../models/cell';
-import { Player } from '../../models/player';
-import { CurrentGame } from '../../models/currentGame';
-import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-game-over',
@@ -13,23 +9,29 @@ import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 })
 export class GameOverComponent implements OnInit {
 
-  gameId: string;
-  player: Player = new Player();
-  mapid: string;
-  gameid: string;
-  playerId: string;
-  alphabet: string[] = [];
-  alphabetP1: string[] = [];
-  alphabetP2: string[] = [];
-  playerWords: string[] = [];
-  opponentWords: string[] = [];
-  playerScore: number;
-  opponentScore: number;
+  playerScore: string;
+  opponentScore: string;
+  playerName: string;
+  textCongrats: string;
   gif: any = 'assets/pics/1.gif';
 
   constructor(private router: Router, private gameService: GameService) { }
 
   ngOnInit() {
+    this.gameService.getResults().subscribe(r => {
+      this.opponentScore = r.opponentScore;
+      this.playerScore = r.playerScore;
+      this.playerName = r.playerName;
+      if (Number(this.playerScore) > Number(this.opponentScore)) {
+          this.textCongrats = this.playerName + ' WINS!!!';
+       }
+      if (Number(this.opponentScore) > Number(this.playerScore)) {
+          this.textCongrats = 'Opponent WINS!!!';
+      }
+      if (Number(this.opponentScore) === Number(this.playerScore)) {
+        this.textCongrats = 'DRAUGHT!';
+      }
+      });
 }
 
     onPlayClick() {

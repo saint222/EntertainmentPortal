@@ -4,37 +4,21 @@
   </head>
   <div class="container-gameover">
     <h1 id="gameover">Game Over</h1>
-  </div>
-
     <div class="container-fluid">
       <div class="row">
-            <div id="left" class="col-sm-4">
-          <b>Player {{ player.userName }} </b>
-          <br>
-          <br>
-            <b>Words:</b><br>
-            <ul class="listWords">
-              <li *ngFor="let word of playerWords">
-                  {{ word }}
-              </li>
-          </ul>
-          <p>Total: {{ playerScore }} </p>
+            <div id="left" class="col-sm-3">
+          <p><b>{{ playerName }} </b></p>
+          <p>Score: {{ playerScore }} </p>
         </div>
-        <div id="center" class="col-sm-4">
-            <button class="btn btn-secondary continue" (click)="onPlayClick()">Play Again</button>
+        <div id="center" class="col-sm-6">
+          <div id="congrats">{{ textCongrats }}</div>
+            <button class="btn btn-secondary continue" (click)="onPlayClick()">Play Again</button><br>
             <img id="gif" [src]="gif">
       </div>
-            <div id="right" class="col-sm-4">
-              <p><b>Opponent</b></p>
-              <br>
-            <b>Words:</b>
-            <ul class="listWords">
-                <li *ngFor="let word of opponentWords">
-                    {{ word }}
-                </li>
-            </ul>
-            <p>Total: {{ opponentScore }} </p>
+            <div id="right" class="col-sm-3">
+            <p><b>Opponent</b></p>
+            <p>Score: {{ opponentScore }} </p>
               </div>
         </div>
         </div>
-
+      </div>

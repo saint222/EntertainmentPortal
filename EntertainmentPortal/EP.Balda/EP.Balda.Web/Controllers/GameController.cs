@@ -34,6 +34,13 @@ namespace EP.Balda.Web.Controllers
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: id = {id}");
 
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+
+            if (!isAuthenticated)
+            {
+                return BadRequest("User is not authorized");
+            }
+
             var result = await _mediator.Send(new GetGame() { Id = id });
 
             if (result.HasValue)
@@ -56,8 +63,6 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Player not found")]
         public async Task<IActionResult> GetCurrentGame()
         {
-            string UserId = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
             _logger.LogDebug(
                     $"Action: {ControllerContext.ActionDescriptor.ActionName}");
 
@@ -74,13 +79,18 @@ namespace EP.Balda.Web.Controllers
 
             if (result.HasValue)
             {
-                var cells = Helpers.Do2DimArray(result.Value.Map);
+                var game = result.Value;
+                var cells = Helpers.Do2DimArray(game.Map);
                 var currentGame = new CurrentGame()
                 {
                     Cells = cells,
-                    IsGameOver = result.Value.IsGameOver,
-                    GameId = result.Value.Id,
-                    UserId = UserId
+                    IsGameOver = game.IsGameOver,
+                    GameId = game.Id,
+                    UserId = UserId,
+                    IsPlayersTurn = game.IsPlayersTurn,
+                    MapId = game.MapId,
+                    OpponentScore = game.OpponentScore,
+                    PlayerScore = game.PlayerScore
                 };
 
                 return Ok(currentGame);
@@ -104,9 +114,11 @@ namespace EP.Balda.Web.Controllers
                 return BadRequest("User is not authorized");
             }
 
-            var model = new CreateNewGameCommand();
-            model.PlayerId = UserId;
-            model.MapSize = mapSize;
+            var model = new CreateNewGameCommand
+            {
+                MapSize = mapSize,
+                PlayerId = UserId
+            };
             
             _logger.LogDebug(
                 $"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: PlayerId = {model.PlayerId}, MapSize = {model.MapSize}");
@@ -163,6 +175,43 @@ namespace EP.Balda.Web.Controllers
                 "Game can't be created");
 
                 return BadRequest(result.Error);
+            }
+        }
+
+        [HttpGet("api/game/results")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(GameResults), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        public async Task<IActionResult> GetGameResultsAsync()
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+            if (!isAuthenticated)
+            {
+                return BadRequest("User is not authorized");
+            }
+
+            var model = new GetGameResults() { PlayerId = UserId };
+            var result = await _mediator.Send(model);
+
+            if (result.HasValue)
+            {
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+                var gameResults = new GameResults
+                {
+                    PlayerName = User.Identity.Name,
+                    OpponentScore = result.Value.OpponentScore,
+                    PlayerScore = result.Value.PlayerScore
+                };
+
+                return Ok(gameResults);
+            }
+            else
+            {
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}");
+
+                return BadRequest();
             }
         }
 

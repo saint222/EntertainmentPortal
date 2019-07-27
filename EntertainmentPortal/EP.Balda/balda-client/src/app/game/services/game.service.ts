@@ -1,3 +1,4 @@
+import { GameResults } from './../models/gameResults';
 import { CurrentGame } from '../models/currentGame';
 import { Player } from './../models/player';
 import { GameAndCells } from './../models/gameAndCells';
@@ -13,11 +14,6 @@ import { environment } from 'src/environments/environment';
 })
 
 export class GameService {
-
-  private gameSource = new BehaviorSubject<CurrentGame>(new CurrentGame());
-  currentGame = this.gameSource.asObservable();
-  private userSource = new BehaviorSubject<Player>(new Player());
-  currentUser = this.userSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -38,13 +34,6 @@ export class GameService {
     return this.http.get<Game>(`${environment.base_url}api/game`, { headers: myHeaders, params: myParams, withCredentials: true });
   }
 
-  changeGameSource(game: CurrentGame) {
-    this.gameSource.next(game);
-  }
-
-  changeUserSource(user: Player) {
-    this.userSource.next(user);
-  }
   sendWord(gameAndCells: GameAndCells) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -90,5 +79,17 @@ export class GameService {
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/text');
     return this.http.delete<Game>(`${environment.base_url}api/leaveGame`,
     { headers: myHeaders, params: myParams, withCredentials: true });
+  }
+
+  getMap(mapId: string) {
+    const myParams = new HttpParams().set('Id', mapId);
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get<Cell[][]>(`${environment.base_url}api/map`,
+    { headers: myHeaders, params: myParams, withCredentials: true });
+  }
+
+  getResults() {
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get<GameResults>(`${environment.base_url}api/game/results`, { headers: myHeaders, withCredentials: true });
   }
 }

@@ -1,11 +1,12 @@
 import { Cell } from './cell';
 
 export class CurrentGame {
-        IsGameOver: boolean;
-
-        cells: Cell[][];
-
-        gameId: string;
-
-        userId: string;
-      }
+  userId: string;
+  gameId: string;
+  mapId: string;
+  isGameOver: boolean;
+  isPlayersTurn: boolean;
+  playerScore: number;
+  opponentScore: number;
+  cells: Cell[][];
+  }
