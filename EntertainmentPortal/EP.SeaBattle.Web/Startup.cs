@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NJsonSchema;
 using NSwag;
 using NSwag.AspNetCore;
+using EP.SeaBattle.Web.Hubs;
 
 namespace EP.SeaBattle.Web
 {
@@ -94,6 +95,7 @@ namespace EP.SeaBattle.Web
             services.AddAutoMapper(typeof(CellProfile).Assembly);
             services.AddSeaBattleServices();
             services.AddCors();
+            services.AddSignalR();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(cfg =>
                 {
@@ -124,7 +126,11 @@ namespace EP.SeaBattle.Web
                 ClientId = "swagger"
             });
             //app.UseIdentityServer();
-
+            app.UseSignalR(cfg =>
+            {
+                cfg.MapHub<SeaBattleHub>("/sea-battle-2019");
+                cfg.MapHub<DemoGenericHub>("/demo-generic");
+            });
             mediator.Send(new CreateDatabaseCommand()).Wait();
             //app.UseSession();
             app.UseMvc();

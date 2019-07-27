@@ -9,6 +9,8 @@
             <!-- <a class="nav-link" routerLinkActive="active" routerLink="/">Home</a> -->
             <h3>SeaBattle-2019</h3>
             <button (click)="Login()">Login</button>
+            <span class="badge badge-primary">Messages: {{this.demoHub.messages.length}}</span>
+            <a name="" id="" class="btn btn-primary" role="button" (click)="callServer()">Call Server</a>
           </nav>
         </div>
       </header>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
 import { AuthConfig } from 'angular-oauth2-oidc';
+import { HubService } from './hub.service';
 
 export const authConfig: AuthConfig = {
   waitForTokenInMsec: 10000,
@@ -29,15 +30,18 @@ export const authConfig: AuthConfig = {
 export class AppComponent {
   title = 'seabattle-game-client';
 
-  constructor(private authService: OAuthService) {
-    this.authService.configure(authConfig);
-    this.authService.tokenValidationHandler = new JwksValidationHandler();
-    this.authService.loadDiscoveryDocumentAndTryLogin();
-    //this.authService.client
-  }
+
+    constructor(private authService: OAuthService, public demoHub: HubService) {
+      // this.authService.configure(authConfig);
+      // this.authService.tokenValidationHandler = new JwksValidationHandler();
+      // this.authService.loadDiscoveryDocumentAndTryLogin();
+  
+    }
 
    Login(){
     this.authService.initImplicitFlow();
   }
-  
+  callServer(){
+    this.demoHub.callServer();
+  }
 }
