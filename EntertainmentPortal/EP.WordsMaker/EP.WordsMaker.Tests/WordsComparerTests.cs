@@ -12,26 +12,24 @@ namespace Tests
 		}
 
 		[Test]
-		public void Test1()
+        [TestCase("Киоск")]
+        [TestCase("волосы")]
+        public void CorrectWordCompareTests(string playerWord)
 		{
 			WordComparer wordComparer = new WordComparer();
-			Word keyWord = new Word("соковыжималка");
 
-			Word userWord = new Word("Киоск");
-			bool result = wordComparer.CompareWord(keyWord.String, userWord.String);
-			Assert.IsTrue(result);
+            Assert.IsTrue(wordComparer.CompareWord("соковыжималка", playerWord));
+        }
 
-			userWord = new Word("волосы");
-			result = wordComparer.CompareWord(keyWord.String, userWord.String);
-			Assert.IsTrue(result);
+        [Test]
+        [TestCase("Велосипед")]
+        [TestCase("Костыль")]
+        public void InCorrectWordCompareTests(string playerWord)
+        {
+            WordComparer wordComparer = new WordComparer();
 
-			userWord = new Word("Велосипед");
-			result = wordComparer.CompareWord(keyWord.String, userWord.String);
-			Assert.IsFalse(result);
+            Assert.IsFalse(wordComparer.CompareWord("соковыжималка", playerWord));
+        }
 
-			userWord = new Word("Костыль");
-			result = wordComparer.CompareWord(keyWord.String, userWord.String);
-			Assert.IsFalse(result);
-		}
-	}
+    }
 }

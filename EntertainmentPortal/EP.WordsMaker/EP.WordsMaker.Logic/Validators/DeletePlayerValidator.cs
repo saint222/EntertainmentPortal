@@ -8,7 +8,7 @@ namespace EP.WordsMaker.Logic.Validators
         public DeletePlayerValidator()
         {
             RuleFor(x => x.Id)
-                .GreaterThan(0)
+                .NotNull()
                 .WithMessage("Value must be more than 0");
         }
     }

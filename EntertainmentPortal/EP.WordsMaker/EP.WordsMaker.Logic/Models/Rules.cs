@@ -28,7 +28,7 @@ namespace EP.WordsMaker.Logic.Models
 		/// <returns></returns>
 		public int ComputeScoring(string word)
 		{
-			return (word.Length);
+			return (word.Length * 10);
 		}
 
         public Dictionary<char, int> scoreFromLetter = new Dictionary<char, int> {
@@ -80,5 +80,36 @@ namespace EP.WordsMaker.Logic.Models
             return score;
         }
 
-	}
+        public int CountingByLength(string word)
+        {
+            var bases = 10;
+            double score = 0;
+
+            if (word.Length <= 3)
+            {
+                score = word.Length * bases;
+            }
+            else if (word.Length <= 5)
+            {
+                score = word.Length * bases * 1.25;
+            }
+            else if (word.Length <= 7)
+            {
+                score = word.Length * bases * 1.50;
+            }
+            else if (word.Length <= 9)
+            {
+                score = word.Length * bases * 1.75;
+            }
+            else
+            {
+                score = word.Length * bases * 2.00;
+            }
+
+            var result = (Int32) score;
+
+            return result;
+        }
+
+    }
 }

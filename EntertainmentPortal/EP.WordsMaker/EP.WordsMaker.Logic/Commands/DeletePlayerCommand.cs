@@ -6,6 +6,6 @@ namespace EP.WordsMaker.Logic.Commands
 {
     public class DeletePlayerCommand: IRequest<Result<Player>>
     {
-        public int Id { get; set;}
+        public string Id { get; set;}
     }
 }
