@@ -30,13 +30,13 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Maybe<IEnumerable<Shot>>> Handle(GetShotsQuery request, CancellationToken cancellationToken)
         {
-            if (!string.IsNullOrEmpty(request.PlayerId))
+            if (!string.IsNullOrEmpty(request.UserId))
             {
 
-                var result = await _context.Shots.Where(w => w.Player.Id == request.PlayerId)
+                var result = await _context.Shots.Where(w => w.Player.UserId == request.UserId)
                     .ToArrayAsync(cancellationToken).ConfigureAwait(false);
 
-                _logger.LogInformation($"Send shot collection for player ID {request.PlayerId}");
+                _logger.LogInformation($"Send shot collection for player");
                 return result.Any() ? Maybe<IEnumerable<Shot>>.From(_mapper.Map<IEnumerable<Shot>>(result))
                     : Maybe<IEnumerable<Shot>>.None;
             }

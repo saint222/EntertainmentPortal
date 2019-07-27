@@ -19,26 +19,19 @@ namespace EP.SeaBattle.Logic.Validators
         {
             _mapper = mapper;
             _context = context;
-            RuleSet("GamePreValidation", () =>
-            {
-                RuleFor(o => o.PlayerId)
-                    .NotEmpty()
-                    .WithMessage("Player cannot be null");
-            });
-
 
             RuleSet("GameValidation", () =>
             {
                 RuleFor(x => x)
-                        .MustAsync((x, s, token) => CheckExistingPlayer(x.PlayerId))
-                        .WithMessage(player => $"Player with id {player.PlayerId} doesn't exists!!!").DependentRules(()=> {
+                        .MustAsync((x, s, token) => CheckExistingPlayer(x.UserId))
+                        .WithMessage(player => $"Player doesn't exists!!!").DependentRules(()=> {
                             RuleFor(command => command)
-                                      .MustAsync((o, s, token) => IsFullShipsSet(o.PlayerId))
-                                      .WithMessage(player => $"Player with id {player.PlayerId} does not have enough ships.");
+                                      .MustAsync((o, s, token) => IsFullShipsSet(o.UserId))
+                                      .WithMessage(player => $"Player does not have enough ships.");
 
                             RuleFor(command => command)
-                                    .MustAsync((o, s, token) => IsNotInGame(o.PlayerId))
-                                    .WithMessage(player => $"Player with id {player.PlayerId} in the game.");
+                                    .MustAsync((o, s, token) => IsNotInGame(o.UserId))
+                                    .WithMessage(player => $"Player already in the game.");
                         });
 
 
@@ -46,9 +39,9 @@ namespace EP.SeaBattle.Logic.Validators
 
         }
 
-        private async Task<bool> IsNotInGame(string id)
+        private async Task<bool> IsNotInGame(string userId)
         {
-            PlayerDb playerDb = await _context.Players.FindAsync(id).ConfigureAwait(false);
+            PlayerDb playerDb = await _context.Players.FirstOrDefaultAsync( p => p.UserId == userId).ConfigureAwait(false);
             if (playerDb.GameId != null)
             {
                 return false;
@@ -56,20 +49,20 @@ namespace EP.SeaBattle.Logic.Validators
             return true;
         }
 
-        private async Task<bool> CheckExistingPlayer(string id)
+        private async Task<bool> CheckExistingPlayer(string userId)
         {
-            var result = await _context.Players.FindAsync(id).ConfigureAwait(false);
+            var result = await _context.Players.FirstOrDefaultAsync(p => p.UserId == userId).ConfigureAwait(false);
             if (result == null)
                 return false;
             return true;
         }
 
-        private async Task<bool> IsFullShipsSet(string playerId)
+        private async Task<bool> IsFullShipsSet(string userId)
         {
 
             PlayerDb playerDb = await _context.Players
                                                 .Include(p => p.Ships)
-                                                .FirstOrDefaultAsync(p => p.Id == playerId)
+                                                .FirstOrDefaultAsync(p => p.UserId == userId)
                                                 .ConfigureAwait(false);
             ShipsManager shipsManager = new ShipsManager(_mapper.Map<Player>(playerDb));
 

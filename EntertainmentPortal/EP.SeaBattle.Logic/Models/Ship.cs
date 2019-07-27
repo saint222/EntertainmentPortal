@@ -22,7 +22,6 @@ namespace EP.SeaBattle.Logic.Models
         /// Inform is all cells destroyed
         /// </summary>
         public bool IsAlive { get => Cells.Any(c => c.IsAlive == true); }
-
-        public string PlayerId { get; set; }
+        
     }
 }

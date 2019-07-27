@@ -2,11 +2,10 @@
 using EP.SeaBattle.Logic.Commands;
 using FluentValidation;
 using System.Threading.Tasks;
-using EP.SeaBattle.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EP.SeaBattle.Logic.Validators
 {
-    //TODO объявить названия валидаций как константы и использовать константы
     public class ShipAddValidation : AbstractValidator<AddNewShipCommand>
     {
         SeaBattleDbContext _context;
@@ -26,14 +25,11 @@ namespace EP.SeaBattle.Logic.Validators
 
                 RuleFor(ship => ship.Rank)
                     .IsInEnum().WithMessage("Rank incorrect");
-
-                RuleFor(ship => ship.PlayerId)
-                    .NotNull().WithMessage("Player cannot be null");
             });
             RuleSet("AddShipValidation", () =>
             {
-                RuleFor(x => x.PlayerId)
-                    .MustAsync((o, s, token) => CheckExistingPlayer(o)).WithMessage(model => $"Player ID {model.PlayerId} not found");
+                RuleFor(x => x.UserId)
+                    .MustAsync((o, s, token) => CheckExistingPlayer(o)).WithMessage(model => $"Player not found");
             });
         }
 
@@ -41,8 +37,7 @@ namespace EP.SeaBattle.Logic.Validators
 
         private async Task<bool> CheckExistingPlayer(AddNewShipCommand model)
         {
-            var result = await _context.Players.FindAsync(model.PlayerId)
-                .ConfigureAwait(false);
+            var result = await _context.Players.FirstOrDefaultAsync(p => p.UserId == model.UserId).ConfigureAwait(false);
             if (result == null)
             {
                 return false;
@@ -70,15 +65,13 @@ namespace EP.SeaBattle.Logic.Validators
                 RuleFor(x => x)
                     .MustAsync(
                         (o, s, token) => CheckExistingShip(o.Id)
-                           ).WithMessage("Ship not exists");
+                           ).WithMessage("The ship does not exist");
             });
         }
 
         private async Task<bool> CheckExistingShip(string id)
         {
-            var result = await _context.Ships.FindAsync(id)
-                .ConfigureAwait(false);
-
+            var result = await _context.Ships.FindAsync(id).ConfigureAwait(false);
             if (result == null)
             {
                 return false;

@@ -25,41 +25,37 @@ namespace EP.SeaBattle.Logic.Validators
                 .Cascade(CascadeMode.StopOnFirstFailure)
                     .InclusiveBetween((byte)0, (byte)9).WithMessage("Y must be from 0 to 9");
 
-                RuleFor(ship => ship.PlayerId)
-                .Cascade(CascadeMode.StopOnFirstFailure)
-                    .NotNull().WithMessage("Player cannot be null");
-
             });
 
 
             RuleSet("AddShotValidation", () =>
             {
-                RuleFor(x => x.PlayerId)
-                    .MustAsync((o, s, token) => DoesPlayerExist(o.PlayerId)).WithMessage(model => $"Player ID {model.PlayerId} not found").DependentRules(() =>
+                RuleFor(x => x.UserId)
+                    .MustAsync((o, s, token) => DoesPlayerExist(o.UserId)).WithMessage(model => $"Player ID {model.UserId} not found").DependentRules(() =>
                     {
 
-                        RuleFor(x => x.PlayerId)
-                            .MustAsync((o, s, token) => DoesPlayerHaveGame(o.PlayerId)).WithMessage(model => $"Player ID {model.PlayerId} does not have a game");
+                        RuleFor(x => x.UserId)
+                            .MustAsync((o, s, token) => DoesPlayerHaveGame(o.UserId)).WithMessage(model => $"Player ID {model.UserId} does not have a game");
 
-                        RuleFor(x => x.PlayerId)
-                            .MustAsync((o, s, token) => DoesEnemyPlayerExist(o.PlayerId)).WithMessage(model => $"Player ID {model.PlayerId} does not have an enemy player");
+                        RuleFor(x => x.UserId)
+                            .MustAsync((o, s, token) => DoesEnemyPlayerExist(o.UserId)).WithMessage(model => $"Player ID {model.UserId} does not have an enemy player");
 
-                        RuleFor(x => x.PlayerId)
-                            .MustAsync((o, s, token) => IsGameFinished(o.PlayerId)).WithMessage(model => $"Game is finished");
+                        RuleFor(x => x.UserId)
+                            .MustAsync((o, s, token) => IsGameFinished(o.UserId)).WithMessage(model => $"Game is finished");
 
-                        RuleFor(x => x.PlayerId)
-                            .MustAsync((o, s, token) => IsReadyToTurn(o.PlayerId)).WithMessage(model => $"Player ID {model.PlayerId} does not have the turn");
+                        RuleFor(x => x.UserId)
+                            .MustAsync((o, s, token) => IsReadyToTurn(o.UserId)).WithMessage(model => $"Player ID {model.UserId} does not have the turn");
 
                         RuleFor(x => x)
-                            .MustAsync((o, s, token) => IsThereShot(o.PlayerId, o.X, o.Y)).WithMessage(model => $"Shot with coordinates X {model.X}, Y {model.Y} is forbidden");
+                            .MustAsync((o, s, token) => IsThereShot(o.UserId, o.X, o.Y)).WithMessage(model => $"Shot with coordinates X {model.X}, Y {model.Y} is forbidden");
                     });
             });
         }
 
 
-        private async Task<bool> DoesPlayerExist(string playerId)
+        private async Task<bool> DoesPlayerExist(string userId)
         {
-            var result = await _context.Players.FirstOrDefaultAsync(p => p.Id == playerId)
+            var result = await _context.Players.FirstOrDefaultAsync(p => p.UserId == userId)
                 .ConfigureAwait(false);
             if (result == null)
             {
@@ -68,13 +64,13 @@ namespace EP.SeaBattle.Logic.Validators
             return true;
         }
 
-        private async Task<bool> DoesEnemyPlayerExist(string playerId)
+        private async Task<bool> DoesEnemyPlayerExist(string userId)
         {
-            GameDb gameDb = await _context.Games.Where(g => g.Players.Where(p => p.Id == playerId).Count() > 0).FirstOrDefaultAsync().ConfigureAwait(false);
+            GameDb gameDb = await _context.Games.Where(g => g.Players.Where(p => p.UserId == userId).Count() > 0).FirstOrDefaultAsync().ConfigureAwait(false);
             var result = await _context.Players
                                        .Include(p => p.Ships)
                                        .ThenInclude(s => s.Cells)
-                                       .FirstOrDefaultAsync(p => p.GameId == gameDb.Id && p.Id != playerId)
+                                       .FirstOrDefaultAsync(p => p.GameId == gameDb.Id && p.UserId != userId)
                                        .ConfigureAwait(false);
             if (result == null)
             {
@@ -84,9 +80,9 @@ namespace EP.SeaBattle.Logic.Validators
         }
 
 
-        private async Task<bool> DoesPlayerHaveGame(string playerId)
+        private async Task<bool> DoesPlayerHaveGame(string userId)
         {
-            PlayerDb playerDb = await _context.Players.FirstOrDefaultAsync(p => p.Id == playerId).ConfigureAwait(false);
+            PlayerDb playerDb = await _context.Players.FirstOrDefaultAsync(p => p.UserId == userId).ConfigureAwait(false);
             if (playerDb == null || playerDb.GameId == null)
             {
                 return false;
@@ -94,9 +90,9 @@ namespace EP.SeaBattle.Logic.Validators
             return true;
         }
 
-        private async Task<bool> IsGameFinished(string playerId)
+        private async Task<bool> IsGameFinished(string userId)
         {
-            var gameDb = await _context.Games.Where(g => g.Players.Where(p => p.Id == playerId).Count() > 0).FirstOrDefaultAsync().ConfigureAwait(false);
+            var gameDb = await _context.Games.Where(g => g.Players.Where(p => p.UserId == userId).Count() > 0).FirstOrDefaultAsync().ConfigureAwait(false);
             if (gameDb == null || gameDb.Finish)
             {
                 return false; 
@@ -104,19 +100,21 @@ namespace EP.SeaBattle.Logic.Validators
             return true;
         }
 
-        private async Task<bool> IsReadyToTurn(string playerId)
+        private async Task<bool> IsReadyToTurn(string userId)
         {
-            GameDb gameDb = await _context.Games.Where(g => g.Players.Where(p => p.Id == playerId).Count() > 0).FirstOrDefaultAsync().ConfigureAwait(false);
-            if (gameDb == null || gameDb.PlayerAllowedToMove != playerId)
+            GameDb gameDb = await _context.Games.Where(g => g.Players.Where(p => p.UserId == userId).Count() > 0).FirstOrDefaultAsync().ConfigureAwait(false);
+            PlayerDb playerDb = await _context.Players.FirstOrDefaultAsync( p=> p.UserId == userId).ConfigureAwait(false);
+            if (gameDb == null || gameDb.PlayerAllowedToMove != playerDb.Id)
             {
                 return false;
             }
             return true;
         }
 
-        private async Task<bool> IsThereShot(string playerId, byte x, byte y)
+        private async Task<bool> IsThereShot(string userId, byte x, byte y)
         {
-            var result = await _context.Shots.FirstOrDefaultAsync(s => s.PlayerId == playerId && s.X == x && s.Y == y).ConfigureAwait(false);
+            PlayerDb playerDb = await _context.Players.FirstOrDefaultAsync(p => p.UserId == userId).ConfigureAwait(false);
+            var result = await _context.Shots.FirstOrDefaultAsync(s => s.PlayerId == playerDb.Id && s.X == x && s.Y == y).ConfigureAwait(false);
 
             if (result != null)
             {

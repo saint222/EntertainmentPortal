@@ -32,7 +32,7 @@ namespace EP.SeaBattle.Logic.Handlers
         {
             PlayerDb playerDb = await _context.Players
                                                 .Include(p => p.Game)
-                                                .FirstOrDefaultAsync(p => p.Id == request.PlayerId).ConfigureAwait(false);
+                                                .FirstOrDefaultAsync(p => p.UserId == request.UserId).ConfigureAwait(false);
             GameDb gamedb = await _context.Games.FirstOrDefaultAsync(g => g.Id == playerDb.Game.Id).ConfigureAwait(false);
             if (gamedb == null)
             {
@@ -44,11 +44,11 @@ namespace EP.SeaBattle.Logic.Handlers
             gamedb.PlayerAllowedToMove = null;
             playerDb.GameId = null;
             gamedb.EnemySearch = false;
-            PlayerDb enemyPlayerDb = gamedb.Players.FirstOrDefault(p => p.Id != request.PlayerId);
+            PlayerDb enemyPlayerDb = gamedb.Players.FirstOrDefault(p => p.Id != playerDb.Id);
             if (enemyPlayerDb == null)
             {
                 _context.Games.Remove(gamedb);
-                IEnumerable<ShipDb> shipsDb = _context.Ships.Where(s => s.PlayerId == playerDb.Id);
+                IEnumerable<ShipDb> shipsDb = await (_context.Ships.Where(s => s.PlayerId == playerDb.Id)).ToArrayAsync().ConfigureAwait(false);
                 _context.Ships.RemoveRange(shipsDb);
             }
             else

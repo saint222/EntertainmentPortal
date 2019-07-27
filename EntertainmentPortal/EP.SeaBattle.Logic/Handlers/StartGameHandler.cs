@@ -43,20 +43,17 @@ namespace EP.SeaBattle.Logic.Handlers
                         Finish = false,
                         EnemySearch = true
                     };
-                    game.Players.Add(await _context.Players.FirstOrDefaultAsync(p => p.Id == request.PlayerId));
-                    game.PlayerAllowedToMove = request.PlayerId;
+                    PlayerDb playerDb = await _context.Players.FirstOrDefaultAsync(p => p.UserId == request.UserId).ConfigureAwait(false);
+                    game.Players.Add(playerDb);
+                    game.PlayerAllowedToMove = playerDb.Id;
                     _context.Games.Add(game);
                 }
                 else
                 {
-
-                    game.Players.Add(await _context.Players.FirstOrDefaultAsync(p => p.Id == request.PlayerId).ConfigureAwait(false));
+                    game.Players.Add(await _context.Players.FirstOrDefaultAsync(p => p.UserId == request.UserId).ConfigureAwait(false));
                     game.EnemySearch = false;
                 }
-
-
-
-
+                
                 try
                 {
                     await _context.SaveChangesAsync();

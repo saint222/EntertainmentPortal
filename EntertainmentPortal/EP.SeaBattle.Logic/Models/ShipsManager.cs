@@ -104,7 +104,7 @@ namespace EP.SeaBattle.Logic.Models
             FieldManager fieldManager = new FieldManager(_player.Ships);
             if (fieldManager.CheckShip(x, y, shipOrientation, rank))
             {
-                ship = new Ship { PlayerId = _player.Id, Cells = GenerateCell(x, y, shipOrientation, rank), Rank = rank };
+                ship = new Ship { Cells = GenerateCell(x, y, shipOrientation, rank), Rank = rank };
                 return AddShip(ship);
             }
             ship = null;

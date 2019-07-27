@@ -12,6 +12,7 @@ export class FieldComponent implements OnInit {
   shootField: Cell[][];
   alphabet: String[];
   numbers: number[];
+  isActive: boolean = false;
   N = 10;
   constructor() {
     this.alphabet = [ ' ', 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж' , 'З', 'И', 'К' ];

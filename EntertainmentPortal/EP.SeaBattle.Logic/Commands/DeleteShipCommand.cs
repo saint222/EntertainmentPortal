@@ -8,7 +8,6 @@ namespace EP.SeaBattle.Logic.Commands
 {
     public class DeleteShipCommand : IRequest<Maybe<IEnumerable<Ship>>>
     {
-        //TODO Change to Guid
         public string Id { get; set; }
     }
 }

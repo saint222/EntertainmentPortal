@@ -8,6 +8,6 @@ namespace EP.SeaBattle.Logic.Queries
 {
     public class GetShipsQuery : IRequest<Maybe<IEnumerable<Ship>>>
     {
-        public string PlayerId { get; set; }
+        public string UserId { get; set; }
     }
 }

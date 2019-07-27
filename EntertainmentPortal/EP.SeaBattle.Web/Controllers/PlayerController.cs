@@ -31,40 +31,31 @@ namespace EP.SeaBattle.Web.Controllers
         [HttpPost("api/AddPlayer")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Add new player")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> AddPlayerAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "AddPlayerPreValidation")]AddNewPlayerCommand model)
+        public async Task<IActionResult> AddPlayerAsync([ CustomizeValidator(RuleSet = "AddPlayerPreValidation")]string name)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            AddNewPlayerCommand model = new AddNewPlayerCommand(){ NickName = name, UserId = User.FindFirst("sub")?.Value };
             var result = await _mediator.Send(model);
             return result.IsFailure 
                 ? (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);
         }
         
-        [HttpGet("api/GetAllPlayers")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Player>), Description = "Success")]
-        [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Players collection is empty")]
-        public async Task<IActionResult> GetAllPlayersAsync()
-        {
-            var result = await _mediator.Send(new GetAllPlayersQuery());
-            return result.HasValue 
-                ? (IActionResult)Ok(result.Value) 
-                : NotFound();
-        }
+
 
         [HttpGet("api/GetPlayer")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Get a player")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Player not exist")]
-        public async Task<IActionResult> GetPlayer([NotNull] string id)
+        public async Task<IActionResult> GetPlayer()
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var result = await _mediator.Send(new GetPlayerQuery() { Id = id });
+            var result = await _mediator.Send(new GetPlayerQuery() { UserId = User.FindFirst("sub")?.Value });
             return result.IsFailure
                 ? (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);
@@ -80,7 +71,7 @@ namespace EP.SeaBattle.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            model.UserId = User.FindFirst("sub")?.Value;
             var result = await _mediator.Send(model);
             return result.IsFailure ?
                 (IActionResult)BadRequest(result.Error)

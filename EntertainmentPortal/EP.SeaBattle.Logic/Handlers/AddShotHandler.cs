@@ -36,27 +36,27 @@ namespace EP.SeaBattle.Logic.Handlers
             Result<Shot> result;
             if (validationResult.IsValid)
             {
+                PlayerDb playerDb = await _context.Players.FirstOrDefaultAsync( p => p.UserId == request.UserId).ConfigureAwait(false);
                 ShotDb shotDb = new ShotDb
                 {
                     X = request.X,
                     Y = request.Y,
-                    PlayerId = request.PlayerId
+                    PlayerId = playerDb.Id
                    
                     
                 };
 
                 _context.Shots.Add(shotDb);
 
-                PlayerDb playerDb = await _context.Players.FindAsync(request.PlayerId).ConfigureAwait(false);
 
                 GameDb gameDb = await _context.Games.Where(g => g.Players.Where(p => p.Id == playerDb.Id).Count() > 0).FirstOrDefaultAsync().ConfigureAwait(false);
 
-                Player enemyPlayerDb = _mapper.Map<Player>(await _context.Players
-                                                                       .Include(p => p.Ships)
-                                                                       .ThenInclude(s => s.Cells)
-                                                                       .FirstOrDefaultAsync(p => p.GameId == gameDb.Id && p.Id != request.PlayerId)
-                                                                       .ConfigureAwait(false));
-                ShotsManager shotsManager = new ShotsManager(enemyPlayerDb);
+                PlayerDb enemyPlayerDb = await _context.Players
+                                                       .Include(p => p.Ships)
+                                                       .ThenInclude(s => s.Cells)
+                                                       .FirstOrDefaultAsync(p => p.GameId == gameDb.Id && p.Id != playerDb.Id)
+                                                       .ConfigureAwait(false);
+                ShotsManager shotsManager = new ShotsManager(_mapper.Map<Player>(enemyPlayerDb));
 
 
                 
@@ -65,7 +65,6 @@ namespace EP.SeaBattle.Logic.Handlers
                 {
                     ShipDb shipDb = await _context.Ships.FindAsync(ship.Id).ConfigureAwait(false);
                     shipDb.Rank = ship.Rank;
-                    shipDb.PlayerId = ship.PlayerId;
                     shipDb.Cells = _mapper.Map<ICollection<CellDb>>(ship.Cells);
 
                     if (shotsManager.isFinishedGame)

@@ -38,7 +38,7 @@ namespace EP.SeaBattle.Logic.Handlers
                 PlayerDb playerDb = await _context.Players
                                                     .Include(p => p.Ships)
                                                     .ThenInclude(s => s.Cells)
-                                                    .FirstOrDefaultAsync(p => p.Id == request.PlayerId)
+                                                    .FirstOrDefaultAsync(p => p.UserId == request.UserId)
                                                     .ConfigureAwait(false);
 
                 Player player = _mapper.Map<Player>(playerDb);
@@ -47,7 +47,9 @@ namespace EP.SeaBattle.Logic.Handlers
 
                 if (shipsManager.AddShip(request.X, request.Y, request.Orientation, request.Rank, out Ship ship))
                 {
-                    playerDb.Ships.Add(_mapper.Map<ShipDb>(ship));
+                    ShipDb shipDb = _mapper.Map<ShipDb>(ship);
+                    shipDb.PlayerId = playerDb.Id;
+                    playerDb.Ships.Add(shipDb);
                     try
                     {
                         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
@@ -63,7 +65,7 @@ namespace EP.SeaBattle.Logic.Handlers
                 {
                     _logger.LogInformation($"Ship was not added to the field. " +
                         $"Ship info X: {request.X} Y: {request.Y}, Orientation {request.Orientation}, Rank {request.Rank}, " +
-                        $" Player {request.PlayerId}");
+                        $" User {request.UserId}");
                     return Result.Fail<IEnumerable<Ship>>("Ship was not added to the field");
                 }
             }

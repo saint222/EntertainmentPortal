@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NJsonSchema.Annotations;
 using NSwag.Annotations;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -26,33 +28,35 @@ namespace EP.SeaBattle.Web.Controllers
             _mediator = mediator;
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost("api/StartGame")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Start the game")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't start the game")]
-        public async Task<IActionResult> StartGame([FromBody, NotNull, CustomizeValidator(RuleSet = "GamePreValidation")] StartGameCommand model)
+        public async Task<IActionResult> StartGame()
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var result = await _mediator.Send(model);
+            var result = await _mediator.Send(new StartGameCommand() { UserId = User.FindFirst("sub")?.Value });
             return result.IsFailure
                 ? (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);
         }
-        
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut("api/FinishGame")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Finish the game")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't finish the game")]
-        public async Task<IActionResult> FinishGame([FromBody, NotNull, CustomizeValidator(RuleSet = "GamePreValidation")] FinishGameCommand model)
+        public async Task<IActionResult> FinishGame()
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var result = await _mediator.Send(model);
+            var result = await _mediator.Send(new FinishGameCommand() { UserId = User.FindFirst("sub")?.Value });
             return result.IsFailure
                 ? (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);

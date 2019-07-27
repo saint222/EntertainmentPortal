@@ -31,34 +31,34 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Result<Player>> Handle(UpdatePlayerCommand request, CancellationToken cancellationToken)
         {
-            var player = _context.Players.Find(request.Id);
-            if (player == null)
+            PlayerDb playerdb = _context.Players.Find(request.UserId);
+            if (playerdb == null)
             {
-                _logger.LogWarning($"Player with id {request.Id} not found");
+                _logger.LogWarning($"Player not found");
                 return Result.Fail<Player>("Player not found");
             }
 
             var validationResult = await _validator.ValidateAsync(request, ruleSet: "UpdatePlayerValidation", cancellationToken: cancellationToken);
             if (validationResult.IsValid)
             {
-                player.NickName = request.NickName;
+                playerdb.NickName = request.NickName;
 
                 try
                 {
                     await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-                    _logger.LogInformation($"Player {player.NickName} changed");
-                    return Result.Ok<Player>(_mapper.Map<Player>(player));
+                    _logger.LogInformation($"The Player changed the NickName");
+                    return Result.Ok<Player>(_mapper.Map<Player>(playerdb));
                 }
                 catch (DbUpdateException ex)
                 {
                     _logger.LogError(ex.Message);
-                    return Result.Fail<Player>("Cannot update player");
+                    return Result.Fail<Player>("Cannot update the player in the data base");
                 }
             }
             else
             {
-                _logger.LogInformation($"Player { player.NickName} not changed");
-                return Result.Fail<Player>("Cannot update player. Player with this nickname arleady exists");
+                _logger.LogInformation($"The player is not valid");
+                return Result.Fail<Player>(validationResult.Errors.First().ErrorMessage);
             }
             
         }

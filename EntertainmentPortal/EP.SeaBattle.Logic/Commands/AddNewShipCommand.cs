@@ -3,6 +3,7 @@ using EP.SeaBattle.Common.Enums;
 using EP.SeaBattle.Logic.Models;
 using System.Collections.Generic;
 using MediatR;
+using Newtonsoft.Json;
 
 
 namespace EP.SeaBattle.Logic.Commands
@@ -13,6 +14,7 @@ namespace EP.SeaBattle.Logic.Commands
         public byte Y { get; set; }
         public ShipOrientation Orientation { get; set; }
         public ShipRank Rank { get; set; }
-        public string PlayerId { get; set; }
+        [JsonIgnore]
+        public string UserId { get; set; }
     }
 }

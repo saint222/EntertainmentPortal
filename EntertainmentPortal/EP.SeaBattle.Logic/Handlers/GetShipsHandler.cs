@@ -29,15 +29,15 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Maybe<IEnumerable<Ship>>> Handle(GetShipsQuery request, CancellationToken cancellationToken)
         {
-            if (!string.IsNullOrEmpty(request.PlayerId))
+            if (!string.IsNullOrEmpty(request.UserId))
             {
 
-                var result = await _context.Ships.Where(w => w.Player.Id == request.PlayerId)
+                var result = await _context.Ships.Where(w => w.Player.UserId == request.UserId)
                     .Include(i => i.Cells)
                     .Include(i => i.Player)
                     .ToArrayAsync(cancellationToken).ConfigureAwait(false);
 
-                _logger.LogInformation($"Send ship collection for player {request.PlayerId}");
+                _logger.LogInformation($"Send ship collection for player {request.UserId}");
                 return result.Any() ? Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(result))
                     : Maybe<IEnumerable<Ship>>.None;
             }

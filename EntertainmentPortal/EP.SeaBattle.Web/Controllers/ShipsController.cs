@@ -11,9 +11,6 @@ using NJsonSchema.Annotations;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
-using System.Linq;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -37,13 +34,8 @@ namespace EP.SeaBattle.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-            //var accessToken = await HttpContext.GetTokenAsync("access_token"); //Authentication.GetTokenAsync("access_token");
-            //var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
-            //var claims = result.Principal.Claims.Select(c => $"{c.Type}: {c.Value}");
-            
-            var UserID = User.FindFirst("sub")?.Value;
-            var UserName = User.FindFirst("name")?.Value;
-            var UserEmail = User.FindFirst("email")?.Value;
+ 
+            model.UserId = User.FindFirst("sub")?.Value;
             var result = await _mediator.Send(model);
             return result.IsFailure
                 ? (IActionResult)BadRequest(result.Error)
@@ -54,9 +46,9 @@ namespace EP.SeaBattle.Web.Controllers
         [HttpGet("api/GetShips")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Ship>), Description = "Get player ships collection")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't show player ships")]
-        public async Task<IActionResult> GetShipsAsync(string playerId)
+        public async Task<IActionResult> GetShipsAsync()
         {
-            var result = await _mediator.Send(new GetShipsQuery() {PlayerId = playerId });
+            var result = await _mediator.Send(new GetShipsQuery() {UserId = User.FindFirst("sub")?.Value });
             return result.HasValue
                 ? (IActionResult)Ok(result.Value)
                 : NotFound();

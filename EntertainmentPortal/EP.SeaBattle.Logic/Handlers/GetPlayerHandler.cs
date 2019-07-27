@@ -33,23 +33,23 @@ namespace EP.SeaBattle.Logic.Handlers
             try
             {
                 var player = await _context.Players
-                                            .FindAsync(request.Id)
+                                            .FirstOrDefaultAsync(p => p.UserId == request.UserId)
                                             .ConfigureAwait(false);
                 if (player == null)
                 {
-                    _logger.LogInformation($"Player with id {request.Id} not found");
+                    _logger.LogInformation($"Player with id {request.UserId} not found");
                     return Result.Fail<Player>("Player not found");
                 }
                 else
                 {
-                    _logger.LogInformation($"Player with id {request.Id} founded");
+                    _logger.LogInformation($"Player with id {request.UserId} founded");
                     return Result.Ok(_mapper.Map<Player>(player));
                 }               
             }
             catch (DbUpdateException ex)
             {
                 _logger.LogError(ex.Message);
-                return Result.Fail<Player>($"Cannot find player id {request.Id}");
+                return Result.Fail<Player>($"Cannot find player id {request.UserId}");
             }
         }
     }
