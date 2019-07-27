@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  ep.seabattleai.web:
+    image: ${DOCKER_REGISTRY-}epseabattleaiweb
+    build:
+      context: .
+      dockerfile: EP.SeaBattleAI.Web/Dockerfile
+    ports:
+     - 8888:80
+
+  seabattleai:
+    image: ${DOCKER_REGISTRY-}seabattleai
+    build:
+      context: .
+      dockerfile: seabattleai-game-client/Dockerfile
+    ports:
+     - 9999:80

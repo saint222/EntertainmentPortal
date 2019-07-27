@@ -9,7 +9,6 @@ import { ShipplacerComponent } from './shipplacer/shipplacer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BattlefieldService } from './battlefield/services/battlefield.service';
-import { StorageServiceModule} from 'angular-webstorage-service';
 import { InfoComponent } from './info/info.component';
 
 
@@ -25,8 +24,7 @@ import { InfoComponent } from './info/info.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    StorageServiceModule
+    HttpClientModule
   ],
   providers: [BattlefieldService],
   bootstrap: [AppComponent]
