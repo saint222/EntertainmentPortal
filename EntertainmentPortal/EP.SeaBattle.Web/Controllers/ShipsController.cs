@@ -98,13 +98,15 @@ namespace EP.SeaBattle.Web.Controllers
         [Description("Delete ship")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Ship>), Description = "Delete ship from collection")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't delete ship")]
-        public async Task<IActionResult> DeleteShipAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "DeleteShipPreValidation")] DeleteShipCommand model)
+        public async Task<IActionResult> DeleteShipAsync([CustomizeValidator(RuleSet = "DeleteShipPreValidation")]byte x, byte y)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            var model = new DeleteShipCommand() { X = x, Y = y };
+            model.PlayerId = HttpContext.Session.GetString("player");
+            model.GameId = HttpContext.Session.GetString("game");
             var result = await _mediator.Send(model);
             return result.HasValue ? Ok(result.Value)
                 : (IActionResult)Ok();

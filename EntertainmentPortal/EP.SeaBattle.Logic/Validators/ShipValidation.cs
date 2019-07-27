@@ -72,27 +72,29 @@ namespace EP.SeaBattle.Logic.Validators
 
             RuleSet("DeleteShipPreValidation", () =>
             {
-                RuleFor(ship => ship.Id.Trim())
-                    .NotEmpty().WithMessage("Id cannot be null");
+                RuleFor(ship => ship.X)
+                    .ExclusiveBetween((byte)0, (byte)9).WithMessage("X must be from 0 to 9");
+                RuleFor(ship => ship.Y)
+                    .ExclusiveBetween((byte)0, (byte)9).WithMessage("Y must be from 0 to 9");
             });
 
             RuleSet("DeleteShipValidation", () =>
             {
-                RuleFor(x => x)
-                    .MustAsync(
-                        (o, s, token) => CheckExistingShip(o)
-                           ).WithMessage("Ship not exists");
+                //RuleFor(x => x)
+                //    .MustAsync(
+                //        (o, s, token) => CheckExistingShip(o)
+                //           ).WithMessage("Ship not exists");
             });
         }
 
-        private async Task<bool> CheckExistingShip(DeleteShipCommand model)
-        {
-            var result = await _context.Ships.FindAsync(model.Id)
-                .ConfigureAwait(false);
+        //private async Task<bool> CheckExistingShip(DeleteShipCommand model)
+        //{
+        //    var result = await _context.Ships.FindAsync(model.Id)
+        //        .ConfigureAwait(false);
 
-            if (result == null)
-                return false;
-            return true;
-        }
+        //    if (result == null)
+        //        return false;
+        //    return true;
+        //}
     }
 }

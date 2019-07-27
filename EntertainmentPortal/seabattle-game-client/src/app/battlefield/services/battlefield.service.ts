@@ -7,6 +7,7 @@ import { Cell } from 'src/app/models/cell';
 import { Ship } from 'src/app/models/ship';
 import { CellStatus } from 'src/app/models/cellStatus';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { format } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,16 @@ export class BattlefieldService {
         this.ships.forEach(ship => this.drawShip(ship)); // тут рисуем корабли
         this.calculateShipCountByRank(); // тут считаем количество кораблей
       }
+    });
+  }
+
+  deleteShip(x: number, y: number) {
+    let json = { x: x.toString(), y: y.toString() };
+    this.http.delete<Ship[]>(`${environment.base_url}api/Ships/delete`, { params: json, withCredentials: true}).subscribe(data => {
+      this.shipField = this.createField();
+      this.ships = data;
+      data.forEach(ship => this.drawShip(ship));
+      this.calculateShipCountByRank();
     });
   }
 

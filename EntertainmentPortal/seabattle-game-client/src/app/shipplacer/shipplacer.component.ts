@@ -27,4 +27,8 @@ export class ShipplacerComponent implements OnInit {
     form.value.gameId = '1';
     this.battleFieldService.addShip(form);
   }
+
+  deleteShip(form: FormGroup) {
+    this.battleFieldService.deleteShip(form.value.x, form.value.y);
+  }
 }

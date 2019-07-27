@@ -32,27 +32,36 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Maybe<IEnumerable<Ship>>> Handle(DeleteShipCommand request, CancellationToken cancellationToken)
         {
-            var validationResult = _validator.ValidateAsync(request, ruleSet: "DeleteShipValidation", cancellationToken: cancellationToken);
-            var ship = _context.Ships.Find(request.Id);
-            if (ship == null)
+            var validationResult = await _validator.ValidateAsync(request, ruleSet: "DeleteShipValidation", cancellationToken: cancellationToken);
+            if (validationResult.IsValid)
             {
-                _logger.LogWarning($"Ship with Id {request.Id} not found");
-                return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
+                var cell = _context.Ships.SelectMany(c => c.Cells).Include(i => i.Ship).FirstOrDefault(s => s.X == request.X && s.Y == request.Y);
+                if (cell != null)
+                {
+                    var ship = cell.Ship;
+                    if (ship == null)
+                    {
+                        _logger.LogWarning($"Ship with X = {request.X} and Y = {request.Y} Player = {request.PlayerId} Game = {request.GameId} not found");
+                        return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>
+                            (_context.Ships.Where(s => s.Player.Id == request.PlayerId && s.Game.Id == request.GameId).Include(i => i.Cells)));
+                    }
+                    else
+                    {
+                        _context.Ships.Remove(ship);
+                        try
+                        {
+                            await _context.SaveChangesAsync(cancellationToken);
+                            return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships.Where(s => s.Player.Id == request.PlayerId && s.Game.Id == request.GameId).Include(i => i.Cells)));
+                        }
+                        catch (DbUpdateException ex)
+                        {
+                            _logger.LogError(ex.Message);
+                            return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships.Where(s => s.Player.Id == request.PlayerId && s.Game.Id == request.GameId).Include(i => i.Cells)));
+                        }
+                    }
+                }
             }
-            else
-            {
-                _context.Ships.Remove(ship);
-                try
-                {
-                    await _context.SaveChangesAsync(cancellationToken);
-                    return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
-                }
-                catch (DbUpdateException ex)
-                {
-                    _logger.LogError(ex.Message);
-                    return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships));
-                }
-            }           
+            return Maybe<IEnumerable<Ship>>.From(_mapper.Map<IEnumerable<Ship>>(_context.Ships.Where(s => s.Player.Id == request.PlayerId && s.Game.Id == request.GameId).Include(i => i.Cells)));
         }
     }
 }
