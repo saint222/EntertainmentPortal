@@ -17,11 +17,11 @@ export class CellComponent implements OnInit {
   }
 
   updateCell(value: string) {
-    if ( !isNaN(+value) && typeof +value === 'number') {
+    if ( !isNaN(+value) && typeof +value === 'number' && +value !== 0) {
       this.cell.value = +value;
     } else {
       this.cell.value = 0;
-      this.sessionService.updateSession.next('Invalid data is entered. Numbers from "0" till "9" are expected only!');
+      this.sessionService.updateSession.next('Invalid data is entered. Numbers from "1" till "9" are expected only!');
       console.log('A letter is entered, you must enter a number!');
       return false;
     }

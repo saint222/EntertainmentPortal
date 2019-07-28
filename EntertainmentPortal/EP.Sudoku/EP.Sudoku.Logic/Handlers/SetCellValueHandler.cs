@@ -35,7 +35,7 @@ namespace EP.Sudoku.Logic.Handlers
         {
             await AddScore(request, cancellationToken);
 
-            var result = _validator.Validate(request, ruleSet: "IsValidSudokuGameSet");
+            var result = _validator.Validate(request, ruleSet: "IsValidSudokuGameSet, PreValidationCell");
 
             if (!result.IsValid)
             {

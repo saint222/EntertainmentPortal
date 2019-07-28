@@ -22,12 +22,12 @@ namespace EP.Sudoku.Logic.Validators
             RuleSet("PreValidationCell", () =>
             {
                 RuleFor(x => x.Value)
-                    .InclusiveBetween(0, 9)
+                    .InclusiveBetween(1, 9)
                     .WithMessage("Numbers with values from 1 to 9 can be used only!");
             });
 
             RuleSet("IsValidSudokuGameSet", () =>
-            {
+            {                
                 RuleFor(x => x)
                     .Must((o, token) =>
                     {
@@ -36,7 +36,7 @@ namespace EP.Sudoku.Logic.Validators
 
                         return result ? true : false;
                     })
-                    .WithMessage($"Incorrect value. The row or column already has this number!");
+                    .WithMessage($"Incorrect value. Think it over again due to the game rules!");
 
                 RuleFor(x => x)
                     .Must( (o, token) => 

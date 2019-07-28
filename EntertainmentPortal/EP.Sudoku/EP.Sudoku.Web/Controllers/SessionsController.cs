@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
+using CSharpFunctionalExtensions;
 using EP.Sudoku.Logic.Commands;
 using EP.Sudoku.Logic.Models;
 using EP.Sudoku.Logic.Queries;
@@ -79,15 +80,14 @@ namespace EP.Sudoku.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
         public async Task<IActionResult> SetCellValue([FromBody, NotNull, 
             CustomizeValidator(RuleSet = "PreValidationCell")]SetCellValueCommand model)
-        {
+        {            
             if (!ModelState.IsValid)
-            {
+            {                
                 _logger.LogError($"Incorrect value for the cell's Value was set up...");
                 return BadRequest();
             }
 
-            var result = await _mediator.Send(model);
-
+            var result = await _mediator.Send(model);            
             return result.IsFailure ? (IActionResult)BadRequest(result.Error) : Ok(result.Value);
         }
 
