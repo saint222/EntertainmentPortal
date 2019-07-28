@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { StartPageComponent } from './components/start-page/start-page.component';
+import { LogOutComponent } from './components/log-out/log-out.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegistrationComponent, StartPageComponent],
+  declarations: [LoginComponent, RegistrationComponent, StartPageComponent, LogOutComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   exports: [
     LoginComponent,

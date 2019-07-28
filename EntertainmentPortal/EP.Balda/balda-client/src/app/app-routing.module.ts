@@ -1,3 +1,4 @@
+import { LogOutComponent } from './authorization/components/log-out/log-out.component';
 import { WelcomeComponent } from './additionalinfo/additional-info/welcome/welcome.component';
 import { ContactsComponent } from './additionalinfo/additional-info/contacts/contacts.component';
 import { RulesComponent } from './additionalinfo/additional-info/rules/rules.component';
@@ -49,6 +50,10 @@ const routes: Routes = [
   {path: 'register', component: StartPageComponent,
   children: [
     { path: '', component: RegistrationComponent}
+  ]},
+  {path: 'logOut', component: StartPageComponent,
+  children: [
+    { path: '', component: LogOutComponent}
   ]}
 ];
 

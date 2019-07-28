@@ -42,4 +42,15 @@ export class AuthService {
   googleSignIn() {
     return this.http.get(`${environment.base_url}api/google`);
   }
+
+  logOut() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      withCredentials: true
+     };
+
+    return this.http.post(`${environment.base_url}api/logout`, httpOptions);
+  }
 }

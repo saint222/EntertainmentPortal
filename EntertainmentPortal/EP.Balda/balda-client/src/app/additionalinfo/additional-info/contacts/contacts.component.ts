@@ -1,4 +1,4 @@
-import { GameService } from './../../../game/services/game.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contacts.component.sass']
 })
 export class ContactsComponent implements OnInit {
-  http: any;
+  contactGroup: FormGroup;
+  photo: any = 'assets/pics/photo.jpg';
 
-  constructor(private gameService: GameService) { }
+  constructor() {
+   }
 
   ngOnInit() {
   }

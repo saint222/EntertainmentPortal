@@ -1,14 +1,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<div class="col-md-6 col-sm-12">
-<meta name="google-signin-client_id" content="960534110357-koidlpbpdt5l0jpndqrsgkum1ff5h03m.apps.googleusercontent.com">
 <div class="col-md-6 col-sm-12">
 <div class="loginForm">
   <h2>Sign in</h2>
 <form [formGroup]="loginGroup" (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div class="form-group">
       <label for="userName">Username</label>
-      <input
+      <input  id="userName" class="form-control" formControlName = "userName" required
         type="text"
         name="userName"
         id="userNameLog"
@@ -17,6 +14,15 @@
         formControlName="userName"
         autofocus
       />
+      <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+      class="alert-danger">
+      <div *ngIf="loginGroup.controls['userName'].errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="loginGroup.controls['userName'].errors.minlength">
+        Name must be at least 3 characters long.
+      </div>
+    </div>
     </div>
     <br>
     <div class="form-group">
@@ -29,10 +35,19 @@
         placeholder="Password"
         formControlName="password"
       />
+      <div *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="alert-danger">
+      <div *ngIf="loginGroup.controls['password'].errors.required">
+        Password is required.
+      </div>
+      <div *ngIf="loginGroup.controls['password'].errors.minlength">
+        Password must be at least 6 characters long.
+      </div>
+    </div>
     </div>
     <div class="errorText">{{ errorText }}</div>
     <div class="form-group">
-      <button type="submit" class="btn btn-black">
+      <button type="submit" [disabled]="loginGroup.pristine || loginGroup.invalid" class="btn btn-black">
         Login
       </button>
       <button type="button" class="btn btn-secondary" routerLink="register">Register</button>

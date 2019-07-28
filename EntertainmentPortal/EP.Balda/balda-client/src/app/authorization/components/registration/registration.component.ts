@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './../../services/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -15,10 +15,10 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerGroup = this.fb.group({
-      userName: [''],
-      email: [''],
-      password: [''],
-      passwordConfirm: ['']
+      userName: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      passwordConfirm: ['', [Validators.required, Validators.minLength(6)]],
     });
    }
 
@@ -32,9 +32,32 @@ export class RegistrationComponent implements OnInit {
       this.router.navigateByUrl('welcome');
     },
     (err: HttpErrorResponse) => {
-      console.log(err.statusText);
+      console.log(err.error);
       this.errotText = err.error;
     });
   }
+
+  get userName() {
+    return this.registerGroup.get('userName');
+  }
+
+  get email() {
+    return this.registerGroup.get('email');
+  }
+
+  get password() {
+    return this.registerGroup.get('password');
+  }
+
+  get passwordConfirm() {
+    return this.registerGroup.get('passwordConfirm');
+  }
+
+  checkPasswords(group: FormGroup) {
+  const pass = this.registerGroup.controls.password.value;
+  const confirmPass = this.registerGroup.controls.confirmPass.value;
+
+  return pass === confirmPass ? null : { notSame: true };
+}
 
 }

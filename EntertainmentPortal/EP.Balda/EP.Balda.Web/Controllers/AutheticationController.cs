@@ -196,9 +196,9 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
         public async Task<IActionResult> Logout()
         {
+            _logger.LogInformation($"User: {UserId} logged out ");
             await _signInManager.SignOutAsync();
 
-            _logger.LogInformation($"User: {_signInManager.Context.User.Identity.Name} logged out ");
             return Ok();
         }
 

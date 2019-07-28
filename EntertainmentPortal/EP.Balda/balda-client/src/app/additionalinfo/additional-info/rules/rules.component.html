@@ -1,19 +1,26 @@
 <div class="content">
 <div class="title"><h2>Game rules</h2></div>
 <div class="rules">
-<p>On the picture below you see the field for the game. </p>
-<ol>
+<ul>
   <li>Each turn you can add only one letter on the field.</li>
-  <li>The letter should form a new word (see my example in the next post)</li>
+  <li>The letter should form a new word.</li>
   <li>Syllables can be only vertical or horisontal diagonal words are prohibited so the new letter can form a syllable with the letter above, below or on the sides of it.</li>
   <li>The goal is to fill the field with words.</li>
   <li>You can't repeat the words, if someone wrote room, you can't write room as well even if it will be the word in the another part of the field.</li>
   <li>The winner the person who will have more total points by the end of the game.</li>
   <li>One point is given for one letter of words you add.</li>
-  <li>You can't make 2 turns in a row.</li>
-</ol>
-<div class="image">
-  <img [src]= "image1" alt="initial field"/>
-</div>
+</ul>
   </div>
+  <div class="img-container">
+  <img [src]="image1" alt="field">
+</div>
+<div id="list">
+<ol>
+  <li>Shows whose move it is now.</li>
+  <li>There you can choose a letter to add to the playing field.</li>
+  <li>Press this button after you choose letters of word correctly.</li>
+  <li>Press this button if you choose some letters of word wrong.</li>
+  <li>Press this button if you want to end this game.</li>
+</ol>
+</div>
 </div>
