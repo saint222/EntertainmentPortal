@@ -307,7 +307,7 @@ namespace EP.Balda.Tests.EP.Balda.Handlers.Tests
 
             var cell1 = new CellDb() { Id = 1, MapId = 1, Map = mapDb, X = 0, Y = 0, Letter = 'd' };
             var cell2 = new CellDb() { Id = 2, MapId = 1, Map = mapDb, X = 0, Y = 1, Letter = 'o' };
-            var cell3 = new CellDb() { Id = 3, MapId = 1, Map = mapDb, X = 1, Y = 1, Letter = 'g' };
+            var cell3 = new CellDb() { Id = 3, MapId = 1, Map = mapDb, X = 1, Y = 1, Letter = null };
 
             var cells = new List<CellDb>() { cell1, cell2, cell3 };
 
