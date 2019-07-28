@@ -17,6 +17,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Logging;
 using NSwag;
 using NSwag.AspNetCore;
 using Serilog;
@@ -35,11 +36,12 @@ namespace EP.Hangman.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IdentityModelEventSource.ShowPII = true;
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "http://security:8088";
+                    opt.Authority = "http://localhost:8088";
                     opt.RequireHttpsMetadata = false;
                 })
                 .AddGoogle("Google", opt =>
@@ -66,7 +68,7 @@ namespace EP.Hangman.Web
                 {
                     Flow = OpenApiOAuth2Flow.Implicit,
                     Type = OpenApiSecuritySchemeType.OAuth2,
-                    AuthorizationUrl = "http://security:8088/connect/authorize",
+                    AuthorizationUrl = "http://localhost:8088/connect/authorize",
                     Scopes = new Dictionary<string, string>()
                     {
                         {"hangman_api", "Access to hangman game api" }
@@ -89,6 +91,7 @@ namespace EP.Hangman.Web
                     cfg.RegisterValidatorsFromAssemblyContaining<DeleteGameValidator>();
                     cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

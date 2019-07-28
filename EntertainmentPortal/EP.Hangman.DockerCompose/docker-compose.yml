@@ -8,6 +8,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8088:80
+    networks:
+      default:
+        ipv4_address: 172.19.0.10
 
   backend:
     image: backend
@@ -16,6 +19,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8086:80
+    networks:
+      default:
+        ipv4_address: 172.19.0.20
     environment:
       - DEBUG=1
     tty: true
@@ -28,6 +34,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8084:80
+    networks:
+      default:
+        ipv4_address: 172.19.0.30
     links:
       - security
       - backend

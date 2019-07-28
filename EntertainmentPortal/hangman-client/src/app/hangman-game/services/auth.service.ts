@@ -5,7 +5,7 @@ import { AuthConfig, OAuthService, JwksValidationHandler } from 'angular-oauth2-
 export const authConfig: AuthConfig = {
 
   // Url of the Identity Provider
-  issuer: 'http://security:8088',
+  issuer: 'http://localhost:8088',
 
   // URL of the SPA to redirect the user to after login
   redirectUri: window.location.origin,
