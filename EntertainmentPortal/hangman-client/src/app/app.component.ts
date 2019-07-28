@@ -11,5 +11,5 @@ export class AppComponent {
   constructor() {
   }
 
-  title = 'hangman-game';
+  title = 'Hangman Game';
 }
