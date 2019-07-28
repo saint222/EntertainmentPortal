@@ -2,28 +2,37 @@ version: '3.4'
 
 services:
   identityserver:
-    image: is4
+    image: is4:latest
     build:
       context: .
       dockerfile: EP.15Puzzle/EP.15Puzzle.Security/Dockerfile
     ports:
-    - "8080:80"
+    - "5000:80"
+    networks:
+      default:
+        ipv4_address: 172.21.0.2
 
   apiservice:
-    image: api
+    image: api:latest
     build:
       context: .
       dockerfile: EP.15Puzzle/EP.15Puzzle.Web/Dockerfile
     ports:
     - "8081:80"
+    networks:
+      default:
+        ipv4_address: 172.21.0.3
 
   frontend:
-    image: front
+    image: front:latest
     build:
       context: .
       dockerfile: EP.15Puzzle/ep-pyatnashki-front/Dockerfile
     ports:
-    - "8082:80"
+    - "4200:80"
     volumes:
         - .:/root
         - /usr/src/app
+    networks:
+      default:
+        ipv4_address: 172.21.0.4

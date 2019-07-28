@@ -57,20 +57,21 @@ namespace EP._15Puzzle.Security
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
+                options.IssuerUri = "http://172.21.0.2:80";
             })
                 .AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"))
                 .AddInMemoryApiResources(Configuration.GetSection("ApiResources"))
                 .AddInMemoryClients(Configuration.GetSection("clients"))
                 .AddAspNetIdentity<ApplicationUser>();
 
-            if (Environment.IsDevelopment())
-            {
+            //if (Environment.IsDevelopment())
+            //{
                 builder.AddDeveloperSigningCredential();
-            }
-            else
-            {
-                throw new Exception("need to configure key material");
-            }
+            //}
+            //else
+            //{
+            //    throw new Exception("need to configure key material");
+            //}
 
             services.AddAuthentication()
                 .AddGoogle(options =>
