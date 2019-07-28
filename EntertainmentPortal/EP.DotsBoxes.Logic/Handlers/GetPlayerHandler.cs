@@ -13,11 +13,11 @@ namespace EP.DotsBoxes.Logic.Handlers
     {
         private readonly IMapper _mapper;
         private readonly GameBoardDbContext _context;
-
+       
         public GetPlayerHandler(IMapper mapper, GameBoardDbContext context)
         {
             _mapper = mapper;
-            _context = context;
+            _context = context;          
         }
 
         public async Task<Maybe<Player>> Handle(GetPlayer request, CancellationToken cancellationToken)

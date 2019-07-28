@@ -9,10 +9,12 @@ using EP.DotsBoxes.Logic.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using EP.DotsBoxes.Data.Models;
 
 namespace EP.DotsBoxes.Logic.Handlers
 {
-    public class UpdateGameBoardHandler : IRequestHandler<UpdateCellCommand, Result<Cell>>
+    public class UpdateGameBoardHandler : IRequestHandler<UpdateCellCommand, Result<IEnumerable<Cell>>>
     {
         private readonly IMapper _mapper;
         private readonly GameBoardDbContext _context;
@@ -25,11 +27,11 @@ namespace EP.DotsBoxes.Logic.Handlers
             _logger = logger;
         }
 
-        public async Task<Result<Cell>> Handle(UpdateCellCommand request, CancellationToken cancellationToken)
+        public async Task<Result<IEnumerable<Cell>>> Handle(UpdateCellCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Updating the cells.");
 
-            var cell = new Cell()
+            var model = new Cell()
             {
                 Row = request.Row,
                 Column = request.Column,
@@ -47,7 +49,7 @@ namespace EP.DotsBoxes.Logic.Handlers
 
             var gameBoard = _mapper.Map<GameBoard>(context);
             var game = new GameLogic(gameBoard.Cells, gameBoard.Players);
-            var sides = game.AddSides(cell, gameBoard.Rows, gameBoard.Columns);
+            var sides = game.AddSides(model, gameBoard.Rows, gameBoard.Columns);
             var player = game.CheckSquare(sides);
 
             if (player != null) 
@@ -61,25 +63,25 @@ namespace EP.DotsBoxes.Logic.Handlers
             {
                 if (item != null)
                 {
-                    var cells = context.Cells.Where(b => b.Id == item.Id).FirstOrDefault();
-                    cells.Top = item.Top;
-                    cells.Bottom = item.Bottom;
-                    cells.Right = item.Right;
-                    cells.Left = item.Left;
-                    _context.Entry(cells).State = EntityState.Modified;
+                    var cell = context.Cells.Where(b => b.Id == item.Id).FirstOrDefault();
+                    cell.Top = item.Top;
+                    cell.Bottom = item.Bottom;
+                    cell.Right = item.Right;
+                    cell.Left = item.Left;
+                    _context.Entry(cell).State = EntityState.Modified;
                 }
             }
-                                    
+
             try
             {
                 _logger.LogInformation("Updating database the cells.");
                 await _context.SaveChangesAsync(cancellationToken);
-                return Result.Ok<Cell>(_mapper.Map<Cell>(context.Cells));
+                return Result.Ok(_mapper.Map<IEnumerable<Cell>>(context.Cells));
             }
             catch (DbUpdateException ex)
             {
                 _logger.LogError(ex.Message, "Unsuccessful database update the cells!");
-                return Result.Ok<Cell>(_mapper.Map<Cell>(context.Cells));
+                return Result.Ok(_mapper.Map<IEnumerable<Cell>>(context.Cells));
             }
         }
     }

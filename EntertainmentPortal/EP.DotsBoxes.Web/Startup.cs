@@ -7,6 +7,8 @@ using EP.DotsBoxes.Logic.Validators;
 using EP.DotsBoxes.Web.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +32,14 @@ namespace EP.DotsBoxes.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {         
+        {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
+               {
+                   opt.Authority = "http://localhost:5000";
+                   opt.RequireHttpsMetadata = false;
+               });
+
             services.AddSwaggerDocument(cfg =>
             {                
                 cfg.Version = "v1";
@@ -53,6 +62,7 @@ namespace EP.DotsBoxes.Web
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
             services.AddAutoMapper(typeof(GameBoardProfile).Assembly);
             services.CreateGameBoardServices();
+            services.AddMemoryCache();
             services.AddCors(); // To enable CrossOriginResourceSharing.
             services.AddMvc(opt =>
             {
@@ -75,10 +85,19 @@ namespace EP.DotsBoxes.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
 
-            // The default HSTS value is 30 days. You may want to change this
-            // for production scenarios, see https://aka.ms/aspnetcore-hsts.
-            app.UseHsts();            
+            app.UseCors(opt =>
+                opt.AllowAnyHeader()
+                .AllowAnyMethod()
+                .WithOrigins("http://localhost:4200")
+                .AllowCredentials());
+
+            app.UseAuthentication();
 
             app.UseOpenApi().UseSwaggerUi3(opt => opt.OAuth2Client = new OAuth2ClientSettings()
             {

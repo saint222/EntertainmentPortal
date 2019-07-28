@@ -4,19 +4,9 @@
         <name>EP.DotsBoxes.Web</name>
     </assembly>
     <members>
-        <member name="T:EP.DotsBoxes.Web.Controllers.CellController">
-            <summary>
-            This is CellController.
-            </summary>
-        </member>
-        <member name="M:EP.DotsBoxes.Web.Controllers.CellController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EP.DotsBoxes.Web.Controllers.CellController})">
-            <summary>
-            CellController сonstructor. Is used for DI.
-            </summary>
-        </member>
         <member name="M:EP.DotsBoxes.Web.Controllers.CellController.GetCellsAsync">
             <summary>
-            Select a cells from the database.
+            Get cells from the database.
             </summary>
         </member>
         <member name="M:EP.DotsBoxes.Web.Controllers.CellController.UpdateCellAsync(EP.DotsBoxes.Logic.Commands.UpdateCellCommand)">
@@ -24,19 +14,9 @@
             Changes the cell after the player’s move and saves to the database.
             </summary>
         </member>
-        <member name="T:EP.DotsBoxes.Web.Controllers.GameBoardController">
-            <summary>
-            This is GameBoardController.
-            </summary>
-        </member>
-        <member name="M:EP.DotsBoxes.Web.Controllers.GameBoardController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EP.DotsBoxes.Web.Controllers.GameBoardController})">
-            <summary>
-            GameBoardController сonstructor. Is used for DI.
-            </summary>
-        </member>
         <member name="M:EP.DotsBoxes.Web.Controllers.GameBoardController.GetGameBoardAsync">
             <summary>
-            Select a gameboard from the database.
+            Get gameboard from the database.
             </summary>
         </member>
         <member name="M:EP.DotsBoxes.Web.Controllers.GameBoardController.NewGameBoardAsync(EP.DotsBoxes.Logic.Commands.NewGameBoardCommand)">
@@ -44,24 +24,14 @@
             Сreates a new gameboard according to specified parameters and saves it in the database.
             </summary>
         </member>
-        <member name="T:EP.DotsBoxes.Web.Controllers.PlayersController">
-            <summary>
-            This is PlayersController.
-            </summary>
-        </member>
-        <member name="M:EP.DotsBoxes.Web.Controllers.PlayersController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EP.DotsBoxes.Web.Controllers.PlayersController})">
-            <summary>
-            PlayersController constructor. Is used for DI.
-            </summary>
-        </member>
         <member name="M:EP.DotsBoxes.Web.Controllers.PlayersController.GetPlayerAsync(System.Int32)">
             <summary>
-            Select a player of the game from the database by the unique Id.
+            Get player of the game from the database by the unique Id.
             </summary>
         </member>
         <member name="M:EP.DotsBoxes.Web.Controllers.PlayersController.GetAllPlayersAsync">
             <summary>
-            Select all registered players from the database.
+            Get all registered players from the database.
             </summary>
         </member>
         <member name="M:EP.DotsBoxes.Web.Controllers.PlayersController.AddPlayerAsync(EP.DotsBoxes.Logic.Commands.AddPlayerCommand)">

@@ -39,7 +39,7 @@ namespace EP.DotsBoxes.Logic.Models
 
         public Cell[] AddSides(Cell cell, int rows, int columns)
         {
-           return new Cell[] { AddCurrentSide(cell), AddCommonSide(cell, rows, columns) };                    
+            return new Cell[] { AddCurrentSide(cell), AddCommonSide(cell, rows, columns) };
         }
 
         public Cell AddCommonSide(Cell cell, int rows, int columns)
@@ -68,7 +68,10 @@ namespace EP.DotsBoxes.Logic.Models
                 result = _cells.Where(p => p.Row == row & p.Column == column + 1).First();
                 result.Left = true;
             }
-            result.Name = cell.Name;
+            if (result != null)
+            {
+                result.Name = cell.Name;
+            }
             return result;
         }
 
@@ -103,15 +106,15 @@ namespace EP.DotsBoxes.Logic.Models
         }
 
         public Player CheckSquare(Cell[] cells)
-        {           
+        {
             Player result = null;
 
             foreach (var cell in cells)
-            {              
+            {
                 if (cell != null && cell.Top & cell.Bottom & cell.Left & cell.Right)
                 {
                     result = _players.Where(p => p.Name.Equals(cell.Name)).First();
-                    result.Score += 1;                 
+                    result.Score += 1;
                 }
             }
 

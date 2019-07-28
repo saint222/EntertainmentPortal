@@ -8,12 +8,16 @@ namespace EP.DotsBoxes.Logic.Validators
         public NewGameBoardValidator()
         {
             RuleFor(x => x.Columns)
-                .GreaterThan(0)
-                .WithMessage("Value must be more than 0");
+                .GreaterThan(2)
+                .WithMessage("Value must be more than 2")
+                .LessThan(11)
+                .WithMessage("Value must be less than 11");
 
             RuleFor(x => x.Rows)
-                .GreaterThan(0)
-                .WithMessage("Value must be more than 0");
+                .GreaterThan(2)
+                .WithMessage("Value must be more than 2")
+                .LessThan(11)
+                .WithMessage("Value must be less than 11");
         }
     }
 }

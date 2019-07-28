@@ -9,21 +9,19 @@ using EP.DotsBoxes.Logic.Queries;
 using NSwag.Annotations;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EP.DotsBoxes.Web.Controllers
 {
-    /// <summary>
-    /// This is PlayersController.
-    /// </summary>
-    [ApiController]    
+   
+    [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PlayersController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly ILogger<PlayersController> _logger;
 
-        /// <summary>
-        /// PlayersController constructor. Is used for DI.
-        /// </summary>
         public PlayersController(IMediator mediator, ILogger<PlayersController> logger)
         {
             _mediator = mediator;
@@ -31,7 +29,7 @@ namespace EP.DotsBoxes.Web.Controllers
         }
 
         /// <summary>
-        /// Select a player of the game from the database by the unique Id.
+        /// Get player of the game from the database by the unique Id.
         /// </summary>
         // GET api/player/{id}
         [HttpGet("api/player/{id}")]
@@ -47,7 +45,7 @@ namespace EP.DotsBoxes.Web.Controllers
         }
 
         /// <summary>
-        /// Select all registered players from the database.
+        /// Get all registered players from the database.
         /// </summary>
         // GET api/players
         [HttpGet("api/players")]

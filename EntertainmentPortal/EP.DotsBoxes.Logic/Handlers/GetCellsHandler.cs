@@ -17,23 +17,23 @@ namespace EP.DotsBoxes.Logic.Handlers
     {
         private readonly IMapper _mapper;
         private readonly GameBoardDbContext _context;
-
+        
         public GetCellsHandler(IMapper mapper, GameBoardDbContext context)
         {
             _mapper = mapper;
-            _context = context;
+            _context = context;            
         }
         
         public async Task<Maybe<IEnumerable<Cell>>> Handle(GetCells request, CancellationToken cancellationToken)
-        {
-            var result = await _context.Cells
+        {     
+            var cells = await _context.Cells
                 .AsNoTracking()
                 .ToListAsync(cancellationToken);
 
-            IEnumerable<Cell> cells = _mapper.Map<List<CellDb>, IEnumerable<Cell>>(result);
+            var result = _mapper.Map<List<CellDb>, IEnumerable<Cell>>(cells);            
 
             return result.Any() ?
-                Maybe<IEnumerable<Cell>>.From(cells) :
+                Maybe<IEnumerable<Cell>>.From(result) :
                 Maybe<IEnumerable<Cell>>.None;
         }
     }

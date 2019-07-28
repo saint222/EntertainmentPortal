@@ -13,19 +13,15 @@ using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP.DotsBoxes.Web.Controllers
-{
-    /// <summary>
-    /// This is CellController.
-    /// </summary>
+{    
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CellController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly ILogger<CellController> _logger;
 
-        /// <summary>
-        /// CellController сonstructor. Is used for DI.
-        /// </summary>
+        
         public CellController(IMediator mediator, ILogger<CellController> logger)
         {
             _mediator = mediator;
@@ -33,11 +29,10 @@ namespace EP.DotsBoxes.Web.Controllers
         }
 
         /// <summary>
-        /// Select a cells from the database.
+        /// Get cells from the database.
         /// </summary>
         // GET api/cell
-        [HttpGet("api/cell")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("api/cell")]        
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Cell>), Description = "Received cells")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Cells not found")]
         public async Task<IActionResult> GetCellsAsync()
@@ -55,7 +50,7 @@ namespace EP.DotsBoxes.Web.Controllers
         //PUT api/cell
         [HttpPut("api/cell")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Cell), Description = "Add line to cell")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]        
         public async Task<IActionResult> UpdateCellAsync([FromBody][NotNull]UpdateCellCommand model)
         {
             _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: GameBoard (Row = {model.Row}," +
