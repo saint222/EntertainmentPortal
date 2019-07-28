@@ -30,6 +30,34 @@
   //vertical-align: 50%;
   //font: 16pt sans-serif;
   //height: 50px;
-  margin: 50px 50px 50px 50px;
+  margin: 10px 10px 10px 10px;
   display: table-row;
+  font: 20pt sans-serif;
+  color: rgb(255, 255, 255);
+}
+.errMessage{
+  margin: 10px 10px 10px 10px;
+  display: table-row;
+
+}
+.errMessageText{
+  font: 20pt sans-serif;
+  color: rgb(153, 41, 41);
+  text-shadow:
+  -0   -1px 2px #C3F207,
+    0   -1px 2px #C3F207,
+  -0    1px 2px #C3F207,
+    0    1px 2px #C3F207,
+  -1px -0   2px #C3F207,
+   1px -0   2px #C3F207,
+  -1px  0   2px #C3F207,
+    1px  0   2px #C3F207,
+  -1px -1px 2px #C3F207,
+  1px -1px 2px #C3F207,
+ -1px  1px 2px #C3F207,
+  1px  1px 2px #C3F207,
+ -1px -1px 2px #C3F207,
+  1px -1px 2px #C3F207,
+ -1px  1px 2px #C3F207,
+  1px  1px 2px #C3F207;
 }

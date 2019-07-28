@@ -5,13 +5,15 @@ import { Injectable, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Word } from '../models/Word';
+import { map, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService) {}
+  constructor(private httpClient: HttpClient, private router: Router, private authService: AuthService) {}
 
   private url = `${environment.base_url}/api/Game`;
 
@@ -36,32 +38,34 @@ export class GameService {
 
   createGame(id: string) {
     if (this.authService.isTokenValid()) {
-      return this.http.post<Game>('https://localhost:44350/api/game', {PlayerId: id} );
+      return this.httpClient.post<Game>('https://localhost:44350/api/game', {PlayerId: id} );
     }
   }
 
   updateGame(responseModel: Game) {
     if (this.IsAccessTokenExists()) {
-      return this.http.put<Game>(this.url, responseModel, {headers: {Authorization: this.makeAccessTokenString()}});
+      return this.httpClient.put<Game>(this.url, responseModel, {headers: {Authorization: this.makeAccessTokenString()}});
     }
   }
 
   deleteGame(id: number) {
     if (this.IsAccessTokenExists()) {
-      return this.http.delete(this.url + `/${id}`, {headers: {Authorization: this.makeAccessTokenString()}});
+      return this.httpClient.delete(this.url + `/${id}`, {headers: {Authorization: this.makeAccessTokenString()}});
     }
   }
 
   submitWord(Value: string, GameId: string) {
     if (this.authService.isTokenValid()) {
-      return this.http.post<Word>('https://localhost:44350/api/word/submitWord', {value: Value , gameId: GameId});
+      return this.httpClient.post<Word>('https://localhost:44350/api/word/submitWord', {value: Value , gameId: GameId});
     }
   }
+
+
   getAllWords(GameId: string)
   {
     if (this.authService.isTokenValid())
     {
-      return this.http.get<Word[]>('https://localhost:44350/api/word/allwords' + `/${GameId}`);
+      return this.httpClient.get<Word[]>('https://localhost:44350/api/word/allwords' + `/${GameId}`);
     }
   }
 
@@ -69,7 +73,7 @@ export class GameService {
   {
     if (this.authService.isTokenValid())
     {
-      return this.http.get<Game>('https://localhost:44350/api/game' + `/${id}`);
+      return this.httpClient.get<Game>('https://localhost:44350/api/game' + `/${id}`);
     }
   }
 }

@@ -6,6 +6,9 @@ import { PlayerService } from '../../services/player.service';
 import { Game } from '../../models/game';
 import { Player } from '../../models/player';
 import { Word } from '../../models/Word';
+import { HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 interface Dictionary {
   [index: number]: string;
 }
@@ -26,6 +29,8 @@ export class PlayingFieldComponent implements OnInit {
   player: Player = null;
   id: string = '';
   word: Word = null;
+  errMessage: string = '';
+  //errMessageVisible: boolean = false;
 
   wordsArray: Word[] = [];
   public CLearBtnDisable: boolean;
@@ -41,6 +46,9 @@ export class PlayingFieldComponent implements OnInit {
 
   }
 
+  errMessageClear(){
+    this.errMessage = '';
+  }
   loadPlayer()
   {
     if(this.authService.isTokenValid())
@@ -84,6 +92,7 @@ export class PlayingFieldComponent implements OnInit {
   }
 
   CellClick(index: number) {
+    this.errMessageClear();
     log(index.toString());
     if (this.keyWordLetters[index] === '_') {
       //this.keyWordLetters[index] = this.CuttedLetters[index];
@@ -113,8 +122,23 @@ export class PlayingFieldComponent implements OnInit {
         this.wordsArray.forEach(element => {
           log("Returned word - " + element.value+", ")
         });
+      },
+      err =>
+      {
+        this.errMessage = (err as HttpErrorResponse).error;
         this.ClearBtnClick();
-      })
+      });
+      /* .subscribe(p =>
+      {
+        this.wordsArray.push(p);
+        this.wordsArray.forEach(element => {
+          log("Returned word - " + element.value+", ")
+        });
+        this.ClearBtnClick();
+      }, err =>
+      {
+        err
+      }); */
   }
 
   CheckResultWord() {
