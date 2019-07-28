@@ -61,6 +61,15 @@ namespace EP.Balda.Web.Controllers
             return result.Succeeded ? (IActionResult)Ok(user) : BadRequest();
         }
 
+
+        [Authorize(AuthenticationSchemes = "Google")]
+        [HttpGet("api/google")]
+        public async Task<IActionResult> GoogleSignIn()
+        {
+            return Ok();
+        }
+
+
         [AllowAnonymous]
         [HttpPost("api/simpleregister")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User has been registered")]

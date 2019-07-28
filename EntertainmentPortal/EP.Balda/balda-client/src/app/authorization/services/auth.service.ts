@@ -40,6 +40,6 @@ export class AuthService {
   }
 
   googleSignIn() {
-
+    return this.http.get(`${environment.base_url}api/google`);
   }
 }

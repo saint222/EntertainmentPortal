@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<div class="col-md-6 col-sm-12">
+<meta name="google-signin-client_id" content="960534110357-koidlpbpdt5l0jpndqrsgkum1ff5h03m.apps.googleusercontent.com">
 <div class="col-md-6 col-sm-12">
 <div class="loginForm">
   <h2>Sign in</h2>
@@ -28,9 +31,6 @@
       />
     </div>
     <div class="errorText">{{ errorText }}</div>
-    Sign in with:
-    <button class="fa fa-facebook-square" aria-hidden="true" (click)="onFacebookClick()"></button>
-    <button class="fa fa-google" aria-hidden="true" (click)="onGoogleClick()"></button><br>
     <div class="form-group">
       <button type="submit" class="btn btn-black">
         Login
@@ -38,5 +38,9 @@
       <button type="button" class="btn btn-secondary" routerLink="register">Register</button>
     </div>
   </form>
+</div>
+<div class="fbg">Sign in with:<br>
+<button class="fa fa-facebook-square" aria-hidden="true" (click)="onFacebookClick()"></button>
+    <button class="fa fa-google" aria-hidden="true" data-onsuccess="onSignIn()" (click)="onGoogleClick()"></button><br>
 </div>
 </div>
