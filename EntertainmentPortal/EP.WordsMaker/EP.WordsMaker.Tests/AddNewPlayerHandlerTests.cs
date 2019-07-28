@@ -46,7 +46,7 @@ namespace EP.WordsMaker.Tests
         }
 
         [Test]
-        public void Test_Handler_Create_New_Game_Created()
+        public void Test_Handler_Create_New_Player_Created()
         {
             Task<Result<Player>> controllerData;
 

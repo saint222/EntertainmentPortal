@@ -65,7 +65,7 @@ namespace EP.WordsMaker.Logic.Handlers
 				StartTime = DateTime.UtcNow,
 				Id = Guid.NewGuid().ToString(),
 				KeyWord = wordDictionary.GetRandomKeyWord(),
-				//PlayerId = request.Id,
+				PlayerId = request.PlayerId,
 				Player = _player //await _context.Players.FindAsync(request.Id)
 			};
 

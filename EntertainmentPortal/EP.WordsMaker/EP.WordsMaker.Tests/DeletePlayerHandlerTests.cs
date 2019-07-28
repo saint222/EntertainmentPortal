@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
@@ -13,26 +10,25 @@ using EP.WordsMaker.Logic.Models;
 using EP.WordsMaker.Logic.Profiles;
 using FluentValidation;
 using FluentValidation.Results;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 
 namespace EP.WordsMaker.Tests
 {
-    public class AddNewGameHandlerTests
+    public class DeletePlayerHandlerTests
     {
         IMapper _mapper;
         DbContextOptions<GameDbContext> _options;
-        IValidator<AddNewGameCommand> _validator;
+        IValidator<DeletePlayerCommand> _validator;
 
         [SetUp]
         public void Setup()
         {
-            var validatorForAddPlayerHandler = new Mock<IValidator<AddNewGameCommand>>();
-            validatorForAddPlayerHandler.Setup(x => x.Validate(It.IsAny<AddNewGameCommand>()).IsValid)
+            var validatorForAddPlayerHandler = new Mock<IValidator<DeletePlayerCommand>>();
+            validatorForAddPlayerHandler.Setup(x => x.Validate(It.IsAny<DeletePlayerCommand>()).IsValid)
                 .Returns(new ValidationResult().IsValid);
-            var mockMapper = new MapperConfiguration(cfg => cfg.AddProfile(new GameProfile()));
+            var mockMapper = new MapperConfiguration(cfg => cfg.AddProfile(new PlayerProfile()));
             _mapper = mockMapper.CreateMapper();
             _validator = validatorForAddPlayerHandler.Object;
         }
@@ -46,12 +42,12 @@ namespace EP.WordsMaker.Tests
         }
 
         [Test]
-        public void Test_Handler_Create_New_Game_Created()
+        public void Test_Handler_Delete_Player_When_Exist()
         {
-            Task<Result<Game>> controllerData;
+            Task<Result<Player>> controllerData;
 
             _options = new DbContextOptionsBuilder<GameDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestCreateNewGame")
+                .UseInMemoryDatabase(databaseName: "TestDeletePlayerWhenExist")
                 .Options;
 
             using (var context = new GameDbContext(_options))
@@ -59,50 +55,51 @@ namespace EP.WordsMaker.Tests
                 context.Players
                     .Add(new PlayerDb()
                     {
-                        Id = "asfadfsc",
-                        BestScore = 1123,
-                        BestScoreId = 12,
-                        Email = "fsaas",
-                        LastGame = DateTime.Now,
-                        Name = "adfadas",
-                        Score = 123
+                        Id = "dqq",
+                        Email = "31323"
+
                     });
                 context.SaveChanges();
             }
 
             using (var context = new GameDbContext(_options))
             {
-                var service = new AddNewGameHandler(context, _mapper, _validator);
-
-                controllerData = service.Handle(new AddNewGameCommand() {PlayerId = "asfadfsc"}, CancellationToken.None);
+                var service = new DeletePlayerHandler(context, _mapper, _validator);
+                controllerData = service.Handle(new DeletePlayerCommand()
+                {
+                    Id = "dqq"
+                }, CancellationToken.None);
             }
 
             using (var context = new GameDbContext(_options))
             {
                 Assert.IsTrue(controllerData.Result.IsSuccess);
+                Assert.AreEqual(null, controllerData.Result.Value);
             }
         }
 
         [Test]
-        public void Test_Handler_Create_New_Game_Created_When_Session_Does_Not_Exists()
+        public void Test_Handler_Delete_Player_When_Does_Not_Exist()
         {
-            Task<Result<Game>> controllerData;
+            Task<Result<Player>> controllerData;
 
             _options = new DbContextOptionsBuilder<GameDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestCreateNewGame")
+                .UseInMemoryDatabase(databaseName: "TestDeletePlayerWhenDNExist")
                 .Options;
 
             using (var context = new GameDbContext(_options))
             {
-                var service = new AddNewGameHandler(context, _mapper, _validator);
-
-                controllerData = service.Handle(new AddNewGameCommand() { PlayerId = "asfadfsc" }, CancellationToken.None);
+                var service = new DeletePlayerHandler(context, _mapper, _validator);
+                controllerData = service.Handle(new DeletePlayerCommand()
+                {
+                    Id = "dqq"
+                }, CancellationToken.None);
             }
 
             using (var context = new GameDbContext(_options))
             {
                 Assert.IsTrue(controllerData.Result.IsFailure);
-                Assert.AreEqual("Player not found(Game handler)", controllerData.Result.Error);
+                Assert.AreEqual("Data wasn't found", controllerData.Result.Error);
             }
         }
     }

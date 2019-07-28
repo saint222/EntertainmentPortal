@@ -7,8 +7,9 @@ namespace EP.WordsMaker.Logic.Profiles
 	public class GameProfile : Profile
 	{
 		public GameProfile()
-		{
-			CreateMap<GameDb, Game>().ReverseMap();
-		}
+        {
+            CreateMap<GameDb, Game>().ReverseMap();
+            CreateMap<PlayerDb, Player>().ReverseMap();
+        }
 	}
 }

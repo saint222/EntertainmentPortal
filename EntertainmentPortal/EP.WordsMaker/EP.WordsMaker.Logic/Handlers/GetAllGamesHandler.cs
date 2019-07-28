@@ -29,7 +29,7 @@ namespace EP.WordsMaker.Logic.Handlers
 				.AsNoTracking()
 				.ToArrayAsync(cancellationToken)
 				.ConfigureAwait(false);
-
+            
 			return result.Any() ?
 				Maybe<IEnumerable<GameDb>>.From(result) :
 				Maybe<IEnumerable<GameDb>>.None;

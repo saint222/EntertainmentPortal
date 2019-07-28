@@ -29,15 +29,13 @@ namespace EP.WordsMaker.Logic.Handlers
 
         public async Task<Result<IEnumerable<Word>>> Handle(GetAllWordsCommand request, CancellationToken cancellationToken)
         {
-	        
-
-			var result = await _context.Words
+	        var result = await _context.Words
 						.Where(x=> x.GameId == request.GameId)
 			            .AsNoTracking()
 			            .ToArrayAsync(cancellationToken)
 			            .ConfigureAwait(false);
 
-			if (result == null)
+			if (result.Length == 0)
 			{
 				return (Result.Fail<IEnumerable<Word>>("Words array is empty(handler)"));
 			}

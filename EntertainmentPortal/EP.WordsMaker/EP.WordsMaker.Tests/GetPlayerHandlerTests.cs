@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using CSharpFunctionalExtensions;
@@ -12,26 +9,23 @@ using EP.WordsMaker.Logic.Handlers;
 using EP.WordsMaker.Logic.Models;
 using EP.WordsMaker.Logic.Profiles;
 using FluentValidation;
-using FluentValidation.Results;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 
 namespace EP.WordsMaker.Tests
 {
-    public class AddNewGameHandlerTests
+    public class GetPlayerHandlerTests
     {
         IMapper _mapper;
         DbContextOptions<GameDbContext> _options;
-        IValidator<AddNewGameCommand> _validator;
+        IValidator<GetPlayerCommand> _validator;
 
         [SetUp]
         public void Setup()
         {
-            var validatorForAddPlayerHandler = new Mock<IValidator<AddNewGameCommand>>();
-            validatorForAddPlayerHandler.Setup(x => x.Validate(It.IsAny<AddNewGameCommand>()).IsValid)
-                .Returns(new ValidationResult().IsValid);
+            var validatorForAddPlayerHandler = new Mock<IValidator<GetPlayerCommand>>();
+            validatorForAddPlayerHandler.Setup(x => x.Validate(It.IsAny<GetPlayerCommand>()).IsValid);
             var mockMapper = new MapperConfiguration(cfg => cfg.AddProfile(new GameProfile()));
             _mapper = mockMapper.CreateMapper();
             _validator = validatorForAddPlayerHandler.Object;
@@ -46,12 +40,12 @@ namespace EP.WordsMaker.Tests
         }
 
         [Test]
-        public void Test_Handler_Create_New_Game_Created()
+        public void Test_Handler_Get_Player_When_Session_Exists()
         {
-            Task<Result<Game>> controllerData;
+            Task<Result<Player>> controllerData;
 
             _options = new DbContextOptionsBuilder<GameDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestCreateNewGame")
+                .UseInMemoryDatabase(databaseName: "TestGetPlayer")
                 .Options;
 
             using (var context = new GameDbContext(_options))
@@ -59,50 +53,45 @@ namespace EP.WordsMaker.Tests
                 context.Players
                     .Add(new PlayerDb()
                     {
-                        Id = "asfadfsc",
-                        BestScore = 1123,
-                        BestScoreId = 12,
-                        Email = "fsaas",
-                        LastGame = DateTime.Now,
-                        Name = "adfadas",
-                        Score = 123
+                        Id = "dqq",
+                        Email = "31323"
+                        
                     });
                 context.SaveChanges();
             }
 
             using (var context = new GameDbContext(_options))
             {
-                var service = new AddNewGameHandler(context, _mapper, _validator);
-
-                controllerData = service.Handle(new AddNewGameCommand() {PlayerId = "asfadfsc"}, CancellationToken.None);
+                var service = new GetPlayerHandler(_mapper, context);
+                controllerData = service.Handle(new GetPlayerCommand() {Id = "dqq"}, CancellationToken.None);
             }
 
             using (var context = new GameDbContext(_options))
             {
                 Assert.IsTrue(controllerData.Result.IsSuccess);
+                Assert.AreEqual("dqq", controllerData.Result.Value.Id);
             }
         }
 
         [Test]
-        public void Test_Handler_Create_New_Game_Created_When_Session_Does_Not_Exists()
+        public void Test_Handler_Get_Player_When_Player_Does_Not_Exists()
         {
-            Task<Result<Game>> controllerData;
+            Task<Result<Player>> controllerData;
 
             _options = new DbContextOptionsBuilder<GameDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestCreateNewGame")
+                .UseInMemoryDatabase(databaseName: "TestGetPlayerWhenDNExists")
                 .Options;
 
             using (var context = new GameDbContext(_options))
             {
-                var service = new AddNewGameHandler(context, _mapper, _validator);
-
-                controllerData = service.Handle(new AddNewGameCommand() { PlayerId = "asfadfsc" }, CancellationToken.None);
+                var service = new GetPlayerHandler(_mapper, context);
+                controllerData = service.Handle(new GetPlayerCommand() {Id = "da" }, CancellationToken.None);
             }
 
             using (var context = new GameDbContext(_options))
             {
                 Assert.IsTrue(controllerData.Result.IsFailure);
-                Assert.AreEqual("Player not found(Game handler)", controllerData.Result.Error);
+                Assert.AreEqual("Player not found(handler)", controllerData.Result.Error);
             }
         }
     }
