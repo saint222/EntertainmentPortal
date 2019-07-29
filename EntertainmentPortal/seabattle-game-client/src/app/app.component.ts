@@ -43,7 +43,7 @@ export class AppComponent implements OnInit{
     }
 
     addPlayer(nickName: string) {
-      this.http.post<Player[]>(`${environment.base_url}api/AddPlayer`, {'nickName': nickName}, {withCredentials: true}).subscribe(data => {
+      this.http.post<Player[]>(`${environment.base_url}api/AddPlayer`, {"nickName": nickName}, {withCredentials: true}).subscribe(data => {
         if (data != null && data !== undefined) {
           this.player = data;
           console.log(`Message: addPlayer`);
