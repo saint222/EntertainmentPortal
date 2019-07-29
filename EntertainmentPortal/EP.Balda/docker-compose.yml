@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+
+  baldaapi:
+    image: baldaapi
+    build:
+      context: ./EP.Balda.Web/
+      dockerfile: Dockerfile
+    ports:
+      - 8086:80
+
+  baldaclient:
+    image: baldaclient
+    build:
+      context: ./balda-client
+      dockerfile: Dockerfile
+    ports:
+      - 8084:80
+    links:
+      - baldaapi

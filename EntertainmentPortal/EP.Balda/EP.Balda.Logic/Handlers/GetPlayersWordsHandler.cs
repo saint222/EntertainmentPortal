@@ -27,10 +27,8 @@ namespace EP.Balda.Logic.Handlers
                 .OrderBy(w => w.Id)
                 .Select(w => w.Word.Word)
                 .ToListAsync();
-            
-            return words == null
-                ? new List<string>()
-                : words;
+
+            return words ?? new List<string>();
         }
     }
 }

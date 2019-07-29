@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -14,34 +14,35 @@ export class LoginComponent implements OnInit {
   inputClass: 'something';
   errorText: string;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private http: HttpClient) {
     this.loginGroup = this.fb.group({
-      userName: [''],
-      password: ['']
+      userName: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   get user() { return this.loginGroup.controls; }
 
   onSubmit(form: FormGroup) {
     this.authService.login(form.value).subscribe(p => {
-      console.log(p),
+      console.log(p);
       this.router.navigateByUrl('welcome');
     },
     (err: HttpErrorResponse) => {
       this.errorText = err.error;
-      return console.log(err.statusText);
+      return console.log(err.error[0]);
     });
   }
 
-  onFacebookClick() {
-
+  get userName() {
+    return this.loginGroup.get('userName');
   }
 
-  onGoogleClick() {
-
+  get password() {
+    return this.loginGroup.get('password');
   }
 }
 

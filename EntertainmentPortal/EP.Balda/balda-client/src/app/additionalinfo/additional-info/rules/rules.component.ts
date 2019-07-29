@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rules.component.sass']
 })
 export class RulesComponent implements OnInit {
-  image1: any = 'assets/pics/1.jpg';
-  image2: any = 'assets/pics/2.jpg';
-  image3: any = 'assets/pics/3.jpg';
-  image4: any = 'assets/pics/4.jpg';
+  image1: any = 'assets/pics/field.jpg';
 
   constructor() { }
 

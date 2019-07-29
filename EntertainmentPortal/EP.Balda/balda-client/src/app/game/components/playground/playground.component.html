@@ -1,21 +1,20 @@
-<div class="container-fluid">
+<div *ngIf="isLoading" class="container-fluid">
 <div id="left" class="row">
-    <div class="col">
-  <b>Player {{ player.userName }} </b>
+    <div class="col border border-primary rounded card">
+  <b><p>Player {{ player.userName }}</p> </b>
   <br>
-  <br>
-    <b>Words:</b><br>
+    <b>Words:</b>
     <ul class="listWords">
       <li *ngFor="let word of playerWords">
           {{ word }}
       </li>
   </ul>
-  <p>Total: {{ playerScore }} </p>
+  <p>Score: {{ playerScore }} </p>
 </div>
 </div>
 
 <div id="right">
-    <div class="col">
+    <div class="col border border-warning rounded card">
       <p><b>Opponent</b></p>
       <br>
     <b>Words:</b>
@@ -24,14 +23,16 @@
             {{ word }}
         </li>
     </ul>
-    <p>Total: {{ opponentScore }} </p>
+    <p>Score: {{ opponentScore }} </p>
       </div>
 </div>
 
 <div id="center">
-  <p *ngIf="isPlayerTurn">Player's Turn</p>
-  <p *ngIf="!isPlayerTurn">Opponent's Turn</p>
     <div class="col">
+        <div id="turn">
+            <span class="border border-primary rounded" *ngIf="isPlayerTurn"><b>Player's Turn</b></span>
+            <span class="border border-warning rounded" *ngIf="!isPlayerTurn"><b>Opponent's Turn</b></span>
+          </div>
   <table class="fixed table-bordered table-dark">
     <tbody>
       <tr *ngFor="let row of cells">
@@ -41,7 +42,7 @@
       </tr>
     </tbody>
   </table>
-  <p> Your word: {{ selectedLetters }} </p>
+  <p> Your word: <b> {{ selectedLetters }}</b> </p>
   <button type="button-send" class="btn btn-secondary" (click)="onSendClick()">
     Send word
 </button>

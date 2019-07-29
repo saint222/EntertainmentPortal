@@ -12,6 +12,7 @@ using NSwag.Annotations;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
@@ -58,7 +59,7 @@ namespace EP.Balda.Web.Controllers
                 _logger.LogWarning($"Unsuccessful login of user: {userData.UserName}");
             }
 
-            return result.Succeeded ? (IActionResult)Ok(user) : BadRequest();
+            return result.Succeeded ? (IActionResult)Ok(user) : BadRequest("Password incorrect");
         }
 
         [AllowAnonymous]
@@ -76,8 +77,11 @@ namespace EP.Balda.Web.Controllers
             };
 
             var status = await _userManager.CreateAsync(newUser, userData.Password);
+            await _userManager.FindByNameAsync(userData.UserName);
+            await _signInManager.PasswordSignInAsync(userData.UserName, userData.Password, true, false);
 
-            return status.Succeeded ? (IActionResult)Ok(newUser) : BadRequest(status?.Errors);
+            var error = status?.Errors.ToArray();
+            return status.Succeeded ? (IActionResult)Ok(newUser) : BadRequest(error[0]);
         }
 
         [AllowAnonymous]
@@ -105,7 +109,7 @@ namespace EP.Balda.Web.Controllers
                 var callbackUrl = Url.Action(
                        "ConfirmEmail",
                        "Authentication",
-                       new { userId = newUser.Id, code = code },
+                       new { userId = newUser.Id, code },
                        protocol: HttpContext.Request.Scheme);
 
                 var emailService = new EmailService();
@@ -187,9 +191,9 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.OK, typeof(void), Description = "User was logged out")]
         public async Task<IActionResult> Logout()
         {
+            _logger.LogInformation($"User: {UserId} logged out ");
             await _signInManager.SignOutAsync();
 
-            _logger.LogInformation($"User: {_signInManager.Context.User.Identity.Name} logged out ");
             return Ok();
         }
 

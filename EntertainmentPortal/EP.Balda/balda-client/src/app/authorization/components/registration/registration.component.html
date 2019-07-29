@@ -11,8 +11,19 @@
       class="form-control"
       placeholder="Username"
       formControlName="userName"
-      autofocus
     />
+    <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+      class="alert-danger">
+      <div *ngIf="registerGroup.controls['userName'].errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="registerGroup.controls['userName'].errors.minlength">
+        Name must be at least 3 characters long.
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
   <label for="email">E-mail</label>
     <input
       type="email"
@@ -22,6 +33,17 @@
       placeholder="Email address"
       formControlName="email"
     />
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="alert-danger">
+      <div *ngIf="registerGroup.controls['email'].errors.required">
+        E-mail is required.
+      </div>
+      <div *ngIf="registerGroup.controls['email'].errors.email">
+        E-mail is not correct.
+      </div>
+    </div>
+  </div><br>
+    <div class="form-group">
   <label for="password">Password</label>
     <input
       type="password"
@@ -31,6 +53,17 @@
       placeholder="Password"
       formControlName="password"
     />
+    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="alert-danger">
+      <div *ngIf="registerGroup.controls['password'].errors.required">
+        Password is required.
+      </div>
+      <div *ngIf="registerGroup.controls['password'].errors.minlength">
+        Password must be at least 6 characters long.
+      </div>
+    </div>
+  </div><br>
+  <div class="form-group">
   <label for="passwordConfirm">Password confirm</label>
     <input
       type="password"
@@ -39,13 +72,24 @@
       class="form-control"
       placeholder="Password confirmation"
       formControlName="passwordConfirm"
+      pattern="{{ password.value }}"
     />
+    <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)"
+    class="alert-danger">
+    <div *ngIf="registerGroup.controls['passwordConfirm'].errors.required">
+      Password is required.
+    </div>
+    <div *ngIf="registerGroup.controls['passwordConfirm'].errors.minlength">
+      Password must be at least 6 characters long.
+    </div>
+    <div *ngIf="registerGroup.controls['passwordConfirm'].errors.pattern"> Password & Confirm Password does not match.</div>
+ </div>
+  </div>
     <div class="errorText">{{ errotText }}</div>
     <button type="button" class="btn btn-secondary" routerLink="">Login</button>
-    <button type="submit" class="btn btn-black">
+    <button type="submit" [disabled]="registerGroup.pristine || registerGroup.invalid" class="btn btn-black">
       Register
     </button>
-  </div>
 </form>
 </div>
 </div>
