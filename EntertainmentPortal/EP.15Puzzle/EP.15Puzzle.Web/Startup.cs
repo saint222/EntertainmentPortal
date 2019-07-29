@@ -49,7 +49,7 @@ namespace EP._15Puzzle.Web
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = Configuration.GetSection("Urls:Is4").Value;
+                    opt.Authority = "http://172.21.0.2:80";
                     opt.RequireHttpsMetadata = false;
                 });
 
@@ -105,12 +105,13 @@ namespace EP._15Puzzle.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                     .AllowAnyMethod()
-                    .WithOrigins(Configuration.GetSection("Urls:Api").Value, Configuration.GetSection("Urls:Is4").Value, Configuration.GetSection("Urls:Front").Value)
+                    .WithOrigins(
+                        "http://localhost:4200", "http://localhost:5000", "http://localhost:8081"
+                        , "http://172.21.0.2:80", "http://172.21.0.3:80", "http://172.21.0.4:80")
                     .AllowCredentials());
             app.UseSignalR(routes => { routes.MapHub<NoticeHub>("/notice");});
             
             app.UseAuthentication();
-            //app.UseIdentityServer();
             mediator.Send(new CreateDatabaseCommand()).Wait();
 
             app.UseOpenApi().UseSwaggerUi3(opt =>
