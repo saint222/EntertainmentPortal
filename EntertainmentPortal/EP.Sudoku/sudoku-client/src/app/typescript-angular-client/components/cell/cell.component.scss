@@ -1,0 +1,29 @@
+
+.square {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    float: left;
+    margin: 0 1px 1px 0;
+    display: table;
+  }
+
+.square div {
+    display: table-cell;
+    vertical-align: middle
+  }
+
+.square div input {
+  max-width: 45px;
+  height: 45px;
+  text-align: center;
+  font: bold 20pt sans-serif;
+}
+
+.colorGray .square div input {
+  background-color: CornflowerBlue;//gainsboro;
+}
+
+.colorFloralwhite .square div input{
+  background-color: floralwhite;
+}

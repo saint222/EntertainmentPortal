@@ -1,0 +1,10 @@
+<div *ngIf="logged">
+    <h1 *ngIf = "hasProfile" class = "text"> <a href routerLink="/registered/player" title = "Choose the saved game to continue">Choose</a> the saved game and start playing!</h1>
+<h1 *ngIf = "!hasProfile" class = "text"><a href routerLink="/registered/playerForm" title = "Set up a new player's profile">Set up </a> a game profile and start playing!</h1>
+</div>
+<div *ngIf = "!logged">
+<h1 class = "textNotLogged">Click <span class = "glitch">"Login"</span> to start playing!</h1>
+</div>
+<div class = "gif" style="text-align: center;">
+  <img src="http://rosettacode.org/mw/images/3/3a/Sudoku_bbc.gif">
+</div>
