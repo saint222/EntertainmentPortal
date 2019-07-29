@@ -40,13 +40,20 @@ export class AuthService {
   }
 
   googleSignIn() {
-    return this.http.get(`${environment.base_url}api/google`);
+        const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:4200/'
+          }),
+          withCredentials: true
+         };
+        return this.http.get(`${environment.base_url}api/google`, httpOptions);
   }
 
   logOut() {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }),
       withCredentials: true
      };

@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-log-out',
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogOutComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private cookieService: CookieService, private router: Router) { }
 
   ngOnInit() {
     this.authService.logOut().subscribe(p => p);
+    this.cookieService.deleteAll('/');
+    setTimeout(() => {
+      this.router.navigateByUrl('');
+  }, 5000);
   }
 }

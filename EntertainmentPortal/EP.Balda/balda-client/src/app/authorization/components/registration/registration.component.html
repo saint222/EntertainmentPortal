@@ -73,6 +73,7 @@
       class="form-control"
       placeholder="Password confirmation"
       formControlName="passwordConfirm"
+      pattern="{{ password.value }}"
     />
     <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)"
     class="alert-danger">
@@ -82,7 +83,8 @@
     <div *ngIf="registerGroup.controls['passwordConfirm'].errors.minlength">
       Password must be at least 6 characters long.
     </div>
-  </div>
+    <div *ngIf="registerGroup.controls['passwordConfirm'].errors.pattern"> Password & Confirm Password does not match.</div>
+ </div>
   </div>
     <div class="errorText">{{ errotText }}</div>
     <button type="button" class="btn btn-secondary" routerLink="">Login</button>

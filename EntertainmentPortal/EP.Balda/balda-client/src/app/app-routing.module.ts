@@ -43,10 +43,6 @@ const routes: Routes = [
     { path: '', component:
     GameOverComponent}
   ]},
-  {path: '', component: StartPageComponent,
-  children: [
-    { path: '', component: LoginComponent}
-  ]},
   {path: 'register', component: StartPageComponent,
   children: [
     { path: '', component: RegistrationComponent}
@@ -54,6 +50,10 @@ const routes: Routes = [
   {path: 'logOut', component: StartPageComponent,
   children: [
     { path: '', component: LogOutComponent}
+  ]},
+  {path: '', component: StartPageComponent,
+  children: [
+    { path: '', component: LoginComponent}
   ]}
 ];
 

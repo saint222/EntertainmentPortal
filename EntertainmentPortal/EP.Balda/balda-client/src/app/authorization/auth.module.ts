@@ -13,6 +13,7 @@ import { LogOutComponent } from './components/log-out/log-out.component';
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   exports: [
     LoginComponent,
+    LogOutComponent,
     RegistrationComponent,
     StartPageComponent,
     RouterModule,

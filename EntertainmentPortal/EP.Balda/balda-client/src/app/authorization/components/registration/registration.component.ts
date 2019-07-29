@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './../../services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -52,12 +52,4 @@ export class RegistrationComponent implements OnInit {
   get passwordConfirm() {
     return this.registerGroup.get('passwordConfirm');
   }
-
-  checkPasswords(group: FormGroup) {
-  const pass = this.registerGroup.controls.password.value;
-  const confirmPass = this.registerGroup.controls.confirmPass.value;
-
-  return pass === confirmPass ? null : { notSame: true };
-}
-
 }
