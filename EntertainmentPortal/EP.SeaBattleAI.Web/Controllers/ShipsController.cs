@@ -106,7 +106,7 @@ namespace EP.SeaBattle.Web.Controllers
             model.GameId = HttpContext.Session.GetString("game");
             var result = await _mediator.Send(model);
             return result.HasValue ? Ok(result.Value)
-                : (IActionResult)Ok();
+                : (IActionResult)BadRequest();
         }
     }
 }

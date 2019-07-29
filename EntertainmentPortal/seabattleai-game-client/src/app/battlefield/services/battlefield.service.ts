@@ -40,8 +40,10 @@ export class BattlefieldService {
         this.ships = data;
         this.ships.forEach(ship => this.drawShip(ship)); // тут рисуем корабли
         this.calculateShipCountByRank(); // тут считаем количество кораблей
-        if (this.ships.length < 10 && this.ships.length > 0) {
+        if (data.length < 10 && data.length > 0) {
           this.allowDelete = true;
+        } else {
+          this.allowDelete = false;
         }
       }
     });

@@ -24,6 +24,6 @@
     <input type="number" class="form-control" name="y" id="y" placeholder="от 0 до 9" formControlName="y" [min]=0 [max]=9>
     <button class="btn btn-primary" style="margin-top: 10px" [disabled]="form.invalid">Поставить корабль</button>
     <button type="button" class="btn btn-danger" style="margin-top: 10px; margin-left: 10px" (click)="deleteShip(form)"
-    [disabled]="form.invalid || !this.battleFieldService.allowDelete">Удалить корабль</button>
+    [disabled]="!this.battleFieldService.allowDelete">Удалить корабль</button>
   </div>
 </form>
