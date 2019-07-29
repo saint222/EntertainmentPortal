@@ -13,14 +13,14 @@ export class NotifyHubService {
     this.hub.start();
 
     this.hub.on('notice', (message: string) => {
-      this.notify(message);
+      // this.notify(message);
     });
 
    }
 
-  async notify(message) {
+  public async notify(message) {
     this.notification = message;
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 3000));
     this.notification = null;
   }
 }

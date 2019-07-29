@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data;
-using System.Security.Claims;
 using AutoMapper;
 
 using EP._15Puzzle.Logic.Queries;
@@ -17,15 +15,9 @@ using EP._15Puzzle.Logic.Validators;
 using EP._15Puzzle.Web.Filters;
 using EP._15Puzzle.Web.Hubs;
 using FluentValidation.AspNetCore;
-using IdentityModel;
-using IdentityServer4;
-using IdentityServer4.Models;
-using IdentityServer4.Test;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using NSwag.AspNetCore;
-using NJsonSchema;
 using NSwag;
 
 namespace EP._15Puzzle.Web
@@ -49,7 +41,7 @@ namespace EP._15Puzzle.Web
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "http://172.21.0.2:80";
+                    opt.Authority = Configuration.GetSection("DockerUrls:Is4").Value;
                     opt.RequireHttpsMetadata = false;
                 });
 
@@ -70,7 +62,7 @@ namespace EP._15Puzzle.Web
                 {
                     Flow = OpenApiOAuth2Flow.Implicit,
                     Type = OpenApiSecuritySchemeType.OAuth2,
-                    AuthorizationUrl = $"{Configuration.GetSection("Urls:Is4").Value}/connect/authorize",
+                    AuthorizationUrl = $"{Configuration.GetSection("DevUrls:Is4").Value}/connect/authorize",
                     Scopes = new Dictionary<string, string>()
                     {
                         {"pyatnashki_api", "Access to 15Puzzle application." }
@@ -106,8 +98,12 @@ namespace EP._15Puzzle.Web
                 opt.AllowAnyHeader()
                     .AllowAnyMethod()
                     .WithOrigins(
-                        "http://localhost:4200", "http://localhost:5000", "http://localhost:8081"
-                        , "http://172.21.0.2:80", "http://172.21.0.3:80", "http://172.21.0.4:80")
+                        Configuration.GetSection("DevUrls:Front").Value,
+                        Configuration.GetSection("DevUrls:Is4").Value,
+                        Configuration.GetSection("DevUrls:Api").Value,
+                        Configuration.GetSection("DockerUrls:Front").Value,
+                        Configuration.GetSection("DockerUrls:Is4").Value,
+                        Configuration.GetSection("DockerUrls:Api").Value)
                     .AllowCredentials());
             app.UseSignalR(routes => { routes.MapHub<NoticeHub>("/notice");});
             

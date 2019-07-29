@@ -1,3 +1,4 @@
+import { NotifyHubService } from './../../services/notify-hub.service';
 import { AccountService } from 'src/app/account/services/account.service';
 import { ConfigService } from './../../../shared/services/config.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +18,7 @@ export class DeckComponent implements OnInit {
 
   // tslint:disable-next-line: no-inferrable-types
   logged: boolean = true;
-  constructor(private deckService: DeckService, public accountService: AccountService) { }
+  constructor(private deckService: DeckService, public accountService: AccountService, public notifyHubService: NotifyHubService) { }
 
   ngOnInit() {
     if (this.accountService.IsLoggedIn()) {
@@ -55,9 +56,9 @@ export class DeckComponent implements OnInit {
   moveTile(num: number) {
     if (!this.deck.victory) {
       this.deckService.moveTile(num).subscribe(d => {
-        this.deck = d;
-        this.save('deck', d);
-      });
+          this.deck = d as Deck;
+          this.save('deck', this.deck);
+      }, error => this.notifyHubService.notify('This tile can not be moved'));
     }
   }
 

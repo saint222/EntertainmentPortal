@@ -27,7 +27,7 @@ export class DeckService {
 
   moveTile(num: number) {
 // tslint:disable-next-line: max-line-length
-    return this.http.put<Deck>(this.url, num, {headers: new HttpHeaders ({
+    return this.http.put(this.url, num, {headers: new HttpHeaders ({
       Authorization: this.accountService.getAuthorizationHeaderValue(),
       // tslint:disable-next-line: object-literal-key-quotes
       'Email': this.accountService.getEmailnHeaderValue()
