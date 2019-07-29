@@ -1,5 +1,5 @@
 import { GameService } from './../../services/game.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { log } from 'util';
 import { AuthService } from '../../services/auth.service';
 import { PlayerService } from '../../services/player.service';
@@ -8,7 +8,7 @@ import { Player } from '../../models/player';
 import { Word } from '../../models/Word';
 import { HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, interval } from 'rxjs';
 interface Dictionary {
   [index: number]: string;
 }
@@ -21,6 +21,8 @@ interface Dictionary {
 
 export class PlayingFieldComponent implements OnInit {
 
+  @Output() gameUpdateEvent = new EventEmitter<Game>();
+
   keyWord: string = '';
   keyWordLetters: string[];
   CuttedLetters: Dictionary;
@@ -30,6 +32,12 @@ export class PlayingFieldComponent implements OnInit {
   id: string = '';
   word: Word = null;
   errMessage: string = '';
+  score: string = '0';
+  wordsCounter: string = '0';
+  listEnable: boolean = false;
+  gameOver: boolean = false;
+  gameCreated: boolean = false;
+  timeLeft: number = 180;
   //errMessageVisible: boolean = false;
 
   wordsArray: Word[] = [];
@@ -43,6 +51,14 @@ export class PlayingFieldComponent implements OnInit {
 
   ngOnInit() {
     this.loadPlayer();
+    interval(1000).pipe(map((x) =>
+    { /* your code */
+      this.timeLeft--;
+      if(this.timeLeft === 0)
+      {
+        this.gameOver = true;
+      }
+    }));
 
   }
 
@@ -75,7 +91,9 @@ export class PlayingFieldComponent implements OnInit {
           this.keyWordLetters = this.keyWord.split('');
           this.gameService.getAllWords(this.game.id).subscribe(p =>{
             this.wordsArray = p;
+            this.wordsCounter = this.wordsArray.length.toString();
           });
+          this.gameCreated = true;
         }, err => {
           this.createGame(playerId);
         });
@@ -88,6 +106,7 @@ export class PlayingFieldComponent implements OnInit {
         this.game = p;
         this.keyWord = this.game.keyWord;
         this.keyWordLetters = this.keyWord.split('');
+        this.gameCreated = true;
       });
   }
 
@@ -105,6 +124,11 @@ export class PlayingFieldComponent implements OnInit {
       this.CuttedLetters[index] = this.keyWordLetters[index];
       this.resultWord.push(this.keyWordLetters[index]);
       this.keyWordLetters[index] = '_';
+      if(this.resultWord.join('') === this.keyWord)
+      {
+        this.ClearBtnClick();
+        this.errMessage = "Нельзя вводить ключевое слово";
+      }
     }
 
   }
@@ -114,31 +138,50 @@ export class PlayingFieldComponent implements OnInit {
     this.resultWord.length = 0;
     this.CuttedLetters = {};
   }
+
+  ListBtnClick()
+  {
+    if(this.listEnable)
+    {
+      this.listEnable = false;
+    }
+    else
+    {
+      this.listEnable = true;
+    }
+  }
+
+
   SubmitBtnClick() {
 
-    this.gameService.submitWord(this.resultWord.join(''), this.game.id).subscribe(p =>
-      {
-        this.wordsArray.push(p);
-        this.wordsArray.forEach(element => {
-          log("Returned word - " + element.value+", ")
+    const word = this.resultWord.join('')
+
+    if(word !== '')
+    {
+      this.gameService.submitWord(word, this.game.id).subscribe(p =>
+        {
+          this.wordsArray.push(p);
+          this.wordsCounter = this.wordsArray.length.toString();
+          this.wordsArray.forEach(element => {
+            log("Returned word - " + element.value+", ");
+            this.ClearBtnClick();
+            this.errMessage = "Верно!";
+          });
+        },
+        err =>
+        {
+          const msg = (err as HttpErrorResponse).error;
+          if(msg == "This word already exists(Word Handler)")
+          {
+            this.errMessage = "Ошибка! Такое слово уже есть.";
+          }
+          else if(msg == "This word incorrect (Word Handler)")
+          {
+            this.errMessage = "Ошибка! Такого слова не существует.";
+          }
+          this.ClearBtnClick();
         });
-      },
-      err =>
-      {
-        this.errMessage = (err as HttpErrorResponse).error;
-        this.ClearBtnClick();
-      });
-      /* .subscribe(p =>
-      {
-        this.wordsArray.push(p);
-        this.wordsArray.forEach(element => {
-          log("Returned word - " + element.value+", ")
-        });
-        this.ClearBtnClick();
-      }, err =>
-      {
-        err
-      }); */
+    }
   }
 
   CheckResultWord() {

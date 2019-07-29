@@ -32,7 +32,7 @@ import { HomeComponent } from './game/components/home/home.component';
     //ReactiveFormsModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, PlayingFieldComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

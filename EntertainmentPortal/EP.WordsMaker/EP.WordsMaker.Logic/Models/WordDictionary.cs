@@ -81,7 +81,7 @@ namespace EP.WordsMaker.Logic.Models
 
 	    public string GetRandomKeyWord()
 	    {
-			Random rnd = new Random();
+			Random rnd = new Random(DateTime.Now.Millisecond);
 			int key_position = rnd.Next(0, WordsAnagrams.Count - 1);
 			return (WordsAnagrams.Keys.ToArray()[key_position]);
 	    }

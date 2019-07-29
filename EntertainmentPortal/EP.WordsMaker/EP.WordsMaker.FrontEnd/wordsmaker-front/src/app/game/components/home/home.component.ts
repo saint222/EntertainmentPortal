@@ -64,6 +64,7 @@ export class HomeComponent implements OnInit {
     this.playerService.addPlayer(name, this.authService.getValueFromIdToken("sub"), this.authService.getValueFromIdToken("email")).subscribe(
       p => {
               this.player = p;
+              this.updateComponent();
             });
   }
 
