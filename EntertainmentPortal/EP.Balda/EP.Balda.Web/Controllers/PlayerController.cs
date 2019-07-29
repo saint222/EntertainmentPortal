@@ -39,15 +39,13 @@ namespace EP.Balda.Web.Controllers
             
             if (user != null)
             {
-                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameter: Id = {id}");
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameter: Id = {id}");
 
                 return Ok(user);
             }
             else
             {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"Id = {id} - Player not found");
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} Id = {id} - Player not found");
 
                 return NotFound();
             }
@@ -58,8 +56,7 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(Player), Description = "Player can't be deleted")]
         public async Task<IActionResult> DeletePlayerAsync([FromQuery]string id)
         {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                             $"Parameters: Id = {id}");
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Id = {id}");
 
             var user = await _manager.FindByIdAsync(id);
 
@@ -69,7 +66,7 @@ namespace EP.Balda.Web.Controllers
 
                 if (status.Succeeded)
                 {
-                    _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} : - Player with id {id} was deleted at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
+                    _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} - Player with id {id} was deleted at {DateTime.UtcNow} [{DateTime.UtcNow.Kind}]");
 
                     return Ok(user);
                 }
@@ -78,7 +75,7 @@ namespace EP.Balda.Web.Controllers
             }
             else
             {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: Id = {id} - Player can't be deleted");
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} Id = {id} - Player can't be deleted");
 
                 return BadRequest("Player can't be deleted");
             }
@@ -96,15 +93,13 @@ namespace EP.Balda.Web.Controllers
 
             if (result.Count() >= 0)
             {
-                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameters: gameId = {gameId}");
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: gameId = {gameId}");
 
                 return Ok(result);
             }
             else
             {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"Parameters: gameId = {gameId}");
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: gameId = {gameId}");
 
                 return BadRequest();
             }
@@ -122,15 +117,13 @@ namespace EP.Balda.Web.Controllers
 
             if (result.Count() >= 0)
             {
-                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
-                $"Parameters: gameId = {gameId}");
+                _logger.LogInformation($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: gameId = {gameId}");
 
                 return Ok(result);
             }
             else
             {
-                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName}: " +
-                    $"Parameters: gameId = {gameId}");
+                _logger.LogWarning($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: gameId = {gameId}");
 
                 return BadRequest();
             }

@@ -1,4 +1,3 @@
-import { CurrentGame } from '../../models/currentGame';
 import { Player } from './../../models/player';
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
@@ -32,7 +31,6 @@ export class PlaygroundComponent implements OnInit {
   isGameOver: boolean;
   playerScore: number;
   opponentScore: number;
-  mapWithStatus: CurrentGame = new CurrentGame();
 
   constructor(private gameService: GameService, private route: ActivatedRoute,  private router: Router) {
    }

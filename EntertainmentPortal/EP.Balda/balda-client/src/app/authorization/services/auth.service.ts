@@ -35,21 +35,6 @@ export class AuthService {
      return this.http.post<Player>(`${environment.base_url}api/simplelogin`, userLogin, httpOptions);
   }
 
-  facebookSignIn() {
-
-  }
-
-  googleSignIn() {
-        const httpOptions = {
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'http://localhost:4200/'
-          }),
-          withCredentials: true
-         };
-        return this.http.get(`${environment.base_url}api/google`, httpOptions);
-  }
-
   logOut() {
     const httpOptions = {
       headers: new HttpHeaders({
