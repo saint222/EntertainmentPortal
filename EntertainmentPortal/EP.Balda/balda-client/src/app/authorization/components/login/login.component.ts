@@ -37,13 +37,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onFacebookClick() {
-
-  }
-
-  onGoogleClick() {
-  }
-
   get userName() {
     return this.loginGroup.get('userName');
   }

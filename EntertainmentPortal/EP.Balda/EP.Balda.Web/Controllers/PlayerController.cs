@@ -1,6 +1,8 @@
 ﻿using EP.Balda.Data.Models;
 using EP.Balda.Logic.Models;
 using EP.Balda.Logic.Queries;
+using EP.Balda.Web.Models;
+using EP.Balda.Web.Services;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -128,5 +130,19 @@ namespace EP.Balda.Web.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPost("api/feedback")]
+        [SwaggerResponse(HttpStatusCode.Created, typeof(void), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Error occurred")]
+        public async Task<IActionResult> SendFeedbackAsync([FromBody] Feedback feedback)
+        {
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Name = {feedback.Name}, E-mail = {feedback.Email}, Message = {feedback.Message}");
+
+            var emailService = new EmailService();
+            await emailService.SendEmailAsync("jemelache@yandex.com", "feedback", $"From: {feedback.Name}\r\nE-mail: {feedback.Email}\r\nMessage:{feedback.Message}");
+
+            return Ok();
+        }
+
     }
 }

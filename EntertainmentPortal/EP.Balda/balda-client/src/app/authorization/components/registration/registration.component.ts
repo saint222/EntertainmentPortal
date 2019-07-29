@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class RegistrationComponent implements OnInit {
   registerGroup: FormGroup;
   errotText: string;
+  confirmEmailText: string;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerGroup = this.fb.group({
