@@ -15,5 +15,10 @@
         /// </summary>
         public string Password { get; set; }
 
+        /// <summary>
+        /// Property for user's email
+        /// </summary>
+        public string Email { get; set; }
+
     }
 }

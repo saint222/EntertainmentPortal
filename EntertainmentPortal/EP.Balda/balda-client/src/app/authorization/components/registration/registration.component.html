@@ -1,0 +1,51 @@
+<div class="col-md-6 col-sm-12">
+<div class="registrationForm">
+  <h2>Registration</h2>
+<form [formGroup]="registerGroup" (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div class="form-group">
+    <label for="userName">Username</label>
+    <input
+      type="text"
+      name="userName"
+      id="userNameReg"
+      class="form-control"
+      placeholder="Username"
+      formControlName="userName"
+      autofocus
+    />
+  <label for="email">E-mail</label>
+    <input
+      type="email"
+      name="email"
+      id="emailReg"
+      class="form-control"
+      placeholder="Email address"
+      formControlName="email"
+    />
+  <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="passwordReg"
+      class="form-control"
+      placeholder="Password"
+      formControlName="password"
+    />
+  <label for="passwordConfirm">Password confirm</label>
+    <input
+      type="password"
+      name="passwordConfirm"
+      id="passwordConfirmReg"
+      class="form-control"
+      placeholder="Password confirmation"
+      formControlName="passwordConfirm"
+    />
+    <div class="errorText">{{ errotText }}</div>
+    <button type="button" class="btn btn-secondary" routerLink="">Login</button>
+    <button type="submit" class="btn btn-black">
+      Register
+    </button>
+  </div>
+</form>
+</div>
+</div>

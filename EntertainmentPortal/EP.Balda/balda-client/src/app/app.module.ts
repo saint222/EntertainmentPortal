@@ -1,39 +1,31 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from './material-module';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { AdditionalInfoModule } from './additionalinfo/additional-info/additional-info.module';
+import { AuthModule } from './authorization/auth.module';
+import { HttpClientModule  } from '@angular/common/http';
+import { GameModule } from './game/game.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-
-import {AppComponent} from './app.component';
-
-import {PlayersModule} from './modules/players/players.module';
-import {WordsModule} from './modules/words/words.module';
-import {GameModule} from './modules/game/game.module';
-
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
+    AppRoutingModule,
+    GameModule,
+    AuthModule,
     HttpClientModule,
-    MaterialModule,
-    MatNativeDateModule,
+    FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
-    PlayersModule,
-    WordsModule,
-    GameModule
+    LayoutModule,
+    AdditionalInfoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

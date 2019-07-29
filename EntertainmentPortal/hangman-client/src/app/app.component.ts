@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'hangman-client';
+
+  constructor() {
+  }
+
+  title = 'hangman-game';
 }

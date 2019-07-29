@@ -1,5 +1,7 @@
+import { GameService } from './../../services/game.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpResponseBase } from '@angular/common/http';
 
 @Component({
   selector: 'app-start-screen',
@@ -8,13 +10,13 @@ import { Router } from '@angular/router';
 })
 export class StartScreenComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private gameService: GameService) {
+   }
 
   ngOnInit() {
   }
 
-  click() {
+  startGame() {
     this.router.navigateByUrl('/gameSession');
   }
-
 }

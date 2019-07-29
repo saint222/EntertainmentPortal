@@ -5,6 +5,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import {OAuthModule} from 'angular-oauth2-oidc';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +17,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HangmanGameModule
+    HangmanGameModule,
+    ReactiveFormsModule,
+    OAuthModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
