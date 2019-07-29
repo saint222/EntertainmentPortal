@@ -19,9 +19,9 @@ namespace EP.SeaBattle.Logic.Handlers
     {
         private readonly SeaBattleDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IValidator<string> _validator;
+        private readonly IValidator<AddNewPlayerCommand> _validator;
         private readonly ILogger _logger;
-        public AddNewPlayerHandler(SeaBattleDbContext context, IMapper mapper, IValidator<string> validator, ILogger<AddNewPlayerHandler> logger)
+        public AddNewPlayerHandler(SeaBattleDbContext context, IMapper mapper, IValidator<AddNewPlayerCommand> validator, ILogger<AddNewPlayerHandler> logger)
         {
             _context = context;
             _mapper = mapper;
@@ -31,7 +31,7 @@ namespace EP.SeaBattle.Logic.Handlers
 
         public async Task<Result<Player>> Handle(AddNewPlayerCommand request, CancellationToken cancellationToken)
         {
-            var validationResult = await _validator.ValidateAsync(request.NickName, ruleSet: "AddPlayerValidation", cancellationToken: cancellationToken);
+            var validationResult = await _validator.ValidateAsync(request, ruleSet: "AddPlayerValidation", cancellationToken: cancellationToken);
             if (validationResult.IsValid)
             {
                 PlayerDb playerDb = new PlayerDb
