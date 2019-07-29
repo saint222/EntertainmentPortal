@@ -1,0 +1,6 @@
+2019-07-29 03:13:08.552 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 03:13:10.540 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 03:13:10.540 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 03:13:10.555 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+2019-07-29 03:13:19.330 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 03:13:19.333 +03:00 [Information] The file "/oauth2-redirect.html" was not modified

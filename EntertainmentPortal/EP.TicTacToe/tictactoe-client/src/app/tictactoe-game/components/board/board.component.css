@@ -1,14 +1,35 @@
 .board_context {
-  margin: 0.5rem 20rem;
+  margin: 0.5rem ;
+  width: 30%;
+  /*padding: 0 12px 4px 3px;*/
+  padding: 3px;
+  color: #fb1d04;
+  font-size: medium;
   background-color: #1f1a26;
   border: 4px outset #868169;
   border-radius: 5px;
-  padding: 0 12px 4px 3px;
-  font-size: medium;
-  color: #fff48f;
 }
-.cell_context{
+
+#board {
+  margin: 1px;
+}
+
+#board.locked {
+  opacity: .7;
+  pointer-events: none;
+}
+
+#board .square {
   background-color: #3e344c;
-  border: 2px solid #868169;
-  padding: 2px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+#board .square.checked {
+  background-color: #3e344c;
+  cursor: default;
+}
+
+#board .square.busy {
+  background-color: #c1b4a4;
 }

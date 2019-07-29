@@ -13,11 +13,13 @@ import {ShareService} from '../../../core/services/share.service';
 
 export class BoardComponent implements OnInit {
 
-  stringMessage: string;
+  board: any[] = new Array(1);
+  boardLocked: boolean;
+
   message: number;
   mapSize: number;
   userId: string;
-  cells: number[] = new Array(1);
+  cells: string[] = new Array(1);
   isMap = false;
 
   constructor(private share: ShareService) {
@@ -29,11 +31,21 @@ export class BoardComponent implements OnInit {
     this.updateComponent();
   }
 
+  square_click(square) {
+    if (square.value === '') { // if square is empty & game is not over
+      square.value = 'X';  // assign symbol to square
+      // this.completeMove(this.Player1);   // transfer to completeMove method
+    }
+  }
+
   updateComponent() {
     if (this.mapSize > 2) {
       this.isMap = true;
       for (let i = 0; i < this.mapSize * this.mapSize; i++) {
-        this.cells[i] = i;
+        this.cells[i] = '';
+      }
+      for (let i = 0; i < this.mapSize * this.mapSize; i++) {
+        this.board[i] = {value: ''};
       }
     }
   }

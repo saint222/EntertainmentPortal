@@ -1,18 +1,24 @@
 <app-menu></app-menu>
 
 <app-layout>
-  <div class="board_context">
-    <h2 style="color:#e9e3c1">map size = {{mapSize}} </h2>
-    <br>
-    <h2 style="color:#e9e3c1">user id: {{cells}}</h2>
-    <br>
-    ***************************
-    <mat-grid-list cols="{{mapSize}}" gutterSize="2px" style="margin: 3px">
-      <div *ngIf="isMap">
-        <mat-grid-tile *ngFor="let item of cells" class="cell_context">
-          {{item}}</mat-grid-tile>
-      </div>
-    </mat-grid-list>
+  <div fxLayout="row" fxLayoutAlign="space-around center" >
+    <div class="board_context">
+      <h3 style="color:#e9e3c1">map size = {{mapSize}} </h3>
+      <br>
+      <h3 style="color:#e9e3c1">user id: {{userId}}</h3>
+      <br>
+      <h3 style="color:#e9e3c1">cells: {{cells}}</h3>
+      <br>
+      ***************************
+      <mat-grid-list cols="{{mapSize}}" gutterSize="2px" id="board">
+        <div *ngIf="isMap">
+          <mat-grid-tile (click)="square_click(this.square)"
+                         *ngFor="let square of board" [class.checked]="square.value != ''"
+                         class="square">
+            {{square.value}}</mat-grid-tile>
+        </div>
+      </mat-grid-list>
+    </div>
   </div>
 </app-layout>
 

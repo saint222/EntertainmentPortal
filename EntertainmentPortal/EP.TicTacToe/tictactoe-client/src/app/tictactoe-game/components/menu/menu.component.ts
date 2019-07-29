@@ -3,6 +3,10 @@ import {Component, OnInit} from '@angular/core';
 import {ShareService} from '../../../core/services/share.service';
 import {AuthService} from 'src/app/core/services/auth.service';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {AboutDialogComponent} from '../about-dialog/about-dialog.component';
+import {CallDialogComponent} from '../call-dialog/call-dialog.component';
+import {GameSetupComponent} from '../game-setup/game-setup.component';
 
 
 @Component({
@@ -13,7 +17,6 @@ import {Router} from '@angular/router';
 
 export class MenuComponent implements OnInit {
 
-  stringMessage: string;
   userName: string;
   userEmail: string;
   userId: string;
@@ -23,7 +26,10 @@ export class MenuComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public router: Router,
-    private share: ShareService
+    private share: ShareService,
+    public dialogAbout: MatDialog,
+    public dialogCall: MatDialog,
+    public dialogSetup: MatDialog,
   ) {
     this.authService.tokenValidState.subscribe(e => {
       log('Token event received in HOME Component');
@@ -32,14 +38,11 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.share.onMapClick.subscribe(cnt => this.mapSize = cnt);
-    // this.share.currentMessage.subscribe(message => this.stringMessage = message);
     this.share.currentMessage.subscribe(message => this.mapSize = message);
     this.updateComponent();
   }
 
   newSender() {
-    // this.share.changeMessage('Hello from Sibling');
     this.share.changeMessage(this.mapSize);
   }
 
@@ -48,8 +51,7 @@ export class MenuComponent implements OnInit {
   }
 
   ord_3_BtnClick() {
-    this.mapSize = 10;
-    // this.share.doClick(this.mapSize);
+    this.mapSize = 3;
     this.newSender();
     const navigate = this.router.navigate(['/board']);
   }
@@ -77,5 +79,36 @@ export class MenuComponent implements OnInit {
       this.userEmail = this.authService.getValueFromIdToken('email');
       this.userId = this.authService.getValueFromIdToken('id');
     }
+  }
+
+  openAboutDialog(): void {
+    const dialogRef = this.dialogAbout.open(AboutDialogComponent, {});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The about dialog was closed');
+    });
+  }
+
+  openCallDialog() {
+    const dialogRef = this.dialogCall.open(CallDialogComponent, {});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The call dialog was closed');
+    });
+  }
+
+  setupBtnClick() {
+    const dialogRef = this.dialogSetup.open(GameSetupComponent, {
+      data: {
+        myVar: this.userName,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The setup dialog was closed');
+      console.log(result);
+    });
+
+
   }
 }
