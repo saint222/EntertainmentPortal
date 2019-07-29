@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
   userId: string;
   login: boolean;
   private mapSize: number;
+  isDisable = false;
 
   constructor(
     private authService: AuthService,
@@ -43,17 +44,11 @@ export class MenuComponent implements OnInit {
   }
 
   newSender() {
-    this.share.changeMessage(this.mapSize);
+    this.share.changeMapSize(this.mapSize);
   }
 
   homeBtnClick() {
     const navigate = this.router.navigate(['/menu']);
-  }
-
-  ord_3_BtnClick() {
-    this.mapSize = 3;
-    this.newSender();
-    const navigate = this.router.navigate(['/board']);
   }
 
   loginBtnClick() {
@@ -75,9 +70,9 @@ export class MenuComponent implements OnInit {
   updateComponent() {
     if (this.authService.isTokenValid()) {
       this.login = true;
+      this.userId = this.authService.getValueFromIdToken('id');
       this.userName = this.authService.getValueFromIdToken('name');
       this.userEmail = this.authService.getValueFromIdToken('email');
-      this.userId = this.authService.getValueFromIdToken('id');
     }
   }
 
@@ -100,15 +95,21 @@ export class MenuComponent implements OnInit {
   setupBtnClick() {
     const dialogRef = this.dialogSetup.open(GameSetupComponent, {
       data: {
-        myVar: this.userName,
+        currentUserName: this.userName
       }
     });
+
+    this.isDisable = true;
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The setup dialog was closed');
       console.log(result);
     });
-
-
   }
+
+  gameBtnClick() {
+    this.isDisable = false;
+    const navigate = this.router.navigate(['/board']);
+  }
+
 }

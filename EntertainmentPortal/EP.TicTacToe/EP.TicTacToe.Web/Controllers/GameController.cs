@@ -7,7 +7,6 @@ using EP.TicTacToe.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using EP.TicTacToe.Web.Filters;
-//using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
@@ -18,9 +17,6 @@ namespace EP.TicTacToe.Web.Controllers
     [Route("api/game")]
     [ApiController]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    //[Authorize(AuthenticationSchemes = "Google")]
-    //[Authorize(AuthenticationSchemes = "Facebook")]
     public class GameController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -33,7 +29,7 @@ namespace EP.TicTacToe.Web.Controllers
         }
 
         [HttpGet("get")]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(Game), Description = "Success")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(GetGame), Description = "Success")]
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description =
             "Game not found")]
         [LocalValidationFilter]

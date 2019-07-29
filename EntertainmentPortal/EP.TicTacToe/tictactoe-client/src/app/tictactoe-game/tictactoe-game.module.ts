@@ -7,6 +7,7 @@ import {CallDialogComponent} from './components/call-dialog/call-dialog.componen
 import {GameSetupComponent} from './components/game-setup/game-setup.component';
 import {CustomMaterialModule} from '../core/material.module';
 import {MatSelectModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MatSelectModule} from '@angular/material';
     CommonModule,
     FlexModule,
     CustomMaterialModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ],
   entryComponents: [
     GameSetupComponent,

@@ -4,3 +4,31 @@
 2019-07-29 03:13:10.555 +03:00 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
 2019-07-29 03:13:19.330 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
 2019-07-29 03:13:19.333 +03:00 [Information] The file "/oauth2-redirect.html" was not modified
+2019-07-29 14:57:14.729 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 14:57:15.003 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 14:57:17.019 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 14:58:48.052 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 14:58:48.121 +03:00 [Information] The file "/oauth2-redirect.html" was not modified
+2019-07-29 14:59:12.537 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 14:59:12.696 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-29 14:59:13.885 +03:00 [Information] Successfully validated the token.
+2019-07-29 14:59:13.958 +03:00 [Information] Authorization was successful.
+2019-07-29 14:59:17.405 +03:00 [Error] An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
+2019-07-29 14:59:17.441 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-29 14:59:17.466 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-29 15:05:56.090 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 15:05:56.335 +03:00 [Information] The file "/oauth2-redirect.html" was not modified
+2019-07-29 15:07:14.496 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 15:07:14.688 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-29 15:07:16.463 +03:00 [Information] Successfully validated the token.
+2019-07-29 15:07:16.523 +03:00 [Information] Authorization was successful.
+2019-07-29 15:07:19.440 +03:00 [Error] An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
+2019-07-29 15:07:19.498 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-29 15:07:19.529 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-29 15:07:29.816 +03:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-07-29 15:07:29.824 +03:00 [Information] Executing endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'
+2019-07-29 15:07:29.830 +03:00 [Information] Successfully validated the token.
+2019-07-29 15:07:29.834 +03:00 [Information] Authorization was successful.
+2019-07-29 15:07:30.029 +03:00 [Information] Action: GetGameAsync Parameter: Id = 16
+2019-07-29 15:07:30.045 +03:00 [Information] Executing ObjectResult, writing value of type '"EP.TicTacToe.Logic.Models.Game"'.
+2019-07-29 15:07:30.052 +03:00 [Information] Executed endpoint '"EP.TicTacToe.Web.Controllers.GameController.GetGameAsync (EP.TicTacToe.Web)"'

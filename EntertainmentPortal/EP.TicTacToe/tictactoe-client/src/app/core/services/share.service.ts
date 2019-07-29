@@ -20,7 +20,7 @@ export class ShareService {
     this.onMapClick.emit(this.clicker);
   }
 
-  changeMessage(message: number) {
+  changeMapSize(message: number) {
     this.messageSource.next(message);
   }
 

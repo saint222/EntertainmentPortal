@@ -48,5 +48,7 @@ namespace EP.TicTacToe.Web.Controllers
             _logger.LogWarning("Register failed. User does exist");
             return BadRequest("User does exist");
         }
+
+
     }
 }

@@ -1,6 +1,6 @@
 <h2 mat-dialog-title> Game Setup</h2>
 <mat-dialog-content>
-  <h2>Hello, {{data.myVar}}!</h2>
+  <h2>Hello, {{data.currentUserName}}!</h2>
   <span>
       You must choose an opponent,<br>
       the size of the playing field<br>
@@ -11,44 +11,38 @@
   <h4>Choose your opponent:</h4>
   <mat-form-field>
     <mat-label>-current players-</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
+    <mat-select [(ngModel)]="selectedOpponent" name="opponents">
+      <mat-option *ngFor="let opponent of opponents" [value]="opponent.userId">
+        {{opponent.userName}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <p> Selected player_id: {{selectedOpponent}} </p>
   <br>
   <h4>Game map size choose:</h4>
   <mat-form-field>
     <mat-label>-square matrix sizes-</mat-label>
-    <label>
-      <select matNativeControl required>
-        <option value="3">3 x 3</option>
-        <option value="4">4 x 4</option>
-        <option value="5">5 x 5</option>
-        <option value="6">6 x 6</option>
-        <option value="7">7 x 7</option>
-        <option value="8">8 x 8</option>
-        <option value="9">9 x 9</option>
-        <option value="10">10 x 10</option>
-      </select>
-    </label>
+    <mat-select [(ngModel)]="selectedMap" name="maps">
+      <mat-option *ngFor="let map_size of maps" [value]="map_size.value">
+        {{map_size.viewValue}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
+  <p> Selected map size: {{selectedMap}} </p>
   <br>
   <h4>The length of the winning chain:</h4>
   <mat-form-field>
     <mat-label>-the winning chain-</mat-label>
     <label>
-      <select matNativeControl required>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
+      <select matNativeControl [(ngModel)]="selectedChain" name="chains">
+        <option *ngFor="let chain of chains" [value]="chain.value">
+          {{chain.viewValue}}
+        </option>
       </select>
     </label>
   </mat-form-field>
+  <p> Selected chain: {{selectedChain}} </p>
 </mat-dialog-content>
-
 
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>

@@ -7,7 +7,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CustomMaterialModule} from './core/material.module';
 import {AppRoutingModule} from './app-routing.module';
 import {BoardComponent} from './tictactoe-game/components/board/board.component';
-import {UserComponent} from './tictactoe-game/components/user/user.component';
 import {FormsModule} from '@angular/forms';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {AuthService} from './core/services/auth.service';
@@ -22,7 +21,6 @@ import {ApiModule} from './core/api.module';
     HomeComponent,
     MenuComponent,
     BoardComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,

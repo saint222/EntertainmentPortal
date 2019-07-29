@@ -3,13 +3,13 @@
 <app-layout>
   <div fxLayout="row" fxLayoutAlign="space-around center" >
     <div class="board_context">
-      <h3 style="color:#e9e3c1">map size = {{mapSize}} </h3>
-      <br>
-      <h3 style="color:#e9e3c1">user id: {{userId}}</h3>
-      <br>
-      <h3 style="color:#e9e3c1">cells: {{cells}}</h3>
-      <br>
-      ***************************
+<!--      <h3 style="color:#e9e3c1">map size = {{mapSize}} </h3>-->
+<!--      <br>-->
+<!--      <h3 style="color:#e9e3c1">user id: {{userId}}</h3>-->
+<!--      <br>-->
+<!--      <h3 style="color:#e9e3c1">cells: {{cells}}</h3>-->
+<!--      <br>-->
+<!--      ***************************-->
       <mat-grid-list cols="{{mapSize}}" gutterSize="2px" id="board">
         <div *ngIf="isMap">
           <mat-grid-tile (click)="square_click(this.square)"

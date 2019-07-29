@@ -15,30 +15,30 @@
           <span>Setup game</span>
         </button>
 
-<!--        <button [matMenuTriggerFor]="menuGrid" mat-menu-item>-->
-<!--          <mat-icon>casino</mat-icon>-->
-<!--          <span>Setup game</span>-->
-<!--        </button>        -->
-<!--        <mat-menu #menuGrid="matMenu">-->
-<!--          <button (click)="ord_3_BtnClick()" class="grd" mat-raised-button>-->
-<!--              <span class="label">3 x 3</span>-->
-<!--          </button>-->
-<!--          <button class="grd" mat-raised-button> 4 x 4</button>-->
-<!--          <button class="grd" mat-raised-button> 5 x 5</button>-->
-<!--          <button class="grd" mat-raised-button> 6 x 6</button>-->
-<!--          <button class="grd" mat-raised-button> 7 x 7</button>-->
-<!--          <button class="grd" mat-raised-button> 8 x 8</button>-->
-<!--          <button class="grd" mat-raised-button> 9 x 9</button>-->
-<!--          <button class="grd" mat-raised-button> 10 x 10</button>-->
-<!--        </mat-menu>-->
+        <!--        <button [matMenuTriggerFor]="menuGrid" mat-menu-item>-->
+        <!--          <mat-icon>casino</mat-icon>-->
+        <!--          <span>Setup game</span>-->
+        <!--        </button>        -->
+        <!--        <mat-menu #menuGrid="matMenu">-->
+        <!--          <button (click)="ord_3_BtnClick()" class="grd" mat-raised-button>-->
+        <!--              <span class="label">3 x 3</span>-->
+        <!--          </button>-->
+        <!--          <button class="grd" mat-raised-button> 4 x 4</button>-->
+        <!--          <button class="grd" mat-raised-button> 5 x 5</button>-->
+        <!--          <button class="grd" mat-raised-button> 6 x 6</button>-->
+        <!--          <button class="grd" mat-raised-button> 7 x 7</button>-->
+        <!--          <button class="grd" mat-raised-button> 8 x 8</button>-->
+        <!--          <button class="grd" mat-raised-button> 9 x 9</button>-->
+        <!--          <button class="grd" mat-raised-button> 10 x 10</button>-->
+        <!--        </mat-menu>-->
 
-        <button disabled mat-menu-item>
+        <button (click)="gameBtnClick()" [disabled]="!isDisable" disabled mat-menu-item>
           <mat-icon>gamepad</mat-icon>
           <span>Begin game</span>
         </button>
         <button disabled mat-menu-item>
-          <mat-icon>person_outline</mat-icon>
-          <span>Log out</span>
+          <mat-icon>save</mat-icon>
+          <span>Save game</span>
         </button>
       </mat-menu>
       <h1>Tic Tac Toe game</h1>
