@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-
+using EP._15Puzzle.Logic.Hubs;
 using EP._15Puzzle.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -13,10 +13,10 @@ using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Validators;
 using EP._15Puzzle.Web.Filters;
-using EP._15Puzzle.Web.Hubs;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR;
 using NSwag.AspNetCore;
 using NSwag;
 
@@ -35,7 +35,7 @@ namespace EP._15Puzzle.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSignalR();
-            services.AddSingleton(typeof(NoticeHub).Assembly);
+            services.AddSingleton(typeof(NotifyHub).Assembly);
             services.AddAuthenticationCore();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
@@ -105,7 +105,7 @@ namespace EP._15Puzzle.Web
                         Configuration.GetSection("DockerUrls:Is4").Value,
                         Configuration.GetSection("DockerUrls:Api").Value)
                     .AllowCredentials());
-            app.UseSignalR(routes => { routes.MapHub<NoticeHub>("/notice");});
+            app.UseSignalR(routes => { routes.MapHub<NotifyHub>("/notice");});
             
             app.UseAuthentication();
             mediator.Send(new CreateDatabaseCommand()).Wait();

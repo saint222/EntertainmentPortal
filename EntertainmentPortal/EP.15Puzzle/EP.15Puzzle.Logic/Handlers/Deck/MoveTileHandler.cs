@@ -10,12 +10,14 @@ using EP._15Puzzle.Data;
 using EP._15Puzzle.Data.Context;
 using EP._15Puzzle.Data.Models;
 using EP._15Puzzle.Logic.Commands;
+using EP._15Puzzle.Logic.Hubs;
 using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
 using EP._15Puzzle.Logic.Validators;
 using FluentValidation;
 using JetBrains.Annotations;
 using MediatR;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace EP._15Puzzle.Logic.Handlers
@@ -25,12 +27,14 @@ namespace EP._15Puzzle.Logic.Handlers
         private readonly DeckDbContext _context;
         private readonly IMapper _mapper;
         private readonly IValidator<MoveTileCommand> _validator;
+        private readonly IHubContext<NotifyHub> _hubContext;
 
-        public MoveTileHandler(DeckDbContext context, IMapper mapper, IValidator<MoveTileCommand> validator)
+        public MoveTileHandler(DeckDbContext context, IMapper mapper, IValidator<MoveTileCommand> validator, IHubContext<NotifyHub> hubContext)
         {
             _mapper = mapper;
             _context = context;
             _validator = validator;
+            _hubContext = hubContext;
         }
         public async Task<Result<Deck>> Handle([NotNull]MoveTileCommand request, CancellationToken cancellationToken)
         {
@@ -77,7 +81,12 @@ namespace EP._15Puzzle.Logic.Handlers
                         var recordDb =logicDeck.User.Records.FirstOrDefault(r => r.UserId == logicDeck.UserId);
                         if (recordDb!=null)
                         {
-                            recordDb.Score = logicDeck.Score;
+                            if (recordDb.Score > logicDeck.Score)
+                            {
+                                recordDb.Score = logicDeck.Score;
+                                await _hubContext.Clients.All.SendAsync("Notice", $"Player {logicDeck.User.UserName} has set new record - {logicDeck.Score}!",CancellationToken.None);
+                            }
+                            
                         }else logicDeck.User.Records.Add(new RecordDb() { Score = logicDeck.Score, User = user });
                     }
                     _context.Update(_mapper.Map<DeckDb>(logicDeck));

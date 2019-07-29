@@ -13,7 +13,7 @@ export class NotifyHubService {
     this.hub.start();
 
     this.hub.on('notice', (message: string) => {
-      // this.notify(message);
+      this.notify(message);
     });
 
    }

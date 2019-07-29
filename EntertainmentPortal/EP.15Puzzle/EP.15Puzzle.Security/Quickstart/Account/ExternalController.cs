@@ -51,17 +51,16 @@ namespace Host.Quickstart.Account
         [HttpPost]
         public async Task<IActionResult> ChangeUsername(ChangeUsernameInputModel model, string button)
         {
+            
+
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user != null)
             {
-                if (button != "ChangeUsername")
+                if (!ModelState.IsValid)
                 {
-                    _userManager.SetUserNameAsync(user, model.UserName);;
+                    return View(new ChangeUsernameViewModel());
                 }
-                else
-                {
-                    await _userManager.SetUserNameAsync(user, model.NewUserName);
-                }
+                await _userManager.SetUserNameAsync(user, model.NewUserName);
                 user.PhoneNumberConfirmed = true;
                 await _userManager.UpdateAsync(user);
             }

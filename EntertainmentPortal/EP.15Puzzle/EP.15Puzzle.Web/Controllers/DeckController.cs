@@ -1,25 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Security.Claims;
+﻿using System.Net;
 using System.Threading.Tasks;
-using EP._15Puzzle.Logic;
 using EP._15Puzzle.Logic.Commands;
 using EP._15Puzzle.Logic.Models;
 using EP._15Puzzle.Logic.Queries;
-using EP._15Puzzle.Web.Hubs;
-using IdentityServer4.Models;
 using JetBrains.Annotations;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 
 namespace EP._15Puzzle.Web.Controllers
@@ -30,13 +17,11 @@ namespace EP._15Puzzle.Web.Controllers
     public class DeckController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IHubContext<NoticeHub> _hubContext;
 
 
-        public DeckController(IMediator mediator, IHubContext<NoticeHub> hubContext)
+        public DeckController(IMediator mediator)
         {
             _mediator = mediator;
-            _hubContext = hubContext;
         }
         // GET: api/Deck
         [Authorize(AuthenticationSchemes = "Bearer")]
@@ -59,10 +44,11 @@ namespace EP._15Puzzle.Web.Controllers
             newDeckCommand.Email = HttpContext.Request.Headers["Email"];
             var result = await _mediator.Send(newDeckCommand);
             if (result.IsSuccess)
-            {
+            { 
+                
                 return (IActionResult)Ok(result.Value);
             }
-
+            
             return NotFound(result.Error);
         }
 
@@ -81,10 +67,7 @@ namespace EP._15Puzzle.Web.Controllers
             }
             
             var result = await _mediator.Send(new MoveTileCommand(HttpContext.Request.Headers["Email"], tile));
-            if (result.IsFailure && result.Error.StartsWith("Selected"))
-            {
-                await _hubContext.Clients.All.SendAsync("notice", result.Error);
-            }
+            
             return result.IsSuccess ? (IActionResult)Ok(result.Value) : BadRequest(result.Error);
 
         }
