@@ -5,8 +5,7 @@ import { Injectable, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Word } from '../models/Word';
-import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'

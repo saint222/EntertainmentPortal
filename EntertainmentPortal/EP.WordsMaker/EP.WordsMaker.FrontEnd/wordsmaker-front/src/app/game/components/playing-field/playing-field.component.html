@@ -1,47 +1,46 @@
-<div class="container" *ngIf="gameCreated">
-  <div class="container" *ngIf="!gameOver">
-    <div class="row">
-      <div class="col-2">
-        <div class="dashboard">
-          <p>Game menu</p>
-          <p>Score - {{score}}</p>
-          <p>Words count - {{wordsCounter}}</p>
-          <button type="submit" (click)="ListBtnClick()" class="btn btn-primary">View list</button>
-          <p>Time left - {{timeLeft.toString()}}</p>
+    <div class="container" *ngIf="gameCreated">
+      <div class="row">
+        <div class="col-2">
+          <div>
+            <p>Game menu</p>
+            <p>Score - {{score}}</p>
+            <p>Words count - {{wordsCounter}}</p>
+            <button type="submit" (click)="ListBtnClick()" class="btn btn-primary">View list</button>
+            <p>Time left - {{timeLeft.toString()}}</p>
+          </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="container">
-          <div class="row">
-            <div class="square" (click)="CellClick(i)" *ngFor="let letter of keyWordLetters let i = index">
-              <div class="letter">
-                {{letter}}
+        <div class="col">
+          <div class="container">
+            <div class="row">
+              <div class="square" (click)="CellClick(i)" *ngFor="let letter of keyWordLetters let i = index">
+                <div class="letter">
+                  {{letter}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="user_word">
+                <label>
+                  Введенное слово >> {{resultWord.join('')}}
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="errMessage">
+                <label class="errMessageText">
+                  {{errMessage}}
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <button class="btn btn-primary" (click)="ClearBtnClick()" [disabled]="CheckResultWord()">Clear</button>
+                <button class="btn btn-primary" (click)="SubmitBtnClick()">Submit</button>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="user_word">
-              <label>
-                Введенное слово >> {{resultWord.join('')}}
-              </label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="errMessage">
-              <label class="errMessageText">
-                {{errMessage}}
-              </label>
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <button class="btn btn-primary" (click)="ClearBtnClick()" [disabled]="CheckResultWord()">Clear</button>
-              <button class="btn btn-primary" (click)="SubmitBtnClick()">Submit</button>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="col" *ngIf="listEnable">
+        <div class="col" *ngIf="listEnable">
           <tr>
             <table class="table table-striped table-dark">
               <thead>
@@ -59,12 +58,19 @@
             </table>
           </tr>
         </div>
+      </div>
+    </div>
+  <div class="container" *ngIf="gameOver">
+    <div class="flex-container center">
+      <h1>Игра окончена</h1>
+    </div>
+    <div class="flex-container center">
+      <h3>Время истекло</h3>
+    </div>
+    <div class="flex-container center">
+      <h3>Вы набрали {{score}} очков.</h3>
+    </div>
+    <div class="flex-container center">
+      <h3>Хороший результат.</h3>
     </div>
   </div>
-</div>
-<div class="container" *ngIf="gameOver">
-  <div  class="flex-container center"><h1>Игра окончена</h1></div>
-  <div  class="flex-container center"><h3>Время истекло</h3></div>
-  <div  class="flex-container center"><h3>Вы набрали {{score}} очков.</h3></div>
-  <div  class="flex-container center"><h3>Хороший результат.</h3></div>
-</div>

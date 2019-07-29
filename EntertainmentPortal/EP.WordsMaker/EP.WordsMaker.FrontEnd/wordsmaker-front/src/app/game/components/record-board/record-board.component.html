@@ -4,18 +4,14 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Username</th>
-        <th scope="col">Email</th>
         <th scope="col">Best Score</th>
-        <th scope="col">Id</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let player of players let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{player.name}}</td>
-        <td>{{player.email}}</td>
         <td>{{player.bestScore}}</td>
-        <td>{{player.id}}</td>
       </tr>
     </tbody>
   </table>

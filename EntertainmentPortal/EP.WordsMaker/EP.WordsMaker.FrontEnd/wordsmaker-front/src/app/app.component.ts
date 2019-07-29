@@ -35,10 +35,6 @@ export class AppComponent {
   title = 'wordsmaker-front';
 
   constructor(private router: Router, private oauthService: OAuthService) {
-    /* this.oauthService.events
-      .pipe(filter(e => e.type === 'token_received'))
-      .subscribe(_ => {
-        log("token_received in app component");
-      }); */
+
   }
 }

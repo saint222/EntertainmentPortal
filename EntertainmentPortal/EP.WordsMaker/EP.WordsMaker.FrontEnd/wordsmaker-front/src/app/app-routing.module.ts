@@ -1,7 +1,6 @@
+import { PlayingFieldComponent } from './game/components/playing-field/playing-field.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PlayingFieldComponent } from './game/components/playing-field/playing-field.component';
-import { GetPlayerComponent } from './game/components/get-player/get-player.component';
 import { RecordBoardComponent } from './game/components/record-board/record-board.component';
 import { HomeComponent } from './game/components/home/home.component';
 

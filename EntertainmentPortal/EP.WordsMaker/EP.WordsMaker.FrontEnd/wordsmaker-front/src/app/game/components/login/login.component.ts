@@ -1,10 +1,7 @@
 import { log } from 'util';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { GameService } from './../../services/game.service';
-import { filter } from 'rxjs/operators';
 import { AuthService } from './../../services/auth.service';
-// ...
 
 @Component({
   selector: 'app-login',
