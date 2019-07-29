@@ -42,6 +42,32 @@ namespace Host.Quickstart.Account
             _events = events;
         }
 
+        //Change Username for Externel User
+        [HttpGet]
+        public async Task<IActionResult> ChangeUsername(ChangeUsernameInputModel model)
+        {
+            return View(new ChangeUsernameViewModel());
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangeUsername(ChangeUsernameInputModel model, string button)
+        {
+            
+            if (button != "ChangeUsername")
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)_userManager.SetUserNameAsync(user, model.UserName);
+                
+                return Redirect(model.ReturnUrl);
+            }
+            var user1 = await _userManager.FindByEmailAsync(model.Email);
+            if (user1 != null)
+            {
+                await _userManager.SetUserNameAsync(user1, model.NewUserName);
+            }
+            return Redirect(model.ReturnUrl);
+        }
+
+
         /// <summary>
         /// initiate roundtrip to external authentication provider
         /// </summary>
@@ -125,8 +151,17 @@ namespace Host.Quickstart.Account
 
             // validate return URL and redirect back to authorization endpoint or a local page
             var returnUrl = result.Properties.Items["returnUrl"];
+            
             if (_interaction.IsValidReturnUrl(returnUrl) || Url.IsLocalUrl(returnUrl))
             {
+                
+                var usernameFromDb = await _userManager.GetUserNameAsync(user);
+                var prefname = principal.FindFirst(JwtClaimTypes.PreferredUserName)?.Value;
+                if (usernameFromDb == name || prefname == usernameFromDb)
+                {
+                    return RedirectToAction("ChangeUsername", "External", new ChangeUsernameInputModel(user.Email, name, returnUrl));
+                }
+                
                 return Redirect(returnUrl);
             }
 
