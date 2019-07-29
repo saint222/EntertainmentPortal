@@ -1,0 +1,91 @@
+2019-07-01 09:26:27.509 +03:00 [Information] The file "/swagger-ui.css" was not modified
+2019-07-01 09:26:27.509 +03:00 [Information] The file "/swagger-ui-standalone-preset.js" was not modified
+2019-07-01 09:26:27.509 +03:00 [Information] The file "/swagger-ui-bundle.js" was not modified
+2019-07-01 09:28:08.692 +03:00 [Information] CORS policy execution successful.
+2019-07-01 09:28:08.764 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:28:08.998 +03:00 [Warning] User "7e944f34-e01a-41e2-a13e-803d6d212628" password validation failed: "PasswordRequiresNonAlphanumeric;PasswordRequiresDigit;PasswordRequiresUpper".
+2019-07-01 09:28:09.009 +03:00 [Information] Executing HttpStatusCodeResult, setting HTTP status code 200
+2019-07-01 09:28:09.018 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:30:26.415 +03:00 [Information] CORS policy execution successful.
+2019-07-01 09:30:26.419 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:30:41.042 +03:00 [Warning] User "53338804-9fa2-4362-beed-e4f15c2a3d32" password validation failed: "PasswordRequiresNonAlphanumeric;PasswordRequiresDigit;PasswordRequiresUpper".
+2019-07-01 09:33:08.552 +03:00 [Information] CORS policy execution successful.
+2019-07-01 09:33:08.659 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:33:08.802 +03:00 [Warning] User "704e29af-b354-4d5b-9fe0-cd1ce2a63631" password validation failed: "PasswordRequiresNonAlphanumeric;PasswordRequiresDigit;PasswordRequiresUpper".
+2019-07-01 09:45:30.824 +03:00 [Information] CORS policy execution successful.
+2019-07-01 09:45:30.931 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:45:31.069 +03:00 [Warning] User "84073402-d788-406f-a87d-db1f502714d2" password validation failed: "PasswordRequiresNonAlphanumeric;PasswordRequiresDigit;PasswordRequiresUpper".
+2019-07-01 09:46:17.225 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 09:46:17.238 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:46:31.202 +03:00 [Information] CORS policy execution successful.
+2019-07-01 09:46:31.206 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:46:31.218 +03:00 [Warning] User "1022b427-4036-4c17-875e-b71cc3ac1798" password validation failed: "PasswordRequiresNonAlphanumeric".
+2019-07-01 09:46:31.221 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 09:46:31.222 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:46:52.349 +03:00 [Information] CORS policy execution successful.
+2019-07-01 09:46:52.352 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:46:52.357 +03:00 [Warning] User "2cebd352-1283-4d91-b0bf-60d24b1c6be5" password validation failed: "PasswordRequiresNonAlphanumeric".
+2019-07-01 09:47:42.344 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 09:47:42.350 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:47:58.088 +03:00 [Information] CORS policy execution successful.
+2019-07-01 09:47:58.090 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 09:47:58.832 +03:00 [Information] Executing HttpStatusCodeResult, setting HTTP status code 200
+2019-07-01 09:47:58.839 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:06:52.746 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:06:52.939 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:06:54.495 +03:00 [Error] Failure sending mail.
+2019-07-01 17:06:54.506 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:06:54.518 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:08:28.608 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:08:28.612 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:08:28.640 +03:00 [Warning] User "a322bbdb-8c67-40b7-9c87-b39bf253321d" validation failed: "DuplicateUserName".
+2019-07-01 17:08:28.644 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:08:28.646 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:08:36.416 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:08:36.419 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:13:13.593 +03:00 [Error] Failure sending mail.
+2019-07-01 17:13:13.595 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:13:13.597 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:13:19.927 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:13:19.928 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:13:19.941 +03:00 [Warning] User "b081174e-8936-4a78-8be4-7feb04defded" validation failed: "DuplicateUserName".
+2019-07-01 17:13:19.944 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:13:19.946 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:13:30.433 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:13:30.435 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:13:51.720 +03:00 [Error] Failure sending mail.
+2019-07-01 17:13:51.722 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:13:51.725 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:13:58.289 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:13:58.291 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:16:10.476 +03:00 [Error] Failure sending mail.
+2019-07-01 17:16:10.482 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:16:10.486 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:17:40.443 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:17:40.445 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:17:40.457 +03:00 [Warning] User "372aa11e-5140-42f1-b985-a2ce272bb8ec" validation failed: "DuplicateUserName".
+2019-07-01 17:17:40.460 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:17:40.461 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:17:48.975 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:17:48.978 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:20:11.539 +03:00 [Error] Failure sending mail.
+2019-07-01 17:20:11.540 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:20:11.542 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:20:20.035 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:20:20.036 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:20:55.743 +03:00 [Error] Failure sending mail.
+2019-07-01 17:20:55.744 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:20:55.747 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:21:34.297 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:21:34.300 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:23:20.711 +03:00 [Error] Failure sending mail.
+2019-07-01 17:23:20.714 +03:00 [Information] Executing ObjectResult, writing value of type '"System.String"'.
+2019-07-01 17:23:20.716 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:27:11.601 +03:00 [Information] CORS policy execution successful.
+2019-07-01 17:27:11.722 +03:00 [Information] Executing endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:27:14.538 +03:00 [Information] Executing ObjectResult, writing value of type '"Microsoft.AspNetCore.Identity.IdentityUser"'.
+2019-07-01 17:27:14.551 +03:00 [Information] Executed endpoint '"EP.Sudoku.Web.Controllers.AuthController.Register (EP.Sudoku.Web)"'
+2019-07-01 17:29:05.841 +03:00 [Information] Executing endpoint '"405 HTTP Method Not Supported"'
+2019-07-01 17:29:05.844 +03:00 [Information] Executed endpoint '"405 HTTP Method Not Supported"'
+2019-07-01 17:30:43.508 +03:00 [Information] Executing endpoint '"405 HTTP Method Not Supported"'
+2019-07-01 17:30:43.509 +03:00 [Information] Executed endpoint '"405 HTTP Method Not Supported"'

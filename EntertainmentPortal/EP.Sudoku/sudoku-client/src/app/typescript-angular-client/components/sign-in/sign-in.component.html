@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<div class="container">
+    <h2 class = "text">Login and join the incredible world of sudoku!</h2>
+    <br>
+  <br>
+  <div class="card bg-light">
+  <article class="card-body mx-auto" style="max-width: 400px;">
+    <p>
+      <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-google" aria-hidden="true"></i>   Login with Google</a>
+      <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login with facebook</a>
+    </p>
+    <p class="divider-text">
+          <span class="bg-light">OR</span>
+      </p>
+    <form [formGroup]="" autocomplete="off" #form="ngForm">
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+       </div>
+          <input name="" class="form-control" placeholder="Name" type="text">
+      </div>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+      </div>
+          <input class="form-control" placeholder="Password" type="password">
+      </div>
+      <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Login </button>
+      </div>
+      <br>
+      <div class="text-center">Still doesn't have an account? <a routerLink="/register" title = "Register">Register</a></div>
+  </form>
+  </article>
+  </div>
+  </div>
