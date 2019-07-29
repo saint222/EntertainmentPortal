@@ -51,19 +51,21 @@ namespace Host.Quickstart.Account
         [HttpPost]
         public async Task<IActionResult> ChangeUsername(ChangeUsernameInputModel model, string button)
         {
-            
-            if (button != "ChangeUsername")
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user != null)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user != null)_userManager.SetUserNameAsync(user, model.UserName);
+                if (button != "ChangeUsername")
+                {
+                    _userManager.SetUserNameAsync(user, model.UserName);;
+                }
+                else
+                {
+                    await _userManager.SetUserNameAsync(user, model.NewUserName);
+                }
+                user.PhoneNumberConfirmed = true;
+                await _userManager.UpdateAsync(user);
+            }
                 
-                return Redirect(model.ReturnUrl);
-            }
-            var user1 = await _userManager.FindByEmailAsync(model.Email);
-            if (user1 != null)
-            {
-                await _userManager.SetUserNameAsync(user1, model.NewUserName);
-            }
             return Redirect(model.ReturnUrl);
         }
 
@@ -154,10 +156,7 @@ namespace Host.Quickstart.Account
             
             if (_interaction.IsValidReturnUrl(returnUrl) || Url.IsLocalUrl(returnUrl))
             {
-                
-                var usernameFromDb = await _userManager.GetUserNameAsync(user);
-                var prefname = principal.FindFirst(JwtClaimTypes.PreferredUserName)?.Value;
-                if (usernameFromDb == name || prefname == usernameFromDb)
+                if (!user.PhoneNumberConfirmed)
                 {
                     return RedirectToAction("ChangeUsername", "External", new ChangeUsernameInputModel(user.Email, name, returnUrl));
                 }
