@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://seabattle.me:44360",
+      "applicationUrl": "https://localhost:44360",
       "sslPort": 44360
     }
   },
@@ -11,19 +11,19 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": false,
-      "launchUrl": "https://seabattle.me:44360",
+      "launchBrowser": true,
+      "launchUrl": "https://localhost:44360",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "SelfHost": {
       "commandName": "Project",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://seabattle.me:44360"
+      "applicationUrl": "https://localhost:44360"
     }
   }
 }
