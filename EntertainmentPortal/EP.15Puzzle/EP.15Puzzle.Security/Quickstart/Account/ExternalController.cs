@@ -42,6 +42,34 @@ namespace Host.Quickstart.Account
             _events = events;
         }
 
+        //Change Username for Externel User
+        [HttpGet]
+        public async Task<IActionResult> ChangeUsername(ChangeUsernameInputModel model)
+        {
+            return View(new ChangeUsernameViewModel());
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangeUsername(ChangeUsernameInputModel model, string button)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user != null)
+            {
+                if (button != "ChangeUsername")
+                {
+                    _userManager.SetUserNameAsync(user, model.UserName);;
+                }
+                else
+                {
+                    await _userManager.SetUserNameAsync(user, model.NewUserName);
+                }
+                user.PhoneNumberConfirmed = true;
+                await _userManager.UpdateAsync(user);
+            }
+                
+            return Redirect(model.ReturnUrl);
+        }
+
+
         /// <summary>
         /// initiate roundtrip to external authentication provider
         /// </summary>
@@ -125,8 +153,14 @@ namespace Host.Quickstart.Account
 
             // validate return URL and redirect back to authorization endpoint or a local page
             var returnUrl = result.Properties.Items["returnUrl"];
+            
             if (_interaction.IsValidReturnUrl(returnUrl) || Url.IsLocalUrl(returnUrl))
             {
+                if (!user.PhoneNumberConfirmed)
+                {
+                    return RedirectToAction("ChangeUsername", "External", new ChangeUsernameInputModel(user.Email, name, returnUrl));
+                }
+                
                 return Redirect(returnUrl);
             }
 

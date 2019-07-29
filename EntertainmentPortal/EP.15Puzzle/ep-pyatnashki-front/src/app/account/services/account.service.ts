@@ -62,6 +62,6 @@ export class AccountService {
   }
 
   getUserInfo(): UserInfo {
-    return new UserInfo(this.user.profile.name);
+    return new UserInfo(this.user.profile.preferred_username);
   }
 }

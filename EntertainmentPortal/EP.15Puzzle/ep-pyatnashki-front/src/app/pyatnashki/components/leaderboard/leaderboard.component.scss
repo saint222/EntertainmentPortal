@@ -1,6 +1,9 @@
 .recordtable{
   color: #ffffff;
   margin-top: 5vh;
+  position: fixed;
+  top: 11vh;
+  max-width: 600px;
 }
 .first{
   width: 0.1%;
@@ -20,4 +23,5 @@
     background-color: transparent;
   }
 }
+
 
