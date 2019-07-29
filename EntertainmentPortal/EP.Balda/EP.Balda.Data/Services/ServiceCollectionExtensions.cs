@@ -1,7 +1,6 @@
 ﻿using EP.Balda.Data.Context;
 using EP.Balda.Data.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -34,7 +33,6 @@ namespace EP.Balda.Data.Services
                 .AddEntityFrameworkStores<BaldaGameDbContext>()
                 .AddUserManager<UserManager<PlayerDb>>()
                 .AddRoleManager<RoleManager<IdentityRole>>()
-                .AddDefaultTokenProviders()
                 .AddDefaultTokenProviders();
 
             return services;

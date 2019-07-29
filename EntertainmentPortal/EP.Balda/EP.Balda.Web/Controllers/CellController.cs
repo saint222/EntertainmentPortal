@@ -28,7 +28,8 @@ namespace EP.Balda.Web.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, typeof(void), Description = "Cell not found")]
         public async Task<IActionResult> GetCellAsync([FromQuery] GetCell model)
         {
-            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} Parameters: Id = {model.Id}");
+            _logger.LogDebug($"Action: {ControllerContext.ActionDescriptor.ActionName} " +
+            $"Parameters: Id = {model.Id}");
 
             var result = await _mediator.Send(model);
 

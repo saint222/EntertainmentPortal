@@ -1,24 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div class="info">
-        <img [src]="photo" alt="photo">
-        <p><b>E-mail: </b><a href="mailto:jemelachee@gmail.com?subject=contect&cc=cc@example.com"> jemelachee@gmail.com</a></p>
-        <p><b>Skype: </b><a href="skype:live:jemelachee?chat">live:jemelachee</a></p>
-        <p><b>LinkedIn: </b><a href="https://www.linkedin.com/in/yana-knysh">www.linkedin.com/in/yana-knysh</a></p>
-        <p><b>GitHub: </b><a href="https://github.com/YanaKnysh">https://github.com/YanaKnysh</a></p>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="contact-section">
-        <h1>Contact us</h1>
-        <div class="border"></div>
-        <form [formGroup]="feedbackGroup" (ngSubmit)="onSubmit(form)" #form="ngForm" class="contact-form">
-          <input name="name" formControlName="name" type="text" class="contact-form-text" placeholder="Name">
-          <input name="email" formControlName="email" type="email" class="contact-form-text" placeholder="E-mail">
-          <textarea name="message" formControlName="message" class="contact-form-text" placeholder="Write a message"></textarea>
-          <input type="submit" class="contact-form-btn" value="Send">
-        </form>
-        <div id="success">{{ textMessage }}</div>
-      </div>
+<div class="contact-section">
+    <h1>Contact us</h1>
+    <div class="border"></div>
+    <form class="contact-form">
+      <input type="text" class="contact-form-text" placeholder="Name">
+      <input type="email" class="contact-form-text" placeholder="E-mail">
+      <input type="text" class="contact-form-text" placeholder="Phone number">
+      <textarea class="contact-form-text" placeholder="Write a message"></textarea>
+      <input type="submit" class="contact-form-btn" value="Send">
+    </form>
   </div>

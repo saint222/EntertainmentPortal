@@ -28,7 +28,9 @@ namespace EP.Balda.Logic.Handlers
                 .Select(w => w.Word.Word)
                 .ToListAsync();
             
-            return words ?? new List<string>();
+            return words == null
+                ? new List<string>()
+                : words;
         }
     }
 }

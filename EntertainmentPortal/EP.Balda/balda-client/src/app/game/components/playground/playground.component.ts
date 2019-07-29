@@ -1,5 +1,6 @@
+import { CurrentGame } from '../../models/currentGame';
 import { Player } from './../../models/player';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
@@ -11,7 +12,7 @@ import { GameAndCells } from '../../models/gameAndCells';
   templateUrl: './playground.component.html',
   styleUrls: ['./playground.component.sass']
 })
-export class PlaygroundComponent implements OnInit, AfterViewInit {
+export class PlaygroundComponent implements OnInit {
   player: Player = new Player();
   cells: Cell[][] = [];
   selectedCells: Cell[] = [];
@@ -31,7 +32,7 @@ export class PlaygroundComponent implements OnInit, AfterViewInit {
   isGameOver: boolean;
   playerScore: number;
   opponentScore: number;
-  isLoading: boolean;
+  mapWithStatus: CurrentGame = new CurrentGame();
 
   constructor(private gameService: GameService, private route: ActivatedRoute,  private router: Router) {
    }
@@ -69,13 +70,8 @@ export class PlaygroundComponent implements OnInit, AfterViewInit {
         (err: HttpResponseBase) => {
           return console.log(err.statusText);
         });
-      this.isLoading = true;
     },
     (err => this.router.navigateByUrl('startGame')));
-  }
-
-  ngAfterViewInit() {
-    this.isLoading = false;
   }
 
   selectCell(chosenCell: Cell) {

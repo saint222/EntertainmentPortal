@@ -37,8 +37,8 @@ namespace EP.Balda.Web
                      var googleAuthNSection =
                          Configuration.GetSection("Authentication:Google");
 
-                     opt.ClientId = "960534110357-koidlpbpdt5l0jpndqrsgkum1ff5h03m.apps.googleusercontent.com";
-                     opt.ClientSecret = "-gMsN9tgw7YJR-gH4664Xk0_";
+                     opt.ClientId = googleAuthNSection["ClientId"];
+                     opt.ClientSecret = googleAuthNSection["ClientSecret"];
                      opt.CallbackPath = new PathString("/signin-google");
                  })
                 .AddFacebook("Facebook", opt =>
@@ -46,9 +46,9 @@ namespace EP.Balda.Web
                     var facebookAuthNSection =
                         Configuration.GetSection("Authentication:Facebook");
 
-                    opt.ClientId = "1264093160420061";
-                    opt.ClientSecret = "cd8f9ece6350733da4949165f3350dd9";
-                    opt.CallbackPath = new PathString("/signin-facebook");
+                    opt.ClientId = facebookAuthNSection["ClientId"];
+                    opt.ClientSecret = facebookAuthNSection["ClientSecret"];
+                    opt.CallbackPath = new PathString("/signin-google");
                 });
 
             services.AddAuthorization(opt =>
@@ -67,7 +67,7 @@ namespace EP.Balda.Web
             {
                 cfg.SchemaType = SchemaType.OpenApi3;
                 cfg.Title = "Balda Game";
-                cfg.Description = "Balda is the linguistic board game in which it is necessary to make up words by means of the letters added in the certain way on the square game board. The winner is the person with more score points. One score point is given for one letter of added word.";
+                cfg.Description = "Balda - linguistic board game in which it is necessary to make up words by means of the letters added in the certain way on the square game board.";
             });
 
             services.AddAutoMapper(typeof(PlayerProfile).Assembly);
@@ -93,6 +93,11 @@ namespace EP.Balda.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
                               IMediator mediator)
         {
+            //app.Use(async delegate (HttpContext context, Func<Task> next)
+            //{
+            //    await next.Invoke();
+            //});
+
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
@@ -101,7 +106,7 @@ namespace EP.Balda.Web
             app.UseCors(opt =>
                 opt.AllowAnyHeader()
                 .AllowAnyMethod()
-                .WithOrigins("http://localhost:4200", "http://localhost:8084")
+                .WithOrigins("http://localhost:4200", "http://balda-client", "http://localhost:8080")
                 .AllowCredentials());
 
             app.UseAuthentication();

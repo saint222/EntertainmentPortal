@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Size } from '../../models/size';
 import { GameService } from '../../services/game.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-start-game',

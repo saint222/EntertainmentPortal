@@ -35,14 +35,11 @@ export class AuthService {
      return this.http.post<Player>(`${environment.base_url}api/simplelogin`, userLogin, httpOptions);
   }
 
-  logOut() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      withCredentials: true
-     };
+  facebookSignIn() {
 
-    return this.http.post(`${environment.base_url}api/logout`, httpOptions);
+  }
+
+  googleSignIn() {
+
   }
 }
