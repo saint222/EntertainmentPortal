@@ -7,7 +7,7 @@ import {EnemyService} from '../../Services/enemy.service'
 import { fieldCell } from 'src/app/models/fieldCell';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.prod';
-import { AuthService} from '../../auth/auth.component'
+import { AuthService} from '../../auth/auth.component';
 
 @Component({
   selector: 'app-field',

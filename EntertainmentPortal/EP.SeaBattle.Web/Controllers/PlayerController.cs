@@ -31,13 +31,13 @@ namespace EP.SeaBattle.Web.Controllers
         [HttpPost("api/AddPlayer")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Player), Description = "Add new player")]
         [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Invalid data")]
-        public async Task<IActionResult> AddPlayerAsync([ CustomizeValidator(RuleSet = "AddPlayerPreValidation")]string name)
+        public async Task<IActionResult> AddPlayerAsync([FromBody, NotNull, CustomizeValidator(RuleSet = "AddPlayerPreValidation")]AddNewPlayerCommand model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            AddNewPlayerCommand model = new AddNewPlayerCommand(){ NickName = name, UserId = User.FindFirst("sub")?.Value };
+            model.UserId = User.FindFirst("sub")?.Value;
             var result = await _mediator.Send(model);
             return result.IsFailure 
                 ? (IActionResult)BadRequest(result.Error)

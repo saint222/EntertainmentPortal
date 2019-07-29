@@ -4,24 +4,24 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
 
     <header class="masthead mb-auto">
-        <div class="inner">
-          <nav class="nav nav-masthead justify-content-center">
+        
+        <div>
             <h3>SeaBattle-2019</h3>
+          <nav class="nav nav-masthead justify-content-center">
             <app-auth></app-auth>
           </nav>
         </div>
         
       </header>
 
+    <div class="col-md-1" *ngIf=!isActive>
+      <label>Введите имя</label>
+      <input type="text" #nickName>
+      <button (click) = "addPlayer(nickName.value)">Добивить игрока</button>
+    </div>
 
-    <main role="main" class="inner cover" >
+    <main *ngIf=isActive role="main" class="inner cover" >
       <app-shipplacer></app-shipplacer>
       <app-field></app-field>
     </main>
-
-    <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p></p>
-        </div>
-      </footer>
   </div>

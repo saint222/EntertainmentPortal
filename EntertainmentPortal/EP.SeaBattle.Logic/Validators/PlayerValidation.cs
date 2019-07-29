@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EP.SeaBattle.Logic.Validators
 {
-    public class PlayerValidation : AbstractValidator<string>
+    public class PlayerValidation : AbstractValidator<AddNewPlayerCommand>
     {
         private readonly SeaBattleDbContext _context;
         public PlayerValidation(SeaBattleDbContext context)
@@ -14,7 +14,7 @@ namespace EP.SeaBattle.Logic.Validators
             _context = context;
             RuleSet("AddPlayerPreValidation", () =>
             {
-                RuleFor(x => x.Trim())
+                RuleFor(x => x.NickName.Trim())
                 .NotEmpty().WithMessage("NickName cannot be empty")
                 .NotNull().WithMessage("NickName cannot be null")
                 .MinimumLength(3).WithMessage("NickName must have 3 characters")
@@ -24,7 +24,7 @@ namespace EP.SeaBattle.Logic.Validators
             RuleSet("AddPlayerValidation", () =>
             {
                 RuleFor(x => x)
-                .MustAsync((o, s, token) => CheckExistingNickName(o))
+                .MustAsync((o, s, token) => CheckExistingNickName(o.NickName))
                 .WithMessage($"Player with such nickname arleady exists");
             });
         }
