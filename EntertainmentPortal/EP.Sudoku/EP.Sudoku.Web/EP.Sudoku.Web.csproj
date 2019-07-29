@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>d:\Volkov\IT-Academy\entertainment-portal\EntertainmentPortal\EP.Sudoku.Web\EP.Sudoku.Web.xml</DocumentationFile>
+    <DocumentationFile>EntertainmentPortal\EP.Sudoku\EP.Sudoku.Web\EP.Sudoku.Web.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
