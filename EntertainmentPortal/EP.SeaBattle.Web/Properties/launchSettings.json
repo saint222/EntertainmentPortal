@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://seabattle.me:44362",
+      "applicationUrl": "https://localhost:44362",
       "sslPort": 44362
     }
   },
@@ -24,13 +24,13 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://seabattle.me:44362"
+      "applicationUrl": "https://localhost:44362"
     },
-    "BookShop.Web.Staging": {
+    "EP.SeaBattle.Web.Staging": {
       "commandName": "Project",
       "launchBrowser": false,
       "launchUrl": "swagger",
-      "applicationUrl": "https://seabattle.me:44362",
+      "applicationUrl": "https://localhost:44362",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Staging"
       }

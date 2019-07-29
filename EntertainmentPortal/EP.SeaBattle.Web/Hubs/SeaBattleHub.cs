@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 
@@ -8,17 +9,18 @@ namespace EP.SeaBattle.Web.Hubs
     public class SeaBattleHub : Hub
     {
         private readonly ILogger<SeaBattleHub> _logger;
-
         public SeaBattleHub(ILogger<SeaBattleHub> logger)
         {
             _logger = logger;
         }
 
-        public Task CalledFromClient(string msg, int status)
+        public Task Subscribe(string msg)
         {
-            _logger.LogCritical($"Message: {msg} with status {status}");
+            _logger.LogCritical($"User : {msg} has been subscribed");
+            Groups.AddToGroupAsync(Context.ConnectionId, msg);
             return Task.CompletedTask;
         }
+
 
         public override Task OnConnectedAsync()
         {
@@ -32,6 +34,6 @@ namespace EP.SeaBattle.Web.Hubs
 
     public interface IDemoGenericHub
     {
-        Task DoSomething(int code);
+        Task DoSomething2(int code);
     }
 }

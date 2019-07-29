@@ -5,21 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CellComponent } from './battlefield/cell/cell.component';
 import { FieldComponent } from './battlefield/field/field.component';
-import { ButtonsComponent } from './game/buttons/buttons.component';
 import { ShipplacerComponent } from './shipplacer/shipplacer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { AuthComponent, AuthService } from './auth/auth.component';
+import { ShipService } from './Services/ship.service';
+import { EnemyService } from './Services/enemy.service';
+import { AuthInterceptor } from './interceptor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    //HomeComponent,
     CellComponent,
     FieldComponent,
-    ButtonsComponent,
-    ShipplacerComponent
+    ShipplacerComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,10 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     HttpClientModule,
     OAuthModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthService,
+              ShipService,
+              EnemyService,
+              { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

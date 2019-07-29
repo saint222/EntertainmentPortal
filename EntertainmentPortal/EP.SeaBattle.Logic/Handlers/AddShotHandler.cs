@@ -57,9 +57,9 @@ namespace EP.SeaBattle.Logic.Handlers
                                                        .FirstOrDefaultAsync(p => p.GameId == gameDb.Id && p.Id != playerDb.Id)
                                                        .ConfigureAwait(false);
                 ShotsManager shotsManager = new ShotsManager(_mapper.Map<Player>(enemyPlayerDb));
+                request.UserId = enemyPlayerDb.UserId;
+                request.GameId = gameDb.Id;
 
-
-                
                 Ship ship = shotsManager.TryShoot(request.X, request.Y);
                 if (ship != null)
                 {

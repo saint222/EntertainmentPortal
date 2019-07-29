@@ -31,19 +31,19 @@ namespace EP.SeaBattle.Logic.Handlers
         public async Task<Result<Game>> Handle(FinishGameCommand request, CancellationToken cancellationToken)
         {
             PlayerDb playerDb = await _context.Players
-                                                .Include(p => p.Game)
                                                 .FirstOrDefaultAsync(p => p.UserId == request.UserId).ConfigureAwait(false);
-            GameDb gamedb = await _context.Games.FirstOrDefaultAsync(g => g.Id == playerDb.Game.Id).ConfigureAwait(false);
+
+            GameDb gamedb = await _context.Games.FirstOrDefaultAsync(g => g.Id == playerDb.GameId).ConfigureAwait(false);
             if (gamedb == null)
             {
-                _logger.LogWarning($"Game with id {playerDb.Game.Id} not found");
+                _logger.LogWarning($"Game with id {playerDb.GameId} not found");
                 return Result.Fail<Game>("Game not found");
             }
 
             gamedb.Finish = true;
             gamedb.PlayerAllowedToMove = null;
-            playerDb.GameId = null;
             gamedb.EnemySearch = false;
+            playerDb.GameId = null;
             PlayerDb enemyPlayerDb = gamedb.Players.FirstOrDefault(p => p.Id != playerDb.Id);
             if (enemyPlayerDb == null)
             {
@@ -56,9 +56,9 @@ namespace EP.SeaBattle.Logic.Handlers
                 gamedb.Winner = enemyPlayerDb.NickName;
                 gamedb.Loser = playerDb.NickName;
                 enemyPlayerDb.GameId = null;
-                IEnumerable<ShotDb> shotsDb = _context.Shots.Where(s => s.PlayerId == playerDb.Id || s.PlayerId == enemyPlayerDb.Id);
+                IEnumerable<ShotDb> shotsDb = await _context.Shots.Where(s => ( s.PlayerId == playerDb.Id || s.PlayerId == enemyPlayerDb.Id)).ToArrayAsync().ConfigureAwait(false);
                 _context.Shots.RemoveRange(shotsDb);
-                IEnumerable<ShipDb> shipsDb = _context.Ships.Where(s => s.PlayerId == playerDb.Id || s.PlayerId == enemyPlayerDb.Id);
+                IEnumerable<ShipDb> shipsDb = await _context.Ships.Where(s => (s.PlayerId == playerDb.Id || s.PlayerId == enemyPlayerDb.Id)).ToArrayAsync().ConfigureAwait(false);
                 _context.Ships.RemoveRange(shipsDb);
             }
 

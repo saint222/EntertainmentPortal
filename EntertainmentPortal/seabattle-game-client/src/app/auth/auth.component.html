@@ -1,0 +1,4 @@
+<button (click)="Login()" *ngIf = !isLoginDone>Login</button>
+<button (click)="Logout()" *ngIf = isLoginDone>Logout</button>
+<p>{{userName}}</p>
+<a name="" id="" class="btn btn-primary" role="button" (click)="callServer()">Call Server</a>

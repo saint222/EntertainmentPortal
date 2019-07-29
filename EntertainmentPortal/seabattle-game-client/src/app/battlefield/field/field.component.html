@@ -6,11 +6,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="text-center col-md-12">Корабли</h2>
-      <table class="table1" id="shipField">
+      <table class="table1" id="Field">
         <thead>
             <th class="cell no_border" *ngFor="let letter of alphabet" >{{ letter }}</th>
         </thead>
-        <tr *ngFor="let row of shipField; let i = index" >
+        <tr *ngFor="let row of Field; let i = index" >
           <td class="cell no_border">{{ i + 1 }}</td>
           <td *ngFor="let cell of row">
               <app-cell [status]=cell.status [x]=cell.x [y]=cell.y></app-cell>
@@ -21,17 +21,27 @@
 
     <div class="col-md-6" *ngIf=isActive>
         <h2 class="text-center col-md-12">Выстрелы</h2>
-        <table class="table1" id="shootField">
+        <table class="table1" id="enemyField">
           <thead>
               <th class="cell no_border" *ngFor="let letter of alphabet" >{{ letter }}</th>
           </thead>
-          <tr *ngFor="let row of shootField; let i = index">
+          <tr *ngFor="let row of enemyField; let i = index">
               <td class="cell no_border">{{ i + 1 }}</td>
               <td *ngFor="let cell of row">
-                <app-cell id="cell" [status]=cell.status [x]=cell.x [y]=cell.y (click)="shoot(cell)"></app-cell>
+                <app-cell id="cell" [status]=cell.status [x]=cell.x [y]=cell.y (click)="shoot(cell.x, cell.y)"></app-cell>
             </td>
           </tr>
         </table>
+      </div>
+      <div class="container">
+        <div class="row">
+           <button type="button" class="btn btn-primary col-md-4" (click)=startGame()>Начать игру</button>
+          <button type="button" class="btn btn-primary col-md-4" style="float: right" (click)=finishGame()>Сдаться</button>
+        </div>
+      
+        <div class="form-group">
+            <span></span>
+        </div>
       </div>
   </div>
 </div>

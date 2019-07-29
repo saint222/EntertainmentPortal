@@ -37,7 +37,7 @@ namespace EP.SeaBattle.Web
                 .AddCookie()
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    opt.Authority = "https://seabattle.me:44360";
+                    opt.Authority = "https://localhost:44360";
                     opt.RequireHttpsMetadata = false;
                 })
                 //.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
@@ -82,7 +82,7 @@ namespace EP.SeaBattle.Web
                     Flow = OpenApiOAuth2Flow.Implicit,
                     Type = OpenApiSecuritySchemeType.OAuth2,
                     //AuthorizationUrl = "http://localhost:5000/connect/authorize",
-                    AuthorizationUrl = "https://seabattle.me:44360/connect/authorize",
+                    AuthorizationUrl = "https://localhost:44360/connect/authorize",
                     Scopes = new Dictionary<string, string>()
                     {
                         {"sea-battle-2019", "Access to sea-battle-2019 game api" }
@@ -119,6 +119,13 @@ namespace EP.SeaBattle.Web
 
 
 
+            app.UseCors(o =>
+                        o.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithOrigins("https://localhost:44365")
+                        //.AllowAnyOrigin()
+                        .AllowCredentials()
+                        );
             app.UseAuthentication();
             app.UseOpenApi().UseSwaggerUi3(opt => opt.OAuth2Client = new OAuth2ClientSettings()
             {
@@ -134,13 +141,6 @@ namespace EP.SeaBattle.Web
             mediator.Send(new CreateDatabaseCommand()).Wait();
             //app.UseSession();
             app.UseMvc();
-            app.UseCors(o =>
-                        o.AllowAnyHeader()
-                        .AllowAnyMethod()
-                        //.WithOrigins("*")//http://localhost:4200")
-                        .AllowAnyOrigin()
-                        .AllowCredentials()
-                        );
         }
     }
 }

@@ -3,7 +3,7 @@ using EP.SeaBattle.Web.Hubs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
-namespace BookShop.Web.Controllers
+namespace EP.SeaBattle.Web.Controllers
 {
     [ApiController]
     [Route("api/hub")]
@@ -31,7 +31,7 @@ namespace BookShop.Web.Controllers
         [HttpGet("send-generic")]
         public async Task<IActionResult> SendStatus(int status)
         {
-            await _hubGenericContext.Clients.All.DoSomething(status);
+            await _hubGenericContext.Clients.All.DoSomething2(status);
             return Ok();
         }
     }

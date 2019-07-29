@@ -11,6 +11,8 @@ using NJsonSchema.Annotations;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using EP.SeaBattle.Web.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace EP.SeaBattle.Web.Controllers
 {
@@ -19,10 +21,12 @@ namespace EP.SeaBattle.Web.Controllers
     public class ShotsController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly IHubContext<SeaBattleHub> _hubContext;
 
-        public ShotsController(IMediator mediator)
+        public ShotsController(IMediator mediator, IHubContext<SeaBattleHub> hubContext)
         {
             _mediator = mediator;
+            _hubContext = hubContext;
         }
 
 
@@ -37,6 +41,7 @@ namespace EP.SeaBattle.Web.Controllers
             }
             model.UserId = User.FindFirst("sub")?.Value;
             var result = await _mediator.Send(model);
+            await _hubContext.Clients.Group(model.GameId).SendAsync("sendShot",model.UserId, result.Value?.X, result.Value?.Y);
             return result.IsFailure
                 ? (IActionResult)BadRequest(result.Error)
                 : Ok(result.Value);
@@ -48,6 +53,18 @@ namespace EP.SeaBattle.Web.Controllers
         public async Task<IActionResult> GetShotsAsync()
         {
             var result = await _mediator.Send(new GetShotsQuery() {UserId = User.FindFirst("sub")?.Value });
+            return result.HasValue
+                            ? (IActionResult)Ok(result.Value)
+                            : NotFound();
+        }
+
+
+        [HttpGet("api/GetEnemyShots")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Shot>), Description = "Get enemy player shots collection")]
+        [SwaggerResponse(HttpStatusCode.BadRequest, typeof(void), Description = "Can't show enemy player shots")]
+        public async Task<IActionResult> GetEnemyShots()
+        {
+            var result = await _mediator.Send(new GetEnemyShotsQuery() { UserId = User.FindFirst("sub")?.Value });
             return result.HasValue
                             ? (IActionResult)Ok(result.Value)
                             : NotFound();

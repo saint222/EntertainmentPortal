@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
+import { ShipplacerComponent} from './shipplacer/shipplacer.component'
+import { DemoGuard } from 'src/demo.guard';
 
 const routes: Routes = [
-  { path: 'app', component: AppComponent }
+  { path: 'app', component: AuthComponent },
+  { path: 'app/:id',
+    component: ShipplacerComponent,
+    canActivate: [DemoGuard] }
 ];
 
 @NgModule({

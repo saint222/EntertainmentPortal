@@ -7,28 +7,38 @@ import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 export class HubService {
 
   private hub: HubConnection;
-  private hubGeneric: HubConnection;
-
+  tryShot: Function;
   messages: string[] = [];
+  readyToSend: boolean = false;
+  gameID: string;
 
   constructor() {
-    this.hub = new HubConnectionBuilder().withUrl('https://localhost:6001/sea-battle-2019').build();
-    this.hubGeneric = new HubConnectionBuilder().withUrl('https://localhost:6001/demo-generic').build();
-    this.hub.start().then(() => console.log('Hub connected'))
-    .catch(err => console.error(`Error for hub connection ${err}`));
-    this.hubGeneric.start().then(() => console.log('Hub connected'))
-    .catch(err => console.error(`Error for hub connection ${err}`));
+    this.hub = new HubConnectionBuilder().withUrl('https://localhost:44362/sea-battle-2019').build();
+    this.hub.start().then(() => {
+      this.readyToSend = true;
+      if(this.gameID !== null && this.gameID != undefined && this.gameID != "")
+      {
+        this.hub.send('Subscribe', this.gameID);
+      }
 
-    this.hub.on('getMessage', (msg: string) => {
-      this.messages.push(msg);
-      return console.log(`Message: ${msg}`);
-    });
-    this.hubGeneric.on('DoSomething2', (status: number) => {
-      console.log(`Status: ${status}`);
+    })
+    .catch(err => console.error(`Error for hub connection ${err}`));
+    this.hub.on('sendShot', (userID: string, x: number, y: number) => {
+      this.tryShot(userID, x, y);
     });
    }
 
-   callServer(){
-     this.hub.send('CalledFromClient2', 'Hello from Client', 100500);
+   SubscribeToGetEnemyShot(func: Function)
+   {
+    this.tryShot = func;
+   }
+   Subscribe(gameID: string){
+     if(this.readyToSend)
+     {
+         this.hub.send('Subscribe', gameID);
+     }
+     else{
+         this.gameID = gameID;
+     }
    }
 }

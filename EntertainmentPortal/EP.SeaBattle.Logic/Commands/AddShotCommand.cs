@@ -11,5 +11,7 @@ namespace EP.SeaBattle.Logic.Commands
         public byte Y { get; set; }
         [JsonIgnore]
         public string UserId { get; set; }
+        [JsonIgnore]
+        public string GameId { get; set; }
     }
 }

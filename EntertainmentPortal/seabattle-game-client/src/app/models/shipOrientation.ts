@@ -1,4 +1,5 @@
 export enum ShipOrientation {
-  Vertical,
-  Horizontal
+  Horizontal,
+  Vertical
+  
 }
